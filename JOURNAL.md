@@ -5,7 +5,8 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 
 ## Décisions en attente
 
-Aucune pour l'instant.
+1. **Montée de vLLM dans LLM-Service** : 0.29.0 en service, 0.32.0 est la dernière stable (`outils/resultats/ragflow/versions-2026-11-09.json`). Gardé tel quel : LLM-Service est partagé et la comparaison avec le banc GPU Open Notebook en dépend. Option prudente retenue : ne rien changer.
+2. **Port de l'interface** : 8088 au lieu de 8080 (8080 occupé sur `127.0.0.1` par un processus Python de l'utilisateur, non touché).
 
 ## Écarts au kit, décidés au lancement
 
@@ -32,3 +33,16 @@ Aucune pour l'instant.
 - Incident : le test GPU du diagnostic tire l'image `ollama/ollama` figée par empreinte (environ 5,6 Go) ; compté dans le budget de téléchargement.
 - Aucun bloquant. Socle repris tel quel (pas de nouvelle mesure du service de modèles : version et modèles inchangés depuis le banc GPU Open Notebook du 9 novembre).
 - Prochaine étape : phase C, cadrage (versions, relecture du compose, plan des manuels).
+
+### 2026-11-09 17:45 — Phase C : cadrage
+
+- Fait : dernière version stable relevée (RAGFlow v1.0.0 du 6 novembre 2026, `ragflow-sdk` 1.0.0), sources clonées au tag dans `sources/ragflow/` (ignoré par git), relecture du compose et lecture du code par un sous-agent, plan des manuels.
+- Résultat : `outils/resultats/ragflow/versions-2026-11-09.json`, `outils/resultats/ragflow/relecture.md`, `docs/ragflow/plan-des-manuels.md`. Points marquants : RAGFlow 1.0 réécrit en Go ; tous les ports du compose officiel sur `0.0.0.0` ; mots de passe par défaut ; modèles déclarés seulement par l'API (section `user_default_llm` sans effet) ; aucun reranker embarqué ; SDK sous Python 3.13.
+- Prochaine étape : phase D.
+
+### 2026-11-09 17:55 — Phase D : installation testée
+
+- Fait : override compose, `installer.sh`, `configurer.py` (compte local, clé d'API, modèles VLLM et transcription), `verif_minimale.py`, `demarrer.sh`, `arreter.sh`, `etat.sh`, `ressources.sh`, `compose.sh`. Open Notebook arrêté avant (son `arreter.sh`).
+- Résultat : pile saine en 39 s au premier démarrage (`installation-2026-11-09.log`) ; ports sur `127.0.0.1` seulement (`ports-2026-11-09.txt`) ; RAM de la pile seule 3,7 Gio au repos, 5,1 Gio en pointe pendant l'indexation du corpus (`ressources-2026-11-09-*.txt`, banc d'essai de l'adaptateur) ; vérification minimale réussie (réponse citée en 3,2 s).
+- Incidents : `DataSet.parse_documents` du SDK a rendu « DONE » avec 0 passage au premier essai (`installation-2026-11-09-verif-essai1.log`) ; `Session.ask` du SDK répond 404 pour un assistant (`installation-2026-11-09-verif.log`). Contournements dans `outils/ragflow/client.py`.
+- Prochaine étape : banc par défaut (phase F avancée pour nourrir les manuels), puis manuels.
