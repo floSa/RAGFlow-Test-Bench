@@ -1,0 +1,89 @@
+# Override du docker-compose officiel de RAGFlow v1.0.0 (sources/ragflow/docker/docker-compose.yml).
+# Appliqué par outils/ragflow/installer.sh avec :
+#   docker compose -p rag-ragflow --env-file donnees/ragflow/ragflow.env \
+#     -f sources/ragflow/docker/docker-compose.yml -f outils/ragflow/compose.override.yml up -d
+# Écarts au compose officiel :
+#   - ports publiés sur 127.0.0.1 seulement (web 8088 car 8080 est déjà occupé sur la machine, API 9380, administration 9381) ; 443, Elasticsearch,
+#     MySQL, MinIO, Kvrocks et NATS ne sont plus publiés (joignables seulement sur le réseau interne) ;
+#   - conteneurs nommés rag-ragflow-* ; images figées par étiquette exacte et empreinte @sha256 ;
+#   - réglages et secrets générés dans donnees/ragflow/ragflow.env (ignoré par git) au lieu de docker/.env suivi ;
+#   - volumes nommés rag-ragflow_* liés à donnees/ragflow/* (données dans le dépôt, ignorées par git) ;
+#   - RAGFlow rejoint llm-net (LLM-Service, modèles) et rag-local (voix) ; aucun serveur de modèles dans la pile.
+# Chemins absolus obligatoires : Compose résout les chemins relatifs par rapport au premier fichier.
+
+services:
+  ragflow-cpu:
+    container_name: rag-ragflow-server
+    image: infiniflow/ragflow:v1.0.0@sha256:ed8dff41a7530ed8fb037fe7479a7c535429d42fa8d00aec28b54bcbc056934d
+    env_file: !override
+      - ${RAGFLOW_ENV_FILE}
+    ports: !override
+      - 127.0.0.1:${SVR_WEB_HTTP_PORT}:80
+      - 127.0.0.1:${SVR_HTTP_PORT}:9380
+      - 127.0.0.1:${ADMIN_SVR_HTTP_PORT}:9381
+    volumes:
+      - ${RAGFLOW_DONNEES}/logs:/ragflow/logs
+    networks:
+      - ragflow
+      - llm-net
+      - rag-local
+
+  es01:
+    container_name: rag-ragflow-es01
+    image: elasticsearch:8.11.3@sha256:58a3a280935d830215802322e9a0373faaacdfd646477aa7e718939c2f29292a
+    env_file: !override
+      - ${RAGFLOW_ENV_FILE}
+    ports: !reset []
+
+  mysql:
+    container_name: rag-ragflow-mysql
+    image: mysql:8.0.40@sha256:d58ac93387f644e4e040c636b8f50494e78e5afc27ca0a87348b2f577da2b7ff
+    env_file: !override
+      - ${RAGFLOW_ENV_FILE}
+    ports: !reset []
+
+  minio:
+    container_name: rag-ragflow-minio
+    image: pgsty/silo:RELEASE.2026-08-06T00-00-00Z@sha256:29a498b24669cae1fed11c1a2fb2b3d73c68829a0a9c0b14e71b386671d38fac
+    env_file: !override
+      - ${RAGFLOW_ENV_FILE}
+    ports: !reset []
+
+  kvrocks:
+    container_name: rag-ragflow-kvrocks
+    image: apache/kvrocks:2.16.0@sha256:9e632c317c83c80d92f1c9d22ac6aa9f64d149e1f04ff2af5f15a5768a01c4b7
+    env_file: !override
+      - ${RAGFLOW_ENV_FILE}
+    ports: !reset []
+
+  nats:
+    container_name: rag-ragflow-nats
+    image: nats:2.14.2@sha256:bbfbb6c4cdaeb8a2e3ca57d3de30463a66a6c5181f324f3b680bcf858833d377
+    env_file: !override
+      - ${RAGFLOW_ENV_FILE}
+    ports: !reset []
+
+networks:
+  ragflow:
+    name: rag-ragflow
+  llm-net:
+    external: true
+  rag-local:
+    external: true
+
+volumes:
+  esdata01:
+    driver: local
+    driver_opts: {type: none, o: bind, device: "${RAGFLOW_DONNEES}/esdata01"}
+  mysql_data:
+    driver: local
+    driver_opts: {type: none, o: bind, device: "${RAGFLOW_DONNEES}/mysql"}
+  minio_data:
+    driver: local
+    driver_opts: {type: none, o: bind, device: "${RAGFLOW_DONNEES}/minio"}
+  kvrocks_data:
+    driver: local
+    driver_opts: {type: none, o: bind, device: "${RAGFLOW_DONNEES}/kvrocks"}
+  nats_data:
+    driver: local
+    driver_opts: {type: none, o: bind, device: "${RAGFLOW_DONNEES}/nats"}
