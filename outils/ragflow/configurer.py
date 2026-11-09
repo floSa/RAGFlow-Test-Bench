@@ -20,13 +20,15 @@ IDENT = RACINE / "donnees/IDENTIFIANTS-LOCAUX.txt"
 JOURNAL = RACINE / f"outils/resultats/ragflow/configuration-{datetime.date.today()}.log"
 
 # Modèles de LLM-Service (branche service-vllm) ; contexte déclaré au chat : 16 384 jetons, taille commune de la série.
+# Transcription (asr) : serveur de voix commun rag-speaches (faster-whisper-small), réseau rag-local.
 MODELES = {
-    "chat": {"instance": "llm-service-chat", "base_url": "http://vllm-central:8000/v1",
+    "chat": {"fournisseur": "VLLM", "instance": "llm-service-chat", "base_url": "http://vllm-central:8000/v1",
              "model_name": "gemma4:e4b", "max_tokens": 16384},
-    "embedding": {"instance": "llm-service-embed", "base_url": "http://vllm-embed:8000/v1",
+    "embedding": {"fournisseur": "VLLM", "instance": "llm-service-embed", "base_url": "http://vllm-embed:8000/v1",
                   "model_name": "bge-m3", "max_tokens": 8192},
+    "asr": {"fournisseur": "OpenAI-API-Compatible", "instance": "voix-locale", "base_url": "http://rag-speaches:8000/v1",
+            "model_name": "Systran/faster-whisper-small", "max_tokens": 0},
 }
-FOURNISSEUR = "VLLM"
 
 lignes = []
 
@@ -84,9 +86,11 @@ if not compte.get("api_key"):
         compte["api_key"] = cle
         COMPTE.write_text(json.dumps(compte, indent=2))
 
-r = appel("PUT", "/providers", {"provider_name": FOURNISSEUR}, jeton)
-log(f"fournisseur {FOURNISSEUR} : {masque(r)}")
+for fournisseur in sorted({m["fournisseur"] for m in MODELES.values()}):
+    r = appel("PUT", "/providers", {"provider_name": fournisseur}, jeton)
+    log(f"fournisseur {fournisseur} : {masque(r)}")
 for type_, m in MODELES.items():
+    FOURNISSEUR = m["fournisseur"]
     r = appel("POST", f"/providers/{FOURNISSEUR}/instances", {
         "instance_name": m["instance"], "api_key": "sans-cle", "base_url": m["base_url"],
         "model_info": [{"model_name": m["model_name"], "model_type": [type_], "max_tokens": m["max_tokens"]}]}, jeton)
