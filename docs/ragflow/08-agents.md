@@ -1,0 +1,33 @@
+# 08. Agents et gabarits
+
+> **Objet** : Construire un flux d'agent complet à partir d'un gabarit.
+> **Prérequis** : [notions fondamentales](00-notions-fondamentales.md).
+> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04), LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b` pour les réponses, `bge-m3` pour l'embedding), contexte déclaré de 16 384 jetons.
+> **Statut des informations** : [Vérifié] observé ou mesuré le 9 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
+> **Précautions** : manuel en cours de rédaction ; seul le plan est fixé ([plan des manuels](plan-des-manuels.md)).
+
+## Sommaire
+
+1. [Contenu prévu](#1-contenu-prévu)
+2. [Dépannage](#dépannage)
+3. [Sources](#sources)
+
+## 1. Contenu prévu
+
+### Essentiel
+
+Voir le [plan des manuels](plan-des-manuels.md).
+
+### Pour aller plus loin
+
+Rien pour l'instant.
+
+## Dépannage
+
+| Symptôme | Cause probable | Action |
+|---|---|---|
+| sans objet | manuel en cours de rédaction | voir le [journal](../../JOURNAL.md) |
+
+## Sources
+
+- [Plan des manuels](plan-des-manuels.md)

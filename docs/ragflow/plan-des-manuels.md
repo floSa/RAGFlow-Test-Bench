@@ -5,8 +5,8 @@ Plan établi au cadrage le 9 novembre 2026 à partir du plan type du kit et des 
 ## Sommaire
 
 - [Les manuels en une phrase](#les-manuels-en-une-phrase)
-- [Contenu détaillé](#contenu-detaille)
-- [Écarts au plan](#ecarts-au-plan)
+- [Contenu détaillé](#contenu-détaillé)
+- [Écarts au plan](#écarts-au-plan)
 
 ## Les manuels en une phrase
 
