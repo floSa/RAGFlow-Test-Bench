@@ -1,0 +1,10 @@
+== configurer.py 2026-11-09T17:35:45
+inscription : {"code": 0, "message": "Banc RAGFlow, welcome aboard!", "data": {"avatar": null, "color_schema": "Bright", "create_date": "2026-11-09T17:35:46", "create_time": 1794242146003, "email": "banc.demo@exemple.fr", "id": "ab8abc64b8604b19ac551f07fa348033", "is_active": "1", "is_anonymous": "0", "is_authenticated": "1", "is_superuser": false, "language": "English", "last_login_time": "2026-11-09T17:35:46"
+connexion : code=0 jeton=reçu 
+clé d'API : créée
+fournisseur VLLM : {"code": 0, "message": "success"}
+instance llm-service-chat (chat) : {"code": 0, "message": "success"}
+défaut chat : {"code": 0, "message": "success", "data": {"models": []}}
+instance llm-service-embed (embedding) : {"code": 0, "message": "success"}
+défaut embedding : {"code": 0, "message": "success", "data": {"models": []}}
+modèles par défaut : {"code": 0, "message": "success", "data": {"models": [{"model_provider": "VLLM", "model_instance": "llm-service-chat", "model_name": "gemma4:e4b", "model_id": "3a0f6b13a0ea489aa370298d248b77cc", "model_type": "chat", "enable": true}, {"model_provider": "VLLM", "model_instance": "llm-service-embed", "model_name": "bge-m3", "model_id": "0f69731ecd3b45d0b30c53f37365a951", "model_type": "embedding", "
