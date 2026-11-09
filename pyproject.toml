@@ -1,0 +1,8 @@
+[project]
+name = "ragflow-test-bench"
+version = "0.1.0"
+description = "Banc d'essai et manuels vérifiés de RAGFlow (exemples et adaptateur du banc)"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "ragflow-sdk==1.0.0",
+]
