@@ -1,0 +1,13 @@
+== infiniflow/ragflow:v1.0.0 17:29:49
+docker.io/infiniflow/ragflow:v1.0.0
+== elasticsearch:8.11.3 17:30:00
+docker.io/library/elasticsearch:8.11.3
+== mysql:8.0.40 17:30:17
+docker.io/library/mysql:8.0.40
+== apache/kvrocks:2.16.0 17:30:35
+docker.io/apache/kvrocks:2.16.0
+== nats:2.14.2 17:30:40
+docker.io/library/nats:2.14.2
+== pgsty/silo:RELEASE.2026-08-06T00-00-00Z 17:30:42
+docker.io/pgsty/silo:RELEASE.2026-08-06T00-00-00Z
+FIN 17:30:46
