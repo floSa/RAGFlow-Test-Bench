@@ -24,6 +24,15 @@ APP = ["rag-ragflow-server", "rag-ragflow-es01", "rag-ragflow-mysql", "rag-ragfl
 MODELES = ["vllm-central", "vllm-embed", "rag-speaches"]
 
 
+def contexte_declare():
+    """max_tokens déclaré du modèle de chat dans RAGFlow (réglé par outils/ragflow/contexte.py)."""
+    try:
+        modeles = http("GET", "/providers/VLLM/instances/llm-service-chat/models")["data"]
+        return next(m["max_tokens"] for m in modeles if m["name"] == "gemma4:e4b")
+    except Exception as e:
+        return f"inconnu ({e})"
+
+
 class AdaptateurRAGFlow:
     nom = "ragflow"
 
@@ -80,7 +89,7 @@ class AdaptateurRAGFlow:
     def config(self):
         chat = self._assistant() if self.ds else None
         cfg = {"version": "v1.0.0", "gabarit": self.gabarit, "modele": "gemma4:e4b (vLLM, LLM-Service service-vllm)",
-               "embedding": "bge-m3 (vLLM)", "contexte_declare": 16384, "extra_question": self.extra}
+               "embedding": "bge-m3 (vLLM)", "contexte_declare": contexte_declare(), "extra_question": self.extra}
         if chat:
             cfg.update({k: getattr(chat, k, None) for k in ("top_n", "top_k", "similarity_threshold",
                                                           "vector_similarity_weight", "keywords_similarity_weight",
