@@ -1,0 +1,19 @@
+== 2026-11-09T17:43:33 contexte déclaré 512, top_n 12
+question : Résume le rapport annuel 2025 de Vélanor : chiffre d'affaires, effectifs, sites et fournisseurs.
+  durée 0.3 s ; code 0 ; message 'success'
+  réponse : '**ERROR**: prompt uses 2210 tokens, leaving no completion capacity for model max context length 512'
+  passages cités : 0
+question : Quel est le prix public du Vilaine Compact ?
+  durée 0.2 s ; code 0 ; message 'success'
+  réponse : '**ERROR**: prompt uses 2210 tokens, leaving no completion capacity for model max context length 512'
+  passages cités : 0
+contexte remis à 16384
+journal du serveur (lignes error/warn récentes) :
+  2026-11-09 17:41:18.586+01:00	warn	ingestor_server	pipeline log a46daabb7cbe49e9829bfe53393dafe8 for document 9f478cd2d4554dee9f9f64366789bd99 is gone or already terminal; 3 entry dropped	{"pid": 43}
+  2026-11-09 17:41:19.596+01:00	warn	ingestor_server	pipeline log 2d451b5448e6459aa7e273677e97235d for document 9e6929cc2dd34d6fa62c83c70b562fe4 is gone or already terminal; 3 entry dropped	{"pid": 43}
+  2026-11-09 17:41:20.604+01:00	warn	ingestor_server	pipeline log f57b23267ba043c0bc0e330a4345b477 for document 5f65c51e49394fa1948b6c92bca438db is gone or already terminal; 3 entry dropped	{"pid": 43}
+  2026-11-09 17:41:21.623+01:00	warn	ingestor_server	pipeline log 87e680046f874f27865f37c2e4dca7fd for document f979e589b77c43519bc3a28b82abac0f is gone or already terminal; 3 entry dropped	{"pid": 43}
+  2026-11-09 17:41:48.657+01:00	warn	ingestor_server	pipeline log 383eeb40167e4095818b62b8441d4b14 for document 27a0e56680414f8698e7738aa44802c5 is gone or already terminal; 3 entry dropped	{"pid": 43}
+  2026-11-09 17:41:52.657+01:00	warn	ingestor_server	pipeline log 46a4d760c3f14fc49d9c9d4dc088a181 for document 15e8c66a5e5b491ba9b8b096f7467769 is gone or already terminal; 3 entry dropped	{"pid": 43}
+  2026-11-09 17:43:34.605+01:00	warn	api_server_9380	Not all the retrieval into prompt	{"pid": 37, "kept": 3, "total": 12}
+  2026-11-09 17:43:34.843+01:00	warn	api_server_9380	Not all the retrieval into prompt	{"pid": 37, "kept": 4, "total": 12}
