@@ -4,7 +4,8 @@
 1. compte local fictif (inscription puis connexion) ;
 2. clé d'API du compte ;
 3. fournisseur VLLM : une instance par serveur de LLM-Service (chat sur vllm-central, embedding sur vllm-embed) ;
-4. modèles par défaut du compte (chat, embedding).
+4. modèles par défaut du compte (chat, embedding, transcription) ;
+5. interface en français.
 
 Identifiants : donnees/IDENTIFIANTS-LOCAUX.txt et donnees/ragflow/compte.json (ignorés par git).
 Journal (secrets masqués) : outils/resultats/ragflow/configuration-<date>.log
@@ -98,6 +99,8 @@ for type_, m in MODELES.items():
     r = appel("PATCH", "/models/default", {"model_provider": FOURNISSEUR, "model_instance": m["instance"],
                                             "model_name": m["model_name"], "model_type": type_}, jeton)
     log(f"défaut {type_} : {masque(r)}")
+r = appel("PATCH", "/users/me", {"language": "French"}, jeton)
+log(f"langue de l'interface (French) : {masque(r)}")
 r = appel("GET", "/models/default", None, jeton)
 log(f"modèles par défaut : {masque(r)}")
 
