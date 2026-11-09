@@ -1,0 +1,20 @@
+Premier passage de outils/ragflow/verif_minimale.py (version du commit précédent, sans attente des compteurs), 9 novembre 2026.
+Sortie recopiée de la console : le script s'est arrêté avant d'écrire son journal.
+
+dataset créé : ed7a035c95da44d19ed9364a6b5366e1 gabarit=general embedding=0f69731ecd3b45d0b30c53f37365a951
+document téléversé : cse-2025-10-14.md
+analyse : [('e240c70c59e5488da58f92297b25d900', 'DONE', 0, 0)] en 2.1 s
+document : run=0 chunks=0 jetons=0
+Traceback (most recent call last):
+  File ".../outils/ragflow/verif_minimale.py", line 44, in <module>
+    chat = rag.create_chat(name="Essai-installation", dataset_ids=[ds.id])
+  ...
+Exception: the dataset ed7a035c95da44d19ed9364a6b5366e1 doesn't own parsed file
+
+Relevé juste après par l'API HTTP (GET /api/v1/datasets/<id>/documents) :
+{'name': 'cse-2025-10-14.md', 'run': None, 'progress': 1, 'progress_msg': '', 'chunk_count': 4, 'token_count': 159, 'status': '1'}
+
+Constat : DataSet.parse_documents (ragflow-sdk 1.0.0) a rendu « DONE » avec 0 passage avant la mise à jour des compteurs ;
+quelques secondes plus tard, le document avait bien 4 passages. Création d'un assistant refusée tant que les compteurs
+sont à 0. Contournement : outils/ragflow/client.py, attendre_analyse (progress >= 1 et chunk_count > 0).
+Non reproduit aux deux passages suivants (compteurs déjà à jour au retour de parse_documents).
