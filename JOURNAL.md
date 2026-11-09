@@ -23,3 +23,12 @@ Aucune pour l'instant.
 - Résultat : dépôt propre, un commit par bloc.
 - Fichiers : `.gitignore`, `corpus/`, `outils/communs/`, `outils/resultats/{socle,machine,open-notebook}/`.
 - Prochaine étape : phase A, diagnostic de la machine.
+
+### 2026-11-09 17:40 — Phases A et B : diagnostic et socle
+
+- Fait : `outils/communs/diagnostic.sh` complété (vm.max_map_count, LLM-Service) puis lancé.
+- Résultat (`outils/resultats/machine/diagnostic-2026-11-09.json`) : Ubuntu 24.04.5 dans WSL2, AMD Ryzen 5 9600X (12 fils), 32 096 Mo de RAM, 4 096 Mo de swap, 525 Go libres, RTX 4060 Ti 16 Go (pilote 616.92), GPU accessible dans un conteneur, Docker 29.9.3 (moteur installé dans Ubuntu, `/var/lib/docker`, pas Docker Desktop), Compose 5.7.0, `vm.max_map_count` = 1 048 576 (Elasticsearch satisfait sans `sysctl`), port `127.0.0.1` joignable depuis WSL (HTTP 200), registres et Hugging Face joignables.
+- LLM-Service en marche, branche `service-vllm` : `vllm-central` (Gemma 4 E4B quantifié w4a16, contexte 32 768) et `vllm-embed` (bge-m3, 8 192), vLLM 0.29.0. Serveur de voix `rag-speaches` en marche.
+- Incident : le test GPU du diagnostic tire l'image `ollama/ollama` figée par empreinte (environ 5,6 Go) ; compté dans le budget de téléchargement.
+- Aucun bloquant. Socle repris tel quel (pas de nouvelle mesure du service de modèles : version et modèles inchangés depuis le banc GPU Open Notebook du 9 novembre).
+- Prochaine étape : phase C, cadrage (versions, relecture du compose, plan des manuels).
