@@ -7,3 +7,4 @@ echo "interface : HTTP $(curl -s -o /dev/null -m 5 -w '%{http_code}' http://127.
 for c in vllm-central vllm-embed ollama-central; do
   docker ps --format '{{.Names}}' | grep -qx $c && echo "LLM-Service : $c en marche"
 done
+exit 0
