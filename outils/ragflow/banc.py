@@ -4,7 +4,7 @@ Indexation : dataset « Banc-<gabarit> » (gabarit General par défaut), corpus 
 lancée sur tous les documents, attente de la fin (outils/ragflow/client.py, attendre_analyse).
 Questions : assistant de chat « Banc-<étiquette> » lié au dataset ; une session neuve par question (aucun historique) ;
 question posée par l'API HTTP POST /api/v1/chat/completions (Session.ask du SDK 1.0.0 répond 404 pour un assistant).
-Citations : reference.chunks (document_name ; page = premier élément de positions quand RAGFlow l'expose).
+Citations : reference.chunks (document_name ; une citation par page couverte, tirée de positions).
 
 Usage : uv run python outils/ragflow/banc.py --etiquette defaut [--gabarit general] [--reindexer] [--limite N]
         [--top-n 6] [--seuil 0.1] [--poids-vecteurs 0.3] [--agentic] [--juge]
@@ -69,9 +69,12 @@ class AdaptateurRAGFlow:
         ref = data.get("reference") or {}
         citations = []
         for c in (ref.get("chunks") or []):
-            pos = c.get("positions") or []
-            page = pos[0][0] if pos and isinstance(pos[0], list) and pos[0] else None
-            citations.append({"document": c.get("document_name"), "page": page, "extrait": (c.get("content") or "")[:200]})
+            # positions : [[page, x1, x2, y1, y2], ...] (pages numérotées à partir de 1) ; un passage peut couvrir
+            # plusieurs pages : une citation par page couverte, dans l'ordre d'apparition
+            pages = list(dict.fromkeys(p[0] for p in (c.get("positions") or []) if isinstance(p, list) and p)) or [None]
+            for page in pages:
+                citations.append({"document": c.get("document_name"), "page": page,
+                                  "extrait": (c.get("content") or "")[:200]})
         return {"reponse": data.get("answer") or "", "citations": citations}
 
     def config(self):
