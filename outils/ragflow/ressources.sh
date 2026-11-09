@@ -24,6 +24,6 @@ print(f"total pile RAGFlow : {t:.0f} Mio")'
   echo "== nvidia-smi"; nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader 2>/dev/null || echo "sans GPU"
   echo "== images"
   docker images --format '{{.Repository}}:{{.Tag}} {{.Size}}' | grep -E 'ragflow|elasticsearch:8.11.3|mysql:8.0.40|kvrocks:2.16.0|nats:2.14.2|silo:RELEASE.2026-08-06' || true
-  echo "== disque des données (donnees/ragflow)"; du -sh donnees/ragflow/* 2>/dev/null
+  echo "== disque des données (donnees/ragflow)"; du -sh donnees/ragflow/* 2>/dev/null || echo "(certains sous-dossiers appartiennent aux utilisateurs des conteneurs : tailles partielles)"
 } > "$out"
 cat "$out"
