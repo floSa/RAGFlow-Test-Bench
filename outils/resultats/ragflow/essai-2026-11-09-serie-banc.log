@@ -1,0 +1,307 @@
+== 2026-11-09T18:07:28+01:00 banc --etiquette defaut --reindexer
+RAM disponible : 14439 Mo
+indexation : 53.0 s
+Q01 tableau         OK     1.9s  "Le chiffre d'affaires de Vélanor en 2025 s'est établi à 48,6 M€ [ID:1][ID:3]."
+Q02 fait simple     OK     1.1s  'Vélanor a été fondée en 2014 [ID:0].'
+Q03 fait simple     OK     1.2s  "La présidente de Vélanor est Hélène Marchais, qui dirige l'entreprise depuis 2019 [ID:0]."
+Q04 fait simple     OK     1.2s  'Le siège de Vélanor est situé au 12 quai de la Fosse, à Nantes [ID:0].'
+Q05 tableau         OK     1.4s  'Vélanor comptait un effectif de 412 salariés au 31/12/2025 [ID:3][ID:0].'
+Q06 tableau         OK     1.7s  "Le chiffre d'affaires du troisième trimestre 2025 était de 14,2 M€ [ID:0]. Ce trimestre es"
+Q07 tableau         OK     1.3s  'Le modèle Sèvre Trail a produit 15 400 unités en 2025 [ID:0].'
+Q08 tableau         OK     1.1s  'Le prix public du modèle Erdre Cargo est de 4 290 € [ID:0].'
+Q09 tableau         OK     1.2s  "Le site de Cholet emploie 97 salariés pour l'activité de fabrication des cadres [ID:0]."
+Q10 fait simple     OK     1.2s  "Les cadres sont fabriqués à partir d'aluminium recyclé à 82 % [ID:0]."
+Q11 fait simple     OK     1.4s  'Le taux de recyclage des batteries usagées collectées atteint 96 % grâce au partenariat av'
+Q12 tableau         OK     1.3s  'Le fournisseur qui livre les moteurs est Motodrive Co. et il est installé en Taïwan [ID:1]'
+Q13 tableau         OK     1.3s  "Le résultat net de Vélanor s'est établi à 3,1 M€ en 2025 [ID:2]."
+Q14 fait simple     OK     1.3s  "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus [ID:0]."
+Q15 scan            OK     1.4s  'Le prix unitaire des batteries dans le contrat avec Batterix est de 212 euros HT, et il es'
+Q16 scan            OK     1.3s  "Le Fournisseur livre les batteries sous 21 jours après la commande dans le contrat d'appro"
+Q17 scan            OK     1.3s  'Le plafond des pénalités de retard dans le contrat avec Batterix est fixé à 8 % du montant'
+Q18 scan            OK     1.3s  'Le volume minimal annuel de batteries prévu par le contrat Batterix est de 40 000 unités ['
+Q19 fait simple     OK     2.0s  'Les batteries doivent être stockées entre 10 °C et 25 °C, dans le local B2 qui est équipé '
+Q20 fait simple     OK     1.3s  'Responsable de la procédure de charge et de stockage des batteries est Karim Benali, qui e'
+Q21 tableau         OK     1.1s  'Le local B2 est inspecté le premier lundi de chaque mois [ID:0].'
+Q22 fait simple     OK     1.1s  'Le prix public du Vilaine Compact est de 2 490 € TTC [ID:0].'
+Q23 fait simple     OK     1.4s  "La capacité prévue de l'usine de Saint-Nazaire est de 25 000 vélos par an [ID:0]."
+Q24 tableau         OK     1.7s  "Le stock de la batterie BAT-48V-14Ah est de 1240 unités, ce qui est en dessous du seuil d'"
+Q25 fait simple     OK     0.9s  'Le cadre est garanti 7 ans [ID:0].'
+Q26 fait simple     OK     1.6s  'Le service après-vente peut être joint par téléphone au 02 40 00 12 34, du lundi au vendre'
+Q27 fait simple     OK     1.6s  "Le montant de la prime d'intéressement 2025 est de 1 150 euros par salarié, et elle sera v"
+Q28 anglais         OK     1.2s  'Batterix obtained an overall score of 87 out of 100 during the Supplier Quality Audit [ID:'
+Q29 anglais         OK     1.1s  'Le taux de défaut des cellules mesuré est de 0,3 % [ID:0].'
+Q30 multi-documents NON    1.5s  "Le délai contractuel de livraison de Batterix n'est pas mentionné dans les documents. Cepe"
+Q31 multi-documents OK     1.6s  "Batterix a obtenu un score de 87 sur 100 lors de l'audit [ID:2]. Le prix unitaire fixé par"
+Q32 multi-documents OK     1.9s  "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0][ID:2]. De plus, une seconde usi"
+Q33 audio           OK     1.3s  "La ligne d'assoblage numéro 3 de Nantes sera arrêtée pour maintenance du 2 au 6 mars VVTSI"
+Q34 audio           OK     1.1s  'Le directeur de production chez Vélanor est Julien Moreau [ID:1].'
+Q35 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:5]'
+Q36 piège           OK     0.4s  'The answer you are looking for is not found in the dataset! [ID:2]'
+Q37 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:2]'
+Q38 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:2]'
+-> outils/resultats/ragflow/banc-2026-11-09-defaut.json
+code 0
+== 2026-11-09T18:09:14 contexte déclaré -> 4096
+avant : [{"extra": {"max_tokens": 16384}, "features": [], "id": "a3bdf776dc6f4423b5531e2ec8c3452c", "max_tokens": 16384, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
+PATCH : {"code": 0, "message": "success"}
+après : [{"extra": {"max_tokens": 4096}, "features": [], "id": "a3bdf776dc6f4423b5531e2ec8c3452c", "max_tokens": 4096, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
+== 2026-11-09T18:09:14+01:00 banc --etiquette ctx4096
+RAM disponible : 14186 Mo
+Q01 tableau         OK     2.6s  "Le chiffre d'affaires de Vélanor en 2025 s'est élevé à 48,6 M€ [ID:1][ID:3]. Ce montant re"
+Q02 fait simple     OK     1.0s  'Vélanor a été fondée en 2014 [ID:0].'
+Q03 fait simple     OK     1.2s  "La présidente de Vélanor est Hélène Marchais, et elle dirige l'entreprise depuis 2019 [ID:"
+Q04 fait simple     OK     1.1s  'Le siège de Vélanor est situé au 12 quai de la Fosse, à Nantes [ID:0].'
+Q05 tableau         OK     2.4s  'Vélanor comptait 412 salariés au 31 décembre 2025 [ID:3]. Le total des effectifs par site '
+Q06 tableau         OK     1.7s  "Le chiffre d'affaires du troisième trimestre 2025 a été de 14,2 M€ [ID:0]. Ce trimestre es"
+Q07 tableau         OK     1.3s  'Le modèle Sèvre Trail a vu 15 400 unités produites en 2025 [ID:0].'
+Q08 tableau         OK     1.2s  'Le prix public TTC du modèle Erdre Cargo est de 4 290 € [ID:0].'
+Q09 tableau         OK     1.2s  "97 salariés travaillent sur le site de Cholet pour l'activité de fabrication des cadres [I"
+Q10 fait simple     OK     1.2s  "Les cadres sont fabriqués à partir d'aluminium recyclé à 82 % [ID:0]."
+Q11 fait simple     OK     1.4s  'Le taux de recyclage des batteries usagées collectées atteint 96 % grâce au partenariat av'
+Q12 tableau         OK     1.3s  'Le fournisseur des moteurs est Motodrive Co., et il est installé au Taïwan [ID:1].'
+Q13 tableau         OK     1.2s  'Vélanor a dégagé un résultat net de 3,1 M€ en 2025 [ID:2].'
+Q14 fait simple     OK     1.3s  "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus [ID:0]."
+Q15 scan            OK     1.6s  'Le prix unitaire pour les batteries, modèle BAT-48V-14Ah, est fixé à 212 euros HT, avec un'
+Q16 scan            OK     1.1s  'Le délai de livraison prévu est de 21 jours après la commande [ID:1].'
+Q17 scan            OK     1.3s  'Le plafond des pénalités de retard dans le contrat Batterix est fixé à 8% du montant de la'
+Q18 scan            OK     1.3s  'Le volume minimal annuel de batteries prévu dans le contrat avec Batterix est de 40 000 ba'
+Q19 fait simple     OK     1.5s  'Les batteries doivent être stockées entre 10 °C et 25 °C, dans le local B2 qui est équipé '
+Q20 fait simple     OK     1.8s  'Le responsable de la procédure de charge et de stockage des batteries est Karim Benali, re'
+Q21 tableau         OK     1.1s  'Le local B2 est inspecté le premier lundi de chaque mois [ID:0].'
+Q22 fait simple     OK     1.1s  'Le prix public du Vilaine Compact est de 2 490 € TTC [ID:0].'
+Q23 fait simple     OK     1.3s  "L'usine de Saint-Nazaire prévoit une capacité de 25 000 vélos par an [ID:0]."
+Q24 tableau         OK     1.7s  'Le stock actuel de la batterie BAT-48V-14Ah est de 1240 unités [ID:0]. Ce stock est inféri'
+Q25 fait simple     OK     1.0s  'La garantie du cadre est de 7 ans [ID:0].'
+Q26 fait simple     OK     1.5s  'Le service après-vente peut être joint par téléphone au 02 40 00 12 34, du lundi au vendre'
+Q27 fait simple     OK     1.6s  "Le montant de la prime d'intéressement pour 2025 est de 1 150 euros par salarié, et elle s"
+Q28 anglais         OK     1.4s  'Batterix GmbH obtained an overall score of 87 out of 100 in the Supplier Quality Audit con'
+Q29 anglais         OK     1.1s  'Le taux de défaut de cellules mesuré est de 0,3 % [ID:0].'
+Q30 multi-documents NON    1.5s  'Les données fournies ne précisent pas de "délai de livraison contractuel" pour Batterix Gm'
+Q31 multi-documents OK     1.6s  "Batterix a obtenu un score global de 87 sur 100 lors de l'audit [ID:2]. Le contrat fixe un"
+Q32 multi-documents OK     1.6s  "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0][ID:2] et prévoit 70 embauches à"
+Q33 audio           OK     1.3s  "La ligne d'assemblage numéro 3 de Nantes sera arrêtée pour maintenance du 2 au 6 mars VVTS"
+Q34 audio           OK     1.0s  'Le directeur de production chez Vélanor est Julien Moreau [ID:1].'
+Q35 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:5]'
+Q36 piège           OK     0.4s  'The answer you are looking for is not found in the dataset! [ID:2]'
+Q37 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:2]'
+Q38 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:2]'
+-> outils/resultats/ragflow/banc-2026-11-09-ctx4096.json
+code 0
+== 2026-11-09T18:10:07 contexte déclaré -> 16384
+avant : [{"extra": {"max_tokens": 4096}, "features": [], "id": "a3bdf776dc6f4423b5531e2ec8c3452c", "max_tokens": 4096, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
+PATCH : {"code": 0, "message": "success"}
+après : [{"extra": {"max_tokens": 16384}, "features": [], "id": "a3bdf776dc6f4423b5531e2ec8c3452c", "max_tokens": 16384, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
+== 2026-11-09T18:10:07+01:00 banc --etiquette agentic --agentic
+RAM disponible : 14178 Mo
+Q01 tableau         OK     8.8s  "<think>Le chiffre d'affaires de Vélanor pour l'année 2025 s'établit à 48,6 M€ [ID:0][ID:1]"
+Q02 fait simple     OK     6.5s  '<think>Vélanor a été fondée en 2014 à Nantes [ID:0].The user is asking for the founding ye'
+Q03 fait simple     OK     8.5s  '<think>The user is asking for the president of "Vélanor" in French.\nThe initial search usi'
+Q04 fait simple     OK     4.2s  "<think>L'adresse du siège de Vélanor est située au 12 quai de la Fosse, à Nantes [ID:0].</"
+Q05 tableau         OK     6.0s  '<think>Vélanor comptait un total de 412 salariés au 31 décembre 2025, selon le rapport ann'
+Q06 tableau         NON    1.2s  "<think>Je n'ai pas accès à des informations sur les résultats financiers futurs, tels que "
+Q07 tableau         NON    0.6s  "<think>Je ne dispose pas d'informations dans mon corpus concernant la production d'unités "
+Q08 tableau         OK     1.9s  '<think>Le prix public du modèle Erdre Cargo est de 4 290 € TTC [ID:0].</think>\n\nLe prix pu'
+Q09 tableau         OK     4.5s  "<think>Le site de Cholet emploie 97 salariés pour l'activité de fabrication des cadres au "
+Q10 fait simple     OK     4.3s  "<think>Les cadres sont fabriqués à partir d'aluminium recyclé à 82 % [ID:0].</think>\n\nLes "
+Q11 fait simple     OK     5.0s  '<think>Le taux de recyclage des batteries usagées collectées atteint 96 %, grâce au parten'
+Q12 tableau         OK     4.1s  '<think>Le fournisseur qui livre les moteurs est Motodrive Co., et il est installé à Taïwan'
+Q13 tableau         OK     5.4s  "<think>Le résultat net dégagé par Vélanor en 2025 s'est établi à 3,1 M€, ce qui représente"
+Q14 fait simple     OK     4.1s  "<think>Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus pour l'année 202"
+Q15 scan            OK     5.0s  "<think>Le prix unitaire des batteries, référence BAT-48V-14Ah, prévue dans le contrat d'ap"
+Q16 scan            OK     4.7s  "<think>Le fournisseur, Batterix, livre sous 21 jours après la commande, selon l'Article 5 "
+Q17 scan            OK     4.7s  '<think>Le plafond des pénalités de retard du contrat Batterix est fixé à 8% du montant de '
+Q18 scan            OK     4.5s  "<think>Le contrat d'approvisionnement entre Velanor SAS et Batterix GmbH prévoit un volume"
+Q19 fait simple     OK     5.1s  '<think>Les batteries doivent être stockées entre 10 °C et 25 °C, dans le local B2 équipé d'
+Q20 fait simple     OK     4.5s  '<think>La procédure de charge et de stockage des batteries est sous la responsabilité de K'
+Q21 tableau         OK     4.2s  '<think>Le local B2 est inspecté le premier lundi de chaque mois, et cette inspection est a'
+Q22 fait simple     OK     1.9s  '<think>Le prix public du Vilaine Compact, un vélo pliant électrique lancé en avril 2026, e'
+Q23 fait simple     OK     4.6s  "<think>L'usine de Saint-Nazaire, qui ouvrira en septembre 2026, aura une capacité prévue d"
+Q24 tableau         OK     5.8s  "<think>Le stock de batteries BAT-48V-14Ah est de 1240 unités, et le seuil d'alerte est fix"
+Q25 fait simple     OK     2.9s  '<think>Le cadre est garanti pendant 7 ans [ID:0]. Cependant, la batterie et le moteur sont'
+Q26 fait simple     NON    0.9s  "<think>Je suis désolé, mais je n'ai accès à aucun document ou base de données contenant de"
+Q27 fait simple     NON    1.0s  "<think>Je n'ai pas trouvé d'informations dans ma base de données concernant le montant de "
+Q28 anglais         OK     1.8s  '<think>The overall score Batterix obtained at the supplier audit was 87 out of 100 [ID:0].'
+Q29 anglais         OK     4.2s  "<think>The taux de cellules défectueuses mesuré chez Batterix lors de l'audit était de 0,3"
+Q30 multi-documents OK     5.6s  '<think>Le délai de livraison contractuel de Batterix est de 21 jours après la commande [ID'
+Q31 multi-documents OK     5.9s  "<think>Le score de l'audit de Batterix n'est pas présent dans le contrat d'approvisionneme"
+Q32 multi-documents OK     5.7s  "<think>Vélanor vise un chiffre d'affaires de 55 millions d'euros en 2026 [ID:0]. De plus, "
+Q33 audio           OK     4.9s  "<think>La ligne d'assemblage numéro 3 de Nantes sera arrêtée pour maintenance du 2 au 6 ma"
+Q34 audio           OK     4.0s  '<think>Julien Moreau est le directeur de production chez Vélanor [ID:0].</think>\n\nJulien M'
+Q35 piège           OK     7.2s  "<think>Le corpus consulté concerne le rapport annuel de Vélanor pour l'année 2025 et des p"
+Q36 piège           OK     4.1s  '<think>Le directeur de production de Vélanor est Julien Moreau, selon un message vocal enr'
+Q37 piège           OK     0.6s  "<think>Je n'ai trouvé aucune information sur les ventes de trottinettes électriques Vélano"
+Q38 piège           OK     5.2s  '<think>Les documents consultés mentionnent Karim Benali dans le cadre de ses fonctions, in'
+-> outils/resultats/ragflow/banc-2026-11-09-agentic.json
+code 0
+== 2026-11-09T18:12:52+01:00 banc --etiquette hybride-vecteurs07-top8 --poids-vecteurs 0.7 --top-n 8
+RAM disponible : 15154 Mo
+Q01 tableau         OK     2.0s  "Le chiffre d'affaires de Vélanor pour l'exercice 2025 s'est établi à 48,6 M€ [ID:3][ID:5]."
+Q02 fait simple     OK     1.2s  'Vélanor a été fondée en 2014 [ID:0].'
+Q03 fait simple     OK     1.3s  "La présidente de Vélanor est Hélène Marchais, et elle dirige l'entreprise depuis 2019 [ID:"
+Q04 fait simple     OK     1.1s  'Le siège de Vélanor est situé au 12 quai de la Fosse, à Nantes [ID:0].'
+Q05 tableau         OK     1.4s  'Vélanor comptait 412 salariés au 31 décembre 2025 [ID:4][ID:3].'
+Q06 tableau         OK     1.6s  "Le chiffre d'affaires pour le troisième trimestre (T3) 2025 s'est établi à 14,2 M€, représ"
+Q07 tableau         OK     1.4s  'Le modèle Sèvre Trail a produit 15 400 unités en 2025 [ID:0].'
+Q08 tableau         OK     1.3s  'Le prix public TTC du modèle Erdre Cargo est de 4 290 € [ID:0].'
+Q09 tableau         OK     1.4s  'Il y a 97 salariés travaillant sur le site de Cholet, où se déroule la fabrication des cad'
+Q10 fait simple     OK     1.3s  "Les cadres sont fabriqués à partir d'aluminium recyclé à 82 % [ID:0]."
+Q11 fait simple     OK     1.5s  'Le taux de recyclage des batteries usagées collectées atteint 96 %, grâce au partenariat a'
+Q12 tableau         OK     1.5s  'Le fournisseur qui livre les moteurs est Motodrive Co., et il est installé au Taïwan [ID:0'
+Q13 tableau         OK     1.2s  'Vélanor a dégagé un résultat net de 3,1 M€ en 2025 [ID:3].'
+Q14 fait simple     OK     1.4s  "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus [ID:0]."
+Q15 scan            OK     1.5s  'Le prix unitaire des batteries prévu dans le contrat avec Batterix est de 212 euros HT, av'
+Q16 scan            OK     1.4s  "Le fournisseur livre sous 21 jours après la commande dans le cadre du contrat d'approvisio"
+Q17 scan            OK     1.4s  'Le plafond des pénalités de retard dans le contrat avec Batterix est fixé à 8 % du montant'
+Q18 scan            OK     1.4s  'Le volume minimal annuel de batteries prévu dans le contrat avec Batterix est de 40 000 ba'
+Q19 fait simple     OK     1.6s  "Les batteries doivent être stockées entre 10 °C et 25 °C, dans le local B2 équipé d'une dé"
+Q20 fait simple     OK     1.4s  'Karim Benali, responsable HSE, est le responsable de la procédure de charge et de stockage'
+Q21 tableau         OK     1.1s  'Le local B2 est inspecté le premier lundi de chaque mois [ID:0].'
+Q22 fait simple     OK     1.2s  'Le prix public du Vilaine Compact est de 2 490 € TTC [ID:0].'
+Q23 fait simple     OK     1.4s  "L'usine de Saint-Nazaire a une capacité prévue de 25 000 vélos par an [ID:0]."
+Q24 tableau         OK     1.7s  "Il reste 1240 unités de la référence BAT-48V-14Ah, ce qui est en dessous du seuil d'alerte"
+Q25 fait simple     OK     1.1s  'Le cadre est garanti 7 ans [ID:0].'
+Q26 fait simple     OK     1.7s  'Le service après-vente peut être joint par téléphone au 02 40 00 12 34, du lundi au vendre'
+Q27 fait simple     OK     1.6s  "La prime d'intéressement 2025 est de 1 150 euros par salarié, et elle sera versée en avril"
+Q28 anglais         OK     1.2s  'The overall score Batterix obtained at the supplier audit was 87 out of 100 [ID:0].'
+Q29 anglais         OK     1.3s  'Le taux de défaut des cellules mesuré est de 0,3 % [ID:0].'
+Q30 multi-documents OK     1.7s  'Le délai de livraison contractuel de Batterix GmbH est de 21 jours après la commande [ID:2'
+Q31 multi-documents OK     1.8s  "Batterix a obtenu un score de 87 sur 100 lors de l'audit du fournisseur [ID:1]. Le prix un"
+Q32 multi-documents OK     2.0s  "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0][ID:4][ID:4]. De plus, une secon"
+Q33 audio           OK     1.4s  "La ligne d'assoblage numéro 3 de Nantes sera arrêtée pour maintenance [ID:0] du 2 au 6 mar"
+Q34 audio           OK     1.2s  'Julien Moreau est le directeur de production chez Vélanor [ID:1].'
+Q35 piège           OK     1.1s  'The answer you are looking for is not found in the dataset! [ID:5]'
+Q36 piège           OK     1.1s  'The answer you are looking for is not found in the dataset! [ID:4]'
+Q37 piège           OK     1.1s  'The answer you are looking for is not found in the dataset! [ID:4]'
+Q38 piège           OK     1.1s  'The answer you are looking for is not found in the dataset! [ID:4]'
+-> outils/resultats/ragflow/banc-2026-11-09-hybride-vecteurs07-top8.json
+code 0
+== 2026-11-09T18:13:45+01:00 banc --etiquette gabarit-paper --gabarit paper --reindexer
+RAM disponible : 15166 Mo
+indexation : 55.9 s
+Q01 tableau         OK     2.3s  "Le chiffre d'affaires de Vélanor pour 2025 s'est établi à 48,6 M€ [ID:2]. Les données trim"
+Q02 fait simple     OK     1.0s  'Vélanor a été fondée en 2014 [ID:0].'
+Q03 fait simple     OK     1.0s  'La présidente de Vélanor est Hélène Marchais [ID:0].'
+Q04 fait simple     OK     1.1s  'Le siège de Vélanor est situé au 12 quai de la Fosse, à Nantes [ID:0].'
+Q05 tableau         OK     2.5s  "L'effectif total de Vélanor au 31/12/2025 était de 412 salariés [ID:1]. Ce nombre est égal"
+Q06 tableau         OK     1.6s  "Le chiffre d'affaires du troisième trimestre (T3) 2025 a été de 14,2 M€, ce trimestre étan"
+Q07 tableau         OK     1.2s  'Le modèle Sèvre Trail a produit 15 400 unités en 2025 [ID:0].'
+Q08 tableau         OK     1.1s  'Le prix public TTC du modèle Erdre Cargo est de 4 290 € [ID:0].'
+Q09 tableau         OK     1.1s  "97 salariés travaillent sur le site de Cholet pour l'activité de fabrication des cadres [I"
+Q10 fait simple     OK     1.2s  "Les cadres sont fabriqués à partir d'aluminium recyclé à 82 % [ID:0]."
+Q11 fait simple     OK     1.4s  'Le taux de recyclage des batteries usagées collectées atteint 96 % grâce au partenariat av'
+Q12 tableau         OK     1.2s  'Le fournisseur des moteurs est Motodrive Co., et il est installé au Taïwan [ID:1].'
+Q13 tableau         OK     1.2s  'Vélanor a dégagé un résultat net de 3,1 M€ en 2025 [ID:3].'
+Q14 fait simple     OK     1.3s  "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus [ID:0]."
+Q15 scan            OK     1.5s  "Le prix unitaire des batteries dans le contrat d'approvisionnement avec Batterix est de 21"
+Q16 scan            OK     1.1s  'Le Fournisseur livre sous 21 jours après la commande [ID:1].'
+Q17 scan            OK     1.3s  'Le plafond des pénalités de retard pour le contrat Batterix est fixé à 8 % du montant de l'
+Q18 scan            OK     1.3s  'Le volume minimal annuel de batteries prévu dans le contrat Batterix est de 40 000 batteri'
+Q19 fait simple     OK     1.4s  "Les batteries doivent être stockées entre 10 °C et 25 °C, dans le local B2 équipé d'une dé"
+Q20 fait simple     OK     1.2s  'Le responsable de la procédure de charge et de stockage des batteries est Karim Benali, re'
+Q21 tableau         OK     1.1s  'Le local B2 est inspecté le premier lundi de chaque mois [ID:0].'
+Q22 fait simple     OK     1.1s  'Le prix public du Vilaine Compact est de 2 490 € TTC [ID:0].'
+Q23 fait simple     OK     1.3s  "La capacité prévue de l'usine de Saint-Nazaire est de 25 000 vélos par an [ID:0]."
+Q24 tableau         OK     1.7s  'Le stock actuel pour la batterie BAT-48V-14Ah est de 1240 unités [ID:0]. Ce stock est infé'
+Q25 fait simple     OK     1.0s  'La durée de garantie pour le cadre est de 7 ans [ID:0].'
+Q26 fait simple     OK     1.7s  'Le numéro de téléphone pour joindre le service après-vente est le 02 40 00 12 34 [ID:0]. C'
+Q27 fait simple     OK     1.6s  "Le montant de la prime d'intéressement pour 2025 est de 1 150 euros par salarié, et elle s"
+Q28 anglais         OK     1.2s  'Batterix GmbH obtained an overall score of 87 out of 100 during the Supplier Quality Audit'
+Q29 anglais         OK     1.1s  'Le taux de défaut des cellules mesuré chez Batterix est de 0,3 % [ID:1].'
+Q30 multi-documents NON    3.0s  'The dataset provides information regarding the average delivery time for components from B'
+Q31 multi-documents OK     1.7s  "Batterix a obtenu un score de 87 sur 100 lors de l'audit fournisseur [ID:2]. Le prix unita"
+Q32 multi-documents OK     1.6s  "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0][ID:2]. Pour l'usine de Saint-Na"
+Q33 audio           OK     1.2s  "La ligne d'assoblage numéro 3 de Nantes sera arrêtée pour maintenance du 2 au 6 mars [ID:0"
+Q34 audio           OK     1.0s  'Le directeur de production chez Vélanor est Julien Moreau [ID:0].'
+Q35 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:5]'
+Q36 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:3]'
+Q37 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:3]'
+Q38 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:3]'
+-> outils/resultats/ragflow/banc-2026-11-09-gabarit-paper.json
+code 0
+== 2026-11-09T18:15:33+01:00 banc --etiquette gabarit-presentation --gabarit presentation --reindexer
+RAM disponible : 14293 Mo
+indexation : 53.0 s
+Q01 tableau         OK     1.4s  "Le chiffre d'affaires de Vélanor pour 2025 s'élève à 48,6 M€ [ID:3][ID:5]."
+Q02 fait simple     OK     1.0s  'Vélanor a été fondée en 2014 à Nantes [ID:0].'
+Q03 fait simple     OK     1.2s  "La présidente de Vélanor est Hélène Marchais [ID:0]. Elle dirige l'entreprise depuis 2019 "
+Q04 fait simple     OK     1.1s  'Le siège de Vélanor est situé au 12 quai de la Fosse, à Nantes [ID:0].'
+Q05 tableau         OK     2.9s  'Vélanor comptait 412 salariés au 31/12/2025 [ID:1].\n\nVoici la répartition des effectifs pa'
+Q06 tableau         OK     1.6s  "Le chiffre d'affaires du troisième trimestre 2025 était de 14,2 M€ [ID:0]. Ce trimestre es"
+Q07 tableau         OK     1.3s  "Le nombre d'unités produites du modèle Sèvre Trail en 2025 était de 15 400 [ID:0]."
+Q08 tableau         OK     1.5s  'Le prix public TTC du modèle Erdre Cargo est de 4 290 € [ID:0]. De plus, il est mentionné '
+Q09 tableau         OK     1.1s  'Le nombre de salariés travaillant sur le site de Cholet est de 97 [ID:0].'
+Q10 fait simple     OK     1.2s  "Les cadres sont fabriqués à partir d'aluminium recyclé à 82 % [ID:0]."
+Q11 fait simple     OK     1.3s  'Le taux de recyclage des batteries usagées collectées atteint 96 % grâce au partenariat av'
+Q12 tableau         OK     1.2s  'Le fournisseur qui livre les moteurs est Motodrive Co. et il est installé en Taïwan [ID:1]'
+Q13 tableau         OK     1.2s  "Le résultat net de Vélanor s'est établi à 3,1 M€ en 2025 [ID:5]."
+Q14 fait simple     OK     1.2s  "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus [ID:0]."
+Q15 scan            OK     1.2s  'Le prix unitaire prévu dans le contrat avec Batterix est de 212 euros HT, avec une possibi'
+Q16 scan            OK     1.1s  "Le fournisseur livre sous 21 jours après la commande, conformément à l'Article 5 du contra"
+Q17 scan            OK     1.1s  'Le plafond des pénalités de retard dans le contrat Batterix est fixé à 8% du montant de la'
+Q18 scan            OK     1.1s  'Le contrat avec Batterix prévoit un volume minimal annuel de 40 000 batteries [ID:1].'
+Q19 fait simple     OK     1.8s  "Les batteries doivent être stockées entre 10 °C et 25 °C dans le local B2 équipé d'une dét"
+Q20 fait simple     OK     1.1s  'Le responsable de la procédure de charge et de stockage des batteries est Karim Benali, re'
+Q21 tableau         OK     1.0s  'Le local B2 est inspecté le premier lundi de chaque mois [ID:0].'
+Q22 fait simple     OK     1.1s  'Le prix public du Vilaine Compact est de 2 490 € TTC [ID:0].'
+Q23 fait simple     OK     1.3s  "La capacité prévue de l'usine de Saint-Nazaire est de 25 000 vélos par an [ID:0]."
+Q24 tableau         OK     4.5s  'Le stock restant pour la référence BAT-48V-14Ah est de 1240 unités [ID:0], et ce niveau es'
+Q25 fait simple     OK     0.9s  'La garantie du cadre est de 7 ans [ID:0].'
+Q26 fait simple     OK     1.6s  'Le service après-vente peut être joint par téléphone au 02 40 00 12 34, du lundi au vendre'
+Q27 fait simple     OK     1.4s  "La prime d'intéressement 2025 est de 1 150 euros par salarié et sera versée en avril 2026 "
+Q28 anglais         OK     1.0s  'The overall score obtained by the supplier during the audit was 87 out of 100 [ID:0].'
+Q29 anglais         NON    1.0s  'The answer you are looking for is not found in the dataset! [ID:1]'
+Q30 multi-documents NON    1.9s  "Le contrat d'approvisionnement en batteries avec Batterix a été renouvelé en mars 2025 [ID"
+Q31 multi-documents OK     1.9s  "Le score global obtenu par Batterix lors de l'audit est de 87 sur 100, ce qui a permis l'a"
+Q32 multi-documents OK     1.9s  "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0][ID:1]. De plus, une seconde usi"
+Q33 audio           OK     1.2s  "La ligne d'assemblage numéro 3 de Nantes sera arrêtée pour maintenance du 2 au 6 mars VVTS"
+Q34 audio           OK     1.0s  'Le directeur de production chez Vélanor est Julien Moreau [ID:0].'
+Q35 piège           OK     0.9s  'The answer you are looking for is not found in the dataset! [ID:4]'
+Q36 piège           OK     0.9s  'The answer you are looking for is not found in the dataset! [ID:5]'
+Q37 piège           OK     0.9s  'The answer you are looking for is not found in the dataset! [ID:4]'
+Q38 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:3]'
+-> outils/resultats/ragflow/banc-2026-11-09-gabarit-presentation.json
+code 0
+== 2026-11-09T18:17:18+01:00 banc --etiquette gabarit-table --gabarit table --reindexer
+RAM disponible : 14276 Mo
+indexation : 53.0 s
+Q01 tableau         OK     2.3s  "Le chiffre d'affaires de Vélanor en 2025 s'établit à 48,6 M€ [ID:1]. Ce total représente l"
+Q02 fait simple     OK     1.1s  'Vélanor a été fondée en 2014 à Nantes [ID:0].'
+Q03 fait simple     OK     1.2s  "La présidente de Vélanor est Hélène Marchais, qui dirige l'entreprise depuis 2019 [ID:0]."
+Q04 fait simple     OK     1.1s  'Le siège de Vélanor est situé au 12 quai de la Fosse, à Nantes [ID:0].'
+Q05 tableau         OK     4.0s  'Vélanor comptait 412 salariés au 31/12/2025 [ID:0][ID:3].\n\nVoici une répartition plus déta'
+Q06 tableau         OK     1.8s  "Le chiffre d'affaires du troisième trimestre (T3) 2025 a été de 14,2 M€ [ID:0]. Ce trimest"
+Q07 tableau         OK     1.3s  'Le modèle Sèvre Trail a produit 15 400 unités en 2025 [ID:0].'
+Q08 tableau         OK     1.1s  'Le prix public TTC du modèle Erdre Cargo est de 4 290 € [ID:0].'
+Q09 tableau         OK     1.3s  'Il y a 97 salariés qui travaillent sur le site de Cholet, où se situe la fabrication des c'
+Q10 fait simple     OK     1.2s  "Les cadres sont fabriqués à partir d'aluminium recyclé à 82 % [ID:0]."
+Q11 fait simple     OK     1.4s  'Le taux de recyclage des batteries usagées collectées atteint 96 % grâce au partenariat av'
+Q12 tableau         OK     1.4s  'Le fournisseur qui livre les moteurs est Motodrive Co. [ID:2][ID:1], et il est installé en'
+Q13 tableau         OK     1.2s  'Vélanor a dégagé un résultat net de 3,1 M€ en 2025 [ID:2].'
+Q14 fait simple     OK     1.3s  "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus [ID:0]."
+Q15 scan            OK     1.7s  'Le prix unitaire pour la fourniture de batteries 48V 14 Ah, référence BAT-48V-14Ah, est fi'
+Q16 scan            OK     1.2s  "Le Fournisseur livre sous 21 jours après la commande dans le cadre du contrat d'approvisio"
+Q17 scan            OK     1.2s  'Le plafond des pénalités de retard est fixé à 8% du montant de la commande [ID:0].'
+Q18 scan            OK     1.3s  'Le volume minimal annuel de batteries prévu par le contrat avec Batterix est de 40 000 uni'
+Q19 fait simple     OK     1.4s  'Les batteries doivent être stockées entre 10 °C et 25 °C, dans le local B2 qui est équipé '
+Q20 fait simple     OK     1.4s  'Karim Benali, responsable HSE, est le responsable de la procédure PR-SEC-04 concernant la '
+Q21 tableau         OK     1.1s  'Le local B2 est inspecté le premier lundi de chaque mois [ID:0].'
+Q22 fait simple     OK     1.1s  'Le prix public du Vilaine Compact est de 2 490 € TTC [ID:0].'
+Q23 fait simple     OK     1.3s  "La capacité prévue pour l'usine de Saint-Nazaire est de 25 000 vélos par an [ID:0]."
+Q24 tableau         OK     2.2s  "Le stock restant pour la référence BAT-48V-14Ah est de 1240 unités [ID:0], et le seuil d'a"
+Q25 fait simple     OK     0.9s  'Le cadre est garanti 7 ans [ID:0].'
+Q26 fait simple     OK     1.7s  'Le service après-vente peut être joint par téléphone au 02 40 00 12 34, du lundi au vendre'
+Q27 fait simple     OK     1.6s  "La prime d'intéressement pour 2025 est de 1 150 euros par salarié, et elle sera versée en "
+Q28 anglais         OK     1.2s  'Batterix GmbH obtained an overall score of 87 out of 100 during the Supplier Quality Audit'
+Q29 anglais         OK     1.1s  'Le taux de défaut des cellules mesuré est de 0,3 % [ID:0].'
+Q30 multi-documents NON    1.4s  "Le délai de livraison contractuel n'est pas spécifié dans les documents, mais le délai moy"
+Q31 multi-documents OK     1.7s  "Batterix a obtenu un score global de 87 sur 100 lors de l'audit de fournisseur [ID:2]. Le "
+Q32 multi-documents OK     1.9s  "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0][ID:2]. De plus, une seconde usi"
+Q33 audio           OK     1.3s  "La ligne d'assoblage numéro 3 de Nantes sera arrêtée pour maintenance du 2 au 6 mars VVTSI"
+Q34 audio           OK     1.0s  'Le directeur de production chez Vélanor est Julien Moreau [ID:1].'
+Q35 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:5]'
+Q36 piège           OK     0.4s  'The answer you are looking for is not found in the dataset! [ID:2]'
+Q37 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:2]'
+Q38 piège           OK     1.0s  'The answer you are looking for is not found in the dataset! [ID:2]'
+-> outils/resultats/ragflow/banc-2026-11-09-gabarit-table.json
+code 0
+== 2026-11-09T18:19:04+01:00 fin de série

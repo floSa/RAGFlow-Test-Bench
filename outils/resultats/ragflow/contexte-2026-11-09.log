@@ -18,3 +18,11 @@ après : [{"extra": {"max_tokens": 4096}, "features": [], "id": "3a0f6b13a0ea489
 avant : [{"extra": {"max_tokens": 4096}, "features": [], "id": "3a0f6b13a0ea489aa370298d248b77cc", "max_tokens": 4096, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
 PATCH : {"code": 0, "message": "success"}
 après : [{"extra": {"max_tokens": 16384}, "features": [], "id": "3a0f6b13a0ea489aa370298d248b77cc", "max_tokens": 16384, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
+== 2026-11-09T18:09:14 contexte déclaré -> 4096
+avant : [{"extra": {"max_tokens": 16384}, "features": [], "id": "a3bdf776dc6f4423b5531e2ec8c3452c", "max_tokens": 16384, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
+PATCH : {"code": 0, "message": "success"}
+après : [{"extra": {"max_tokens": 4096}, "features": [], "id": "a3bdf776dc6f4423b5531e2ec8c3452c", "max_tokens": 4096, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
+== 2026-11-09T18:10:07 contexte déclaré -> 16384
+avant : [{"extra": {"max_tokens": 4096}, "features": [], "id": "a3bdf776dc6f4423b5531e2ec8c3452c", "max_tokens": 4096, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
+PATCH : {"code": 0, "message": "success"}
+après : [{"extra": {"max_tokens": 16384}, "features": [], "id": "a3bdf776dc6f4423b5531e2ec8c3452c", "max_tokens": 16384, "model_type": ["chat"], "name": "gemma4:e4b", "status": "active", "verify": "unknown"}]
