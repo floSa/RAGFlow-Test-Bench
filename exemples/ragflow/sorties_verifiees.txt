@@ -1,0 +1,30 @@
+# Sorties vérifiées des exemples RAGFlow — 2026-11-09T18:34:09+01:00 — RAGFlow v1.0.0, ragflow-sdk 1.0.0
+
+## 01_sante.sh
+{"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
+interface web : HTTP 200
+(code de sortie 0)
+
+## 02_modeles_par_defaut.sh
+chat -> gemma4:e4b @ llm-service-chat ( VLLM )
+embedding -> bge-m3 @ llm-service-embed ( VLLM )
+asr -> Systran/faster-whisper-small @ voix-locale ( OpenAI-API-Compatible )
+(code de sortie 0)
+
+## 03_importer_et_analyser.py
+dataset Exemple-03 : faq-sav.html, 1 passage(s), 153 jetons
+  passage : FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7
+(code de sortie 0)
+
+## 04_question_assistant.py
+réponse : Le cadre est garanti pendant 7 ans [ID:0].
+source : faq-sav.html | FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le
+(code de sortie 0)
+
+## 05_recherche_seule.py
+similarité 0.407 | faq-sav.html | 'FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est'
+(code de sortie 0)
+
+## 06_nettoyer_exemples.py
+supprimés : 1 assistant(s), 1 dataset(s)
+(code de sortie 0)
