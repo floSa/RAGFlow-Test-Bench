@@ -1,0 +1,11 @@
+== 2026-11-09T18:22:13 essai DeepDoc et correction des passages
+analyse du scan (2 pages, 747 Ko) : 9.3 s, soit 4.7 s par page ; {'contrat-batterix-scan.pdf': {'fini': True, 'echec': False, 'progress': 1, 'chunks': 1, 'jetons': 258, 'message': ''}}
+passages : 1 ; extrait OCR : "CONTRATD'APPROVISIONNEMENTN°BX-2025-117\nEntre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur)\nArticlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah\nArticle2-Durée Troisans a compterdu l"
+recherche avant correction « volume minimal annuel de 40 000 batteries » : [(0.346, "CONTRATD'APPROVISIONNEMENTN°BX-2025-117 Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes")]
+PATCH du passage (texte corrigé) : {'code': 0, 'message': 'chunk updated successfully'}
+texte relu après correction : "CONTRATD'APPROVISIONNEMENTN°BX-2025-117\nEntre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur)\nArticlel-Objet Fourniture de batteries 48 V 14 Ah,reference BAT-48V-14Ah\nArticle2-Durée Troisans a compterd"
+recherche après correction : [(0.607, "CONTRATD'APPROVISIONNEMENTN°BX-2025-117 Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes")]
+désactivation : {'code': 0, 'message': 'success'} ; recherche : []
+réactivation : {'code': 0, 'message': 'success'}
+ajout d'un passage manuel : code 0 ; passages ensuite : 2
+base d'essai supprimée
