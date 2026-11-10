@@ -1,0 +1,7 @@
+== 2026-11-09T18:58:46 comportements du SDK ragflow-sdk 1.0.0
+1. type renvoyé par Session.ask(stream=False) : generator
+   accès direct à .content : AttributeError: 'generator' object has no attribute 'content'
+   next(iter(...)) pour un assistant : Exception: Not Found: /api/v1/chats/cf901e708d054b8bbe65d43bc8cdcb2d/completions
+2. dict(chat.prompt_config) : TypeError: 'Base' object is not iterable ; chat.prompt_config.to_json() -> clés ['empty_response', 'parameters', 'prologue', 'quote']…
+3. créé avec vector_similarity_weight=0.7 ; objet SDK : vector_similarity_weight=0.3, keywords_similarity_weight=0.30000000000000004 ; serveur (GET /api/v1/chats) : {"vector_similarity_weight": null, "keywords_similarity_weight": 0.30000000000000004}
+assistant temporaire supprimé
