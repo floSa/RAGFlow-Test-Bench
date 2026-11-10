@@ -61,3 +61,24 @@ rag-ragflow-kvrocks Up 36 seconds (healthy) 6666/tcp
 rag-ragflow-nats Up 37 seconds (healthy) 4222/tcp, 6222/tcp, 8222/tcp
 rag-ragflow-es01 Up 37 seconds (healthy) 9200/tcp, 9300/tcp
 rag-ragflow-mysql Up 36 seconds (healthy) 3306/tcp, 33060/tcp
+== installer.sh 2026-11-09T17:55:23+01:00
+RAM disponible avant installation : 14436 Mo
+sources : v1.0.0 (db1cd5929a7885a3074547791f5ecc4d2f891739)
+réglages existants gardés : /home/florian/mes_projets/Tutoriels/RAGFlow-Test-Bench/donnees/ragflow/ragflow.env
+ Container rag-ragflow-kvrocks Running 
+ Container rag-ragflow-minio Running 
+ Container rag-ragflow-server Running 
+ Container rag-ragflow-nats Running 
+ Container rag-ragflow-mysql Running 
+ Container rag-ragflow-es01 Running 
+ Container rag-ragflow-mysql Waiting 
+ Container rag-ragflow-mysql Healthy 
+healthz (9380) : HTTP 200 après 2 s
+{"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
+interface : HTTP 200
+rag-ragflow-server Up 23 minutes 127.0.0.1:9380-9381->9380-9381/tcp, 127.0.0.1:8088->80/tcp
+rag-ragflow-minio Up 23 minutes (healthy) 9000/tcp
+rag-ragflow-kvrocks Up 23 minutes (healthy) 6666/tcp
+rag-ragflow-nats Up 23 minutes (healthy) 4222/tcp, 6222/tcp, 8222/tcp
+rag-ragflow-es01 Up 23 minutes (healthy) 9200/tcp, 9300/tcp
+rag-ragflow-mysql Up 23 minutes (healthy) 3306/tcp, 33060/tcp

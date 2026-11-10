@@ -20,3 +20,17 @@ défaut embedding : {"code": 0, "message": "success", "data": {"models": []}}
 instance voix-locale (asr) : {"code": 0, "message": "success"}
 défaut asr : {"code": 0, "message": "success", "data": {"models": []}}
 modèles par défaut : {"code": 0, "message": "success", "data": {"models": [{"model_provider": "VLLM", "model_instance": "llm-service-chat", "model_name": "gemma4:e4b", "model_id": "3a0f6b13a0ea489aa370298d248b77cc", "model_type": "chat", "enable": true}, {"model_provider": "VLLM", "model_instance": "llm-service-embed", "model_name": "bge-m3", "model_id": "0f69731ecd3b45d0b30c53f37365a951", "model_type": "embedding", "
+== configurer.py 2026-11-09T17:55:25
+inscription : {"code": 103, "message": "email: banc.demo@exemple.fr has already registered"}
+connexion : code=0 jeton=reçu 
+clé d'API : créée
+fournisseur OpenAI-API-Compatible : {"code": 0, "message": "success"}
+fournisseur VLLM : {"code": 0, "message": "success"}
+instance llm-service-chat (chat) : {"code": 500, "message": "fail to create model instance: instance llm-service-chat already exists"}
+défaut chat : {"code": 0, "message": "success", "data": {"models": []}}
+instance llm-service-embed (embedding) : {"code": 500, "message": "fail to create model instance: instance llm-service-embed already exists"}
+défaut embedding : {"code": 0, "message": "success", "data": {"models": []}}
+instance voix-locale (asr) : {"code": 500, "message": "fail to create model instance: instance voix-locale already exists"}
+défaut asr : {"code": 0, "message": "success", "data": {"models": []}}
+langue de l'interface (French) : {"code": 0, "message": "success"}
+modèles par défaut : {"code": 0, "message": "success", "data": {"models": [{"model_provider": "VLLM", "model_instance": "llm-service-chat", "model_name": "gemma4:e4b", "model_id": "3a0f6b13a0ea489aa370298d248b77cc", "model_type": "chat", "enable": true}, {"model_provider": "VLLM", "model_instance": "llm-service-embed", "model_name": "bge-m3", "model_id": "0f69731ecd3b45d0b30c53f37365a951", "model_type": "embedding", "

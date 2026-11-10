@@ -1,15 +1,15 @@
-dataset créé : 218ec8c880a149dcb4cdc7f66487f393 gabarit=general embedding=0f69731ecd3b45d0b30c53f37365a951
+dataset créé : 313e35c9d8a848d29f982e310214f3d2 gabarit=general embedding=0f69731ecd3b45d0b30c53f37365a951
 document téléversé : cse-2025-10-14.md
-SDK parse_documents : [('c69161a8ce774eac889b4f591ff361bf', 'DONE', 4, 159)] en 1.1 s
+SDK parse_documents : [('ad7df7f19c39463786371440b85384ac', 'DONE', 4, 159)] en 1.1 s
 document juste après : run=0 progress=1 chunks=4 jetons=159
 attente des compteurs (client.attendre_analyse) : {'cse-2025-10-14.md': {'fini': True, 'echec': False, 'progress': 1, 'chunks': 4, 'jetons': 159, 'message': ''}} après 0.0 s de plus
-assistant créé : 693529ce4785475396482f077a08ab35 llm=gemma4:e4b@llm-service-chat@VLLM
+assistant créé : e2f2f83a396a4499b0b7adefe7f4d4ef llm=gemma4:e4b@llm-service-chat@VLLM
 question : Quelle est la date de la réunion du CSE et quels sujets ont été abordés ?
-SDK Session.ask : ÉCHEC Exception: Not Found: /api/v1/chats/693529ce4785475396482f077a08ab35/completions
-HTTP POST /api/v1/chat/completions : statut 200 en 3.2 s
-réponse : La date de la réunion du CSE n'est pas mentionnée explicitement, mais le compte rendu date du 14 octobre 2025 [ID:0]. Parmi les sujets abordés, la question des horaires d'été de l'atelier de Cholet a été reportée à la réunion de décembre [ID:1]. Les décisions prises incluent une prime d'intéressement de 1 150 euros par salarié, à verser en avril 2026 [ID:3], la possibilité de télétravail jusqu'à 2 jours par semaine pour les postes compatibles [ID:3], et l'ouverture du nouveau restaurant d'entreprise du site de Nantes en janvier 2026 [ID:3]. Les participants à cette réunion étaient Hélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), et sept élus [ID:2].
+SDK Session.ask : ÉCHEC Exception: Not Found: /api/v1/chats/e2f2f83a396a4499b0b7adefe7f4d4ef/completions
+HTTP POST /api/v1/chat/completions : statut 200 en 3.1 s
+réponse : La date de la réunion du CSE est le 14 octobre 2025 [ID:0]. Les sujets abordés incluent, mais ne se limitent pas à, le report de la question des horaires d'été de l'atelier de Cholet à la réunion de décembre [ID:1], la décision accordant une prime d'intéressement de 1 150 euros par salarié versée en avril 2026 [ID:3], l'instauration du télétravail jusqu'à 2 jours par semaine pour les postes compatibles [ID:3], et l'information que le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026 [ID:3].
 citations : 4 passage(s)
   - cse-2025-10-14.md | positions=[] | '# Compte rendu de la réunion du CSE du 14 octobre 2025\nDocument fictif.'
   - cse-2025-10-14.md | positions=[] | "## Points reportés\nLa question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre."
   - cse-2025-10-14.md | positions=[] | '## Participants\nHélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), sept élus.'
-nettoyage : assistant et dataset d'essai supprimés ; durée totale 4.6 s
+nettoyage : assistant et dataset d'essai supprimés ; durée totale 4.5 s

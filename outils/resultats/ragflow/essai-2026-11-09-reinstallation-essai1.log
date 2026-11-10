@@ -1,0 +1,79 @@
+== 2026-11-09T17:55:23+01:00 désinstallation
+outils/ragflow/essai_reinstallation.sh: line 9: outils/communs/nettoyer.sh: Permission denied
+-> code 126 en 0 s
+après désinstallation :
+  conteneur restant : rag-ragflow-server
+  conteneur restant : rag-ragflow-minio
+  conteneur restant : rag-ragflow-kvrocks
+  conteneur restant : rag-ragflow-nats
+  conteneur restant : rag-ragflow-es01
+  conteneur restant : rag-ragflow-mysql
+  volume restant : rag-ragflow_esdata01
+  volume restant : rag-ragflow_kvrocks_data
+  volume restant : rag-ragflow_minio_data
+  volume restant : rag-ragflow_mysql_data
+  volume restant : rag-ragflow_nats_data
+  compte.json
+  esdata01
+  kvrocks
+  logs
+  minio
+  mysql
+  nats
+  ragflow.env
+== 2026-11-09T17:55:23+01:00 installation
+== installer.sh 2026-11-09T17:55:23+01:00
+RAM disponible avant installation : 14436 Mo
+sources : v1.0.0 (db1cd5929a7885a3074547791f5ecc4d2f891739)
+réglages existants gardés : /home/florian/mes_projets/Tutoriels/RAGFlow-Test-Bench/donnees/ragflow/ragflow.env
+ Container rag-ragflow-kvrocks Running 
+ Container rag-ragflow-minio Running 
+ Container rag-ragflow-server Running 
+ Container rag-ragflow-nats Running 
+ Container rag-ragflow-mysql Running 
+ Container rag-ragflow-es01 Running 
+ Container rag-ragflow-mysql Waiting 
+ Container rag-ragflow-mysql Healthy 
+healthz (9380) : HTTP 200 après 2 s
+{"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
+interface : HTTP 200
+rag-ragflow-server Up 23 minutes 127.0.0.1:9380-9381->9380-9381/tcp, 127.0.0.1:8088->80/tcp
+rag-ragflow-minio Up 23 minutes (healthy) 9000/tcp
+rag-ragflow-kvrocks Up 23 minutes (healthy) 6666/tcp
+rag-ragflow-nats Up 23 minutes (healthy) 4222/tcp, 6222/tcp, 8222/tcp
+rag-ragflow-es01 Up 23 minutes (healthy) 9200/tcp, 9300/tcp
+rag-ragflow-mysql Up 23 minutes (healthy) 3306/tcp, 33060/tcp
+-> code 0 en 2 s
+== 2026-11-09T17:55:25+01:00 configuration
+== configurer.py 2026-11-09T17:55:25
+inscription : {"code": 103, "message": "email: banc.demo@exemple.fr has already registered"}
+connexion : code=0 jeton=reçu 
+clé d'API : créée
+fournisseur OpenAI-API-Compatible : {"code": 0, "message": "success"}
+fournisseur VLLM : {"code": 0, "message": "success"}
+instance llm-service-chat (chat) : {"code": 500, "message": "fail to create model instance: instance llm-service-chat already exists"}
+défaut chat : {"code": 0, "message": "success", "data": {"models": []}}
+instance llm-service-embed (embedding) : {"code": 500, "message": "fail to create model instance: instance llm-service-embed already exists"}
+défaut embedding : {"code": 0, "message": "success", "data": {"models": []}}
+instance voix-locale (asr) : {"code": 500, "message": "fail to create model instance: instance voix-locale already exists"}
+défaut asr : {"code": 0, "message": "success", "data": {"models": []}}
+langue de l'interface (French) : {"code": 0, "message": "success"}
+modèles par défaut : {"code": 0, "message": "success", "data": {"models": [{"model_provider": "VLLM", "model_instance": "llm-service-chat", "model_name": "gemma4:e4b", "model_id": "3a0f6b13a0ea489aa370298d248b77cc", "model_type": "chat", "enable": true}, {"model_provider": "VLLM", "model_instance": "llm-service-embed", "model_name": "bge-m3", "model_id": "0f69731ecd3b45d0b30c53f37365a951", "model_type": "embedding", "
+-> code 0 en 0 s
+== 2026-11-09T17:55:25+01:00 vérification minimale
+dataset créé : 313e35c9d8a848d29f982e310214f3d2 gabarit=general embedding=0f69731ecd3b45d0b30c53f37365a951
+document téléversé : cse-2025-10-14.md
+SDK parse_documents : [('ad7df7f19c39463786371440b85384ac', 'DONE', 4, 159)] en 1.1 s
+document juste après : run=0 progress=1 chunks=4 jetons=159
+attente des compteurs (client.attendre_analyse) : {'cse-2025-10-14.md': {'fini': True, 'echec': False, 'progress': 1, 'chunks': 4, 'jetons': 159, 'message': ''}} après 0.0 s de plus
+assistant créé : e2f2f83a396a4499b0b7adefe7f4d4ef llm=gemma4:e4b@llm-service-chat@VLLM
+question : Quelle est la date de la réunion du CSE et quels sujets ont été abordés ?
+SDK Session.ask : ÉCHEC Exception: Not Found: /api/v1/chats/e2f2f83a396a4499b0b7adefe7f4d4ef/completions
+HTTP POST /api/v1/chat/completions : statut 200 en 3.1 s
+réponse : La date de la réunion du CSE est le 14 octobre 2025 [ID:0]. Les sujets abordés incluent, mais ne se limitent pas à, le report de la question des horaires d'été de l'atelier de Cholet à la réunion de décembre [ID:1], la décision accordant une prime d'intéressement de 1 150 euros par salarié versée en avril 2026 [ID:3], l'instauration du télétravail jusqu'à 2 jours par semaine pour les postes compatibles [ID:3], et l'information que le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026 [ID:3].
+citations : 4 passage(s)
+  - cse-2025-10-14.md | positions=[] | '# Compte rendu de la réunion du CSE du 14 octobre 2025\nDocument fictif.'
+  - cse-2025-10-14.md | positions=[] | "## Points reportés\nLa question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre."
+  - cse-2025-10-14.md | positions=[] | '## Participants\nHélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), sept élus.'
+nettoyage : assistant et dataset d'essai supprimés ; durée totale 4.5 s
+-> code 0 en 5 s
