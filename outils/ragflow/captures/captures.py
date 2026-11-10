@@ -37,10 +37,27 @@ class Session:
         self.aller("/login")
         if manuel:
             self.shot(manuel, "01-connexion")
-        self.pg.locator("input[type=email], input[name=email]").first.fill(COMPTE["email"])
-        self.pg.locator("input[type=password]").first.fill(COMPTE["password"])
-        self.pg.keyboard.press("Enter")
-        self.pg.wait_for_timeout(4000)
+        # la page contient deux formulaires (connexion et inscription) dont un masqué : champs visibles seulement
+        self.pg.locator("input[name=email]:visible, input[type=email]:visible").first.fill(COMPTE["email"])
+        self.pg.locator("input[type=password]:visible").first.fill(COMPTE["password"])
+        self.pg.locator("button[type=submit]:visible").first.click()
+        try:
+            self.pg.wait_for_url(lambda u: "login" not in u, timeout=20000)
+        except Exception:
+            self.shot(None, "echec-connexion"); self.texte("echec-connexion")
+            raise
+        self.pg.wait_for_timeout(3000)
+
+
+def diag_connexion(s):
+    """Repérage : requêtes réseau émises pendant la connexion (statut et début de réponse)."""
+    s.pg.on("response", lambda r: print("réponse", r.status, r.request.method, r.url[:90],
+                                        (r.text()[:200] if "/api/" in r.url else ""), flush=True))
+    s.pg.on("console", lambda m: print("console", m.type, m.text[:200], flush=True))
+    try:
+        s.connexion()
+    except Exception as e:
+        print("échec", str(e)[:200])
 
 
 def explorer(s, *chemins):
