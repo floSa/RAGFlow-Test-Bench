@@ -38,7 +38,7 @@ Valeurs par défaut relevées à la création d'un assistant [Vérifié] (`outil
 
 ### Pour aller plus loin
 
-Par l'API, seul `vector_similarity_weight` se règle ; le serveur renvoie `keywords_similarity_weight` = 1 − cette valeur. L'objet `Chat` du SDK 1.0.0 garde, lui, sa valeur par défaut de `vector_similarity_weight` (0,3) même quand le serveur a enregistré autre chose : se fier à `keywords_similarity_weight`. [Vérifié] (`GET /api/v1/chats` ; `internal/handler/chat.go`, ligne 339)
+Par l'API, seul `vector_similarity_weight` se règle ; le serveur renvoie `keywords_similarity_weight` = 1 − cette valeur (`internal/handler/chat.go`, ligne 339). Assistant créé avec `vector_similarity_weight=0.7` : l'objet `Chat` du SDK affiche 0,3 pour les vecteurs et 0,3 pour les mots-clés, le serveur renvoie `keywords_similarity_weight` 0,3 et pas de poids des vecteurs. Se fier à `keywords_similarity_weight`. [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-sdk-defauts.log`)
 
 ## 2. Tester la recherche sans le modèle
 
@@ -48,7 +48,7 @@ Onglet « Test de récupération » d'une base : taper une question, « Test ».
 
 ![Test de récupération](img/05-assistants-et-citations/01-test-de-recuperation.png)
 
-Exemple relevé pour « pénalités de retard du contrat Batterix » : un passage du compte rendu du CSE obtient 25,45 en similarité hybride (3,72 terme, 76,14 vecteur). [Vérifié] (texte relevé par `captures.py`, scénario `decoupage`)
+Exemple relevé pour « pénalités de retard du contrat Batterix » : un passage du compte rendu du CSE obtient 25,45 en similarité hybride (3,72 terme, 76,14 vecteur). [Vérifié] (`outils/resultats/ragflow/preuves-2026-11-09/textes-captures/05-test-recuperation.txt`)
 
 ### Pour aller plus loin
 
@@ -87,7 +87,7 @@ Dans l'interface, chaque phrase de la réponse porte un renvoi `[1]`, `[2]`… e
 
 ### Essentiel
 
-Quand aucun passage ne passe le seuil, l'assistant renvoie son « message de réponse vide », en anglais par défaut : « The answer you are looking for is not found in the dataset! ». Les quatre questions pièges du banc (sans réponse dans le corpus) sont toutes correctement refusées par cette phrase. [Vérifié] (`banc-2026-11-09-defaut.json`, Q35 à Q38)
+La phrase du « message de réponse vide » de l'assistant, en anglais par défaut, est : « The answer you are looking for is not found in the dataset! ». Les quatre questions pièges du banc (sans réponse dans le corpus) sont toutes correctement refusées par cette phrase. [Vérifié] (`banc-2026-11-09-defaut.json`, Q35 à Q38)
 
 La phrase arrive suivie d'un renvoi (« …not found in the dataset! [ID:2] ») : des passages ont bien été retrouvés, et c'est le modèle qui l'écrit, sans doute parce que les consignes de l'assistant la lui fournissent [Estimation]. Un renvoi accompagne donc parfois un refus : il ne prouve pas qu'une réponse a été trouvée.
 
