@@ -81,6 +81,31 @@ def explorer(s, *chemins):
         s.shot(None, nom); s.texte(nom)
 
 
+def cliquer(s, texte, attente=2500):
+    s.pg.get_by_text(texte, exact=True).first.click()
+    s.pg.wait_for_timeout(attente)
+
+
+def installation(s):
+    m = "01-installation"
+    s.connexion(); s.francais()
+    s.aller("/user-setting/model"); s.shot(m, "01-modeles-par-defaut")
+    cliquer(s, "VLLM"); s.shot(m, "02-fournisseur-vllm")
+
+
+def prise_en_main(s):
+    m = "02-prise-en-main"
+    s.connexion(m)
+    s.francais(m)
+    s.aller("/home"); s.shot(m, "03-accueil")
+    s.aller("/datasets"); s.shot(m, "04-bases-de-connaissances")
+    cliquer(s, "Démo Vélanor", 4000); s.shot(m, "05-documents"); s.texte("02-documents")
+    cliquer(s, "contrat-batterix-scan.pdf", 5000); s.shot(m, "06-passages"); s.texte("02-passages")
+    s.aller("/chats"); s.shot(m, "07-discussions")
+    cliquer(s, "Démo Vélanor", 4000); s.texte("02-assistant")
+    cliquer(s, "Contrat Batterix", 4000); s.shot(m, "08-conversation"); s.texte("02-conversation")
+
+
 if __name__ == "__main__":
     scenario, *args = sys.argv[1:]
     with sync_playwright() as p:
