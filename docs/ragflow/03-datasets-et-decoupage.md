@@ -87,7 +87,7 @@ Indexation du corpus complet : 53 à 56 s quel que soit le gabarit. [Vérifié] 
 
 ### Pour aller plus loin
 
-- Un gabarit n'agit que sur les formats qu'il sait traiter : Paper et Presentation redécoupent les PDF, Table redécoupe le tableur ; Markdown, HTML, DOCX, PPTX et audio gardent leur découpage. Dans une base « General », le diaporama est même traité d'office par le gabarit Presentation. [Vérifié] (même source ; liste des documents relevée par `captures.py`)
+- Un gabarit n'agit que sur les formats qu'il sait traiter : Paper et Presentation redécoupent les PDF, Table redécoupe le tableur ; Markdown, HTML, DOCX, PPTX et audio gardent leur découpage. Dans une base « General », le diaporama est même traité d'office par le gabarit Presentation. [Vérifié] (même source ; liste des documents relevée par `captures.py`, archivés dans `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/`)
 - Presentation coupe un PDF page par page, même un rapport : 27 passages plus courts pour le rapport annuel.
 - Table fait d'une ligne de tableur un passage : 10 passages et deux fois plus de jetons pour le classeur de stocks ; l'écart de jetons viendrait de la répétition des en-têtes de colonnes dans chaque passage [Estimation].
 
