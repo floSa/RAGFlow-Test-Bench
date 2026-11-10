@@ -11,7 +11,7 @@ Identifiants : donnees/IDENTIFIANTS-LOCAUX.txt et donnees/ragflow/compte.json (i
 Journal (secrets masqués) : outils/resultats/ragflow/configuration-<date>.log
 Usage : python3 outils/ragflow/configurer.py
 """
-import datetime, json, secrets, sys, urllib.error, urllib.request
+import base64, datetime, json, secrets, sys, urllib.error, urllib.request
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parents[2]
@@ -56,7 +56,7 @@ def appel(methode, chemin, corps=None, jeton=None, entetes=False):
 
 def masque(d):
     s = json.dumps(d, ensure_ascii=False)
-    for v in (compte.get("password"), compte.get("api_key")):
+    for v in (compte.get("password"), compte.get("api_key"), base64.b64encode(compte["password"].encode()).decode()):
         if v:
             s = s.replace(v, "***")
     return s[:400]
@@ -71,9 +71,13 @@ else:
     COMPTE.chmod(0o600)
 
 log(f"== configurer.py {datetime.datetime.now().isoformat(timespec='seconds')}")
-r = appel("POST", "/users", {"email": compte["email"], "nickname": compte["nickname"], "password": compte["password"]})
+# L'interface envoie RSA(base64(mot de passe)) ; le serveur déchiffre le RSA sans décoder le base64 et hache donc
+# base64(mot de passe) (internal/common/password.go, DecryptPassword). Par l'API, base64(mot de passe) envoyé tel quel
+# donne la même empreinte : le compte reste utilisable depuis l'interface. Un mot de passe envoyé en clair ne l'est pas.
+mdp_api = base64.b64encode(compte["password"].encode()).decode()
+r = appel("POST", "/users", {"email": compte["email"], "nickname": compte["nickname"], "password": mdp_api})
 log(f"inscription : {masque(r)}")
-r, h = appel("POST", "/auth/login", {"email": compte["email"], "password": compte["password"]}, entetes=True)
+r, h = appel("POST", "/auth/login", {"email": compte["email"], "password": mdp_api}, entetes=True)
 jeton = h.get("Authorization")
 log(f"connexion : code={r.get('code')} jeton={'reçu' if jeton else 'absent'} {masque(r) if not jeton else ''}")
 if not jeton:
