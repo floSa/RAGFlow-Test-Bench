@@ -48,6 +48,16 @@ class Session:
             raise
         self.pg.wait_for_timeout(3000)
 
+    def francais(self, manuel=None):
+        """Langue de l'interface : sélecteur de l'en-tête (« English » -> « Français »), mémorisé par le navigateur
+        (localStorage « lng ») ; le réglage de langue du compte ne change pas l'interface au chargement."""
+        self.pg.get_by_text("English", exact=True).first.click()
+        self.pg.wait_for_timeout(800)
+        if manuel:
+            self.shot(manuel, "02-choix-langue")
+        self.pg.get_by_text("Français", exact=True).first.click()
+        self.pg.wait_for_timeout(2500)
+
 
 def diag_connexion(s):
     """Repérage : requêtes réseau émises pendant la connexion (statut et début de réponse)."""
@@ -62,6 +72,7 @@ def diag_connexion(s):
 
 def explorer(s, *chemins):
     s.connexion()
+    s.francais()
     s.shot(None, "00-apres-connexion"); s.texte("00-apres-connexion")
     for c in chemins or ["/home", "/datasets", "/chats", "/agents", "/searches", "/files", "/memories",
                          "/user-setting/model", "/profile-setting/model", "/data-source", "/agent-templates"]:
