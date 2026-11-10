@@ -33,7 +33,7 @@ uv run python outils/ragflow/banc.py --etiquette defaut --reindexer
 
 ### Pour aller plus loin
 
-Variantes enchaînées par `outils/ragflow/serie_banc.sh`. Une première série notait comme citée toute source fournie au modèle ; elle a été rejouée avec la notation stricte, sans changement de résultat (historique git de `outils/resultats/ragflow/`). Le banc n'utilise pas de juge LLM : le banc GPU d'Open Notebook non plus, ce qui garde la comparaison.
+Variantes enchaînées par `outils/ragflow/serie_banc.sh`. Une première série notait comme citée toute source fournie au modèle ; elle a été rejouée avec la notation stricte, sans changement de résultat (journaux `essai-2026-11-09-serie-banc-notation-large.log` et `essai-2026-11-09-serie-banc.log` ; JSON de la première série dans l'historique git). Le banc n'utilise pas de juge LLM : le banc GPU d'Open Notebook non plus, ce qui garde la comparaison.
 
 ## 2. Résultats
 
@@ -58,7 +58,7 @@ Résultats en cinq lignes :
 2. Le PDF scanné est lu (4 sur 4) grâce à l'OCR de DeepDoc.
 3. Les 4 questions pièges sont refusées dans toutes les variantes.
 4. Réponse en 1,3 s en médiane, 1,9 s au 95e centile.
-5. L'application seule demande 3,7 Go de RAM au repos et 5,4 Go en pointe.
+5. L'application seule demande 3,6 Gio de RAM au repos et 5,3 Gio en pointe.
 
 ### Pour aller plus loin
 
@@ -69,16 +69,16 @@ Résultats en cinq lignes :
 
 ### Essentiel
 
-RAGFlow ne fixe pas `num_ctx` : il borne la réponse à « contexte déclaré du modèle − jetons du prompt ». Le prompt d'une question (consignes et 6 passages) fait 1 800 à 3 100 jetons sur ce corpus.
+RAGFlow ne fixe pas `num_ctx` : il borne la réponse à « contexte déclaré du modèle − jetons du prompt ». Le prompt d'une question (consignes et 6 passages) fait de 1 841 jetons (question type, capture du manuel 02) à 3 301 jetons (plus grand relevé dans les erreurs à 3 072) sur ce corpus.
 
 | Contexte déclaré | Résultat |
 |---|---|
 | 16 384 (référence de la série) | 33/34 |
-| 4 096 | 33/34, identique : plus petit contexte qui tient |
-| 3 072 | 21/34 : réponses remplacées par « **ERROR**: prompt uses 3110 tokens, leaving no completion capacity… » |
-| 512 (essai de dépassement) | erreur immédiate : « prompt uses 2210 tokens » |
+| 4 096 | 33/34, identique : suffit sur ce corpus |
+| 3 072 | 21/34 : 12 réponses remplacées par « **ERROR**: prompt uses 3089 à 3301 tokens, leaving no completion capacity… » |
+| 512 (essai de dépassement, `top_n` 12) | erreur immédiate : « prompt uses 2210 tokens » |
 
-[Vérifié] (`banc-2026-11-09-ctx4096.json`, `banc-2026-11-09-ctx3072.json`, `essai-2026-11-09-contexte-depassement.log`)
+[Vérifié] (`banc-2026-11-09-ctx4096.json`, `banc-2026-11-09-ctx3072.json`, `essai-2026-11-09-contexte-depassement.log`). Entre 3 072 et 4 096, rien n'a été essayé : 4 096 suffit, 3 072 échoue.
 
 ### Pour aller plus loin
 
@@ -90,15 +90,15 @@ Avant d'échouer, RAGFlow retire des passages pour faire tenir le prompt (journa
 
 | Mesure | Valeur |
 |---|---|
-| RAM de l'application au repos / en pointe | 3,7 Go / 5,4 Go (Elasticsearch 2,7 Go, serveur et DeepDoc 2,0 Go) |
-| RAM de LLM-Service (hors application) | `vllm-central` 6,5 Go, `vllm-embed` 4,1 Go |
-| VRAM | 15,2 Go occupés sur 16 Go (deux serveurs vLLM, réservation à 80 % chacun) |
-| Indexation du corpus (9 documents, 1 Mo, 26 passages) | 53 à 61 s |
+| RAM de l'application au repos / en pointe | 3 730 Mio / 5 394 Mio, soit 3,6 / 5,3 Gio (Elasticsearch 2,7 Gio, serveur et DeepDoc 1,9 Gio) |
+| RAM de LLM-Service (hors application) | `vllm-central` 6,5 Gio, `vllm-embed` 4,1 Gio |
+| VRAM | 15 247 Mio occupés sur 16 380 (deux serveurs vLLM : `vllm-central` réserve 80 %, `vllm-embed` 5 %) |
+| Indexation du corpus (9 documents, 1 Mo, 26 passages) | 52 à 56 s (71 s au premier essai de l'adaptateur) |
 | OCR d'un scan | 4,7 s par page |
-| Question | 1,3 s en médiane ; 1 840 jetons d'entrée et 54 de sortie pour une question type |
-| Débit de génération de vLLM | 40 à 60 jetons/s (journal de `vllm-central`) |
+| Question | 1,3 s en médiane ; 1 841 jetons d'entrée et 54 de sortie pour une question type |
+| Débit de génération de vLLM | 30 à 62 jetons/s selon la charge (journal de `vllm-central`) |
 
-[Vérifié] (`outils/resultats/ragflow/ressources-2026-11-09-*.txt`, `banc-2026-11-09-defaut.json`, `essai-2026-11-09-passages.log`, capture du manuel [02](02-prise-en-main.md))
+[Vérifié] (`outils/resultats/ragflow/ressources-2026-11-09-*.txt`, `banc-2026-11-09-defaut.json`, `essai-2026-11-09-passages.log`, `outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log`, `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`)
 
 ### Pour aller plus loin
 
@@ -113,33 +113,33 @@ Le volume de documents n'est pas limité par le contexte : seuls les `top_n` pas
 | Rubrique | Valeur |
 |---|---|
 | Carte | RTX 4060 Ti 16 Go ; minimum estimé 12 Go de VRAM pour les deux serveurs vLLM [Estimation] |
-| Processeur, RAM, disque | 6 cœurs (12 fils) ; 32 Go dans WSL, dont environ 16 Go utilisés (application 5,4 Go, vLLM 10,6 Go) ; 4,3 Go pour l'application (images et données) plus les modèles |
+| Processeur, RAM, disque | 6 cœurs (12 fils) ; 32 Go dans WSL, dont environ 16 Gio utilisés (application 5,3 Gio, vLLM 10,6 Go) ; 4,3 Go pour l'application (images et données) plus les modèles |
 | Modèles | `gemma4:e4b` (Gemma 4 E4B, w4a16) pour les réponses, `bge-m3` pour l'embedding |
 | Contexte | 16 384 déclaré ; 4 096 suffit sur ce corpus |
 | Réglages du service | `--max-model-len 32768`, `--gpu-memory-utilization 0.8`, `--kv-cache-dtype fp8`, `--max-num-seqs 8` |
 | Réglages de RAGFlow | gabarit General, `top_n` 8, poids des vecteurs 0,7 |
 | Résultat | 34/34, médiane 1,36 s |
 
-[Vérifié] (journal de démarrage de `vllm-central` ; bancs ci-dessus)
+[Vérifié] (`outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log` : arguments de lancement des deux serveurs ; bancs ci-dessus)
 
 **Profil A, sans GPU (estimé)** : portable Intel Core Ultra 7 255H, 15,3 Go dans WSL, LLM-Service `service-ollama` sur CPU.
 
 | Rubrique | Valeur | Calcul |
 |---|---|---|
 | Processeur | 8 fils de calcul pour Ollama (`LLAMA_ARG_THREADS=8`) | mesure du socle de la série |
-| RAM | 16 Go dans WSL au minimum : application 5,4 Go en pointe + Ollama avec `qwen3:4b-instruct` et `bge-m3` (environ 6 Go) + système | somme des mesures ; réduire `MEM_LIMIT` d'Elasticsearch à 2 Go si nécessaire [À tester] |
+| RAM | 16 Go dans WSL au minimum : application 5,3 Gio en pointe + Ollama (`qwen3:4b-instruct` chargé : 3,9 Go à 4 096 jetons, 7,5 Go à 16 384 ; plus `bge-m3`) + système | somme des mesures ; à 16 384 jetons, 15,3 Go dans WSL ne suffisent plus : garder 4 096 ou réduire `MEM_LIMIT` d'Elasticsearch [À tester] |
 | Disque | 3,1 Go d'images + 1,2 Go de données + environ 4 Go de modèles | mesures |
 | Modèles | `qwen3:4b-instruct` (réponses), `bge-m3` (embedding) | modèles de la série sur CPU |
-| Contexte | 4 096 à 16 384 (`OLLAMA_CONTEXT_LENGTH`) | prompt de 1 800 à 3 100 jetons |
-| Temps par question | 20 à 35 s | lecture du prompt à environ 95 jetons/s sur CPU (1 840 jetons, soit environ 20 s) + 60 jetons générés à 16 jetons/s (environ 4 s) ; moins quand Ollama réutilise le début du prompt |
+| Contexte | 4 096 conseillé sur ce profil (`OLLAMA_CONTEXT_LENGTH`) | prompt de 1 841 à 3 301 jetons |
+| Temps par question | 30 à 50 s à 4 096 jetons ; 55 à 95 s à 16 384 | lecture du prompt de `qwen3:4b-instruct` sur CPU : 67 jetons/s à 4 096, 36 jetons/s à 16 384 ; 1 841 à 3 301 jetons, soit 27 à 49 s (51 à 92 s) ; plus 60 jetons générés à 15 à 17 jetons/s (environ 4 s) ; moins quand Ollama réutilise le début du prompt |
 | Indexation du corpus | plusieurs minutes | embedding sur CPU au lieu du GPU ; OCR inchangé (déjà sur CPU) |
 
-[Estimation] (mesures CPU du socle : `outils/resultats/socle/mesures-2026-11-08-passe2.json`)
+[Estimation] (mesures CPU du socle : `outils/resultats/socle/mesures-2026-11-08-passe1.log` pour `qwen3:4b-instruct`)
 
 ### Pour aller plus loin
 
 - Un modèle plus léger que le modèle principal (moins de 3 milliards de paramètres) n'a pas pu être essayé : il aurait fallu changer le modèle servi par LLM-Service, partagé avec d'autres applications. Plancher de qualité [À tester].
-- Sur 16 Go, il faut arrêter les autres solutions de la série avant de démarrer RAGFlow : Elasticsearch seul réserve plus de 2 Go. [Estimation]
+- Sur 16 Go, il faut arrêter les autres solutions de la série avant de démarrer RAGFlow : Elasticsearch seul occupe 2,5 à 2,7 Gio [Vérifié] ; le reste est [Estimation].
 
 ## Dépannage
 
