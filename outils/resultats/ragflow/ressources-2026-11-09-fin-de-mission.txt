@@ -1,0 +1,35 @@
+date : 2026-11-09T18:46:29+01:00 ; étiquette : fin-de-mission
+== free -m
+               total        used        free      shared  buff/cache   available
+Mem:           32096       15666        2896         160       14089       16430
+Swap:           4096           2        4093
+== docker stats (pile rag-ragflow)
+rag-ragflow-es01;2.572GiB / 4GiB;0.28%
+rag-ragflow-kvrocks;20.98MiB / 31.34GiB;0.06%
+rag-ragflow-minio;103MiB / 31.34GiB;0.04%
+rag-ragflow-mysql;487MiB / 31.34GiB;3.09%
+rag-ragflow-nats;8.578MiB / 31.34GiB;0.21%
+rag-ragflow-server;615.1MiB / 31.34GiB;4.69%
+total pile RAGFlow : 3867 Mio
+== conteneurs de modèles (pour mémoire, hors application)
+vllm-embed;4.074GiB / 31.34GiB
+vllm-central;6.489GiB / 31.34GiB
+== nvidia-smi
+15250 MiB, 16380 MiB
+== images
+infiniflow/ragflow:v1.0.0 773MB
+pgsty/silo:RELEASE.2026-08-06T00-00-00Z 159MB
+nats:2.14.2 18MB
+apache/kvrocks:2.16.0 152MB
+mysql:8.0.40 591MB
+elasticsearch:8.11.3 1.41GB
+== disque des données (donnees/ragflow)
+4.0K	donnees/ragflow/compte.json
+15.8M	donnees/ragflow/esdata01
+82.8M	donnees/ragflow/kvrocks
+64.0K	donnees/ragflow/logs
+18.6M	donnees/ragflow/minio
+1.2G	donnees/ragflow/mysql
+132.0K	donnees/ragflow/nats
+28.0K	donnees/ragflow/ragflow.env
+1.3G	total
