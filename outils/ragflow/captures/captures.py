@@ -134,6 +134,14 @@ def agentique(s):
     s.shot(m, "01-modes-de-reponse"); s.texte("06-modes")
 
 
+def agents(s):
+    m = "08-agents"
+    s.connexion(); s.francais()
+    s.aller("/agent-templates"); s.shot(m, "01-gabarits")
+    s.aller("/agents"); s.shot(m, "02-liste"); cliquer(s, "Agent démo Vélanor", 6000)
+    s.shot(m, "03-canevas"); s.texte("08-canevas")
+
+
 if __name__ == "__main__":
     scenario, *args = sys.argv[1:]
     with sync_playwright() as p:
