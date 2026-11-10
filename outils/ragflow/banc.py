@@ -96,9 +96,12 @@ class AdaptateurRAGFlow:
         cfg = {"version": "v1.0.0", "gabarit": self.gabarit, "modele": "gemma4:e4b (vLLM, LLM-Service service-vllm)",
                "embedding": "bge-m3 (vLLM)", "contexte_declare": contexte_declare(), "extra_question": self.extra}
         if chat:
+            # l'objet Chat du SDK garde sa valeur par défaut de vector_similarity_weight (0,3) : le poids réel des
+            # vecteurs se déduit de keywords_similarity_weight renvoyé par le serveur (vecteurs = 1 - mots-clés)
             cfg.update({k: getattr(chat, k, None) for k in ("top_n", "top_k", "similarity_threshold",
-                                                          "vector_similarity_weight", "keywords_similarity_weight",
-                                                          "rerank_id", "llm_id")})
+                                                          "keywords_similarity_weight", "rerank_id", "llm_id")})
+            kw = cfg.get("keywords_similarity_weight")
+            cfg["vector_similarity_weight"] = round(1 - kw, 2) if isinstance(kw, (int, float)) else None
         return cfg
 
 
