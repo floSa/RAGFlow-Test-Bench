@@ -48,3 +48,17 @@ instance voix-locale (asr) : {"code": 0, "message": "success"}
 défaut asr : {"code": 0, "message": "success", "data": {"models": []}}
 langue de l'interface (French) : {"code": 0, "message": "success"}
 modèles par défaut : {"code": 0, "message": "success", "data": {"models": [{"model_provider": "VLLM", "model_instance": "llm-service-chat", "model_name": "gemma4:e4b", "model_id": "a55798b3472e434882171fcafe458bbd", "model_type": "chat", "enable": true}, {"model_provider": "VLLM", "model_instance": "llm-service-embed", "model_name": "bge-m3", "model_id": "192bf2f4cb114ffc9d914d693f160680", "model_type": "embedding", "
+== configurer.py 2026-11-09T18:01:04
+inscription : {"code": 0, "message": "Banc RAGFlow, welcome aboard!", "data": {"avatar": null, "color_schema": "Bright", "create_date": "2026-11-09T18:01:04", "create_time": 1794243664149, "email": "banc.demo@exemple.fr", "id": "0b4a819c92bf4364ae34fab63b53871c", "is_active": "1", "is_anonymous": "0", "is_authenticated": "1", "is_superuser": false, "language": "English", "last_login_time": "2026-11-09T18:01:04"
+connexion : code=0 jeton=reçu 
+clé d'API : créée
+fournisseur OpenAI-API-Compatible : {"code": 0, "message": "success"}
+fournisseur VLLM : {"code": 0, "message": "success"}
+instance llm-service-chat (chat) : {"code": 0, "message": "success"}
+défaut chat : {"code": 0, "message": "success", "data": {"models": []}}
+instance llm-service-embed (embedding) : {"code": 0, "message": "success"}
+défaut embedding : {"code": 0, "message": "success", "data": {"models": []}}
+instance voix-locale (asr) : {"code": 0, "message": "success"}
+défaut asr : {"code": 0, "message": "success", "data": {"models": []}}
+langue de l'interface (French) : {"code": 0, "message": "success"}
+modèles par défaut : {"code": 0, "message": "success", "data": {"models": [{"model_provider": "VLLM", "model_instance": "llm-service-chat", "model_name": "gemma4:e4b", "model_id": "a3bdf776dc6f4423b5531e2ec8c3452c", "model_type": "chat", "enable": true}, {"model_provider": "VLLM", "model_instance": "llm-service-embed", "model_name": "bge-m3", "model_id": "ece4e1d9c86c4344b5807440213bf07a", "model_type": "embedding", "
