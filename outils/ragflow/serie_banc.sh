@@ -7,6 +7,8 @@ J="outils/resultats/ragflow/essai-$(date +%F)-serie-banc.log"
 exec >>"$J" 2>&1
 banc() { echo "== $(date -Iseconds) banc $*"; free -m | awk '/Mem:/{print "RAM disponible : " $7 " Mo"}'
          timeout 3600 uv run python outils/ragflow/banc.py "$@" | grep -E '^(Q|indexation|->)' ; echo "code ${PIPESTATUS[0]}"; }
+# 0. réglages par défaut (réindexe le dataset Banc-general)
+banc --etiquette defaut --reindexer
 # 1. contexte serré : 4096 jetons déclarés (le corpus découpé fait environ 2 240 jetons)
 uv run python outils/ragflow/contexte.py 4096
 banc --etiquette ctx4096
