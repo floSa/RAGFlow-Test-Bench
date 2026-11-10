@@ -1,0 +1,19 @@
+Agent
+Agent démo Vélanor
+Sauvegardé automatiquement 09/11/2026 17:28:55
+Save draft
+Exécuter
+Lancer
+Publier
+Checklist
+1
+Gestion
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow

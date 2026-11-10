@@ -1,0 +1,38 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+Recommandé
+Agent
+Support client
+Marketing
+Application grand public
+Autre
+Your starter dataset chatbot
+
+This is a document question-and-answer system based on a knowledge base. When a user asks a question, it retrieves relevant document content to provide accurate answers.
+
+Stock market research assistant
+
+This template helps financial analysts quickly organize information — it can automatically retrieve company data, consolidate financial metrics, and integrate research report insights.
+
+Reflective academic paper generator
+
+A reflective academic paper generator using local knowledge base, with advanced capabilities in task planning, reasoning, and reflective analysis. Recommended for academic research paper Q&A
+
+SEO article writer
+
+This SEO article writer automatically generates a complete SEO-optimized blog article based on a simple user input. You don't need any writing experience. Just provide a topic or short request — the system will handle the rest.
+
+Deep research
+
+For professionals in sales, marketing, policy, or consulting, the Multi-Agent Deep research Agentic workflow conducts structured, multi-step investigations across diverse sources and delivers consulting-style reports with clear citations.
+
+CAJAL scientific paper agent
+
+A local-first scientific paper generation agent for RAGFlow. It is preconfigured for Agnuxo/CAJAL-4B-P2PCLAW through Ollama, retrieves knowledge-base evidence, and drafts citation-grounded LaTeX-ready academic sections.

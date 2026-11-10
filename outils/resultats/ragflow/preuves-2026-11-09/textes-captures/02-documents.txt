@@ -1,0 +1,121 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+9 Fichiers
+1 MB
+Créé 09/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers
+
+😉 Veuillez attendre la fin de l'analyse de vos fichiers avant de démarrer une discussion avec l'IA.
+
+Ajouter un fichier
+	
+Nom
+	
+Date de téléversement
+	Activé	Nombre de segments	Métadonnées	Analyser		Action
+	
+supplier-audit-batterix-en.pdf
+	09/11/2026 17:05:58	
+	
+1
+	0 fields	
+General
+	
+	
+
+	
+strategie-2026.pptx
+	09/11/2026 17:05:58	
+	
+5
+	0 fields	
+Presentation
+	
+	
+
+	
+stocks-octobre-2025.xlsx
+	09/11/2026 17:05:58	
+	
+2
+	0 fields	
+General
+	
+	
+
+	
+rapport-annuel-2025.pdf
+	09/11/2026 17:05:58	
+	
+9
+	0 fields	
+General
+	
+	
+
+	
+procedure-batteries.docx
+	09/11/2026 17:05:58	
+	
+2
+	0 fields	
+General
+	
+	
+
+	
+message-vocal-production.mp3
+	09/11/2026 17:05:58	
+	
+1
+	0 fields	
+Audio
+	
+	
+
+	
+faq-sav.html
+	09/11/2026 17:05:58	
+	
+1
+	0 fields	
+General
+	
+	
+
+	
+cse-2025-10-14.md
+	09/11/2026 17:05:58	
+	
+4
+	0 fields	
+General
+	
+	
+
+	
+contrat-batterix-scan.pdf
+	09/11/2026 17:05:58	
+	
+1
+	0 fields	
+General
+	
+	
+Total 9
+1
+50 / Page

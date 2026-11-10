@@ -1,0 +1,2 @@
+== 2026-11-09T18:58:22+01:00 ports en écoute sur 8080 (processus de l'utilisateur, non touché)
+LISTEN 0      5           127.0.0.1:8080      0.0.0.0:*    users:(("python3",pid=127489,fd=8))

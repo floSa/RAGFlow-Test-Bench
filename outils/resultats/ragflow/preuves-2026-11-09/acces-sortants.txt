@@ -1,0 +1,3 @@
+== recherche, dans tout le journal du serveur, de mentions d'hôtes externes
+lignes contenant hf-mirror, huggingface.co ou download : 0
+lignes au total dans le journal : 1003

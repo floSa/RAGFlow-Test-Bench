@@ -1,0 +1,42 @@
+[
+ {
+  "id": "knowledge_graph",
+  "kind": "knowledge_graph",
+  "display_name": "Knowledge graph"
+ },
+ {
+  "id": "timeline",
+  "kind": "timeline",
+  "display_name": "List (Timeline) — Chronological events / Graph"
+ },
+ {
+  "id": "mind_map",
+  "kind": "mind_map",
+  "display_name": "Mind map - Radial concept hierarchy"
+ },
+ {
+  "id": "page_index",
+  "kind": "page_index",
+  "display_name": "PageIndex — Hierarchical table of contents"
+ },
+ {
+  "id": "session_essence",
+  "kind": "session_essence",
+  "display_name": "Session Essence — Cross-source entity synopses from conversations"
+ },
+ {
+  "id": "session_graph",
+  "kind": "session_graph",
+  "display_name": "Session Graph — Knowledge graph from conversations"
+ },
+ {
+  "id": "tree",
+  "kind": "tree",
+  "display_name": "Tree — RAPTOR-based document tree"
+ },
+ {
+  "id": "wiki",
+  "kind": "wiki",
+  "display_name": "Wiki — Graph-based wiki"
+ }
+]

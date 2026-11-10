@@ -1,0 +1,29 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+Fichiers
+Ajouter un fichier
+	
+Nom
+	
+Date de téléversement
+	
+Taille
+	Base de connaissances	Action
+	
+.knowledgebase
+	
+09/11/2026 17:01:04
+	
+0 B
+	
+	
+Total 1
+1
+50 / Page

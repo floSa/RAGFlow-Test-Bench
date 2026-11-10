@@ -1,0 +1,37 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+Conversations
+3
+Audit fournisseur
+Objectifs 2026
+Contrat Batterix
+Contrat Batterix
+Plusieurs modèles
+
+Bonjour, je réponds aux questions sur les documents fictifs de Vélanor, avec mes sources.
+
+Quel est le prix unitaire des batteries et le délai de livraison prévus par le contrat Batterix ?
+
+Le prix unitaire des batteries est de 212 euros HT, ce prix étant révisable une fois par an [1]. De plus, le Fournisseur s'engage à livrer sous 21 jours après la commande [1].
+
+1895 tokens (1841 input, 54 output) · 2.3s
+contrat-ba…an.pdf
+[1]
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload

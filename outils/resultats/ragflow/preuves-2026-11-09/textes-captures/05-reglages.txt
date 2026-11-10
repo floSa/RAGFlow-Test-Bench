@@ -1,0 +1,43 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+Conversations
+3
+Audit fournisseur
+Objectifs 2026
+Contrat Batterix
+Nouvelle conversation
+Plusieurs modèles
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload
+Paramètres du chat
+Télécharger
+Démo Vélanor
+
+A helpful Assistant
+
+Modèle
+gemma4:e4b
+llm-service-chat
+Paramètres du modèle
+Message d'accueil
+Bases de connaissances
+DV
+Démo Vélanor
+Paramètres avancés
+AnnulerEnregistrer

@@ -1,0 +1,86 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+9 Fichiers
+1 MB
+Créé 09/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Dataset configuration
+Modifiez ici la configuration de votre base de connaissances, notamment la méthode de découpage.
+Informations de base
+*Nom
+Langue
+English
+Avatar
+Télécharger
+Vous pouvez télécharger une image jusqu'à 4 Mo.
+Description
+Autorisations
+Moi uniquement
+Modèle d'embedding
+bge-m3
+llm-service-embed
+Rang de page
+Changer ou configurer le pipeline d'ingestion.
+Mode d'analyse
+General
+(built in)
+Parser
+General Chunker
+Extractor
+Indexer
+Enable vision enhancement
+DOC
+Supprimer en-tête et pied de page
+DOCX
+Supprimer en-tête et pied de page
+Email
+Champ
+from
+to
+cc
++ 5 more
+HTML
+Supprimer en-tête et pied de page
+Image
+OCR
+Parsing method
+DeepDoc
+OCR + layout analysis + table structure
+External OCR model
+Text only; no table structure
+
+No PaddleOCR models added. Use DeepDoc for local OCR, or add a PaddleOCR model in model settings.
+
+Markdown
+PDF
+Détecter la mise en page multi-colonnes
+Supprimer la table des matières d'origine
+Supprimer en-tête et pied de page
+Analyseur PDF
+DeepDOC
+Plages de pages
+
+Ajouter une page
+Tableur
+Analyseur PDF
+DeepDOC
+Texte & Code
+Source de données
+Gérer la liaison de source de données avec cette base
+Lier une source de données
+Annuler
+Enregistrer
+Introduction au pipeline intégré

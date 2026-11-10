@@ -1,0 +1,132 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+BR
+
+banc.demo@exemple.fr
+
+Fournisseurs de modèles
+Sources de données
+Canaux de chat
+MCP
+Équipe
+Profil
+API
+v1.0.0
+Déconnexion
+Définir les modèles par défaut
+Modèles disponibles
+OpenAI-API-Compatible
+VLLM
+OpenAI
+Anthropic
+Gemini
+DeepSeek
+Moonshot
+ZHIPU-AI
+xAI
+HuggingFace
+Cohere
+WorldRouter
+OpenRouter
+MiniMax
+VolcEngine
+SystemOne
+Tongyi-Qianwen
+Replicate
+SILICONFLOW
+Ollama
+Cheaper Inference
+Radeon Cloud
+ModelScope
+CometAPI
+FuturMix
+GiteeAI
+Fish Audio
+GPUStack
+GreenPT
+Groq
+Hostinger Router
+HuaweiCloud
+Hubris
+EmpirioLabs AI
+Tencent Hunyuan
+Jiekou.AI
+Jina
+llmman
+LM-Studio
+LocalAI
+LongCat
+MinerU
+MiniCPM-OCR
+Demon Route
+Mistral
+302.AI
+MonkeyOCR
+MonkeyOCRv2
+DeepInfra
+MWS
+n1n
+New API
+NovitaAI
+NVIDIA
+Obscurify.ai
+DaoXE
+FunASR
+CloudGPU
+cheapaimodel
+Opper
+OrcaRouter
+PaddleOCR
+PaddleOCR.local
+Perplexity
+PPIO
+Qiniu
+Bedrock
+RAGcon
+BaiduYiyan
+Runcrate
+BaiChuan
+SoMark
+StepFun
+Synap
+Synthorai
+Azure-OpenAI
+TogetherAI
+TokenHub
+TokenPony
+TrustedRouter
+Upstage
+Avian
+Astraflow
+Voyage AI
+Wally
+API-Route
+AnonRouter
+Xiaomi
+Xinference
+XunFei Spark
+AI Stupid Level
+Définir les modèles par défaut
+
+Veuillez compléter ces paramètres avant de commencer
+
+*Modèle de chat
+gemma4:e4b
+llm-service-chat
+Modèle d'embedding
+bge-m3
+llm-service-embed
+Modèle Img2txt
+Modèle Speech2txt
+Systran/faster-whisper-small
+voix-locale
+Modèle de rerank
+Modèle TTS
+Decision model

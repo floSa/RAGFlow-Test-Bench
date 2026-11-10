@@ -1,0 +1,40 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+Conversations
+3
+Audit fournisseur
+Objectifs 2026
+Contrat Batterix
+Audit fournisseur
+Plusieurs modèles
+
+Bonjour, je réponds aux questions sur les documents fictifs de Vélanor, avec mes sources.
+
+What overall score did Batterix get at the supplier audit, and what was the cell defect rate?
+
+Batterix received an overall score of 87 out of 100 during the Supplier Quality Audit [1]. The measured cell defect rate was 0.3% [1].
+
+1136 tokens (1096 input, 40 output) · 1.4s
+supplier-a…en.pdf
+[1]
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload
+Agentic
+Self-directed corpus exploration
+Naive

@@ -1,0 +1,10 @@
+rag-ragflow-server  Up 16 minutes  127.0.0.1:9380-9381->9380-9381/tcp, 127.0.0.1:8088->80/tcp
+rag-ragflow-mysql  Up 16 minutes (healthy)  3306/tcp, 33060/tcp
+rag-ragflow-minio  Up 16 minutes (healthy)  9000/tcp
+rag-ragflow-es01  Up 16 minutes (healthy)  9200/tcp, 9300/tcp
+rag-ragflow-kvrocks  Up 16 minutes (healthy)  6666/tcp
+rag-ragflow-nats  Up 16 minutes (healthy)  4222/tcp, 6222/tcp, 8222/tcp
+santé : {"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
+interface : HTTP 200
+LLM-Service : vllm-central en marche
+LLM-Service : vllm-embed en marche

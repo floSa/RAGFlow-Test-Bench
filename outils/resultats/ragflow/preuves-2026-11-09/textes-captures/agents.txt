@@ -1,0 +1,16 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+Workflow
+Ingestion pipeline
+Compilation operator
+Aucun agent créé pour le moment
+Créer depuis un blanc
+Créer depuis un modèle
+Importer un fichier JSON
