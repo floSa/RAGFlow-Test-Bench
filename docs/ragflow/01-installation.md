@@ -26,7 +26,7 @@
 
 | Élément | Valeur relevée sur la machine d'essai | Besoin de RAGFlow seul |
 |---|---|---|
-| RAM visible dans WSL | 32 096 Mo | 3,7 Gio au repos, 5,3 Gio en pointe (voir section 6) |
+| RAM visible dans WSL | 32 096 Mo | 3,6 Gio au repos, 5,3 Gio en pointe (voir section 6) |
 | Disque libre | 525 Go | 3,1 Go d'images + 1,2 Go de données à vide |
 | `vm.max_map_count` de la VM de Docker | 1 048 576 | 262 144 au moins pour Elasticsearch |
 | Docker et Compose | 29.9.3 et 5.7.0 | Compose avec les balises `!override` et `!reset` |
@@ -45,7 +45,7 @@ outils/communs/diagnostic.sh
 
 `vm.max_map_count` est lu sans rien modifier, dans un conteneur jetable. S'il est inférieur à 262 144, Elasticsearch ne démarre pas ; la correction demande un réglage de la VM de Docker, hors du périmètre de ce banc (aucun `sysctl`). Sur la machine d'essai, Docker tourne directement dans Ubuntu (`/var/lib/docker`), pas dans Docker Desktop. [Vérifié] (`outils/resultats/machine/diagnostic-2026-11-09.json`)
 
-Avant d'installer, arrêter les autres solutions de la série pour libérer la mémoire, par exemple Open Notebook avec son script `outils/open-notebook/arreter.sh`. LLM-Service reste en marche : toutes les solutions le partagent.
+Avant d'installer, arrêter les autres solutions de la série pour libérer la mémoire, par exemple Open Notebook avec le script `~/mes_projets/Tutoriels/Open-Notebook-Test-Bench/outils/open-notebook/arreter.sh` de son dépôt. LLM-Service reste en marche : toutes les solutions le partagent.
 
 ## 2. Ce que change l'installation du banc
 
@@ -69,7 +69,7 @@ Les fichiers officiels ne sont pas modifiés. Un fichier d'override, `outils/rag
 
 ### Pour aller plus loin
 
-Le port 8080 prévu par la fiche était déjà occupé sur la machine d'essai : l'interface est publiée sur 8088. Les fichiers compose sont appelés avec des chemins absolus, car Compose résout les chemins relatifs par rapport au premier fichier (`sources/ragflow/docker/`). Le profil `tei-cpu` (serveur d'embedding intégré) et le profil `sandbox` (conteneur privilégié avec accès au socket Docker) ne sont pas activés. [Source] (`docker/docker-compose-base.yml`)
+Le port 8080 prévu par la fiche était déjà occupé sur la machine d'essai (`outils/resultats/ragflow/preuves-2026-11-09/port-8080.txt`) : l'interface est publiée sur 8088. Les fichiers compose sont appelés avec des chemins absolus, car Compose résout les chemins relatifs par rapport au premier fichier (`sources/ragflow/docker/`). Le profil `tei-cpu` (serveur d'embedding intégré) et le profil `sandbox` (conteneur privilégié avec accès au socket Docker) ne sont pas activés. [Source] (`docker/docker-compose-base.yml`)
 
 ## 3. Installer
 
@@ -99,7 +99,7 @@ healthz (9380) : HTTP 200 après 39 s
 {"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
 ```
 
-Aucun modèle n'est téléchargé à l'installation : les modèles DeepDoc (OCR, mise en page, tableaux) sont dans l'image. [Source] (`Dockerfile`, lignes 25 à 50) Aucun téléchargement depuis Hugging Face n'a été observé pendant les essais.
+Aucun modèle n'est téléchargé à l'installation : les modèles DeepDoc (OCR, mise en page, tableaux) sont dans l'image. [Source] (`Dockerfile`, lignes 25 à 50) Le journal complet du serveur ne contient aucune ligne mentionnant `hf-mirror`, `huggingface.co` ou un téléchargement [Vérifié] (`outils/resultats/ragflow/preuves-2026-11-09/acces-sortants.txt`) ; aucune capture du trafic réseau n'a été faite.
 
 ## 4. Créer le compte et brancher les modèles
 
@@ -195,7 +195,7 @@ Hors application : `vllm-central` 6,5 Gio de RAM, `vllm-embed` 4,1 Gio, 15,2 Go 
 
 - Elasticsearch pèse le plus : son tas Java est réglé par défaut à la moitié de `MEM_LIMIT`. Avec 4 Gio, il reste vers 2,5 Gio.
 - Le serveur RAGFlow passe de 0,6 à 2,0 Gio pendant l'analyse : les modèles DeepDoc (OCR, mise en page) tournent dans son processus, sur CPU.
-- Sur le disque, MySQL préalloue 1 Go de journal de reprise (`#innodb_redo`) dès le premier démarrage ; les données réelles du banc y occupent 37 Mo. [Vérifié] (`outils/resultats/ragflow/ressources-2026-11-09-apres-bancs.txt`)
+- Sur le disque, MySQL préalloue 1 Go de journal de reprise (`#innodb_redo`) dès le premier démarrage ; la base `rag_flow` elle-même occupe 46 Mo en fin de mission. [Vérifié] (`outils/resultats/ragflow/preuves-2026-11-09/mysql-disque.txt`)
 
 ## 7. Démarrer, arrêter, mettre à jour, désinstaller
 
@@ -203,7 +203,7 @@ Hors application : `vllm-central` 6,5 Gio de RAM, `vllm-embed` 4,1 Gio, 15,2 Go 
 
 | Action | Commande [Testée] | Effet |
 |---|---|---|
-| État | `outils/ragflow/etat.sh` | conteneurs, ports, santé, LLM-Service |
+| État | `outils/ragflow/etat.sh` | conteneurs, ports, santé, LLM-Service (sortie : `outils/resultats/ragflow/preuves-2026-11-09/etat.txt`) |
 | Arrêter | `outils/ragflow/arreter.sh` | conteneurs arrêtés, données conservées |
 | Démarrer | `outils/ragflow/demarrer.sh` | redémarrage et attente de l'état sain |
 | Désinstaller | `outils/communs/nettoyer.sh ragflow` | conteneurs, volumes, réseau et `donnees/ragflow/` supprimés ; images gardées |
@@ -214,7 +214,7 @@ Le cycle complet désinstallation, réinstallation, configuration et vérificati
 
 - LLM-Service n'est jamais arrêté ni supprimé par ces scripts.
 - Les images restent en cache ; les supprimer à la main avec `docker rmi` si besoin [Aide].
-- Mise à jour : changer le tag et le commit dans `installer.sh`, relancer. Les notes de version préviennent qu'une montée depuis la branche 0.27 migre la base de façon irréversible : sauvegarder avant (manuel [13](13-exploitation.md)). Aucune version plus récente que v1.0.0 n'existait le jour des essais : mise à jour [À tester]. [Source] (`docs/release_notes.md`)
+- Mise à jour : changer le tag et le commit dans `installer.sh`, relancer. Les notes de version préviennent qu'une montée depuis la v0.27.2 vers la 1.0 migre la base de façon irréversible : sauvegarder avant (manuel [13](13-exploitation.md)). Aucune version plus récente que v1.0.0 n'existait le jour des essais : mise à jour [À tester]. [Source] (`docs/release_notes.md`)
 
 ## Dépannage
 
