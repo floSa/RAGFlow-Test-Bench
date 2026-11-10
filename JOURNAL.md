@@ -7,6 +7,9 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 
 1. **Montée de vLLM dans LLM-Service** : 0.29.0 en service, 0.32.0 est la dernière stable (`outils/resultats/ragflow/versions-2026-11-09.json`). Gardé tel quel : LLM-Service est partagé et la comparaison avec le banc GPU Open Notebook en dépend. Option prudente retenue : ne rien changer.
 2. **Port de l'interface** : 8088 au lieu de 8080 (8080 occupé sur `127.0.0.1` par un processus Python de l'utilisateur, non touché).
+3. **`git push`** : interdit par la fiche ; aucun dépôt distant. À créer et pousser à la main.
+4. **Reranker** : aucun dans le socle ; en ajouter un à LLM-Service pour essayer le reranking ?
+5. **Ports `0.0.0.0` hors mission** : `vllm-central`, `vllm-embed`, `watch-speaches` ; à traiter dans leurs dépôts.
 
 ## Écarts au kit, décidés au lancement
 
