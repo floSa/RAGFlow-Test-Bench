@@ -1,0 +1,16 @@
+== 2026-11-09T18:30:27 essai sitemap
+site de test : 20cdc350a10f
+depuis le serveur RAGFlow : 172.25.0.4      rag-site-test
+HTTP 200
+création du connecteur : {"code": 0, "message": "success", "data": {"id": "63dc8a0ba76a44ddb718a79a880c5135", "tenant_id": "0b4a819c92bf4364ae34fab63b53871c", "name": "Site Vélanor (test)", "source": "sitemap", "input_type": "poll", "config": {"follow_pdf_links": false, "restrict_pdf_to_domain": true, "sitemap_url": "http:/
+test du connecteur : {"code": 102, "message": "URL resolves to a non-public address (172.25.0.4), which is not allowed"}
+liaison à la base : {"code": 0, "message": "success", "data": {"chunk_count": 0, "connectors": [{"id": "63dc8a0ba76a44ddb718a79a880c5135", "source": "sitemap", "name": "Site Vélanor (test)", "auto_parse": "1", "status": 
+journaux de synchronisation : {"code": 0, "message": "success", "data": {"logs": [{"id": "b10c86cf2fd24c0c9ba2bea5b77fa33f", "connector_id": "63dc8a0ba76a44ddb718a79a880c5135", "task_type": "sync", "kb_id": "639bc75ad300417f9e1fdc614cd1d5e1", "update_date": "2026-11-09 18:31:01", "new_docs_indexed": 0, "total_docs_indexed": 0, "docs_removed_from_index": 0, "error_msg": "sync task failed after 2 retries, last error: URL resolves to a non-public address (172.25.0.4), which is not allowed", "error_count": 3, "time_started": "2026-11-09 18:31:01", "refresh_freq": 30, "prune_freq": 5, "kb_name": "Essai-sitemap", "status": "4"}], "total": 1}}
+documents de la base après 40 s : []
+suppression du connecteur : {'code': 0, 'message': 'success'}
+journal du serveur (lignes sitemap/connector/ssrf) :
+  2026-11-09 18:30:31.221+01:00	warn	syncer_server	sync task retry scheduled	{"pid": 42, "task_id": "b10c86cf2fd24c0c9ba2bea5b77fa33f", "connector_id": "63dc8a0ba76a44ddb718a79a880c5135", "kb_id": "639bc75ad300417f9e1fdc614cd1d5e1", "source": "sitemap", "attempts": 1, "max_retries": 3, "error": "URL r
+  2026-11-09 18:30:41.267+01:00	warn	syncer_server	sync task retry scheduled	{"pid": 42, "task_id": "b10c86cf2fd24c0c9ba2bea5b77fa33f", "connector_id": "63dc8a0ba76a44ddb718a79a880c5135", "kb_id": "639bc75ad300417f9e1fdc614cd1d5e1", "source": "sitemap", "attempts": 2, "max_retries": 3, "error": "URL r
+  2026-11-09 18:31:01.314+01:00	warn	syncer_server	sync task failed after retries	{"pid": 42, "task_id": "b10c86cf2fd24c0c9ba2bea5b77fa33f", "connector_id": "63dc8a0ba76a44ddb718a79a880c5135", "kb_id": "639bc75ad300417f9e1fdc614cd1d5e1", "source": "sitemap", "attempts": 3, "max_retries": 3, "error": "
+  2026-11-09 18:31:11.203+01:00	warn	api_server_9380	Dataset bucket already missing	{"pid": 39, "dataset": "Essai-sitemap (639bc75ad300417f9e1fdc614cd1d5e1)", "bucket": "639bc75ad300417f9e1fdc614cd1d5e1"}
+site de test supprimé
