@@ -1,0 +1,12 @@
+== 2026-11-09T18:05:58 jeu de démonstration
+base de connaissances Démo Vélanor : 9 documents, 26 passages, analyse en 52 s
+assistant Démo Vélanor : top_n 8, poids des vecteurs 0,7, réponse vide et accueil en français
+conversation « Contrat Batterix » (2.3 s) : Quel est le prix unitaire des batteries et le délai de livraison prévus par le contrat Batterix ?
+  réponse : "Le prix unitaire des batteries est de 212 euros HT, ce prix étant révisable une fois par an [ID:0]. De plus, le Fournisseur s'engage à livrer sous 21 jours après la commande [ID:0]."
+  documents cités : ['contrat-batterix-scan.pdf', 'faq-sav.html', 'procedure-batteries.docx', 'rapport-annuel-2025.pdf', 'stocks-octobre-2025.xlsx', 'supplier-audit-batterix-en.pdf']
+conversation « Objectifs 2026 » (2.0 s) : Quel chiffre d'affaires Vélanor vise-t-elle en 2026 et combien d'embauches sont prévues ?
+  réponse : "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0][ID:3]. De plus, une seconde usine d'assemblage ouvrira à Saint-Nazaire en septembre 2026, ce qui prévoit 70 embauches [ID:0]."
+  documents cités : ['faq-sav.html', 'rapport-annuel-2025.pdf', 'strategie-2026.pptx', 'supplier-audit-batterix-en.pdf']
+conversation « Audit fournisseur » (1.4 s) : What overall score did Batterix get at the supplier audit, and what was the cell defect rate?
+  réponse : 'Batterix received an overall score of 87 out of 100 during the Supplier Quality Audit [ID:0]. The measured cell defect rate was 0.3% [ID:0].'
+  documents cités : ['contrat-batterix-scan.pdf', 'rapport-annuel-2025.pdf', 'stocks-octobre-2025.xlsx', 'supplier-audit-batterix-en.pdf']
