@@ -49,7 +49,7 @@ L'analyse des documents (OCR, tableaux, mise en page) est faite par **DeepDoc**,
 
 ### Pour aller plus loin
 
-Quand aucun passage ne dépasse le seuil de similarité, l'assistant renvoie un message fixe, en anglais par défaut : « The answer you are looking for is not found in the dataset! ». Ce message se change dans les réglages de l'assistant ; voir le manuel [05](05-assistants-et-citations.md). [Vérifié] (`outils/resultats/ragflow/banc-2026-11-09-defaut.json`, questions Q35, Q36, Q38)
+Pour une question sans réponse dans les documents, l'assistant répond « The answer you are looking for is not found in the dataset! », suivi d'un renvoi `[ID:n]` [Vérifié] (`outils/resultats/ragflow/banc-2026-11-09-defaut.json`, questions Q35 à Q38). C'est la phrase du « message de réponse vide » de l'assistant, en anglais par défaut et réglable ; le renvoi montre que c'est le modèle qui la reproduit [Estimation]. Voir le manuel [05](05-assistants-et-citations.md).
 
 ## 4. Architecture de RAGFlow 1.0
 
@@ -102,14 +102,14 @@ RAGFlow ne contient aucun modèle de langage. Les modèles sont déclarés dans 
 
 ### Pour aller plus loin
 
-RAGFlow borne la longueur de la réponse à « contexte déclaré du modèle − jetons du prompt ». Les consignes et les passages occupent déjà environ 2 200 jetons ; un contexte déclaré trop petit produit une erreur visible dans la réponse. [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-contexte-depassement.log`)
+RAGFlow borne la longueur de la réponse à « contexte déclaré du modèle − jetons du prompt ». Les consignes et les passages occupent 1 841 à 3 301 jetons selon la question ; un contexte déclaré trop petit produit une erreur visible dans la réponse. [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-contexte-depassement.log`, `outils/resultats/ragflow/banc-2026-11-09-ctx3072.json`, `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`)
 
 ## Dépannage
 
 | Symptôme | Cause probable | Action |
 |---|---|---|
 | Réponse « **ERROR**: prompt uses N tokens, leaving no completion capacity… » | contexte déclaré du modèle de chat plus petit que le prompt | remonter le contexte déclaré (16 384 ici), voir [Qualité et performances](12-qualite-et-performances.md) |
-| Réponse « The answer you are looking for is not found in the dataset! » | aucun passage au-dessus du seuil de similarité | normal pour une question hors corpus ; sinon baisser le seuil, voir [05](05-assistants-et-citations.md) |
+| Réponse « The answer you are looking for is not found in the dataset! » | rien de pertinent trouvé dans les passages retrouvés | normal pour une question hors corpus ; sinon baisser le seuil, voir [05](05-assistants-et-citations.md) |
 
 ## Sources
 
