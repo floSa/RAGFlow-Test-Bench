@@ -126,6 +126,14 @@ def assistant_reglages(s):
     s.pg.wait_for_timeout(2500); s.shot(m, "02-reglages-assistant", plein=True); s.texte("05-reglages")
 
 
+def agentique(s):
+    m = "06-agentic-rag"
+    s.connexion(); s.francais()
+    s.aller("/chats"); cliquer(s, "Démo Vélanor", 4000); cliquer(s, "Audit fournisseur", 3000)
+    s.pg.get_by_text("Naive", exact=True).first.click(); s.pg.wait_for_timeout(1500)
+    s.shot(m, "01-modes-de-reponse"); s.texte("06-modes")
+
+
 if __name__ == "__main__":
     scenario, *args = sys.argv[1:]
     with sync_playwright() as p:
