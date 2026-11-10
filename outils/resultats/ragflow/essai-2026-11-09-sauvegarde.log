@@ -1,0 +1,63 @@
+== 2026-11-09T18:40:45+01:00 sauvegarde
+ Container rag-ragflow-es01 Stopping 
+ Container rag-ragflow-kvrocks Stopping 
+ Container rag-ragflow-minio Stopping 
+ Container rag-ragflow-nats Stopping 
+ Container rag-ragflow-server Stopping 
+ Container rag-ragflow-minio Stopped 
+ Container rag-ragflow-nats Stopped 
+ Container rag-ragflow-kvrocks Stopped 
+ Container rag-ragflow-es01 Stopped 
+ Container rag-ragflow-server Stopped 
+ Container rag-ragflow-mysql Stopping 
+ Container rag-ragflow-mysql Stopped 
+RAGFlow arrêté.
+ Container rag-ragflow-es01 Starting 
+ Container rag-ragflow-mysql Starting 
+ Container rag-ragflow-nats Starting 
+ Container rag-ragflow-kvrocks Starting 
+ Container rag-ragflow-minio Starting 
+ Container rag-ragflow-es01 Started 
+ Container rag-ragflow-mysql Started 
+ Container rag-ragflow-mysql Waiting 
+ Container rag-ragflow-kvrocks Started 
+ Container rag-ragflow-nats Started 
+ Container rag-ragflow-minio Started 
+ Container rag-ragflow-mysql Healthy 
+ Container rag-ragflow-server Starting 
+ Container rag-ragflow-server Started 
+archive : donnees/sauvegardes/ragflow-20261109-184045.tar.gz (42205687 octets)
+-> 33 s
+bases avant restauration : ['Banc-general', 'Banc-paper', 'Banc-presentation', 'Banc-table', 'Démo Vélanor', 'Essai-KC-knowledge_graph-1836', 'Essai-KC-mind_map', 'Essai-KC-mind_map-1835', 'Témoin-après-sauvegarde']
+== 2026-11-09T18:41:18+01:00 restauration
+ Container rag-ragflow-server Stopping 
+ Container rag-ragflow-nats Stopping 
+ Container rag-ragflow-es01 Stopping 
+ Container rag-ragflow-minio Stopping 
+ Container rag-ragflow-kvrocks Stopping 
+ Container rag-ragflow-minio Stopped 
+ Container rag-ragflow-nats Stopped 
+ Container rag-ragflow-kvrocks Stopped 
+ Container rag-ragflow-es01 Stopped 
+ Container rag-ragflow-server Stopped 
+ Container rag-ragflow-mysql Stopping 
+ Container rag-ragflow-mysql Stopped 
+RAGFlow arrêté.
+ Container rag-ragflow-es01 Starting 
+ Container rag-ragflow-nats Starting 
+ Container rag-ragflow-mysql Starting 
+ Container rag-ragflow-kvrocks Starting 
+ Container rag-ragflow-minio Starting 
+ Container rag-ragflow-es01 Started 
+ Container rag-ragflow-nats Started 
+ Container rag-ragflow-mysql Started 
+ Container rag-ragflow-mysql Waiting 
+ Container rag-ragflow-kvrocks Started 
+ Container rag-ragflow-minio Started 
+ Container rag-ragflow-mysql Healthy 
+ Container rag-ragflow-server Starting 
+ Container rag-ragflow-server Started 
+restauré depuis donnees/sauvegardes/ragflow-20261109-184045.tar.gz
+-> 31 s
+bases après restauration : ['Banc-general', 'Banc-paper', 'Banc-presentation', 'Banc-table', 'Démo Vélanor', 'Essai-KC-knowledge_graph-1836', 'Essai-KC-mind_map', 'Essai-KC-mind_map-1835']
+question à la démonstration après restauration (2.1 s) : Le prix public du Vilaine Compact est de 2 490 € TTC [ID:0].
