@@ -25,7 +25,7 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Fichiers : `.gitignore`, `corpus/`, `outils/communs/`, `outils/resultats/{socle,machine,open-notebook}/`.
 - Prochaine étape : phase A, diagnostic de la machine.
 
-### 2026-11-09 17:40 — Phases A et B : diagnostic et socle
+### 2026-11-09 17:28 — Phases A et B : diagnostic et socle
 
 - Fait : `outils/communs/diagnostic.sh` complété (vm.max_map_count, LLM-Service) puis lancé.
 - Résultat (`outils/resultats/machine/diagnostic-2026-11-09.json`) : Ubuntu 24.04.5 dans WSL2, AMD Ryzen 5 9600X (12 fils), 32 096 Mo de RAM, 4 096 Mo de swap, 525 Go libres, RTX 4060 Ti 16 Go (pilote 616.92), GPU accessible dans un conteneur, Docker 29.9.3 (moteur installé dans Ubuntu, `/var/lib/docker`, pas Docker Desktop), Compose 5.7.0, `vm.max_map_count` = 1 048 576 (Elasticsearch satisfait sans `sysctl`), port `127.0.0.1` joignable depuis WSL (HTTP 200), registres et Hugging Face joignables.
@@ -34,13 +34,13 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Aucun bloquant. Socle repris tel quel (pas de nouvelle mesure du service de modèles : version et modèles inchangés depuis le banc GPU Open Notebook du 9 novembre).
 - Prochaine étape : phase C, cadrage (versions, relecture du compose, plan des manuels).
 
-### 2026-11-09 17:45 — Phase C : cadrage
+### 2026-11-09 17:31 — Phase C : cadrage
 
 - Fait : dernière version stable relevée (RAGFlow v1.0.0 du 6 novembre 2026, `ragflow-sdk` 1.0.0), sources clonées au tag dans `sources/ragflow/` (ignoré par git), relecture du compose et lecture du code par un sous-agent, plan des manuels.
 - Résultat : `outils/resultats/ragflow/versions-2026-11-09.json`, `outils/resultats/ragflow/relecture.md`, `docs/ragflow/plan-des-manuels.md`. Points marquants : RAGFlow 1.0 réécrit en Go ; tous les ports du compose officiel sur `0.0.0.0` ; mots de passe par défaut ; modèles déclarés seulement par l'API (section `user_default_llm` sans effet) ; aucun reranker embarqué ; SDK sous Python 3.13.
 - Prochaine étape : phase D.
 
-### 2026-11-09 17:55 — Phase D : installation testée
+### 2026-11-09 17:38 — Phase D : installation testée
 
 - Fait : override compose, `installer.sh`, `configurer.py` (compte local, clé d'API, modèles VLLM et transcription), `verif_minimale.py`, `demarrer.sh`, `arreter.sh`, `etat.sh`, `ressources.sh`, `compose.sh`. Open Notebook arrêté avant (son `arreter.sh`).
 - Résultat : pile saine en 39 s au premier démarrage (`installation-2026-11-09.log`) ; ports sur `127.0.0.1` seulement (`ports-2026-11-09.txt`) ; RAM de la pile seule 3,7 Gio au repos, 5,1 Gio en pointe pendant l'indexation du corpus (`ressources-2026-11-09-*.txt`, banc d'essai de l'adaptateur) ; vérification minimale réussie (réponse citée en 3,2 s).
