@@ -19,7 +19,7 @@
 
 But : répondre aux questions des salariés sur les documents de l'entreprise, avec la source de chaque réponse. Recette appliquée par `outils/ragflow/demo.py` [Testée] :
 
-1. Base « Démo Vélanor », gabarit General, les 9 documents du corpus (PDF, scan, DOCX, PPTX, XLSX, HTML, Markdown, audio, anglais) : 26 passages en 52 à 61 s.
+1. Base « Démo Vélanor », gabarit General, les 9 documents du corpus (PDF, scan, DOCX, PPTX, XLSX, HTML, Markdown, audio, anglais) : 26 passages en 52 s.
 2. Assistant relié à la base, réglé d'après le banc : `top_n` 8, poids des vecteurs 0,7.
 3. Message d'accueil et message de réponse vide en français.
 4. Une conversation par sujet.
