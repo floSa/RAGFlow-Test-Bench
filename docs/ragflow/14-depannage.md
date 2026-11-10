@@ -23,7 +23,7 @@
 | Symptôme | Cause | Action | Journal |
 |---|---|---|---|
 | `nettoyer.sh` sort avec le code 126, rien n'est supprimé | droits d'exécution perdus à l'extraction de l'archive du kit | `chmod +x outils/communs/*.sh` | `essai-2026-11-09-reinstallation-essai1.log` |
-| Port 8080 déjà pris | autre programme sur `127.0.0.1:8080` | `SVR_WEB_HTTP_PORT` dans `donnees/ragflow/ragflow.env` (8088 ici) | `ports-2026-11-09.txt` |
+| Port 8080 déjà pris | autre programme sur `127.0.0.1:8080` | `SVR_WEB_HTTP_PORT` dans `donnees/ragflow/ragflow.env` (8088 ici) | `preuves-2026-11-09/port-8080.txt` |
 | `du` ou `tar` refusent `donnees/ragflow/mysql` | dossiers propriété des conteneurs | passer par un conteneur jetable (`ressources.sh`, `sauvegarder.sh`) | `ressources-2026-11-09-*.txt` |
 | 1 Go occupé par MySQL dès l'installation | journal de reprise préalloué (`#innodb_redo`) | normal ; se compresse très bien en sauvegarde | `ressources-2026-11-09-apres-bancs.txt` |
 
@@ -74,9 +74,9 @@ Une erreur de contexte arrive dans le texte de la réponse avec un code d'API 0 
 |---|---|---|---|
 | `Not Found: /api/v1/chats/…/completions` | `Session.ask` du SDK 1.0.0 appelle une route retirée | `POST /api/v1/chat/completions` | `installation-2026-11-09-verif.log` |
 | « the dataset … doesn't own parsed file » | assistant créé avant la fin de l'analyse ; `parse_documents` a rendu la main trop tôt | attendre `chunk_count` > 0 | `installation-2026-11-09-verif-essai1.log` |
-| `'generator' object has no attribute 'content'` | `Session.ask` est un générateur | `next(iter(session.ask(…)))` | même journal |
-| `'Base' object is not iterable` en lisant `chat.prompt_config` | objet du SDK, pas un dictionnaire | `chat.prompt_config.to_json()` | `outils/ragflow/demo.py` |
-| Poids des vecteurs lu à 0,3 malgré un réglage à 0,7 | valeur par défaut de l'objet `Chat` du SDK | lire `keywords_similarity_weight` | `GET /api/v1/chats` |
+| `'generator' object has no attribute 'content'` | `Session.ask` est un générateur | `next(iter(session.ask(…)))` | `essai-2026-11-09-sdk-defauts.log` |
+| `'Base' object is not iterable` en lisant `chat.prompt_config` | objet du SDK, pas un dictionnaire | `chat.prompt_config.to_json()` | `essai-2026-11-09-sdk-defauts.log` |
+| Poids des vecteurs lu à 0,3 malgré un réglage à 0,7 | valeur par défaut de l'objet `Chat` du SDK | lire `keywords_similarity_weight` | `essai-2026-11-09-sdk-defauts.log` |
 | Suivi de compilation qui ne finit jamais | l'état revient à « idle » | lire `last_completed_at` | `essai-2026-11-09-compilation-mind_map-essai1.log` |
 
 [Vérifié] (fichiers cités)
@@ -87,9 +87,9 @@ Une erreur de contexte arrive dans le texte de la réponse avec un code d'API 0 
 
 | Question | Réponse |
 |---|---|
-| Faut-il un GPU ? | Non pour RAGFlow (DeepDoc tourne sur CPU) ; le GPU sert à LLM-Service. Sans GPU, compter 20 à 35 s par question [Estimation] (manuel [12](12-qualite-et-performances.md)). |
-| Combien de RAM pour RAGFlow seul ? | 3,7 Go au repos, 5,4 Go en pointe [Vérifié]. |
-| Les données quittent-elles la machine ? | Non : modèles servis localement, ports sur `127.0.0.1`, aucun compte en ligne [Vérifié]. |
+| Faut-il un GPU ? | Non pour RAGFlow (DeepDoc tourne sur CPU) ; le GPU sert à LLM-Service. Sans GPU, compter 30 à 50 s par question avec un contexte de 4 096 jetons [Estimation] (manuel [12](12-qualite-et-performances.md)). |
+| Combien de RAM pour RAGFlow seul ? | 3,6 Gio au repos, 5,3 Gio en pointe [Vérifié]. |
+| Les données quittent-elles la machine ? | Non d'après la configuration : modèles servis localement, ports sur `127.0.0.1`, aucun compte en ligne [Vérifié] ; aucune mention de téléchargement dans le journal du serveur [Vérifié] ; aucune capture du trafic réseau, donc absence d'envoi [Estimation]. |
 | Un reranker est-il fourni ? | Non ; il faut un service externe [Source]. |
 | Peut-on tout supprimer ? | `outils/communs/nettoyer.sh ragflow` (14 s) ; les images restent en cache [Vérifié]. |
 
