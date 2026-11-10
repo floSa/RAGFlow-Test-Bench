@@ -113,9 +113,9 @@ La relecture adversariale par un sous-agent neuf et ses corrections sont consign
 | Images de la pile | 3,1 Go |
 | Données `donnees/ragflow/` | 1,3 Go (dont 1 Go de journal de reprise MySQL préalloué) |
 | Sauvegarde gardée | 41 Mo dans `donnees/sauvegardes/` |
-| RAM de l'application, en fin de mission | 3,9 Go (pointe mesurée : 5,4 Go) |
-| RAM de LLM-Service | `vllm-central` 6,5 Go, `vllm-embed` 4,1 Go |
-| VRAM | 15,25 Go sur 16 Go (LLM-Service) |
+| RAM de l'application, en fin de mission | 3 867 Mio, soit 3,8 Gio (pointe mesurée : 5 394 Mio, 5,3 Gio) |
+| RAM de LLM-Service | `vllm-central` 6,5 Gio, `vllm-embed` 4,1 Gio |
+| VRAM | 15 250 Mio sur 16 380 (LLM-Service) |
 
 [Mesures de fin de mission](outils/resultats/ragflow/ressources-2026-11-09-fin-de-mission.txt).
 

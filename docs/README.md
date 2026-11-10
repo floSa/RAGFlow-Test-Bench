@@ -26,7 +26,7 @@ Lecture :
 - « Bon document cité » compte les 34 questions avec réponse ; pour RAGFlow, seuls les passages marqués `[ID:n]` dans la réponse comptent.
 - « Bonne page » : seul RAGFlow expose la page du passage cité (positions dans le PDF).
 - La différence principale vient du PDF scanné : RAGFlow le lit (OCR DeepDoc, 4 questions sur 4), Open Notebook non.
-- RAGFlow consomme bien plus de RAM (Elasticsearch, MySQL, MinIO et DeepDoc) : 5,4 Go en pointe contre 0,6 Go pour Open Notebook sur le même socle GPU.
+- RAGFlow consomme bien plus de RAM (Elasticsearch, MySQL, MinIO et DeepDoc) : 5,3 Gio en pointe contre 0,6 Gio pour Open Notebook sur le même socle GPU.
 
 ## Parcours de lecture conseillés
 
