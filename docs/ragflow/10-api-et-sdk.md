@@ -88,11 +88,11 @@ Les exemples se lancent depuis la racine du dépôt (ils lisent la clé dans `do
 | `DataSet.parse_documents` a rendu « DONE » avec 0 passage (1 fois sur 3) | création d'un assistant refusée : « doesn't own parsed file » | attendre `progress` = 1 et `chunk_count` > 0 (`client.attendre_analyse`) |
 | `Chat.vector_similarity_weight` garde la valeur par défaut 0,3 | réglage réel mal lu | lire `keywords_similarity_weight` (vecteurs = 1 − mots-clés) |
 
-[Vérifié] (`outils/resultats/ragflow/installation-2026-11-09-verif.log`, `installation-2026-11-09-verif-essai1.log` ; `GET /api/v1/chats`)
+[Vérifié] (`outils/resultats/ragflow/installation-2026-11-09-verif.log`, `installation-2026-11-09-verif-essai1.log`, `essai-2026-11-09-sdk-defauts.log`)
 
 ### Pour aller plus loin
 
-- `Session.ask` est un générateur, même avec `stream=False` : il rend un seul message, à lire par `next(iter(session.ask(…)))`. Pour un **agent**, il fonctionne. [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-agent.log`)
+- `Session.ask` est un générateur, même avec `stream=False` : il rend un seul message, à lire par `next(iter(session.ask(…)))` ; `.content` directement donne « 'generator' object has no attribute 'content' ». Pour un **agent**, il fonctionne. [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-sdk-defauts.log`, `essai-2026-11-09-agent.log`)
 - `RAGFlow.create_agent` renvoie `None` : retrouver l'agent par `list_agents()`. [Source] (`sdk/python/ragflow_sdk/ragflow.py`)
 - Le texte d'un passage HTML colle des éléments voisins (« après-venteDocument fictif.Quelle ») : sans effet sur la réponse observée. [Vérifié] (`sorties_verifiees.txt`, exemple 03)
 
