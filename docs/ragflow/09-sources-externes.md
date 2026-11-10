@@ -20,7 +20,7 @@
 
 ### Essentiel
 
-Une source de données (connecteur) se déclare dans le menu du compte, « Sources de données », puis se lie à une base par « Lier une source de données » dans sa « Configuration ». La liaison déclenche une première synchronisation ; ensuite, la source est relue selon sa fréquence (`refresh_freq`, en minutes). [Vérifié] (libellés relevés par `captures.py` ; `essai_sitemap.py`)
+Une source de données (connecteur) se déclare dans le menu du compte, « Sources de données », puis se lie à une base par « Lier une source de données » dans sa « Configuration ». La liaison déclenche une première synchronisation ; ensuite, la source est relue selon sa fréquence (`refresh_freq`, en minutes). [Vérifié] (libellés relevés par `captures.py`, archivés dans `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/` ; `essai_sitemap.py`)
 
 Par l'API [Testée] :
 
