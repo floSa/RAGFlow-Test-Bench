@@ -26,7 +26,7 @@ L'application s'installe sur un poste ou un serveur. Elle peut fonctionner sans 
 
 | Adapté | Peu adapté |
 |---|---|
-| Une équipe ou un service qui interroge un fonds documentaire commun, avec des comptes séparés | Un poste modeste : l'application seule demande 4 à 5,5 Go de mémoire, avant les modèles d'IA |
+| Une équipe ou un service qui interroge un fonds documentaire commun, avec des comptes séparés | Un poste modeste : l'application seule demande 3,6 à 5,3 Gio de mémoire, avant les modèles d'IA |
 | Des documents difficiles : scans, tableaux, mises en page complexes | Une personne qui veut un outil très simple à installer et à régler |
 | Un besoin d'automatisation : tout se pilote par une API et un module Python | Des usages en français sans retouche : plusieurs messages et modèles d'agents sont en anglais |
 
@@ -96,11 +96,11 @@ Réponses : **Oui**, **Non**, ou **Partiel** avec la limite en une phrase.
 | Fonction | Réponse |
 |---|---|
 | Installation | Docker, six conteneurs : l'application, un moteur de recherche, une base de données, un stockage de fichiers, un cache, une file de tâches |
-| Mémoire nécessaire, hors modèles d'IA | 3,7 Go au repos, 5,4 Go pendant l'ajout de documents |
+| Mémoire nécessaire, hors modèles d'IA | 3,6 Gio au repos, 5,3 Gio pendant l'ajout de documents |
 | Interface en français | Oui, par le sélecteur de langue ; la page de connexion reste en anglais |
 | Plusieurs utilisateurs avec leurs propres comptes | Oui, avec équipes et compte d'administration |
 | API pour automatiser | Oui, complète ; le module Python a deux défauts contournés dans ces manuels |
-| Fonctionnement hors ligne | Oui : aucun téléchargement observé une fois installé |
+| Fonctionnement hors ligne | Oui en principe : aucun téléchargement mentionné dans le journal du serveur ; le trafic réseau n'a pas été enregistré |
 | Sauvegarde et restauration | Oui, par copie des données, application arrêtée (une demi-minute) |
 
 ## 5. Matériel nécessaire
@@ -110,13 +110,13 @@ Réponses : **Oui**, **Non**, ou **Partiel** avec la limite en une phrase.
 | Élément | Minimum |
 |---|---|
 | Processeur | 8 cœurs récents ; 8 fils de calcul réservés au modèle |
-| Mémoire vive | 16 Go : application 5,4 Go en pointe, modèles environ 6 Go, le reste pour Windows |
+| Mémoire vive | 16 Go : application 5,3 Gio en pointe, modèles 5 Go environ avec un contexte de 4 096 jetons, le reste pour Windows |
 | Disque libre | 10 Go : application 3,1 Go, données 1,2 Go à vide, modèles environ 4 Go |
 | Modèle de réponse | qwen3:4b-instruct : 4 milliards de paramètres, 2,5 Go |
 | Modèle d'embedding | bge-m3 : 1,2 Go, multilingue |
-| Taille de contexte | 4 096 jetons au minimum, 16 384 conseillés |
+| Taille de contexte | 4 096 jetons (16 384 demandent trop de mémoire sur ce profil) |
 
-Temps d'attente attendu : 20 à 35 secondes par question, le temps que le modèle lise les consignes et les passages retrouvés (environ 1 800 jetons). L'ajout de documents prend plusieurs minutes pour une dizaine de documents. Ces valeurs sont calculées à partir des mesures du service de modèles sur un portable sans carte graphique, pas mesurées avec RAGFlow.
+Temps d'attente attendu : 30 à 50 secondes par question, le temps que le modèle lise les consignes et les passages retrouvés (1 800 à 3 300 jetons). L'ajout de documents prend plusieurs minutes pour une dizaine de documents. Ces valeurs sont calculées à partir des mesures du service de modèles sur un portable sans carte graphique, pas mesurées avec RAGFlow.
 
 **Combien de documents.** Seuls les 6 à 8 passages les plus proches de la question sont transmis au modèle : le nombre de documents d'une base n'est pas limité par le modèle, mais par le temps d'ajout (environ 1 minute par mégaoctet de documents, et 5 secondes par page scannée) et par la mémoire du moteur de recherche.
 
@@ -124,11 +124,11 @@ Temps d'attente attendu : 20 à 35 secondes par question, le temps que le modèl
 
 | Élément | Valeur |
 |---|---|
-| Carte graphique | RTX 4060 Ti 16 Go (15,2 Go occupés par les deux modèles) ; 12 Go estimés suffisants |
-| Mémoire vive | 32 Go installés ; environ 16 Go utilisés (application 5,4 Go, service de modèles 10,6 Go) |
+| Carte graphique | RTX 4060 Ti 16 Go (15,2 Go occupés par les deux modèles, dont 80 % réservés par le modèle de réponse) ; 12 Go estimés suffisants |
+| Mémoire vive | 32 Go installés ; environ 16 Gio utilisés (application 5,3 Gio, service de modèles 10,6 Gio) |
 | Modèle de réponse | Gemma 4 E4B en version 4 bits, sur vLLM |
 | Modèle d'embedding | bge-m3, sur vLLM |
-| Taille de contexte | 16 384 jetons déclarés ; 4 096 suffisent |
+| Taille de contexte | 16 384 jetons déclarés ; 4 096 suffisent, 3 072 ne suffisent plus |
 | Temps d'attente | 1,3 seconde par question ; ajout des 9 documents en moins d'une minute |
 
 **Modèles plus légers.** Aucun modèle de moins de 3 milliards de paramètres n'a été essayé : le service de modèles est partagé avec d'autres applications.
