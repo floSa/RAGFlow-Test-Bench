@@ -1,0 +1,51 @@
+# Outils du banc RAGFlow
+
+Chaque affirmation des manuels renvoie à un script de ce dossier et à un résultat brut de `outils/resultats/`. Principe : le script produit un résultat brut (journal, JSON, capture), le résultat est committé tel quel, puis le manuel est rédigé à partir de ce seul résultat. Rien n'est écrit de mémoire.
+
+## Outils communs (repris du banc Open Notebook, partagés par la série)
+
+| Fichier | Rôle |
+|---|---|
+| `communs/diagnostic.sh` | diagnostic de la machine (WSL, CPU, RAM, GPU, Docker, `vm.max_map_count`, LLM-Service, accès réseau) |
+| `communs/llm_service.sh` | démarrage et contrôle de LLM-Service en branche `service-ollama` (CPU) |
+| `communs/llm_service_vllm.sh` | démarrage et contrôle de LLM-Service en branche `service-vllm` (GPU) |
+| `communs/voix.sh` | serveur de voix commun `rag-speaches` (transcription et synthèse, compatible OpenAI) |
+| `communs/versions.py` | dernière version stable de chaque composant, écarts justifiés |
+| `communs/identite_github.py` | identité du projet sur GitHub (étoiles, licence, activité) |
+| `communs/inventaire_modeles.py` | modèles déjà présents sur la machine, avant tout téléchargement |
+| `communs/mesure_modeles.py` | mesures du service de modèles |
+| `communs/generer_corpus.py`, `communs/generer_audio.py` | génération du corpus fictif (graine fixe) |
+| `communs/banc/commun.py` | banc commun : interface d'adaptateur, notation, mesures, sorties JSON et Markdown |
+| `communs/banc/tableau.py` | tableau comparatif des bancs d'une ou plusieurs solutions |
+| `communs/banc/renoter.py` | renotation d'un banc sans rejouer les questions |
+| `communs/captures/lancer.sh` | exécution d'un script de captures Playwright dans le conteneur officiel |
+| `communs/verifier_docs.py` | vérification des manuels (liens, ancres, en-têtes, ton) ; 0 point exigé avant chaque commit |
+| `communs/nettoyer.sh` | suppression complète d'une solution (`rag-<solution>`), jamais lancée automatiquement |
+| `communs/nouvelle_solution.sh` | préparation du dépôt d'une solution suivante |
+
+## Outils RAGFlow
+
+| Fichier | Rôle |
+|---|---|
+| `ragflow/compose.override.yml` | écarts au compose officiel : ports sur `127.0.0.1`, conteneurs `rag-ragflow-*`, images figées, données dans `donnees/ragflow/`, réseaux `llm-net` et `rag-local` |
+| `ragflow/installer.sh` | installation rejouable : sources au tag `v1.0.0`, réglages et secrets générés, démarrage, attente de l'état sain |
+| `ragflow/configurer.py` | compte local, clé d'API, modèles de LLM-Service et de transcription, interface en français |
+| `ragflow/compose.sh` | appel de `docker compose` avec les fichiers et réglages du banc |
+| `ragflow/demarrer.sh`, `ragflow/arreter.sh`, `ragflow/etat.sh` | démarrage, arrêt (données conservées), état |
+| `ragflow/ressources.sh` | RAM par service, VRAM, taille des images, disque des données |
+| `ragflow/verif_minimale.py` | vérification fonctionnelle minimale : import, question, citation |
+| `ragflow/client.py` | fonctions partagées et contournements du SDK 1.0.0 |
+| `ragflow/contexte.py` | réglage du contexte déclaré du modèle de chat |
+| `ragflow/essai_contexte.py` | dépassement volontaire du contexte |
+| `ragflow/banc.py` | adaptateur du banc commun |
+| `ragflow/serie_banc.sh` | variantes du banc en série (contexte serré, agentique, hybride, gabarits) |
+| `ragflow/captures/captures.py` | captures d'écran des manuels |
+
+## Résultats
+
+| Dossier | Contenu |
+|---|---|
+| `resultats/machine/` | diagnostics de la machine |
+| `resultats/socle/` | mesures du service de modèles (reprises) |
+| `resultats/open-notebook/` | bancs d'Open Notebook (repris pour le comparatif) |
+| `resultats/ragflow/` | journaux d'installation et d'essai, bancs, versions, relecture, mesures de ressources |
