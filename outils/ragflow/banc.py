@@ -4,13 +4,14 @@ Indexation : dataset « Banc-<gabarit> » (gabarit General par défaut), corpus 
 lancée sur tous les documents, attente de la fin (outils/ragflow/client.py, attendre_analyse).
 Questions : assistant de chat « Banc-<étiquette> » lié au dataset ; une session neuve par question (aucun historique) ;
 question posée par l'API HTTP POST /api/v1/chat/completions (Session.ask du SDK 1.0.0 répond 404 pour un assistant).
-Citations : reference.chunks (document_name ; une citation par page couverte, tirée de positions).
+Citations : passages de reference.chunks marqués [ID:n] dans la réponse (une entrée par page couverte) ;
+les autres passages fournis au modèle sont gardés dans passages_non_cites (non notés).
 
 Usage : uv run python outils/ragflow/banc.py --etiquette defaut [--gabarit general] [--reindexer] [--limite N]
         [--top-n 6] [--seuil 0.1] [--poids-vecteurs 0.3] [--agentic] [--juge]
 Sortie : outils/resultats/ragflow/banc-<date>-<étiquette>.json et .md
 """
-import argparse, json, sys, time
+import argparse, json, re, sys, time
 from pathlib import Path
 
 ICI = Path(__file__).resolve().parent
@@ -76,15 +77,19 @@ class AdaptateurRAGFlow:
             raise RuntimeError(json.dumps(r, ensure_ascii=False)[:300])
         data = r["data"]
         ref = data.get("reference") or {}
-        citations = []
-        for c in (ref.get("chunks") or []):
-            # positions : [[page, x1, x2, y1, y2], ...] (pages numérotées à partir de 1) ; un passage peut couvrir
-            # plusieurs pages : une citation par page couverte, dans l'ordre d'apparition
+        reponse = data.get("answer") or ""
+        # reference.chunks = tous les passages fournis au modèle ; la réponse cite les siens par [ID:n] (indice dans
+        # cette liste). Citations du banc : passages marqués [ID:n] seulement ; les autres sont gardés à part.
+        cites = {int(n) for n in re.findall(r"\[ID:(\d+)\]", reponse)}
+        citations, fournis = [], []
+        for i, c in enumerate(ref.get("chunks") or []):
+            # positions : [[page, x1, x2, y1, y2], ...] (pages numérotées à partir de 1) ; une entrée par page couverte
             pages = list(dict.fromkeys(p[0] for p in (c.get("positions") or []) if isinstance(p, list) and p)) or [None]
             for page in pages:
-                citations.append({"document": c.get("document_name"), "page": page,
-                                  "extrait": (c.get("content") or "")[:200]})
-        return {"reponse": data.get("answer") or "", "citations": citations}
+                e = {"document": c.get("document_name"), "page": page, "extrait": (c.get("content") or "")[:200], "id": i}
+                (citations if i in cites else fournis).append(e)
+        self.dernier_fournis = fournis
+        return {"reponse": reponse, "citations": citations, "passages_non_cites": fournis}
 
     def config(self):
         chat = self._assistant() if self.ds else None
