@@ -18,11 +18,11 @@
 
 ### Essentiel
 
-La compilation n'est pas un bouton : elle s'exécute pendant l'ingestion, quand le pipeline d'une base contient un composant **Compiler** relié à un groupe de gabarits de compilation. Les résultats apparaissent ensuite dans l'onglet « Artifacts » de la base, avec un sélecteur « Wiki », « Tree/PageIndex », « Graph », « Mind map », « Timeline ». [Vérifié] (texte relevé par `captures.py`, scénario `compilation`) [Source] (`docs/guides/knowledge_compilation/`)
+La compilation n'est pas un bouton : elle s'exécute pendant l'ingestion, quand le pipeline d'une base contient un composant **Compiler** relié à un groupe de gabarits de compilation. Les résultats apparaissent ensuite dans l'onglet « Artifacts » de la base, avec un sélecteur « Wiki », « Tree/PageIndex », « Graph », « Mind map », « Timeline ». [Vérifié] (texte relevé par `captures.py`, archivés dans `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/`, scénario `compilation`) [Source] (`docs/guides/knowledge_compilation/`)
 
 ![Types d'artefacts](img/07-knowledge-compilation/01-types-d-artefacts.png)
 
-Gabarits intégrés, relevés par `GET /api/v1/compilation-templates/builtins` [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-compilation-mind_map.log`) :
+Gabarits intégrés, relevés par `GET /api/v1/compilation-templates/builtins` [Vérifié] (`outils/resultats/ragflow/preuves-2026-11-09/compilation-builtins.json`) :
 
 | `kind` | Libellé | Produit |
 |---|---|---|
@@ -68,7 +68,7 @@ Document : compte rendu du CSE (4 passages) [Vérifié] :
 
 | Artefact | Durée totale (ingestion et compilation) | Résultat |
 |---|---|---|
-| Carte mentale, 1er essai | environ 25 s | 23 entités, 22 relations |
+| Carte mentale, 1er essai | environ 25 s (`last_completed_at`) | artefact lu à la main, non archivé |
 | Carte mentale, 2e essai | 40 s | 35 entités, 34 relations |
 | Graphe de connaissances | 15 s | 5 entités, 4 relations (« CSE »…) |
 
@@ -76,12 +76,12 @@ Document : compte rendu du CSE (4 passages) [Vérifié] :
 
 ![Carte mentale du compte rendu du CSE](img/07-knowledge-compilation/02-carte-mentale.png)
 
-La carte mentale part du compte rendu et se ramifie en « Participants de la Réunion » (présidente Hélène Marchais, secrétaire Sophie Le Gall, sept élus), « Décisions Prises » (prime d'intéressement de 1 150 euros versée en avril 2026, télétravail jusqu'à deux jours par semaine, restaurant d'entreprise de Nantes en janvier 2026) et « Points Reportés » (horaires d'été de l'atelier de Cholet, en décembre). Tout y est exact par rapport au document. [Vérifié] (capture ; `corpus/documents/cse-2025-10-14.md`)
+La carte mentale part du compte rendu et se ramifie en « Participants de la Réunion » (présidente Hélène Marchais, secrétaire Sophie Le Gall, sept élus), « Décisions Prises » (prime d'intéressement de 1 150 euros versée en avril 2026, télétravail jusqu'à deux jours par semaine, restaurant d'entreprise de Nantes en janvier 2026) et « Points Reportés » (horaires d'été de l'atelier de Cholet, en décembre). Tout y est exact par rapport au document. [Vérifié] (capture `docs/ragflow/img/07-knowledge-compilation/02-carte-mentale.png` ; `corpus/documents/cse-2025-10-14.md`)
 
 ### Pour aller plus loin
 
-- Le résultat varie d'un passage à l'autre (23 puis 35 entités) : le modèle découpe plus ou moins finement.
-- Sur un document court et avec le modèle sur GPU, la compilation coûte quelques dizaines de secondes. Sur le corpus complet, ou sur CPU (environ 16 jetons/s contre 40 à 60 ici), le temps grandit avec le nombre de passages : plusieurs minutes à plusieurs dizaines de minutes [Estimation].
+- Le résultat peut varier d'un passage à l'autre : seul le second essai a été archivé (35 entités) [Estimation].
+- Sur un document court et avec le modèle sur GPU, la compilation coûte quelques dizaines de secondes. Sur le corpus complet, ou sur CPU (environ 15 à 17 jetons/s contre 30 à 62 relevés ici, `outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log`), le temps grandit avec le nombre de passages : plusieurs minutes à plusieurs dizaines de minutes [Estimation].
 - Wiki, Tree, PageIndex et Timeline n'ont pas été essayés : [À tester].
 
 ## Dépannage
