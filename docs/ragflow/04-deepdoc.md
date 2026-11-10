@@ -52,7 +52,7 @@ Pour comparaison, Open Notebook 1.15.1 ne lisait pas ce scan (0 question sur 4) 
 
 ### Essentiel
 
-Les tableaux du rapport annuel sont restitués sous forme de tableau (lignes et colonnes) dans le passage, avec leur titre. Le test de récupération montre par exemple le tableau « 5. Effectifs par site » (Nantes 268, Cholet 97, Lyon 31, Bruxelles 16, total 412). Les dix questions de type tableau du banc obtiennent la bonne réponse. [Vérifié] (`outils/resultats/ragflow/banc-2026-11-09-defaut.json` ; texte de la page relevé par `captures.py`, scénario `decoupage`)
+Les tableaux du rapport annuel sont restitués sous forme de tableau (lignes et colonnes) dans le passage, avec leur titre. Le test de récupération montre par exemple le tableau « 5. Effectifs par site » (Nantes 268, Cholet 97, Lyon 31, Bruxelles 16, total 412). Les dix questions de type tableau du banc obtiennent la bonne réponse. [Vérifié] (`outils/resultats/ragflow/banc-2026-11-09-defaut.json` ; texte de la page relevé par `captures.py`, archivés dans `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/`, scénario `decoupage`)
 
 ### Pour aller plus loin
 
