@@ -72,11 +72,11 @@ Ces trois gestes sont décrits d'après l'interface [Source] : la base « Démo 
 
 ![Documents de la base Démo Vélanor](img/02-prise-en-main/05-documents.png)
 
-Sur la machine d'essai, les 9 documents du corpus (1 Mo) donnent 26 passages en 52 à 61 s, OCR du PDF scanné compris. [Vérifié] (`outils/resultats/ragflow/demo-2026-11-09.log`, `outils/resultats/ragflow/banc-2026-11-09-defaut.json`)
+Sur la machine d'essai, les 9 documents du corpus (1 Mo) donnent 26 passages en 52 à 56 s, OCR du PDF scanné compris. [Vérifié] (`outils/resultats/ragflow/demo-2026-11-09.log`, `outils/resultats/ragflow/banc-2026-11-09-defaut.json`)
 
 ### Pour aller plus loin
 
-- Même dans une base réglée sur « General », RAGFlow choisit un gabarit adapté pour certains formats : la présentation `strategie-2026.pptx` apparaît avec le gabarit « Presentation ». [Vérifié] (texte de la page relevé par `captures.py`)
+- Même dans une base réglée sur « General », RAGFlow choisit un gabarit adapté pour certains formats : la présentation `strategie-2026.pptx` apparaît avec le gabarit « Presentation ». [Vérifié] (texte de la page relevé par `captures.py`, archivés dans `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/`)
 - Un bandeau rappelle d'attendre la fin de l'analyse avant de discuter : un assistant ne peut pas être relié à une base dont les documents n'ont encore aucun passage (« doesn't own parsed file »). [Vérifié] (`outils/resultats/ragflow/installation-2026-11-09-verif-essai1.log`)
 - Les onglets « Test de récupération », « Journaux », « Configuration » et « Artifacts » sont décrits dans les manuels [03](03-datasets-et-decoupage.md), [05](05-assistants-et-citations.md) et [07](07-knowledge-compilation.md).
 
@@ -90,7 +90,7 @@ Cliquer sur un document ouvre « Résultat du segment » : à gauche l'aperçu d
 
 ### Pour aller plus loin
 
-Pour le contrat scanné, l'OCR de DeepDoc lit l'essentiel mais colle des mots et confond certains caractères : « Volumeminimalannuel:40 0oo batteries » pour « Volume minimal annuel : 40 000 batteries ». Les quatre questions du banc sur ce scan obtiennent pourtant la bonne réponse. [Vérifié] (texte relevé par `captures.py` ; `outils/resultats/ragflow/banc-2026-11-09-defaut.json`, questions Q15 à Q18) La correction d'un passage est traitée dans le manuel [04](04-deepdoc.md).
+Pour le contrat scanné, l'OCR de DeepDoc lit l'essentiel mais colle des mots et confond certains caractères : « Volumeminimalannuel:40 0oo batteries » pour « Volume minimal annuel : 40 000 batteries ». Les quatre questions du banc sur ce scan obtiennent pourtant la bonne réponse. [Vérifié] (texte relevé par `captures.py`, archivés dans `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/` ; `outils/resultats/ragflow/banc-2026-11-09-defaut.json`, questions Q15 à Q18) La correction d'un passage est traitée dans le manuel [04](04-deepdoc.md).
 
 ## 5. Créer un assistant et poser une question
 
@@ -119,7 +119,7 @@ Réponse obtenue : « Le prix unitaire des batteries est de 212 euros HT, ce pri
 
 ### Pour aller plus loin
 
-La question coûte environ 1 840 jetons d'entrée pour 54 de sortie : l'essentiel est fait des consignes et des passages retrouvés. C'est ce budget qui doit tenir dans le contexte déclaré ; voir [Qualité et performances](12-qualite-et-performances.md). Les réglages de l'assistant (nombre de passages, poids des mots-clés et des vecteurs, message en cas d'absence de réponse) sont détaillés dans le manuel [05](05-assistants-et-citations.md).
+La question coûte 1 841 jetons d'entrée pour 54 de sortie (`outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`) : l'essentiel est fait des consignes et des passages retrouvés. C'est ce budget qui doit tenir dans le contexte déclaré ; voir [Qualité et performances](12-qualite-et-performances.md). Les réglages de l'assistant (nombre de passages, poids des mots-clés et des vecteurs, message en cas d'absence de réponse) sont détaillés dans le manuel [05](05-assistants-et-citations.md).
 
 ## Dépannage
 
