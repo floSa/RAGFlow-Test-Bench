@@ -142,6 +142,18 @@ def agents(s):
     s.shot(m, "03-canevas"); s.texte("08-canevas")
 
 
+def compilation(s, base):
+    m = "07-knowledge-compilation"
+    s.connexion(); s.francais()
+    s.aller("/datasets"); cliquer(s, base, 4000)
+    cliquer(s, "Artifacts", 5000)
+    s.pg.get_by_text("Wiki", exact=True).first.click(); s.pg.wait_for_timeout(1200)
+    s.shot(m, "01-types-d-artefacts"); s.texte("07-types")
+    import re
+    s.pg.get_by_role("option").filter(has_text=re.compile("mind", re.I)).first.click()
+    s.pg.wait_for_timeout(6000); s.shot(m, "02-carte-mentale"); s.texte("07-carte")
+
+
 if __name__ == "__main__":
     scenario, *args = sys.argv[1:]
     with sync_playwright() as p:
