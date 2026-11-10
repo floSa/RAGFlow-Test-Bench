@@ -1,0 +1,158 @@
+== 2026-11-09T17:55:42+01:00 désinstallation
+À supprimer : projet compose rag-ragflow (conteneurs, volumes, réseau), dossier donnees/ragflow/
+ Container rag-ragflow-minio Stopping 
+ Container rag-ragflow-server Stopping 
+ Container rag-ragflow-nats Stopping 
+ Container rag-ragflow-es01 Stopping 
+ Container rag-ragflow-kvrocks Stopping 
+ Container rag-ragflow-minio Stopped 
+ Container rag-ragflow-minio Removing 
+ Container rag-ragflow-minio Removed 
+ Container rag-ragflow-nats Stopped 
+ Container rag-ragflow-nats Removing 
+ Container rag-ragflow-nats Removed 
+ Container rag-ragflow-kvrocks Stopped 
+ Container rag-ragflow-kvrocks Removing 
+ Container rag-ragflow-kvrocks Removed 
+ Container rag-ragflow-es01 Stopped 
+ Container rag-ragflow-es01 Removing 
+ Container rag-ragflow-es01 Removed 
+ Container rag-ragflow-server Stopped 
+ Container rag-ragflow-server Removing 
+ Container rag-ragflow-server Removed 
+ Container rag-ragflow-mysql Stopping 
+ Container rag-ragflow-mysql Stopped 
+ Container rag-ragflow-mysql Removing 
+ Container rag-ragflow-mysql Removed 
+ Volume rag-ragflow_kvrocks_data Removing 
+ Volume rag-ragflow_esdata01 Removing 
+ Volume rag-ragflow_minio_data Removing 
+ Volume rag-ragflow_nats_data Removing 
+ Volume rag-ragflow_mysql_data Removing 
+ Network rag-ragflow Removing 
+ Volume rag-ragflow_minio_data Removed 
+ Volume rag-ragflow_kvrocks_data Removed 
+ Volume rag-ragflow_esdata01 Removed 
+ Volume rag-ragflow_mysql_data Removed 
+ Volume rag-ragflow_nats_data Removed 
+ Network rag-ragflow Removed 
+Terminé.
+-> code 0 en 14 s
+après désinstallation :
+  ls: cannot access 'donnees/ragflow': No such file or directory
+== 2026-11-09T17:55:56+01:00 installation
+== installer.sh 2026-11-09T17:55:56+01:00
+RAM disponible avant installation : 19610 Mo
+sources : v1.0.0 (db1cd5929a7885a3074547791f5ecc4d2f891739)
+réglages générés : /home/florian/mes_projets/Tutoriels/RAGFlow-Test-Bench/donnees/ragflow/ragflow.env
+ Network rag-ragflow Creating 
+ Volume rag-ragflow_nats_data Creating 
+ Volume rag-ragflow_nats_data Creating 
+ Volume rag-ragflow_kvrocks_data Creating 
+ Network rag-ragflow Creating 
+ Volume rag-ragflow_kvrocks_data Creating 
+ Volume rag-ragflow_mysql_data Creating 
+ Volume rag-ragflow_minio_data Creating 
+ Volume rag-ragflow_mysql_data Creating 
+ Volume rag-ragflow_minio_data Creating 
+ Volume rag-ragflow_esdata01 Creating 
+ Volume rag-ragflow_esdata01 Creating 
+ Volume rag-ragflow_nats_data Created 
+ Volume rag-ragflow_nats_data Created 
+ Volume rag-ragflow_minio_data Created 
+ Volume rag-ragflow_minio_data Created 
+ Volume rag-ragflow_esdata01 Created 
+ Volume rag-ragflow_esdata01 Created 
+ Volume rag-ragflow_kvrocks_data Created 
+ Volume rag-ragflow_kvrocks_data Created 
+ Network rag-ragflow Created 
+ Network rag-ragflow Created 
+ Container rag-ragflow-kvrocks Creating 
+ Container rag-ragflow-nats Creating 
+ Container rag-ragflow-minio Creating 
+ Container rag-ragflow-es01 Creating 
+ Volume rag-ragflow_mysql_data Created 
+ Volume rag-ragflow_mysql_data Created 
+ Container rag-ragflow-mysql Creating 
+ Container rag-ragflow-minio Created 
+ Container rag-ragflow-nats Created 
+ Container rag-ragflow-kvrocks Created 
+ Container rag-ragflow-es01 Created 
+ Container rag-ragflow-mysql Created 
+ Container rag-ragflow-server Creating 
+ Container rag-ragflow-server Created 
+ Container rag-ragflow-es01 Starting 
+ Container rag-ragflow-mysql Starting 
+ Container rag-ragflow-kvrocks Starting 
+ Container rag-ragflow-nats Starting 
+ Container rag-ragflow-minio Starting 
+ Container rag-ragflow-es01 Started 
+ Container rag-ragflow-mysql Started 
+ Container rag-ragflow-mysql Waiting 
+ Container rag-ragflow-kvrocks Started 
+ Container rag-ragflow-nats Started 
+ Container rag-ragflow-minio Started 
+ Container rag-ragflow-mysql Healthy 
+ Container rag-ragflow-server Starting 
+ Container rag-ragflow-server Started 
+healthz (9380) : HTTP 200 après 38 s
+{"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
+interface : HTTP 200
+rag-ragflow-server Up 15 seconds 127.0.0.1:9380-9381->9380-9381/tcp, 127.0.0.1:8088->80/tcp
+rag-ragflow-mysql Up 36 seconds (healthy) 3306/tcp, 33060/tcp
+rag-ragflow-minio Up 35 seconds (healthy) 9000/tcp
+rag-ragflow-es01 Up 36 seconds (healthy) 9200/tcp, 9300/tcp
+rag-ragflow-kvrocks Up 36 seconds (healthy) 6666/tcp
+rag-ragflow-nats Up 36 seconds (healthy) 4222/tcp, 6222/tcp, 8222/tcp
+-> code 0 en 39 s
+== 2026-11-09T17:56:35+01:00 configuration
+== configurer.py 2026-11-09T17:56:35
+inscription : {"code": 0, "message": "Banc RAGFlow, welcome aboard!", "data": {"avatar": null, "color_schema": "Bright", "create_date": "2026-11-09T17:56:35", "create_time": 1794243395295, "email": "banc.demo@exemple.fr", "id": "cd20278a447e43c890972d0b4904756f", "is_active": "1", "is_anonymous": "0", "is_authenticated": "1", "is_superuser": false, "language": "English", "last_login_time": "2026-11-09T17:56:35"
+connexion : code=0 jeton=reçu 
+clé d'API : créée
+fournisseur OpenAI-API-Compatible : {"code": 0, "message": "success"}
+fournisseur VLLM : {"code": 0, "message": "success"}
+instance llm-service-chat (chat) : {"code": 0, "message": "success"}
+défaut chat : {"code": 0, "message": "success", "data": {"models": []}}
+instance llm-service-embed (embedding) : {"code": 0, "message": "success"}
+défaut embedding : {"code": 0, "message": "success", "data": {"models": []}}
+instance voix-locale (asr) : {"code": 0, "message": "success"}
+défaut asr : {"code": 0, "message": "success", "data": {"models": []}}
+langue de l'interface (French) : {"code": 0, "message": "success"}
+modèles par défaut : {"code": 0, "message": "success", "data": {"models": [{"model_provider": "VLLM", "model_instance": "llm-service-chat", "model_name": "gemma4:e4b", "model_id": "a55798b3472e434882171fcafe458bbd", "model_type": "chat", "enable": true}, {"model_provider": "VLLM", "model_instance": "llm-service-embed", "model_name": "bge-m3", "model_id": "192bf2f4cb114ffc9d914d693f160680", "model_type": "embedding", "
+-> code 0 en 0 s
+== 2026-11-09T17:56:35+01:00 vérification minimale
+dataset créé : 631de059c60342e6843d441f47e1111d gabarit=general embedding=192bf2f4cb114ffc9d914d693f160680
+document téléversé : cse-2025-10-14.md
+SDK parse_documents : [('e12920356aab40e28dfefdf061747228', 'DONE', 4, 159)] en 2.2 s
+document juste après : run=0 progress=1 chunks=4 jetons=159
+attente des compteurs (client.attendre_analyse) : {'cse-2025-10-14.md': {'fini': True, 'echec': False, 'progress': 1, 'chunks': 4, 'jetons': 159, 'message': ''}} après 0.0 s de plus
+assistant créé : 1289de2d1e4643f7ab174e1416a1a27b llm=gemma4:e4b@llm-service-chat@VLLM
+question : Quelle est la date de la réunion du CSE et quels sujets ont été abordés ?
+SDK Session.ask : ÉCHEC Exception: Not Found: /api/v1/chats/1289de2d1e4643f7ab174e1416a1a27b/completions
+HTTP POST /api/v1/chat/completions : statut 200 en 7.9 s
+réponse : La réunion du Comité Social et Économique (CSE) a eu lieu le 14 octobre 2025 [ID:0].
+
+Les sujets abordés et les décisions prises incluent :
+*   La question des horaires d'été de l'atelier de Cholet a été reportée à la réunion de décembre [ID:1].
+*   La prime d'intéressement 2025 est fixée à 1 150 euros par salarié, et sera versée en avril 2026 [ID:3].
+*   Le télétravail est autorisé jusqu'à 2 jours par semaine pour les postes compatibles [ID:3].
+*   Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026 [ID:3].
+
+Les participants à cette réunion comprenaient Hélène Marchais en tant que présidente, Sophie Le Gall en tant que secrétaire du CSE, et sept élus [ID:2].
+
+**Liste des données dans le jeu de données :**
+
+*   **ID: 0**: Contient le compte rendu de la réunion du CSE du 14 octobre 2025 [ID:0].
+*   **ID: 1**: Indique que la question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre [ID:1].
+*   **ID: 2**: Liste les participants : Hélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), et sept élus [ID:2].
+*   **ID: 3**: Détaille les décisions :
+    *   Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026 [ID:3].
+    *   Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles [ID:3].
+    *   Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026 [ID:3].
+citations : 4 passage(s)
+  - cse-2025-10-14.md | positions=[] | '# Compte rendu de la réunion du CSE du 14 octobre 2025\nDocument fictif.'
+  - cse-2025-10-14.md | positions=[] | "## Points reportés\nLa question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre."
+  - cse-2025-10-14.md | positions=[] | '## Participants\nHélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), sept élus.'
+nettoyage : assistant et dataset d'essai supprimés ; durée totale 10.4 s
+-> code 0 en 11 s

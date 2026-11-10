@@ -82,3 +82,66 @@ rag-ragflow-kvrocks Up 23 minutes (healthy) 6666/tcp
 rag-ragflow-nats Up 23 minutes (healthy) 4222/tcp, 6222/tcp, 8222/tcp
 rag-ragflow-es01 Up 23 minutes (healthy) 9200/tcp, 9300/tcp
 rag-ragflow-mysql Up 23 minutes (healthy) 3306/tcp, 33060/tcp
+== installer.sh 2026-11-09T17:55:56+01:00
+RAM disponible avant installation : 19610 Mo
+sources : v1.0.0 (db1cd5929a7885a3074547791f5ecc4d2f891739)
+réglages générés : /home/florian/mes_projets/Tutoriels/RAGFlow-Test-Bench/donnees/ragflow/ragflow.env
+ Network rag-ragflow Creating 
+ Volume rag-ragflow_nats_data Creating 
+ Volume rag-ragflow_nats_data Creating 
+ Volume rag-ragflow_kvrocks_data Creating 
+ Network rag-ragflow Creating 
+ Volume rag-ragflow_kvrocks_data Creating 
+ Volume rag-ragflow_mysql_data Creating 
+ Volume rag-ragflow_minio_data Creating 
+ Volume rag-ragflow_mysql_data Creating 
+ Volume rag-ragflow_minio_data Creating 
+ Volume rag-ragflow_esdata01 Creating 
+ Volume rag-ragflow_esdata01 Creating 
+ Volume rag-ragflow_nats_data Created 
+ Volume rag-ragflow_nats_data Created 
+ Volume rag-ragflow_minio_data Created 
+ Volume rag-ragflow_minio_data Created 
+ Volume rag-ragflow_esdata01 Created 
+ Volume rag-ragflow_esdata01 Created 
+ Volume rag-ragflow_kvrocks_data Created 
+ Volume rag-ragflow_kvrocks_data Created 
+ Network rag-ragflow Created 
+ Network rag-ragflow Created 
+ Container rag-ragflow-kvrocks Creating 
+ Container rag-ragflow-nats Creating 
+ Container rag-ragflow-minio Creating 
+ Container rag-ragflow-es01 Creating 
+ Volume rag-ragflow_mysql_data Created 
+ Volume rag-ragflow_mysql_data Created 
+ Container rag-ragflow-mysql Creating 
+ Container rag-ragflow-minio Created 
+ Container rag-ragflow-nats Created 
+ Container rag-ragflow-kvrocks Created 
+ Container rag-ragflow-es01 Created 
+ Container rag-ragflow-mysql Created 
+ Container rag-ragflow-server Creating 
+ Container rag-ragflow-server Created 
+ Container rag-ragflow-es01 Starting 
+ Container rag-ragflow-mysql Starting 
+ Container rag-ragflow-kvrocks Starting 
+ Container rag-ragflow-nats Starting 
+ Container rag-ragflow-minio Starting 
+ Container rag-ragflow-es01 Started 
+ Container rag-ragflow-mysql Started 
+ Container rag-ragflow-mysql Waiting 
+ Container rag-ragflow-kvrocks Started 
+ Container rag-ragflow-nats Started 
+ Container rag-ragflow-minio Started 
+ Container rag-ragflow-mysql Healthy 
+ Container rag-ragflow-server Starting 
+ Container rag-ragflow-server Started 
+healthz (9380) : HTTP 200 après 38 s
+{"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
+interface : HTTP 200
+rag-ragflow-server Up 15 seconds 127.0.0.1:9380-9381->9380-9381/tcp, 127.0.0.1:8088->80/tcp
+rag-ragflow-mysql Up 36 seconds (healthy) 3306/tcp, 33060/tcp
+rag-ragflow-minio Up 35 seconds (healthy) 9000/tcp
+rag-ragflow-es01 Up 36 seconds (healthy) 9200/tcp, 9300/tcp
+rag-ragflow-kvrocks Up 36 seconds (healthy) 6666/tcp
+rag-ragflow-nats Up 36 seconds (healthy) 4222/tcp, 6222/tcp, 8222/tcp
