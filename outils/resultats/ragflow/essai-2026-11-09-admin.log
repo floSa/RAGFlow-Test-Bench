@@ -1,0 +1,6 @@
+== 2026-11-09T18:42:08 API d'administration
+connexion (mot de passe en base64) : HTTP 200, code 0, jeton reçu ; 'Welcome back!'
+GET /version : HTTP 200 ; {"code": 0, "message": "success", "data": {"version": "v1.0.0", "version_type": "open source"}}
+GET /users : HTTP 200 ; {"code": 0, "message": "List users", "data": [{"create_date": 1794243664149, "email": "banc.demo@exemple.fr", "is_active": "1", "is_superuser": false, "nickname": "Banc RAGFlow"}, {"create_date": 1794243661182, "email": "admin@ragflow.io", "is_active": "1", "is_superuser": true, "nickname": "admin"}], "total": 2}
+GET /services : HTTP 200 ; {"code": 0, "message": "Get all services", "data": [{"type": "database", "name": "mysql", "host": "mysql", "port": 3306, "status": "alive", "elapsed": "0", "message": ""}, {"type": "doc_engine", "name": "elasticsearch", "host": "es01", "port": 9200, "status": "alive", "elapsed": "0", "message": ""}, {"type": "storage_engine", "name": "minio", "host": "minio", "port": 9000, "status": "alive", "elapsed": "0", "message": ""}, {"type": "cache", "name": "kvrocks", "host": "kvrocks", "port": 6379, "status": "alive", "elapsed": "0", "message": ""}, {"type": "message_queue", "name": "nats", "host": "n
+GET /hardware : HTTP 200 ; {"code": 0, "message": "SUCCESS", "data": {"Arch": "amd64", "CPUCores": 12, "Memory": 33655750656, "OS": "linux"}}
