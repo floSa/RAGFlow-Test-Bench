@@ -43,4 +43,10 @@ Première page à lire : [présentation](presentation.md). Plan détaillé : [pl
 
 ## Ce qui reste ouvert
 
-Tenu à jour en fin de mission ; voir aussi `JOURNAL.md`, rubrique « Décisions en attente ».
+| Sujet | État |
+|---|---|
+| Non traité | mise à jour de version (aucune plus récente que v1.0.0) ; reranking ; second modèle et modèle de moins de 3 milliards de paramètres ; Wiki, Tree, PageIndex, Timeline ; gabarit Picture ; gabarits d'agents qui demandent le web |
+| Estimé, non mesuré | profil sans GPU (manuel [12](12-qualite-et-performances.md)) |
+| Décisions en attente | montée de vLLM dans LLM-Service ; port 8088 au lieu de 8080 ; création du dépôt distant ; reranker ; ports `0.0.0.0` de services hors mission (voir [rapport](../../RAPPORT-ragflow.md)) |
+| Ménage à faire à la main | images Docker gardées en cache (`docker rmi`) ; sauvegarde de test dans `donnees/sauvegardes/` |
+| Écarts de version | images annexes à la version du compose (Elasticsearch 8.11.3, Kvrocks 2.16.0, NATS 2.14.2, MinIO d'août 2026) : plus récentes disponibles, non montées sans essai |
