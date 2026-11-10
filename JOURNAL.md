@@ -63,3 +63,8 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Relecture adversariale par un sous-agent neuf : environ 95 affirmations confirmées, 21 écarts. Traitement : preuves archivées (`outils/resultats/ragflow/preuves-2026-11-09/` : arguments et débit de vLLM, port 8080, disque MySQL, textes des captures, gabarits de compilation, état, journal du serveur sans accès sortant mentionné ; `essai-2026-11-09-sdk-defauts.log`) ; valeurs corrigées (indexation 52 à 56 s, prompt de 1 841 à 3 301 jetons, réservation GPU 80 % et 5 %, unités en Gio) ; profil sans GPU recalculé avec les mesures de `qwen3:4b-instruct` (30 à 50 s par question à 4 096 jetons) au lieu de celles de ministral ; requalifications (premier essai de carte mentale non archivé, absence d'envoi réseau en [Estimation], « 4 096 suffit, 3 072 échoue »).
 - Résultat : `verifier_docs.py` à 0 point (`outils/resultats/ragflow/verifier-docs-2026-11-09.txt`).
 - Prochaine étape : preuves du critère de fin (§10), commit final.
+
+### 2026-11-09 19:08 — Fin de mission
+
+- Critère de fin du §10 vérifié et montré : rapport présent avec les rubriques de la phase H ; `verifier_docs.py` à 0 point ; six exemples dans `exemples/ragflow/sorties_verifiees.txt` ; neuf bancs `banc-*.json` ; `http://127.0.0.1:8088/` en HTTP 200 et santé « ok » ; ports de `rag-ragflow-server` sur `127.0.0.1` seulement ; README, LICENSE, présentation (deux configurations minimales) et `versions-2026-11-09.json` présents ; `git status` propre.
+- RAGFlow laissé en marche avec le jeu de démonstration. Aucun `git push` (interdit par la fiche).
