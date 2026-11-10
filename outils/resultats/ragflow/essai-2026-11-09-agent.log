@@ -1,0 +1,13 @@
+== 2026-11-09T18:28:55 essai d'agent
+gabarits d'agents : 19 ; ['Your starter dataset chatbot', 'WebSearch Assistant', 'Interactive Agent', 'Trip planner', 'Title Chunker', 'Text-to-SQL data expert', 'Stock market research assistant', 'Smart customer service specialist', 'SEO article writer', 'Reflective academic paper generator', 'Photo text translator', 'SEO article writer', 'Deep research', "Beginner's data analytics assistant", None, 'Customer feedback disptacher', 'Chunk Summary', 'CAJAL scientific paper agent', 'Advanced Ingestion Pipeline']
+gabarit retenu : 9 ; composants : ['Agent:StalePandasDream', 'Message:BrownPugsStick', 'begin']
+réglages appliqués : {'dataset_ids': 2, 'llm_id': 2}
+création : code 0 'success'
+agent : ec1666c69d27407bb38b1234a0f7416b
+HTTP, question : Qui est le directeur de production de Vélanor ?
+  3.0 s ; code 0 ; réponse : '## Answer\n\nAccording to the knowledge base, Julien Moreau is the production director at Vélanor. This information comes from a voicemail recorded on November 3rd.'
+  documents en référence : ['faq-sav.html', 'message-vocal-production.mp3', 'rapport-annuel-2025.pdf', 'strategie-2026.pptx', 'supplier-audit-batterix-en.pdf']
+HTTP, question : Quel est le plafond des pénalités de retard du contrat Batterix ?
+  3.6 s ; code 0 ; réponse : '## Answer\n\nAccording to the documentation, the penalty for delay under the supply contract with Batterix is **0.5% of the order amount per day of delay, capped at 8% of the order amount**.\n\nThis information is found in the document titled "CONTRATD\'APPROVISIONNEMENTN°BX-2025-117" (Article 6).'
+  documents en référence : ['contrat-batterix-scan.pdf', 'faq-sav.html', 'procedure-batteries.docx', 'rapport-annuel-2025.pdf', 'stocks-octobre-2025.xlsx', 'supplier-audit-batterix-en.pdf']
+SDK Agent.create_session + Session.ask : 5.2 s ; '## Answer\n\nAccording to the documentation, the number of employees (Effectif) for Vélanor as of December 31, 2025, is **412 employees** (412 salariés).\n\nThis information is detailed in the following s'
