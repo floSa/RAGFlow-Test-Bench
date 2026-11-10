@@ -87,7 +87,9 @@ Dans l'interface, chaque phrase de la réponse porte un renvoi `[1]`, `[2]`… e
 
 ### Essentiel
 
-Quand aucun passage ne passe le seuil, l'assistant renvoie son « message de réponse vide », en anglais par défaut : « The answer you are looking for is not found in the dataset! ». Les quatre questions pièges du banc (sans réponse dans le corpus) sont toutes correctement refusées, trois fois par ce message et une fois par une phrase du modèle. [Vérifié] (`banc-2026-11-09-defaut.json`, Q35 à Q38)
+Quand aucun passage ne passe le seuil, l'assistant renvoie son « message de réponse vide », en anglais par défaut : « The answer you are looking for is not found in the dataset! ». Les quatre questions pièges du banc (sans réponse dans le corpus) sont toutes correctement refusées par cette phrase. [Vérifié] (`banc-2026-11-09-defaut.json`, Q35 à Q38)
+
+La phrase arrive suivie d'un renvoi (« …not found in the dataset! [ID:2] ») : des passages ont bien été retrouvés, et c'est le modèle qui l'écrit, sans doute parce que les consignes de l'assistant la lui fournissent [Estimation]. Un renvoi accompagne donc parfois un refus : il ne prouve pas qu'une réponse a été trouvée.
 
 ### Pour aller plus loin
 
