@@ -103,7 +103,7 @@ Installation complète, mémoire et désinstallation : [manuel 01](docs/ragflow/
 
 Écarts au compose officiel (fichier `outils/ragflow/compose.override.yml`) : ports sur `127.0.0.1` ou retirés, conteneurs `rag-ragflow-*`, images figées, volumes liés à `donnees/ragflow/`, réseaux `llm-net` et `rag-local`, réglages hors du `docker/.env` suivi.
 
-LLM-Service (dépôt séparé, branche `service-vllm`) : `gemma4:e4b` (`--max-model-len 32768`, `--gpu-memory-utilization 0.8`, `--kv-cache-dtype fp8`) et `bge-m3`. Dans RAGFlow : fournisseur `VLLM`, contexte déclaré 16 384 jetons ; transcription par `OpenAI-API-Compatible` (`rag-speaches`).
+LLM-Service (dépôt séparé, branche `service-vllm`) : `gemma4:e4b` (`--max-model-len 32768`, `--gpu-memory-utilization 0.8`, `--kv-cache-dtype fp8`, relevés dans [le journal de vLLM](outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log)) et `bge-m3`. Dans RAGFlow : fournisseur `VLLM`, contexte déclaré 16 384 jetons ; transcription par `OpenAI-API-Compatible` (`rag-speaches`).
 
 ## API / Endpoints
 
@@ -128,7 +128,7 @@ uv run python outils/ragflow/banc.py --etiquette defaut --reindexer
 python3 outils/communs/verifier_docs.py
 ```
 
-Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](outils/resultats/ragflow/installation-2026-11-09-verif.log)) ; six exemples en code 0 ([sorties vérifiées](exemples/ragflow/sorties_verifiees.txt)) ; banc 33/34 ([résultat](outils/resultats/ragflow/banc-2026-11-09-defaut.md)) ; documentation à 0 point.
+Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](outils/resultats/ragflow/installation-2026-11-09-verif.log)) ; six exemples en code 0 ([sorties vérifiées](exemples/ragflow/sorties_verifiees.txt)) ; banc 33/34 ([résultat](outils/resultats/ragflow/banc-2026-11-09-defaut.md)) ; documentation à 0 point ([sortie du vérificateur](outils/resultats/ragflow/verifier-docs-2026-11-09.txt)).
 
 ## Structure du projet
 
@@ -211,7 +211,7 @@ Entreprise fictive Vélanor (vélos électriques), 9 documents, 1 Mo, empreintes
 - Un compte créé par l'API avec un mot de passe en clair ne peut pas se connecter dans le navigateur (le serveur compare `base64(mot de passe)`).
 - `Session.ask` du SDK 1.0.0 répond 404 pour un assistant ; `parse_documents` peut rendre la main avant la fin.
 - `reference.chunks` liste tous les passages fournis au modèle, pas seulement ceux qu'il cite (`[ID:n]`).
-- En dessous de 4 096 jetons de contexte, les réponses deviennent des messages d'erreur, avec un code d'API 0.
+- À 3 072 jetons de contexte, 12 réponses sur 38 deviennent des messages d'erreur, avec un code d'API 0 ; 4 096 suffit.
 - Un site interne est refusé par la synchronisation sitemap (protection contre les adresses privées).
 - L'interface reste en anglais tant que le sélecteur de langue n'est pas utilisé.
 
@@ -219,9 +219,9 @@ Entreprise fictive Vélanor (vélos électriques), 9 documents, 1 Mo, empreintes
 
 | Banc | Exactes (34) | Refus pièges (4) | Bon document cité | Médiane | Pic RAM application |
 |---|---|---|---|---|---|
-| Défaut | 33 | 4 | 34 | 1,28 s | 5,4 Go |
-| Vecteurs 0,7, `top_n` 8 | 34 | 4 | 34 | 1,36 s | 5,0 Go |
-| Mode agentique | 30 | 4 | 29 | 4,52 s | 5,3 Go |
+| Défaut | 33 | 4 | 34 | 1,28 s | 5,3 Gio |
+| Vecteurs 0,7, `top_n` 8 | 34 | 4 | 34 | 1,36 s | 4,9 Gio |
+| Mode agentique | 30 | 4 | 29 | 4,52 s | 5,2 Gio |
 
 Détail et variantes : [manuel 12](docs/ragflow/12-qualite-et-performances.md) ; comparaison avec Open Notebook : [docs/README.md](docs/README.md).
 
