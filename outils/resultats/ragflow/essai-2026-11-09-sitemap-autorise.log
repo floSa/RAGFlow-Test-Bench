@@ -1,0 +1,14 @@
+== 2026-11-09T18:31:51 essai sitemap
+site de test : 94f13b4472c5
+depuis le serveur RAGFlow : 172.25.0.4      rag-site-test
+HTTP 200
+création du connecteur : {"code": 0, "message": "success", "data": {"id": "a236d3160329421ea3aa865b0bf0d6fe", "tenant_id": "0b4a819c92bf4364ae34fab63b53871c", "name": "Site Vélanor (test)", "source": "sitemap", "input_type": "poll", "config": {"follow_pdf_links": false, "restrict_pdf_to_domain": true, "sitemap_url": "http:/
+test du connecteur : {"code": 0, "message": "success"}
+liaison à la base : {"code": 0, "message": "success", "data": {"chunk_count": 0, "connectors": [{"id": "a236d3160329421ea3aa865b0bf0d6fe", "source": "sitemap", "name": "Site Vélanor (test)", "auto_parse": "1", "status": 
+journaux de synchronisation : {"code": 0, "message": "success", "data": {"logs": [{"id": "2e65a39745c1402b97a7c4434236f50b", "connector_id": "a236d3160329421ea3aa865b0bf0d6fe", "task_type": "sync", "kb_id": "fb2a395d49254eeeaf4f549b3075f3e9", "update_date": "2026-11-09 18:31:57", "new_docs_indexed": 0, "total_docs_indexed": 2, "docs_removed_from_index": 0, "error_msg": "", "error_count": 0, "time_started": "2026-11-09 18:31:57", "refresh_freq": 30, "prune_freq": 5, "kb_name": "Essai-sitemap", "status": "5"}, {"id": "7dd9dffa170a479eae034093f9fdc1b7", "connector_id": "a236d3160329421ea3aa865b0bf0d6fe", "task_type": "sync", "kb_id": "fb2a395d49254eeeaf4f549b3075f3e9", "update_date": "2026-11-09 18:31:57", "new_docs_indexed": 2, "total_docs_indexed": 2, "docs_removed_from_index": 0, "error_msg": "", "error_count": 0, "tim
+documents de la base après 40 s : [('rag-site-test_salon-2026.html.md', 2), ('rag-site-test_index.html.md', 2)]
+suppression du connecteur : {'code': 0, 'message': 'success'}
+journal du serveur (lignes sitemap/connector/ssrf) :
+
+site de test supprimé
+réglage rétabli : ALLOW_ANY_HOST=0
