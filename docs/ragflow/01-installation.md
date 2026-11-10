@@ -26,7 +26,7 @@
 
 | Élément | Valeur relevée sur la machine d'essai | Besoin de RAGFlow seul |
 |---|---|---|
-| RAM visible dans WSL | 32 096 Mo | 3,7 Gio au repos, 5,2 Gio en pointe (voir section 6) |
+| RAM visible dans WSL | 32 096 Mo | 3,7 Gio au repos, 5,3 Gio en pointe (voir section 6) |
 | Disque libre | 525 Go | 3,1 Go d'images + 1,2 Go de données à vide |
 | `vm.max_map_count` de la VM de Docker | 1 048 576 | 262 144 au moins pour Elasticsearch |
 | Docker et Compose | 29.9.3 et 5.7.0 | Compose avec les balises `!override` et `!reset` |
@@ -123,6 +123,10 @@ python3 outils/ragflow/configurer.py
 
 [Vérifié] (`outils/resultats/ragflow/configuration-2026-11-09.log`)
 
+Résultat dans l'interface (menu du compte, « Fournisseurs de modèles ») :
+
+![Modèles par défaut déclarés](img/01-installation/01-modeles-par-defaut.png)
+
 ### Pour aller plus loin
 
 - Le compte `admin@ragflow.io`, créé au premier démarrage par l'option `--init-superuser`, sert à l'administration (port 9381). Il reçoit un refus sur l'API ordinaire : le travail se fait avec un compte inscrit normalement. Son mot de passe est la valeur `ADMIN_DEFAULT_PASSWORD` générée dans `donnees/ragflow/ragflow.env`. [Source] (`internal/handler/auth.go`)
@@ -170,13 +174,13 @@ Le SDK `ragflow-sdk` 1.0.0 exige Python 3.13. Le dépôt l'installe dans `.venv/
 
 | Conteneur | RAM au repos | RAM en pointe (banc par défaut, indexation comprise) |
 |---|---|---|
-| `rag-ragflow-es01` (Elasticsearch) | 2 532 Mio | 2 570 Mio |
-| `rag-ragflow-server` (RAGFlow, DeepDoc compris) | 581 Mio | 1 910 Mio |
-| `rag-ragflow-mysql` | 513 Mio | 520 Mio |
-| `rag-ragflow-minio` | 79 Mio | 95 Mio |
-| `rag-ragflow-kvrocks` | 20 Mio | 22 Mio |
+| `rag-ragflow-es01` (Elasticsearch) | 2 532 Mio | 2 749 Mio |
+| `rag-ragflow-server` (RAGFlow, DeepDoc compris) | 581 Mio | 1 980 Mio |
+| `rag-ragflow-mysql` | 513 Mio | 529 Mio |
+| `rag-ragflow-minio` | 79 Mio | 103 Mio |
+| `rag-ragflow-kvrocks` | 20 Mio | 24 Mio |
 | `rag-ragflow-nats` | 8 Mio | 9 Mio |
-| **Total de l'application** | **3 730 Mio** | **5 166 Mio** |
+| **Total de l'application** | **3 730 Mio** | **5 394 Mio** |
 
 Hors application : `vllm-central` 6,5 Gio de RAM, `vllm-embed` 4,1 Gio, 15,2 Go de VRAM occupés sur 16 Go. [Vérifié] (`outils/resultats/ragflow/ressources-2026-11-09-repos.txt`, `outils/resultats/ragflow/banc-2026-11-09-defaut.json`)
 
@@ -190,7 +194,7 @@ Hors application : `vllm-central` 6,5 Gio de RAM, `vllm-embed` 4,1 Gio, 15,2 Go 
 ### Pour aller plus loin
 
 - Elasticsearch pèse le plus : son tas Java est réglé par défaut à la moitié de `MEM_LIMIT`. Avec 4 Gio, il reste vers 2,5 Gio.
-- Le serveur RAGFlow passe de 0,6 à 1,9 Gio pendant l'analyse : les modèles DeepDoc (OCR, mise en page) tournent dans son processus, sur CPU.
+- Le serveur RAGFlow passe de 0,6 à 2,0 Gio pendant l'analyse : les modèles DeepDoc (OCR, mise en page) tournent dans son processus, sur CPU.
 - Sur le disque, MySQL préalloue 1 Go de journal de reprise (`#innodb_redo`) dès le premier démarrage ; les données réelles du banc y occupent 37 Mo. [Vérifié] (`outils/resultats/ragflow/ressources-2026-11-09-apres-bancs.txt`)
 
 ## 7. Démarrer, arrêter, mettre à jour, désinstaller
