@@ -1,0 +1,10 @@
+== 2026-11-09T18:34:02 Knowledge Compilation, gabarit mind_map
+groupe de gabarits : {"code": 0, "message": "success", "data": {"id": "91b3ffe6f4dc4a429714c5faf86b4f87", "name": "Essai-KC-mind_map", "description": "", "scope": "file", "create_time": "2026-11-09 17:34:02", "update_time": "2026-11-09 17:34:02", "templates": [{"id": "00
+création du pipeline : {"code": 0, "message": "success", "data": {"id": "33967df6d9344b10a0ad9c09c6bfa30b", "user_id": "0b4a819c92bf4364ae34fab63b53871c", "tenant_id": "0b4a819c92bf4364ae34fab63b53871c", "tags": "", "title": "Essai-KC-mind_map", "permission": "me", "releas
+publication : {"code": 0, "message": "success", "data": {"id": "89365a21a337437c95b71e3e3217b104", "user_canvas_id": "33967df6d9344b10a0ad9c09c6bfa30b", "title": "Essai-KC-mind_map_2026-11-09 18:34:02", "release": true, "dsl": {"components": {"Compiler:EssaiBanc":
+base en mode pipeline : {"code": 0, "message": "success", "data": {"chunk_count": 0, "create_time": 1794245642450, "created_by": "0b4a819c92bf4364ae34fab63b53871c", "document_count": 0, "embedding_model": "ece4e1d9c86c4344b5807440213bf07a", "id": "4e7dacc3b5944c64812481f56d
+ingestion lancée : {"code": 0, "message": "success", "data": {"success_count": 1}}
+      0 s : document progress=0 passages=0 ; compilation {"kind": "mindmap", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "updated_at": "0001-01-01T00:00:00Z"}
+      5 s : document progress=0.6666666666666666 passages=0 ; compilation {"kind": "mindmap", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "updated_at": "0001-01-01T00:00:00Z"}
+     60 s : document progress=1 passages=4 ; compilation {"kind": "mindmap", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11-09T18:34:27.46+01:00", "updated_at": "2026-11-09T18:34:27.46+01:00"}
+     65 s : document progress=1 passages=4 ; compilation {"kind": "mindmap", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11-09T18:34:27.46+01:00", "updated_at": "2026-11-09T18:34:27.46+01:00"}
