@@ -1,0 +1,22 @@
+== 2026-11-09T18:46:20 nettoyage des essais
+assistant supprimé : Banc-ctx3072
+assistant supprimé : Banc-gabarit-table
+assistant supprimé : Banc-gabarit-presentation
+assistant supprimé : Banc-gabarit-paper
+assistant supprimé : Banc-hybride-vecteurs07-top8
+assistant supprimé : Banc-agentic
+assistant supprimé : Banc-ctx4096
+assistant supprimé : Banc-defaut
+base supprimée : Essai-KC-knowledge_graph-1836
+base supprimée : Essai-KC-mind_map
+base supprimée : Banc-table
+base supprimée : Banc-presentation
+base supprimée : Banc-paper
+base supprimée : Banc-general
+agent ou pipeline supprimé : Essai-KC-knowledge_graph-1836 (0)
+agent ou pipeline supprimé : Essai-KC-knowledge_graph-1836 (103)
+agent ou pipeline supprimé : Essai-KC-mind_map (0)
+agent ou pipeline supprimé : Essai-KC-mind_map (103)
+groupe de compilation supprimé : Essai-KC-knowledge_graph-1836 (0)
+groupe de compilation supprimé : Essai-KC-mind_map (0)
+restent : bases ['Démo Vélanor', 'Essai-KC-mind_map-1835'] ; assistants ['Démo Vélanor'] ; agents ['Agent démo Vélanor', 'Essai-KC-mind_map-1835', 'Essai-KC-mind_map-1835']
