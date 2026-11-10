@@ -16,8 +16,9 @@ from client import RACINE, client, documents, http  # noqa: E402
 KIND = sys.argv[1] if len(sys.argv) > 1 else "mind_map"
 ART = {"mind_map": "mindmap", "knowledge_graph": "graph", "timeline": "timeline"}.get(KIND, KIND)
 LLM = "gemma4:e4b@llm-service-chat@VLLM"
-NOM = f"Essai-KC-{KIND}"
+NOM = f"Essai-KC-{KIND}-{datetime.datetime.now():%H%M}"
 SORTIE = RACINE / f"outils/resultats/ragflow/essai-{datetime.date.today()}-compilation-{KIND}.log"
+T0 = datetime.datetime.now()
 lignes = [f"== {datetime.datetime.now().isoformat(timespec='seconds')} Knowledge Compilation, gabarit {KIND}"]
 
 
@@ -73,8 +74,10 @@ while time.time() - t0 < 1800:
     etat = http("GET", f"/datasets/{ds.id}/compilation/status", params={"kind": ART}).get("data")
     if int(time.time() - t0) % 60 < 6:
         log(f"  {time.time() - t0:5.0f} s : document progress={d.get('progress')} passages={d.get('chunk_count')} ; compilation {court(etat, 200)}")
-    if isinstance(etat, dict) and etat.get("state") in ("completed", "failed", "error") or (
-            isinstance(etat, dict) and etat.get("error")):
+    # l'état revient à « idle » une fois la compilation faite : la fin se lit à last_completed_at, file vide
+    if isinstance(etat, dict) and (etat.get("error") or etat.get("state") in ("completed", "failed", "error") or (
+            etat.get("last_completed_at") and not etat.get("backlog") and not etat.get("inflight")
+            and float(d.get("progress") or 0) >= 1)):
         break
     time.sleep(5)
 log(f"fin du suivi après {time.time() - t0:.0f} s ; état : {court(etat, 400)}")
