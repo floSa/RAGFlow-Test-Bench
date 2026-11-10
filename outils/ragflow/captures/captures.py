@@ -106,6 +106,26 @@ def prise_en_main(s):
     cliquer(s, "Contrat Batterix", 4000); s.shot(m, "08-conversation"); s.texte("02-conversation")
 
 
+def decoupage(s):
+    m = "03-datasets-et-decoupage"
+    s.connexion(); s.francais()
+    s.aller("/datasets"); cliquer(s, "Démo Vélanor", 4000)
+    cliquer(s, "Configuration", 3000); s.shot(m, "01-configuration", plein=True); s.texte("03-configuration")
+    cliquer(s, "Test de récupération", 3000)
+    champ = s.pg.locator("textarea:visible").first
+    champ.fill("pénalités de retard du contrat Batterix")
+    s.pg.get_by_role("button", name="Test", exact=True).first.click()
+    s.pg.wait_for_timeout(5000); s.shot("05-assistants-et-citations", "01-test-de-recuperation"); s.texte("05-test-recuperation")
+
+
+def assistant_reglages(s):
+    m = "05-assistants-et-citations"
+    s.connexion(); s.francais()
+    s.aller("/chats"); cliquer(s, "Démo Vélanor", 4000)
+    s.pg.locator("button:has(svg.lucide-settings), [class*=setting]").last.click()
+    s.pg.wait_for_timeout(2500); s.shot(m, "02-reglages-assistant", plein=True); s.texte("05-reglages")
+
+
 if __name__ == "__main__":
     scenario, *args = sys.argv[1:]
     with sync_playwright() as p:
