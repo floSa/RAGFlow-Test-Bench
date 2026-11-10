@@ -45,13 +45,13 @@ Sur ce corpus et avec ce petit modèle, le mode agentique est moins juste et 3,5
 
 ### Pour aller plus loin
 
-Le mode agentique gagne pourtant sur les questions multi-documents (3 sur 3, contre 2 sur 3) : il trouve seul le délai contractuel de Batterix dans le contrat scanné (Q30). Il perd quatre questions simples (Q06, Q07, Q26, Q27). [Vérifié] (même fichier, `par_type`)
+Le mode agentique gagne pourtant sur les questions multi-documents (3 sur 3, contre 2 sur 3) : il trouve seul le délai contractuel de Batterix dans le contrat scanné (Q30). Il perd quatre questions pourtant directes : deux de tableau (Q06, Q07) et deux faits simples (Q26, Q27) ; il répond juste à Q24 mais sans citation. [Vérifié] (même fichier, `par_type`)
 
 ## 3. Ce qui se passe quand l'agent échoue
 
 ### Essentiel
 
-Dans les échecs, le modèle ne lance pas de recherche et répond comme s'il n'avait accès à aucun document, par exemple pour Q26 : « Je n'ai pas accès à une base de données contenant les numéros de téléphone des services après-vente… ». La réponse est alors donnée sans citation. [Vérifié] (`banc-2026-11-09-agentic.json`, Q06, Q07, Q26, Q27)
+Dans les échecs, le modèle ne lance pas de recherche et répond comme s'il n'avait accès à aucun document, par exemple pour Q26 : « Je suis désolé, mais je n'ai accès à aucun document ou base de données contenant des numéros de téléphone de service après-vente. » La réponse est alors donnée sans citation. [Vérifié] (`banc-2026-11-09-agentic.json`, Q06, Q07, Q26, Q27)
 
 ### Pour aller plus loin
 
