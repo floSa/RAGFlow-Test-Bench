@@ -46,7 +46,7 @@ Le manuel se lit depuis sa page d'accueil, [docs/ragflow/README.md](docs/ragflow
 |---|---|---|
 | 01 | [Découvrir RAGFlow](docs/ragflow/manuel/01-decouvrir-ragflow.md) | dire à quoi sert RAGFlow, pour qui et avec quelle machine |
 | 02 | [Installer RAGFlow](docs/ragflow/manuel/02-installer-ragflow.md) | installer sans exposition réseau, démarrer, arrêter, désinstaller |
-| 03 | [Premiers pas](docs/ragflow/manuel/03-premiers-pas.md) | se connecter, passer en français, se repérer, déclarer les modèles |
+| 03 | [Premiers pas](docs/ragflow/manuel/03-premiers-pas.md) | se connecter, passer en français, se repérer, brancher les modèles d'un serveur existant, connaître les traitements intégrés |
 | 04 | [Première question en dix minutes](docs/ragflow/manuel/04-premiere-question.md) | obtenir une première réponse citée |
 | 05 | [Ajouter et organiser ses documents](docs/ragflow/manuel/05-ajouter-et-organiser-ses-documents.md) | gérer bases et fichiers, métadonnées, journaux |
 | 06 | [Régler la lecture des documents](docs/ragflow/manuel/06-regler-la-lecture-des-documents.md) | choisir un gabarit, lire un scan, corriger un passage |

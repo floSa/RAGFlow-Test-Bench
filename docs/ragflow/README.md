@@ -20,8 +20,8 @@ Les quatre premiers chapitres mènent, en une heure environ, de rien à une prem
 | N° | Chapitre | Ce qu'on saura faire |
 |---|---|---|
 | 01 | [Découvrir RAGFlow](manuel/01-decouvrir-ragflow.md) | dire à quoi sert RAGFlow, pour qui, avec quelle machine, et employer les mots de base (document, base, passage, citation) |
-| 02 | [Installer RAGFlow](manuel/02-installer-ragflow.md) | installer RAGFlow sous Windows 11 et WSL2, créer le premier compte, le démarrer, l'arrêter et le désinstaller |
-| 03 | [Premiers pas](manuel/03-premiers-pas.md) | se connecter, passer l'interface en français, reconnaître chaque zone de l'écran et déclarer les modèles d'IA |
+| 02 | [Installer RAGFlow](manuel/02-installer-ragflow.md) | installer RAGFlow sous Windows 11 et WSL2 face à un serveur de modèles existant, créer le premier compte, le démarrer, l'arrêter et le désinstaller |
+| 03 | [Premiers pas](manuel/03-premiers-pas.md) | se connecter, passer l'interface en français, reconnaître chaque zone de l'écran , distinguer les modèles à brancher des traitements intégrés (DeepDoc, moteur de recherche) et brancher les modèles d'un serveur existant |
 | 04 | [Première question en dix minutes](manuel/04-premiere-question.md) | créer une base, y analyser deux documents, créer un assistant et vérifier la source de sa réponse |
 | 05 | [Ajouter et organiser ses documents](manuel/05-ajouter-et-organiser-ses-documents.md) | ajouter, renommer, écarter, supprimer et réanalyser des fichiers, leur donner des métadonnées, suivre les analyses et partager un fichier entre bases |
 | 06 | [Régler la lecture des documents](manuel/06-regler-la-lecture-des-documents.md) | choisir le bon gabarit de découpage, régler une base, contrôler la lecture d'un scan et corriger un passage mal lu |
