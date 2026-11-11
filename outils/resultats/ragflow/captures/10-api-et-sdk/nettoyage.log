@@ -1,0 +1,4 @@
+== 2026-11-11T16:13 clé d essai laissée par la première passe du scénario cles (confirmation de suppression non trouvée par le scénario)
+GET /api/v1/system/tokens : 2 clés (clé des scripts du banc, créée le 2026-11-09T18:01:04+01:00 ; clé d essai, créée le 2026-11-11T16:12:34+01:00)
+suppression clé d essai 2026-11-11T16:12:34+01:00 : DELETE /api/v1/system/tokens/<masqué> -> code 0
+restent 1
