@@ -109,3 +109,7 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Incidents : première passe du scénario `cles` sans gestion de la confirmation de suppression, clé d'essai laissée puis supprimée par l'API (`captures/10-api-et-sdk/nettoyage.log`) ; un remplacement de texte mal borné a gonflé le script de captures, reconstruit avant tout commit.
 - Contexte : réduit à 1 024 puis remis à 16 384 (`captures/14-depannage/contexte.log`, contrôlé après nettoyage). Objets « Manuel-… » supprimés (`captures/lot4/nettoyage.log`) ; jeu de démonstration intact. `verifier_docs.py` : 0 point.
 - Prochaine étape : relecture d'ensemble des manuels 00 à 15.
+
+### 2026-11-11 16:35 — Captures élaguées, manuels 03, 05 et 07
+
+- Fait : une capture par action ou écran nouveau, sans nouvelle prise de vue ; doublons et écrans quasi identiques remplacés par une phrase ou un renvoi (mesures, renvois et étiquettes gardés, numéros d'étapes cités par les manuels 06 et 08 conservés). Manuel 03 : 52 → 20 ; manuel 05 : 34 → 13 ; manuel 07 : 36 → 15 ; images inutilisées retirées. `verifier_docs.py` : 0 point.
