@@ -1,0 +1,43 @@
+2026-11-11T19:43:21.052022Z  INFO text_embeddings_router: router/src/main.rs:203: Args { model_id: "BAA*/***-********-*2-m3", revision: None, tokenization_workers: None, dtype: None, pooling: None, max_concurrent_requests: 512, max_batch_tokens: 2048, max_batch_requests: None, max_client_batch_size: 32, auto_truncate: true, default_prompt_name: None, default_prompt: None, dense_path: None, hf_api_token: None, hf_token: None, hostname: "rag-reranker", port: 80, uds_path: "/tmp/text-embeddings-inference-server", huggingface_hub_cache: Some("/data"), payload_limit: 2000000, api_key: None, json_output: false, disable_spans: false, otlp_endpoint: None, otlp_service_name: "text-embeddings-inference.server", prometheus_port: 9000, cors_allow_origin: None }
+2026-11-11T19:43:21.113351Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:42: Starting download
+2026-11-11T19:43:21.113384Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `1_Pooling/config.json`
+2026-11-11T19:43:21.280428Z  WARN download_artifacts: text_embeddings_core::download: core/src/download.rs:50: Download failed: request error: HTTP status client error (404 Not Found) for url (https://huggingface.co/BAAI/bge-reranker-v2-m3/resolve/main/1_Pooling/config.json)
+2026-11-11T19:43:21.280458Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `sentence_bert_config.json`
+2026-11-11T19:43:21.397837Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `sentence_roberta_config.json`
+2026-11-11T19:43:21.517228Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `sentence_distilbert_config.json`
+2026-11-11T19:43:21.633839Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `sentence_camembert_config.json`
+2026-11-11T19:43:21.748932Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `sentence_albert_config.json`
+2026-11-11T19:43:21.866515Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `sentence_xlm-roberta_config.json`
+2026-11-11T19:43:21.985334Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `sentence_xlnet_config.json`
+2026-11-11T19:43:22.101907Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `config_sentence_transformers.json`
+2026-11-11T19:43:22.215344Z  WARN download_artifacts: text_embeddings_core::download: core/src/download.rs:65: Download failed: request error: HTTP status client error (404 Not Found) for url (https://huggingface.co/BAAI/bge-reranker-v2-m3/resolve/main/config_sentence_transformers.json)
+2026-11-11T19:43:22.215376Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `config.json`
+2026-11-11T19:43:22.215437Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:18: Downloading `tokenizer.json`
+2026-11-11T19:43:22.215454Z  INFO download_artifacts: text_embeddings_core::download: core/src/download.rs:72: Model artifacts downloaded in 1.10210711s
+2026-11-11T19:43:22.796331Z  WARN text_embeddings_router: router/src/lib.rs:190: Could not find a Sentence Transformers config
+2026-11-11T19:43:22.796366Z  INFO text_embeddings_router: router/src/lib.rs:194: Maximum number of tokens per request: 8192
+2026-11-11T19:43:22.796526Z  INFO text_embeddings_core::tokenization: core/src/tokenization.rs:38: Starting 12 tokenization workers
+2026-11-11T19:43:26.381598Z  INFO text_embeddings_router: router/src/lib.rs:242: Starting model backend
+2026-11-11T19:43:26.382133Z  INFO text_embeddings_backend: backends/src/lib.rs:594: Downloading `model.onnx`
+2026-11-11T19:43:26.497086Z  WARN text_embeddings_backend: backends/src/lib.rs:598: Could not download `model.onnx`: request error: HTTP status client error (404 Not Found) for url (https://huggingface.co/BAAI/bge-reranker-v2-m3/resolve/main/model.onnx)
+2026-11-11T19:43:26.497118Z  INFO text_embeddings_backend: backends/src/lib.rs:599: Downloading `onnx/model.onnx`
+2026-11-11T19:43:26.611989Z  WARN text_embeddings_backend: backends/src/lib.rs:603: Could not download `onnx/model.onnx`: request error: HTTP status client error (404 Not Found) for url (https://huggingface.co/BAAI/bge-reranker-v2-m3/resolve/main/onnx/model.onnx)
+2026-11-11T19:43:26.612024Z  INFO text_embeddings_backend: backends/src/lib.rs:608: Downloading `model.onnx_data`
+2026-11-11T19:43:26.739122Z  WARN text_embeddings_backend: backends/src/lib.rs:612: Could not download `model.onnx_data`: request error: HTTP status client error (404 Not Found) for url (https://huggingface.co/BAAI/bge-reranker-v2-m3/resolve/main/model.onnx_data)
+2026-11-11T19:43:26.739153Z  INFO text_embeddings_backend: backends/src/lib.rs:613: Downloading `onnx/model.onnx_data`
+2026-11-11T19:43:26.862107Z  WARN text_embeddings_backend: backends/src/lib.rs:617: Could not download `onnx/model.onnx_data`: request error: HTTP status client error (404 Not Found) for url (https://huggingface.co/BAAI/bge-reranker-v2-m3/resolve/main/onnx/model.onnx_data)
+2026-11-11T19:43:26.862140Z ERROR text_embeddings_backend: backends/src/lib.rs:378: Model ONNX files not found in the repository. You can easily create ONNX files using the following scripts: https://gist.github.com/tomaarsen/4b00b0e3be8884efa64cfab9230b161f, or use this Space: https://huggingface.co/spaces/sentence-transformers/backend-export
+2026-11-11T19:43:26.862145Z  INFO text_embeddings_backend: backends/src/lib.rs:389: Downloading `tokenizer_config.json`
+2026-11-11T19:43:26.862584Z ERROR text_embeddings_backend: backends/src/lib.rs:402: Could not start ORT backend: Could not start backend: File at `/data/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e/onnx/model.onnx` does not exist
+2026-11-11T19:43:26.862606Z  INFO text_embeddings_backend: backends/src/lib.rs:553: Downloading `model.safetensors`
+2026-11-11T19:43:26.862637Z  INFO text_embeddings_backend: backends/src/lib.rs:421: Model weights downloaded in 31.23µs
+2026-11-11T19:43:26.862644Z  INFO download_dense_modules: text_embeddings_backend: backends/src/lib.rs:652: Downloading `modules.json`
+2026-11-11T19:43:26.978198Z  INFO text_embeddings_backend: backends/src/lib.rs:433: Dense modules downloaded in 115.554051ms
+2026-11-11T19:43:26.978915Z  INFO text_embeddings_backend_candle: backends/candle/src/lib.rs:257: Starting Bert model on Cpu
+2026-11-11T19:43:29.859464Z  INFO text_embeddings_router: router/src/lib.rs:260: Warming up model
+2026-11-11T19:43:42.347611Z  WARN text_embeddings_router: router/src/lib.rs:269: Backend does not support a batch size > 4
+2026-11-11T19:43:42.347649Z  WARN text_embeddings_router: router/src/lib.rs:270: forcing `max_batch_requests=4`
+2026-11-11T19:43:42.347776Z  WARN text_embeddings_router: router/src/lib.rs:319: Invalid hostname, defaulting to 0.0.0.0
+2026-11-11T19:43:42.350150Z  INFO text_embeddings_router::http::server: router/src/http/server.rs:1852: Starting HTTP server: 0.0.0.0:80
+2026-11-11T19:43:42.350181Z  INFO text_embeddings_router::http::server: router/src/http/server.rs:1853: Ready
+2026-11-11T19:43:43.929274Z  INFO rerank{total_time="157.512049ms" tokenization_time="351.301µs" queue_time="492.827µs" inference_time="156.522635ms"}: text_embeddings_router::http::server: router/src/http/server.rs:471: Success
