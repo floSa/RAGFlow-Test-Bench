@@ -230,7 +230,7 @@ Cliquer sur la liste « Bases de connaissances » (pastille 4).
 
 **Étape 15. Cocher la base**
 *Où* : panneau « Paramètres du chat » › liste « Bases de connaissances ».
-Cocher « Manuel-Prise-en-main » (pastille 2). Seules les bases qui contiennent au moins un document analysé figurent dans la liste.
+Cocher « Manuel-Prise-en-main » (pastille 2), puis cliquer sur « Fermer », en bas de la liste, pour la refermer. Seules les bases qui contiennent au moins un document analysé figurent dans la liste.
 
 ![Choix de la base](../img/02-prise-en-main/18-choix-base.png)
 *Écran : panneau « Paramètres du chat », liste des bases ouverte.*
