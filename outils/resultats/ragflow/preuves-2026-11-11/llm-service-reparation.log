@@ -1,0 +1,10 @@
+== 2026-11-11T12:20:37+01:00 panne de vllm-central après redémarrage de la machine
+redémarrages avant correction : 0
+cause relevée : « No available memory for the cache blocks » ; « Model loading took 11.06 GiB » ; « Available KV cache memory: -0.71 GiB » ; conteneur watch-speaches (hors banc, GPU) en marche
+actions, avec accord de l'utilisateur : docker stop watch-speaches ; LLM-Service .env local (non suivi) VLLM_EXTRA_ARGS=--kv-cache-memory=700000000 ; docker compose up -d vllm-central
+== journal de démarrage après correction
+(EngineCore pid=146) INFO 11-11 11:19:47 [gpu_worker.py:544] Initial free memory 14.86 GiB, reserved 0.65 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=146) INFO 11-11 11:19:47 [kv_cache_utils.py:2032] GPU KV cache size: 63,101 tokens, Maximum concurrency for 32,768 tokens per request: 1.93x
+(APIServer pid=1) INFO:     Application startup complete.
+== essai par RAGFlow
+2.4 s Le prix public du Vilaine Compact est de 2 490 € TTC, et il sera lancé en avril 2026 [ID:0].
