@@ -1,0 +1,246 @@
+== phase operateur
+capture docs/ragflow/img/07-knowledge-compilation/01-compilation-operator.png [(1, 'Compilation operator'), (2, 'opérateur existant'), (3, '+')]
+capture docs/ragflow/img/07-knowledge-compilation/02-nouvel-operateur.png [(1, 'Nom'), (2, 'Description'), (3, 'Template'), (4, 'Global rules'), (5, 'Enregistrer')]
+capture docs/ragflow/img/07-knowledge-compilation/03-liste-des-templates.png [(1, 'Graph'), (2, 'Mindmap'), (3, 'PageIndex'), (4, 'Timeline'), (5, 'Tree'), (6, 'Wiki')]
+capture docs/ragflow/img/07-knowledge-compilation/04-operateur-graph.png [(1, 'Graph'), (2, 'Global rules'), (3, 'Re-chunk parser output')]
+capture docs/ragflow/img/07-knowledge-compilation/05-specifications.png [(1, 'Entity specification'), (2, 'Relation specification'), (3, 'person'), (4, 'Add field'), (5, 'Enregistrer')]
+relations Graph : Retour | Add template | Manuel-Operateur-Graphe | Nom | Description | Template | Graph | Global rules | Re-chunk parser output | Entity specification | Relation specification | owns |  | Ownership or possession (legal or de facto). |  | part_of |  | Mereological relation — component to whole. |  | caused_by |  | Causal relation — event, action, or state leads to another. |  | regulates |  | Regulatory or governing relation (law/standard controls entity). |  | located_in |  | Spatial containment — entity situated inside a location. |  | other |  | Any meaningful relation not covered by the above types. |  | Add field | Retour | Enregistrer
+champs Graph : Retour | Add template | Manuel-Operateur-Graphe | Nom | Description | Template | Graph | Global rules | Re-chunk parser output | Entity specification | Relation specification | person |  | A natural person (individual human). |  | org |  | Organization, company, institution, agency, or any collective group. |  | product |  | Tangible or intangible product, service, software, or offering. |  | regulation |  | Law, policy, standard, guideline, or regulatory document. |  | location |  | Geographic place (country, city, address, region, natural feature). |  | other |  | Entities that do not fit any above category. |  | Add field | Retour | Enregistrer
+après Enregistrer : /agents?canvas_category=compilation_template_group
+capture docs/ragflow/img/07-knowledge-compilation/06-operateur-cree.png [(1, 'Manuel-Operateur-Graphe')]
+== phase pipeline
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 329, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 319, in compilation
+    globals()["compilation_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 149, in compilation_pipeline
+    cap(s, m, "07-menu-de-creation", [
+  File "/depot/outils/ragflow/captures/captures.py", line 118, in cap
+    lib = capture(s.pg, IMG / manuel / f"{nom}.png", elements=elements, masques=masques, plein=plein, clip=clip, texte=txt)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 71, in capture
+    libelles = annoter(page, list(elements)) if elements else []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 53, in annoter
+    boites = [_boite(page, loc, n=i) for i, (loc, _) in enumerate(elements, 1)]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 39, in _boite
+    loc.wait_for(state="visible", timeout=15000)
+  File "/pw/site/playwright/sync_api/_generated.py", line 13635, in wait_for
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 767, in wait_for
+    await self._frame.wait_for_selector(
+  File "/pw/site/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for get_by_role("radio", name="Ingestion pipeline") to be visible
+
+== phase pipeline
+capture docs/ragflow/img/07-knowledge-compilation/07-menu-de-creation.png [(1, 'Ingestion pipeline'), (2, 'Créer depuis un blanc'), (3, 'Créer depuis un modèle'), (4, 'Importer un fichier JSON')]
+capture docs/ragflow/img/07-knowledge-compilation/08-nom-du-pipeline.png [(1, 'Nom'), (2, 'Confirmer')]
+capture docs/ragflow/img/07-knowledge-compilation/09-canevas-initial.png [(1, 'Commencer'), (2, 'Parser'), (3, 'Save draft'), (4, 'Publier'), (5, 'Gestion'), (6, 'commandes du canevas')]
+capture docs/ragflow/img/07-knowledge-compilation/10-parser.png [(1, 'Parser'), (2, 'formats')]
+capture docs/ragflow/img/07-knowledge-compilation/11-etape-suivante-chunker.png [(1, '+'), (2, 'Découpeur par tokens'), (3, 'Découpeur par titres')]
+capture docs/ragflow/img/07-knowledge-compilation/12-etape-suivante-compiler.png [(1, '+'), (2, 'Indexeur'), (3, 'Compiler'), (4, 'Transformateur')]
+capture docs/ragflow/img/07-knowledge-compilation/13-compiler.png [(1, 'Operator'), (2, 'Create template'), (3, 'Modèle'), (4, 'Température'), (5, 'Thinking')]
+capture docs/ragflow/img/07-knowledge-compilation/14-choix-de-l-operateur.png [(1, 'Manuel-Operateur-Graphe'), (2, 'Essai-KC-mind_map-1835')]
+capture docs/ragflow/img/07-knowledge-compilation/15-etape-suivante-indexeur.png [(1, '+'), (2, 'Indexeur'), (3, 'Transformateur')]
+capture docs/ragflow/img/07-knowledge-compilation/16-pipeline-complet.png [(1, 'Parser'), (2, 'Chunker'), (3, 'Compiler'), (4, 'Indexeur'), (5, 'Save draft')]
+capture docs/ragflow/img/07-knowledge-compilation/17-publier.png [(1, 'Alias'), (2, 'Confirmer')]
+après publication : Agent | Manuel-Pipeline-Graphe | Sauvegardé automatiquement 11/11/2026 13:30:37 | Save draft | Publier | Gestion | Commencer | Parser | PDF | Tableur | Image | Email | Markdown | Texte & Code | HTML | DOC | DOCX | PPTX | Audio | Chunker | Découpeur par tokens | Compiler | gemma4:e4b | llm-service-chat | Operator | Manuel-Operateur-Graphe | Indexeur | M
+capture docs/ragflow/img/07-knowledge-compilation/18-pipeline-publie.png [(1, 'Manuel-Pipeline-Graphe')]
+== phase base
+capture docs/ragflow/img/07-knowledge-compilation/19-creation-de-la-base.png [(1, 'Nom'), (2, 'Enregistrer')]
+capture docs/ragflow/img/07-knowledge-compilation/20-mode-d-analyse.png [(1, 'Manuel-Pipeline-Graphe'), (2, 'General')]
+après choix du pipeline : M | Manuel-KC-Graphe | 0 Fichiers | Créé 11/11/2026 | Fichiers | Test de récupération | Journaux | Configuration | Artifacts | Dataset configuration | Modifiez ici la configuration de votre base de connaissances, notamment la méthode de découpage. | Informations de base | *Nom | Langue | English | Avatar | Télécharger | Vous pouvez télécharger une image jusqu'à 4 Mo. | Description | Autorisations | Moi uniquement | Modèle d'embedding | bge-m3 | llm-service-embed | Rang de page | Changer ou configurer le pipeline d'ingestion. | Mode d'analyse | General | (built in) | Parser | General Chunker | Extractor | Indexer | Enable vision enhancement | DOC | Supprimer en-tête et pied de page | DOCX | Supprimer en-tête et pied de page | Email | Champ | from | to | cc | + 5 more | HTML | Supprimer en-tête et pied de page | Image | OCR | Parsing method | DeepDoc | OCR + layout analysis + table structu
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 329, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 319, in compilation
+    globals()["compilation_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 237, in compilation_base
+    cap(s, m, "21-pipeline-choisi", [(s.pg.get_by_role("button").filter(has_text=PIPE_07).first, PIPE_07), (enr, "Enregistrer")])
+  File "/depot/outils/ragflow/captures/captures.py", line 118, in cap
+    lib = capture(s.pg, IMG / manuel / f"{nom}.png", elements=elements, masques=masques, plein=plein, clip=clip, texte=txt)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 71, in capture
+    libelles = annoter(page, list(elements)) if elements else []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 53, in annoter
+    boites = [_boite(page, loc, n=i) for i, (loc, _) in enumerate(elements, 1)]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 39, in _boite
+    loc.wait_for(state="visible", timeout=15000)
+  File "/pw/site/playwright/sync_api/_generated.py", line 13635, in wait_for
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 767, in wait_for
+    await self._frame.wait_for_selector(
+  File "/pw/site/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for get_by_role("button").filter(has_text="Manuel-Pipeline-Graphe").first to be visible
+
+== phase configuration
+capture docs/ragflow/img/07-knowledge-compilation/20-mode-d-analyse.png [(1, 'Manuel-Pipeline-Graphe'), (2, 'General')]
+liste après clic sur le pipeline : Manuel-Pipeline-Graphe | Manuel-Pipeline-Graphe_2026-11-11 14:30:37 | v1 | Essai-KC-mind_map-1835 | General | (built in) | Q&A | (built in) | Manual | (built in) | Table | (built in) | Paper | (built in) | Book | (built in) | Laws | (built in) | Presentation | (built in) | Picture | (built in) | One
+capture docs/ragflow/img/07-knowledge-compilation/21-version-du-pipeline.png [(1, 'Manuel-Pipeline-Graphe'), (2, 'version publiée')]
+capture docs/ragflow/img/07-knowledge-compilation/22-pipeline-choisi.png [(1, 'Manuel-Pipeline-Graphe'), (2, 'Enregistrer')]
+== phase import
+capture docs/ragflow/img/07-knowledge-compilation/23-televersement.png [(1, 'Analyser à la création'), (2, 'cse-2025-10-14.md'), (3, 'Enregistrer')]
+ingestion et compilation : 8 s ; document progress=1 passages=1 ; état {"kind": "graph", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11-11T14:33:37.523+01:00", "updated_at": "2026-11-11T14:33:37.523+01:00"}
+capture docs/ragflow/img/07-knowledge-compilation/24-analyse-terminee.png [(1, 'cse-2025-10-14.md'), (2, 'Nombre de segments'), (3, 'Analyser')]
+== phase artefacts
+capture docs/ragflow/img/07-knowledge-compilation/25-onglet-artifacts.png [(1, 'Artifacts')]
+capture docs/ragflow/img/07-knowledge-compilation/26-types-d-artefacts.png [(1, 'Wiki'), (2, 'Tree/PageIndex'), (3, 'Graph'), (4, 'Mind map'), (5, 'Timeline')]
+capture docs/ragflow/img/07-knowledge-compilation/27-vue-graph.png [(1, 'Graph'), (2, 'graphe')]
+capture docs/ragflow/img/07-knowledge-compilation/28-vue-wiki.png [(1, 'Wiki'), (2, 'contenu')]
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 347, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 337, in compilation
+    globals()["compilation_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 319, in compilation_artefacts
+    cap(s, m, nom, [(s.pg.get_by_role("combobox").first, vue),
+  File "/depot/outils/ragflow/captures/captures.py", line 118, in cap
+    lib = capture(s.pg, IMG / manuel / f"{nom}.png", elements=elements, masques=masques, plein=plein, clip=clip, texte=txt)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 71, in capture
+    libelles = annoter(page, list(elements)) if elements else []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 53, in annoter
+    boites = [_boite(page, loc, n=i) for i, (loc, _) in enumerate(elements, 1)]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 39, in _boite
+    loc.wait_for(state="visible", timeout=15000)
+  File "/pw/site/playwright/sync_api/_generated.py", line 13635, in wait_for
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 767, in wait_for
+    await self._frame.wait_for_selector(
+  File "/pw/site/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("main").last to be visible
+
+== phase artefacts
+capture docs/ragflow/img/07-knowledge-compilation/25-onglet-artifacts.png [(1, 'Artifacts')]
+capture docs/ragflow/img/07-knowledge-compilation/26-types-d-artefacts.png [(1, 'Wiki'), (2, 'Tree/PageIndex'), (3, 'Graph'), (4, 'Mind map'), (5, 'Timeline')]
+capture docs/ragflow/img/07-knowledge-compilation/27-vue-graph.png [(1, 'Graph'), (2, 'Search entity'), (3, 'entities'), (4, 'graphe')]
+capture docs/ragflow/img/07-knowledge-compilation/28-liste-des-entites.png [(1, 'entités')]
+entités du graphe : Sophie Le Gall | Cholet | Nantes | Hélène Marchais
+capture docs/ragflow/img/07-knowledge-compilation/29-vue-vide.png [(1, 'Wiki'), (2, 'No wiki yet')]
+artefact graph (API) : {"code": 0, "message": "success", "data": {"kind": "knowledge_graph", "total_entities": 4, "total_relations": 0, "returned_entities": 4, "returned_relations": 0, "templates": [{"template_id": "95e7a4fce88d402ba41afc9ce4c8d334", "template_name": "95e7a4fce88d402ba41afc9ce4c8d334", "kind": "knowledge_graph", "entities": [{"aliases": null, "description": "Secrétaire du CSE", "mention_count": 1, "name": "Sophie Le Gall", "source_chunk_ids": ["0e58a9acc4c4fef7"], "type": "person"}, {"aliases": null, "description": "Cholet", "mention_count": 1, "name": "Cholet", "source_chunk_ids": ["0e58a9acc4c4fef7"], "type": "location"}, {"aliases": null, "description": "Nantes", "mention_count": 1, "name": "Nantes", "source_chunk_ids": ["0e58a9acc4c4fef7"], "type": "location"}, {"aliases": null, "description": "Présidente du CSE", "mention_count": 1, "name": "Hélène Marchais", "source_chunk_ids": ["0e58a9acc4c4fef7"], "type": "person"}], "relations": []}]}}
+== phase echec
+capture docs/ragflow/img/07-knowledge-compilation/30-fichier-en-echec.png [(1, 'Nombre de segments'), (2, "état de l'analyse"), (3, "relancer l'analyse")]
+capture docs/ragflow/img/07-knowledge-compilation/31-journaux-echec.png [(1, 'Échec'), (2, "Pipeline d'ingestion"), (3, 'Failed'), (4, 'détail')]
+détail de la tâche en échec : Fichier | Nom du fichier | cse-2025-10-14.md | Source | local | Tâche | Parse | Statut | Failed | Date de début | 11/11/2026 14:39:28 | Durée | 3m 0.023s | Détails | 13:39:28Task is queued... | 13:39:28Task is running... | 13:39:28File Started | 13:39:28File Done | 13:39:28Parser Started | 13:39:28Parser Done | 13:39:28TokenChunker Started | 13:39:28TokenChunker Done | 13:39:28Compiler Started | 13:39:28Compiler: Wiki Started: input_chunks=1 | 13:39:28Compiler: Wiki MAP Started: input_chunks=1 | 13:39:51Compiler: [WARN] LLM call failed (attempt 1/6): knowledge_compiler: LLM response is not parseable JSON (4708 bytes); retrying in 2s | 13:40:07Compiler: [WARN] LLM call failed (attempt 2/6): knowledge_compiler: LLM response is not parseable JSON (2361 bytes); retrying in 4s | 13:40:30Compiler: [WARN] LLM call failed (attempt 3/6): knowledge_compiler: LLM response is not parseable JSON (3265 bytes); retrying in 8s | 13:40:53Compiler: [WARN] LLM call failed (attempt 4/6): knowledge_compiler: LLM response is not parseable JSON (2361 bytes); retrying in 16s | 13:42:28Compiler: [ERROR] LLM call failed (attempt 6/6): knowledge_compiler: LLM response is not parseable JSON (4756 bytes) | 13:42:28Compiler: knowledge_compiler: LLM response is not parseable JSON (4756 bytes) | 13:42:28Task failed: pipeline: run canvas workflow: [NodeRunError] agent: component "Compiler" invoke: Compiler: knowledge_compiler: LLM response is not parseable JSON (4756 bytes) | ------------------------ | node 
+capture docs/ragflow/img/07-knowledge-compilation/32-detail-de-l-echec.png [(1, 'Détails')]
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 489, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 479, in compilation
+    globals()["compilation_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 453, in compilation_echec
+    log("confirmation de la relance :", conf.inner_text().replace("\n", " | ")[:300])
+                                        ^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/sync_api/_generated.py", line 12419, in inner_text
+    self._sync(self._impl_obj.inner_text(timeout=to_milliseconds(timeout)))
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 514, in inner_text
+    return await self._frame.inner_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_frame.py", line 748, in inner_text
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.inner_text: Timeout 15000ms exceeded.
+Call log:
+  - waiting for get_by_role("alertdialog").or_(get_by_role("dialog")).last
+
+Manuel-KC-Tree : ingestion et compilation 142 s ; progress=1 passages=1 ; terminés {"graph": {"kind": "graph", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11-11T14:53:51.794+01:00", "updated_at": "2026-11-11T14:53:51.794+01:00"}, "mindmap": {"kind": "mindmap", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11-11T14:53:51.794+01:00", "updated_at": "2026-11-11T14:53:51.794+01:00"}, "wiki": {"kind": "wiki", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11
+Tree : chaîne complète en 229 s
+artefact timeline (API) : {"code": 0, "message": "success", "data": {"kind": "timeline", "total_entities": 0, "total_relations": 0, "returned_entities": 0, "returned_relations": 0, "templates": []}}
+Manuel-KC-PageIndex : rien de compilé après 602 s (échec, voir l'onglet « Journaux »)
+Manuel-KC-PageIndex : ingestion et compilation 602 s ; progress=0.6 passages=0 ; terminés {}
+PageIndex : chaîne complète en 689 s
+artefact timeline (API) : {"code": 0, "message": "success", "data": {"kind": "timeline", "total_entities": 0, "total_relations": 0, "returned_entities": 0, "returned_relations": 0, "templates": []}}
+Manuel-KC-Timeline : ingestion et compilation 5 s ; progress=1 passages=1 ; terminés {"graph": {"kind": "graph", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11-11T15:06:55.978+01:00", "updated_at": "2026-11-11T15:06:55.978+01:00"}, "mindmap": {"kind": "mindmap", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11-11T15:06:55.978+01:00", "updated_at": "2026-11-11T15:06:55.978+01:00"}, "wiki": {"kind": "wiki", "state": "idle", "progress": 0, "inflight": 0, "backlog": 0, "last_completed_at": "2026-11
+Timeline : chaîne complète en 93 s
+artefact timeline (API) : {"code": 0, "message": "success", "data": {"kind": "timeline", "total_entities": 2, "total_relations": 1, "returned_entities": 2, "returned_relations": 1, "templates": [{"template_id": "37154b036de04c7db6be8d73535f9c4a", "template_name": "37154b036de04c7db6be8d73535f9c4a", "kind": "timeline", "entities": [{"aliases": null, "description": "Compte rendu de la réunion du CSE.", "mention_count": 1, "name": "Réunion du CSE", "source_chunk_ids": ["d98a56bc9048dae1"], "type": "event"}, {"aliases": null, "description": "Date de la réunion du CSE.", "mention_count": 1, "name": "14 octobre 2025", "source_chunk_ids": ["d98a56bc9048dae1"], "type": "timestamp"}], "relations": [{"from": "Réunion du CSE", "to": "14 octobre 2025", "type": "ordered"}]}]}}
+capture docs/ragflow/img/07-knowledge-compilation/30-fichier-en-echec.png [(1, 'Nombre de segments'), (2, "état de l'analyse"), (3, "relancer l'analyse")]
+capture docs/ragflow/img/07-knowledge-compilation/31-journaux-echec.png [(1, 'Échec'), (2, "Pipeline d'ingestion"), (3, 'Failed'), (4, 'détail')]
+détail de la tâche en échec : Fichier | Nom du fichier | cse-2025-10-14.md | Source | local | Tâche | Parse | Statut | Failed | Date de début | 11/11/2026 14:46:04 | Durée | 3m 2.827s | Détails | 13:46:04Task is queued... | 13:46:04Task is running... | 13:46:04File Started | 13:46:04File Done | 13:46:04Parser Started | 13:46:04Parser Done | 13:46:04TokenChunker Started | 13:46:04TokenChunker Done | 13:46:04Compiler Started | 13:46:04Compiler: Wiki Started: input_chunks=1 | 13:46:04Compiler: Wiki MAP Started: input_chunks=1 | 13:46:21Compiler: [WARN] LLM call failed (attempt 1/6): knowledge_compiler: LLM response is not parseable JSON (3220 bytes); retrying in 2s | 13:46:39Compiler: [WARN] LLM call failed (attempt 2/6): knowledge_compiler: LLM response is not parseable JSON (2916 bytes); retrying in 4s | 13:47:08Compiler: [WARN] LLM call failed (attempt 3/6): knowledge_compiler: LLM response is not parseable JSON (4721 bytes); retrying in 8s | 13:47:38Compiler: [WARN] LLM call failed (attempt 4/6): knowledge_compiler: LLM response is not parseable JSON (4335 bytes); retrying in 16s | 13:48:13Compiler: [WARN] LLM call failed (attempt 5/6): knowledge_compiler: LLM response is not parseable JSON (2361 bytes); retrying in 32s | 13:49:07Compiler: [ERROR] LLM call failed (attempt 6/6): knowledge_compiler: LLM response is not parseable JSON (4266 bytes) | 13:49:07Compiler: knowledge_compiler: LLM response is not parseable JSON (4266 bytes) | 13:49:07Task failed: pipeline: run canvas workflow: [NodeRunError] agent
+capture docs/ragflow/img/07-knowledge-compilation/32-detail-de-l-echec.png [(1, 'Détails')]
+== phase vues
+vue Tree : Retour | M | Manuel-KC-Tree dataset | Tree/PageIndex | Navigation tree (1) | Décisions du CSE 342422f6 | Select a child node to view details
+capture docs/ragflow/img/07-knowledge-compilation/33-vue-tree.png [(1, 'Tree/PageIndex'), (2, 'Navigation tree'), (3, 'Rechercher')]
+détail d'un nœud : Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | M | Manuel-KC-Tree | 1 Fichiers | 548 Bytes | Créé 11/11/2026 | Fichiers | Test de récupération | Journaux | Configuration | Artifacts | Fichiers |  | 😉 Veuillez attendre la fin de l'analyse de vos fichiers avant de démarrer une discussion avec l'IA. |  | Ajouter un fichier | 	 | Nom | 	 | Date de téléversement | 	Activé	Nombre de segments	Métadonnées	Analyser		Action | 	 | cse-2025-10-14.md | 	11/11/2026 13:51:30	 | 	 | 1 | 	0 fields	 | Manuel-Pipeline-Tree_2026-11-11 14:51:02 | v1 | 	 | 	 | Total 1 | 1 | 50 / Page
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 511, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 501, in compilation
+    globals()["compilation_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 482, in compilation_vues
+    cap(s, m, "34-detail-d-un-noeud", [(cible, cible.inner_text().strip()[:40])])
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/sync_api/_generated.py", line 12419, in inner_text
+    self._sync(self._impl_obj.inner_text(timeout=to_milliseconds(timeout)))
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 514, in inner_text
+    return await self._frame.inner_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_frame.py", line 748, in inner_text
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.inner_text: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("div").filter(has_text=re.compile(r"^Navigation tree")).first.locator("..").locator("span, div, button").first
+
+== phase vues
+vue Tree : Retour | M | Manuel-KC-Tree dataset | Tree/PageIndex | Navigation tree (1) | Décisions du CSE 342422f6 | Select a child node to view details
+capture docs/ragflow/img/07-knowledge-compilation/33-vue-tree.png [(1, 'Tree/PageIndex'), (2, 'Navigation tree'), (3, 'Rechercher')]
+détail d'un nœud : Retour | M | Manuel-KC-Tree dataset | Tree/PageIndex | Navigation tree (1) | Décisions du CSE 342422f6 | Décisions du CSE 342422f6 | 1 documents | Description |  | Ce compte-rendu détaille les décisions prises lors de la réunion du CSE, incluant l'attribution d'une prime d'intéressement, l'autorisation du télétravail, l'ouverture d'un restaurant d'entreprise et le report d'une discussion sur les horaires d'été.
+capture docs/ragflow/img/07-knowledge-compilation/34-detail-d-un-noeud.png [(1, "nœud de l'arbre"), (2, 'détail')]
+vue Timeline : Retour | M | Manuel-KC-Timeline dataset | Timeline | Réunion du CSE | 14 octobre 2025
+capture docs/ragflow/img/07-knowledge-compilation/35-vue-timeline.png [(1, 'Timeline'), (2, '14 octobre 2025')]
+capture docs/ragflow/img/07-knowledge-compilation/36-carte-mentale-demo.png [(1, 'Mind map'), (2, 'carte mentale')]

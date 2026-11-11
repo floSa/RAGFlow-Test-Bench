@@ -1,0 +1,50 @@
+http://rag-ragflow-server/compilation-templates/edit-next/0f4d1e03e99e4864b14e2d3e15351989?source=agents&canvas_category=compilation_template_group
+Retour
+Essai-KC-mind_map-1835
+Essai-KC-mind_map-1835
+Nom
+Description
+Template
+Mindmap
+Global rules
+Re-chunk parser output
+Entity specification
+Relation specification
+central_topic
+
+The main idea, goal, problem, or subject placed at the center of the mind map.
+
+branch
+
+A major theme, category, or dimension radiating from the central topic.
+
+sub_branch
+
+A specific detail, task, supporting concept, example, or item under a branch.
+
+keyword
+
+A compact supporting word or phrase that clarifies a branch or sub-branch.
+
+Add field
+Retour
+Enregistrer
+== éléments ==
+button | Retour
+button | [icône lucide-braces]
+label | Nom
+input:text | Veuillez saisir le nom
+label | Description
+textarea:textarea | Saisir une description
+label | Template
+combobox | Mindmap
+label | Global rules
+textarea:textarea | Input global compilation rules
+label | Re-chunk parser output
+switch | 
+input:checkbox | 
+tab | Entity specification
+tab | Relation specification
+button | [icône lucide-pencil]
+button | [icône lucide-trash]
+button | Enregistrer

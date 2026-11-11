@@ -1,0 +1,111 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-KC-Wiki
+1 Fichiers
+548 Bytes
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers totaux
+1
+0% de la semaine dernière
+Téléchargement
+0
+Succès
+0
+Échec
+0
+Traitement
+0
+Succès
+0
+Échec
+1
+Fichier
+Base de connaissances
+Data source
+ID	Nom du fichier	Source	Pipeline d'ingestion	
+Date de début
+	Tâche	Statut	Opérations
+
+29fc50645a2644f0986d7ced4e261829
+	
+cse-2025-10-14.md
+	
+	
+M
+Manuel-Pipeline-Wiki
+	
+11/11/2026 14:46:04
+	
+Parse
+	
+Failed	
+
+
+a2be78d2ed5a4c26b98398fd6304fb1d
+	
+cse-2025-10-14.md
+	
+	
+M
+Manuel-Pipeline-Wiki
+	
+11/11/2026 14:39:28
+	
+Parse
+	
+Failed	
+Total 2
+1
+50 / Page
+
+== adresse ==
+/dataset/logs/39ad46767aa64fdcb6aea66c365ff459
+== pastilles ==
+1. Échec
+2. Pipeline d'ingestion
+3. Failed
+4. détail
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+button | [icône lucide-circle-question-mark]
+button | Fichier
+button | Base de connaissances
+button | Data source
+button | [icône lucide-funnel]
+input:text | Rechercher
+button | [icône lucide-arrow-up-down]
+button | [icône lucide-eye]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page

@@ -1,0 +1,13 @@
+Retour
+E
+Essai-KC-mind_map-1835 dataset
+Mind map
+
+== adresse ==
+/dataset/compilation/2d8d92f2e92c4a9abab151313cc31da7
+== pastilles ==
+1. Mind map
+2. carte mentale
+== éléments visibles ==
+button | Retour
+combobox | Mind map

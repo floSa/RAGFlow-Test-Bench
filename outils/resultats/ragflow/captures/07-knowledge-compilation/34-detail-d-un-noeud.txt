@@ -1,0 +1,22 @@
+Retour
+M
+Manuel-KC-Tree dataset
+Tree/PageIndex
+Navigation tree (1)
+Décisions du CSE 342422f6
+Décisions du CSE 342422f6
+1 documents
+Description
+
+Ce compte-rendu détaille les décisions prises lors de la réunion du CSE, incluant l'attribution d'une prime d'intéressement, l'autorisation du télétravail, l'ouverture d'un restaurant d'entreprise et le report d'une discussion sur les horaires d'été.
+
+== adresse ==
+/dataset/compilation/0e63bbc446eb4260b8fc67eca9367a2c
+== pastilles ==
+1. nœud de l'arbre
+2. détail
+== éléments visibles ==
+button | Retour
+combobox | Tree/PageIndex
+input:text | Rechercher
+button | [icône lucide-chevron-right]

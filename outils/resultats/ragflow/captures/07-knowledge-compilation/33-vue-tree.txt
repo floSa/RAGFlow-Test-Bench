@@ -1,0 +1,19 @@
+Retour
+M
+Manuel-KC-Tree dataset
+Tree/PageIndex
+Navigation tree (1)
+Décisions du CSE 342422f6
+Select a child node to view details
+
+== adresse ==
+/dataset/compilation/0e63bbc446eb4260b8fc67eca9367a2c
+== pastilles ==
+1. Tree/PageIndex
+2. Navigation tree
+3. Rechercher
+== éléments visibles ==
+button | Retour
+combobox | Tree/PageIndex
+input:text | Rechercher
+button | [icône lucide-chevron-right]
