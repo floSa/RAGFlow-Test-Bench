@@ -1,0 +1,80 @@
+adresse : /dataset/retrieval/b18ec890920a4ad99fbf47a80a9b453d
+
+== texte ==
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+9 Fichiers
+1 MB
+Créé 09/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Test de récupération
+Effectuez un test de récupération pour vérifier si RAGFlow peut retrouver le contenu pertinent pour le LLM. Si vous avez modifié les paramètres par défaut, comme le poids de similarité ou le seuil de similarité, ces changements ne seront pas automatiquement sauvegardés. Vous devez les appliquer dans les paramètres de votre assistant de chat ou dans le composant agent de récupération.
+Paramètres
+Seuil de similarité
+Poids de similarité par mots-clés
+full-text
+0.70
+vector
+0.30
+Modèle de réordonnancement
+Recherche inter-langues
+Sélectionner une valeur
+Métadonnées
+Sélectionner une valeur
+Rerank candidates
+Top N
+Test
+Résultats
+Total: 0
+Aucun test n'a encore été lancé. Les résultats apparaîtront ici.
+
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+label | Seuil de similarité
+slider | 
+input:number | 
+label | Poids de similarité par mots-clés
+label | full-text
+label | vector
+input:number | keywords_similarity_weight
+label | Modèle de réordonnancement
+button | [icône lucide-chevron-down]
+label | Recherche inter-langues
+button | Sélectionner une valeur
+label | Métadonnées
+combobox | Sélectionner une valeur
+label | Rerank candidates
+label | Top N
+textarea:textarea | question
+button | Test
+button | [icône lucide-funnel]

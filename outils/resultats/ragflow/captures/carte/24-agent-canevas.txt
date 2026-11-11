@@ -1,0 +1,38 @@
+adresse : /agent/ec1666c69d27407bb38b1234a0f7416b?category=agent_canvas
+
+== texte ==
+Agent
+Agent démo Vélanor
+Sauvegardé automatiquement 09/11/2026 17:28:55
+Save draft
+Exécuter
+Lancer
+Publier
+Checklist
+1
+Gestion
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow
+
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Checklist 1
+button | Gestion
+input:text | Veuillez entrer une note
+textarea:textarea | Veuillez entrer une note
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow

@@ -1,0 +1,63 @@
+adresse : /user-setting/mcp
+
+== texte ==
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+BR
+
+banc.demo@exemple.fr
+
+Fournisseurs de modèles
+Sources de données
+Canaux de chat
+MCP
+Équipe
+Profil
+API
+v1.0.0
+Déconnexion
+Serveurs MCP
+
+Personnaliser la liste des serveurs MCP
+
+Gestion en masse
+Importer
+Ajouter MCP
+Aucun serveur MCP disponible
+Ajouter maintenant
+
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | Fournisseurs de modèles
+button | Sources de données
+button | Canaux de chat
+button | MCP
+button | Équipe
+button | Profil
+button | API
+switch | [icône lucide-sun]
+button | Déconnexion
+input:text | Rechercher
+button | Gestion en masse
+button | Importer
+button | Ajouter MCP
+button | Ajouter maintenant

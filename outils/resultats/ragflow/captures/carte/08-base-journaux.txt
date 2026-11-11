@@ -1,0 +1,212 @@
+adresse : /dataset/logs/b18ec890920a4ad99fbf47a80a9b453d
+
+== texte ==
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+9 Fichiers
+1 MB
+Créé 09/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers totaux
+9
+0% de la semaine dernière
+Téléchargement
+0
+Succès
+0
+Échec
+0
+Traitement
+0
+Succès
+9
+Échec
+0
+Fichier
+Base de connaissances
+Data source
+ID	Nom du fichier	Source	Pipeline d'ingestion	
+Date de début
+	Tâche	Statut	Opérations
+
+696b8b4c24cc46f7844fa9fb89d4f313
+	
+cse-2025-10-14.md
+	
+	
+G
+general
+	
+09/11/2026 18:06:49
+	
+Parse
+	
+Success	
+
+
+66f57cf6b2114620b097099660ca906f
+	
+contrat-batterix-scan.pdf
+	
+	
+G
+general
+	
+09/11/2026 18:06:40
+	
+Parse
+	
+Success	
+
+
+296b11b7ea354d9a8a411e13d3de6552
+	
+supplier-audit-batterix-en.pdf
+	
+	
+G
+general
+	
+09/11/2026 18:06:37
+	
+Parse
+	
+Success	
+
+
+2f27cb0817e44032933c572b04a4b860
+	
+stocks-octobre-2025.xlsx
+	
+	
+G
+general
+	
+09/11/2026 18:06:36
+	
+Parse
+	
+Success	
+
+
+a5320ea03324444bafeddfef8799a357
+	
+rapport-annuel-2025.pdf
+	
+	
+G
+general
+	
+09/11/2026 18:06:09
+	
+Parse
+	
+Success	
+
+
+2931ef3e82cf4f5db037db1f43f87898
+	
+message-vocal-production.mp3
+	
+	
+A
+audio
+	
+09/11/2026 18:06:02
+	
+Parse
+	
+Success	
+
+
+d33e0e5b9cd74f3787e34bbf32efd6b9
+	
+strategie-2026.pptx
+	
+	
+P
+presentation
+	
+09/11/2026 18:06:01
+	
+Parse
+	
+Success	
+
+
+622aa4a48dd945c88142130ef2c031ee
+	
+procedure-batteries.docx
+	
+	
+G
+general
+	
+09/11/2026 18:06:00
+	
+Parse
+	
+Success	
+
+
+81f159acf2ab44a7be9316bfe432f70f
+	
+faq-sav.html
+	
+	
+G
+general
+	
+09/11/2026 18:05:58
+	
+Parse
+	
+Success	
+Total 9
+1
+50 / Page
+
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+button | [icône lucide-circle-question-mark]
+button | Fichier
+button | Base de connaissances
+button | Data source
+button | [icône lucide-funnel]
+input:text | Rechercher
+button | [icône lucide-arrow-up-down]
+button | [icône lucide-eye]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page

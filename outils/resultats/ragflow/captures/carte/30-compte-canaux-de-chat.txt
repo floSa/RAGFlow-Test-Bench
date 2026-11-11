@@ -1,0 +1,91 @@
+adresse : /user-setting/chat-channel
+
+== texte ==
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+BR
+
+banc.demo@exemple.fr
+
+Fournisseurs de modèles
+Sources de données
+Canaux de chat
+MCP
+Équipe
+Profil
+API
+v1.0.0
+Déconnexion
+Canaux de chat
+
+Gérez vos bots de canaux de chat et leurs identifiants
+
+Aucun canal de chat ajouté. Sélectionnez-en un ci-dessous pour vous connecter.
+Canaux disponibles
+Sélectionner un canal de chat à ajouter
+Discord
+Ajouter
+
+Connecter un bot Discord
+
+DingTalk
+Ajouter
+
+Connect a DingTalk bot
+
+Feishu / Lark
+Ajouter
+
+Connecter un bot Feishu / Lark
+
+QQ Bot
+Ajouter
+
+Connecter un bot QQ
+
+Telegram
+Ajouter
+
+Connecter un bot Telegram
+
+WeCom
+Ajouter
+
+Connecter un bot WeCom
+
+WhatsApp
+Ajouter
+
+Connecter un bot WhatsApp (appairage QR)
+
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | Fournisseurs de modèles
+button | Sources de données
+button | Canaux de chat
+button | MCP
+button | Équipe
+button | Profil
+button | API
+switch | [icône lucide-sun]
+button | Déconnexion
+button | Ajouter

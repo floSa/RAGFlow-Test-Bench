@@ -1,0 +1,110 @@
+adresse : /chat/ebd015d0553446598244f91d2cd23f41?conversationId=0da705af45024f34b753469c8b1ba0d9&isNew=
+
+== texte ==
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+Conversations
+3
+Audit fournisseur
+Objectifs 2026
+Contrat Batterix
+Contrat Batterix
+Plusieurs modèles
+
+Bonjour, je réponds aux questions sur les documents fictifs de Vélanor, avec mes sources.
+
+Quel est le prix unitaire des batteries et le délai de livraison prévus par le contrat Batterix ?
+
+Le prix unitaire des batteries est de 212 euros HT, ce prix étant révisable une fois par an [1]. De plus, le Fournisseur s'engage à livrer sous 21 jours après la commande [1].
+
+1895 tokens (1841 input, 54 output) · 2.3s
+contrat-ba…an.pdf
+[1]
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload
+Paramètres du chat
+Télécharger
+Démo Vélanor
+
+A helpful Assistant
+
+Modèle
+gemma4:e4b
+llm-service-chat
+Paramètres du modèle
+Message d'accueil
+Bases de connaissances
+DV
+Démo Vélanor
+Paramètres avancés
+AnnulerEnregistrer
+
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+button | [icône lucide-panel-left-close]
+button | [icône lucide-plus]
+button | [icône lucide-copy-x]
+input:text | Rechercher
+button | Audit fournisseur
+button | Objectifs 2026
+button | Contrat Batterix
+button | [icône lucide-ellipsis]
+button | Plusieurs modèles
+button | [icône lucide-copy]
+button | [icône lucide-refresh-cw]
+button | [icône lucide-trash]
+button | [icône lucide-volume-2]
+button | [icône lucide-thumbs-up]
+button | [icône lucide-thumbs-down]
+button | [icône sans nom]
+button | contrat-ba…an.pdf
+button | Drag to resize height
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+combobox | Naive
+button | [icône lucide-mic]
+button | Send message
+input:file | 
+button | [icône lucide-panel-right-close]
+button | Télécharger
+button | Edit Nom
+button | Edit common.description
+label | Modèle
+button | gemma4:e4b llm-service-chat
+button | Paramètres du modèle
+label | Message d'accueil
+textarea:textarea | prompt_config.prologue
+label | Bases de connaissances
+button | DV Démo Vélanor
+button | Paramètres avancés
+button | Annuler
+button | Enregistrer

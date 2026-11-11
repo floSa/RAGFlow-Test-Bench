@@ -1,0 +1,264 @@
+adresse : /user-setting/model
+
+== texte ==
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+BR
+
+banc.demo@exemple.fr
+
+Fournisseurs de modèles
+Sources de données
+Canaux de chat
+MCP
+Équipe
+Profil
+API
+v1.0.0
+Déconnexion
+Définir les modèles par défaut
+Modèles disponibles
+OpenAI-API-Compatible
+VLLM
+OpenAI
+Anthropic
+Gemini
+DeepSeek
+Moonshot
+ZHIPU-AI
+xAI
+HuggingFace
+Cohere
+WorldRouter
+OpenRouter
+MiniMax
+VolcEngine
+SystemOne
+Tongyi-Qianwen
+Replicate
+SILICONFLOW
+Ollama
+Cheaper Inference
+Radeon Cloud
+ModelScope
+CometAPI
+FuturMix
+GiteeAI
+Fish Audio
+GPUStack
+GreenPT
+Groq
+Hostinger Router
+HuaweiCloud
+Hubris
+EmpirioLabs AI
+Tencent Hunyuan
+Jiekou.AI
+Jina
+llmman
+LM-Studio
+LocalAI
+LongCat
+MinerU
+MiniCPM-OCR
+Demon Route
+Mistral
+302.AI
+MonkeyOCR
+MonkeyOCRv2
+DeepInfra
+MWS
+n1n
+New API
+NovitaAI
+NVIDIA
+Obscurify.ai
+DaoXE
+FunASR
+CloudGPU
+cheapaimodel
+Opper
+OrcaRouter
+PaddleOCR
+PaddleOCR.local
+Perplexity
+PPIO
+Qiniu
+Bedrock
+RAGcon
+BaiduYiyan
+Runcrate
+BaiChuan
+SoMark
+StepFun
+Synap
+Synthorai
+Azure-OpenAI
+TogetherAI
+TokenHub
+TokenPony
+TrustedRouter
+Upstage
+Avian
+Astraflow
+Voyage AI
+Wally
+API-Route
+AnonRouter
+Xiaomi
+Xinference
+XunFei Spark
+AI Stupid Level
+Définir les modèles par défaut
+
+Veuillez compléter ces paramètres avant de commencer
+
+*Modèle de chat
+gemma4:e4b
+llm-service-chat
+Modèle d'embedding
+bge-m3
+llm-service-embed
+Modèle Img2txt
+Modèle Speech2txt
+Systran/faster-whisper-small
+voix-locale
+Modèle de rerank
+Modèle TTS
+Decision model
+
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | Fournisseurs de modèles
+button | Sources de données
+button | Canaux de chat
+button | MCP
+button | Équipe
+button | Profil
+button | API
+switch | [icône lucide-sun]
+button | Déconnexion
+button | Définir les modèles par défaut
+input:text | Rechercher
+button | OpenAI-API-Compatible
+button | VLLM
+button | OpenAI
+button | Anthropic
+button | Gemini
+button | DeepSeek
+button | Moonshot
+button | ZHIPU-AI
+button | xAI
+button | HuggingFace
+button | Cohere
+button | WorldRouter
+button | OpenRouter
+button | MiniMax
+button | VolcEngine
+button | SystemOne
+button | Tongyi-Qianwen
+button | Replicate
+button | SILICONFLOW
+button | Ollama
+button | Cheaper Inference
+button | Radeon Cloud
+button | ModelScope
+button | CometAPI
+button | FuturMix
+button | GiteeAI
+button | Fish Audio
+button | GPUStack
+button | GreenPT
+button | Groq
+button | Hostinger Router
+button | HuaweiCloud
+button | Hubris
+button | EmpirioLabs AI
+button | Tencent Hunyuan
+button | Jiekou.AI
+button | Jina
+button | llmman
+button | LM-Studio
+button | LocalAI
+button | LongCat
+button | MinerU
+button | MiniCPM-OCR
+button | Demon Route
+button | Mistral
+button | 302.AI
+button | MonkeyOCR
+button | MonkeyOCRv2
+button | DeepInfra
+button | MWS
+button | n1n
+button | New API
+button | NovitaAI
+button | NVIDIA
+button | Obscurify.ai
+button | DaoXE
+button | FunASR
+button | CloudGPU
+button | cheapaimodel
+button | Opper
+button | OrcaRouter
+button | PaddleOCR
+button | PaddleOCR.local
+button | Perplexity
+button | PPIO
+button | Qiniu
+button | Bedrock
+button | RAGcon
+button | BaiduYiyan
+button | Runcrate
+button | BaiChuan
+button | SoMark
+button | StepFun
+button | Synap
+button | Synthorai
+button | Azure-OpenAI
+button | TogetherAI
+button | TokenHub
+button | TokenPony
+button | TrustedRouter
+button | Upstage
+button | Avian
+button | Astraflow
+button | Voyage AI
+button | Wally
+button | API-Route
+button | AnonRouter
+button | Xiaomi
+button | Xinference
+button | XunFei Spark
+button | AI Stupid Level
+label | *Modèle de chat
+button | [icône lucide-circle-question-mark]
+button | gemma4:e4b llm-service-chat
+label | Modèle d'embedding
+button | bge-m3 llm-service-embed
+label | Modèle Img2txt
+button | [icône lucide-chevron-down]
+label | Modèle Speech2txt
+button | Systran/faster-whisper-small voix-locale
+label | Modèle de rerank
+label | Modèle TTS
+label | Decision model

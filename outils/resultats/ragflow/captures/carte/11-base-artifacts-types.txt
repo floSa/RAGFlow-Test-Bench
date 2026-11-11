@@ -1,0 +1,27 @@
+adresse : /dataset/compilation/b18ec890920a4ad99fbf47a80a9b453d
+
+== texte ==
+Retour
+DV
+Démo Vélanor dataset
+Wiki
+
+No wiki yet
+
+Compiled automatically when documents are parsed.
+
+Wiki
+Tree/PageIndex
+Graph
+Mind map
+Timeline
+
+== éléments visibles ==
+button | Retour
+combobox | Wiki
+label | 
+option | Wiki
+option | Tree/PageIndex
+option | Graph
+option | Mind map
+option | Timeline
