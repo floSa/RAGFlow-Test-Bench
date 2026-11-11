@@ -334,6 +334,67 @@ def exploitation_profil(s):
     log("adresse /admin :", s.pg.locator("body").inner_text()[:200].replace("\n", " | "))
 
 
+def mdp_admin():
+    env = Path("donnees/ragflow/ragflow.env").read_text()
+    return re.findall(r"^ADMIN_DEFAULT_PASSWORD=(\S+)", env, re.M)[-1]
+
+
+def connexion_admin(s):
+    s.aller("/admin", 3000)
+    s.pg.locator("input[type=email]:visible, input[name=email]:visible").first.fill(INVITE_REEL)
+    s.pg.locator("input[type=password]:visible").first.fill(mdp_admin())
+    s.pg.get_by_role("button", name="Se connecter").click(); attendre(s, 4000)
+
+
+def exploitation_admin_reperage(s):
+    """Repérage de la console d'administration (/admin), en lecture seule ; images et textes non versionnés."""
+    connexion_admin(s)
+    reperer(s, "admin-accueil")
+    liens = [(a.inner_text().strip(), a.get_attribute("href")) for a in s.pg.locator("a[href^='/admin']").all() if a.is_visible()]
+    log("liens de la console :", liens)
+    for nom, href in liens:
+        s.aller(href, 3000)
+        reperer(s, "admin" + href.replace("/", "-"))
+
+
+def exploitation_admin(s):
+    """Console d'administration (/admin) en lecture seule : connexion, « Services », « Utilisateurs », « Bac à sable »."""
+    m = M13
+    s.aller("/admin", 3000)
+    email = s.pg.locator("input[type=email]:visible, input[name=email]:visible").first
+    mdp = s.pg.locator("input[type=password]:visible").first
+    email.fill(INVITE_REEL); mdp.fill(mdp_admin())
+    cap(s, m, "06-console-connexion", [(texte(s, "Console d'administration"), "Console d'administration"), (email, "Email"),
+                                       (mdp, "Mot de passe"), (s.pg.get_by_role("button", name="Se connecter"), "Se connecter")],
+        masques=[mdp])
+    s.pg.get_by_role("button", name="Se connecter").click(); attendre(s, 4000)
+    log("après connexion :", s.pg.url.replace(URL, ""))
+    lien = lambda x: s.pg.locator("a").filter(has_text=x).first
+    lien("Services").click(); attendre(s, 3000)
+    log("services :", s.pg.locator("tbody").first.inner_text().replace("\n", " ").replace("\t", " | "))
+    l1 = s.pg.locator("tbody tr").filter(has_text="elasticsearch").first
+    cap(s, m, "07-services", [(lien("Services"), "Services"), (l1, "service"),
+                              (s.pg.locator("th").filter(has_text="Statut").first, "Statut"),
+                              (s.pg.locator("tbody tr").filter(has_text="ragflow-server").first, "serveur RAGFlow")])
+    lien("Utilisateurs").click(); attendre(s, 3000)
+    u = s.pg.locator("tbody tr").filter(has_text=COMPTE["email"]).first
+    for b in u.locator("button").all():
+        b.hover(); attendre(s, 800)
+        log("bulle d'un bouton d'action :", [x for x in s.pg.locator("[role=tooltip], [data-radix-popper-content-wrapper]").all_inner_texts() if x.strip()],
+            b.get_attribute("aria-label"), b.get_attribute("title"))
+    s.pg.mouse.move(5, 450); attendre(s, 600)
+    u.hover(); attendre(s, 800)  # les icônes d'action n'apparaissent qu'au survol de la ligne
+    cap(s, m, "08-utilisateurs", [(lien("Utilisateurs"), "Utilisateurs"), (bouton(s, "Nouvel utilisateur"), "Nouvel utilisateur"),
+                                  (u.get_by_role("combobox").first, "Statut"), (u.get_by_role("combobox").last, "Type d'utilisateur"),
+                                  (u.locator("button:has(svg.lucide-user-lock)"), "mot de passe"), (u.locator("button:has(svg.lucide-trash)"), "supprimer")])
+    lien("Bac à sable").click(); attendre(s, 3000)
+    log("bac à sable :", s.pg.locator("main, body").last.inner_text()[:2500].replace("\n", " | "))
+    cap(s, m, "09-bac-a-sable", [(lien("Bac à sable"), "Bac à sable"), (texte(s, "Sélection du fournisseur"), "Sélection du fournisseur"),
+                                 (texte(s, "Self-Managed"), "Self-Managed"), (texte(s, "Local"), "Local")])
+    bouton(s, "Déconnexion").click(); attendre(s, 2000)
+    log("après Déconnexion :", s.pg.url.replace(URL, ""))
+
+
 def exploitation(s, *phases):
     for ph in phases or ("equipe", "profil"):
         log("== phase", ph)
@@ -378,21 +439,21 @@ def depannage_contexte(s):
     err = s.pg.get_by_text(re.compile("ERROR")).last
     err.wait_for(timeout=180000); attendre(s, 3000)
     log(f"réponse d'erreur après {time.time() - t0:.1f} s :", err.inner_text()[:400])
-    el = [(err, "réponse d'erreur")]
+    el = [(err.locator("xpath=.."), "réponse d'erreur")]
     if s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).count():
         el.append((s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).last, "jetons"))
     cap(s, m, "02-erreur-de-contexte", el)
 
 
 def depannage_introuvable(s):
-    """Réponse « not found » à une question hors du corpus (contexte remis à 16384), puis adresse inconnue (/admin)."""
+    """Réponse « not found » à une question hors du corpus (contexte remis à 16384), puis adresse inconnue."""
     m = M14
     nouvelle_conversation(s)
     envoyer(s, Q_HORS_SUJET)
     rep = s.pg.get_by_text(re.compile("not found in the dataset")).last
     log("réponse :", rep.inner_text()[:300])
     cap(s, m, "03-reponse-not-found", [(rep, "réponse"), (s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).last, "jetons et durée")])
-    s.aller("/admin", 3000)
+    s.aller("/page-inexistante", 3000)
     b = s.pg.get_by_role("button").filter(has_text="Business").first
     cap(s, m, "04-page-introuvable", [(texte(s, "404"), "404"), (texte(s, "Page not found", exact=False), "Page not found"), (b, "Business")])
     b.click(); attendre(s, 2500)
