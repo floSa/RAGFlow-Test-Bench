@@ -3,7 +3,7 @@
 > **Objet** : comprendre ce qu'est un RAG et comment RAGFlow 1.0 l'organise en services, avant de l'installer.
 > **Prérequis** : aucun ; le [glossaire](../glossaire.md) définit les termes techniques.
 > **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04), LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b` pour les réponses, `bge-m3` pour l'embedding), contexte déclaré de 16 384 jetons.
-> **Statut des informations** : [Vérifié] observé ou mesuré le 9 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
+> **Statut des informations** : [Vérifié] observé ou mesuré les 9 et 11 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
 > **Précautions** : aucune commande dans ce manuel ; les chiffres cités viennent des essais des manuels suivants.
 
 ## Sommaire
@@ -13,8 +13,9 @@
 3. [Reranking et citations](#3-reranking-et-citations)
 4. [Architecture de RAGFlow 1.0](#4-architecture-de-ragflow-10)
 5. [Où vivent les modèles](#5-où-vivent-les-modèles)
-6. [Dépannage](#dépannage)
-7. [Sources](#sources)
+6. [Visite générale de l'interface](#6-visite-générale-de-linterface)
+7. [Dépannage](#dépannage)
+8. [Sources](#sources)
 
 ## 1. Le RAG en bref
 
@@ -90,7 +91,7 @@ Le compose officiel publie tous ces ports sur toutes les interfaces réseau (`0.
 
 ### Essentiel
 
-RAGFlow ne contient aucun modèle de langage. Les modèles sont déclarés dans « Model providers » et servis par LLM-Service, un service commun à toutes les applications de la série :
+RAGFlow ne contient aucun modèle de langage. Les modèles sont déclarés dans « Fournisseurs de modèles » (menu du compte, voir [01](01-installation.md)) et servis par LLM-Service, un service commun à toutes les applications de la série :
 
 | Usage | Modèle | Serveur | Adresse vue par RAGFlow |
 |---|---|---|---|
@@ -104,6 +105,50 @@ RAGFlow ne contient aucun modèle de langage. Les modèles sont déclarés dans 
 
 RAGFlow borne la longueur de la réponse à « contexte déclaré du modèle − jetons du prompt ». Les consignes et les passages occupent 1 841 à 3 301 jetons selon la question ; un contexte déclaré trop petit produit une erreur visible dans la réponse. [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-contexte-depassement.log`, `outils/resultats/ragflow/banc-2026-11-09-ctx3072.json`, `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`)
 
+## 6. Visite générale de l'interface
+
+### Essentiel
+
+L'interface web s'ouvre dans le navigateur Windows à l'adresse `http://127.0.0.1:8088`. Après connexion, chaque page porte la même barre du haut : à gauche les grandes fonctions, à droite les liens, la langue, l'aide, le thème et le compte. Les captures ci-dessous sont prises avec l'interface en français (réglage décrit dans la [prise en main](02-prise-en-main.md)). [Vérifié] (`outils/ragflow/captures/captures.py`, scénario `visite` ; textes des pages dans `outils/resultats/ragflow/captures/00-notions-fondamentales/`)
+
+![Barre de navigation](img/00-notions-fondamentales/01-barre-de-navigation.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | icône de maison | revient à l'accueil |
+| 2 | « Base de connaissances » | bases de documents : import, découpage, analyse, passages ([02](02-prise-en-main.md), [03](03-datasets-et-decoupage.md)) |
+| 3 | « Discussion » | assistants de chat reliés à des bases, conversations citées ([02](02-prise-en-main.md), [05](05-assistants-et-citations.md)) |
+| 4 | « Recherche » | applications de recherche sur une ou plusieurs bases (manuel 15, prévu) |
+| 5 | « Agent » | flux d'agents, pipelines d'ingestion et opérateurs de compilation ([07](07-knowledge-compilation.md), [08](08-agents.md)) |
+| 6 | « Mémoire » | mémoires utilisables par les agents ([08](08-agents.md)) |
+
+![Partie droite de l'en-tête](img/00-notions-fondamentales/02-en-tete-droite.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Gestion des fichiers » | tous les fichiers téléversés, rangés par base ([03](03-datasets-et-decoupage.md)) |
+| 2 | icône Discord | ouvre le serveur de discussion public du projet (site externe) |
+| 3 | icône GitHub | ouvre le dépôt `infiniflow/ragflow` (site externe) |
+| 4 | « Français » | menu de langue de l'interface, mémorisé par le navigateur |
+| 5 | icône « ? » | ouvre le guide officiel `ragflow.io/docs` (site externe) |
+| 6 | icône de lune | bascule entre thème sombre et thème clair |
+
+![Accueil](img/00-notions-fondamentales/03-accueil.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Bienvenue sur RAGFlow » | page d'accueil, affichée après connexion |
+| 2 | carte d'une base | nom, nombre de fichiers et date ; un clic ouvre la base |
+| 3 | « Voir tout » | liste complète des bases de connaissances |
+| 4 | onglets « Discussion », « Recherche », « Agent », « Mémoire » | objets récents de chaque fonction |
+| 5 | pastille du compte | menu du compte : fournisseurs de modèles, sources de données, canaux de chat, MCP, équipe, profil, API ([01](01-installation.md), [13](13-exploitation.md)) |
+
+[Vérifié] (liens de l'en-tête : `web/src/layouts/components/header.tsx` au tag v1.0.0)
+
+### Pour aller plus loin
+
+La [carte de l'interface](carte-interface.md) recense chaque page, menu, onglet et réglage, avec le manuel qui le couvre. Trois pages s'ouvrent en plein écran, sans barre du haut : l'onglet « Artifacts » d'une base, les passages d'un document et le canevas d'un agent ; le bouton « Retour » les referme. [Vérifié] (`outils/resultats/ragflow/captures/carte/`)
+
 ## Dépannage
 
 | Symptôme | Cause probable | Action |
@@ -116,3 +161,4 @@ RAGFlow borne la longueur de la réponse à « contexte déclaré du modèle −
 - Dépôt officiel : https://github.com/infiniflow/ragflow (tag `v1.0.0`, commit `db1cd5929a7885a3074547791f5ecc4d2f891739`) ; documentation : https://ragflow.io/docs/
 - Relecture du compose et du code : [`outils/resultats/ragflow/relecture.md`](../../outils/resultats/ragflow/relecture.md)
 - Versions : [`outils/resultats/ragflow/versions-2026-11-09.json`](../../outils/resultats/ragflow/versions-2026-11-09.json)
+- Captures de la visite : `outils/ragflow/captures/captures.py` (scénario `visite`), images dans `docs/ragflow/img/00-notions-fondamentales/`
