@@ -96,10 +96,10 @@ Ces problèmes sont montrés, avec leur écran, dans le chapitre de la fonction 
 | Onglet « Artifacts » vide (« No wiki yet ») | la vue choisie n'est pas le type que la base produit | choisir le bon type dans le sélecteur | 11, étape 12 |
 | Fichier à 0 passage, « LLM response is not parseable JSON » | le modèle n'a pas rendu la synthèse dans le format attendu (types « Wiki » et « PageIndex ») | choisir un autre type de synthèse ou un modèle plus grand | 11, « Bon à savoir » |
 | « URL resolves to a non-public address (…), which is not allowed » | l'adresse de la source n'est pas publique | site public, ou réglage `ALLOW_ANY_HOST` en connaissant le risque | 12, étape 3 |
-| « Astuce : 102 user not found » à l'invitation | l'adresse n'a pas de compte | faire créer le compte, puis inviter | 13, étape 2 |
-| « Délai Expiré » sur le serveur dans la console d'administration | affichage peu fiable de la console | vérifier l'état de l'application | 13, étape 10 |
+| « Astuce : 102 user not found » à l'invitation | l'adresse n'a pas de compte | faire créer le compte, puis inviter | 13, étapes 2 et 3 |
+| « Délai Expiré » sur le serveur dans la console d'administration | affichage peu fiable de la console | vérifier l'état de l'application | 13, étape 14 |
 | L'interface revient en anglais | langue mémorisée par le navigateur seulement | menu de langue › « Français » | 03, étape 2 |
-| Heures décalées dans certaines pages | heures affichées en temps universel | ajouter une heure (deux en été) pour Paris | 13, étape 5 |
+| Heures décalées dans certaines pages | heures affichées en temps universel | ajouter une heure (deux en été) pour Paris | 13, étape 9 |
 
 ## Régler un problème d'installation ou de démarrage
 

@@ -1,0 +1,19 @@
+== phase inscrire
+après inscription : /login []
+== phase inviter
+capture docs/ragflow/img/13-exploitation/02-inviter.png [(1, 'Adresse e-mail'), (2, 'consigne'), (3, 'Oui')]
+après invitation : []
+ligne du membre : M | Manuel-Invite |  | 11/11/2026 19:07:26 | manuel.invite@exemple.fr | Invite | 
+capture docs/ragflow/img/13-exploitation/03-membre-invite.png [(1, 'Manuel-Invite'), (2, 'Invite'), (3, 'corbeille')]
+== phase accepter
+relevé equipe-invite-2
+ligne de l'équipe reçue : BR | Banc RAGFlow | 11/11/2026 18:07:37 | banc.demo@exemple.fr |  | Accepter | Refuser
+messages : ['Opéré']
+relevé equipe-invite-2-apres
+ligne du membre après acceptation : M | Manuel-Invite |  | 11/11/2026 19:08:02 | manuel.invite@exemple.fr | Member | 
+== phase retirer
+membre encore présent : False
+== phase supprimer
+désactivation : Activation status updated
+suppression : Successfully deleted user. Details: Drop user: manuel.invite@exemple.fr - Deleted 1 files records. - Deleted 1 tenant me
+comptes restants : ['banc.demo@exemple.fr', 'admin@ragflow.io']

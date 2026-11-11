@@ -32,42 +32,55 @@ Cliquer sur la pastille du compte (pastille 1) : la page des réglages s'ouvre, 
 
 ## Inviter un collègue
 
-**Étape 2. Saisir l'adresse du collègue**
-*Où* : « Équipe » › « Inviter ».
-Saisir l'adresse du compte à inviter (pastille 1), puis cliquer sur « Oui » (pastille 3). Le collègue doit déjà avoir un compte RAGFlow (lien « Sign up » de la page de connexion, chapitre 02, étape 8) : l'invitation ne crée pas de compte, comme le rappelle la consigne (pastille 2).
+L'exemple invite un collègue fictif, « Manuel-Invite », dans l'équipe du compte « Banc RAGFlow ». Il se déroule en deux temps : le propriétaire invite (étapes 2 à 4), puis le collègue accepte depuis son propre compte (étapes 5 et 6). Sur un seul poste, les deux comptes se succèdent dans le même navigateur, grâce à « Déconnexion » ; une fenêtre de navigation privée ouverte à côté permet aussi de garder les deux sessions ouvertes en même temps.
 
-![Invitation refusée](../img/13-exploitation/02-invitation-refusee.png)
-*Écran : fenêtre d'invitation, adresse sans compte refusée.*
+**Étape 2. Créer le compte du collègue**
+*Où* : page « Équipe » › « Déconnexion » (capture de l'étape 1, pastille 6), puis page de connexion › « Sign up ».
+L'invitation ne crée pas de compte : le collègue doit d'abord avoir le sien. Cliquer sur « Déconnexion », puis, sur la page de connexion, sur « Sign up ». Remplir le formulaire « Create an account » montré au chapitre 02, étape 8 : « Email » `manuel.invite@exemple.fr`, « Nickname » « Manuel-Invite », un mot de passe, puis « Continue ». Se reconnecter ensuite avec le compte propriétaire (chapitre 03, étape 1), et revenir à « Équipe ».
+
+*Résultat* : le compte « Manuel-Invite » existe ; la page « Équipe » du propriétaire est de nouveau affichée.
+
+**Étape 3. Inviter le collègue**
+*Où* : « Équipe » › « Inviter ».
+Saisir l'adresse du compte à inviter (pastille 1), puis cliquer sur « Oui » (pastille 3). La consigne (pastille 2) rappelle que seul un compte existant peut être invité : avec une adresse sans compte, le message « Astuce : 102 user not found » s'affiche en haut à droite et la fenêtre reste ouverte.
+
+![Fenêtre d'invitation](../img/13-exploitation/02-inviter.png)
+*Écran : « Équipe », fenêtre d'invitation remplie.*
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | « Adresse e-mail » | adresse du compte à inviter ; ici `manuel.invite@exemple.fr`, adresse sans compte |
+| 1 | « Adresse e-mail » | adresse du compte à inviter, ici `manuel.invite@exemple.fr` |
 | 2 | consigne | « Only registered users can be invited. Please register the account before sending an invitation. » |
 | 3 | « Oui » | envoie l'invitation ; « Non » annule |
-| 4 | message | « Astuce : 102 user not found » : l'adresse n'a pas de compte ; la fenêtre reste ouverte |
 
-*Résultat* : avec l'adresse d'un compte existant, la fenêtre se ferme et le membre apparaît (étape suivante).
+*Résultat* : la fenêtre se ferme et le membre apparaît dans la liste (étape suivante).
 
-**Étape 3. Vérifier ou retirer le membre**
+**Étape 4. Vérifier le membre invité**
 *Où* : « Équipe » › « Membres de l'équipe ».
-Le compte invité apparaît dans la liste (pastille 1), avec son rôle (pastille 2). Pour le retirer, cliquer sur la corbeille (pastille 3), puis sur « Supprimer » dans la confirmation « Supprimer le membre ».
+Le compte invité apparaît dans la liste (pastille 1), avec son rôle (pastille 2). La corbeille (pastille 3) le retire, après confirmation « Supprimer le membre » ; elle sert aussi plus tard, pour retirer un membre qui a accepté.
 
 ![Membre invité](../img/13-exploitation/03-membre-invite.png)
 *Écran : « Équipe », membre invité.*
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | membre invité | « admin », `admin@ragflow.io` (compte d'administration, invité pour l'exemple) |
-| 2 | « Rôle » | « Invite » : invitation en attente d'acceptation par le compte invité (étape 4) |
+| 1 | membre invité | « Manuel-Invite », date de l'invitation, `manuel.invite@exemple.fr` |
+| 2 | « Rôle » | « Invite » : invitation en attente ; il devient « Member » quand le collègue accepte (étape 6) |
 | 3 | corbeille | retire le membre, après confirmation |
 
-*Résultat* : le membre est ajouté ; retiré, il disparaît aussitôt de la liste.
+*Résultat* : l'invitation est envoyée ; le collègue doit maintenant l'accepter.
 
 ## Accepter une invitation et partager une base
 
-**Étape 4. Accepter l'invitation, côté invité**
+**Étape 5. Se connecter avec le compte du collègue**
+*Où* : menu du compte › « Équipe » › « Déconnexion », puis page de connexion.
+Cliquer sur « Déconnexion », puis se connecter avec `manuel.invite@exemple.fr` et son mot de passe, comme au chapitre 03, étape 1 (ou ouvrir une fenêtre de navigation privée et s'y connecter). Ouvrir ensuite le menu du compte (pastille ronde « M », en haut à droite) › « Équipe ».
+
+*Résultat* : la page « Équipe » du collègue s'affiche (étape suivante).
+
+**Étape 6. Accepter l'invitation**
 *Où* : compte invité › menu du compte › « Équipe » › « Équipes rejointes ».
-Le collègue invité se connecte à son propre compte et ouvre « Équipe » : l'équipe qui l'invite apparaît dans « Équipes rejointes » (pastille 2), avec deux boutons. Cliquer sur « Accepter » (pastille 3).
+La page est celle de l'étape 1, vue depuis l'autre compte. En haut, « Manuel-Invite Espace de travail » : l'espace propre du collègue, dont « Membres de l'équipe » est vide (« Aucune donnée disponible »). En bas, « Équipes rejointes » (pastille 1) : l'équipe qui invite (pastille 2), avec deux boutons, puis, en dernière ligne, son propre espace. Sur la machine d'essai, la page de ce compte neuf s'est affichée avec un en-tête réduit : un bouton de menu (trois traits) à gauche et une icône de traduction à droite remplacent la barre du haut et le menu « Français » ; le contenu de la page est le même. Cliquer sur « Accepter » (pastille 3).
 
 ![Invitation reçue](../img/13-exploitation/10-invitation-recue.png)
 *Écran : réglages du compte invité, page « Équipe », invitation reçue.*
@@ -79,9 +92,9 @@ Le collègue invité se connecte à son propre compte et ouvre « Équipe » : l
 | 3 | « Accepter » | rejoint l'équipe |
 | 4 | « Refuser » | décline l'invitation |
 
-*Résultat* : le message « Opéré » confirme ; les deux boutons disparaissent de la ligne, qui reste dans « Équipes rejointes ».
+*Résultat* : le message « Opéré » confirme ; les deux boutons disparaissent de la ligne, qui reste dans « Équipes rejointes ». Côté propriétaire, après reconnexion, le rôle du membre passe de « Invite » à « Member ».
 
-**Étape 5. Partager une base avec l'équipe**
+**Étape 7. Partager une base avec l'équipe**
 *Où* : compte propriétaire › barre du haut › « Base de connaissances » › base ouverte › menu de gauche › « Configuration » › « Autorisations ».
 Ouvrir la liste « Autorisations » (montrée au chapitre 06, étape 6, pastille 5), choisir « Équipe » au lieu de « Moi uniquement », puis cliquer sur « Enregistrer » en bas de la page. Un message « No PaddleOCR models added… » peut s'afficher en même temps : il ne concerne que le choix du lecteur des PDF et n'empêche pas l'enregistrement.
 
@@ -89,7 +102,7 @@ Ouvrir la liste « Autorisations » (montrée au chapitre 06, étape 6, pastille
 
 ## Régler son profil
 
-**Étape 6. Ouvrir la page « Profil »**
+**Étape 8. Ouvrir la page « Profil »**
 *Où* : menu du compte › « Profil ».
 Chaque réglage a son bouton « Modifier » à droite.
 
@@ -106,7 +119,7 @@ Chaque réglage a son bouton « Modifier » à droite.
 
 *Résultat* : le profil est affiché et modifiable.
 
-**Étape 7. Changer le fuseau horaire**
+**Étape 9. Changer le fuseau horaire**
 *Où* : « Profil » › « Modifier » en face de « Fuseau horaire ».
 Choisir le fuseau dans la liste (pastille 1), par exemple celui de Paris, puis cliquer sur « Enregistrer » (pastille 3).
 
@@ -123,7 +136,7 @@ Choisir le fuseau dans la liste (pastille 1), par exemple celui de Paris, puis c
 
 ## Créer et supprimer une clé d'accès
 
-**Étape 8. Ouvrir la page « API »**
+**Étape 10. Ouvrir la page « API »**
 *Où* : menu du compte › « API ».
 La page « RAGFlow API » donne l'adresse du serveur (pastille 3) et l'accès aux clés (pastille 2).
 
@@ -140,7 +153,7 @@ La page « RAGFlow API » donne l'adresse du serveur (pastille 3) et l'accès au
 
 *Résultat* : la page est ouverte. Sous la documentation, la carte « Langfuse » relie RAGFlow à un service de suivi des appels aux modèles ; elle n'a pas été utilisée.
 
-**Étape 9. Créer une clé**
+**Étape 11. Créer une clé**
 *Où* : page « API » › « Clé API » › « Créer une nouvelle clé ».
 Cliquer sur « Créer une nouvelle clé » (pastille 5) : la clé s'ajoute au tableau (pastille 1). La copier (pastille 3) et la coller dans le programme qui en a besoin. Les clés sont masquées sur la capture.
 
@@ -157,7 +170,7 @@ Cliquer sur « Créer une nouvelle clé » (pastille 5) : la clé s'ajoute au ta
 
 *Résultat* : la clé est créée et copiée.
 
-**Étape 10. Supprimer une clé**
+**Étape 12. Supprimer une clé**
 *Où* : fenêtre « Clé API » › corbeille de la ligne.
 Cliquer sur la corbeille de la clé, puis sur « Supprimer » (pastille 2) dans la confirmation.
 
@@ -175,7 +188,7 @@ Cliquer sur la corbeille de la clé, puis sur « Supprimer » (pastille 2) dans 
 
 La console d'administration n'a aucun lien dans l'interface ordinaire : elle s'ouvre par son adresse, `http://127.0.0.1:8088/admin`, et seul le compte `admin@ragflow.io` y entre. Son mot de passe a été tiré au hasard à l'installation ; il se trouve à la ligne `ADMIN_DEFAULT_PASSWORD` du fichier `donnees/ragflow/ragflow.env`.
 
-**Étape 11. Se connecter à la console**
+**Étape 13. Se connecter à la console**
 *Où* : navigateur Windows › `http://127.0.0.1:8088/admin`.
 Saisir le courriel (pastille 2) et le mot de passe (pastille 3), puis cliquer sur « Se connecter » (pastille 4).
 
@@ -191,7 +204,7 @@ Saisir le courriel (pastille 2) et le mot de passe (pastille 3), puis cliquer su
 
 *Résultat* : la page « Services » s'affiche (étape suivante).
 
-**Étape 12. Lire l'état des services**
+**Étape 14. Lire l'état des services**
 *Où* : console › « Services ».
 Chaque ligne est un service de l'installation (pastille 2), avec son état (pastille 3).
 
@@ -207,7 +220,7 @@ Chaque ligne est un service de l'installation (pastille 2), avec son état (past
 
 *Résultat* : l'état est lu. Les trois processus de RAGFlow sont marqués « Délai Expiré » alors que l'interface fonctionnait normalement : cet affichage n'est pas fiable ; l'état réel se vérifie comme au chapitre 02, étape 9.
 
-**Étape 13. Gérer les comptes**
+**Étape 15. Gérer les comptes**
 *Où* : console › « Utilisateurs ».
 La page liste les comptes (pastille 1) ; les icônes d'action d'une ligne apparaissent au survol.
 
@@ -225,7 +238,7 @@ La page liste les comptes (pastille 1) ; les icônes d'action d'une ligne appara
 
 *Résultat* : les comptes sont listés. Ces actions n'ont pas été essayées, pour ne pas toucher au compte de démonstration.
 
-**Étape 14. Lire le réglage du bac à sable**
+**Étape 16. Lire le réglage du bac à sable**
 *Où* : console › « Bac à sable ».
 Cette page règle où s'exécute le code lancé par le bloc « Code » des agents (chapitre 10, étape 15).
 
@@ -252,9 +265,9 @@ Cette page règle où s'exécute le code lancé par le bloc « Code » des agent
 
 | Symptôme | Cause | Que faire |
 |---|---|---|
-| « Astuce : 102 user not found » à l'invitation | l'adresse n'a pas de compte | faire créer le compte (« Sign up »), puis inviter |
-| Heures décalées dans certaines pages | heures affichées en temps universel | ajouter une heure (deux en été) pour Paris ; régler aussi « Fuseau horaire » (étape 7) |
-| Un programme est refusé après la suppression d'une clé | la clé supprimée était la sienne | créer une nouvelle clé (étape 9) et la donner au programme |
+| « Astuce : 102 user not found » à l'invitation | l'adresse n'a pas de compte | faire créer le compte (« Sign up », étape 2), puis inviter |
+| Heures décalées dans certaines pages | heures affichées en temps universel | ajouter une heure (deux en été) pour Paris ; régler aussi « Fuseau horaire » (étape 9) |
+| Un programme est refusé après la suppression d'une clé | la clé supprimée était la sienne | créer une nouvelle clé (étape 11) et la donner au programme |
 | « Délai Expiré » sur le serveur dans la console | affichage peu fiable de la console | vérifier l'état comme au chapitre 02, étape 9 |
 
 Les autres problèmes sont traités au chapitre [15. En cas de problème](15-en-cas-de-probleme.md).
