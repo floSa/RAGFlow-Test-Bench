@@ -8,7 +8,7 @@
 
 **Risque — réglage `ALLOW_ANY_HOST`.** Pour ingérer un site interne, il faut autoriser les adresses privées (`ALLOW_ANY_HOST=1`). Ce réglage vaut pour tout le serveur : les agents et leurs outils web peuvent alors joindre les machines du réseau local (attaque dite SSRF). Il n'a été activé que le temps d'un essai, le 9 novembre, puis remis à 0 ; il vaut 0 le 11 novembre (`docker exec rag-ragflow-server printenv ALLOW_ANY_HOST`). [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-sitemap-autorise.log`, `outils/resultats/ragflow/captures/09-sources-externes/scenario.log`) [Source] (`internal/common/allow_private_host.go`)
 
-Toutes les captures de ce manuel viennent du scénario `sources` de `outils/ragflow/captures/manuels_07_15.py`, qui fait chaque geste à la souris, dans l'ordre des sections. Le texte de chaque page capturée et la liste de ses éléments visibles sont dans `outils/resultats/ragflow/captures/09-sources-externes/` (même nom que l'image), le déroulé dans `scenario.log`. [Vérifié]
+Une capture par écran nouveau ; les étapes qui reviennent sur un écran déjà montré sont décrites sans nouvelle capture. Toutes les captures de ce manuel viennent du scénario `sources` de `outils/ragflow/captures/manuels_07_15.py`, qui fait chaque geste à la souris, dans l'ordre des sections. Le texte de chaque page capturée et la liste de ses éléments visibles sont dans `outils/resultats/ragflow/captures/09-sources-externes/` (même nom que l'image), le déroulé et la correspondance avec les noms de capture d'origine dans `scenario.log`. [Vérifié]
 
 ## Sommaire
 
@@ -27,20 +27,11 @@ Toutes les captures de ce manuel viennent du scénario `sources` de `outils/ragf
 
 Une source de données (connecteur) est un système externe que RAGFlow relit à intervalle régulier pour garder une base à jour : un wiki, un espace de stockage, une messagerie, un site web. Elle se déclare une fois dans le menu du compte, puis se lie à une ou plusieurs bases. But : déclarer le site de test par son plan de site (`sitemap.xml`, la liste des pages d'un site).
 
-1. Cliquer sur l'avatar du compte (pastille aux initiales, en haut à droite), puis sur « Sources de données ».
-
-![Sources de données](img/09-sources-externes/01-sources-de-donnees.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Sources de données » | page des connecteurs, dans le menu du compte |
-| 2 | « Aucune source de données ajoutée » | sources déjà déclarées (aucune) |
-| 3 | « Sources disponibles » | une quarantaine de connecteurs (étape 2) |
-| 4 | carte « Confluence » | exemple de connecteur : nom, description ; « Ajouter » au survol |
+1. Cliquer sur l'avatar du compte (pastille aux initiales, en haut à droite), puis sur « Sources de données ». La page affiche en haut les sources déjà déclarées (« Aucune source de données ajoutée. Sélectionnez-en une ci-dessous pour vous connecter. »), puis « Sources disponibles » : une carte par connecteur, avec son nom, sa description et « Ajouter » au survol.
 
 2. Les connecteurs proposés sont : Confluence, Notion, Google Drive, Feishu Wiki, Gmail, Google Cloud Storage, Oracle Storage, S3, R2, Jira, Box, Dropbox, Bitbucket, Azure DevOps, GitLab, GitHub, Moodle, Discord, Xquik, Zendesk, Zotero, WebDAV, Airtable, Asana, IMAP, Dingtalk AI Table, SeaFile, MySQL, PostgreSQL, BigQuery, REST API, RSS, Sitemap, OneDrive, Outlook, Salesforce, Azure Blob Storage, Microsoft Teams, Slack, SharePoint. Faire défiler jusqu'à « Sitemap », la survoler et cliquer sur « Ajouter ».
 
-![Carte Sitemap](img/09-sources-externes/02-carte-sitemap.png)
+![Carte Sitemap](img/09-sources-externes/01-carte-sitemap.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
@@ -49,7 +40,7 @@ Une source de données (connecteur) est un système externe que RAGFlow relit à
 
 3. Saisir le nom et l'adresse du plan de site, puis cliquer sur « Test connection ».
 
-![Créer un connecteur Sitemap](img/09-sources-externes/03-ajout-sitemap.png)
+![Créer un connecteur Sitemap](img/09-sources-externes/02-ajout-sitemap.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
@@ -62,7 +53,7 @@ Une source de données (connecteur) est un système externe que RAGFlow relit à
 
 4. Le test est refusé : un message rouge apparaît quelques secondes en haut à droite.
 
-![Test refusé](img/09-sources-externes/04-test-refuse.png)
+![Test refusé](img/09-sources-externes/03-test-refuse.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
@@ -71,31 +62,18 @@ Une source de données (connecteur) est un système externe que RAGFlow relit à
 
 5. Cliquer quand même sur « Confirmer » : la source est enregistrée malgré l'échec du test (le test n'est pas obligatoire). Elle apparaît en tête de page, sous son type.
 
-![Source enregistrée](img/09-sources-externes/05-source-ajoutee.png)
+![Source enregistrée](img/09-sources-externes/04-source-ajoutee.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Sitemap » | type de connecteur |
 | 2 | « Manuel-Source-Sitemap » | source déclarée |
-| 3 | réglages | roue dentée : page de la source (étapes 6 et 7) |
+| 3 | réglages | roue dentée : page de la source (étape 6) |
 | 4 | supprimer | corbeille : supprime la source |
 
-6. Cliquer sur la roue dentée. La page de la source reprend les champs de création.
+6. Cliquer sur la roue dentée. La page de la source reprend les champs de création (« Name », « URL du sitemap », « Filtre d'URL (regex) », « Suivre les liens PDF », « User-Agent », qui est le nom sous lequel RAGFlow se présente au site, `RAGFlow-SitemapConnector/1.0`, et « Batch Size »), puis, plus bas, la fréquence de relecture et le journal des synchronisations.
 
-![Page de la source](img/09-sources-externes/06-detail-de-la-source.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Name » | nom |
-| 2 | « URL du sitemap » | adresse |
-| 3 | « Filtre d'URL (regex) » | filtre des pages |
-| 4 | « Suivre les liens PDF » | PDF liés |
-| 5 | « User-Agent » | nom sous lequel RAGFlow se présente au site (`RAGFlow-SitemapConnector/1.0`) |
-| 6 | « Batch Size » | pages traitées par lot |
-
-7. Plus bas, la fréquence de relecture et le journal des synchronisations.
-
-![Fréquence et journal](img/09-sources-externes/07-frequence-et-journal.png)
+![Fréquence et journal](img/09-sources-externes/05-frequence-et-journal.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
@@ -103,7 +81,7 @@ Une source de données (connecteur) est un système externe que RAGFlow relit à
 | 2 | « Timeout Secs » | durée maximale d'une synchronisation (1 740 s par défaut) |
 | 3 | « Test connection » | même test qu'à la création |
 | 4 | « Enregistrer » | enregistre les modifications ; après l'échec de synchronisation de la section 2, ce bouton est devenu « Resume » (reprise) |
-| 5 | « Journal » | une ligne par synchronisation (section 2, étape 6) |
+| 5 | « Journal » | une ligne par synchronisation (section 2, étape 4) |
 
 ## 2. Lier la source à une base et suivre la synchronisation
 
@@ -111,36 +89,27 @@ Une source de données (connecteur) est un système externe que RAGFlow relit à
 
 But : relier la source à une base, pour que les pages du site y deviennent des documents. La base « Manuel-Sources » a d'abord été créée vide, comme au manuel [02](02-prise-en-main.md), section 2.
 
-1. Dans la base, ouvrir « Configuration » et descendre en bas de la page, à « Source de données » (« Gérer la liaison de source de données avec cette base »). Cliquer sur « Lier une source de données ».
+1. Dans la base, ouvrir « Configuration » et descendre en bas de la page, à « Source de données » (« Gérer la liaison de source de données avec cette base »). Cliquer sur « Lier une source de données » (au-dessus de « Annuler » et « Enregistrer »). La fenêtre « Lier une source de données » liste les sources déclarées, rangées par type. Choisir la source, puis cliquer sur « Confirmer ».
 
-![Lier une source de données](img/09-sources-externes/08-lier-une-source.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Lier une source de données » | ouvre la liste des sources déclarées |
-| 2 | « Enregistrer » | enregistre la configuration, liaison comprise |
-
-2. Choisir la source, puis cliquer sur « Confirmer ».
-
-![Choix de la source](img/09-sources-externes/09-choix-de-la-source.png)
+![Choix de la source](img/09-sources-externes/06-choix-de-la-source.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Manuel-Source-Sitemap » | source à lier, rangée sous son type « Sitemap » |
 | 2 | « Confirmer » | ajoute la liaison (pas encore enregistrée) |
 
-3. La source apparaît sous « Source de données ». Cliquer sur « Enregistrer ».
+2. La source apparaît sous « Source de données ». Cliquer sur « Enregistrer ».
 
-![Source liée](img/09-sources-externes/10-source-liee.png)
+![Source liée](img/09-sources-externes/07-source-liee.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Manuel-Source-Sitemap » | source liée à la base |
 | 2 | « Enregistrer » | enregistre et lance une première synchronisation |
 
-4. Ouvrir « Journaux », puis l'onglet « Data source » : la synchronisation a échoué.
+3. Ouvrir « Journaux », puis l'onglet « Data source » : la synchronisation a échoué.
 
-![Journal Data source de la base](img/09-sources-externes/11-journal-data-source.png)
+![Journal Data source de la base](img/09-sources-externes/08-journal-data-source.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
@@ -148,9 +117,9 @@ But : relier la source à une base, pour que les pages du site y deviennent des 
 | 2 | tâches | « 11/11/2026 15:46:08 », « Failed », « sync », « sync task failed after 2 retries, last error: URL resolves to a non-public address (172.25.0.4), which is not allowed » |
 | 3 | « Total » | nombre de synchronisations |
 
-5. Le même échec figure dans le « Journal » de la source (roue dentée de la section 1, étape 6).
+4. Le même échec figure dans le « Journal » de la source (roue dentée de la section 1, étape 6).
 
-![Journal de la source](img/09-sources-externes/12-journal-de-la-source.png)
+![Journal de la source](img/09-sources-externes/09-journal-de-la-source.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
@@ -158,14 +127,7 @@ But : relier la source à une base, pour que les pages du site y deviennent des 
 | 2 | synchronisation | « Heure de démarrage », « Statut » (« Failed »), « Ensemble de données » (« Manuel-Sources »), « Task Type » (« sync ») |
 | 3 | « Summary » | cause de l'échec |
 
-6. La base reste vide.
-
-![Base vide](img/09-sources-externes/13-base-vide.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Manuel-Sources » | « 0 Fichiers » |
-| 2 | aucun fichier | « Aucune donnée disponible » |
+5. La base reste vide : « 0 Fichiers », « Aucune donnée disponible » dans l'onglet « Fichiers ».
 
 Le journal de l'API donne `error_count` 2 et `total_docs_indexed` 0. La première synchronisation est partie dès l'enregistrement (journal lu 12 s après). [Vérifié] (`scenario.log`)
 
@@ -217,7 +179,7 @@ Un canal de chat publie un assistant ou un agent dans une messagerie : les utili
 
 1. Avatar du compte, « Canaux de chat ».
 
-![Canaux de chat](img/09-sources-externes/14-canaux-de-chat.png)
+![Canaux de chat](img/09-sources-externes/10-canaux-de-chat.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
@@ -228,7 +190,7 @@ Un canal de chat publie un assistant ou un agent dans une messagerie : les utili
 
 2. Survoler « Telegram » et cliquer sur « Ajouter » : la fenêtre « Ajouter un bot Telegram » demande le jeton du bot. Elle est refermée par « Annuler », sans rien enregistrer.
 
-![Ajouter un bot Telegram](img/09-sources-externes/15-ajout-telegram.png)
+![Ajouter un bot Telegram](img/09-sources-externes/11-ajout-telegram.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
