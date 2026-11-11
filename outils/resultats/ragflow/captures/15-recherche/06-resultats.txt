@@ -1,0 +1,137 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+RAGFlow
+Résumé IA
+
+Le montant de la prime d'intéressement 2025 est de 1 150 euros par salarié, et elle sera versée en avril 2026.
+
+0/9
+Fichiers
+Top 10
+Total: 24
+## Décisions
+- Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026.
+- Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles.
+- Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026.
+cse-2025-10-14.md
+FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparation ?Une réparation en atelier prend 10 jours ouvrés en moyenne. Le diagnostic est gratuit.Comment joindre le service après-vente ?Par téléphone au 02 40 00 12 34, du lundi au vendredi de 9 h à 18 h, ou par le formulaire du site.Peut-on remplacer soi-même la batterie ?Oui, la batterie se retire avec la clé fournie. Seule une batterie d'origine Vélanor est couverte par la garantie.
+faq-sav.html
+CONTRATD'APPROVISIONNEMENTN°BX-2025-117
+Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur)
+Articlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah
+Article2-Durée Troisans a compterdu lermars2025
+Article3-Volumes Volumeminimalannuel:40 0oo batteries.
+Article4-Prix Prix unitaire:212 euros HT,revisable une fois par an.
+Article 5-Delais de livraison Le Fournisseur livre sous 21 jours apres la commande
+Article 6-Penalitesderetard 0,5% du montant de la commande par jour de retard, plafonnees a 8% du montant de la commande.
+Article 7-Garantie 5ans ou 1 0o0 cycles de charge, au premier terme atteint.
+Article8-Litiges Tribunal de commerce de Nantes.
+FaitaNantes,le14 fevrier2025 Pour Velanor:Helene Marchais Pour Batterix:Jonas Weber
+contrat-batterix-scan.pdf
+le>3. Chiffre d'affaires trimestriel Le troisième trimestre est le plus élevé de l'année, porté par la saison estivale.
+TrimestreChiffre d'affaires (M€)Part du total
+d>T1 2025d>d>9,8d>d>20 %d>
+d>T2 2025d>d>13,7d>d>28 %d>
+d>T3 2025d>d>14,2d>d>29 %d>
+d>T4 2025d>d>10,9d>d>22 %d>
+d>Totald>d>48,6d>d>100 %d>
+le>
+rapport-annuel-2025.pdf
+L'âge moyen des salariés est de 36 ans. 41 % des postes d'encadrement sont occupés par des femmes.
+6. Environnement
+Les cadres sont fabriqués à partir d'aluminium recyclé à 82 %. La consommation électrique des sites a atteint 3,4 GWh en 2025. Vélanor vise la neutralité carbone de ses sites en 2030.
+Le taux de recyclage des batteries usagées collectées atteint 96 %, grâce au partenariat avec la filière de collecte Recylo.
+rapport-annuel-2025.pdf
+Procédure PR-SEC-04 — Charge et stockage des batteries
+Responsable de la procédure : Karim Benali, responsable HSE. Version 3 du 1er septembre 2025.
+1. Stockage
+Les batteries sont stockées entre 10 °C et 25 °C, dans le local B2 équipé d'une détection incendie.
+Pour un stockage de plus de 30 jours, la charge est ramenée à 80 % au maximum.
+2. Charge
+La charge se fait uniquement sur les postes équipés d'un chargeur homologué, sous surveillance.
+Une batterie gonflée ou chaude est isolée immédiatement dans le bac sable du local B2.
+3. Contrôles
+procedure-batteries.docx
+le>Table Location: 3. Contrôles
+ContrôleFréquenceResponsable
+d>Inspection du local B2d>d>le premier lundi de chaque moisd>d>Karim Benalid>
+d>Vérification des extincteurs de classe Dd>d>tous les 6 moisd>d>prestataire Sécurifeud>
+d>Formation des opérateursd>d>à l'embauche puis tous les 2 ansd>d>service RHd>
+le>
+procedure-batteries.docx
+Objectifs 2026
+Chiffre d'affaires visé : 55 M€
+Part de l'export visée : 32 %
+Marge nette visée : 7 %
+strategie-2026.pptx
+le>Stocks
+RéférenceDésignationQuantitéSeuil d'alerteEntrepôt
+d>BAT-48V-14Ahd>d>Batterie 48 V 14 Ahd>d>1240d>d>1500d>d>Nantesd>
+d>MOT-250Wd>d>Moteur roue arrière 250 Wd>d>2105d>d>1200d>d>Nantesd>
+d>CAD-ALU-Ld>d>Cadre aluminium taille Ld>d>860d>d>600d>d>Choletd>
+d>CAD-ALU-Md>d>Cadre aluminium taille Md>d>1020d>d>600d>d>Choletd>
+d>FRN-HYD-02d>d>Frein hydrauliqued>d>3400d>d>2000d>d>Nantesd>
+d>PNU-700-38d>d>Pneu 700x38d>d>5150d>d>3000d>d>Nantesd>
+le>
+stocks-octobre-2025.xlsx
+Vélanor SAS — Rapport annuel 2025
+Document fictif généré pour des essais. Toute ressemblance serait fortuite.
+Sommaire : 1. Mot de la présidente — 2. Chiffres clés — 3. Chiffre d'affaires trimestriel
+— 4. Production par modèle — 5. Effectifs — 6. Environnement — 7. Fournisseurs — 8.
+Risques — 9. Perspectives 2026.
+1. Mot de la présidente
+Fondée en 2014 à Nantes, Vélanor conçoit et assemble des vélos à assistance électrique. Son siège est situé au 12 quai de la Fosse, à Nantes. La présidente, Hélène Marchais, dirige l'entreprise depuis 2019.
+L'année 2025 a été marquée par une croissance soutenue malgré les tensions sur les cellules de batterie. L'entreprise a franchi pour la première fois le seuil de 60 000 vélos produits dans l'année.
+2. Chiffres clés 2025
+rapport-annuel-2025.pdf
+
+Recherche connexe
+
+Comment calculer la prime d'intéressement ? (How to calculate the profit-sharing bonus?)
+Quelles sont les conditions d'éligibilité à la prime d'intéressement ? (What are the eligibility conditions for the profit-sharing bonus?)
+Quel est le taux de la prime d'intéressement en France ? (What is the rate of the profit-sharing bonus in France?)
+Comment fonctionne le dispositif de prime d'intéressement ? (How does the profit-sharing bonus system work?)
+Y a-t-il des plafonds pour la prime d'intéressement ? (Are there caps/limits on the profit-sharing bonus?)
+
+== adresse ==
+/search/d3766dab28334cd5b34bde6554ebb8c9
+== pastilles ==
+1. Résumé IA
+2. Fichiers
+3. Top 10
+4. Total
+5. document source
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+textarea:textarea | Comment puis-je vous aider ?
+button | [icône lucide-search]
+button | 0/9 Fichiers
+combobox | Top 10
+button | 
+button | Comment calculer la prime d'intéressement ? (How to calculate the profit-sharing bonus?)
+button | Quelles sont les conditions d'éligibilité à la prime d'intéressement ? (What are the eligi
+button | Quel est le taux de la prime d'intéressement en France ? (What is the rate of the profit-s
+button | Comment fonctionne le dispositif de prime d'intéressement ? (How does the profit-sharing b
+button | Y a-t-il des plafonds pour la prime d'intéressement ? (Are there caps/limits on the profit
+button | [icône lucide-list-tree]
+button | [icône lucide-settings]

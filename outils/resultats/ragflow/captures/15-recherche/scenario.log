@@ -1,0 +1,111 @@
+== phase creation
+capture docs/ragflow/img/15-recherche/01-recherche-vide.png [(1, 'Aucune recherche créée pour le moment'), (2, '+')]
+capture docs/ragflow/img/15-recherche/02-creer-une-recherche.png [(1, 'Nom'), (2, 'Enregistrer')]
+recherche créée : /search/d3766dab28334cd5b34bde6554ebb8c9
+== phase reglages
+capture docs/ragflow/img/15-recherche/03-parametres-de-recherche.png [(1, 'Paramètres de recherche'), (2, 'Télécharger'), (3, 'nom et description'), (4, 'Bases de connaissances'), (5, 'Seuil de similarité'), (6, 'Poids de similarité par mots-clés')]
+panneau après réglages : Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | RAGFlow |  | 👋 Hi there |  | Bon retour, Banc RAGFlow |  | Paramètres de recherche | Télécharger | Manuel-Recherche |  | Vous êtes un assistant intelligent. |  | Bases de connaissances | DV | Démo Vélanor | Métadonnées | Sélectionner une valeur | Seuil de similarité | Poids de similarité par mots-clés | full-text | 0.70 | vector | 0.30 | Rerank candidates | Modèle de réordonnancement | Modèle |  | Model is required when AI summary, related search, or query mindmap is enabled |  | Paramètres du modèle | Résumé IA | Activer la recherche connexe | Afficher la carte mentale de la requête | Annuler | Enregistrer
+capture docs/ragflow/img/15-recherche/05-reglages-du-resume.png [(1, 'Modèle'), (2, 'Résumé IA'), (3, 'Activer la recherche connexe'), (4, 'Afficher la carte mentale de la requête'), (5, 'Enregistrer')]
+après Enregistrer : Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | RAGFlow |  | 👋 Hi there |  | Bon retour, Banc RAGFlow
+== phase question
+capture docs/ragflow/img/15-recherche/06-saisie.png [(1, 'Comment puis-je vous aider ?'), (2, 'rechercher'), (3, 'intégrer'), (4, 'paramètres')]
+premiers passages en 0.8 s
+recherches connexes affichées après 6.1 s
+page de résultats : Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | RAGFlow | Résumé IA |  | Le montant de la prime d'intéressement 2025 est de 1 150 euros par salarié, et elle sera versée en avril 2026. |  | 0/9 | Fichiers | Top 10 | Total: 24 | ## Décisions | - Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026. | - Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles. | - Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026. | cse-2025-10-14.md | FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparation ?Une réparation en atelier prend 10 jours ouvrés en moyenne. Le diagnostic est gratuit.Comment joindre le service après-vente ?Par téléphone au 02 40 00 12 34, du lundi au vendredi de 9 h à 18 h, ou par le formulaire du site.Peut-on remplacer soi-même la batterie ?Oui, la batterie se retire avec la clé fournie. Seule une batterie d'origine Vélanor est couverte par la garantie. | faq-sav.html | CONTRATD'APPROVISIONNEMENTN°BX-2025-117 | Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur) | Articlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah | Article2-Durée Troisans a compterdu lermars2025 | Article3-Volumes Volumeminimalannuel:40 0oo batteries. | Article4-Prix Prix unitaire:212 euros HT,revisable une fois par an. | Article 5
+capture docs/ragflow/img/15-recherche/07-resultats.png [(1, 'Résumé IA'), (2, 'Fichiers'), (3, 'Top 10'), (4, 'Total'), (5, 'document source')]
+capture docs/ragflow/img/15-recherche/08-recherche-connexe.png [(1, 'Recherche connexe'), (2, 'question proposée')]
+carte mentale après 15.0 s : 00x38d>d>5150d>d>3000d>d>Nantesd> | le> | stocks-octobre-2025.xlsx | Vélanor SAS — Rapport annuel 2025 | Document fictif généré pour des essais. Toute ressemblance serait fortuite. | Sommaire : 1. Mot de la présidente — 2. Chiffres clés — 3. Chiffre d'affaires trimestriel | — 4. Production par modèle — 5. Effectifs — 6. Environnement — 7. Fournisseurs — 8. | Risques — 9. Perspectives 2026. | 1. Mot de la présidente | Fondée en 2014 à Nantes, Vélanor conçoit et assemble des vélos à assistance électrique. Son siège est situé au 12 quai de la Fosse, à Nantes. La présidente, Hélène Marchais, dirige l'entreprise depuis 2019. | L'année 2025 a été marquée par une croissance soutenue malgré les tensions sur les cellules de batterie. L'entreprise a franchi pour la première fois le seuil de 60 000 vélos produits dans l'année. | 2. Chiffres clés 2025 | rapport-annuel-2025.pdf |  | Recherche connexe |  | Comment calculer la prime d'intéressement ? (How to calculate the profit-sharing bonus?) | Quelles sont les conditions d'éligibilité à la prime d'intéressement ? (What are the eligibility conditions for the profit-sharing bonus?) | Quel est le taux de la prime d'intéressement en France ? (What is the rate of the profit-sharing bonus in France?) | Comment fonctionne le dispositif de prime d'intéressement ? (How does the profit-sharing bonus system work?) | Quelles sont les différences entre la prime d'intéressement et la participation ? (What are the differences between the profit-sharing bonus and participation?) | Carte mentale
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 1169, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 1159, in recherche
+    globals()["recherche_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 1134, in recherche_question
+    cap(s, m, "09-carte-mentale", [(s.pg.locator("button:has(svg.lucide-list-tree)").first, "carte mentale"),
+  File "/depot/outils/ragflow/captures/captures.py", line 118, in cap
+    lib = capture(s.pg, IMG / manuel / f"{nom}.png", elements=elements, masques=masques, plein=plein, clip=clip, texte=txt)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 71, in capture
+    libelles = annoter(page, list(elements)) if elements else []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 53, in annoter
+    boites = [_boite(page, loc, n=i) for i, (loc, _) in enumerate(elements, 1)]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 39, in _boite
+    loc.wait_for(state="visible", timeout=15000)
+  File "/pw/site/playwright/sync_api/_generated.py", line 13635, in wait_for
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 767, in wait_for
+    await self._frame.wait_for_selector(
+  File "/pw/site/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("button:has(svg.lucide-list-tree)").first to be visible
+
+== phase question
+capture docs/ragflow/img/15-recherche/06-saisie.png [(1, 'Comment puis-je vous aider ?'), (2, 'rechercher'), (3, 'intégrer'), (4, 'paramètres')]
+premiers passages en 0.8 s
+recherches connexes affichées après 5.6 s
+page de résultats : Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | RAGFlow | Résumé IA |  | Le montant de la prime d'intéressement 2025 est de 1 150 euros par salarié, et elle sera versée en avril 2026. |  | 0/9 | Fichiers | Top 10 | Total: 24 | ## Décisions | - Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026. | - Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles. | - Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026. | cse-2025-10-14.md | FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparation ?Une réparation en atelier prend 10 jours ouvrés en moyenne. Le diagnostic est gratuit.Comment joindre le service après-vente ?Par téléphone au 02 40 00 12 34, du lundi au vendredi de 9 h à 18 h, ou par le formulaire du site.Peut-on remplacer soi-même la batterie ?Oui, la batterie se retire avec la clé fournie. Seule une batterie d'origine Vélanor est couverte par la garantie. | faq-sav.html | CONTRATD'APPROVISIONNEMENTN°BX-2025-117 | Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur) | Articlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah | Article2-Durée Troisans a compterdu lermars2025 | Article3-Volumes Volumeminimalannuel:40 0oo batteries. | Article4-Prix Prix unitaire:212 euros HT,revisable une fois par an. | Article 5
+capture docs/ragflow/img/15-recherche/07-resultats.png [(1, 'Résumé IA'), (2, 'Fichiers'), (3, 'Top 10'), (4, 'Total'), (5, 'document source')]
+capture docs/ragflow/img/15-recherche/08-recherche-connexe.png [(1, 'Recherche connexe'), (2, 'question proposée')]
+carte mentale affichée après 3.0 s
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 1171, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 1161, in recherche
+    globals()["recherche_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 1136, in recherche_question
+    cap(s, m, "09-carte-mentale", [(titre, "Carte mentale"), (croix, "fermer")])
+  File "/depot/outils/ragflow/captures/captures.py", line 118, in cap
+    lib = capture(s.pg, IMG / manuel / f"{nom}.png", elements=elements, masques=masques, plein=plein, clip=clip, texte=txt)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 71, in capture
+    libelles = annoter(page, list(elements)) if elements else []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 53, in annoter
+    boites = [_boite(page, loc, n=i) for i, (loc, _) in enumerate(elements, 1)]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 39, in _boite
+    loc.wait_for(state="visible", timeout=15000)
+  File "/pw/site/playwright/sync_api/_generated.py", line 13635, in wait_for
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 767, in wait_for
+    await self._frame.wait_for_selector(
+  File "/pw/site/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for get_by_text("Carte mentale", exact=True).first.locator("xpath=following::button[1]") to be visible
+
+== phase question
+capture docs/ragflow/img/15-recherche/06-saisie.png [(1, 'Comment puis-je vous aider ?'), (2, 'rechercher'), (3, 'intégrer'), (4, 'paramètres')]
+premiers passages en 0.3 s
+recherches connexes affichées après 5.7 s
+page de résultats : Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | RAGFlow | Résumé IA |  | Le montant de la prime d'intéressement 2025 est de 1 150 euros par salarié, et elle sera versée en avril 2026. |  | 0/9 | Fichiers | Top 10 | Total: 24 | ## Décisions | - Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026. | - Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles. | - Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026. | cse-2025-10-14.md | FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparation ?Une réparation en atelier prend 10 jours ouvrés en moyenne. Le diagnostic est gratuit.Comment joindre le service après-vente ?Par téléphone au 02 40 00 12 34, du lundi au vendredi de 9 h à 18 h, ou par le formulaire du site.Peut-on remplacer soi-même la batterie ?Oui, la batterie se retire avec la clé fournie. Seule une batterie d'origine Vélanor est couverte par la garantie. | faq-sav.html | CONTRATD'APPROVISIONNEMENTN°BX-2025-117 | Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur) | Articlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah | Article2-Durée Troisans a compterdu lermars2025 | Article3-Volumes Volumeminimalannuel:40 0oo batteries. | Article4-Prix Prix unitaire:212 euros HT,revisable une fois par an. | Article 5
+capture docs/ragflow/img/15-recherche/07-resultats.png [(1, 'Résumé IA'), (2, 'Fichiers'), (3, 'Top 10'), (4, 'Total'), (5, 'document source')]
+capture docs/ragflow/img/15-recherche/08-recherche-connexe.png [(1, 'Recherche connexe'), (2, 'question proposée')]
+carte mentale affichée après 3.0 s
+capture docs/ragflow/img/15-recherche/09-carte-mentale.png [(1, 'Carte mentale'), (2, 'fermer')]
+fenêtre d'intégration : Intégrer dans la page web | Masquer le profil | Paramètres régionaux | Sélectionner une langue | Code d'intégration | <iframe |   src="http://rag-ragflow-server/search/share?shared_id=d3766dab28334cd5b34bde6554ebb8c9&from=search&auth=<masqué>&tenantId=0b4a819c92bf4364ae34fab63b53871c" |   style="width: 100%; height: 100%; min-height: 600px" |   frameborder="0"> | </iframe> | Ouvrir dans un nouvel onglet | ID
+capture docs/ragflow/img/15-recherche/10-integrer.png [(1, 'Masquer le profil'), (2, 'Paramètres régionaux'), (3, "Code d'intégration"), (4, 'ID')]
+menu de la carte : Renommer | Supprimer
+capture docs/ragflow/img/15-recherche/11-liste-et-menu.png [(1, 'Manuel-Recherche'), (2, 'Renommer'), (3, 'Supprimer')]
+== note : images renumérotées après coup (05 à 11 devenues 04 à 10) pour suivre les étapes du manuel ; textes archivés renommés de même

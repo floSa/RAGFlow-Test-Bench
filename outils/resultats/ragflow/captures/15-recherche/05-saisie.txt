@@ -1,0 +1,40 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+RAGFlow
+
+👋 Hi there
+
+Bon retour, Banc RAGFlow
+
+== adresse ==
+/search/d3766dab28334cd5b34bde6554ebb8c9
+== pastilles ==
+1. Comment puis-je vous aider ?
+2. rechercher
+3. intégrer
+4. paramètres
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+textarea:textarea | Comment puis-je vous aider ?
+button | [icône lucide-search]
+button | [icône lucide-settings]

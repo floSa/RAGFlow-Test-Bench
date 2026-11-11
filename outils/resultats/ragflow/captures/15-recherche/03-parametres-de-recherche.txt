@@ -1,0 +1,90 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+RAGFlow
+
+👋 Hi there
+
+Bon retour, Banc RAGFlow
+
+Paramètres de recherche
+Télécharger
+Manuel-Recherche
+
+Vous êtes un assistant intelligent.
+
+Bases de connaissances
+Sélectionner une valeur
+Seuil de similarité
+Poids de similarité par mots-clés
+full-text
+0.70
+vector
+0.30
+Rerank candidates
+Modèle de réordonnancement
+Modèle
+Paramètres du modèle
+Résumé IA
+Activer la recherche connexe
+Afficher la carte mentale de la requête
+Annuler
+Enregistrer
+
+== adresse ==
+/search/d3766dab28334cd5b34bde6554ebb8c9
+== pastilles ==
+1. Paramètres de recherche
+2. Télécharger
+3. nom et description
+4. Bases de connaissances
+5. Seuil de similarité
+6. Poids de similarité par mots-clés
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+textarea:textarea | Comment puis-je vous aider ?
+button | [icône lucide-search]
+button | Télécharger
+button | Edit Nom
+button | Edit common.description
+label | Bases de connaissances
+button | Sélectionner une valeur
+label | Seuil de similarité
+slider | 
+input:number | 
+label | Poids de similarité par mots-clés
+label | full-text
+label | vector
+input:number | search_config.keywords_similarity_weight
+label | Rerank candidates
+switch | 
+input:checkbox | 
+label | Modèle de réordonnancement
+label | Modèle
+button | [icône lucide-chevron-down]
+button | Paramètres du modèle
+label | Résumé IA
+label | Activer la recherche connexe
+label | Afficher la carte mentale de la requête
+button | Annuler
+button | Enregistrer
+button | [icône lucide-settings]
