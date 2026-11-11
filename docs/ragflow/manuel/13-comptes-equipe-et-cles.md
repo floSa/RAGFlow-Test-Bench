@@ -34,7 +34,7 @@ Cliquer sur la pastille du compte (pastille 1) : la page des réglages s'ouvre, 
 
 **Étape 2. Saisir l'adresse du collègue**
 *Où* : « Équipe » › « Inviter ».
-Saisir l'adresse du compte à inviter (pastille 1), puis cliquer sur « Oui » (pastille 3). Le collègue doit déjà avoir un compte RAGFlow (lien « Sign up » de la page de connexion, chapitre 02, étape 7) : l'invitation ne crée pas de compte, comme le rappelle la consigne (pastille 2).
+Saisir l'adresse du compte à inviter (pastille 1), puis cliquer sur « Oui » (pastille 3). Le collègue doit déjà avoir un compte RAGFlow (lien « Sign up » de la page de connexion, chapitre 02, étape 8) : l'invitation ne crée pas de compte, comme le rappelle la consigne (pastille 2).
 
 ![Invitation refusée](../img/13-exploitation/02-invitation-refusee.png)
 *Écran : fenêtre d'invitation, adresse sans compte refusée.*
@@ -181,7 +181,7 @@ Chaque ligne est un service de l'installation (pastille 2), avec son état (past
 | 3 | « Statut » | « Actif » pour ces cinq services de stockage et de messages |
 | 4 | serveur RAGFlow | « ragflow-server-… », port 9380 : affiché « Délai Expiré », comme « ingestor-… » et « syncer-… » |
 
-*Résultat* : l'état est lu. Les trois processus de RAGFlow sont marqués « Délai Expiré » alors que l'interface fonctionnait normalement : cet affichage n'est pas fiable ; l'état réel se vérifie comme au chapitre 02, étape 8.
+*Résultat* : l'état est lu. Les trois processus de RAGFlow sont marqués « Délai Expiré » alors que l'interface fonctionnait normalement : cet affichage n'est pas fiable ; l'état réel se vérifie comme au chapitre 02, étape 9.
 
 **Étape 11. Gérer les comptes**
 *Où* : console › « Utilisateurs ».
@@ -231,7 +231,7 @@ Cette page règle où s'exécute le code lancé par le bloc « Code » des agent
 | « Astuce : 102 user not found » à l'invitation | l'adresse n'a pas de compte | faire créer le compte (« Sign up »), puis inviter |
 | Heures décalées dans certaines pages | heures affichées en temps universel | ajouter une heure (deux en été) pour Paris ; régler aussi « Fuseau horaire » (étape 5) |
 | Un programme est refusé après la suppression d'une clé | la clé supprimée était la sienne | créer une nouvelle clé (étape 7) et la donner au programme |
-| « Délai Expiré » sur le serveur dans la console | affichage peu fiable de la console | vérifier l'état comme au chapitre 02, étape 8 |
+| « Délai Expiré » sur le serveur dans la console | affichage peu fiable de la console | vérifier l'état comme au chapitre 02, étape 9 |
 
 Les autres problèmes sont traités au chapitre [15. En cas de problème](15-en-cas-de-probleme.md).
 

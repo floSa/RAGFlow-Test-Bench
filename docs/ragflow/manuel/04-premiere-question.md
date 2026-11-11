@@ -318,7 +318,7 @@ Passer la souris sur le renvoi : une bulle affiche le passage cité et le nom du
 | La base n'apparaît pas dans « Bases de connaissances » de l'assistant | aucun document analysé | attendre que « Nombre de segments » soit rempli (étape 8) |
 | La barre du haut a disparu | la page des passages s'ouvre en plein écran | bouton « Retour » |
 | Réponse « La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! » ou « The answer you are looking for is not found in the dataset! » | aucun passage assez proche de la question | reformuler ; vérifier que la bonne base est reliée ; voir le chapitre 08 |
-| L'analyse reste « En attente » | une autre analyse longue est en cours, ou le service de modèles est arrêté | patienter ; vérifier l'état (chapitre 02, étape 8) |
+| L'analyse reste « En attente » | une autre analyse longue est en cours, ou le service de modèles est arrêté | patienter ; vérifier l'état (chapitre 02, étape 9) |
 
 Les autres problèmes sont traités au chapitre [15. En cas de problème](15-en-cas-de-probleme.md).
 

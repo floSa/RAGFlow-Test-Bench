@@ -257,7 +257,7 @@ Cliquer sur la corbeille du dossier, puis sur « Supprimer » dans la fenêtre �
 
 ## Créer la base de démonstration utilisée dans la suite
 
-Les chapitres 07, 09, 10 et 14 s'appuient sur une base et un assistant nommés « Démo Vélanor », qui rassemblent les neuf documents fictifs du dossier `corpus/documents/` du dépôt. Les étapes ci-dessous les créent à la souris, avec des gestes déjà montrés au chapitre 04. Le script `outils/ragflow/demo.py` fait la même chose d'un seul coup (chapitre 02, étape 6).
+Les chapitres 07, 09, 10 et 14 s'appuient sur une base et un assistant nommés « Démo Vélanor », qui rassemblent les neuf documents fictifs du dossier `corpus/documents/` du dépôt. Les étapes ci-dessous les créent à la souris, avec des gestes déjà montrés au chapitre 04. Le script `outils/ragflow/demo.py` fait la même chose d'un seul coup (chapitre 02, étape 7).
 
 **Étape 21. Créer la base « Démo Vélanor »**
 *Où* : barre du haut › « Base de connaissances » › « Créer une base de connaissances ».

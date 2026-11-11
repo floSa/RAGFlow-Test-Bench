@@ -6,7 +6,7 @@
 
 ## Ce qu'il faut savoir
 
-RAGFlow signale ses erreurs de trois façons. Un **message temporaire** apparaît quelques secondes en haut à droite, commençant par « Astuce : » et un numéro (102 pour une donnée refusée, 109 pour un refus d'identité) : il faut le lire vite, ou refaire le geste. Une **réponse d'erreur** s'affiche à la place de la réponse d'un assistant, comme un message ordinaire. Un **état d'échec** se lit dans une liste : point rouge dans la colonne « Analyser » d'un fichier, « Failed » dans « Journaux ». Ce chapitre montre d'abord les quatre erreurs les plus parlantes, puis renvoie, pour les autres, au chapitre qui montre l'écran concerné. Un problème qui ne figure nulle part ici se diagnostique par l'état de l'application (chapitre 02, étape 8).
+RAGFlow signale ses erreurs de trois façons. Un **message temporaire** apparaît quelques secondes en haut à droite, commençant par « Astuce : » et un numéro (102 pour une donnée refusée, 109 pour un refus d'identité) : il faut le lire vite, ou refaire le geste. Une **réponse d'erreur** s'affiche à la place de la réponse d'un assistant, comme un message ordinaire. Un **état d'échec** se lit dans une liste : point rouge dans la colonne « Analyser » d'un fichier, « Failed » dans « Journaux ». Ce chapitre montre d'abord les quatre erreurs les plus parlantes, puis renvoie, pour les autres, au chapitre qui montre l'écran concerné. Un problème qui ne figure nulle part ici se diagnostique par l'état de l'application (chapitre 02, étape 9).
 
 ## Reconnaître un refus de connexion
 
@@ -24,7 +24,7 @@ Après un clic sur « Se connecter » (pastille 3) avec un mot de passe faux, un
 | 3 | « Se connecter » | envoie |
 | 4 | message d'erreur | « Astuce : 109 email and password do not match » ; la page reste sur la connexion |
 
-*Résultat* : la session n'est pas ouverte. **Cause** : mot de passe faux, ou compte créé par un programme qui a enregistré le mot de passe sous une autre forme que celle attendue par l'interface. **Que faire** : vérifier la saisie avec l'œil, puis le mot de passe dans `donnees/IDENTIFIANTS-LOCAUX.txt` ; si le compte a été créé par un programme, le recréer comme au chapitre 02, étapes 6 ou 7.
+*Résultat* : la session n'est pas ouverte. **Cause** : mot de passe faux, ou compte créé par un programme qui a enregistré le mot de passe sous une autre forme que celle attendue par l'interface. **Que faire** : vérifier la saisie avec l'œil, puis le mot de passe dans `donnees/IDENTIFIANTS-LOCAUX.txt` ; si le compte a été créé par un programme, le recréer comme au chapitre 02, étapes 7 ou 8.
 
 ## Revenir d'une page introuvable
 
@@ -106,8 +106,8 @@ Ces problèmes sont montrés, avec leur écran, dans le chapitre de la fonction 
 | Symptôme | Cause | Que faire |
 |---|---|---|
 | Le script de désinstallation s'arrête aussitôt (code 126) | les scripts ont perdu leur droit d'exécution, par exemple après extraction d'une archive | `chmod +x outils/communs/*.sh outils/ragflow/*.sh`, puis recommencer (chapitre 02) |
-| Le port de l'interface est déjà pris par un autre programme | conflit d'adresse ; c'est pourquoi l'installation utilise 8088 au lieu de 8080 | changer `SVR_WEB_HTTP_PORT` dans `donnees/ragflow/ragflow.env`, puis redémarrer (chapitre 02, étape 10) |
-| Le moteur de recherche ne démarre pas | réglage `vm.max_map_count` trop bas dans la machine virtuelle de Docker | voir le chapitre 02, étape 2 |
+| Le port de l'interface est déjà pris par un autre programme | conflit d'adresse ; c'est pourquoi l'installation utilise 8088 au lieu de 8080 | changer `SVR_WEB_HTTP_PORT` dans `donnees/ragflow/ragflow.env`, puis redémarrer (chapitre 02, étape 11) |
+| Le moteur de recherche ne démarre pas | réglage `vm.max_map_count` trop bas dans la machine virtuelle de Docker | voir le chapitre 02, étape 3 |
 | Impossible de lire ou de copier le dossier `donnees/ragflow/mysql` | dossiers appartenant aux conteneurs | passer par les scripts de sauvegarde (annexe [A4](../annexes/A4-exploitation.md)) |
 | Un gigaoctet occupé par la base de données dès l'installation | espace réservé d'avance par MySQL | normal ; il se compresse presque entièrement dans une sauvegarde |
 
@@ -124,7 +124,7 @@ Ces problèmes sont montrés, avec leur écran, dans le chapitre de la fonction 
 
 | Symptôme | Cause | Que faire |
 |---|---|---|
-| Problème absent de ce chapitre | cas non rencontré pendant les essais | lancer `outils/ragflow/etat.sh` (chapitre 02, étape 8), puis lire le journal du serveur : `docker logs --tail 100 rag-ragflow-server` ; journaux détaillés dans l'annexe [A4](../annexes/A4-exploitation.md) |
+| Problème absent de ce chapitre | cas non rencontré pendant les essais | lancer `outils/ragflow/etat.sh` (chapitre 02, étape 9), puis lire le journal du serveur : `docker logs --tail 100 rag-ragflow-server` ; journaux détaillés dans l'annexe [A4](../annexes/A4-exploitation.md) |
 
 ---
 *Version décrite : RAGFlow v1.0.0, essais des 9 et 11 novembre 2026. Détails et preuves : [rapport d'essais](../annexes/A6-rapport-d-essais.md).*
