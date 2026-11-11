@@ -21,7 +21,7 @@ Ce qu'il faut avant de commencer :
 
 Quelques mots utiles. **Ollama** et **vLLM** sont deux logiciels libres qui font tourner des modèles d'IA et les rendent accessibles à d'autres applications par une adresse web : Ollama fonctionne aussi sans carte graphique, sur le processeur ; vLLM demande une carte graphique NVIDIA et répond plus vite. Un serveur « compatible OpenAI » répond aux mêmes requêtes que le service en ligne d'OpenAI, ce que font Ollama, vLLM et LM Studio.
 
-**Chemin vérifié** : les essais de ce manuel ont été faits avec une carte graphique NVIDIA et un serveur vLLM, appelé LLM-Service, qui sert `gemma4:e4b` (réponses) et `bge-m3` (embedding) ; un serveur de transcription local s'y ajoute (étape 5). Un serveur Ollama ou distant se branche de la même façon dans l'interface (chapitre 03), mais n'a pas été essayé avec RAGFlow. La mise en place du serveur de la machine d'essai et les configurations minimales sans et avec carte graphique sont décrites dans l'annexe [A2. Choisir son matériel et ses modèles](../annexes/A2-choisir-son-materiel-et-ses-modeles.md).
+**Chemin vérifié** : les essais de ce manuel ont été faits avec une carte graphique NVIDIA et un serveur vLLM (`gemma4:e4b`, `bge-m3`) ; le banc utilise maintenant le service LLM central LiteLLM, géré à part (`chat`, `embed`, `rerank`, `transcribe`, annexe [A7](../annexes/A7-bascule-vers-le-service-llm-central.md)). Le serveur de transcription local de l'étape 5 devient facultatif : `transcribe` le remplace. Un serveur Ollama ou distant se branche de la même façon dans l'interface (chapitre 03), mais n'a pas été essayé avec RAGFlow. La mise en place du serveur de la machine d'essai et les configurations minimales sans et avec carte graphique sont décrites dans l'annexe [A2. Choisir son matériel et ses modèles](../annexes/A2-choisir-son-materiel-et-ses-modeles.md).
 
 ## Préparer l'installation
 
@@ -67,10 +67,10 @@ La commande affiche un nombre, par exemple `1048576` sur la machine d'essai : c'
 Demander au serveur la liste de ses modèles. La commande ci-dessous interroge le serveur de réponses de la machine d'essai, sur le port 8001. Avec un autre serveur compatible OpenAI (vLLM, LM Studio…), remplacer l'adresse par celle du serveur, suivie de `/v1/models` ; avec Ollama, l'adresse se termine par `/api/tags`, par exemple `http://127.0.0.1:11434/api/tags`.
 
 ```bash
-curl -s http://127.0.0.1:8001/v1/models
+curl -s -H "Authorization: Bearer $LLM_CENTRAL_KEY" http://127.0.0.1:8080/v1/models
 ```
 
-*Résultat* : un texte qui contient le nom de chaque modèle servi ; ces noms se recopient tels quels au chapitre 03. Sur la machine d'essai, le script `outils/communs/llm_service_vllm.sh` fait cette vérification pour les deux serveurs de LLM-Service et affiche `gemma4:e4b` et `bge-m3`. Si la commande n'affiche rien, le serveur est arrêté ou l'adresse est fausse : RAGFlow s'installera, mais ne pourra ni analyser de documents ni répondre.
+*Résultat* : un texte qui contient le nom de chaque modèle servi ; ces noms se recopient tels quels au chapitre 03. Sur la machine d'essai, le service LLM central demande une clé (variable `LLM_CENTRAL_KEY` du fichier `.env`, voir `.env.example`) et le script `outils/communs/llm_central_sante.sh` fait cette vérification : il affiche `chat`, `embed`, `rerank` et `transcribe`. Si la commande n'affiche rien, le serveur est arrêté ou l'adresse est fausse : RAGFlow s'installera, mais ne pourra ni analyser de documents ni répondre.
 
 **Étape 5. Démarrer le serveur de transcription (facultatif)**
 *Où* : terminal Ubuntu, dossier `RAGFlow-Test-Bench`.
@@ -122,7 +122,7 @@ uv run python outils/ragflow/configurer.py
 
 *Résultat* : chaque ligne se termine par `"message": "success"`. Le courriel et le mot de passe du compte sont rangés dans le fichier `donnees/IDENTIFIANTS-LOCAUX.txt`, à lire pour se connecter (chapitre 03) ; le script range aussi le compte et sa clé d'accès dans `donnees/ragflow/compte.json`, que lisent les autres scripts du dépôt (chapitre 14).
 
-Ce script déclare les serveurs de la machine d'essai : le fournisseur « VLLM » aux adresses `http://vllm-central:8000/v1` (`gemma4:e4b`) et `http://vllm-embed:8000/v1` (`bge-m3`), et « OpenAI-API-Compatible » pour la transcription. Avec un autre serveur, Ollama par exemple, il ne déclarerait que des adresses injoignables. Deux solutions : créer le compte à la souris (étape 8) et brancher les modèles au chapitre 03, chemin conseillé ; ou modifier, avant de lancer le script, le tableau `MODELES` en tête du fichier `outils/ragflow/configurer.py` (ouvert par exemple avec `nano`, l'éditeur de texte du terminal : Ctrl+O enregistre, Ctrl+X quitte) : pour Ollama, mettre `"Ollama"` comme fournisseur, `http://ollama-central:11434` comme adresse et les noms de modèles affichés à l'étape 4. Cette variante n'a pas été essayée.
+Ce script déclare le service LLM central : le fournisseur « OpenAI-API-Compatible », instance `llm-central`, adresse `http://llm-central:8080/v1`, clé lue dans `.env`, modèles `chat`, `embed`, `rerank`, `transcribe` (non rejoué depuis la bascule, voir l'annexe A7 ; sinon suivre l'[annexe A7](../annexes/A7-bascule-vers-le-service-llm-central.md) à la souris). Avec un autre serveur, Ollama par exemple, il ne déclarerait que des adresses injoignables. Deux solutions : créer le compte à la souris (étape 8) et brancher les modèles au chapitre 03, chemin conseillé ; ou modifier, avant de lancer le script, le tableau `MODELES` en tête du fichier `outils/ragflow/configurer.py` (ouvert par exemple avec `nano`, l'éditeur de texte du terminal : Ctrl+O enregistre, Ctrl+X quitte) : pour Ollama, mettre `"Ollama"` comme fournisseur, `http://ollama-central:11434` comme adresse et les noms de modèles affichés à l'étape 4. Cette variante n'a pas été essayée.
 
 En option, le script suivant crée ensuite le jeu de démonstration utilisé à partir du chapitre 07 : la base « Démo Vélanor » avec les neuf documents du dossier `corpus/documents/`, analysés, l'assistant « Démo Vélanor » réglé, et trois conversations d'exemple. Il remplace les objets de même nom déjà présents. Il utilise les modèles par défaut du compte, quels qu'ils soient : il fonctionne donc aussi avec un autre serveur, une fois les modèles branchés (non essayé hors de la machine d'essai). Il lit la clé d'accès dans `donnees/ragflow/compte.json` : après un compte créé à la souris, créer d'abord ce fichier comme indiqué au chapitre 14. Le chapitre 05, dernière partie, montre la même création à la souris.
 
@@ -162,8 +162,7 @@ outils/ragflow/etat.sh
 ```text
 santé : {"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
 interface : HTTP 200
-LLM-Service : vllm-central en marche
-LLM-Service : vllm-embed en marche
+LLM-Service : llm-central en marche
 ```
 
 Seule l'application (`rag-ragflow-server`) est joignable, et seulement depuis ce poste : sa ligne montre `127.0.0.1:8088` pour l'interface et `127.0.0.1:9380` pour les programmes ; les cinq autres conteneurs n'ont aucune adresse ouverte.
@@ -218,7 +217,7 @@ outils/communs/nettoyer.sh ragflow
 
 | Symptôme | Cause | Que faire |
 |---|---|---|
-| La commande de l'étape 4 n'affiche rien | serveur de modèles arrêté, ou adresse fausse | démarrer le serveur ; vérifier l'adresse et le port ; sur la machine d'essai, `outils/communs/llm_service_vllm.sh` (annexe A2) |
+| La commande de l'étape 4 n'affiche rien | serveur de modèles arrêté, ou adresse fausse | démarrer le serveur ; vérifier l'adresse et le port ; sur la machine d'essai, `outils/communs/llm_central_sante.sh` (le service est géré à part : prévenir son propriétaire, ne pas le démarrer depuis ce dépôt) |
 | `outils/communs/voix.sh` attend longtemps puis n'affiche aucun modèle | premier téléchargement en cours, ou pas d'accès à Internet | relancer le script une fois le téléchargement possible ; sans transcription, seuls les fichiers audio sont touchés |
 | Le moteur de recherche ne démarre pas, l'installation attend sans fin | réglage `vm.max_map_count` inférieur à 262144 (étape 3) | sous Windows, ajouter au fichier `.wslconfig` du dossier personnel Windows la section `[wsl2]` avec la ligne `kernelCommandLine = "sysctl.vm.max_map_count=262144"`, puis lancer `wsl --shutdown` dans PowerShell et rouvrir Ubuntu ; vérifier ensuite avec la commande de l'étape 3. La machine d'essai n'en a pas eu besoin : ce remède n'a pas été essayé |
 | Le script de désinstallation s'arrête aussitôt (code 126) | les scripts ont perdu leur droit d'exécution, par exemple après extraction d'une archive | lancer `chmod +x outils/communs/*.sh outils/ragflow/*.sh`, puis recommencer |

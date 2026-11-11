@@ -2,7 +2,13 @@
 
 > **Objet** : brancher RAGFlow sur le service LLM central (LLM-Service, LiteLLM) à la place de l'ancienne pile `vllm-central` / `vllm-embed` / `rag-speaches`, depuis l'interface web.
 > **Prérequis** : le service tourne (géré à part, jamais démarré par ce dépôt) ; la clé du service est dans `.env` (`LLM_CENTRAL_KEY`) ; RAGFlow joint le réseau `llm-net`.
-> **Statut des informations** : [Vérifié] requêtes réelles du 11 novembre 2026 depuis `rag-ragflow-server` et l'hôte (journal : `outils/resultats/ragflow/essai-llm-central-2026-11-11.log`) ; [Source] code de RAGFlow v1.0.0 (`sources/ragflow/conf/models/`, `internal/entity/models/`) ; [À tester] les clics de l'interface, non rejoués.
+> **Version décrite** : RAGFlow v1.0.0, service LLM central LiteLLM (11 novembre 2026).
+> **Statut des informations** : [Vérifié] requêtes réelles du 11 novembre 2026 depuis `rag-ragflow-server` et l'hôte (journal : `outils/resultats/ragflow/essai-llm-central-2026-11-11.log`) ; [Source] code de RAGFlow v1.0.0 (`sources/ragflow/conf/models/`, `internal/entity/models/`) ; [À tester] les clics de l'interface, non rejoués ; [Estimation] le comportement de la réflexion via l'option `reasoning` des assistants.
+> **Précautions** : ne rien démarrer ni arrêter côté LLM-Service ; la clé reste dans `.env`, jamais dans un fichier suivi ; réindexer modifie les bases : sauvegarder avant (annexe [A4](A4-exploitation.md)).
+
+## Sommaire
+
+1. Le service ; 2. Quel type de fournisseur choisir ; 3. Pas à pas dans l'interface ; 4. Réflexion de `chat` ; 5. Ancienne pile ; Dépannage ; Sources.
 
 ## 1. Le service
 
@@ -59,3 +65,17 @@ Poser une question à un assistant : la réponse doit venir sans erreur et citer
 ## 5. Ancienne pile
 
 `outils/communs/llm_service.sh` et `llm_service_vllm.sh` (et `outils/ragflow/reranker*.sh`) démarraient les conteneurs de l'ancien service : ils sont historiques, ne pas les lancer. Les résultats de `outils/resultats/` (avec `gemma4:e4b` sur vLLM) sont des preuves historiques, non comparables telles quelles aux mesures futures avec `chat`.
+
+## Dépannage
+
+| Symptôme | Cause probable | Remède |
+|---|---|---|
+| « Lister les modèles » échoue ou erreur 401 | clé absente ou fausse | recopier `LLM_CENTRAL_KEY` du `.env` ; tester avec `outils/communs/llm_central_sante.sh` |
+| Adresse injoignable depuis RAGFlow | `127.0.0.1` désigne le conteneur | utiliser `http://llm-central:8080/v1` (réseau `llm-net`) |
+| Réponse vide ou coupée | plafond atteint pendant la réflexion | augmenter la longueur de réponse autorisée ; voir section 4 |
+| Scores de rerank négatifs | scores bruts non bornés | normal : seul l'ordre compte |
+
+## Sources
+
+- `sources/ragflow/conf/models/openai-api-compatible.json`, `vllm.json` ; `sources/ragflow/internal/entity/models/vllm.go`, `openai_api_compatible.go`.
+- `outils/resultats/ragflow/essai-llm-central-2026-11-11.log`.

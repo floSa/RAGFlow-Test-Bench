@@ -1,5 +1,7 @@
 # 03. Premiers pas
 
+> **Mise à jour du 11 novembre 2026 : service LLM central.** Les captures et noms de ce chapitre décrivent l'ancienne pile (fournisseur « VLLM », `gemma4:e4b`, `bge-m3`, adresses `vllm-central` et `vllm-embed`). Le banc utilise désormais le service LLM central : fournisseur « OpenAI-API-Compatible », adresse `http://llm-central:8080/v1`, clé obligatoire, modèles `chat`, `embed`, `rerank`, `transcribe`. Procédure à suivre : [annexe A7](../annexes/A7-bascule-vers-le-service-llm-central.md). Partout dans les manuels, lire `chat` pour `gemma4:e4b` et `embed` pour `bge-m3`.
+
 > Ce chapitre apprend à se connecter, à passer l'interface en français, à se repérer dans l'écran, à distinguer les modèles d'IA à brancher de ceux intégrés à RAGFlow, à brancher les modèles d'un serveur existant et à régler la quantité de texte que le modèle lit d'un coup.
 > **Point de départ** : page de connexion, à l'adresse `http://127.0.0.1:8088` ouverte dans le navigateur Windows, RAGFlow démarré (chapitre 02).
 > **Durée** : environ 25 minutes. **Avant** : chapitre 02.

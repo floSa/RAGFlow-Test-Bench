@@ -129,6 +129,8 @@ Précisions sur les fonctions, en complément du tableau du chapitre [01](../man
 
 ## 8. Serveur de modèles de la machine d'essai (LLM-Service)
 
+> **Historique.** Depuis le 11 novembre 2026, le banc utilise le service LLM central (LiteLLM, `http://llm-central:8080/v1`, clé obligatoire, modèles `chat`, `embed`, `rerank`, `transcribe`), géré à part : voir l'[annexe A7](A7-bascule-vers-le-service-llm-central.md). Les scripts `outils/communs/llm_service.sh` et `llm_service_vllm.sh`, et les branches `service-ollama` / `service-vllm` décrites ci-dessous, sont historiques : ne pas les lancer. Les mesures de cette annexe restent des preuves de l'ancienne pile.
+
 Le manuel ne fait installer aucun serveur de modèles : RAGFlow se branche sur un serveur existant (chapitre [03](../manuel/03-premiers-pas.md)). Cette section décrit, à titre d'exemple, celui de la machine d'essai.
 
 **LLM-Service** est un dépôt distinct (privé, accès à demander à son propriétaire), partagé par plusieurs applications. Les scripts du banc le cherchent dans `~/mes_projets/Projet-IA/LLM-Service` (autre emplacement : variable `LLM_SERVICE_DIR`). Deux branches : `service-vllm` avec carte graphique NVIDIA (vLLM, serveur de modèles pour carte graphique ; celle des essais) et `service-ollama` sans carte graphique (Ollama, serveur de modèles qui tourne aussi sur processeur ; non essayé avec RAGFlow) [Vérifié] pour la première, [À tester] pour la seconde.

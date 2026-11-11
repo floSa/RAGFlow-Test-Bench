@@ -32,7 +32,7 @@ L'interface de RAGFlow mélange le français et l'anglais, et donne parfois deux
 | Fournisseur, instance | Un fournisseur est un type de service de modèles (« VLLM », « Ollama »…) ; une instance est une adresse précise de ce service, déclarée sous un nom libre. Interface : « Fournisseurs de modèles ». | 03 |
 | Gabarit | Façon de découper un type de document : texte suivi, tableur ligne par ligne, présentation diapositive par diapositive… Interface : « Mode d'analyse », « pipeline intégré », « (built in) ». | 06 |
 | Jeton | Unité dans laquelle un modèle compte le texte, à peu près une syllabe. L'interface affiche les jetons lus et écrits sous chaque réponse. Interface : « tokens ». | 04 |
-| LLM-Service | Serveur de modèles de la machine d'essai, installé à part (dépôt séparé) et partagé avec d'autres applications ; il sert `gemma4:e4b` et `bge-m3` par vLLM. Le manuel ne le fait pas installer : tout serveur de modèles existant convient. | 02, 03, annexe A2 |
+| LLM-Service | Serveur de modèles de la machine d'essai, installé à part (dépôt séparé) et partagé avec d'autres applications ; il sert désormais, par LiteLLM, `chat`, `embed`, `rerank` et `transcribe` (ancienne pile : `gemma4:e4b` et `bge-m3` par vLLM). Le manuel ne le fait pas installer : tout serveur de modèles existant convient. | 02, 03, annexe A2 |
 | MCP | Façon standard de proposer des outils (agenda, logiciel métier…) à un modèle d'IA ; un serveur MCP déclaré ajoute ses outils aux agents. | 10 |
 | Mémoire | Lieu où un agent garde ses échanges d'une session à l'autre, pour les retrouver ensuite par le sens. Interface : « Mémoire ». | 10 |
 | Métadonnées | Informations ajoutées à un document (auteur, service, date…) qui permettent de filtrer la recherche. | 05, 08 |

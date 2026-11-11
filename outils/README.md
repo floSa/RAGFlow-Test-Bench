@@ -7,8 +7,9 @@ Chaque affirmation des manuels renvoie à un script de ce dossier et à un résu
 | Fichier | Rôle |
 |---|---|
 | `communs/diagnostic.sh` | diagnostic de la machine (WSL, CPU, RAM, GPU, Docker, `vm.max_map_count`, LLM-Service, accès réseau) |
-| `communs/llm_service.sh` | démarrage et contrôle de LLM-Service en branche `service-ollama` (CPU) |
-| `communs/llm_service_vllm.sh` | démarrage et contrôle de LLM-Service en branche `service-vllm` (GPU) |
+| `communs/llm_central_sante.sh` | vérification en lecture seule du service LLM central (`/v1/models`, `--essai` : chat, embed, rerank, transcribe) ; clé lue dans `.env` |
+| `communs/llm_service.sh` | HISTORIQUE : démarrait LLM-Service en branche `service-ollama` (CPU) ; ne plus lancer |
+| `communs/llm_service_vllm.sh` | HISTORIQUE : démarrait LLM-Service en branche `service-vllm` (GPU) ; ne plus lancer |
 | `communs/voix.sh` | serveur de voix commun `rag-speaches` (transcription et synthèse, compatible OpenAI) |
 | `communs/versions.py` | dernière version stable de chaque composant, écarts justifiés |
 | `communs/identite_github.py` | identité du projet sur GitHub (étoiles, licence, activité) |
