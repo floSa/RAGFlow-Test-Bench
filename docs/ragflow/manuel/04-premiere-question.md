@@ -74,7 +74,7 @@ Cliquer sur « Ajouter un fichier », puis sur « Téléverser un fichier » (pa
 
 **Étape 5. Choisir les fichiers**
 *Où* : fenêtre « Téléverser un fichier ».
-Glisser les deux fichiers dans la zone de dépôt (pastille 3), ou cliquer dessus pour les choisir ; ils s'affichent en liste (pastille 4). Laisser « Analyser à la création » désactivé (pastille 1) pour lancer l'analyse à la main et la voir se faire, puis cliquer sur « Enregistrer » (pastille 5).
+Glisser les deux fichiers dans la zone de dépôt (pastille 3), ou cliquer dessus pour les choisir ; ils s'affichent en liste (pastille 4). Les fichiers du dépôt sont rangés dans Ubuntu, pas dans un dossier Windows : pour les atteindre depuis la fenêtre de choix de Windows, saisir dans sa barre d'adresse le chemin `\\wsl$\Ubuntu-24.04\home\<utilisateur>\` suivi du chemin du dépôt, puis `corpus\documents` (le nom `Ubuntu-24.04` est celui de la distribution installée) ; ou, dans le terminal Ubuntu, depuis le dossier du dépôt, lancer `cd corpus/documents && explorer.exe .`, qui ouvre ce dossier dans l'Explorateur Windows, d'où les fichiers se glissent dans la zone de dépôt. Laisser « Analyser à la création » désactivé (pastille 1) pour lancer l'analyse à la main et la voir se faire, puis cliquer sur « Enregistrer » (pastille 5).
 
 ![Fenêtre Téléverser un fichier](../img/02-prise-en-main/08-televersement.png)
 *Écran : fenêtre « Téléverser un fichier », deux fichiers choisis.*
