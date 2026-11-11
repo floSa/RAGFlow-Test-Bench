@@ -21,7 +21,7 @@ Saisir le nom (pastille 1), puis cliquer sur la liste du gabarit (pastille 3).
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | « Nom » | nom de la base, ici « Manuel-Decoupage » |
+| 1 | « Nom » | nom de la base, ici « Manuel-Decoupage », la base du chapitre 05, créée ainsi avant l'envoi de ses trois fichiers |
 | 2 | « Modèle d'embedding » | modèle de la recherche par le sens, `bge-m3` (modèle par défaut du chapitre 03) |
 | 3 | gabarit | gabarit de la base, « General (built in) » par défaut |
 | 4 | « Enregistrer » | crée la base et l'ouvre |

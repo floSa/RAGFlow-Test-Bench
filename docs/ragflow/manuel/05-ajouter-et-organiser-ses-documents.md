@@ -37,8 +37,8 @@ Cliquer sur « Renommer » pour changer le nom sans ouvrir la base, ou sur « Su
 ## Ajouter des fichiers avec analyse immédiate
 
 **Étape 3. Envoyer les fichiers**
-*Où* : base ouverte › onglet « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
-Choisir les fichiers (pastille 3), activer « Analyser à la création » (pastille 1) pour que chaque fichier soit analysé dès son arrivée, puis cliquer sur « Enregistrer » (pastille 4). L'onglet « Dossier » (pastille 2) envoie tout le contenu d'un dossier du poste.
+*Où* : base « Manuel-Decoupage » › onglet « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
+L'exemple de ce chapitre et du suivant utilise une base nommée « Manuel-Decoupage », à créer d'abord avec le gabarit « General », comme au chapitre 04 (étapes 1 et 2). Y envoyer trois fichiers du dossier `corpus/documents/` : le tableur `stocks-octobre-2025.xlsx`, le document Word `procedure-batteries.docx` et le compte rendu `cse-2025-10-14.md`. Choisir les fichiers (pastille 3), activer « Analyser à la création » (pastille 1) pour que chaque fichier soit analysé dès son arrivée, puis cliquer sur « Enregistrer » (pastille 4). L'onglet « Dossier » (pastille 2) envoie tout le contenu d'un dossier du poste.
 
 ![Téléversement avec analyse à la création](../img/03-datasets-et-decoupage/05-televersement-analyse.png)
 *Écran : fenêtre « Téléverser un fichier », « Analyser à la création » activé.*
