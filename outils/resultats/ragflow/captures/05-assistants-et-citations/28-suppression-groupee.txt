@@ -1,0 +1,95 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Assistant-05
+Conversations
+1
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Plusieurs modèles
+
+Bonjour ! Je suis votre assistant, que puis-je faire pour vous ?
+
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+
+Les données pertinentes issues de la base de connaissances sont les suivantes :
+
+Données de la base de connaissances utilisées :
+
+ID: 2 (Contrat d'approvisionnement N°BX-2025-117) : Mentionne les délais de livraison dans le contrat.
+ID: 0 (stocks-octobre-2025.xlsx - Fournisseurs) : Fournit le délai moyen constaté par fournisseur.
+
+Réponse détaillée :
+
+Le délai de livraison contractuel de Batterix GmbH est de 21 jours après la commande, conformément au Contrat d'Approvisionnement N°BX-2025-117 [3]. En comparaison, le délai moyen constaté pour les batteries provenant de Batterix GmbH est de 24 jours [1].
+
+2088 tokens (1893 input, 195 output) · 3.6s
+contrat-ba…an.pdf
+[3]
+
+Quel était le chiffre d'affaires de Vélanor en 2022 ?
+
+La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! [8]
+
+1821 tokens (1798 input, 23 output) · 0.9s
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload
+
+== adresse ==
+/chat/ba12af6c9c1f4fdfbb1d56f7552459ba?conversationId=ca79114b3cb84ec5b61c201f561a923d&isNew=
+== pastilles ==
+1. case d'une conversation
+2. annuler la sélection
+3. supprimer la sélection
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+button | [icône lucide-panel-left-close]
+button | [icône lucide-undo-2]
+button | [icône lucide-trash]
+input:text | Rechercher
+option | Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement 
+label | Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement 
+checkbox | [icône lucide-check]
+button | Plusieurs modèles
+button | [icône lucide-copy]
+button | [icône lucide-refresh-cw]
+button | [icône lucide-volume-2]
+button | [icône lucide-thumbs-up]
+button | [icône lucide-thumbs-down]
+button | [icône sans nom]
+button | contrat-ba…an.pdf
+button | Drag to resize height
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+combobox | Naive
+button | [icône lucide-mic]
+button | Send message
+input:file | 
+button | [icône lucide-settings]

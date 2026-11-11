@@ -1,0 +1,230 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+DV
+Démo Vélanor
+9 Fichiers
+1 MB
+Créé 09/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Test de récupération
+Effectuez un test de récupération pour vérifier si RAGFlow peut retrouver le contenu pertinent pour le LLM. Si vous avez modifié les paramètres par défaut, comme le poids de similarité ou le seuil de similarité, ces changements ne seront pas automatiquement sauvegardés. Vous devez les appliquer dans les paramètres de votre assistant de chat ou dans le composant agent de récupération.
+Paramètres
+Seuil de similarité
+Poids de similarité par mots-clés
+full-text
+0.30
+vector
+0.70
+Modèle de réordonnancement
+Recherche inter-langues
+Sélectionner une valeur
+Métadonnées
+Sélectionner une valeur
+Rerank candidates
+Top N
+Test
+Résultats
+Total: 26
+
+64.68 Similarité hybride
+
+25.87 Similarité de terme
+
+81.31 Similarité vectorielle
+
+le>Fournisseurs
+r>FournisseurComposantDélai moyen constaté (jours)r>
+r>d>Batterix GmbHd>d>Batteriesd>d>24d>r>
+r>d>Motodrive Co.d>d>Moteursd>d>45d>r>
+r>d>Stoplined>d>Freinsd>d>12d>r>
+r>d>Gomma Ouestd>d>Pneusd>d>6d>r>
+le>
+
+stocks-octobre-2025.xlsx
+
+62.79 Similarité hybride
+
+27.07 Similarité de terme
+
+78.09 Similarité vectorielle
+
+FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparation ?Une réparation en atelier prend 10 jours ouvrés en moyenne. Le diagnostic est gratuit.Comment joindre le service après-vente ?Par téléphone au 02 40 00 12 34, du lundi au vendredi de 9 h à 18 h, ou par le formulaire du site.Peut-on remplacer soi-même la batterie ?Oui, la batterie se retire avec la clé fournie. Seule une batterie d'origine Vélanor est couverte par la garantie.
+faq-sav.html
+
+59.80 Similarité hybride
+
+3.55 Similarité de terme
+
+83.91 Similarité vectorielle
+
+CONTRATD'APPROVISIONNEMENTN°BX-2025-117
+Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur)
+Articlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah
+Article2-Durée Troisans a compterdu lermars2025
+Article3-Volumes Volumeminimalannuel:40 0oo batteries.
+Article4-Prix Prix unitaire:212 euros HT,revisable une fois par an.
+Article 5-Delais de livraison Le Fournisseur livre sous 21 jours apres la commande
+Article 6-Penalitesderetard 0,5% du montant de la commande par jour de retard, plafonnees a 8% du montant de la commande.
+Article 7-Garantie 5ans ou 1 0o0 cycles de charge, au premier terme atteint.
+Article8-Litiges Tribunal de commerce de Nantes.
+FaitaNantes,le14 fevrier2025 Pour Velanor:Helene Marchais Pour Batterix:Jonas Weber
+contrat-batterix-scan.pdf
+
+59.64 Similarité hybride
+
+7.86 Similarité de terme
+
+81.83 Similarité vectorielle
+
+Supplier Quality Audit — Batterix GmbH,
+Bremen
+Fictional document. Audit date: 18 June 2025. Lead auditor: Laura Fischer (Vélanor quality team).
+Overall score: 87 out of 100. The supplier is approved for another year.
+Two minor non-conformities were found: incomplete labelling of pallets, and missing ESD wrist straps at one assembly station.
+The measured cell defect rate is 0.3 %. The next audit is scheduled for June 2026.
+supplier-audit-batterix-en.pdf
+
+56.23 Similarité hybride
+
+9.29 Similarité de terme
+
+76.35 Similarité vectorielle
+
+Procédure PR-SEC-04 — Charge et stockage des batteries
+Responsable de la procédure : Karim Benali, responsable HSE. Version 3 du 1er septembre 2025.
+1. Stockage
+Les batteries sont stockées entre 10 °C et 25 °C, dans le local B2 équipé d'une détection incendie.
+Pour un stockage de plus de 30 jours, la charge est ramenée à 80 % au maximum.
+2. Charge
+La charge se fait uniquement sur les postes équipés d'un chargeur homologué, sous surveillance.
+Une batterie gonflée ou chaude est isolée immédiatement dans le bac sable du local B2.
+3. Contrôles
+procedure-batteries.docx
+
+55.37 Similarité hybride
+
+7.97 Similarité de terme
+
+75.69 Similarité vectorielle
+
+Le contrat d'approvisionnement en batteries avec Batterix a été renouvelé en mars 2025.
+8. Risques
+Les principaux risques identifiés sont la pénurie de cellules lithium-ion, la hausse du prix de l'aluminium et la concurrence des marques asiatiques à bas prix. Un stock de sécurité de batteries a été mis en place.
+Le risque de change concerne surtout les achats de moteurs, réglés en dollars américains.
+9. Perspectives 2026
+Vélanor vise un chiffre d'affaires de 55 M€ en 2026. Une seconde usine d'assemblage ouvrira à Saint-Nazaire en septembre 2026, avec 70 embauches prévues.
+Un nouveau modèle compact, le Vilaine Compact, sera lancé en avril 2026.
+rapport-annuel-2025.pdf
+
+55.13 Similarité hybride
+
+1.73 Similarité de terme
+
+78.01 Similarité vectorielle
+
+le>7. Fournisseurs principaux
+r>ComposantFournisseurPaysr>
+r>d>Batteriesd>d>Batterix GmbHd>d>Allemagne (Brême)d>r>
+r>d>Moteursd>d>Motodrive Co.d>d>Taïwand>r>
+r>d>Freinsd>d>Stoplined>d>Italied>r>
+r>d>Pneusd>d>Gomma Ouestd>d>Franced>r>
+le>
+
+rapport-annuel-2025.pdf
+
+54.97 Similarité hybride
+
+8.48 Similarité de terme
+
+74.89 Similarité vectorielle
+
+le>Stocks
+r>RéférenceDésignationQuantitéSeuil d'alerteEntrepôtr>
+r>d>BAT-48V-14Ahd>d>Batterie 48 V 14 Ahd>d>1240d>d>1500d>d>Nantesd>r>
+r>d>MOT-250Wd>d>Moteur roue arrière 250 Wd>d>2105d>d>1200d>d>Nantesd>r>
+r>d>CAD-ALU-Ld>d>Cadre aluminium taille Ld>d>860d>d>600d>d>Choletd>r>
+r>d>CAD-ALU-Md>d>Cadre aluminium taille Md>d>1020d>d>600d>d>Choletd>r>
+r>d>FRN-HYD-02d>d>Frein hydrauliqued>d>3400d>d>2000d>d>Nantesd>r>
+r>d>PNU-700-38d>d>Pneu 700x38d>d>5150d>d>3000d>d>Nantesd>r>
+le>
+
+stocks-octobre-2025.xlsx
+
+54.25 Similarité hybride
+
+10.88 Similarité de terme
+
+72.84 Similarité vectorielle
+
+L'âge moyen des salariés est de 36 ans. 41 % des postes d'encadrement sont occupés par des femmes.
+6. Environnement
+Les cadres sont fabriqués à partir d'aluminium recyclé à 82 %. La consommation électrique des sites a atteint 3,4 GWh en 2025. Vélanor vise la neutralité carbone de ses sites en 2030.
+Le taux de recyclage des batteries usagées collectées atteint 96 %, grâce au partenariat avec la filière de collecte Recylo.
+rapport-annuel-2025.pdf
+
+52.52 Similarité hybride
+
+10.81 Similarité de terme
+
+70.39 Similarité vectorielle
+
+## Décisions
+- Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026.
+- Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles.
+- Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026.
+cse-2025-10-14.md
+
+== adresse ==
+/dataset/retrieval/b18ec890920a4ad99fbf47a80a9b453d
+== pastilles ==
+1. Poids de similarité par mots-clés
+2. Total
+3. scores
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+label | Seuil de similarité
+slider | 
+input:number | 
+label | Poids de similarité par mots-clés
+label | full-text
+label | vector
+input:number | keywords_similarity_weight
+label | Modèle de réordonnancement
+button | [icône lucide-chevron-down]
+label | Recherche inter-langues
+button | Sélectionner une valeur
+label | Métadonnées
+combobox | Sélectionner une valeur
+label | Rerank candidates
+label | Top N
+textarea:textarea | question
+button | Test
+button | [icône lucide-funnel]

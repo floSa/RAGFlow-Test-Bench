@@ -1,0 +1,34 @@
+Retour
+Plusieurs modèles (1/3)
+1
+gemma4:e4b
+llm-service-chat
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload
+
+== adresse ==
+/chat/ba12af6c9c1f4fdfbb1d56f7552459ba?conversationId=d3ccc944ed694de5a5b13f22d7eaa097&isNew=
+== pastilles ==
+1. Retour
+2. modèle de la colonne 1
+3. Appliquer la configuration du modèle
+4. ajouter une colonne
+== éléments visibles ==
+button | Retour
+combobox | gemma4:e4b llm-service-chat
+button | [icône lucide-list-check]
+button | [icône lucide-plus]
+button | Drag to resize height
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+combobox | Naive
+button | [icône lucide-mic]
+button | Send message
+input:file | 

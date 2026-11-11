@@ -1,0 +1,255 @@
+2026-11-11 13:42:24
+               total        used        free      shared  buff/cache   available
+Mem:           32098       15210        1241         160       16178       16888
+Swap:           4096          10        4085
+== phase creation
+capture docs/ragflow/img/05-assistants-et-citations/01-liste-des-assistants.png [(1, 'filtre'), (2, 'Rechercher'), (3, 'Créer un chat'), (4, "carte d'un assistant"), (5, 'menu de la carte')]
+menu d'une carte d'assistant : ['Renommer', 'Supprimer']
+capture docs/ragflow/img/05-assistants-et-citations/02-menu-d-un-assistant.png [(1, 'Renommer'), (2, 'Supprimer')]
+capture docs/ragflow/img/05-assistants-et-citations/03-page-d-un-assistant.png [(1, 'Intégrer dans la page web'), (2, 'replier la colonne'), (3, 'nouvelle conversation'), (4, 'suppression groupée'), (5, 'Rechercher'), (6, 'Paramètres du chat')]
+capture docs/ragflow/img/05-assistants-et-citations/04-zone-de-saisie.png [(1, 'Plusieurs modèles'), (2, 'zone de saisie'), (3, 'Attach file'), (4, 'Naive'), (5, 'micro'), (6, 'Send message')]
+== phase parametres
+capture docs/ragflow/img/05-assistants-et-citations/05-parametres-du-chat.png [(1, 'Télécharger'), (2, 'nom'), (3, 'description'), (4, 'Modèle'), (5, 'Paramètres du modèle'), (6, "Message d'accueil")]
+modèles proposés : VLLM | llm-service-chat | gemma4:e4b
+capture docs/ragflow/img/05-assistants-et-citations/06-choix-du-modele.png [(1, 'gemma4:e4b')]
+capture docs/ragflow/img/05-assistants-et-citations/07-parametres-du-modele.png [(1, 'Liberté'), (2, 'Température'), (3, 'Top P'), (4, 'Pénalité de présence'), (5, 'Pénalité de fréquence'), (6, 'Nombre max de tokens')]
+capture docs/ragflow/img/05-assistants-et-citations/08-liberte.png [(1, 'Improviser'), (2, 'Précis'), (3, 'Équilibre'), (4, 'Personnalisé')]
+capture docs/ragflow/img/05-assistants-et-citations/09-thinking.png [(1, 'System default'), (2, 'Enabled'), (3, 'Disabled')]
+capture docs/ragflow/img/05-assistants-et-citations/10-choix-de-la-base.png [(1, 'Rechercher...'), (2, 'Démo Vélanor')]
+capture docs/ragflow/img/05-assistants-et-citations/11-parametres-avances.png [(1, 'Afficher la citation'), (2, 'Texte en parole'), (3, 'Web search provider'), (4, 'Métadonnées'), (5, 'Naive'), (6, 'Agentic')]
+fournisseurs de recherche web : AnySearch | Brave Search | Exa | Firecrawl | Linkup | Parallel | Querit | Search1API | SearchApi | Serply | Tavily | You.com
+capture docs/ragflow/img/05-assistants-et-citations/12-web-search-provider.png [(1, 'fournisseurs proposés')]
+filtre de métadonnées : ['Désactivé', 'Automatique', 'Semi-automatique', 'Manuel']
+capture docs/ragflow/img/05-assistants-et-citations/13-metadonnees.png [(1, 'Désactivé'), (2, 'Automatique'), (3, 'Semi-automatique'), (4, 'Manuel')]
+capture docs/ragflow/img/05-assistants-et-citations/14-naive-reponse-et-prompt.png [(1, 'Réponse vide'), (2, 'Analyse de mots-clés'), (3, 'Prompt système')]
+valeurs avant réglage : seuil 20 ; poids mots-clés 0.7 ; rerank candidates 64 ; Top N 8
+capture docs/ragflow/img/05-assistants-et-citations/15-naive-recherche.png [(1, 'Seuil de similarité'), (2, 'Poids de similarité par mots-clés'), (3, 'Rerank candidates'), (4, 'Top N'), (5, 'Modèle de réordonnancement'), (6, 'Recherche inter-langues')]
+capture docs/ragflow/img/05-assistants-et-citations/16-naive-multi-tours-variables.png [(1, 'Optimisation multi-tours'), (2, 'Variable'), (3, 'knowledge')]
+capture docs/ragflow/img/05-assistants-et-citations/17-agentic.png [(1, 'Decision model'), (2, 'Agentic template'), (3, 'Reset to default')]
+capture docs/ragflow/img/05-assistants-et-citations/18-enregistrer.png [(1, 'Annuler'), (2, 'Enregistrer')]
+après enregistrement : ['Modifié']
+relu : Top N 8 ; poids mots-clés 0.3 ; réponse vide Aucune information pertinente n'a été trouvée dans les documents. ; base DV
+Démo Vélanor
+== phase test
+capture docs/ragflow/img/05-assistants-et-citations/19-test-reglages.png [(1, 'Seuil de similarité'), (2, 'Poids de similarité par mots-clés'), (3, 'Modèle de réordonnancement'), (4, 'Recherche inter-langues'), (5, 'Métadonnées'), (6, 'Rerank candidates, Top N')]
+résultats : Paramètres | Seuil de similarité | Poids de similarité par mots-clés | full-text | 0.70 | vector | 0.30 | Modèle de réordonnancement | Recherche inter-langues | Sélectionner une valeur | Métadonnées | Sélectionner une valeur | Rerank candidates | Top N | Test | Résultats | Total: 25 | 42.50 Similarité hybride | 25.87 Similarité de terme | 81.31 Similarité vectorielle | le>Fournisseurs | r>FournisseurComposantDélai moyen constaté (jours)r> | r>d>Batterix GmbHd>d>Batteriesd>d>24d>r> | r>d>Motodrive Co.d>d>Moteursd>d>45d>r> | r>d>Stoplined>d>Freinsd>d>12d>r> | r>d>Gomma Ouestd>d>Pneusd>d>6d>r> | le> | stocks-octobre-2025.xlsx | 42.38 Similarité hybride | 27.07 Similarité de terme | 78.09 Similarité vectorielle | FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparatio
+capture docs/ragflow/img/05-assistants-et-citations/20-test-resultats.png [(1, 'question'), (2, 'Test'), (3, 'Total'), (4, 'scores'), (5, 'document')]
+résultats avec mots-clés 0,3 : Paramètres | Seuil de similarité | Poids de similarité par mots-clés | full-text | 0.30 | vector | 0.70 | Modèle de réordonnancement | Recherche inter-langues | Sélectionner une valeur | Métadonnées | Sélectionner une valeur | Rerank candidates | Top N | Test | Résultats | Total: 26 | 64.68 Similarité hybride | 25.87 Similarité de terme | 81.31 Similarité vectorielle | le>Fournisseurs | r>FournisseurComposantDélai moyen constaté (jours)r> | r>d>Batterix GmbHd>d>Batteriesd>d>24d>r> | r>d>Motodrive Co.d>d>Moteursd>d>45d>r> | r>d>Stoplined>d>Freinsd>d>12d>r> | r>d>Gomma Ouestd>d>Pneusd>d>6d>r> | le> | stocks-octobre-2025.xlsx | 62.79 Similarité hybride | 27.07 Similarité de terme | 78.09 Similarité vectorielle | FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparatio
+capture docs/ragflow/img/05-assistants-et-citations/21-test-vecteurs-07.png [(1, 'Poids de similarité par mots-clés'), (2, 'Total'), (3, 'scores')]
+== phase conversation
+réponse (mode Naive) affichée après 4.4 s : Voici les informations concernant les délais de livraison de Batterix :
+
+Délai de livraison contractuel : Le fournisseur livre sous 21 jours après la commande, selon le contrat d'approvisionnement [3].
+Délai moyen constaté : Le délai moyen constaté pour les composants de Batterix GmbH (Batteries) est de 24 jours [1].
+
+Données de la base de connaissances utilisées :
+
+ID:0 (stocks-octobre-2025.xlsx) : Contient le tableau des fournisseurs, indiquant que le délai moyen constaté pour les "Batteries" de "Batterix GmbH" est de "24" jours.
+ID:2 (contrat-batterix-scan.pdf) : Contient le Contrat d'Approvisionnement n°BX-2025-117, précisant sous l'Article 5 que "Le Fournisseur livre sous 21 jours après
+capture docs/ragflow/img/05-assistants-et-citations/22-reponse-citee.png [(1, 'question'), (2, 'renvoi'), (3, 'jetons et durée'), (4, 'document cité'), (5, 'conversation')]
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_03_06.py", line 1081, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_03_06.py", line 1012, in assistants
+    globals()["assistants_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_03_06.py", line 924, in assistants_conversation
+    reponse.hover(); attendre(s, 1000)
+    ^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/sync_api/_generated.py", line 12359, in hover
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 498, in hover
+    return await self._frame.hover(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_frame.py", line 778, in hover
+    await self._channel.send("hover", self._timeout, locals_to_params(locals()))
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.hover: Timeout 15000ms exceeded.
+Call log:
+  - waiting for get_by_text(re.compile(r"tokens \(\d+ input")).last.locator("xpath=ancestor::div[.//button[.//svg[contains(@class,'lucide-thumbs-up')]]][1]")
+
+== reprise 2026-11-11 13:44:57 : phases conversation et ecran
+== phase conversation
+réponse (mode Naive) affichée après 6.4 s : Les données de la base de connaissances sont les suivantes :
+
+ID: 0 (stocks-octobre-2025.xlsx) : Fournisseurs et délais moyens constatés pour différents composants.
+ID: 1 (faq-sav.html) : Informations générales sur le service après-vente (garanties, réparations, contacts).
+ID: 2 (contrat-batterix-scan.pdf) : Contrat d'approvisionnement entre Velanor SAS et Batterix GmbH.
+ID: 3 (supplier-audit-batterix-en.pdf) : Rapport d'audit qualité de Batterix GmbH.
+ID: 4 (procedure-batteries.docx) : Procédure de charge et stockage des batteries.
+ID: 5 (rapport-annuel-2025.pdf) : Rapport annuel incluant les risques et perspectives.
+ID: 6 (rapport-annuel-2025.pdf) : Tableau listant les principaux fournisse
+capture docs/ragflow/img/05-assistants-et-citations/22-reponse-citee.png [(1, 'question'), (2, 'renvoi'), (3, 'jetons et durée'), (4, 'document cité'), (5, 'conversation')]
+actions de la réponse : ['copier', 'régénérer', 'supprimer', 'lire à voix haute', 'pouce haut', 'pouce bas']
+capture docs/ragflow/img/05-assistants-et-citations/23-actions-sur-une-reponse.png [(1, 'copier'), (2, 'régénérer'), (3, 'supprimer'), (4, 'lire à voix haute'), (5, 'pouce haut'), (6, 'pouce bas')]
+capture docs/ragflow/img/05-assistants-et-citations/24-citation-au-survol.png [(1, 'extrait cité')]
+capture docs/ragflow/img/05-assistants-et-citations/25-document-cite.png [(1, 'nom du document'), (2, 'fermer')]
+réponse (mode Naive) affichée après 1.3 s : La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! [8]
+
+1968 tokens (1945 input, 23 output) · 0.9s
+capture docs/ragflow/img/05-assistants-et-citations/26-question-sans-reponse.png [(1, 'question piège'), (2, 'réponse')]
+menu d'une conversation : ['Supprimer']
+capture docs/ragflow/img/05-assistants-et-citations/27-menu-d-une-conversation.png [(1, 'Supprimer')]
+boutons en mode sélection : 2
+capture docs/ragflow/img/05-assistants-et-citations/28-suppression-groupee.png [(1, "case d'une conversation"), (2, 'annuler la sélection'), (3, 'supprimer la sélection')]
+capture docs/ragflow/img/05-assistants-et-citations/29-confirmer-la-suppression.png [(1, 'confirmation'), (2, 'Supprimer')]
+conversations restantes : Conversations
+0
+== phase ecran
+capture docs/ragflow/img/05-assistants-et-citations/30-piece-jointe.png [(1, 'fichier joint'), (2, 'Attach file')]
+capture docs/ragflow/img/05-assistants-et-citations/31-plusieurs-modeles.png [(1, 'Retour'), (2, 'modèle de la colonne 1'), (3, 'Appliquer la configuration du modèle'), (4, 'ajouter une colonne')]
+capture docs/ragflow/img/05-assistants-et-citations/32-deux-colonnes.png [(1, 'Plusieurs modèles (2/3)'), (2, 'zone de saisie commune')]
+capture docs/ragflow/img/05-assistants-et-citations/33-integrer-dans-la-page-web.png [(1, "Type d'intégration"), (2, 'Thème'), (3, "Cacher l'avatar"), (4, 'Paramètres régionaux'), (5, "Code d'intégration"), (6, 'Ouvrir dans un nouvel onglet')]
+onglet Widget Customization : Intégrer dans la page web | Embed Setup | Widget Customization | These settings apply to the floating widget embed. | Widget title | Subtitle | Footer text | Footer redirect link | Widget accent color | Background color | Text color | Header text color | Footer text color | Code d'intégration | <iframe |   src="http://rag-ragflow-server/chats/share?shared_id=ba12af6c9c1f4fdfbb1d56f7552459ba&from=chat&auth=<masqué>&theme=light" |   style="width: 100%; height: 100%; min-height: 600px" |   frameborder="0" | ></iframe> |  | Ouvrir dans un nouvel onglet | DiscussionID | ba12af6c9c1f4fdfbb1d56f75524
+capture docs/ragflow/img/05-assistants-et-citations/34-widget-customization.png [(1, 'Widget Customization')]
+== reprise 2026-11-11 13:46:50 : phase conversation (annotation de la capture 22 corrigée)
+== phase conversation
+réponse (mode Naive) affichée après 6.4 s : Voici les informations concernant les délais de livraison de Batterix :
+
+Délai de livraison contractuel : Le Fournisseur (Batterix GmbH) livre sous 21 jours après la commande [3].
+Délai moyen constaté : Le délai moyen constaté pour les "Batteries" fournies par Batterix GmbH est de 24 jours [1].
+
+Synthèse des données de la base de connaissances :
+
+Données de la base de connaissances utilisées :
+
+ID: 0 (stocks-octobre-2025.xlsx) : Ce tableau répertorie les fournisseurs, les composants, et le délai moyen constaté (en jours). Il indique que pour le composant "Batteries" fourni par "Batterix GmbH", le délai moyen constaté est de 24 jours.
+ID: 2 (contrat-batterix-scan.pdf) : Ce contrat d'approvisi
+capture docs/ragflow/img/05-assistants-et-citations/22-reponse-citee.png [(1, 'titre de la conversation'), (2, 'renvoi'), (3, 'jetons et durée'), (4, 'document cité'), (5, 'conversation')]
+actions de la réponse : ['copier', 'régénérer', 'supprimer', 'lire à voix haute', 'pouce haut', 'pouce bas']
+capture docs/ragflow/img/05-assistants-et-citations/23-actions-sur-une-reponse.png [(1, 'copier'), (2, 'régénérer'), (3, 'supprimer'), (4, 'lire à voix haute'), (5, 'pouce haut'), (6, 'pouce bas')]
+capture docs/ragflow/img/05-assistants-et-citations/24-citation-au-survol.png [(1, 'extrait cité')]
+capture docs/ragflow/img/05-assistants-et-citations/25-document-cite.png [(1, 'nom du document'), (2, 'fermer')]
+réponse (mode Naive) affichée après 1.4 s : La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! [8]
+
+1984 tokens (1961 input, 23 output) · 1.0s
+capture docs/ragflow/img/05-assistants-et-citations/26-question-sans-reponse.png [(1, 'question piège'), (2, 'réponse')]
+menu d'une conversation : ['Supprimer']
+capture docs/ragflow/img/05-assistants-et-citations/27-menu-d-une-conversation.png [(1, 'Supprimer')]
+boutons en mode sélection : 2
+capture docs/ragflow/img/05-assistants-et-citations/28-suppression-groupee.png [(1, "case d'une conversation"), (2, 'annuler la sélection'), (3, 'supprimer la sélection')]
+capture docs/ragflow/img/05-assistants-et-citations/29-confirmer-la-suppression.png [(1, 'confirmation'), (2, 'Supprimer')]
+conversations restantes : Conversations
+0
+== reprise 2026-11-11 13:48:09 : phase conversation (capture 22 : renvoi le plus proche des jetons, titre retiré)
+== phase conversation
+réponse (mode Naive) affichée après 3.4 s : Voici les informations concernant les délais de livraison de Batterix GmbH :
+
+Délai de livraison contractuel : Le fournisseur livre sous 21 jours après la commande, conformément au contrat d'approvisionnement [3].
+Délai moyen constaté : Le délai moyen constaté pour les "Batteries" en provenance de "Batterix GmbH" est de 24 jours [1].
+
+Sources utilisées :
+
+[3] pour le délai contractuel de 21 jours.
+[1] pour le délai moyen constaté de 24 jours.
+2043 tokens (1893 input, 150 output) · 2.8s
+capture docs/ragflow/img/05-assistants-et-citations/22-reponse-citee.png [(1, 'renvoi'), (2, 'jetons et durée'), (3, 'document cité'), (4, 'conversation')]
+actions de la réponse : ['copier', 'régénérer', 'supprimer', 'lire à voix haute', 'pouce haut', 'pouce bas']
+capture docs/ragflow/img/05-assistants-et-citations/23-actions-sur-une-reponse.png [(1, 'copier'), (2, 'régénérer'), (3, 'supprimer'), (4, 'lire à voix haute'), (5, 'pouce haut'), (6, 'pouce bas')]
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_03_06.py", line 1080, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_03_06.py", line 1011, in assistants
+    globals()["assistants_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_03_06.py", line 935, in assistants_conversation
+    cap(s, m, "24-citation-au-survol", [(popover(s), "extrait cité")])
+  File "/depot/outils/ragflow/captures/captures.py", line 117, in cap
+    lib = capture(s.pg, IMG / manuel / f"{nom}.png", elements=elements, masques=masques, plein=plein, clip=clip, texte=txt)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 71, in capture
+    libelles = annoter(page, list(elements)) if elements else []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 53, in annoter
+    boites = [_boite(page, loc, n=i) for i, (loc, _) in enumerate(elements, 1)]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 39, in _boite
+    loc.wait_for(state="visible", timeout=15000)
+  File "/pw/site/playwright/sync_api/_generated.py", line 13635, in wait_for
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 767, in wait_for
+    await self._frame.wait_for_selector(
+  File "/pw/site/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("[data-radix-popper-content-wrapper]").last to be visible
+
+== reprise 2026-11-11 13:49:12 : phase conversation (renvoi pris parmi les déclencheurs de survol)
+== phase conversation
+réponse (mode Naive) affichée après 4.4 s : Voici les informations concernant les délais de livraison de Batterix :
+
+Délai de livraison contractuel :
+Selon le contrat d'approvisionnement n°BX-2025-117, le fournisseur livre sous 21 jours après la commande [3].
+
+Délai moyen constaté :
+Les données des stocks d'octobre 2025 indiquent un délai moyen constaté de 24 jours pour les batteries provenant de Batterix GmbH [1].
+
+Données de la base de connaissances utilisées :
+
+ID:0 (stocks-octobre-2025.xlsx) : Contient la liste des fournisseurs et le délai moyen constaté par composant, indiquant pour Batteries et Batterix GmbH un délai de 24 jours.
+ID:2 (contrat-batterix-scan.pdf) : Contient les termes du contrat d'approvisionnement, spécifiant da
+capture docs/ragflow/img/05-assistants-et-citations/22-reponse-citee.png [(1, 'renvoi'), (2, 'jetons et durée'), (3, 'document cité'), (4, 'conversation')]
+actions de la réponse : ['copier', 'régénérer', 'supprimer', 'lire à voix haute', 'pouce haut', 'pouce bas']
+capture docs/ragflow/img/05-assistants-et-citations/23-actions-sur-une-reponse.png [(1, 'copier'), (2, 'régénérer'), (3, 'supprimer'), (4, 'lire à voix haute'), (5, 'pouce haut'), (6, 'pouce bas')]
+capture docs/ragflow/img/05-assistants-et-citations/24-citation-au-survol.png [(1, 'extrait cité')]
+capture docs/ragflow/img/05-assistants-et-citations/25-document-cite.png [(1, 'nom du document'), (2, 'fermer')]
+réponse (mode Naive) affichée après 6.9 s : La réponse que vous cherchez ne se trouve pas dans la base de connaissances !
+
+Données de la base de connaissances listées :
+
+ID:0: Contient des informations sur Vélanor SAS, notamment son histoire (fondée en 2014 à Nantes) et son activité (conçoit et assemble des vélos à assistance électrique), [1]ainsi que le rapport annuel 2025.
+ID:1: Détaille les perspectives 2026 de Vélanor, incluant un chiffre d'affaires visé de 55 M€ en 2026.
+[5]* ID:2: Donne des informations environnementales sur Vélanor, comme l'utilisation d'aluminium recyclé à 82% pour les cadres et l'objectif de neutralité carbone en 2030.
+[3]* ID:3: Présente les chiffres de l'année 2025 pour Vélanor, indiquant un chiffre d'affai
+capture docs/ragflow/img/05-assistants-et-citations/26-question-sans-reponse.png [(1, 'question piège'), (2, 'réponse')]
+menu d'une conversation : ['Supprimer']
+capture docs/ragflow/img/05-assistants-et-citations/27-menu-d-une-conversation.png [(1, 'Supprimer')]
+boutons en mode sélection : 2
+capture docs/ragflow/img/05-assistants-et-citations/28-suppression-groupee.png [(1, "case d'une conversation"), (2, 'annuler la sélection'), (3, 'supprimer la sélection')]
+capture docs/ragflow/img/05-assistants-et-citations/29-confirmer-la-suppression.png [(1, 'confirmation'), (2, 'Supprimer')]
+conversations restantes : Conversations
+0
+== reprise 2026-11-11 13:50:31 : phase conversation (capture 26 : seule la réponse est annotée)
+== phase conversation
+réponse (mode Naive) affichée après 3.9 s : Les données pertinentes issues de la base de connaissances sont les suivantes :
+
+Données de la base de connaissances utilisées :
+
+ID: 2 (Contrat d'approvisionnement N°BX-2025-117) : Mentionne les délais de livraison dans le contrat.
+ID: 0 (stocks-octobre-2025.xlsx - Fournisseurs) : Fournit le délai moyen constaté par fournisseur.
+
+Réponse détaillée :
+
+Le délai de livraison contractuel de Batterix GmbH est de 21 jours après la commande, conformément au Contrat d'Approvisionnement N°BX-2025-117 [3]. En comparaison, le délai moyen constaté pour les batteries provenant de Batterix GmbH est de 24 jours [1].
+
+2088 tokens (1893 input, 195 output) · 3.6s
+capture docs/ragflow/img/05-assistants-et-citations/22-reponse-citee.png [(1, 'renvoi'), (2, 'jetons et durée'), (3, 'document cité'), (4, 'conversation')]
+actions de la réponse : ['copier', 'régénérer', 'supprimer', 'lire à voix haute', 'pouce haut', 'pouce bas']
+capture docs/ragflow/img/05-assistants-et-citations/23-actions-sur-une-reponse.png [(1, 'copier'), (2, 'régénérer'), (3, 'supprimer'), (4, 'lire à voix haute'), (5, 'pouce haut'), (6, 'pouce bas')]
+capture docs/ragflow/img/05-assistants-et-citations/24-citation-au-survol.png [(1, 'extrait cité')]
+capture docs/ragflow/img/05-assistants-et-citations/25-document-cite.png [(1, 'nom du document'), (2, 'fermer')]
+réponse (mode Naive) affichée après 1.3 s : La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! [8]
+
+1821 tokens (1798 input, 23 output) · 0.9s
+capture docs/ragflow/img/05-assistants-et-citations/26-question-sans-reponse.png [(1, 'début de la réponse')]
+menu d'une conversation : ['Supprimer']
+capture docs/ragflow/img/05-assistants-et-citations/27-menu-d-une-conversation.png [(1, 'Supprimer')]
+boutons en mode sélection : 2
+capture docs/ragflow/img/05-assistants-et-citations/28-suppression-groupee.png [(1, "case d'une conversation"), (2, 'annuler la sélection'), (3, 'supprimer la sélection')]
+capture docs/ragflow/img/05-assistants-et-citations/29-confirmer-la-suppression.png [(1, 'confirmation'), (2, 'Supprimer')]
+conversations restantes : Conversations
+0
