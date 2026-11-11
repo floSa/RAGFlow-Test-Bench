@@ -201,7 +201,11 @@ Les chiffres de la partie 1, avec leur étiquette et leur preuve. Sauf mention, 
 | Même test par `POST /api/v1/retrieval` | [Testée] | `outils/ragflow/essai_passages.py`, `exemples/ragflow/05_recherche_seule.py` |
 | Banc : 33 sur 34 par défaut, 34 sur 34 avec vecteurs 0,7 et `top_n` 8 (+0,08 s en médiane) | [Vérifié] | annexe [A1](A1-evaluation-qualite-et-performances.md) ; `banc-2026-11-09-defaut.json`, `banc-2026-11-09-hybride-vecteurs07-top8.json` |
 | Par l'API, seul `vector_similarity_weight` se règle ; lire `keywords_similarity_weight` | [Vérifié] | `essai-2026-11-09-sdk-defauts.log` ; `internal/handler/chat.go` (ligne 339) |
-| Aucun reranker embarqué ; conteneur vLLM de reranking possible dans LLM-Service | [Source] ; [À tester] | `internal/entity/models/builtin.go` |
+| Aucun reranker embarqué | [Source] | `internal/entity/models/builtin.go` |
+| Reranker TEI 1.8.2 (`rag-reranker`, processeur) : sain en 22 s, 4,6 Gio de RAM ; format natif `/rerank` en 200, format envoyé par RAGFlow en 422 « missing field `texts` », `/v1/rerank` en 404 : RAGFlow ne peut pas l'appeler | [Vérifié] | `reranker-2026-11-11.log`, `reranker-cpu-2026-11-11-tei.log` ; annexe [A1](A1-evaluation-qualite-et-performances.md), section 7 |
+| Pilotes de rerank de RAGFlow au format Jina/Cohere ; pilote « HuggingFace » sans rerank | [Source] | `internal/entity/models/vllm.go`, `huggingface.go` |
+| Reranker vLLM à côté de `vllm-central` et `vllm-embed` : non démarré, VRAM libre de 211 à 461 Mio pour un besoin d'environ 1,6 Go | [Vérifié] ; [Estimation] pour le besoin | `reranker-2026-11-11.log` ; annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md), section 6 |
+| Classement avec reranker : mots-clés × poids + note du reranker × poids des vecteurs ; nom `BAAI/bge-reranker-v2-m3` pris pour un ancien reranker intégré | [Source] | `internal/service/nlp/reranker.go`, `internal/service/chat.go` |
 
 ### 4.9 Chapitre 09. Rechercher dans ses documents
 
@@ -416,6 +420,8 @@ Comportements de RAGFlow v1.0.0 observés pendant les essais, avec leur preuve. 
 | Texte d'un passage HTML qui colle des éléments voisins (« après-venteDocument fictif.Quelle ») | sans effet observé sur la réponse | [A3](A3-automatiser-par-l-api.md) | [Vérifié] `exemples/ragflow/sorties_verifiees.txt`, exemple 03 |
 | Compose officiel : ports sur `0.0.0.0`, mots de passe par défaut connus | exposition réseau si lancé tel quel | [02](../manuel/02-installer-ragflow.md), [A4](A4-exploitation.md) | [Source] `docker/docker-compose.yml`, `docker/.env` |
 | Variables `WIKI_*` et `STRUCTURE_*` du `docker/.env` officiel lues par aucun code Go | réglages sans effet | [11](../manuel/11-syntheses-automatiques.md) | [Source] `internal/ingestion/knowledge_compile/` |
+| Fournisseur « HuggingFace » marqué `TEXT RE-RANK` dans `conf/llm_factories.json`, mais son pilote Go répond « no such method: Rerank » ; aucun pilote ne parle le format `/rerank` de Text Embeddings Inference, que le compose officiel propose pourtant (profil `tei-cpu`) | reranker TEI inutilisable sans adaptateur | [A1](A1-evaluation-qualite-et-performances.md) | [Vérifié] `reranker-2026-11-11.log` (422) ; [Source] `internal/entity/models/huggingface.go` |
+| Un reranker servi sous le nom `BAAI/bge-reranker-v2-m3` ou `maidalun1020/bce-reranker-base_v1` est pris pour un ancien reranker intégré : l'instance qui le sert n'est pas retenue | reranker choisi sans effet | [A1](A1-evaluation-qualite-et-performances.md) | [Source] `internal/service/chat.go`, `resolveCreateRerankID` ; [À tester] |
 | `docker/migration.sh` ne sauvegarde pas les volumes Kvrocks et NATS de la 1.0 | sauvegarde officielle incomplète | [A4](A4-exploitation.md) | [Source] lecture du code au tag v1.0.0 |
 
 ## 7. Incidents des essais
@@ -430,6 +436,7 @@ Incidents dus au banc lui-même, et leur traitement. Le tableau complet est dans
 | `vllm-central` en redémarrage en boucle le matin du 11 novembre (mémoire de la carte prise par un autre projet) | question réelle du chapitre 04 rejouée après remise en service | `preuves-2026-11-11/llm-service-reparation.log` ; `JOURNAL.md` |
 | Première passe du scénario `cles` sans gestion de la confirmation de suppression | clé d'essai supprimée par l'API | `captures/10-api-et-sdk/nettoyage.log` |
 | Brouillon du pipeline de démonstration touché par un repérage | remis depuis la version publiée par `PUT /api/v1/agents/{id}` | `captures/07-knowledge-compilation/incident-pipeline-demo.txt` |
+| Reranker TEI : `--max-batch-tokens` par défaut (16 384), échauffement à 13,6 Go de RAM puis redémarrages en boucle | conteneur arrêté, relancé avec 2 048 et une limite de 6 Go | `reranker-2026-11-11.log` |
 | Un commit passé avec 1 point de `verifier_docs.py` | corrigé au commit suivant ; depuis, chaque commit dépend du code de sortie du vérificateur | `JOURNAL.md` |
 
 ## 8. Ce qui n'a pas été vérifié
@@ -437,7 +444,7 @@ Incidents dus au banc lui-même, et leur traitement. Le tableau complet est dans
 | Sujet | Raison |
 |---|---|
 | Mise à jour de version | aucune version plus récente que v1.0.0 le jour des essais |
-| Reranking | aucun reranker dans le socle ; LLM-Service partagé, non modifié |
+| Reranking (banc avec et sans reranker, branchement à la souris) | TEI incompatible avec les pilotes de RAGFlow ; `vllm-rerank` préparé mais non démarré faute de VRAM ; essai reporté au nouveau service de modèles (llama.cpp derrière LiteLLM) |
 | Second modèle (`ministral-3:3b`) et modèle de moins de 3 milliards de paramètres | LLM-Service en branche `service-vllm` sert un seul modèle de réponse, partagé |
 | Profil A sans carte graphique | machine d'essai avec GPU : chiffres en [Estimation] à partir des mesures CPU du socle (`outils/resultats/socle/`), annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md) |
 | Contexte entre 3 072 et 4 096 jetons | 4 096 suffit, 3 072 échoue ; valeurs intermédiaires non essayées |
