@@ -123,22 +123,12 @@ Models
 Lister les modèles
 Tous les modèles2
 Embedding2
-BAAI/bge-m3
-Embedding
 bge-m3
+Embedding
+BAAI/bge-m3
 Embedding
 llm-service-embed
 Enregistrer
-Clé API
-URL de base
-Models
-Lister les modèles
-Tous les modèles2
-Embedding2
-bge-m3
-Embedding
-BAAI/bge-m3
-Embedding
 llm-service-chat
 Enregistrer
 Add instance
@@ -147,7 +137,8 @@ Add instance
 /user-setting/model
 == pastilles ==
 1. Manuel-instance
-2. Delete instance
+2. bge-m3
+3. Delete instance
 == éléments visibles ==
 a | 
 a | Accueil
@@ -276,16 +267,13 @@ label | URL de base
 input:text | http://host.docker.internal:8000/v1
 button | Lister les modèles
 button | More actions
-button | Remove all models
+button | Add all models
 button | Tous les modèles2
 button | Embedding2
 button | Modifier le modèle
-button | Verify BAAI/bge-m3
-button | Remove BAAI/bge-m3
 button | Verify bge-m3
 button | Remove bge-m3
-input:text | Clear this field to remove the saved credential
-button | Add all models
+button | Verify BAAI/bge-m3
 button | Add BAAI/bge-m3
 button | Voir les modèles
 button | Add instance

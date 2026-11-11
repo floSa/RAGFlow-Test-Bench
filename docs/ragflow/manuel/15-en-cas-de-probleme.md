@@ -60,7 +60,7 @@ La réponse est remplacée par un message d'erreur (pastille 1), sans citation n
 
 **Étape 4. Agrandir la taille de contexte déclarée**
 *Où* : menu du compte › « Fournisseurs de modèles » › « VLLM » › carte de l'instance « llm-service-chat » › ligne `gemma4:e4b` › crayon « Modifier le modèle » (au survol, à droite du badge « LLM »).
-Saisir 16384 dans « Tokens maximum », puis cliquer sur « Confirmer », dans la fenêtre « Modifier le modèle » montrée au chapitre 03, étape 16.
+Saisir 16384 dans « Tokens maximum », puis cliquer sur « Confirmer », dans la fenêtre « Modifier le modèle » montrée au chapitre 03, étape 20 (crayon « Modifier le modèle » à l'étape 19).
 
 *Résultat* : la question suivante reçoit une réponse normale. Une question ordinaire consomme de 600 à 3 300 jetons sur les documents d'exemple ; le mode « Agentic » peut en consommer dix fois plus.
 

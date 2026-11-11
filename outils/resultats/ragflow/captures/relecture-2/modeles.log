@@ -1,0 +1,97 @@
+== phase voix
+état de la carte : Masquer les modèles
+carte voix-locale : voix-locale | Enregistrer | Clé API | URL de base | Models | Lister les modèles | Tous les modèles2 | LLM1 | ASR1 | Systran/faster-whisper-small | ASR | speaches-ai/Kokoro-82M-v1.0-ONNX | LLM
+champs : [['Clear this field to remove the saved credential', 'text', '********'], ['Veuillez saisir votre URL de base', 'text', 'http://rag-speaches:8000/v1'], ['Rechercher', 'text', '***']]
+capture docs/ragflow/img/01-installation/11-instance-voix.png [(1, 'voix-locale'), (2, 'Clé API'), (3, 'URL de base'), (4, 'Systran/faster-whisper-small'), (5, 'Enregistrer')]
+== phase personnalise
+état de la carte : Masquer les modèles
+capture docs/ragflow/img/01-installation/13-menu-modele-personnalise.png [(1, 'Ajouter un modèle personnalisé'), (2, 'Verify all models')]
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/relecture_novice_2.py", line 378, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/relecture_novice_2.py", line 46, in modeles
+    phases_de(s, "modeles", phases, ("voix", "instance", "crayon"))
+  File "/depot/outils/ragflow/captures/relecture_novice_2.py", line 39, in phases_de
+    globals()[prefixe + "_" + ph](s)
+  File "/depot/outils/ragflow/captures/relecture_novice_2.py", line 143, in modeles_personnalise
+    dlg.get_by_label("Nom du modèle").fill("nom-exact-du-modele")
+  File "/pw/site/playwright/sync_api/_generated.py", line 11640, in fill
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 228, in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_frame.py", line 641, in fill
+    await self._fill(**locals_to_params(locals()))
+  File "/pw/site/playwright/_impl/_frame.py", line 653, in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.fill: Timeout 15000ms exceeded.
+Call log:
+  - waiting for get_by_role("dialog").last.get_by_label("Nom du modèle")
+
+== phase personnalise
+état de la carte : Masquer les modèles
+capture docs/ragflow/img/01-installation/13-menu-modele-personnalise.png [(1, 'Ajouter un modèle personnalisé'), (2, 'Verify all models')]
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/relecture_novice_2.py", line 379, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/relecture_novice_2.py", line 46, in modeles
+    phases_de(s, "modeles", phases, ("voix", "instance", "crayon"))
+  File "/depot/outils/ragflow/captures/relecture_novice_2.py", line 39, in phases_de
+    globals()[prefixe + "_" + ph](s)
+  File "/depot/outils/ragflow/captures/relecture_novice_2.py", line 149, in modeles_personnalise
+    cap(s, M03, "14-modele-personnalise", [(nom, "Nom du modèle"), (rerank, "Rerank"), (jetons, "Tokens maximum"),
+  File "/depot/outils/ragflow/captures/captures.py", line 118, in cap
+    lib = capture(s.pg, IMG / manuel / f"{nom}.png", elements=elements, masques=masques, plein=plein, clip=clip, texte=txt)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 71, in capture
+    libelles = annoter(page, list(elements)) if elements else []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 53, in annoter
+    boites = [_boite(page, loc, n=i) for i, (loc, _) in enumerate(elements, 1)]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 39, in _boite
+    loc.wait_for(state="visible", timeout=15000)
+  File "/pw/site/playwright/sync_api/_generated.py", line 13635, in wait_for
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 767, in wait_for
+    await self._frame.wait_for_selector(
+  File "/pw/site/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for get_by_role("dialog").last.locator("label").filter(has_text="Nom du modèle").first.locator("xpath=following::input[1]") to be visible
+
+== phase personnalise
+état de la carte : Masquer les modèles
+capture docs/ragflow/img/01-installation/13-menu-modele-personnalise.png [(1, 'Ajouter un modèle personnalisé'), (2, 'Verify all models')]
+type choisi : Rerank
+capture docs/ragflow/img/01-installation/14-modele-personnalise.png [(1, 'Nom du modèle'), (2, 'Type de modèle'), (3, 'Tokens maximum'), (4, 'Non'), (5, 'Confirmer')]
+modèle d'exemple absent après rechargement : True
+== phase instance
+confirmation du retrait : Are you sure to remove it ? |  | BAAI/bge-m3 |  | Non | Retirer
+messages : []
+état de la carte : Masquer les modèles
+carte enregistrée : Manuel-instance | Enregistrer | Clé API | URL de base | Models | Lister les modèles | Tous les modèles2 | Embedding2 | bge-m3 | Embedding | BAAI/bge-m3 | Embedding
+modèles de la carte : bge-m3 True ; BAAI/bge-m3 True
+capture docs/ragflow/img/01-installation/07-instance-enregistree.png [(1, 'Manuel-instance'), (2, 'bge-m3'), (3, 'Delete instance')]
+instance encore présente après suppression : 0
+== phase crayon
+état de la carte : Masquer les modèles
+ligne du modèle : gemma4:e4b | LLM
+capture docs/ragflow/img/01-installation/12-crayon-modifier-le-modele.png [(1, 'gemma4:e4b'), (2, 'LLM'), (3, 'Modifier le modèle')]

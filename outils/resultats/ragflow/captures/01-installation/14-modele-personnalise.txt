@@ -1,0 +1,121 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+BR
+
+banc.demo@exemple.fr
+
+Fournisseurs de modèles
+Sources de données
+Canaux de chat
+MCP
+Équipe
+Profil
+API
+v1.0.0
+Déconnexion
+Définir les modèles par défaut
+Modèles disponibles
+VLLM
+VLLM
+Comment intégrer VLLM
+llm-service-embed
+Enregistrer
+Clé API
+URL de base
+Models
+Lister les modèles
+Tous les modèles2
+Embedding2
+bge-m3
+Embedding
+BAAI/bge-m3
+Embedding
+llm-service-chat
+Enregistrer
+Add instance
+Ajouter un modèle personnalisé
+Nom du modèle
+Type de modèle
+Rerank
+Tokens maximum
+Fonctionnalités du modèle
+Appel d'outil
+Non
+Confirmer
+Close
+
+== adresse ==
+/user-setting/model
+== pastilles ==
+1. Nom du modèle
+2. Type de modèle
+3. Tokens maximum
+4. Non
+5. Confirmer
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | Fournisseurs de modèles
+button | Sources de données
+button | Canaux de chat
+button | MCP
+button | Équipe
+button | Profil
+button | API
+switch | [icône lucide-sun]
+button | Déconnexion
+button | Définir les modèles par défaut
+input:text | Rechercher
+button | VLLM
+a | Documentation link
+a | Comment intégrer VLLM
+button | Masquer les modèles
+button | Delete instance
+button | Enregistrer
+label | Clé API
+input:text | Clear this field to remove the saved credential
+label | URL de base
+input:text | http://host.docker.internal:8000/v1
+button | Lister les modèles
+button | More actions
+button | Add all models
+button | Tous les modèles2
+button | Embedding2
+button | Modifier le modèle
+button | Verify bge-m3
+button | Remove bge-m3
+button | Verify BAAI/bge-m3
+button | Add BAAI/bge-m3
+button | Voir les modèles
+button | Add instance
+label | Nom du modèle
+input:text | Nom du modèle
+label | Type de modèle
+button | Rerank
+label | Tokens maximum
+input:number | Tokens maximum
+label | Fonctionnalités du modèle
+label | Appel d'outil
+switch | 
+input:checkbox | 
+button | Non
+button | Confirmer
+button | Close
