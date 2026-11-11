@@ -1,7 +1,7 @@
 # 07. Poser des questions et lire les sources
 
 > Ce chapitre apprend à converser avec un assistant au quotidien : poser une question, vérifier chaque source, reconnaître un refus, gérer les conversations, joindre un fichier, choisir entre les modes « Naive » et « Agentic », comparer plusieurs modèles et publier l'assistant dans une page web.
-> **Point de départ** : barre du haut › « Discussion » (liste des assistants), un assistant relié à une base (chapitre 04).
+> **Point de départ** : barre du haut › « Discussion » (liste des assistants), un assistant relié à une base, de préférence l'assistant « Démo Vélanor » créé à la fin du chapitre 05.
 > **Durée** : environ 20 minutes. **Avant** : chapitre 04.
 
 **Attention** : le code d'intégration d'un assistant dans une page web contient une clé d'accès ; toute personne qui possède ce code peut interroger l'assistant. Ne pas le publier ni le transmettre hors du poste.
@@ -51,7 +51,7 @@ La colonne de gauche liste les conversations ; le « + » (pastille 3) en ouvre 
 
 **Étape 3. Poser la question**
 *Où* : page de l'assistant › « + » à côté de « Conversations », puis zone de saisie.
-Ouvrir une nouvelle conversation, taper la question, puis cliquer sur « Send message ». L'exemple pose la question du délai de livraison de Batterix à un assistant réglé comme le conseille le chapitre 08, relié à la base de démonstration.
+Ouvrir une nouvelle conversation, taper la question, puis cliquer sur « Send message ». L'exemple pose la question du délai de livraison de Batterix à un assistant d'essai relié à la base « Démo Vélanor » et réglé exactement comme l'assistant « Démo Vélanor » (chapitre 05, étape 24) : interroger ce dernier donne le même résultat. Avec un assistant laissé aux réglages d'origine, la réponse peut ne donner que le délai constaté (étape 14). Le chapitre 08 explique ces réglages ; il n'est pas nécessaire de l'avoir lu pour suivre celui-ci.
 
 ![Réponse citée](../img/05-assistants-et-citations/22-reponse-citee.png)
 *Écran : page de l'assistant, réponse citée.*
@@ -190,7 +190,7 @@ Poser la même question en mode « Naive », avec le même assistant laissé à 
 | 1 | « 1840 tokens (1524 input, 316 output) · 5.3s » | texte lu et écrit : environ vingt fois moins qu'en mode « Agentic » |
 | 2 | « Naive » | mode utilisé pour cette question |
 
-*Résultat* : avec les réglages d'origine, la réponse ne donne que le délai constaté. Avec les réglages conseillés au chapitre 08, le même mode « Naive » donne les deux délais à coup sûr (étape 3), pour une fraction du coût.
+*Résultat* : avec les réglages d'origine, la réponse ne donne que le délai constaté. Avec les réglages de l'assistant « Démo Vélanor » (poids des mots-clés 0,3, chapitre 05, étape 24), le même mode « Naive » donne les deux délais à coup sûr (étape 3), pour une fraction du coût.
 
 Quand utiliser lequel :
 
