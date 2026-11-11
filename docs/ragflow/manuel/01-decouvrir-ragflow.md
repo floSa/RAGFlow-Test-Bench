@@ -100,6 +100,7 @@ Détail : annexe [A1. Évaluation : qualité et performances](../annexes/A1-eval
 
 ## Les mots de base
 
+- **RAG** (de l'anglais *retrieval-augmented generation*, génération augmentée par récupération) : la méthode qui donne son nom à RAGFlow. À chaque question, l'outil retrouve d'abord les passages utiles dans les documents, puis les donne au modèle d'IA, qui rédige sa réponse à partir d'eux et les cite. Le modèle répond ainsi sur les documents de l'entreprise, qu'il n'a jamais appris.
 - **Document** : un fichier ajouté à RAGFlow (PDF, Word, tableur, page web, fichier audio…).
 - **Base de connaissances** : un ensemble de documents interrogés ensemble, avec leur façon d'être lus. RAGFlow l'appelle aussi « dataset » à certains endroits.
 - **Analyse** : l'étape où RAGFlow lit un document, le découpe et le range pour la recherche. Un document non analysé ne sert à rien.
