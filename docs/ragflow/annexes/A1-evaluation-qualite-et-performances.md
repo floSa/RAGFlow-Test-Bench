@@ -189,9 +189,40 @@ Par l'API, la réponse contient des marqueurs `[ID:n]`, et `reference.chunks` li
 
 ## 7. Reranker
 
-RAGFlow 1.0 n'embarque aucun reranker ; « Modèle de réordonnancement » reste vide tant qu'aucun service de reranking (route `/rerank`) n'est déclaré. Le socle Ollama ou vLLM de la série n'en fournit pas : reranking [À tester].
+RAGFlow 1.0 n'embarque aucun reranker ; « Modèle de réordonnancement » reste vide tant qu'aucun service de reranking n'est déclaré. Deux essais ont été faits le 11 novembre 2026 ; aucun n'a abouti à un reranker branché, le banc avec reranker n'a donc pas été joué. L'essai reprendra avec le nouveau service de modèles de la série (llama.cpp derrière une passerelle LiteLLM). [Vérifié] (`outils/resultats/ragflow/reranker-2026-11-11.log`)
 
-Avec la branche `service-vllm`, un conteneur vLLM de reranking pourrait être ajouté à LLM-Service et déclaré par le fournisseur `VLLM` en type `rerank`. Non fait : il aurait fallu modifier LLM-Service, partagé avec d'autres applications. [Source] (`internal/entity/models/builtin.go` ; `kit/PROMPT.md` du kit, §4 phase B)
+### 7.1 Ce que fait le reranker dans RAGFlow
+
+Quand un assistant a un « Modèle de réordonnancement », RAGFlow envoie au reranker la question et les « Rerank candidates » meilleurs passages (64 par défaut), puis classe chaque passage par `poids des mots-clés × score par mots-clés + poids des vecteurs × note du reranker` : la note du reranker remplace le score par le sens, l'embedding ne sert plus qu'à trouver les candidats. Avec le poids des mots-clés par défaut (0,7), le reranker ne pèse que 30 % du classement. [Source] (`internal/service/nlp/reranker.go`, `RerankByModel`)
+
+- Un modèle nommé exactement `BAAI/bge-reranker-v2-m3` ou `maidalun1020/bce-reranker-base_v1` est pris pour un ancien reranker intégré : RAGFlow n'enregistre alors pas l'instance qui le sert (`tenant_rerank_id` vide). Garder un autre nom servi, par exemple `bge-reranker-v2-m3`. [Source] (`internal/service/chat.go`, `DefaultRerankModels`, `resolveCreateRerankID`)
+
+### 7.2 Premier essai : Text Embeddings Inference sur processeur
+
+Serveur : image TEI prévue par le compose officiel (`infiniflow/text-embeddings-inference:cpu-1.8`, TEI 1.8.2), modèle `BAAI/bge-reranker-v2-m3`, conteneur `rag-reranker` (`outils/ragflow/reranker_cpu.sh`). [Vérifié] (`outils/resultats/ragflow/reranker-2026-11-11.log`, `reranker-cpu-2026-11-11-tei.log`)
+
+| Constat | Résultat |
+|---|---|
+| Réglage par défaut (`--max-batch-tokens` 16384) | échauffement à 13,6 Go de RAM, puis redémarrages en boucle (trois), sans arrêt pour manque de mémoire signalé ; relancé avec 2 048 et une limite de 6 Go |
+| Démarrage et mémoire | sain en 22 s ; 4,6 Gio de RAM au repos |
+| `POST /rerank` au format de TEI (`query`, `texts`) | 200 en 0,16 s : 0,343 pour le passage pertinent, 0,00002 pour l'autre |
+| `POST /rerank` au format envoyé par RAGFlow (`model`, `query`, `documents`, `top_n`) | **422** « missing field `texts` » |
+| `POST /v1/rerank` | **404** |
+
+Les pilotes de RAGFlow 1.0 qui savent reclasser (« VLLM », « OpenAI-API-Compatible », « LocalAI », « Xinference », « GPUStack »…) envoient tous le format Jina/Cohere (`documents`, réponse `results[].relevance_score`) ; le pilote « HuggingFace », que `conf/llm_factories.json` marque pourtant `TEXT RE-RANK`, répond « no such method: Rerank ». TEI n'expose que son format natif, même dans sa dernière version (1.9.4). Aucun fournisseur de RAGFlow 1.0 ne peut donc appeler TEI pour reclasser sans adaptateur entre les deux formats ; essai arrêté. [Source] (`internal/entity/models/vllm.go`, `huggingface.go`, `openai_api_compatible.go` ; `router/src/http/server.rs` de TEI) ; [Vérifié] pour les codes 422 et 404
+
+### 7.3 Second essai : vLLM sur la carte graphique, à côté des deux autres modèles
+
+But : vérifier que modèle de réponse, embedding et reranker tiennent ensemble sur les 16 Go de la carte. Service `vllm-rerank` (même image que `vllm-embed`, `--runner pooling`, `--max-model-len 2048`, `--gpu-memory-utilization 0.05`, port `127.0.0.1:8003`) déclaré dans un fichier local non suivi de LLM-Service (`docker-compose.override.yml`, profil `rerank`), démarré seul par `outils/ragflow/reranker.sh`, qui refuse de démarrer sous 2 Go de VRAM libre. vLLM 0.29 sert `/v1/rerank` au format attendu par le fournisseur « VLLM » de RAGFlow. [Source] (`vllm/entrypoints/pooling/scoring/api_router.py` de l'image)
+
+| Mesure | Valeur |
+|---|---|
+| VRAM libre, 66 relevés toutes les 30 s pendant 33 minutes | 211 à 461 Mio sur 16 380 |
+| VRAM des deux modèles en place | `vllm-central` : 11,06 Gio de poids et 0,7 Go de cache (`--kv-cache-memory`) ; `vllm-embed` : 1,06 Gio de poids |
+| Besoin estimé de `vllm-rerank` | environ 1,6 Go : 1,06 Gio de poids (même taille que `bge-m3`) et environ 0,5 Go de contexte CUDA [Estimation] |
+| Autres occupants de la carte | une trentaine de programmes du bureau Windows (navigateur, lanceurs de jeux, LM Studio…), mémoire par programme illisible |
+
+[Vérifié] (`outils/resultats/ragflow/reranker-2026-11-11.log`) Le trio `gemma4:e4b` + `bge-m3` + `bge-reranker-v2-m3` sur vLLM ne tient pas sur 16 Go avec le bureau Windows actif ; `vllm-rerank` n'a pas été démarré. Il faudrait libérer la carte côté Windows ou réduire la part de `vllm-central` (par exemple une longueur maximale de 16 384 jetons au lieu de 32 768) [À tester] ; détail matériel dans l'annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md).
 
 ## 8. Lire les jetons et la durée d'une réponse
 
@@ -281,6 +312,8 @@ Le nombre de documents d'une base ne ralentit pas les réponses de façon visibl
 | Un document « cité » par l'API n'apparaît pas dans la réponse | lecture de tout `reference.chunks` au lieu des seuls `[ID:n]` | filtrer les passages par les indices `[ID:n]` |
 | Poids des vecteurs lu à 0,3 par le SDK malgré un réglage à 0,7 | valeur par défaut de l'objet `Chat` du SDK | lire `keywords_similarity_weight` (vecteurs = 1 − mots-clés) |
 | La « Réponse vide » réglée n'apparaît jamais | elle ne sert que si aucun passage ne dépasse le seuil | modifier aussi la phrase de refus du « Prompt système » |
+| Reranker TEI déclaré, erreur 422 « missing field `texts` » | RAGFlow envoie le format Jina/Cohere, TEI attend le sien | servir le reranker par un serveur au format Jina/Cohere (vLLM, par exemple) |
+| Reranker choisi sans effet sur un assistant | modèle servi sous le nom `BAAI/bge-reranker-v2-m3`, pris pour un ancien reranker intégré | le déclarer sous un autre nom servi (`bge-reranker-v2-m3`) |
 | Durée affichée sous la réponse plus courte que l'attente réelle | la durée ne compte que la génération | mesurer de bout en bout (banc, `banc.py`) |
 
 ## Sources
@@ -288,7 +321,8 @@ Le nombre de documents d'une base ne ralentit pas les réponses de façon visibl
 - Bancs : `outils/resultats/ragflow/banc-2026-11-09-*.json` et `.md` ; [banc par défaut](../../../outils/resultats/ragflow/banc-2026-11-09-defaut.md)
 - Captures de cette annexe : `outils/ragflow/captures/manuels_10_14.py` (scénario `qualite`), assistant d'essai créé par `outils/ragflow/manuels_10_14_preparer.py assistant` ; images `docs/ragflow/img/12-qualite-et-performances/` ; textes et déroulé `outils/resultats/ragflow/captures/12-qualite-et-performances/`
 - Mesures à la souris : `outils/ragflow/captures/manuels_03_06.py` (scénarios `decoupage`, `assistants`, `agentique`) ; textes et déroulé `outils/resultats/ragflow/captures/03-datasets-et-decoupage/`, `05-assistants-et-citations/`, `06-agentic-rag/`
+- Reranker : `outils/ragflow/reranker_cpu.sh`, `outils/ragflow/reranker.sh` ; journaux `outils/resultats/ragflow/reranker-2026-11-11.log`, `reranker-cpu-2026-11-11-tei.log`
 - Scripts : `outils/ragflow/banc.py` (option `--agentic`), `outils/ragflow/serie_banc.sh`, `outils/ragflow/contexte.py`, `outils/ragflow/essai_contexte.py`, `outils/ragflow/essai_passages.py`, `outils/ragflow/demo.py`, `outils/communs/banc/commun.py`
 - Journaux : `outils/resultats/ragflow/essai-2026-11-09-contexte-depassement.log`, `essai-2026-11-09-sdk-defauts.log`, `demo-2026-11-09.log`, `preuves-2026-11-09/vllm-extrait.log`
-- Code au tag v1.0.0 : `internal/service/chat_pipeline.go`, `internal/handler/chat.go`, `internal/entity/models/builtin.go`, `conf/agentic_rag.yaml`, `web/src/locales/fr.ts` ; référence de l'API `docs/references/http_api_reference.md` ; https://ragflow.io/docs/
+- Code au tag v1.0.0 : `internal/service/chat_pipeline.go`, `internal/handler/chat.go`, `internal/entity/models/builtin.go`, `internal/service/nlp/reranker.go`, `internal/entity/models/vllm.go`, `conf/agentic_rag.yaml`, `web/src/locales/fr.ts` ; référence de l'API `docs/references/http_api_reference.md` ; https://ragflow.io/docs/
 - Socle : `outils/resultats/socle/` ; diagnostic : `outils/resultats/machine/diagnostic-2026-11-09.json`
