@@ -203,7 +203,7 @@ La page liste les comptes (pastille 1) ; les icônes d'action d'une ligne appara
 
 **Étape 12. Lire le réglage du bac à sable**
 *Où* : console › « Bac à sable ».
-Cette page règle où s'exécute le code lancé par le bloc « Code » des agents (chapitre 10, étape 13).
+Cette page règle où s'exécute le code lancé par le bloc « Code » des agents (chapitre 10, étape 14).
 
 ![Bac à sable](../img/13-exploitation/09-bac-a-sable.png)
 *Écran : console d'administration, page « Bac à sable ».*

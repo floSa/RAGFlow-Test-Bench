@@ -73,7 +73,7 @@ Le menu propose trois départs. Choisir « Créer depuis un blanc » (pastille 2
 | 1 | « Ingestion pipeline » | chaînes créées, puis les douze chaînes intégrées (« Built-in pipelines », chapitre 06) |
 | 2 | « Créer depuis un blanc » | canevas réduit à « Commencer » et « Parser » |
 | 3 | « Créer depuis un modèle » | part d'un modèle (par exemple « Title Chunker », « Chunk Summary ») |
-| 4 | « Importer un fichier JSON » | recrée une chaîne exportée, comme pour un agent (chapitre 10, étape 12) |
+| 4 | « Importer un fichier JSON » | recrée une chaîne exportée, comme pour un agent (chapitre 10, étape 13) |
 
 *Résultat* : le canevas de la chaîne s'ouvre (étape suivante).
 
@@ -90,7 +90,7 @@ Le canevas contient deux blocs reliés (pastilles 1 et 2). Un clic sur un bloc o
 | 2 | « Parser » | lit le fichier selon son format (PDF, tableur, image, courriel, Markdown, texte, HTML, DOC, DOCX, PPTX, audio) |
 | 3 | « Save draft » | enregistre le brouillon (le canevas s'enregistre aussi tout seul) |
 | 4 | « Publier » | crée une version utilisable par une base (étape 9) |
-| 5 | « Gestion » | menu de la chaîne : exporter, réglages (comme pour un agent, chapitre 10, étape 11) |
+| 5 | « Gestion » | menu de la chaîne : exporter, réglages (comme pour un agent, chapitre 10, étapes 11 et 12) |
 | 6 | commandes du canevas | zoom avant, zoom arrière, « Fit View » (tout afficher), verrouillage des blocs |
 
 *Résultat* : le canevas est repéré.

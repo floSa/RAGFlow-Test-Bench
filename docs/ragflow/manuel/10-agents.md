@@ -21,9 +21,9 @@ La liste des agents s'affiche ; « Agent démo Vélanor », visible ici, a été
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | « Créer depuis un blanc » | canevas réduit au bloc « Commencer » (étape 13) |
+| 1 | « Créer depuis un blanc » | canevas réduit au bloc « Commencer » (étape 14) |
 | 2 | « Créer depuis un modèle » | part d'un modèle d'agent prêt à l'emploi |
-| 3 | « Importer un fichier JSON » | recrée un agent exporté (étape 12) |
+| 3 | « Importer un fichier JSON » | recrée un agent exporté (étape 13) |
 
 *Résultat* : la page des modèles d'agents s'ouvre.
 
@@ -94,7 +94,7 @@ Cliquer sur le bloc. Le panneau montre le modèle (pastille 1) et les consignes 
 Plus bas dans le même panneau :
 
 - « Invite utilisateur » : message transmis au modèle, « The user query is » suivi de la variable « Entrée de départ / sys.query » (la question posée) ;
-- « Outils » : « Retrieval », avec son crayon (réglages) et sa croix (retrait immédiat, voir l'avertissement en tête de chapitre) ; « Ajouter des outils » ouvre une liste à deux onglets : « Intégré » (rubriques « Rechercher » : Tavily, Google, DuckDuckGo, Wikipedia, ArXiv, PubMed et d'autres ; « Communication » : Email ; « Développeur » : GitHub, ExeSQL, Code ; « Récupération ») et « MCP » (outils des serveurs MCP, étape 17) ;
+- « Outils » : « Retrieval », avec son crayon (réglages) et sa croix (retrait immédiat, voir l'avertissement en tête de chapitre) ; « Ajouter des outils » ouvre une liste à deux onglets : « Intégré » (rubriques « Rechercher » : Tavily, Google, DuckDuckGo, Wikipedia, ArXiv, PubMed et d'autres ; « Communication » : Email ; « Développeur » : GitHub, ExeSQL, Code ; « Récupération ») et « MCP » (outils des serveurs MCP, étape 18) ;
 - « Agent », « Ajouter un agent » : autre agent que celui-ci peut appeler, pour faire travailler des agents en équipe ;
 - « Paramètres avancés » : « Afficher les citations », « Nombre maximum de cycles de réflexion » (5 allers-retours entre appel d'outil et réflexion), « Taille de la fenêtre d'historique des messages », « Nombre maximum de tentatives » et « Délai après une erreur », « Méthode d'exception », puis « Sortie » et « Sortie structurée » (format imposé à la réponse).
 
@@ -109,7 +109,7 @@ Cliquer sur l'outil. Vérifier la source (pastille 1) et la base (pastille 2) ; 
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | « Récupération depuis » | « Ensemble de données » (une base) ou « Mémoire » (une mémoire, étape 14) ; la « Description » au-dessus dit au modèle quand utiliser l'outil |
+| 1 | « Récupération depuis » | « Ensemble de données » (une base) ou « Mémoire » (une mémoire, étape 15) ; la « Description » au-dessus dit au modèle quand utiliser l'outil |
 | 2 | « Démo Vélanor » | base interrogée, reprise de la fenêtre de création ; la liste permet d'en choisir d'autres |
 | 3 | « Paramètres avancés » | « Seuil de similarité » (20), « Poids de similarité par mots-clés » (mots exacts 0,70, sens 0,30), « Rerank candidates » (64), « Top N » (8), « Modèle de réordonnancement » (vide), « Métadonnées », « Recherche inter-langues » |
 
@@ -117,7 +117,7 @@ Cliquer sur l'outil. Vérifier la source (pastille 1) et la base (pastille 2) ; 
 
 **Étape 7. Régler la sortie**
 *Où* : canevas › bloc « Message_0 ».
-Cliquer sur le bloc. Il renvoie la réponse de l'agent (pastille 1) ; « Enregistrer en mémoire » (pastille 5) sert à l'étape 15.
+Cliquer sur le bloc. Il renvoie la réponse de l'agent (pastille 1) ; « Enregistrer en mémoire » (pastille 5) sert à l'étape 16.
 
 ![Panneau Message](../img/08-agents/07-message.png)
 *Écran : canevas, panneau du bloc « Message_0 ».*
@@ -181,7 +181,7 @@ Saisir un alias de version (pastille 1), ici « v1 », puis cliquer sur « Confi
 
 **Étape 11. Intégrer l'agent dans une page web**
 *Où* : canevas › « Gestion » › « Intégrer dans la page web ».
-Le menu « Gestion » propose : « Variable de conversation » (informations partagées par tous les blocs pendant une session, ajoutées par « Ajouter »), « Historique des versions » (étape 10), « Exporter » (télécharge l'agent dans un fichier `.json`, réimportable à l'étape 12), « Paramètres » (« Titre », « Photo », « Description », « Autorisations » : « Moi » ou « Équipe », chapitre 13) et « Intégrer dans la page web ». Choisir ce dernier, régler l'affichage (pastilles 1 à 4), puis copier le code d'intégration.
+Le menu « Gestion » propose : « Variable de conversation » (informations partagées par tous les blocs pendant une session, ajoutées par « Ajouter »), « Historique des versions » (étape 10), « Exporter » (étape suivante), « Paramètres » (« Titre », « Photo », « Description », « Autorisations » : « Moi » ou « Équipe », chapitre 13) et « Intégrer dans la page web ». Choisir ce dernier, régler l'affichage (pastilles 1 à 4), puis copier le code d'intégration.
 
 ![Intégrer un agent dans la page web](../img/08-agents/10-integrer.png)
 *Écran : fenêtre « Intégrer dans la page web » d'un agent.*
@@ -196,11 +196,29 @@ Le menu « Gestion » propose : « Variable de conversation » (informations par
 
 *Résultat* : le code est copié ; collé dans une page web, il y affiche l'agent.
 
+**Étape 12. Exporter l'agent**
+*Où* : canevas › « Gestion » › « Exporter ».
+Cliquer sur « Gestion » (pastille 1), puis sur « Exporter » (pastille 4). Le navigateur télécharge aussitôt un fichier nommé d'après l'agent, par exemple `Manuel-Agent-Export.json`, dans le dossier « Téléchargements » de Windows ; aucune fenêtre ne s'ouvre.
+
+![Menu Gestion d'un agent](../img/08-agents/16-menu-gestion.png)
+*Écran : canevas d'un agent, menu « Gestion » ouvert.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Gestion » | ouvre le menu de l'agent |
+| 2 | « Variable de conversation » | informations partagées par tous les blocs pendant une session |
+| 3 | « Historique des versions » | versions publiées (étape 10) |
+| 4 | « Exporter » | télécharge l'agent dans un fichier `.json` |
+| 5 | « Paramètres » | « Titre », « Photo », « Description », « Autorisations » (chapitre 13) |
+| 6 | « Intégrer dans la page web » | code d'intégration (étape 11) |
+
+*Résultat* : le fichier contient le dessin de l'agent (blocs, liens et réglages) ; il se réimporte à l'étape suivante, sur la même installation ou sur une autre.
+
 ## Importer un agent depuis un fichier JSON
 
-**Étape 12. Recréer un agent exporté**
+**Étape 13. Recréer un agent exporté**
 *Où* : barre du haut › « Agent » › « + » › « Importer un fichier JSON ».
-Saisir un nom (pastille 1), déposer le fichier exporté à l'étape 11 dans « DSL » (pastilles 2 et 3), puis cliquer sur « Enregistrer » (pastille 4). Cela sert par exemple à copier un agent vers une autre installation de RAGFlow.
+Saisir un nom (pastille 1), déposer le fichier exporté à l'étape 12 dans « DSL » (pastilles 2 et 3), puis cliquer sur « Enregistrer » (pastille 4). Cela sert par exemple à copier un agent vers une autre installation de RAGFlow.
 
 ![Importer un fichier JSON](../img/08-agents/11-importer-json.png)
 *Écran : fenêtre d'import d'un agent.*
@@ -216,7 +234,7 @@ Saisir un nom (pastille 1), déposer le fichier exporté à l'étape 11 dans « 
 
 ## Partir d'un canevas vide
 
-**Étape 13. Ajouter un bloc**
+**Étape 14. Ajouter un bloc**
 *Où* : barre du haut › « Agent » › « + » › « Créer depuis un blanc ».
 Saisir un nom, ici « Manuel-Agent-Vierge », et cliquer sur « Confirmer ». Le canevas ne contient que « Commencer ». Survoler ce bloc et cliquer sur le « + » de son bord droit (pastille 1) : le menu « Étape suivante » liste les blocs. Choisir « Récupération » dans « Fondation » (pastille 2), puis cliquer sur « Save draft ».
 
@@ -238,7 +256,7 @@ Saisir un nom, ici « Manuel-Agent-Vierge », et cliquer sur « Confirmer ». Le
 
 Une **mémoire** garde les échanges d'un agent d'une session à l'autre, rangés pour être retrouvés ensuite par le sens, comme les passages d'une base.
 
-**Étape 14. Créer une mémoire**
+**Étape 15. Créer une mémoire**
 *Où* : barre du haut › « Mémoire » › « + ».
 La page affiche « Aucune mémoire créée pour le moment ». Cliquer sur « + », saisir le nom (pastille 1), choisir ce qui est gardé (pastille 2), garder les modèles proposés (pastilles 3 et 4), puis cliquer sur « Confirmer » (pastille 5).
 
@@ -255,15 +273,15 @@ La page affiche « Aucune mémoire créée pour le moment ». Cliquer sur « + �
 
 *Résultat* : la mémoire apparaît dans la liste. Sa page a deux onglets : « Messages » (souvenirs enregistrés) et « Configuration » (nom, avatar, description, modèles, type, « Taille de la mémoire (Bytes) » et « Paramètres avancés » de l'extraction).
 
-**Étape 15. Relier la mémoire à l'agent**
+**Étape 16. Relier la mémoire à l'agent**
 *Où* : barre du haut › « Agent » › canevas de « Manuel-Agent-Documentaire » › bloc « Message_0 ».
 Ouvrir la liste « Enregistrer en mémoire » (étape 7, pastille 5) et choisir « Manuel-Memoire ». Fermer le panneau et cliquer sur « Save draft ». Puis « Lancer », « + » (nouvelle session), et poser « Combien de salariés compte Vélanor au 31 décembre 2025 ? » : l'agent répond 412 salariés, avec le détail par site.
 
 *Résultat* : l'échange est envoyé à la mémoire (étape suivante).
 
-**Étape 16. Lire les souvenirs enregistrés**
+**Étape 17. Lire les souvenirs enregistrés**
 *Où* : barre du haut › « Mémoire » › « Manuel-Memoire » › onglet « Messages ».
-L'échange de l'étape 15 y figure (pastille 1).
+L'échange de l'étape 16 y figure (pastille 1).
 
 ![Messages de la mémoire](../img/08-agents/14-messages-de-la-memoire.png)
 *Écran : Mémoire « Manuel-Memoire », onglet « Messages ».*
@@ -280,7 +298,7 @@ L'échange de l'étape 15 y figure (pastille 1).
 
 MCP (Model Context Protocol) est une façon standard de proposer des outils à un modèle d'IA : lire un agenda, interroger un logiciel métier… Un serveur MCP déclaré ici ajoute ses outils à l'onglet « MCP » de « Ajouter des outils » (étape 5).
 
-**Étape 17. Ajouter un serveur MCP**
+**Étape 18. Ajouter un serveur MCP**
 *Où* : menu du compte (pastille aux initiales, en haut à droite) › « MCP » › « Ajouter MCP ».
 La page « Serveurs MCP » affiche « Aucun serveur MCP disponible », avec « Rechercher », « Gestion en masse » (actions sur plusieurs serveurs), « Importer » et « Ajouter MCP ». Cliquer sur « Ajouter MCP », remplir la fenêtre (pastilles 1 à 4) et cliquer sur « Enregistrer » (pastille 5).
 
