@@ -1,0 +1,67 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Memoire
+Créé 11/11/2026
+Messages
+Configuration
+Messages
+L'extraction de mémoire est configurée avec les invites et la température des paramètres avancés.
+ID de session
+	Agent	Type	Date de validité	Oublier le	Activer		Action
+
+63381484ff404251812ab675745c11c8
+	
+Manuel-Agent-Documentaire
+	
+Brut
+	
+2026-11-11 15:33:35
+	
+	
+	
+	
+Total 1
+1
+50 / Page
+
+== adresse ==
+/memory/memory-message/bb822464ae0247428e6c5a665158db57
+== pastilles ==
+1. message mémorisé
+2. Type
+3. Oublier le
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | Messages
+button | Configuration
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | [icône lucide-list-chevrons-up-down]
+switch | 
+button | 
+button | [icône lucide-square-dashed-text]
+button | Edit
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page

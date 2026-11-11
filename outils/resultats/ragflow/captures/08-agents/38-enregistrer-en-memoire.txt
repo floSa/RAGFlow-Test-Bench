@@ -1,0 +1,83 @@
+Agent
+Manuel-Agent-Documentaire
+Sauvegardé automatiquement 11/11/2026 14:30:24
+Save draft
+Exécuter
+Lancer
+Publier
+Gestion
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow
+Message_0
+
+Ce composant renvoie la sortie finale du workflow avec un contenu de message prédéfini.
+
+Messages
+Fusionner le chemin
+
+Docs QA Agent
+content
+
+
+
+Ajouter un message
+Type de fichier à télécharger
+Sélectionner une valeur
+Lecture automatique audio
+Enregistrer en mémoire
+Veuillez sélectionner
+ID utilisateur
+Fusionner le chemin
+
+
+
+
+Veuillez saisir ou utilisez / pour insérer rapidement des variables.
+M
+Manuel-Memoire
+bge-m3@llm-service-embed@VLLM
+Fermer
+
+== adresse ==
+/agent/f9642f0e8aad4988b59035eeaedf2132?category=agent_canvas
+== pastilles ==
+1. Manuel-Memoire
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Gestion
+input:text | Veuillez entrer une note
+textarea:textarea | Veuillez entrer une note
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+button | [icône lucide-pen-line]
+button | [icône lucide-x]
+label | Messages
+label | Fusionner le chemin
+switch | Fusionner le chemin
+input:checkbox | 
+button | Ajouter un message
+label | Type de fichier à télécharger
+combobox | Sélectionner une valeur
+label | Lecture automatique audio
+switch | 
+label | Enregistrer en mémoire
+button | Veuillez sélectionner
+label | ID utilisateur
+label | 
+combobox | Rechercher...
+option | M Manuel-Memoire bge-m3@llm-service-embed@VLLM
+option | Fermer

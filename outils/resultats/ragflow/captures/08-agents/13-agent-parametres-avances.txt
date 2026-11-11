@@ -1,0 +1,163 @@
+Agent
+Manuel-Agent-Documentaire
+Sauvegardé automatiquement 11/11/2026 14:27:00
+Save draft
+Exécuter
+Lancer
+Publier
+Gestion
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow
+Docs QA Agent
+
+Construit des composants agents équipés de raisonnement, d'utilisation d'outils, et de collaboration multi-agent.
+
+Modèle
+gemma4:e4b
+llm-service-chat
+Invite système
+Fusionner le chemin
+
+# Role
+
+You are the **Docs QA Agent**, a specialized knowledge base assistant responsible for providing accurate answers based strictly on the connected documentation repository.
+
+# Core Principles
+
+1. **Knowledge Base Only**: Answer questions EXCLUSIVELY based on information retrieved from the connected knowledge base.
+
+2. **No Content Creation**: Never generate, infer, or create information that is not explicitly present in the retrieved documents.
+
+3. **Source Transparency**: Always indicate when information comes from the knowledge base vs. when it's unavailable.
+
+4. **Accuracy Over Completeness**: Prefer incomplete but accurate answers over complete but potentially inaccurate ones.
+
+# Response Guidelines
+
+## When Information is Available
+
+- Provide direct answers based on retrieved content
+
+- Quote relevant sections when helpful
+
+- Cite the source document/section if available
+
+- Use phrases like: "According to the documentation..." or "Based on the knowledge base..."
+
+## When Information is Unavailable
+
+- Clearly state: "I cannot find this information in the current knowledge base."
+
+- Do NOT attempt to fill gaps with general knowledge
+
+- Suggest alternative questions that might be covered in the docs
+
+- Use phrases like: "The documentation does not cover..." or "This information is not available in the knowledge base."
+
+# Response Format
+
+```markdown
+
+## Answer
+
+[Your response based strictly on knowledge base content]
+
+**Always do these:**
+
+- Use the Retrieval tool for every question
+
+- Be transparent about information availability
+
+- Stick to documented facts only
+
+- Acknowledge knowledge base limitations
+
+
+
+
+Invite utilisateur
+Fusionner le chemin
+
+The user query is 
+Entrée de départ
+sys.query
+
+
+
+Outils
+Retrieval
+Ajouter des outils
+Agent
+Ajouter un agent
+Paramètres avancés
+Afficher les citations
+Nombre maximum de cycles de réflexion
+Taille de la fenêtre d'historique des messages
+Nombre maximum de tentatives
+Délai après une erreur
+Méthode d'exception
+Sélectionner une valeur
+Sortie
+Sortie structurée
+content: string
+
+== adresse ==
+/agent/f9642f0e8aad4988b59035eeaedf2132?category=agent_canvas
+== pastilles ==
+1. Afficher les citations
+2. Nombre maximum de cycles de réflexion
+3. Taille de la fenêtre d'historique des messages
+4. Nombre maximum de tentatives
+5. Méthode d'exception
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Gestion
+input:text | Veuillez entrer une note
+textarea:textarea | Veuillez entrer une note
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+button | [icône lucide-pen-line]
+button | [icône lucide-circle-play]
+button | [icône lucide-x]
+label | Modèle
+button | [icône lucide-funnel]
+combobox | gemma4:e4b llm-service-chat
+select:select-one | 
+label | Invite système
+label | Fusionner le chemin
+switch | Fusionner le chemin
+input:checkbox | 
+label | Invite utilisateur
+button | [icône lucide-pencil-line]
+button | Ajouter des outils
+button | Ajouter un agent
+button | Paramètres avancés
+label | Afficher les citations
+switch | 
+label | Nombre maximum de cycles de réflexion
+button | [icône lucide-minus]
+input:number | max_rounds
+button | [icône lucide-plus]
+label | Taille de la fenêtre d'historique des messages
+input:number | message_history_window_size
+label | Nombre maximum de tentatives
+input:number | max_retries
+label | Délai après une erreur
+input:number | delay_after_error
+label | Méthode d'exception
+combobox | Sélectionner une valeur
+label | Sortie structurée

@@ -1,0 +1,33 @@
+Agent
+Manuel-Agent-Vierge
+Sauvegardé automatiquement 11/11/2026 14:31:02
+Save draft
+Exécuter
+Lancer
+Publier
+Checklist
+1
+Gestion
+Commencer
+Conversationnel
+Récupération
+React Flow
+
+== adresse ==
+/agent/bbe410a485d74c9587d6f72c7fd50faa?category=agent_canvas
+== pastilles ==
+1. Commencer
+2. Récupération
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Checklist 1
+button | Gestion
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow

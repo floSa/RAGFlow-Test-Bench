@@ -1,0 +1,91 @@
+Agent
+Manuel-Agent-Documentaire
+Sauvegardé automatiquement 11/11/2026 14:30:24
+Save draft
+Exécuter
+Lancer
+Publier
+Gestion
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow
+Intégrer dans la page web
+Embed Setup
+Widget Customization
+Type d'intégration
+Chat plein écran (iframe traditionnel)
+Widget flottant (style Intercom)
+Thème
+Clair
+Sombre
+Cacher l'avatar
+Publié
+Paramètres régionaux
+Sélectionner une valeur
+ID utilisateur
+Code d'intégration
+<iframe
+  src="http://rag-ragflow-server/agent/share?shared_id=f9642f0e8aad4988b59035eeaedf2132&from=agent&auth=<masqué>&theme=light"
+  style="width: 100%; height: 100%; min-height: 600px"
+  frameborder="0"
+></iframe>
+
+Enregistrer widget settings
+Ouvrir dans un nouvel onglet
+AgentID
+f9642f0e8aad4988b59035eeaedf2132
+Comment utiliser l'ID agent ?
+Close
+
+== adresse ==
+/agent/f9642f0e8aad4988b59035eeaedf2132?category=agent_canvas
+== pastilles ==
+1. Embed Setup
+2. Widget Customization
+3. Type d'intégration
+4. Paramètres régionaux
+5. Ouvrir dans un nouvel onglet
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Gestion
+input:text | Veuillez entrer une note
+textarea:textarea | Veuillez entrer une note
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+tab | Embed Setup
+tab | Widget Customization
+label | Type d'intégration
+radio | [icône lucide-circle]
+input:radio | 
+label | Chat plein écran (iframe traditionnel)
+radio | 
+label | Widget flottant (style Intercom)
+label | Thème
+label | Clair
+label | Sombre
+label | Cacher l'avatar
+switch | 
+input:checkbox | 
+label | Publié
+label | Paramètres régionaux
+combobox | Sélectionner une valeur
+label | ID utilisateur
+input:text | ex. user-001
+button | [icône lucide-copy]
+button | Enregistrer widget settings
+button | Ouvrir dans un nouvel onglet
+a | Comment utiliser l'ID agent ?
+button | Close

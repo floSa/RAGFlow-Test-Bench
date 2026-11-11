@@ -1,0 +1,70 @@
+Agent
+Manuel-Agent-Documentaire
+Sauvegardé automatiquement 11/11/2026 14:29:36
+Save draft
+Exécuter
+Lancer
+Publier
+Gestion
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow
+Historique des versions
+Manuel-Agent-Documentaire_2026-11-11 15:29:36
+v1
+Manuel-Agent-Documentaire_2026-11-11 15:29:36
+v1
+
+Créé: 11/11/2026 14:29:36
+
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow
+Total 1
+1
+10 / Page
+Close
+
+== adresse ==
+/agent/f9642f0e8aad4988b59035eeaedf2132?category=agent_canvas
+== pastilles ==
+1. version v1
+2. télécharger
+3. restaurer
+4. supprimer
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Gestion
+input:text | Veuillez entrer une note
+textarea:textarea | Veuillez entrer une note
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+input:text | Filter by alias
+button | [icône lucide-pencil]
+button | [icône lucide-arrow-down-to-line]
+button | [icône lucide-rotate-ccw]
+button | [icône lucide-trash]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 10 / Page
+button | Close

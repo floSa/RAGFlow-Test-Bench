@@ -1,0 +1,59 @@
+Agent
+Manuel-Agent-Documentaire
+Sauvegardé automatiquement 11/11/2026 14:27:00
+Save draft
+Exécuter
+Lancer
+Publier
+Gestion
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow
+Commencer
+
+C'est ici que le flux commence.
+
+Mode
+Conversationnel
+Activation de l'accueil
+Message de bienvenue
+Entrée
+Clé	Nom	Type	Optionnel	Action
+Aucun résultat trouvé
+
+== adresse ==
+/agent/f9642f0e8aad4988b59035eeaedf2132?category=agent_canvas
+== pastilles ==
+1. Mode
+2. Activation de l'accueil
+3. Message de bienvenue
+4. Entrée
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Gestion
+input:text | Veuillez entrer une note
+textarea:textarea | Veuillez entrer une note
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+button | [icône lucide-x]
+label | Mode
+combobox | Conversationnel
+label | Activation de l'accueil
+switch | 
+label | Message de bienvenue
+textarea:textarea | Veuillez saisir
+button | Entrée
+button | [icône lucide-plus]

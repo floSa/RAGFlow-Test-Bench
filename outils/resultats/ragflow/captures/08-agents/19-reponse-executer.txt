@@ -1,0 +1,67 @@
+Agent
+Manuel-Agent-Documentaire
+Sauvegardé automatiquement 11/11/2026 14:28:12
+Save draft
+Exécuter
+Lancer
+Publier
+Gestion
+Commencer
+Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
+React Flow
+Discussion
+
+Discussion
+
+Discussion
+
+Qui est le directeur de production de Vélanor ?
+
+Answer
+
+According to the documentation, Julien Moreau is the production director at Vélanor. This information comes from a voicemail recorded on November 3rd.
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Send message
+File upload
+Close
+
+== adresse ==
+/agent/f9642f0e8aad4988b59035eeaedf2132?category=agent_canvas
+== pastilles ==
+1. réponse
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Gestion
+input:text | Veuillez entrer une note
+textarea:textarea | Veuillez entrer une note
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+radio | [icône lucide-copy]
+button | [icône lucide-copy]
+radio | [icône sans nom]
+radio | [icône lucide-notebook-text]
+button | Drag to resize height
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+button | [icône lucide-mic]
+button | Send message
+input:file | 
+button | Close

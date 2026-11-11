@@ -1,0 +1,40 @@
+Agent
+Manuel-Agent-Documentaire
+Sessions
+2
+Quel est le plafond des pénalités de retard du contrat Batterix ?
+Qui est le directeur de production de Vélanor ?
+
+Quel est le plafond des pénalités de retard du contrat Batterix ?
+
+Answer
+
+According to the documentation, the penalty for delay in the Batterix supply contract is 0.5% of the order amount per day of delay, capped at 8% of the order amount.
+
+This information is found in the document titled "CONTRATD'APPROVISIONNEMENTN°BX-2025-117" (Article 6).
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Send message
+File upload
+
+== adresse ==
+/agent/f9642f0e8aad4988b59035eeaedf2132/explore?sessionId=404271c5cf1d4d028c24dd912695d4a4
+== pastilles ==
+1. session
+2. réponse
+== éléments visibles ==
+button | [icône lucide-plus]
+input:text | Rechercher des sessions...
+button | [icône lucide-ellipsis]
+radio | [icône lucide-copy]
+button | [icône lucide-copy]
+radio | [icône sans nom]
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+button | [icône lucide-mic]
+button | Send message
+input:file | 

@@ -1,0 +1,129 @@
+== phase modele
+capture docs/ragflow/img/08-agents/03-gabarits.png [(1, 'Recommandé'), (2, 'Agent'), (3, 'Autre'), (4, 'Your starter dataset chatbot'), (5, 'Utiliser')]
+catégorie Recommandé : n, it retrieves relevant document content to provide accurate answers. |  | Stock market research assistant |  | This template helps financial analysts quickly organize information — it can automatically retrieve company data, consolidate financial metrics, and integrate research report insights. |  | Reflective academic paper generator |  | A reflective academic paper generator using local knowledge base, with advanced capabilities in task planning, reasoning, and reflective analysis. Recommended for academic research paper Q&A |  | SEO article writer |  | This SEO article writer automatically generates a complete S
+catégorie Agent : output, ensuring the final result aligns with their intentions. |  | SEO article writer |  | This is a multi-agent version of the SEO blog generation workflow. It simulates a small team of AI “writers”, where each agent plays a specialized role — just like a real editorial team. |  | Reflective academic paper generator |  | A reflective academic paper generator using local knowledge base, with advanced capabilities in task planning, reasoning, and reflective analysis. Recommended for academic research paper Q&A |  | Deep research |  | For professionals in sales, marketing, policy, or consulting, the Multi-Agent Deep 
+catégorie Support client : ing usage support, and coordinating home installation services. |  | Customer feedback disptacher |  | Automatically classify customer reviews using LLM (Large Language Model) and route them via email to the relevant departments.
+catégorie Marketing : Simply type your question (e.g., 'Show me last quarter's top 10 products by revenue') and Text-to-SQL data expert generates the exact SQL, runs it against your database, and returns the results in seconds. |  | SEO article writer |  | This SEO article writer automatically generates a complete SEO-optimized blog article based on a simple user input. You don't need any writing experience. Just provide a topic or short request — the system will handle the rest. |  | Beginner's data analytics assistant |  | A beginner-friendly data analysis assistant that guides you through exploring datasets step-by-step, automa
+catégorie Application grand public : nal tool integration for enhanced reliability. |  | Photo text translator |  | Photo text translator lets you snap any photo containing text—menus, signs, or documents—and instantly recognize and translate it into your language of choice using advanced AI-powered translation technology.
+catégorie Autre : spond to queries. Let's start by setting up your knowledge base in 'Retrieval'!
+capture docs/ragflow/img/08-agents/04-create-workflow.png [(1, 'Nom'), (2, 'Modèle'), (3, 'message du gabarit'), (4, 'Bases de connaissances')]
+capture docs/ragflow/img/08-agents/05-choix-du-modele.png [(1, 'gemma4:e4b')]
+capture docs/ragflow/img/08-agents/06-choix-de-la-base.png [(1, 'Démo Vélanor')]
+capture docs/ragflow/img/08-agents/07-workflow-rempli.png [(1, 'Modèle'), (2, 'Bases de connaissances'), (3, 'Confirmer')]
+agent créé : /agent/f9642f0e8aad4988b59035eeaedf2132?category=undefined
+== phase canevas
+capture docs/ragflow/img/08-agents/08-canevas.png [(1, 'Commencer'), (2, 'Docs QA Agent'), (3, 'Retrieval'), (4, 'Message_0'), (5, 'note')]
+capture docs/ragflow/img/08-agents/09-barre-du-canevas.png [(1, 'Save draft'), (2, 'Exécuter'), (3, 'Lancer'), (4, 'Publier'), (5, 'Gestion')]
+capture docs/ragflow/img/08-agents/10-commencer.png [(1, 'Mode'), (2, "Activation de l'accueil"), (3, 'Message de bienvenue'), (4, 'Entrée')]
+capture docs/ragflow/img/08-agents/11-agent.png [(1, 'Modèle'), (2, 'Invite système'), (3, 'essai du bloc')]
+capture docs/ragflow/img/08-agents/12-agent-suite.png [(1, 'Invite utilisateur'), (2, 'Ajouter des outils'), (3, 'Ajouter un agent'), (4, 'Paramètres avancés')]
+capture docs/ragflow/img/08-agents/13-agent-parametres-avances.png [(1, 'Afficher les citations'), (2, 'Nombre maximum de cycles de réflexion'), (3, "Taille de la fenêtre d'historique des messages"), (4, 'Nombre maximum de tentatives'), (5, "Méthode d'exception")]
+outils proposés : Intégré | MCP | Rechercher | Recherche Tavily | Extraction Tavily | Querit contents | Querit search | Google | DuckDuckGo | Wikipedia | SearXNG | Keenable | You.com | Sofya | Search1API | Search1API crawl | YahooFinance | PubMed | BGPT | Google Scholar | ArXiv | WenCai | Communication | Email | Développeur | GitHub | ExeSQL | Code | Récupération
+capture docs/ragflow/img/08-agents/14-ajouter-des-outils.png [(1, 'Intégré'), (2, 'MCP'), (3, 'recherche'), (4, 'DuckDuckGo')]
+capture docs/ragflow/img/08-agents/15-retrieval.png [(1, 'Récupération depuis'), (2, 'Démo Vélanor'), (3, 'Paramètres avancés')]
+capture docs/ragflow/img/08-agents/16-retrieval-avance.png [(1, 'Seuil de similarité'), (2, 'Poids de similarité par mots-clés'), (3, 'Top N'), (4, 'Modèle de réordonnancement'), (5, 'Métadonnées')]
+capture docs/ragflow/img/08-agents/17-message.png [(1, 'Messages'), (2, 'Ajouter un message'), (3, 'Type de fichier à télécharger'), (4, 'Lecture automatique audio'), (5, 'Enregistrer en mémoire')]
+== phase essai
+capture docs/ragflow/img/08-agents/18-executer.png [(1, 'question'), (2, 'Send message')]
+réponse dans « Exécuter » en 5.4 s (relevé à l'apparition du nom)
+panneau d'essai : Agent | Manuel-Agent-Documentaire | Sauvegardé automatiquement 11/11/2026 14:28:12 | Save draft | Exécuter | Lancer | Publier | Gestion | Commencer | Conversationnel | Docs QA Agent | gemma4:e4b | llm-service-chat | Message_0 | Docs QA Agent / content | Retrieval | React Flow | Discussion |  | Discussion |  | Discussion |  | Qui est le directeur de production de Vélanor ? |  | Answer |  | According to the documentation, Julien Moreau is the production director at Vélanor. This information comes from a voicemail recorded on November 3rd. |  | Drag & drop files here |  | Upload max 5 files each up to 5MB |  | Attach file | Send message | File upload | Close
+capture docs/ragflow/img/08-agents/19-reponse-executer.png [(1, 'réponse')]
+capture docs/ragflow/img/08-agents/20-lancer.png [(1, 'Sessions'), (2, '+'), (3, 'Rechercher des sessions'), (4, 'zone de saisie')]
+réponse dans « Lancer » en 6.3 s
+conversation : Agent | Manuel-Agent-Documentaire | Sessions | 2 | Quel est le plafond des pénalités de retard du contrat Batterix ? | Qui est le directeur de production de Vélanor ? |  | Quel est le plafond des pénalités de retard du contrat Batterix ? |  | Answer |  | According to the documentation, the penalty for delay in the Batterix supply contract is 0.5% of the order amount per day of delay, capped at 8% of the order amount. |  | This information is found in the document titled "CONTRATD'APPROVISIONNEMENTN°BX-2025-117" (Article 6). |  | Drag & drop files here |  | Upload max 5 files each up to 5MB |  | Attach file | Send message | File upload
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 819, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 809, in agents
+    globals()["agents_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 663, in agents_essai
+    cap(s, m, "21-conversation", [(s.pg.locator("aside, nav, div").filter(has_text=re.compile("^Sessions")).first.locator(
+  File "/depot/outils/ragflow/captures/captures.py", line 118, in cap
+    lib = capture(s.pg, IMG / manuel / f"{nom}.png", elements=elements, masques=masques, plein=plein, clip=clip, texte=txt)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 71, in capture
+    libelles = annoter(page, list(elements)) if elements else []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 53, in annoter
+    boites = [_boite(page, loc, n=i) for i, (loc, _) in enumerate(elements, 1)]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/depot/outils/communs/captures/annoter.py", line 39, in _boite
+    loc.wait_for(state="visible", timeout=15000)
+  File "/pw/site/playwright/sync_api/_generated.py", line 13635, in wait_for
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 767, in wait_for
+    await self._frame.wait_for_selector(
+  File "/pw/site/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("aside, nav, div").filter(has_text=re.compile(r"^Sessions")).first.locator("xpath=following::*[contains(@class,'cursor-pointer')][1]") to be visible
+
+== phase conversation
+conversation : Agent | Manuel-Agent-Documentaire | Sessions | 2 | Quel est le plafond des pénalités de retard du contrat Batterix ? | Qui est le directeur de production de Vélanor ? |  | Quel est le plafond des pénalités de retard du contrat Batterix ? |  | Answer |  | According to the documentation, the penalty for delay in the Batterix supply contract is 0.5% of the order amount per day of delay, capped at 8% of the order amount. |  | This information is found in the document titled "CONTRATD'APPROVISIONNEMENTN°BX-2025-117" (Article 6). |  | Drag & drop files here |  | Upload max 5 files each up to 5MB |  | Attach file | Send message | File upload
+capture docs/ragflow/img/08-agents/21-conversation.png [(1, 'session'), (2, 'réponse')]
+capture docs/ragflow/img/08-agents/22-publier.png [(1, 'Alias'), (2, 'Confirmer')]
+historique : Historique des versions | Manuel-Agent-Documentaire_2026-11-11 15:29:36 | v1 | Manuel-Agent-Documentaire_2026-11-11 15:29:36 | v1 |  | Créé: 11/11/2026 14:29:36 |  | Commencer | Conversationnel | Docs QA Agent | gemma4:e4b | llm-service-chat | Message_0 | Docs QA Agent / content | Retrieval | React Flow | Total 1 | 1 | 10 / Page | Close
+capture docs/ragflow/img/08-agents/23-historique-des-versions.png [(1, 'version v1'), (2, 'télécharger'), (3, 'restaurer'), (4, 'supprimer')]
+== phase gestion
+capture docs/ragflow/img/08-agents/24-menu-gestion.png [(1, 'Variable de conversation'), (2, 'Historique des versions'), (3, 'Exporter'), (4, 'Paramètres'), (5, 'Intégrer dans la page web')]
+capture docs/ragflow/img/08-agents/25-variables.png [(1, 'Ajouter')]
+capture docs/ragflow/img/08-agents/26-parametres.png [(1, 'Titre'), (2, 'Photo'), (3, 'Description'), (4, 'Autorisations'), (5, 'Enregistrer')]
+capture docs/ragflow/img/08-agents/27-integrer.png [(1, 'Embed Setup'), (2, 'Widget Customization'), (3, "Type d'intégration"), (4, 'Paramètres régionaux'), (5, 'Ouvrir dans un nouvel onglet')]
+export : Manuel-Agent-Documentaire.json 13549 octets ; clés : ['components', 'globals', 'graph', 'history', 'memory', 'messages', 'path', 'retrieval', 'variables']
+== phase json
+capture docs/ragflow/img/08-agents/28-importer-json.png [(1, 'Nom'), (2, 'DSL'), (3, 'agent-exporte.json'), (4, 'Enregistrer')]
+après import : /agent/f7b9a251f62a4aa4adbba73485bb17e0?category=agent_canvas
+capture docs/ragflow/img/08-agents/29-agent-importe.png [(1, 'Manuel-Agent-Importe')]
+== phase blanc
+blocs proposés : Étape suivante | Fondation | Agent | Récupération | Dialogue | Message | En attente de réponse | Flux | Interrupteur | Itération | Boucle | Catégoriser | Manipulation des données | Code | Traitement du texte | Opérations sur les données | Assignateur de variables | Opérations sur les listes | Agrégateur de variables | Outils | Recherche Tavily | Extraction Tavily | Querit contents | Querit search | ExeSQL | Google | YahooFinance | Email | DuckDuckGo | Wikipedia | Google Scholar | ArXiv | PubMed | BGPT | GitHub | Requête HTTP | WenCai | SearXNG | Keenable | You.com | Sofya | Search1API | Search1API crawl | Générateur de Documents
+capture docs/ragflow/img/08-agents/30-menu-des-blocs.png [(1, '+'), (2, 'Fondation'), (3, 'Agent'), (4, 'Flux'), (5, 'Manipulation des données'), (6, 'Outils')]
+capture docs/ragflow/img/08-agents/31-bloc-ajoute.png [(1, 'Commencer'), (2, 'Récupération')]
+== phase memoire
+capture docs/ragflow/img/08-agents/32-memoire-vide.png [(1, 'Aucune mémoire créée pour le moment'), (2, '+')]
+capture docs/ragflow/img/08-agents/33-creer-une-memoire.png [(1, 'Nom'), (2, 'Type de mémoire'), (3, "Modèle d'embedding"), (4, 'LLM'), (5, 'Confirmer')]
+capture docs/ragflow/img/08-agents/34-types-de-memoire.png [(1, 'brut'), (2, 'sémantique'), (3, 'épisodique'), (4, 'procédural')]
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 828, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 818, in agents
+    globals()["agents_" + ph](s)
+  File "/depot/outils/ragflow/captures/manuels_07_15.py", line 786, in agents_memoire
+    raise RuntimeError("fenêtre de création fermée par Échap")
+RuntimeError: fenêtre de création fermée par Échap
+== phase memoire
+capture docs/ragflow/img/08-agents/32-memoire-vide.png [(1, 'Aucune mémoire créée pour le moment'), (2, '+')]
+capture docs/ragflow/img/08-agents/33-creer-une-memoire.png [(1, 'Nom'), (2, 'Type de mémoire'), (3, "Modèle d'embedding"), (4, 'LLM'), (5, 'Confirmer')]
+capture docs/ragflow/img/08-agents/34-types-de-memoire.png [(1, '(Tout sélectionner)'), (2, 'brut'), (3, 'sémantique'), (4, 'épisodique'), (5, 'procédural'), (6, 'Fermer')]
+après création de la mémoire : /memories Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | Mémoire | Créer une mémoire | M | Manuel-Memoire |  | 11/11/2026 14:32:03 |  | Total 1 | 1 | 50 / Page
+capture docs/ragflow/img/08-agents/35-memoire-creee.png [(1, 'Manuel-Memoire')]
+page de la mémoire : /memory/memory-message/bb822464ae0247428e6c5a665158db57 Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | M | Manuel-Memoire | Créé 11/11/2026 | Messages | Configuration | Messages | L'extraction de mémoire est configurée avec les invites et la température des paramètres avancés. | ID de session | 	Agent	Type	Date de validité	Oublier le	Activer		Action |  | Aucune donnée disponible | Total 0 | 50 / Page
+capture docs/ragflow/img/08-agents/36-page-de-la-memoire.png []
+== phase mcp
+capture docs/ragflow/img/08-agents/37-serveurs-mcp.png [(1, 'MCP'), (2, 'Rechercher'), (3, 'Gestion en masse'), (4, 'Importer'), (5, 'Ajouter MCP')]
+fenêtre Ajouter MCP : Ajouter MCP | Nom | URL | Type de serveur | sse | Authorization Token | 0 outils disponibles | Non | Enregistrer
+capture docs/ragflow/img/08-agents/38-ajouter-mcp.png [(1, 'Nom'), (2, 'URL'), (3, 'Type de serveur'), (4, 'Authorization Token'), (5, 'Enregistrer')]
+== phase memoire_page
+page de la mémoire : /memory/memory-message/bb822464ae0247428e6c5a665158db57 Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | M | Manuel-Memoire | Créé 11/11/2026 | Messages | Configuration | Messages | L'extraction de mémoire est configurée avec les invites et la température des paramètres avancés. | ID de session | 	Agent	Type	Date de validité	Oublier le	Activer		Action |  | Aucune donnée disponible | Total 0 | 50 / Page
+capture docs/ragflow/img/08-agents/36-page-de-la-memoire.png [(1, 'Messages'), (2, 'Configuration'), (3, 'ID de session'), (4, 'Aucune donnée disponible')]
+configuration de la mémoire : Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | M | Manuel-Memoire | Créé 11/11/2026 | Messages | Configuration | Configuration |  | Update your memory configuration here, particularly the LLM and prompts. |  | Informations de base | Nom | Avatar | Télécharger | Vous pouvez télécharger une image jusqu'à 4 Mo. | Description | Modèle d'embedding | bge-m3 | llm-service-embed | LLM | gemma4:e4b | llm-service-chat | Type de mémoire | brut | Taille de la mémoire (Bytes) | Paramètres avancés | Annuler | Confirmer
+capture docs/ragflow/img/08-agents/37-configuration-de-la-memoire.png [(1, 'Nom'), (2, 'Avatar'), (3, 'Description'), (4, "Modèle d'embedding"), (5, 'LLM'), (6, 'Type de mémoire')]
+== phase memoire_agent
+capture docs/ragflow/img/08-agents/38-enregistrer-en-memoire.png [(1, 'Manuel-Memoire')]
+champ mémoire : M
+Manuel-Memoire
+réponse avec mémoire : Agent | Manuel-Agent-Documentaire | Sessions | 3 | Combien de salariés compte Vélanor au 31 décembre 2025 ? | Quel est le plafond des pénalités de retard du contrat Batterix ? | Qui est le directeur de production de Vélanor ? |  | Combien de salariés compte Vélanor au 31 décembre 2025 ? |  | Answer |  | According to the documentation, the number of employees (Effectif) for Vélanor as of December 31, 2025, is 412 employees (412 salariés). |  | This information is available in the following contexts: |  | As a total figure for 2025: "Effectif au 31/12/2025 412 salariés" (Source ID: 7fdcdea817f0fe4c). | Broken down by site: Nantes (268), Cholet (97), Lyon (31), and Bruxelles (16), totaling 412 (Source ID: 607f77048ef5eec9). |  | The documentation does not provide information about the number of employees for the year 2026. |  | Drag & drop files here |  | Upload max 5 files each up to 5MB |  | Attach file | File upload
+messages de la mémoire après 6 s : Accueil | Base de connaissances | Discussion | Recherche | Agent | Mémoire | Gestion des fichiers | Français | BR | M | Manuel-Memoire | Créé 11/11/2026 | Messages | Configuration | Messages | L'extraction de mémoire est configurée avec les invites et la température des paramètres avancés. | ID de session | 	Agent	Type	Date de validité	Oublier le	Activer		Action |  | 63381484ff404251812ab675745c11c8 | 	 | Manuel-Agent-Documentaire | 	 | Brut | 	 | 2026-11-11 15:33:35 | 	 | 	 | 	 | 	 | Total 1 | 1 | 50 / Page
+capture docs/ragflow/img/08-agents/39-messages-de-la-memoire.png [(1, 'message mémorisé'), (2, 'Type'), (3, 'Oublier le')]
+== phase mcp
+capture docs/ragflow/img/08-agents/40-serveurs-mcp.png [(1, 'MCP'), (2, 'Rechercher'), (3, 'Gestion en masse'), (4, 'Importer'), (5, 'Ajouter MCP')]
+fenêtre Ajouter MCP : Ajouter MCP | Nom | URL | Type de serveur | sse | Authorization Token | 0 outils disponibles | Non | Enregistrer
+capture docs/ragflow/img/08-agents/41-ajouter-mcp.png [(1, 'Nom'), (2, 'URL'), (3, 'Type de serveur'), (4, 'Authorization Token'), (5, 'Enregistrer')]

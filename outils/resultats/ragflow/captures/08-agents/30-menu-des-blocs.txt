@@ -1,0 +1,120 @@
+Agent
+Manuel-Agent-Vierge
+Sauvegardé automatiquement 11/11/2026 14:30:50
+Save draft
+Exécuter
+Lancer
+Publier
+Gestion
+Commencer
+Conversationnel
+React Flow
+Étape suivante
+Fondation
+Agent
+Récupération
+Dialogue
+Message
+En attente de réponse
+Flux
+Interrupteur
+Itération
+Boucle
+Catégoriser
+Manipulation des données
+Code
+Traitement du texte
+Opérations sur les données
+Assignateur de variables
+Opérations sur les listes
+Agrégateur de variables
+Outils
+Recherche Tavily
+Extraction Tavily
+Querit contents
+Querit search
+ExeSQL
+Google
+YahooFinance
+Email
+DuckDuckGo
+Wikipedia
+Google Scholar
+ArXiv
+PubMed
+BGPT
+GitHub
+Requête HTTP
+WenCai
+SearXNG
+Keenable
+You.com
+Sofya
+Search1API
+Search1API crawl
+Générateur de Documents
+
+== adresse ==
+/agent/bbe410a485d74c9587d6f72c7fd50faa?category=agent_canvas
+== pastilles ==
+1. +
+2. Fondation
+3. Agent
+4. Flux
+5. Manipulation des données
+6. Outils
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Gestion
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+button | Fondation
+menuitem | Agent
+menuitem | Récupération
+button | Dialogue
+menuitem | Message
+menuitem | En attente de réponse
+button | Flux
+menuitem | Interrupteur
+menuitem | Itération
+menuitem | Boucle
+menuitem | Catégoriser
+button | Manipulation des données
+menuitem | Code
+menuitem | Traitement du texte
+menuitem | Opérations sur les données
+menuitem | Assignateur de variables
+menuitem | Opérations sur les listes
+menuitem | Agrégateur de variables
+button | Outils
+menuitem | Recherche Tavily
+menuitem | Extraction Tavily
+menuitem | Querit contents
+menuitem | Querit search
+menuitem | ExeSQL
+menuitem | Google
+menuitem | YahooFinance
+menuitem | Email
+menuitem | DuckDuckGo
+menuitem | Wikipedia
+menuitem | Google Scholar
+menuitem | ArXiv
+menuitem | PubMed
+menuitem | BGPT
+menuitem | GitHub
+menuitem | Requête HTTP
+menuitem | WenCai
+menuitem | SearXNG
+menuitem | Keenable
+menuitem | You.com
+menuitem | Sofya
+menuitem | Search1API
+menuitem | Search1API crawl
+menuitem | Générateur de Documents
