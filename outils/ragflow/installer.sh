@@ -23,7 +23,7 @@ debut=$(date +%s)
 # 0. prérequis
 docker compose version >/dev/null || { echo "docker compose indisponible"; exit 1; }
 for r in llm-net rag-local; do
-  docker network inspect "$r" >/dev/null 2>&1 || { echo "réseau $r absent : lancer LLM-Service (outils/communs/llm_service_vllm.sh) et la voix (outils/communs/voix.sh)"; exit 1; }
+  docker network inspect "$r" >/dev/null 2>&1 || { echo "réseau $r absent : LLM-Service (service LLM central, géré à part) doit être démarré par son propriétaire ; la voix : outils/communs/voix.sh"; exit 1; }
 done
 free -m | awk '/Mem:/{print "RAM disponible avant installation : " $7 " Mo"}'
 

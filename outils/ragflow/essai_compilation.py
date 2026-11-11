@@ -15,7 +15,7 @@ from client import RACINE, client, documents, http  # noqa: E402
 
 KIND = sys.argv[1] if len(sys.argv) > 1 else "mind_map"
 ART = {"mind_map": "mindmap", "knowledge_graph": "graph", "timeline": "timeline"}.get(KIND, KIND)
-LLM = "gemma4:e4b@llm-service-chat@VLLM"
+LLM = "chat@llm-central@OpenAI-API-Compatible"
 NOM = f"Essai-KC-{KIND}-{datetime.datetime.now():%H%M}"
 SORTIE = RACINE / f"outils/resultats/ragflow/essai-{datetime.date.today()}-compilation-{KIND}.log"
 T0 = datetime.datetime.now()

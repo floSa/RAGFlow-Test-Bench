@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from client import RACINE, client, http  # noqa: E402
 
 NOM = "Agent démo Vélanor"
-LLM = "gemma4:e4b@llm-service-chat@VLLM"
+LLM = "chat@llm-central@OpenAI-API-Compatible"
 lignes = [f"== {datetime.datetime.now().isoformat(timespec='seconds')} essai d'agent"]
 
 

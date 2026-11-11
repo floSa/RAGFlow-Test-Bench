@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Démarre RAGFlow (données conservées) et attend l'état sain. LLM-Service doit tourner (outils/communs/llm_service_vllm.sh).
+# Démarre RAGFlow (données conservées) et attend l'état sain. Le service LLM central doit tourner (géré à part ; vérification : outils/communs/llm_central_sante.sh).
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 outils/ragflow/compose.sh up -d

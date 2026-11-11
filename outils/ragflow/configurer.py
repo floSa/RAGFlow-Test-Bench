@@ -3,8 +3,8 @@
 
 1. compte local fictif (inscription puis connexion) ;
 2. clé d'API du compte ;
-3. fournisseur VLLM : une instance par serveur de LLM-Service (chat sur vllm-central, embedding sur vllm-embed) ;
-4. modèles par défaut du compte (chat, embedding, transcription) ;
+3. fournisseur OpenAI-API-Compatible : une instance unique « llm-central » (service LLM central, LiteLLM) avec chat, embed, rerank, transcribe ;
+4. modèles par défaut du compte (chat, embedding, rerank, transcription) ;
 5. interface en français.
 
 Identifiants : donnees/IDENTIFIANTS-LOCAUX.txt et donnees/ragflow/compte.json (ignorés par git).
@@ -20,15 +20,35 @@ COMPTE = RACINE / "donnees/ragflow/compte.json"
 IDENT = RACINE / "donnees/IDENTIFIANTS-LOCAUX.txt"
 JOURNAL = RACINE / f"outils/resultats/ragflow/configuration-{datetime.date.today()}.log"
 
-# Modèles de LLM-Service (branche service-vllm) ; contexte déclaré au chat : 16 384 jetons, taille commune de la série.
-# Transcription (asr) : serveur de voix commun rag-speaches (faster-whisper-small), réseau rag-local.
+# Service LLM central (LLM-Service, géré à part) : un seul point d'entrée LiteLLM, clé obligatoire lue dans .env.
+# Contexte déclaré au chat : 16 384 jetons, taille commune de la série.
+def lire_env():
+    env = {}
+    for l in (RACINE / ".env").read_text().splitlines() if (RACINE / ".env").exists() else []:
+        if "=" in l and not l.lstrip().startswith("#"):
+            k, v = l.split("=", 1)
+            env[k.strip()] = v.strip()
+    return env
+
+
+ENV = lire_env()
+if not ENV.get("LLM_CENTRAL_KEY"):
+    sys.exit(".env absent ou LLM_CENTRAL_KEY vide : copier .env.example en .env et renseigner la clé")
+CLE = ENV["LLM_CENTRAL_KEY"]
+URL = ENV.get("LLM_CENTRAL_URL", "http://llm-central:8080/v1")
+FOURNISSEUR_LLM = "OpenAI-API-Compatible"
+
+
+def modele(type_, nom, max_tokens):
+    return {"fournisseur": FOURNISSEUR_LLM, "instance": "llm-central", "base_url": URL, "model_name": nom,
+            "max_tokens": max_tokens}
+
+
 MODELES = {
-    "chat": {"fournisseur": "VLLM", "instance": "llm-service-chat", "base_url": "http://vllm-central:8000/v1",
-             "model_name": "gemma4:e4b", "max_tokens": 16384},
-    "embedding": {"fournisseur": "VLLM", "instance": "llm-service-embed", "base_url": "http://vllm-embed:8000/v1",
-                  "model_name": "bge-m3", "max_tokens": 8192},
-    "asr": {"fournisseur": "OpenAI-API-Compatible", "instance": "voix-locale", "base_url": "http://rag-speaches:8000/v1",
-            "model_name": "Systran/faster-whisper-small", "max_tokens": 0},
+    "chat": modele("chat", ENV.get("LLM_CENTRAL_CHAT", "chat"), 16384),
+    "embedding": modele("embedding", ENV.get("LLM_CENTRAL_EMBED", "embed"), 8192),
+    "rerank": modele("rerank", ENV.get("LLM_CENTRAL_RERANK", "rerank"), 8192),
+    "asr": modele("asr", ENV.get("LLM_CENTRAL_TRANSCRIBE", "transcribe"), 0),
 }
 
 lignes = []
@@ -56,7 +76,7 @@ def appel(methode, chemin, corps=None, jeton=None, entetes=False):
 
 def masque(d):
     s = json.dumps(d, ensure_ascii=False)
-    for v in (compte.get("password"), compte.get("api_key"), base64.b64encode(compte["password"].encode()).decode()):
+    for v in (CLE, compte.get("password"), compte.get("api_key"), base64.b64encode(compte["password"].encode()).decode()):
         if v:
             s = s.replace(v, "***")
     return s[:400]
@@ -91,16 +111,17 @@ if not compte.get("api_key"):
         compte["api_key"] = cle
         COMPTE.write_text(json.dumps(compte, indent=2))
 
-for fournisseur in sorted({m["fournisseur"] for m in MODELES.values()}):
-    r = appel("PUT", "/providers", {"provider_name": fournisseur}, jeton)
-    log(f"fournisseur {fournisseur} : {masque(r)}")
+# Non exécuté depuis la bascule vers le service central : la procédure à la main est dans le README (« Bascule vers le
+# service LLM central »). [À tester] : une instance unique portant les quatre modèles, puis un défaut par type.
+r = appel("PUT", "/providers", {"provider_name": FOURNISSEUR_LLM}, jeton)
+log(f"fournisseur {FOURNISSEUR_LLM} : {masque(r)}")
+r = appel("POST", f"/providers/{FOURNISSEUR_LLM}/instances", {
+    "instance_name": "llm-central", "api_key": CLE, "base_url": URL,
+    "model_info": [{"model_name": m["model_name"], "model_type": [t], "max_tokens": m["max_tokens"]}
+                   for t, m in MODELES.items()]}, jeton)
+log(f"instance llm-central : {masque(r)}")
 for type_, m in MODELES.items():
-    FOURNISSEUR = m["fournisseur"]
-    r = appel("POST", f"/providers/{FOURNISSEUR}/instances", {
-        "instance_name": m["instance"], "api_key": "sans-cle", "base_url": m["base_url"],
-        "model_info": [{"model_name": m["model_name"], "model_type": [type_], "max_tokens": m["max_tokens"]}]}, jeton)
-    log(f"instance {m['instance']} ({type_}) : {masque(r)}")
-    r = appel("PATCH", "/models/default", {"model_provider": FOURNISSEUR, "model_instance": m["instance"],
+    r = appel("PATCH", "/models/default", {"model_provider": FOURNISSEUR_LLM, "model_instance": m["instance"],
                                             "model_name": m["model_name"], "model_type": type_}, jeton)
     log(f"défaut {type_} : {masque(r)}")
 r = appel("PATCH", "/users/me", {"language": "French"}, jeton)

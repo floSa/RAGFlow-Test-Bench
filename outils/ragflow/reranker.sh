@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# HISTORIQUE : ancien service de modèles (Ollama/vLLM). Ce script démarre des conteneurs de LLM-Service, désormais géré à part : ne plus le lancer.
+# Remplacé par outils/communs/llm_central_sante.sh (vérification en lecture seule du service LLM central).
 # Reranker sur le GPU : service vllm-rerank de LLM-Service (vLLM 0.29.0, modèle BAAI/bge-reranker-v2-m3),
 # à côté de vllm-central (chat) et vllm-embed (embedding), pour vérifier que les trois modèles tiennent sur 16 Go.
 # - service déclaré dans ~/mes_projets/Projet-IA/LLM-Service/docker-compose.override.yml, fichier local non suivi

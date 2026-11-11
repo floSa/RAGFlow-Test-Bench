@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# HISTORIQUE : ancien service de modèles (Ollama/vLLM). Ce script démarre des conteneurs de LLM-Service, désormais géré à part : ne plus le lancer.
+# Remplacé par outils/communs/llm_central_sante.sh (vérification en lecture seule du service LLM central).
 # ESSAI INTERMÉDIAIRE (abandonné le 11 novembre pour le GPU, voir reranker.sh) : TEI ne parle pas le format de rerank
 # des pilotes de RAGFlow 1.0 (422 « missing field texts ») ; journal brut reranker-cpu-2026-11-11-tei.log.
 # Reranker local sur processeur : Text Embeddings Inference (TEI) 1.8, conteneur rag-reranker, modèle BAAI/bge-reranker-v2-m3.

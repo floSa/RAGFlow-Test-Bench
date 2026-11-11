@@ -22,14 +22,14 @@ from client import attendre_analyse, client, demander, documents, http  # noqa: 
 
 APP = ["rag-ragflow-server", "rag-ragflow-es01", "rag-ragflow-mysql", "rag-ragflow-minio", "rag-ragflow-kvrocks",
        "rag-ragflow-nats"]
-MODELES = ["vllm-central", "vllm-embed", "rag-speaches"]
+MODELES = ["llm-central", "llm-swap", "llm-speaches"]
 
 
 def contexte_declare():
     """max_tokens déclaré du modèle de chat dans RAGFlow (réglé par outils/ragflow/contexte.py)."""
     try:
-        modeles = http("GET", "/providers/VLLM/instances/llm-service-chat/models")["data"]
-        return next(m["max_tokens"] for m in modeles if m["name"] == "gemma4:e4b")
+        modeles = http("GET", "/providers/OpenAI-API-Compatible/instances/llm-central/models")["data"]
+        return next(m["max_tokens"] for m in modeles if m["name"] == "chat")
     except Exception as e:
         return f"inconnu ({e})"
 
@@ -93,8 +93,8 @@ class AdaptateurRAGFlow:
 
     def config(self):
         chat = self._assistant() if self.ds else None
-        cfg = {"version": "v1.0.0", "gabarit": self.gabarit, "modele": "gemma4:e4b (vLLM, LLM-Service service-vllm)",
-               "embedding": "bge-m3 (vLLM)", "contexte_declare": contexte_declare(), "extra_question": self.extra}
+        cfg = {"version": "v1.0.0", "gabarit": self.gabarit, "modele": "chat (Qwen3.5-4B, service LLM central)",
+               "embedding": "embed (bge-m3, service LLM central)", "contexte_declare": contexte_declare(), "extra_question": self.extra}
         if chat:
             # l'objet Chat du SDK garde sa valeur par défaut de vector_similarity_weight (0,3) : le poids réel des
             # vecteurs se déduit de keywords_similarity_weight renvoyé par le serveur (vecteurs = 1 - mots-clés)

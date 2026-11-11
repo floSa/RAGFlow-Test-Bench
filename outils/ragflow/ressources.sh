@@ -20,7 +20,7 @@ for l in sys.stdin:
     t += float(m.group(1)) * u[m.group(2)]
 print(f"total pile RAGFlow : {t:.0f} Mio")'
   echo "== conteneurs de modèles (pour mémoire, hors application)"
-  docker stats --no-stream --format '{{.Name}};{{.MemUsage}}' | grep -E '^(vllm-|ollama-central)' || true
+  docker stats --no-stream --format '{{.Name}};{{.MemUsage}}' | grep -E '^(llm-|vllm-|ollama-central)' || true
   echo "== nvidia-smi"; nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader 2>/dev/null || echo "sans GPU"
   echo "== images"
   docker images --format '{{.Repository}}:{{.Tag}} {{.Size}}' | grep -E 'ragflow|elasticsearch:8.11.3|mysql:8.0.40|kvrocks:2.16.0|nats:2.14.2|silo:RELEASE.2026-08-06' || true

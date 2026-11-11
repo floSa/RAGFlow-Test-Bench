@@ -12,10 +12,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from client import RACINE, http  # noqa: E402
 
 n = int(sys.argv[1])
-chemin = "/providers/VLLM/instances/llm-service-chat/models"
-avant = [m for m in http("GET", chemin)["data"] if "gemma4" in json.dumps(m)]
-r = http("PATCH", f"{chemin}/gemma4:e4b", json={"max_tokens": n})
-apres = [m for m in http("GET", chemin)["data"] if "gemma4" in json.dumps(m)]
+chemin = "/providers/OpenAI-API-Compatible/instances/llm-central/models"
+avant = [m for m in http("GET", chemin)["data"] if m.get("name") == "chat"]
+r = http("PATCH", f"{chemin}/chat", json={"max_tokens": n})
+apres = [m for m in http("GET", chemin)["data"] if m.get("name") == "chat"]
 lignes = [f"== {datetime.datetime.now().isoformat(timespec='seconds')} contexte déclaré -> {n}",
           f"avant : {json.dumps(avant, ensure_ascii=False)[:400]}",
           f"PATCH : {json.dumps(r, ensure_ascii=False)[:300]}",
