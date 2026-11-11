@@ -146,9 +146,16 @@ Choisir « Indexeur » : c'est la dernière étape, sans laquelle aucun passage 
 
 **Étape 9. Publier la chaîne**
 *Où* : canevas › « Publier ».
-Saisir l'alias « v1 » et cliquer sur « Confirmer », dans la fenêtre montrée au chapitre 10, étape 10.
+Saisir l'alias « v1 » et cliquer sur « Confirmer », dans la fenêtre montrée au chapitre 10, étape 10. Revenir ensuite à barre du haut › « Agent » › onglet « Ingestion pipeline ».
 
-*Résultat* : dans l'onglet « Ingestion pipeline », la carte « Manuel-Pipeline-Graphe » porte une date « Publié le ». Seule une version publiée peut être choisie par une base ; une modification ultérieure du canevas ne change rien à la base tant qu'une nouvelle version n'est pas publiée et choisie.
+![Chaîne publiée](../img/07-knowledge-compilation/18-pipeline-publie.png)
+*Écran : Agent, onglet « Ingestion pipeline », chaîne publiée.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | carte « Manuel-Pipeline-Graphe » | « Dernière sauvegarde à » (brouillon) et « Publié le » (dernière version publiée) ; sous « Built-in pipelines », les gabarits intégrés, copiables |
+
+*Résultat* : la carte « Manuel-Pipeline-Graphe » porte une date « Publié le ». Seule une version publiée peut être choisie par une base ; une modification ultérieure du canevas ne change rien à la base tant qu'une nouvelle version n'est pas publiée et choisie.
 
 ## Relier une base à la chaîne de lecture
 
@@ -168,9 +175,18 @@ Créer la base comme au chapitre 04 (étapes 1 et 2). Ouvrir « Configuration »
 
 **Étape 11. Envoyer un document**
 *Où* : base « Manuel-KC-Graphe » › « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
-Envoyer `cse-2025-10-14.md` avec « Analyser à la création » activé, comme au chapitre 05, étape 3. La chaîne se lance dès l'envoi.
+Envoyer `cse-2025-10-14.md` avec « Analyser à la création » activé, dans la fenêtre montrée au chapitre 05, étape 3. La chaîne se lance dès l'envoi.
 
-*Résultat* : en quelques secondes, « Nombre de segments » indique 1 passage, et la colonne « Analyser » affiche le nom et la version de la chaîne au lieu d'un gabarit. Lecture et synthèse ont pris 8 secondes en tout.
+![Fichier analysé par la chaîne](../img/07-knowledge-compilation/24-analyse-terminee.png)
+*Écran : base « Manuel-KC-Graphe », onglet « Fichiers », analyse terminée.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | `cse-2025-10-14.md` | fichier envoyé |
+| 2 | « Nombre de segments » | 1 passage |
+| 3 | « Analyser » | nom, date de publication et version (« v1 ») de la chaîne, au lieu d'un gabarit |
+
+*Résultat* : en quelques secondes, le fichier est lu et synthétisé ; lecture et synthèse ont pris 8 secondes en tout.
 
 ## Lire les synthèses
 
