@@ -12,7 +12,7 @@ Après la connexion, chaque page de RAGFlow porte la même barre en haut de l'é
 
 **Étape 1. Ouvrir une session**
 *Où* : navigateur Windows › `http://127.0.0.1:8088`.
-Saisir le courriel (pastille 1) et le mot de passe (pastille 2) du compte créé au chapitre 02, puis cliquer sur « Sign in » (pastille 4). Avec le script de configuration, ils se trouvent dans le fichier `donnees/IDENTIFIANTS-LOCAUX.txt`.
+Saisir le courriel (pastille 1) et le mot de passe (pastille 2) du compte créé au chapitre 02, puis cliquer sur « Sign in » (pastille 4). La page est en anglais au premier lancement ; si le français a déjà été choisi dans ce navigateur, elle est en français et les libellés deviennent « Mot de passe », « Se souvenir de moi » et « Se connecter ». Avec le script de configuration, ils se trouvent dans le fichier `donnees/IDENTIFIANTS-LOCAUX.txt`.
 
 ![Page de connexion](../img/02-prise-en-main/01-connexion.png)
 *Écran : page de connexion (en anglais au premier lancement).*
@@ -61,7 +61,7 @@ Les libellés de la barre du haut sont maintenant en français, et le menu de la
 
 **Étape 4. Lire la partie gauche de la barre du haut**
 *Où* : barre du haut, à gauche (toutes les pages après connexion).
-Repérer les six entrées principales : elles mènent chacune à une fonction de RAGFlow.
+La barre compte sept entrées : les six annotées ici, qui mènent chacune à une fonction de RAGFlow, puis « Gestion des fichiers », la dernière, présentée à l'étape suivante.
 
 ![Barre de navigation](../img/00-notions-fondamentales/01-barre-de-navigation.png)
 *Écran : barre du haut, partie gauche.*
@@ -79,7 +79,7 @@ Repérer les six entrées principales : elles mènent chacune à une fonction de
 
 **Étape 5. Lire la partie droite de la barre du haut**
 *Où* : barre du haut, à droite.
-Repérer les accès aux fichiers, à la langue, à l'aide et au thème.
+Repérer « Gestion des fichiers », dernière entrée de la barre, puis, à sa droite, les accès aux sites du projet, à la langue, à l'aide et au thème.
 
 ![Partie droite de l'en-tête](../img/00-notions-fondamentales/02-en-tete-droite.png)
 *Écran : barre du haut, partie droite.*
@@ -150,7 +150,7 @@ Cliquer sur « VLLM ». Chaque instance déjà déclarée a sa carte ; celle de 
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « llm-service-embed » | nom de l'instance, choisi à sa création |
-| 2 | « URL de base » | adresse du serveur de modèles, telle que RAGFlow la voit depuis son conteneur |
+| 2 | « URL de base » | adresse du serveur de modèles, telle que RAGFlow la voit depuis son conteneur ; le champ « Clé API » au-dessus affiche des étoiles parce que le script de configuration du chapitre 02 y a mis une valeur sans usage (`sans-cle`) : LLM-Service n'en demande pas, et une instance créée à la souris peut laisser ce champ vide (étape 10) |
 | 3 | « Lister les modèles » | interroge le serveur et affiche les modèles qu'il propose |
 | 4 | signe « − » de `bge-m3` | retire ce modèle de l'instance ; le signe « + » d'un modèle non retenu l'ajoute |
 | 5 | « Enregistrer » | enregistre les changements de la carte |
