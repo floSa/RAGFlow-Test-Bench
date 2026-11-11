@@ -1,0 +1,4 @@
+== 2026-11-11T16:10:03 assistant Manuel-Reglages
+créé : top_n 8, poids des vecteurs 0,7 ; réponse vide 'Sorry! No relevant content was found in the knowledge base!'
+question "Quelle est la capitale de l'Australie ?" (1.1 s) : 'The answer you are looking for is not found in the dataset! [ID:0]'
+question 'Quel est le numéro de TVA intracommunautaire de Vélanor ?' (1.2 s) : 'The answer you are looking for is not found in the dataset! [ID:5]'

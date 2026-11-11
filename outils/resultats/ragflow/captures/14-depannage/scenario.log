@@ -1,0 +1,14 @@
+== phase connexion
+connexion refusée : ['Astuce : 109 email and password do not match'] ; adresse : /login
+capture docs/ragflow/img/14-depannage/01-connexion-refusee.png [(1, 'E-mail'), (2, 'Mot de passe'), (3, 'Se connecter'), (4, "message d'erreur")]
+== phase contexte
+réponse d'erreur après 3.4 s : ERROR
+capture docs/ragflow/img/14-depannage/02-erreur-de-contexte.png [(1, "réponse d'erreur")]
+== phase introuvable
+réponse (mode Naive) affichée après 0.9 s : The answer you are looking for is not found in the dataset! [1]
+
+1268 tokens (1250 input, 18 output) · 0.4s
+réponse : The answer you are looking for is not found in the dataset! [1]
+capture docs/ragflow/img/14-depannage/03-reponse-not-found.png [(1, 'réponse'), (2, 'jetons et durée')]
+capture docs/ragflow/img/14-depannage/04-page-introuvable.png [(1, '404'), (2, 'Page not found'), (3, 'Business')]
+après « Business » : /

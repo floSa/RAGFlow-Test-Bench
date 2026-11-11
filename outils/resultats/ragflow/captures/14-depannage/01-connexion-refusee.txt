@@ -1,0 +1,39 @@
+RAGFlow
+Commencez à créer vos IA.
+Connexion à votre compte
+Email
+Mot de passe
+Se souvenir de moi
+Se connecter
+
+Pas encore de compte ?S'inscrire
+
+Connexion à votre compte
+Email
+Mot de passe
+Se souvenir de moi
+Se connecter
+
+Pas encore de compte ?S'inscrire
+
+Astuce : 109 email and password do not match
+
+== adresse ==
+/login
+== pastilles ==
+1. E-mail
+2. Mot de passe
+3. Se connecter
+4. message d'erreur
+== éléments visibles ==
+label | Email
+input:text | Veuillez saisir votre email
+label | Mot de passe
+input:password | Veuillez saisir votre mot de passe
+button | [icône lucide-eye]
+checkbox | 
+input:checkbox | 
+label | Se souvenir de moi
+button | Se connecter
+button | S'inscrire
+button | Close toast

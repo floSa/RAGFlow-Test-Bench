@@ -1,0 +1,84 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Reglages
+Conversations
+7
+Quelle est la capitale de l'Australie ?
+Quel est le plafond des pénalités de retard du contrat Batterix ?
+Quelle est la capitale de l'Australie ?
+Quel est le plafond des pénalités de retard du contrat Batterix ?
+Quel est le plafond des pénalités de retard du contrat Batterix ?
+essai
+essai
+Quelle est la capitale de l'Australie ?
+Plusieurs modèles
+
+Hi! I'm your assistant. What can I do for you?
+
+Quelle est la capitale de l'Australie ?
+
+The answer you are looking for is not found in the dataset! [1]
+
+1268 tokens (1250 input, 18 output) · 0.4s
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload
+
+== adresse ==
+/chat/37b4d4476b464588a9326781b107a2fe?conversationId=66d76e8568714a6fa709e6d6823718fc&isNew=
+== pastilles ==
+1. réponse
+2. jetons et durée
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+button | [icône lucide-panel-left-close]
+button | [icône lucide-plus]
+button | [icône lucide-copy-x]
+input:text | Rechercher
+button | Quelle est la capitale de l'Australie ?
+button | [icône lucide-ellipsis]
+button | Quel est le plafond des pénalités de retard du contrat Batterix ?
+button | essai
+button | Plusieurs modèles
+button | [icône lucide-copy]
+button | [icône lucide-refresh-cw]
+button | [icône lucide-trash]
+button | [icône lucide-volume-2]
+button | [icône lucide-thumbs-up]
+button | [icône lucide-thumbs-down]
+button | [icône sans nom]
+button | Drag to resize height
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+combobox | Naive
+button | [icône lucide-mic]
+button | Send message
+input:file | 
+button | [icône lucide-settings]

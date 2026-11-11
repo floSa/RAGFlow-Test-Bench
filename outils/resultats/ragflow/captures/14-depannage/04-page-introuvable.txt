@@ -1,0 +1,12 @@
+404
+Page not found, please enter a correct address.
+Business
+
+== adresse ==
+/page-inexistante
+== pastilles ==
+1. 404
+2. Page not found
+3. Business
+== éléments visibles ==
+button | Business
