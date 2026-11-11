@@ -251,7 +251,7 @@ Cliquer sur le bouton, puis choisir un modèle pour chaque usage. Seul le « Mod
 
 **Étape 15. Choisir un modèle dans une liste**
 *Où* : même fenêtre › liste d'un usage (ici « Modèle de chat »).
-Ouvrir la liste : les modèles sont groupés par fournisseur puis par instance. Cliquer sur le modèle voulu (pastille 1).
+Ouvrir la liste : les modèles sont groupés par fournisseur puis par instance. Cliquer sur le modèle voulu (pastille 1). Il n'y a pas de bouton « Enregistrer » : le choix est enregistré dès le clic. La croix à droite d'un choix le vide.
 
 ![Choix du modèle de chat](../img/01-installation/10-choix-modele-de-chat.png)
 *Écran : fenêtre des modèles par défaut, liste « Modèle de chat » ouverte.*
@@ -260,7 +260,7 @@ Ouvrir la liste : les modèles sont groupés par fournisseur puis par instance. 
 |---|---|---|
 | 1 | liste « VLLM », « llm-service-chat », `gemma4:e4b` | modèles de chat disponibles, avec un champ « Rechercher » |
 
-*Résultat* : les modèles par défaut sont fixés. Toute nouvelle base et tout nouvel assistant les reprendront.
+*Résultat* : les modèles par défaut sont fixés ; après un rechargement de la page, la fenêtre affiche toujours le modèle choisi. Toute nouvelle base et tout nouvel assistant les reprendront.
 
 ## Régler la taille de contexte
 
