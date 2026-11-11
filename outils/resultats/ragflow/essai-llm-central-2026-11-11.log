@@ -1,0 +1,27 @@
+== essai du service LLM central, 2026-11-11T23:46:30+01:00 (RAGFlow en marche, rien modifié)
+== résolution depuis rag-ragflow-server (réseau llm-net) : GET http://llm-central:8080/v1/models
+HTTP 200
+== embed et rerank depuis rag-ragflow-server
+embed : dimensions 1024
+{"id":"6e0c23a0-1082-49aa-af9c-7931e4f3cbd8","results":[{"index":0,"relevance_score":9.048632621765137},{"index":1,"relevance_score":-11.025999069213867}],"meta":{"billed_units":{"total_tokens":31},"tokens":{"input_tokens":31}}}
+== depuis l'hôte : outils/communs/llm_central_sante.sh --essai
+== http://127.0.0.1:8080/v1/models
+  chat (chat)
+  embed (embedding)
+  rerank (rerank)
+  transcribe (audio_transcription)
+  gemma-4-e4b (chat)
+  qwen3.5-4b (chat)
+  bge-m3 (embedding)
+  bge-reranker-v2-m3 (rerank)
+  faster-whisper-small (audio_transcription)
+== chat (réflexion coupée pour l'essai)
+  Bonjour
+== embed
+  dimensions : 1024
+== rerank
+  doc 0 score 9.05
+  doc 1 score -8.63
+== transcribe (corpus/documents/message-vocal-production.mp3)
+  Message vocale de Julien Moreau, directeur de production chez Vélanor, enregistrait le 3 novembre VVTSEC. La ligne d'assoblage numéro 3 de Nantes sera arrêtée du 2 au 6 mars VVTSI pour maintenance. Pe
+== réflexion de chat (mesures de la section 4 de l'annexe A7) : max_tokens 300 sans coupure -> contenu vide (finish_reason length) ; max_tokens 1500 -> 'Bonjour', 238 jetons, 3,7 s ; enable_thinking false -> 'Bien', 2 jetons, 0,18 s

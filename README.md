@@ -6,12 +6,11 @@
 
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 ![RAGFlow](https://img.shields.io/badge/RAGFlow-v1.0.0-1E88E5)
-![vLLM](https://img.shields.io/badge/vLLM-0.29.0-30A2FF)
 ![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
 ![WSL2](https://img.shields.io/badge/Windows%2011-WSL2-0078D4)
 
-RAGFlow v1.0.0 branché sur un service de modèles local (LLM-Service, vLLM sur
-carte graphique), le corpus d'entreprise fictive de la série avec ses pièges
+RAGFlow v1.0.0 branché sur le service LLM central (LLM-Service, LiteLLM : chat, embed, rerank, transcribe),
+le corpus d'entreprise fictive de la série avec ses pièges
 (scan, tableaux, audio, document en anglais), un banc de 38 questions dont les
 réponses sont connues, et des manuels écrits à partir de ce qui a réellement
 tourné. Chaque commande a été exécutée, chaque chiffre renvoie à un résultat
@@ -72,6 +71,7 @@ Partie 2 : évaluation et compléments.
 | [A5. Fonctionnement interne](docs/ragflow/annexes/A5-fonctionnement-interne.md) | RAG, architecture, services, DeepDoc |
 | [A6. Rapport d'essais](docs/ragflow/annexes/A6-rapport-d-essais.md) | méthode, étiquettes, preuves par chapitre, défauts rencontrés |
 | [Carte de l'interface](docs/ragflow/annexes/carte-interface.md) | chaque page et réglage de l'interface, avec son chapitre |
+| [A7. Bascule vers le service LLM central](docs/ragflow/annexes/A7-bascule-vers-le-service-llm-central.md) | fournisseur, modèles par défaut, réindexation, réflexion de `chat` |
 
 Parcours conseillés : essayer en une heure (chapitres 01 à 04) ; mettre en service pour une équipe (05 à 08, puis 13 et 14) ; améliorer les réponses (06, 08, annexe A1) ; automatiser et exploiter (annexes A3, A4, A5).
 
@@ -85,9 +85,8 @@ Parcours conseillés : essayer en une heure (chapitres 01 à 04) ; mettre en ser
 | Stockage | `rag-ragflow-minio` | `pgsty/silo:RELEASE.2026-08-06T00-00-00Z` | fichiers téléversés (fork de MinIO) |
 | Cache | `rag-ragflow-kvrocks` | `apache/kvrocks:2.16.0` | cache |
 | File de tâches | `rag-ragflow-nats` | `nats:2.14.2` | tâches d'analyse |
-| Modèle de réponse | `vllm-central` (LLM-Service, hors de ce dépôt) | `vllm/vllm-openai:v0.29.0` | `gemma4:e4b` |
-| Embedding | `vllm-embed` (LLM-Service) | `vllm/vllm-openai:v0.29.0` | `bge-m3` |
-| Voix | `rag-speaches` (socle de la série) | `ghcr.io/speaches-ai/speaches:0.8.3-cpu` | transcription audio |
+| Service LLM central | `llm-central` (LiteLLM, LLM-Service, géré à part, hors de ce dépôt) | LiteLLM | `chat` (Qwen3.5-4B), `embed` (bge-m3), `rerank` (bge-reranker-v2-m3), `transcribe` (faster-whisper-small) |
+| Voix (ancienne) | `rag-speaches` (socle de la série) | `ghcr.io/speaches-ai/speaches:0.8.3-cpu` | transcription audio, remplacée par `transcribe` du service central |
 
 Toutes les images sont figées par empreinte `@sha256` (`outils/ragflow/compose.override.yml`).
 
@@ -103,16 +102,15 @@ flowchart LR
     S --> K[(kvrocks)]
     S --> Q[(nats)]
   end
-  S -->|llm-net| V[vllm-central]
-  S -->|llm-net| W[vllm-embed]
-  S -->|rag-local| X[rag-speaches]
+  S -->|llm-net, clé| V[llm-central :8080 LiteLLM]
+  V --> V1[chat, embed, rerank, transcribe]
 ```
 
 Réseaux : `rag-ragflow` (interne à la pile), `llm-net` (LLM-Service, externe), `rag-local` (voix et captures, externe).
 
 ## Démarrage
 
-Prérequis : WSL2 (Ubuntu), Docker et Compose, un serveur de modèles existant, compatible OpenAI ou Ollama, qui sert un modèle de chat et un modèle d'embedding (sur la machine d'essai : LLM-Service, `outils/communs/llm_service_vllm.sh` avec GPU, `outils/communs/llm_service.sh` sans, voir l'annexe A2), uv. Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
+Prérequis : WSL2 (Ubuntu), Docker et Compose, le service LLM central (LLM-Service, géré à part : ce dépôt ne le démarre ni ne l'arrête), une clé du service dans `.env` (copie de `.env.example`), uv. Vérification : `outils/communs/llm_central_sante.sh --essai`. Les scripts `llm_service*.sh` sont historiques (annexe A2). Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
 
 ```bash
 outils/ragflow/installer.sh
@@ -142,7 +140,25 @@ Installation complète, mémoire et désinstallation : [chapitre 02](docs/ragflo
 
 Écarts au compose officiel (fichier `outils/ragflow/compose.override.yml`) : ports sur `127.0.0.1` ou retirés, conteneurs `rag-ragflow-*`, images figées, volumes liés à `donnees/ragflow/`, réseaux `llm-net` et `rag-local`, réglages hors du `docker/.env` suivi.
 
-LLM-Service (dépôt séparé, branche `service-vllm`) : `gemma4:e4b` (`--max-model-len 32768`, `--gpu-memory-utilization 0.8`, `--kv-cache-dtype fp8`, relevés dans [le journal de vLLM](outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log)) et `bge-m3`. Dans RAGFlow : fournisseur `VLLM`, contexte déclaré 16 384 jetons ; transcription par `OpenAI-API-Compatible` (`rag-speaches`).
+Service LLM central (LLM-Service, dépôt séparé, géré à part) : un seul point d'entrée LiteLLM, `http://llm-central:8080/v1` depuis les conteneurs du réseau `llm-net` (`http://127.0.0.1:8080/v1` depuis l'hôte), clé obligatoire (`LLM_CENTRAL_KEY` dans `.env`, jamais commitée). Modèles fixes :
+
+| Nom | Modèle | Usage |
+|---|---|---|
+| `chat` | Qwen3.5-4B, vision, réflexion activée par défaut | réponses, agents, synthèses (contexte 16 384 jetons par requête) |
+| `embed` | bge-m3 (GGUF Q8_0), 1024 dimensions | recherche par le sens |
+| `rerank` | bge-reranker-v2-m3 | reclassement, scores bruts non bornés |
+| `transcribe` | faster-whisper-small | `/v1/audio/transcriptions` |
+
+Dans RAGFlow : fournisseur `OpenAI-API-Compatible` pour les quatre usages (voir la [bascule](docs/ragflow/annexes/A7-bascule-vers-le-service-llm-central.md)). Les résultats mesurés avec l'ancienne pile (`gemma4:e4b` sur vLLM) restent dans `outils/resultats/` comme preuves historiques.
+
+### Bascule vers le service LLM central (dans l'interface de RAGFlow)
+
+Procédure complète et justification : [annexe A7](docs/ragflow/annexes/A7-bascule-vers-le-service-llm-central.md). Résumé :
+
+1. Menu du compte › « Fournisseurs de modèles » › ajouter `OpenAI-API-Compatible` : nom d'instance `llm-central`, URL `http://llm-central:8080/v1`, clé = `LLM_CENTRAL_KEY` ; modèles `chat` (type chat, 16 384), `embed` (embedding), `rerank` (rerank), `transcribe` (speech2text).
+2. Modèles par défaut du compte : chat `chat`, embedding `embed`, rerank `rerank`, transcription `transcribe`.
+3. Réindexer chaque base de connaissances (changer son modèle d'embedding, puis relancer l'analyse) : `bge-m3` est maintenant en Q8_0 GGUF au lieu de bf16, vecteurs proches mais pas identiques.
+4. Réflexion de `chat` : activée par défaut, elle consomme des jetons et de la latence ; RAGFlow n'a pas de champ de paramètres supplémentaires par instance (voir A7).
 
 ## API / Endpoints
 
@@ -179,7 +195,7 @@ Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](o
 ├── docs/
 │   ├── README.md                    # index de la série et comparatif du banc
 │   ├── glossaire.md
-│   └── ragflow/                     # manuel : accueil, manuel/ (chapitres 01 à 16), annexes/ (A1 à A6), images
+│   └── ragflow/                     # manuel : accueil, manuel/ (chapitres 01 à 16), annexes/ (A1 à A7), images
 ├── exemples/ragflow/                # six exemples et leurs sorties vérifiées
 ├── outils/
 │   ├── communs/                     # diagnostic, LLM-Service, banc, captures, vérification, nettoyage
@@ -200,7 +216,7 @@ Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](o
 | `pgsty/silo` (fork de MinIO) | stockage | GNU AGPL v3 |
 | Apache Kvrocks | cache | Apache License 2.0 |
 | NATS | file de tâches | Apache License 2.0 |
-| vLLM | service de modèles | Apache License 2.0 |
+| LiteLLM | passerelle du service LLM central (géré à part) | MIT (noyau) |
 | Gemma 4 E4B | modèle de réponse | conditions de Google, voir la fiche du modèle |
 | bge-m3 | modèle d'embedding | MIT |
 | Speaches, faster-whisper-small | transcription | MIT |
@@ -252,7 +268,6 @@ Détail et variantes : [annexe A1](docs/ragflow/annexes/A1-evaluation-qualite-et
 | Kvrocks | 2.16.0 |
 | NATS | 2.14.2 |
 | MinIO (`pgsty/silo`) | RELEASE.2026-08-06 |
-| vLLM (serveur de modèles de la machine d'essai) | 0.29.0 |
 | Playwright (captures) | 1.64.1 |
 
 ## Ressources
