@@ -1,0 +1,5 @@
+assistant supprimé : Manuel-Reglages
+base supprimée : Manuel-Ingestion
+restent : bases ['Démo Vélanor', 'Essai-KC-mind_map-1835'] ; assistants ['Démo Vélanor']
+clés 1
+[('gemma4:e4b', 16384)]
