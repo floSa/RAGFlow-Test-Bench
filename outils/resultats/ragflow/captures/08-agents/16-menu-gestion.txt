@@ -1,6 +1,6 @@
 Agent
-Manuel-Agent-Export
-Sauvegardé automatiquement 11/11/2026 17:16:38
+Manuel-Agent-Documentaire
+Sauvegardé automatiquement 11/11/2026 18:05:24
 Save draft
 Exécuter
 Lancer
@@ -8,6 +8,12 @@ Publier
 Gestion
 Commencer
 Conversationnel
+Docs QA Agent
+gemma4:e4b
+llm-service-chat
+Message_0
+Docs QA Agent / content
+Retrieval
 React Flow
 Variable de conversation
 Historique des versions
@@ -16,7 +22,7 @@ Paramètres
 Intégrer dans la page web
 
 == adresse ==
-/agent/08a6538a67c0480d8d149a78f5788a66?category=agent_canvas
+/agent/d45c5de614f047d595f5f3d577763328?category=agent_canvas
 == pastilles ==
 1. Gestion
 2. Variable de conversation
@@ -24,12 +30,15 @@ Intégrer dans la page web
 4. Exporter
 5. Paramètres
 6. Intégrer dans la page web
+7. Manuel-Agent-Documentaire
 == éléments visibles ==
 button | Save draft
 button | Exécuter
 button | Lancer
 button | Publier
 button | Gestion
+input:text | Veuillez entrer une note
+textarea:textarea | Veuillez entrer une note
 button | Zoom In
 button | Zoom Out
 button | Fit View

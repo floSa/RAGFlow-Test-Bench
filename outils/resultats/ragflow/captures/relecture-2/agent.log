@@ -1,0 +1,24 @@
+== phase creer
+étape sans capture : 03-gabarits
+catégorie Recommandé : n, it retrieves relevant document content to provide accurate answers. |  | Stock market research assistant |  | This template helps financial analysts quickly organize information — it can automatically retrieve company data, consolidate financial metrics, and integrate research report insights. |  | Reflective academic paper generator |  | A reflective academic paper generator using local knowledge base, with advanced capabilities in task planning, reasoning, and reflective analysis. Recommended for academic research paper Q&A |  | SEO article writer |  | This SEO article writer automatically generates a complete S
+catégorie Agent : output, ensuring the final result aligns with their intentions. |  | SEO article writer |  | This is a multi-agent version of the SEO blog generation workflow. It simulates a small team of AI “writers”, where each agent plays a specialized role — just like a real editorial team. |  | Reflective academic paper generator |  | A reflective academic paper generator using local knowledge base, with advanced capabilities in task planning, reasoning, and reflective analysis. Recommended for academic research paper Q&A |  | Deep research |  | For professionals in sales, marketing, policy, or consulting, the Multi-Agent Deep 
+catégorie Support client : ing usage support, and coordinating home installation services. |  | Customer feedback disptacher |  | Automatically classify customer reviews using LLM (Large Language Model) and route them via email to the relevant departments.
+catégorie Marketing : Simply type your question (e.g., 'Show me last quarter's top 10 products by revenue') and Text-to-SQL data expert generates the exact SQL, runs it against your database, and returns the results in seconds. |  | SEO article writer |  | This SEO article writer automatically generates a complete SEO-optimized blog article based on a simple user input. You don't need any writing experience. Just provide a topic or short request — the system will handle the rest. |  | Beginner's data analytics assistant |  | A beginner-friendly data analysis assistant that guides you through exploring datasets step-by-step, automa
+catégorie Application grand public : nal tool integration for enhanced reliability. |  | Photo text translator |  | Photo text translator lets you snap any photo containing text—menus, signs, or documents—and instantly recognize and translate it into your language of choice using advanced AI-powered translation technology.
+catégorie Autre : spond to queries. Let's start by setting up your knowledge base in 'Retrieval'!
+étape sans capture : 04-create-workflow
+étape sans capture : 05-choix-du-modele
+étape sans capture : 06-choix-de-la-base
+étape sans capture : 07-workflow-rempli
+agent créé : /agent/d45c5de614f047d595f5f3d577763328?category=undefined
+== phase exporter
+menu « Gestion » : ['Variable de conversation', 'Historique des versions', 'Exporter', 'Paramètres', 'Intégrer dans la page web']
+capture docs/ragflow/img/08-agents/16-menu-gestion.png [(1, 'Gestion'), (2, 'Variable de conversation'), (3, 'Historique des versions'), (4, 'Exporter'), (5, 'Paramètres'), (6, 'Intégrer dans la page web'), (7, 'Manuel-Agent-Documentaire')]
+fichier téléchargé : Manuel-Agent-Documentaire.json ; taille 13430 octets ; clés ['components', 'globals', 'graph', 'history', 'messages', 'path', 'retrieval', 'variables'] ; mentionne la base Démo Vélanor : False
+== phase importer
+capture docs/ragflow/img/08-agents/11-importer-json.png [(1, 'Nom'), (2, 'DSL'), (3, 'Manuel-Agent-Documentaire.json'), (4, 'Enregistrer')]
+après import : /agent/1c263260c5be418c86b589c9f525144c?category=agent_canvas
+blocs du canevas importé : ['Commencer Conversationnel', 'Docs QA Agent gemma4:e4b llm-service-cha', 'Message_0 Docs QA Agent / content', 'Retrieval', '']
+base de l'outil de recherche : DV
+Démo Vélanor
+capture docs/ragflow/img/08-agents/17-agent-importe.png [(1, 'Manuel-Agent-Importe'), (2, 'bloc agent'), (3, 'Retrieval'), (4, 'Récupération depuis'), (5, 'Démo Vélanor')]

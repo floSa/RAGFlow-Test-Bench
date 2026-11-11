@@ -14,11 +14,7 @@ M
 Manuel-Agent-Documentaire
 Dernière sauvegarde à:
 
-11/11/2026 14:30:24
-
-Publié le:
-
-11/11/2026 14:29:36
+11/11/2026 18:05:24
 
 AV
 Agent démo Vélanor
@@ -38,7 +34,7 @@ Glissez-déposez votre fichier ici pour le téléverser
 
 Prise en charge du téléversement unique ou en lot. Pour RAGFlow en local : 1 Go max par téléversement, jusqu'à 32 fichiers. Pour cloud.ragflow.io : 10 Mo max par fichier uploadDescription128 fichiers au total.
 
-agent-exporte.json
+Manuel-Agent-Documentaire.json
 
 13 KB
 
@@ -51,7 +47,7 @@ Close
 == pastilles ==
 1. Nom
 2. DSL
-3. agent-exporte.json
+3. Manuel-Agent-Documentaire.json
 4. Enregistrer
 == éléments visibles ==
 a | 

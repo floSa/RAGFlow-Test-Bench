@@ -14,14 +14,14 @@ Un **agent** est un enchaînement de blocs reliés entre eux, dessiné sur un **
 
 **Étape 1. Choisir comment créer l'agent**
 *Où* : barre du haut › « Agent » › onglet « Workflow » › « + ».
-La liste des agents s'affiche ; « Agent démo Vélanor », visible ici, a été créé selon la procédure des étapes 1 à 3, avec le même modèle d'agent et la base « Démo Vélanor » (chapitre 05, dernière partie). Cliquer sur « + » : le menu propose trois départs. Choisir « Créer depuis un modèle » (pastille 2).
+La liste des agents s'affiche. « Agent démo Vélanor », visible ici, n'est pas créé par ce manuel : il fait partie du jeu de démonstration de la machine d'essai, où un script d'essai de l'API (annexe [A3](../annexes/A3-automatiser-par-l-api.md)) l'a créé à partir du même modèle d'agent, relié à la base « Démo Vélanor » du chapitre 05 ; il n'est pas nécessaire pour suivre ce chapitre. Cliquer sur « + » : le menu propose trois départs. Choisir « Créer depuis un modèle » (pastille 2).
 
 ![Menu de création d'un agent](../img/08-agents/01-menu-de-creation.png)
 *Écran : Agent, onglet « Workflow », menu de création ouvert.*
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | « Créer depuis un blanc » | canevas réduit au bloc « Commencer » (étape 14) |
+| 1 | « Créer depuis un blanc » | canevas réduit au bloc « Commencer » (étape 15) |
 | 2 | « Créer depuis un modèle » | part d'un modèle d'agent prêt à l'emploi |
 | 3 | « Importer un fichier JSON » | recrée un agent exporté (étape 13) |
 
@@ -198,10 +198,10 @@ Le menu « Gestion » propose : « Variable de conversation » (informations par
 
 **Étape 12. Exporter l'agent**
 *Où* : canevas › « Gestion » › « Exporter ».
-Cliquer sur « Gestion » (pastille 1), puis sur « Exporter » (pastille 4). Le navigateur télécharge aussitôt un fichier nommé d'après l'agent, par exemple `Manuel-Agent-Export.json`, dans le dossier « Téléchargements » de Windows ; aucune fenêtre ne s'ouvre.
+Dans le canevas de « Manuel-Agent-Documentaire », l'agent construit aux étapes 1 à 9 (son nom en haut à gauche, pastille 7), cliquer sur « Gestion » (pastille 1), puis sur « Exporter » (pastille 4). Le navigateur télécharge aussitôt un fichier nommé d'après l'agent, `Manuel-Agent-Documentaire.json`, dans le dossier « Téléchargements » de Windows ; aucune fenêtre ne s'ouvre.
 
 ![Menu Gestion d'un agent](../img/08-agents/16-menu-gestion.png)
-*Écran : canevas d'un agent, menu « Gestion » ouvert.*
+*Écran : canevas de « Manuel-Agent-Documentaire », menu « Gestion » ouvert.*
 
 | N° | Élément | Rôle |
 |---|---|---|
@@ -211,14 +211,15 @@ Cliquer sur « Gestion » (pastille 1), puis sur « Exporter » (pastille 4). Le
 | 4 | « Exporter » | télécharge l'agent dans un fichier `.json` |
 | 5 | « Paramètres » | « Titre », « Photo », « Description », « Autorisations » (chapitre 13) |
 | 6 | « Intégrer dans la page web » | code d'intégration (étape 11) |
+| 7 | « Manuel-Agent-Documentaire » | nom de l'agent, repris dans le nom du fichier exporté |
 
-*Résultat* : le fichier contient le dessin de l'agent (blocs, liens et réglages) ; il se réimporte à l'étape suivante, sur la même installation ou sur une autre.
+*Résultat* : le fichier `Manuel-Agent-Documentaire.json` (13 Ko) contient le dessin de l'agent : blocs, liens et réglages. La base reliée y est désignée par son identifiant interne, propre à cette installation. Il se réimporte à l'étape suivante.
 
 ## Importer un agent depuis un fichier JSON
 
 **Étape 13. Recréer un agent exporté**
 *Où* : barre du haut › « Agent » › « + » › « Importer un fichier JSON ».
-Saisir un nom (pastille 1), déposer le fichier exporté à l'étape 12 dans « DSL » (pastilles 2 et 3), puis cliquer sur « Enregistrer » (pastille 4). Cela sert par exemple à copier un agent vers une autre installation de RAGFlow.
+Saisir un nom (pastille 1), déposer le fichier `Manuel-Agent-Documentaire.json` exporté à l'étape 12 dans « DSL » (pastilles 2 et 3), puis cliquer sur « Enregistrer » (pastille 4). Cela sert à dupliquer un agent, ou à le copier vers une autre installation de RAGFlow.
 
 ![Importer un fichier JSON](../img/08-agents/11-importer-json.png)
 *Écran : fenêtre d'import d'un agent.*
@@ -227,14 +228,31 @@ Saisir un nom (pastille 1), déposer le fichier exporté à l'étape 12 dans « 
 |---|---|---|
 | 1 | « Nom » | nom du nouvel agent, ici « Manuel-Agent-Importe » |
 | 2 | « DSL » | le fichier de l'agent (onglet « Fichiers ») |
-| 3 | `agent-exporte.json` | fichier exporté |
+| 3 | `Manuel-Agent-Documentaire.json` | fichier exporté à l'étape 12 |
 | 4 | « Enregistrer » | crée l'agent et ouvre son canevas |
 
-*Résultat* : l'agent importé s'ouvre, puis apparaît dans la liste : c'est une copie de l'original, mêmes blocs et même base.
+*Résultat* : le canevas de l'agent importé s'ouvre (étape suivante).
+
+**Étape 14. Vérifier l'agent importé**
+*Où* : canevas de « Manuel-Agent-Importe » › bloc « Retrieval ».
+Le canevas contient les mêmes blocs que l'original. Cliquer sur le bloc « Retrieval » (pastille 3) : son panneau montre la base reliée (pastille 5).
+
+![Agent importé](../img/08-agents/17-agent-importe.png)
+*Écran : canevas de l'agent importé, panneau « Retrieval » ouvert.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Manuel-Agent-Importe » | nom donné à l'import |
+| 2 | « Docs QA Agent » | bloc agent, avec le même modèle `gemma4:e4b` |
+| 3 | « Retrieval » | outil de recherche, comme dans l'original |
+| 4 | « Récupération depuis » | « Ensemble de données » : la recherche se fait dans une base |
+| 5 | « Démo Vélanor » | même base que l'original |
+
+*Résultat* : l'agent importé est une copie complète de l'original, mêmes blocs, même modèle et même base ; il apparaît aussi dans la liste des agents. Sur une autre installation, la base d'origine n'existe pas sous le même identifiant : la choisir de nouveau dans ce panneau (cas non essayé).
 
 ## Partir d'un canevas vide
 
-**Étape 14. Ajouter un bloc**
+**Étape 15. Ajouter un bloc**
 *Où* : barre du haut › « Agent » › « + » › « Créer depuis un blanc ».
 Saisir un nom, ici « Manuel-Agent-Vierge », et cliquer sur « Confirmer ». Le canevas ne contient que « Commencer ». Survoler ce bloc et cliquer sur le « + » de son bord droit (pastille 1) : le menu « Étape suivante » liste les blocs. Choisir « Récupération » dans « Fondation » (pastille 2), puis cliquer sur « Save draft ».
 
@@ -256,7 +274,7 @@ Saisir un nom, ici « Manuel-Agent-Vierge », et cliquer sur « Confirmer ». Le
 
 Une **mémoire** garde les échanges d'un agent d'une session à l'autre, rangés pour être retrouvés ensuite par le sens, comme les passages d'une base.
 
-**Étape 15. Créer une mémoire**
+**Étape 16. Créer une mémoire**
 *Où* : barre du haut › « Mémoire » › « + ».
 La page affiche « Aucune mémoire créée pour le moment ». Cliquer sur « + », saisir le nom (pastille 1), choisir ce qui est gardé (pastille 2), garder les modèles proposés (pastilles 3 et 4), puis cliquer sur « Confirmer » (pastille 5).
 
@@ -273,13 +291,13 @@ La page affiche « Aucune mémoire créée pour le moment ». Cliquer sur « + �
 
 *Résultat* : la mémoire apparaît dans la liste. Sa page a deux onglets : « Messages » (souvenirs enregistrés) et « Configuration » (nom, avatar, description, modèles, type, « Taille de la mémoire (Bytes) » et « Paramètres avancés » de l'extraction).
 
-**Étape 16. Relier la mémoire à l'agent**
+**Étape 17. Relier la mémoire à l'agent**
 *Où* : barre du haut › « Agent » › canevas de « Manuel-Agent-Documentaire » › bloc « Message_0 ».
 Ouvrir la liste « Enregistrer en mémoire » (étape 7, pastille 5) et choisir « Manuel-Memoire ». Fermer le panneau et cliquer sur « Save draft ». Puis « Lancer », « + » (nouvelle session), et poser « Combien de salariés compte Vélanor au 31 décembre 2025 ? » : l'agent répond 412 salariés, avec le détail par site.
 
 *Résultat* : l'échange est envoyé à la mémoire (étape suivante).
 
-**Étape 17. Lire les souvenirs enregistrés**
+**Étape 18. Lire les souvenirs enregistrés**
 *Où* : barre du haut › « Mémoire » › « Manuel-Memoire » › onglet « Messages ».
 L'échange de l'étape 16 y figure (pastille 1).
 
@@ -298,7 +316,7 @@ L'échange de l'étape 16 y figure (pastille 1).
 
 MCP (Model Context Protocol) est une façon standard de proposer des outils à un modèle d'IA : lire un agenda, interroger un logiciel métier… Un serveur MCP déclaré ici ajoute ses outils à l'onglet « MCP » de « Ajouter des outils » (étape 5).
 
-**Étape 18. Ajouter un serveur MCP**
+**Étape 19. Ajouter un serveur MCP**
 *Où* : menu du compte (pastille aux initiales, en haut à droite) › « MCP » › « Ajouter MCP ».
 La page « Serveurs MCP » affiche « Aucun serveur MCP disponible », avec « Rechercher », « Gestion en masse » (actions sur plusieurs serveurs), « Importer » et « Ajouter MCP ». Cliquer sur « Ajouter MCP », remplir la fenêtre (pastilles 1 à 4) et cliquer sur « Enregistrer » (pastille 5).
 
