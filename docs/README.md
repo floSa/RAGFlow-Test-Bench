@@ -7,7 +7,7 @@ Manuels vérifiés de solutions de RAG local sous Windows 11 + WSL2. Chaque solu
 | Solution | Version décrite | Date des essais | Machine de test | Langue de l'interface | Manuels |
 |---|---|---|---|---|---|
 | Open Notebook | 1.15.1 | 2026-11-08 et 2026-11-09 | Intel Core Ultra 7 255H, 15,3 Go (WSL), sans GPU NVIDIA, socle Ollama sur CPU ; puis Ryzen 5 9600X, RTX 4060 Ti 16 Go, socle vLLM | français (langue du navigateur) | dépôt https://github.com/floSa/Open-Notebook-Test-Bench |
-| RAGFlow | v1.0.0 | 2026-11-09 | Ryzen 5 9600X, 32 Go (WSL), RTX 4060 Ti 16 Go ; socle vLLM 0.29.0 | français (sélecteur de l'en-tête ; page de connexion en anglais) | [présentation](ragflow/presentation.md), [index](ragflow/README.md) |
+| RAGFlow | v1.0.0 | 2026-11-09 | Ryzen 5 9600X, 32 Go (WSL), RTX 4060 Ti 16 Go ; socle vLLM 0.29.0 | français (sélecteur de l'en-tête ; page de connexion en anglais) | [manuel utilisateur](ragflow/README.md) |
 
 ## Comparatif du banc
 
@@ -32,10 +32,10 @@ Lecture :
 
 | Profil | Parcours |
 |---|---|
-| Découvrir le RAG local | [glossaire](glossaire.md), puis [notions fondamentales de RAGFlow](ragflow/00-notions-fondamentales.md) |
-| Installer et essayer rapidement | [présentation](ragflow/presentation.md), [installation](ragflow/01-installation.md), [prise en main](ragflow/02-prise-en-main.md) |
-| Choisir entre solutions | comparatif ci-dessus, puis [Qualité et performances de RAGFlow](ragflow/12-qualite-et-performances.md) |
-| Automatiser | [API HTTP et SDK Python](ragflow/10-api-et-sdk.md) |
+| Découvrir le RAG local | [glossaire](glossaire.md), puis [Découvrir RAGFlow](ragflow/manuel/01-decouvrir-ragflow.md), puis l'annexe [Fonctionnement interne](ragflow/annexes/A5-fonctionnement-interne.md) |
+| Installer et essayer rapidement | chapitres [01 à 04 du manuel RAGFlow](ragflow/README.md#par-où-commencer) |
+| Choisir entre solutions | comparatif ci-dessus, puis annexes [Qualité et performances](ragflow/annexes/A1-evaluation-qualite-et-performances.md) et [Matériel et modèles](ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md) de RAGFlow |
+| Automatiser | [Automatiser par l'API](ragflow/annexes/A3-automatiser-par-l-api.md) |
 
 ## Conventions
 

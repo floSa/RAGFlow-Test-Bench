@@ -1,6 +1,8 @@
 # RAGFlow — banc d'essai et manuels vérifiés
 
-**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 parties, avec 164 captures d'écran annotées.**
+**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 chapitres suivi de 6 annexes, avec 164 captures d'écran annotées.**
+
+**Le manuel utilisateur commence ici : [docs/ragflow/README.md](docs/ragflow/README.md).**
 
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 ![RAGFlow](https://img.shields.io/badge/RAGFlow-v1.0.0-1E88E5)
@@ -89,7 +91,7 @@ uv run python outils/ragflow/verif_minimale.py
 | Administration | http://127.0.0.1:9381/api/v1/admin | compte `admin@ragflow.io` |
 | Santé | http://127.0.0.1:9380/api/v1/system/healthz | sans authentification |
 
-Installation complète, mémoire et désinstallation : [manuel 01](docs/ragflow/01-installation.md).
+Installation complète, mémoire et désinstallation : [chapitre 02](docs/ragflow/manuel/02-installer-ragflow.md) et [annexe A4](docs/ragflow/annexes/A4-exploitation.md).
 
 ## Configuration
 
@@ -117,7 +119,7 @@ LLM-Service (dépôt séparé, branche `service-vllm`) : `gemma4:e4b` (`--max-mo
 | Modèles | `POST /api/v1/providers/{fournisseur}/instances`, `PATCH /api/v1/models/default` |
 | Administration | `POST /api/v1/admin/login`, `GET /api/v1/admin/users` (port 9381) |
 
-SDK `ragflow-sdk` 1.0.0 (Python 3.13) : deux défauts et leurs contournements dans le [manuel 10](docs/ragflow/10-api-et-sdk.md).
+SDK `ragflow-sdk` 1.0.0 (Python 3.13) : deux défauts et leurs contournements dans le [annexe A3](docs/ragflow/annexes/A3-automatiser-par-l-api.md).
 
 ## Tests
 
@@ -140,7 +142,7 @@ Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](o
 ├── docs/
 │   ├── README.md                    # index de la série et comparatif du banc
 │   ├── glossaire.md
-│   └── ragflow/                     # présentation, plan, manuels 00 à 14, images
+│   └── ragflow/                     # manuel : accueil, manuel/ (chapitres 01 à 16), annexes/ (A1 à A6), images
 ├── exemples/ragflow/                # six exemples et leurs sorties vérifiées
 ├── outils/
 │   ├── communs/                     # diagnostic, LLM-Service, banc, captures, vérification, nettoyage
@@ -170,26 +172,40 @@ Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](o
 
 ## Le parcours
 
-| N° | Manuel | Ce qu'on saura faire |
-|---|---|---|
-| 00 | [Notions fondamentales](docs/ragflow/00-notions-fondamentales.md) | comprendre le RAG et l'architecture de RAGFlow |
-| 01 | [Installation](docs/ragflow/01-installation.md) | installer sans exposition réseau, mesurer, désinstaller |
-| 02 | [Prise en main](docs/ragflow/02-prise-en-main.md) | obtenir une première réponse citée |
-| 03 | [Datasets et découpage](docs/ragflow/03-datasets-et-decoupage.md) | choisir un gabarit de découpage |
-| 04 | [DeepDoc](docs/ragflow/04-deepdoc.md) | lire un scan, corriger un passage |
-| 05 | [Assistants et citations](docs/ragflow/05-assistants-et-citations.md) | régler la recherche, vérifier les sources |
-| 06 | [Agentic RAG](docs/ragflow/06-agentic-rag.md) | savoir quand le mode agentique aide |
-| 07 | [Knowledge Compilation](docs/ragflow/07-knowledge-compilation.md) | produire un graphe, un arbre, une frise, une carte mentale à la souris |
-| 08 | [Agents](docs/ragflow/08-agents.md) | construire, essayer, publier un agent ; mémoire, MCP |
-| 09 | [Sources externes](docs/ragflow/09-sources-externes.md) | déclarer une source, la lier à une base ; canaux de chat |
-| 10 | [API et SDK](docs/ragflow/10-api-et-sdk.md) | automatiser |
-| 11 | [Recettes](docs/ragflow/11-recettes.md) | assistant d'entreprise, ingestion quotidienne |
-| 12 | [Qualité et performances](docs/ragflow/12-qualite-et-performances.md) | lire le banc, dimensionner la machine |
-| 13 | [Exploitation](docs/ragflow/13-exploitation.md) | sauvegarder, mettre à jour, sécuriser |
-| 14 | [Dépannage](docs/ragflow/14-depannage.md) | résoudre les problèmes rencontrés |
-| 15 | [Applications de recherche](docs/ragflow/15-recherche.md) | chercher dans une base, lire le résumé et la carte mentale, intégrer la recherche |
+Le manuel se lit depuis sa page d'accueil, [docs/ragflow/README.md](docs/ragflow/README.md). Partie 1 : manuel utilisateur, à lire dans l'ordre, sans prérequis technique.
 
-Parcours conseillés : découvrir ([présentation](docs/ragflow/presentation.md), 00, 01, 02) ; améliorer les réponses (03, 04, 05, 12) ; automatiser (10, 11, 08).
+| N° | Chapitre | Ce qu'on saura faire |
+|---|---|---|
+| 01 | [Découvrir RAGFlow](docs/ragflow/manuel/01-decouvrir-ragflow.md) | dire à quoi sert RAGFlow, pour qui et avec quelle machine |
+| 02 | [Installer RAGFlow](docs/ragflow/manuel/02-installer-ragflow.md) | installer sans exposition réseau, démarrer, arrêter, désinstaller |
+| 03 | [Premiers pas](docs/ragflow/manuel/03-premiers-pas.md) | se connecter, passer en français, se repérer, déclarer les modèles |
+| 04 | [Première question en dix minutes](docs/ragflow/manuel/04-premiere-question.md) | obtenir une première réponse citée |
+| 05 | [Ajouter et organiser ses documents](docs/ragflow/manuel/05-ajouter-et-organiser-ses-documents.md) | gérer bases et fichiers, métadonnées, journaux |
+| 06 | [Régler la lecture des documents](docs/ragflow/manuel/06-regler-la-lecture-des-documents.md) | choisir un gabarit, lire un scan, corriger un passage |
+| 07 | [Poser des questions et lire les sources](docs/ragflow/manuel/07-poser-des-questions-et-lire-les-sources.md) | converser, vérifier les sources, « Naive » ou « Agentic », publier |
+| 08 | [Régler un assistant](docs/ragflow/manuel/08-regler-un-assistant.md) | appliquer les réglages qui améliorent les réponses |
+| 09 | [Rechercher dans ses documents](docs/ragflow/manuel/09-rechercher.md) | page de recherche avec résumé et carte mentale |
+| 10 | [Construire un agent](docs/ragflow/manuel/10-agents.md) | agent depuis un modèle, essai, publication, mémoire, MCP |
+| 11 | [Produire des synthèses automatiques](docs/ragflow/manuel/11-syntheses-automatiques.md) | graphe, arbre, frise, carte mentale à la souris |
+| 12 | [Alimenter une base depuis une source externe](docs/ragflow/manuel/12-sources-externes.md) | source « Sitemap », journal de synchronisation, canaux de chat |
+| 13 | [Gérer son compte, son équipe et ses clés](docs/ragflow/manuel/13-comptes-equipe-et-cles.md) | équipe, profil, clés d'accès, console d'administration |
+| 14 | [Cas pratiques](docs/ragflow/manuel/14-cas-pratiques.md) | assistant documentaire d'entreprise, base alimentée chaque jour |
+| 15 | [En cas de problème](docs/ragflow/manuel/15-en-cas-de-probleme.md) | reconnaître une erreur et appliquer le remède |
+| 16 | [Glossaire](docs/ragflow/manuel/16-glossaire.md) | retrouver la définition simple de chaque terme |
+
+Partie 2 : évaluation et compléments.
+
+| Annexe | Contenu |
+|---|---|
+| [A1. Évaluation : qualité et performances](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md) | banc de 38 questions, réglages qui changent le résultat, préconisations |
+| [A2. Choisir son matériel et ses modèles](docs/ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md) | configurations sans et avec carte graphique, contexte, temps d'attente |
+| [A3. Automatiser par l'API](docs/ragflow/annexes/A3-automatiser-par-l-api.md) | API HTTP, SDK Python, exemples exécutés, défauts contournés |
+| [A4. Exploitation](docs/ragflow/annexes/A4-exploitation.md) | installation détaillée, sauvegarde, mise à jour, journaux, sécurité, administration |
+| [A5. Fonctionnement interne](docs/ragflow/annexes/A5-fonctionnement-interne.md) | RAG, architecture, services, DeepDoc |
+| [A6. Rapport d'essais](docs/ragflow/annexes/A6-rapport-d-essais.md) | méthode, étiquettes, preuves par chapitre, défauts rencontrés |
+| [Carte de l'interface](docs/ragflow/annexes/carte-interface.md) | chaque page et réglage de l'interface, avec son chapitre |
+
+Parcours conseillés : essayer en une heure (chapitres 01 à 04) ; mettre en service pour une équipe (05 à 08, puis 13 et 14) ; améliorer les réponses (06, 08, annexe A1) ; automatiser et exploiter (annexes A3, A4, A5).
 
 ## Commandes utiles
 
@@ -224,7 +240,7 @@ Entreprise fictive Vélanor (vélos électriques), 9 documents, 1 Mo, empreintes
 | Vecteurs 0,7, `top_n` 8 | 34 | 4 | 34 | 1,36 s | 4,9 Gio |
 | Mode agentique | 30 | 4 | 29 | 4,52 s | 5,2 Gio |
 
-Détail et variantes : [manuel 12](docs/ragflow/12-qualite-et-performances.md) ; comparaison avec Open Notebook : [docs/README.md](docs/README.md).
+Détail et variantes : [annexe A1](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md) ; comparaison avec Open Notebook : [docs/README.md](docs/README.md).
 
 ## Versions
 

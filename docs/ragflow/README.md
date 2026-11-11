@@ -36,8 +36,6 @@ Les quatre premiers chapitres mènent, en une heure environ, de rien à une prem
 | 15 | [En cas de problème](manuel/15-en-cas-de-probleme.md) | reconnaître un message d'erreur, en trouver la cause et appliquer le remède |
 | 16 | [Glossaire](manuel/16-glossaire.md) | retrouver la définition simple de chaque terme employé |
 
-Les chapitres 09 à 16 sont en cours de réécriture ; chacun renvoie d'ici là à l'ancien manuel qui couvre son sujet.
-
 ## Partie 2 — Évaluation et compléments
 
 | Annexe | Contenu |
@@ -45,8 +43,8 @@ Les chapitres 09 à 16 sont en cours de réécriture ; chacun renvoie d'ici là 
 | [A1. Évaluation : qualité et performances](annexes/A1-evaluation-qualite-et-performances.md) | résultats du banc de 38 questions, réglages qui changent le résultat, préconisations |
 | [A2. Choisir son matériel et ses modèles](annexes/A2-choisir-son-materiel-et-ses-modeles.md) | configurations minimales sans et avec carte graphique, taille de contexte, temps d'attente |
 | [A3. Automatiser par l'API](annexes/A3-automatiser-par-l-api.md) | API HTTP et module Python, exemples exécutés, défauts contournés |
-| [A4. Exploitation](annexes/A4-exploitation.md) | sauvegarde et restauration, mise à jour, journaux, sécurité, console d'administration |
-| [A5. Fonctionnement interne](annexes/A5-fonctionnement-interne.md) | architecture, services, ports, installation détaillée, notions techniques |
+| [A4. Exploitation](annexes/A4-exploitation.md) | installation détaillée, sauvegarde et restauration, mise à jour, journaux, sécurité, administration |
+| [A5. Fonctionnement interne](annexes/A5-fonctionnement-interne.md) | RAG, architecture, services, ports, modèles, DeepDoc |
 | [A6. Rapport d'essais](annexes/A6-rapport-d-essais.md) | méthode, preuves, étiquettes, renvois aux résultats bruts |
 | [Carte de l'interface](annexes/carte-interface.md) | chaque page, menu et réglage de l'interface, avec le chapitre qui le décrit |
 
@@ -76,4 +74,4 @@ Les chapitres 09 à 16 sont en cours de réécriture ; chacun renvoie d'ici là 
 | Décisions en attente | montée de vLLM dans LLM-Service ; port 8088 au lieu de 8080 ; reranker ; ports ouverts sur tout le réseau par des services hors mission (voir le [rapport](../../RAPPORT-ragflow.md)) |
 | Ménage à faire à la main | images Docker gardées en cache ; sauvegarde de test dans `donnees/sauvegardes/` |
 | Écarts de version | moteur de recherche, mémoire tampon, file d'attente et stockage à la version du fichier officiel (Elasticsearch 8.11.3, Kvrocks 2.16.0, NATS 2.14.2, MinIO d'août 2026) : plus récentes disponibles, non montées sans essai |
-| Restructuration | chapitres 09 à 16 et annexes A1 à A6 en cours de réécriture ; anciens manuels 00 à 15 encore présents, à retirer une fois leur contenu repris |
+| Relectures | relecture par un lecteur novice de la partie 1 et relecture adversariale des annexes, à refaire sur le manuel restructuré |

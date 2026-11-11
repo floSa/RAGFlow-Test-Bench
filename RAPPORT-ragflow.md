@@ -42,26 +42,12 @@ Aucun modèle téléchargé (modèles déjà servis par LLM-Service ; modèles D
 
 ## 3. Manuels écrits
 
-Première page : [présentation](docs/ragflow/presentation.md) ; index : [docs/ragflow/README.md](docs/ragflow/README.md) ; série et comparatif : [docs/README.md](docs/README.md).
+Page d'accueil du manuel : [docs/ragflow/README.md](docs/ragflow/README.md) ; série et comparatif : [docs/README.md](docs/README.md).
 
-| N° | Manuel |
+| Partie | Contenu |
 |---|---|
-| 00 | [Notions fondamentales](docs/ragflow/00-notions-fondamentales.md) |
-| 01 | [Installation sous Windows et WSL2](docs/ragflow/01-installation.md) |
-| 02 | [Prise en main](docs/ragflow/02-prise-en-main.md) |
-| 03 | [Datasets et découpage](docs/ragflow/03-datasets-et-decoupage.md) |
-| 04 | [DeepDoc et correction des passages](docs/ragflow/04-deepdoc.md) |
-| 05 | [Assistants de chat et citations](docs/ragflow/05-assistants-et-citations.md) |
-| 06 | [Agentic RAG](docs/ragflow/06-agentic-rag.md) |
-| 07 | [Knowledge Compilation](docs/ragflow/07-knowledge-compilation.md) |
-| 08 | [Agents et gabarits](docs/ragflow/08-agents.md) |
-| 09 | [Sources externes](docs/ragflow/09-sources-externes.md) |
-| 10 | [API HTTP et SDK Python](docs/ragflow/10-api-et-sdk.md) |
-| 11 | [Recettes](docs/ragflow/11-recettes.md) |
-| 12 | [Qualité et performances](docs/ragflow/12-qualite-et-performances.md) |
-| 13 | [Exploitation](docs/ragflow/13-exploitation.md) |
-| 14 | [Dépannage et FAQ](docs/ragflow/14-depannage.md) |
-| 15 | [Applications de recherche](docs/ragflow/15-recherche.md) |
+| 1. Manuel utilisateur | 16 chapitres à lire dans l'ordre : [01. Découvrir RAGFlow](docs/ragflow/manuel/01-decouvrir-ragflow.md), [02. Installer](docs/ragflow/manuel/02-installer-ragflow.md), [03. Premiers pas](docs/ragflow/manuel/03-premiers-pas.md), [04. Première question](docs/ragflow/manuel/04-premiere-question.md), [05. Documents](docs/ragflow/manuel/05-ajouter-et-organiser-ses-documents.md), [06. Lecture des documents](docs/ragflow/manuel/06-regler-la-lecture-des-documents.md), [07. Questions et sources](docs/ragflow/manuel/07-poser-des-questions-et-lire-les-sources.md), [08. Régler un assistant](docs/ragflow/manuel/08-regler-un-assistant.md), [09. Rechercher](docs/ragflow/manuel/09-rechercher.md), [10. Agents](docs/ragflow/manuel/10-agents.md), [11. Synthèses automatiques](docs/ragflow/manuel/11-syntheses-automatiques.md), [12. Sources externes](docs/ragflow/manuel/12-sources-externes.md), [13. Comptes, équipe et clés](docs/ragflow/manuel/13-comptes-equipe-et-cles.md), [14. Cas pratiques](docs/ragflow/manuel/14-cas-pratiques.md), [15. En cas de problème](docs/ragflow/manuel/15-en-cas-de-probleme.md), [16. Glossaire](docs/ragflow/manuel/16-glossaire.md) |
+| 2. Évaluation et compléments | [A1. Qualité et performances](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md), [A2. Matériel et modèles](docs/ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md), [A3. API](docs/ragflow/annexes/A3-automatiser-par-l-api.md), [A4. Exploitation](docs/ragflow/annexes/A4-exploitation.md), [A5. Fonctionnement interne](docs/ragflow/annexes/A5-fonctionnement-interne.md), [A6. Rapport d'essais](docs/ragflow/annexes/A6-rapport-d-essais.md) |
 
 Manuel utilisateur refait le 11 novembre 2026 : chaque action faite à la souris, 164 captures annotées (rectangle rouge, pastille numérotée, tableau N° | Élément | Rôle), carte de l'interface dans [docs/ragflow/annexes/carte-interface.md](docs/ragflow/annexes/carte-interface.md) (4 éléments non couverts, raison donnée). Exemples exécutés : `exemples/ragflow/` et [sorties vérifiées](exemples/ragflow/sorties_verifiees.txt).
 
