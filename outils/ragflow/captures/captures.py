@@ -1,7 +1,8 @@
 """Captures des manuels RAGFlow (interface en français : langue du compte réglée par outils/ragflow/configurer.py).
 
 Lancement : outils/communs/captures/lancer.sh outils/ragflow/captures/captures.py <scénario> [...]
-Scénarios : explorer (repérage, images dans donnees/captures-explorer, non versionnées), puis un scénario par manuel.
+Scénarios : explorer (repérage, images dans donnees/captures-explorer, non versionnées), puis un scénario par manuel ;
+les manuels 03 à 06 ont leur propre script, outils/ragflow/captures/manuels_03_06.py, qui reprend ces helpers.
 Images des manuels : docs/ragflow/img/<manuel>/NN-nom.png. Aucun secret n'est saisi à l'écran avant capture.
 Le conteneur Playwright rejoint rag-local : RAGFlow s'ouvre sous http://rag-ragflow-server (port 80 interne).
 """
@@ -403,34 +404,6 @@ def phase_demo(s, m, nav):
     texte(s, "Démo Vélanor").click(); s.pg.wait_for_timeout(4000)
     texte(s, "Contrat Batterix").click(); s.pg.wait_for_timeout(4000)
     citations(s, m, "Quel est le prix unitaire des batteries")
-
-
-def decoupage(s):
-    m = "03-datasets-et-decoupage"
-    s.connexion(); s.francais()
-    s.aller("/datasets"); cliquer(s, "Démo Vélanor", 4000)
-    cliquer(s, "Configuration", 3000); s.shot(m, "01-configuration", plein=True); s.texte("03-configuration")
-    cliquer(s, "Test de récupération", 3000)
-    champ = s.pg.locator("textarea:visible").first
-    champ.fill("pénalités de retard du contrat Batterix")
-    s.pg.get_by_role("button", name="Test", exact=True).first.click()
-    s.pg.wait_for_timeout(5000); s.shot("05-assistants-et-citations", "01-test-de-recuperation"); s.texte("05-test-recuperation")
-
-
-def assistant_reglages(s):
-    m = "05-assistants-et-citations"
-    s.connexion(); s.francais()
-    s.aller("/chats"); cliquer(s, "Démo Vélanor", 4000)
-    s.pg.locator("button:has(svg.lucide-settings), [class*=setting]").last.click()
-    s.pg.wait_for_timeout(2500); s.shot(m, "02-reglages-assistant", plein=True); s.texte("05-reglages")
-
-
-def agentique(s):
-    m = "06-agentic-rag"
-    s.connexion(); s.francais()
-    s.aller("/chats"); cliquer(s, "Démo Vélanor", 4000); cliquer(s, "Audit fournisseur", 3000)
-    s.pg.get_by_text("Naive", exact=True).first.click(); s.pg.wait_for_timeout(1500)
-    s.shot(m, "01-modes-de-reponse"); s.texte("06-modes")
 
 
 def agents(s):
