@@ -870,6 +870,169 @@ def agents(s, *phases):
         globals()["agents_" + ph](s)
 
 
+# ---------------------------------------------------------------- manuel 09
+
+M09 = "09-sources-externes"
+SRC_09 = "Manuel-Source-Sitemap"
+BASE_09 = "Manuel-Sources"
+SITEMAP_09 = "http://rag-site-test/sitemap.xml"
+
+
+def page_compte(s, entree):
+    s.aller("/", 2000)
+    s.pg.locator("header a").filter(has_text="BR").first.click(); attendre(s, 3000)
+    bouton(s, entree).click(); attendre(s, 2500)
+
+
+def carte_source(s, nom):
+    return s.pg.get_by_text(nom, exact=True).first.locator("xpath=ancestor::article[1]")
+
+
+def sources_ajout(s):
+    """« Sources de données » : liste, ajout d'une source Sitemap vers le site local, test refusé, enregistrement."""
+    m = M09
+    page_compte(s, "Sources de données")
+    cap(s, m, "01-sources-de-donnees", [
+        (bouton(s, "Sources de données"), "Sources de données"),
+        (s.pg.get_by_text("Aucune source de données ajoutée", exact=False).first, "Aucune source de données ajoutée"),
+        (s.pg.get_by_text("Sources disponibles").filter(visible=True).first, "Sources disponibles"),
+        (carte_source(s, "Confluence"), "Confluence")])
+    log("sources disponibles :", " | ".join(s.pg.locator("article h3").all_inner_texts()))
+    carte = carte_source(s, "Sitemap")
+    centre(carte); carte.hover(); attendre(s, 800)
+    ajout = carte.get_by_role("button").filter(has_text="Ajouter").first
+    cap(s, m, "02-carte-sitemap", [(carte, "Sitemap"), (ajout, "Ajouter")])
+    ajout.click(); attendre(s, 2000)
+    dlg = s.pg.get_by_role("dialog").last
+    dlg.get_by_placeholder("name").or_(dlg.locator("input[name=name]")).first.fill(SRC_09)
+    url = dlg.get_by_placeholder("https://example.com/sitemap.xml")
+    url.fill(SITEMAP_09)
+    lab = lambda x: dlg.locator("label").filter(has_text=x).first
+    cap(s, m, "03-ajout-sitemap", [(lab("Name"), "Name"), (url, "URL du sitemap"), (lab("Filtre"), "Filtre d'URL (regex)"),
+                                   (lab("Suivre les liens PDF"), "Suivre les liens PDF"),
+                                   (dlg.get_by_role("button", name="Test connection"), "Test connection"),
+                                   (dlg.get_by_role("button", name="Confirmer"), "Confirmer")])
+    with s.pg.expect_response(lambda r: "/connectors/" in r.url and r.url.endswith("/test")) as rep:
+        dlg.get_by_role("button", name="Test connection").click()
+    log("test du connecteur (réponse de l'API) :", rep.value.status, rep.value.text()[:300])
+    msg = s.pg.get_by_text(re.compile("non-public")).last
+    msg.wait_for(state="visible", timeout=8000)
+    log("message affiché :", msg.inner_text())
+    cap(s, m, "04-test-refuse", [(msg, "message de refus"), (dlg.get_by_role("button", name="Test connection"), "Test connection")])
+    dlg.get_by_role("button", name="Confirmer").click(); attendre(s, 3000)
+    log("après Confirmer :", s.pg.locator("body").inner_text()[:900].replace("\n", " | "))
+    sources_detail(s)
+
+
+def sources_detail(s):
+    """Source enregistrée : ligne de la liste, roue dentée (réglages et journal)."""
+    m = M09
+    page_compte(s, "Sources de données")
+    nom = s.pg.get_by_text(SRC_09, exact=True).first
+    rangee = nom.locator("xpath=ancestor::div[.//button][1]")
+    roue = rangee.locator("button:has(svg.lucide-settings)").first
+    corb = rangee.locator("button:has(svg.lucide-trash-2), button:has(svg.lucide-trash)").first
+    cap(s, m, "05-source-ajoutee", [(texte(s, "Sitemap"), "Sitemap"), (nom, SRC_09), (roue, "réglages"), (corb, "supprimer")])
+    roue.click(); attendre(s, 3000)
+    log("réglages de la source :", s.pg.url.replace(URL, ""), s.pg.locator("body").inner_text()[:2500].replace("\n", " | "))
+    labs = [l for l in s.pg.locator("label").all() if l.is_visible() and l.inner_text().strip()][:6]
+    cap(s, m, "06-detail-de-la-source", [(l, l.inner_text().strip()) for l in labs])
+    freq = s.pg.locator("label").filter(has_text="Refresh Freq").first
+    haut(freq)
+    cap(s, m, "07-frequence-et-journal", [(freq, "Refresh Freq"), (s.pg.locator("label").filter(has_text="Timeout Secs").first, "Timeout Secs"),
+                                          (bouton(s, "Test connection"), "Test connection"), (bouton(s, "Enregistrer"), "Enregistrer"),
+                                          (s.pg.get_by_text("Journal", exact=True).first, "Journal")])
+
+
+def sources_liaison(s):
+    """Base « Manuel-Sources » liée à la source par « Lier une source de données » ; synchronisation refusée."""
+    m = M09
+    s.aller("/datasets", 2500)
+    bouton(s, "Créer une base de connaissances").click(); attendre(s, 1500)
+    dlg = s.pg.get_by_role("dialog")
+    dlg.get_by_placeholder("Veuillez saisir un nom !").fill(BASE_09)
+    dlg.get_by_role("button", name="Enregistrer").click(); attendre(s, 4000)
+    s.pg.get_by_role("link", name="Configuration", exact=True).first.click(); attendre(s, 3000)
+    lier = bouton(s, "Lier une source de données")
+    centre(lier)
+    cap(s, m, "08-lier-une-source", [(lier, "Lier une source de données"), (bouton(s, "Enregistrer"), "Enregistrer")])
+    lier.click(); attendre(s, 1500)
+    dlg = s.pg.get_by_role("dialog").last
+    log("fenêtre de liaison :", dlg.inner_text().replace("\n", " | ")[:800])
+    choix = dlg.get_by_text(SRC_09, exact=False).first
+    cap(s, m, "09-choix-de-la-source", [(choix, SRC_09), (dlg.get_by_role("button").last, dlg.get_by_role("button").last.inner_text().strip() or "valider")])
+    choix.click(); attendre(s, 800)
+    dlg.get_by_role("button").last.click(); attendre(s, 2000)
+    log("après liaison :", s.pg.locator("body").inner_text()[-1500:].replace("\n", " | "))
+    lie = s.pg.get_by_text(SRC_09, exact=False).last
+    centre(lie)
+    cap(s, m, "10-source-liee", [(lie.locator("xpath=.."), SRC_09), (bouton(s, "Enregistrer"), "Enregistrer")])
+    bouton(s, "Enregistrer").click(); attendre(s, 3000)
+    t0 = time.time()
+    while time.time() - t0 < 180:
+        ouvrir_base(s, BASE_09, "Journaux")
+        bouton(s, "Data source").click(); attendre(s, 2500)
+        if s.pg.locator("tbody tr").count() and "Aucun" not in s.pg.locator("tbody").inner_text():
+            break
+        time.sleep(15)
+    log(f"journal « Data source » après {time.time() - t0:.0f} s :", s.pg.locator("body").inner_text()[:2500].replace("\n", " | "))
+    l = s.pg.locator("tbody tr").first
+    cap(s, m, "11-journal-data-source", [(bouton(s, "Data source"), "Data source"), (l, "synchronisation")])
+    oeil = l.locator("td").last.locator("button").first
+    if oeil.count():
+        l.hover(); oeil.click(); attendre(s, 1500)
+        dlg = s.pg.get_by_role("dialog").last
+        log("détail de la synchronisation :", dlg.inner_text().replace("\n", " | ")[:2500])
+        cap(s, m, "12-detail-de-la-synchronisation", [(dlg.get_by_text("Détails").first.locator("xpath=.."), "Détails")])
+        s.pg.keyboard.press("Escape"); attendre(s, 800)
+    s.pg.get_by_role("link", name="Fichiers", exact=True).first.click(); attendre(s, 2500)
+    cap(s, m, "13-base-vide", [(texte(s, BASE_09), BASE_09), (s.pg.locator("tbody").first, "aucun fichier")])
+
+
+def sources_journaux(s):
+    """Journal « Data source » de la base, puis journal de la source (échec de synchronisation)."""
+    m = M09
+    ouvrir_base(s, BASE_09, "Journaux")
+    bouton(s, "Data source").click(); attendre(s, 2500)
+    log("journal « Data source » de la base :", s.pg.locator("main, body").first.inner_text()[-800:].replace("\n", " | "))
+    cap(s, m, "11-journal-data-source", [(bouton(s, "Data source"), "Data source"), (s.pg.locator("tbody").first, "tâches"),
+                                         (s.pg.get_by_text(re.compile(r"^Total")).last, "Total")])
+    page_compte(s, "Sources de données")
+    rangee = s.pg.get_by_text(SRC_09, exact=True).first.locator("xpath=ancestor::div[.//button][1]")
+    rangee.locator("button:has(svg.lucide-settings)").first.click(); attendre(s, 3000)
+    j = s.pg.get_by_text("Journal", exact=True).first
+    haut(j); attendre(s, 600)
+    log("journal de la source :", s.pg.locator("body").inner_text()[-1200:].replace("\n", " | "))
+    l = s.pg.locator("tbody tr").first
+    cap(s, m, "12-journal-de-la-source", [(j, "Journal"), (l, "synchronisation"),
+                                          (l.get_by_text(re.compile("non-public")).first if l.get_by_text(re.compile("non-public")).count() else l.locator("td").last, "Summary")])
+
+
+def sources_canaux(s):
+    """« Canaux de chat » : liste et fenêtre d'ajout Telegram, refermée sans enregistrer."""
+    m = M09
+    page_compte(s, "Canaux de chat")
+    log("canaux disponibles :", " | ".join(s.pg.locator("article h3").all_inner_texts()))
+    cap(s, m, "14-canaux-de-chat", [(bouton(s, "Canaux de chat"), "Canaux de chat"),
+                                    (carte_source(s, "Discord"), "Discord"), (carte_source(s, "Telegram"), "Telegram"),
+                                    (carte_source(s, "WhatsApp"), "WhatsApp")])
+    carte = carte_source(s, "Telegram")
+    carte.hover(); attendre(s, 800)
+    carte.get_by_role("button").filter(has_text="Ajouter").first.click(); attendre(s, 2000)
+    dlg = s.pg.get_by_role("dialog").last
+    log("fenêtre Telegram :", dlg.inner_text().replace("\n", " | "))
+    labs = [l for l in dlg.locator("label").all() if l.is_visible() and l.inner_text().strip()][:5]
+    cap(s, m, "15-ajout-telegram", [(l, l.inner_text().strip()) for l in labs])
+    annuler = dlg.get_by_role("button", name="Annuler")
+    (annuler if annuler.count() else dlg.locator("button:has(svg.lucide-x)").first).click(); attendre(s, 800)
+
+
+def sources(s, *phases):
+    for ph in phases or ("ajout", "liaison", "journaux", "canaux"):
+        log("== phase", ph)
+        globals()["sources_" + ph](s)
+
+
 if __name__ == "__main__":
     scenario, *args = sys.argv[1:]
     with sync_playwright() as p:
