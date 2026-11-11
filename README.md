@@ -1,6 +1,6 @@
 # RAGFlow — banc d'essai et manuels vérifiés
 
-**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en 15 manuels.**
+**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 parties, avec 164 captures d'écran annotées.**
 
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 ![RAGFlow](https://img.shields.io/badge/RAGFlow-v1.0.0-1E88E5)
