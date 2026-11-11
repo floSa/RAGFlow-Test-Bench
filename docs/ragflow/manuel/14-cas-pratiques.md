@@ -69,7 +69,7 @@ L'assistant répond dans la langue de la question. Ses réglages se relisent dan
 
 **Les étapes**
 
-1. Vérifier la clé d'accès du programme : le script du dépôt utilise celle créée à l'installation, rangée dans le fichier `donnees/ragflow/compte.json` (chapitre 02, étape 7). Ce fichier a la forme suivante, avec les vraies valeurs à la place des mentions entre chevrons :
+1. Vérifier la clé d'accès du programme. Le script du dépôt la lit dans le fichier `donnees/ragflow/compte.json`. Ce fichier est créé par le script de configuration `outils/ragflow/configurer.py` (chapitre 02, étape 7), qui y range le compte et une clé d'accès créée pour lui. Si le compte a été créé à la souris (chapitre 02, étape 8), le fichier n'existe pas : créer une clé dans la page « API » (chapitre 13, étapes 10 et 11), puis créer le fichier à la main, par exemple avec `nano donnees/ragflow/compte.json` dans le terminal (Ctrl+O enregistre, Ctrl+X quitte). Il a la forme suivante, avec les vraies valeurs à la place des mentions entre chevrons :
 
    ```json
    {
@@ -80,7 +80,7 @@ L'assistant répond dans la langue de la question. Ses réglages se relisent dan
    }
    ```
 
-   Seule la clé `api_key` sert au script. Si la clé a été supprimée, en créer une (chapitre 13, étape 9) et la coller entre les guillemets de la ligne `api_key`, sans toucher aux autres lignes. Ce fichier contient des secrets : ne pas le copier hors du poste.
+   Seule la ligne `api_key` sert au script : un fichier réduit à `{"api_key": "ragflow-<32 caractères>"}` suffit, en recopiant la clé affichée par la fenêtre « Clé API » entre les guillemets. Si la clé a été supprimée, en créer une nouvelle de la même façon et remplacer l'ancienne valeur, sans toucher aux autres lignes. Ce fichier contient des secrets : ne pas le copier hors du poste, et le protéger avec `chmod 600 donnees/ragflow/compte.json`.
 2. Lancer une première fois l'envoi, dans le terminal WSL, depuis le dossier du dépôt ; la base est créée si elle n'existe pas :
 
    ```bash
