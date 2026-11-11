@@ -1059,8 +1059,8 @@ def agentique_questions(s):
     texte(s, "Conversations").locator("xpath=following::button[1]").click(); attendre(s, 2000)
     envoyer(s, Q30, mode="Naive")
     jetons = s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).last
-    cap(s, m, "04-reponse-naive", [(s.pg.get_by_text(Q30).last, "question"),
-                                   (jetons.locator("xpath=preceding-sibling::*[1]"), "réponse"), (jetons, "jetons et durée"),
+    attendre(s, 2000)
+    cap(s, m, "04-reponse-naive", [(jetons, "jetons et durée"),
                                    (s.pg.get_by_role("combobox").filter(has_text="Naive").first, "Naive")])
 
 
