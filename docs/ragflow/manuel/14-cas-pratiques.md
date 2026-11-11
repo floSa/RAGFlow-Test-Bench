@@ -29,7 +29,7 @@ Un cas pratique enchaîne des tâches déjà décrites une à une dans les chapi
 5. Appliquer les réglages conseillés : « Top N » 8 et 0,7 pour la recherche par le sens (chapitre 08, étape 11) ; écrire le message d'accueil et la « Réponse vide » en français (chapitre 08, étapes 1 et 10).
 6. Vérifier la recherche sans le modèle avec le « Test de récupération » (chapitre 08, étapes 15 et 16).
 7. Poser une question par sujet, chacune dans sa conversation, et vérifier chaque source (chapitre 07, étapes 3 à 6).
-8. Si besoin, publier l'assistant dans une page de l'intranet (chapitre 07, étape 16).
+8. Si besoin, publier l'assistant dans une page de l'intranet (chapitre 07, étape 17).
 
 **Le résultat**
 

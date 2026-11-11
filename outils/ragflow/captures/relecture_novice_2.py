@@ -162,8 +162,9 @@ def modeles_personnalise(s):
 
 # ---------------------------------------------------------------- chapitre 07 : actions d'une réponse (lecture seule)
 
-def actions(s):
-    s.connexion(); s.francais()
+def actions(s, connecte=False):
+    if not connecte:
+        s.connexion(); s.francais()
     s.aller("/chats", 3000)
     texte(s, "Démo Vélanor").click(); attendre(s, 4000)
     texte(s, "Contrat Batterix").click(); attendre(s, 4000)
@@ -179,10 +180,21 @@ def actions(s):
     return bloc
 
 
-def actions_capture(s, indices, libelles):
-    """Capture des icônes repérées (indices dans la liste des boutons visibles)."""
+def actions_capture(s):
+    """Icônes d'une réponse au survol : copier, lire à voix haute, pouce levé, pouce baissé, prompt (PromptIcon de
+    web/src/components/message-item/group-button.tsx, qui ouvre la fenêtre du prompt envoyé au modèle)."""
+    actions(s)
+    reponse = s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).last
+    y = reponse.bounding_box()["y"]
     boutons = s.pg.locator("button:visible").filter(has=s.pg.locator("svg"))
-    cap(s, M07, "23-actions-sur-une-reponse", [(boutons.nth(i), l) for i, l in zip(indices, libelles)])
+    rangee = [b for b in boutons.all() if (bb := b.bounding_box()) and y - 140 < bb["y"] < y - 60 and bb["x"] > 300]
+    log("icônes de la réponse :", [b.evaluate("e => (e.querySelector('svg').getAttribute('class') || '') + ' | ' + e.outerHTML.slice(0, 160)") for b in rangee])
+    derniere = rangee[-1]
+    derniere.hover(); attendre(s, 1200)
+    log("infobulle de la dernière icône :", s.pg.locator("[role=tooltip], [data-radix-popper-content-wrapper]").all_inner_texts())
+    reponse.hover(); attendre(s, 600)
+    libelles = ["copier", "lire à voix haute", "pouce levé", "pouce baissé", "prompt envoyé au modèle"]
+    cap(s, M07, "23-actions-sur-une-reponse", list(zip(rangee, libelles)))
 
 
 # ---------------------------------------------------------------- chapitre 10 : export et import de l'agent du chapitre
@@ -372,7 +384,7 @@ def reperage(s, quoi):
         icone = carte.get_by_placeholder("Rechercher").locator("xpath=following::button[1]")
         log("bouton à droite de Rechercher :", icone.evaluate("e => (e.getAttribute('aria-label') || '') + ' ' + e.outerHTML.slice(0, 200)"))
     elif quoi == "actions":
-        actions(s)
+        actions(s, True)
 
 
 if __name__ == "__main__":

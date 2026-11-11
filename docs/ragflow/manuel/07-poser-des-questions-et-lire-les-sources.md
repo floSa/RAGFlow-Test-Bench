@@ -2,7 +2,7 @@
 
 > Ce chapitre apprend à converser avec un assistant au quotidien : poser une question, vérifier chaque source, reconnaître un refus, gérer les conversations, joindre un fichier, choisir entre les modes « Naive » et « Agentic », comparer plusieurs modèles et publier l'assistant dans une page web.
 > **Point de départ** : barre du haut › « Discussion » (liste des assistants), un assistant relié à une base, de préférence l'assistant « Démo Vélanor » créé à la fin du chapitre 05.
-> **Durée** : environ 20 minutes. **Avant** : chapitre 04.
+> **Durée** : environ 20 minutes. **Avant** : chapitre 05 (base et assistant « Démo Vélanor », créés dans sa dernière partie).
 
 **Attention** : le code d'intégration d'un assistant dans une page web contient une clé d'accès ; toute personne qui possède ce code peut interroger l'assistant. Ne pas le publier ni le transmettre hors du poste.
 
@@ -38,20 +38,20 @@ La colonne de gauche liste les conversations ; le « + » (pastille 3) en ouvre 
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | avion en papier | « Intégrer dans la page web » (étape 16) |
+| 1 | avion en papier | « Intégrer dans la page web » (étape 17) |
 | 2 | icône de repli | replie la colonne des conversations |
 | 3 | « + » | ouvre une nouvelle conversation |
 | 4 | icône de suppression groupée | passe la liste en mode sélection (étape 9) |
 | 5 | « Rechercher » | filtre les conversations par titre |
 | 6 | engrenage | ouvre le panneau « Paramètres du chat » (chapitre 08) |
 
-*Résultat* : la page est repérée. En bas, la zone de saisie contient la question (la poignée au-dessus l'agrandit), le trombone « Attach file » (étape 10), le sélecteur de mode « Naive » ou « Agentic » (étape 11), le micro et l'avion en papier « Send message ». « Plusieurs modèles », en haut à droite, sert à comparer des modèles (étape 15).
+*Résultat* : la page est repérée. En bas, la zone de saisie contient la question (la poignée au-dessus l'agrandit), le trombone « Attach file » (étape 10), le sélecteur de mode « Naive » ou « Agentic » (étape 12), le micro et l'avion en papier « Send message ». « Plusieurs modèles », en haut à droite, sert à comparer des modèles (étape 16).
 
 ## Poser une question et lire la réponse
 
 **Étape 3. Poser la question**
 *Où* : page de l'assistant › « + » à côté de « Conversations », puis zone de saisie.
-Ouvrir une nouvelle conversation, taper la question, puis cliquer sur « Send message ». L'exemple pose la question du délai de livraison de Batterix à un assistant d'essai relié à la base « Démo Vélanor » et réglé exactement comme l'assistant « Démo Vélanor » (chapitre 05, étape 24) : interroger ce dernier donne le même résultat. Avec un assistant laissé aux réglages d'origine, la réponse peut ne donner que le délai constaté (étape 14). Le chapitre 08 explique ces réglages ; il n'est pas nécessaire de l'avoir lu pour suivre celui-ci.
+Ouvrir une nouvelle conversation, taper la question, puis cliquer sur « Send message ». L'exemple pose la question du délai de livraison de Batterix à « Manuel-Assistant-05 » (nom tronqué en « Manuel-Assista… » sur la capture), un assistant d'essai relié à la base « Démo Vélanor » et réglé exactement comme l'assistant « Démo Vélanor » (chapitre 05, étape 24) : interroger ce dernier donne le même résultat. Avec un assistant laissé aux réglages d'origine, la réponse peut ne donner que le délai constaté (étape 15). Le chapitre 08 explique ces réglages ; il n'est pas nécessaire de l'avoir lu pour suivre celui-ci.
 
 ![Réponse citée](../img/05-assistants-et-citations/22-reponse-citee.png)
 *Écran : page de l'assistant, réponse citée.*
@@ -63,11 +63,22 @@ Ouvrir une nouvelle conversation, taper la question, puis cliquer sur « Send me
 | 3 | document cité | vignette du document ; un clic l'ouvre (étape 6) |
 | 4 | conversation | nommée d'après la première question |
 
-*Résultat* : en moins de quatre secondes, la réponse donne les deux délais, 21 jours (contrat) et 24 jours (constaté), chacun avec son renvoi.
+*Résultat* : en moins de quatre secondes, la réponse donne les deux délais, 21 jours (contrat) et 24 jours (constaté), chacun avec son renvoi. Le début de la réponse, « Données de la base de connaissances utilisées : ID: 2 (…), ID: 0 (…) », vient du modèle, pas de RAGFlow : RAGFlow lui transmet chaque passage trouvé précédé d'un numéro (« ID: 0 », « ID: 1 »…), et le modèle recopie parfois cette liste avant de répondre. Ces numéros ne désignent ni une base ni un assistant, seulement les passages trouvés pour cette question ; ce préambule varie d'une question à l'autre et peut être ignoré.
 
 **Étape 4. Utiliser les actions d'un message**
 *Où* : conversation › survol d'une question ou d'une réponse.
-De petites icônes apparaissent au-dessus du message : copier ; régénérer (repose la question) ; supprimer (retire la question et sa réponse) ; lire à voix haute (demande un modèle de synthèse vocale, absent des essais) ; pouce levé ou baissé (note la réponse comme bonne ou mauvaise).
+De petites icônes apparaissent au-dessus du message. Au-dessus d'une question : copier, régénérer (repose la question) et supprimer (retire la question et sa réponse). Au-dessus d'une réponse, celles de la capture, prise sur la conversation « Contrat Batterix » de l'assistant « Démo Vélanor ».
+
+![Icônes d'une réponse](../img/05-assistants-et-citations/23-actions-sur-une-reponse.png)
+*Écran : conversation, icônes d'une réponse au survol.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | copier | copie le texte de la réponse |
+| 2 | lire à voix haute | demande un modèle de synthèse vocale (« Modèle TTS »), absent des essais |
+| 3 | pouce levé | note la réponse comme bonne |
+| 4 | pouce baissé | note la réponse comme mauvaise ; une fenêtre permet d'expliquer pourquoi |
+| 5 | prompt | affiche le texte complet envoyé au modèle : consignes, passages trouvés et question |
 
 *Résultat* : l'action choisie s'applique au message survolé.
 
@@ -104,7 +115,14 @@ Cliquer sur la vignette : le document s'affiche en entier (pastille 1) ; la croi
 
 **Étape 7. Poser une question hors des documents**
 *Où* : conversation › zone de saisie.
-Poser une question dont la réponse n'est dans aucun document, par exemple le chiffre d'affaires d'une année absente. La réponse s'affiche comme une réponse ordinaire, avec la phrase « La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! » (capture de l'étape 3 pour l'aspect général).
+Poser une question dont la réponse n'est dans aucun document, ici « Quel était le chiffre d'affaires de Vélanor en 2022 ? ». La réponse s'affiche comme une réponse ordinaire, avec la phrase de refus (pastille 1).
+
+![Question sans réponse](../img/05-assistants-et-citations/26-question-sans-reponse.png)
+*Écran : conversation, réponse de refus.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | réponse de refus | « La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! », suivie ici du renvoi « [8] » |
 
 *Résultat* : l'assistant refuse au lieu d'inventer. La phrase est parfois suivie d'un renvoi vers les passages consultés : un renvoi ne prouve donc pas qu'une réponse a été trouvée ; c'est le texte qui compte. Le message de refus se règle au chapitre 08.
 
@@ -112,13 +130,29 @@ Poser une question dont la réponse n'est dans aucun document, par exemple le ch
 
 **Étape 8. Supprimer une conversation**
 *Où* : colonne « Conversations » › survol d'une conversation › menu « … ».
-Le menu ne propose que « Supprimer » : une conversation ne se renomme pas, elle garde le titre de sa première question.
+Survoler la conversation dans la colonne de gauche, cliquer sur son menu « … », puis sur « Supprimer » (pastille 1). Le menu ne propose que cette entrée : une conversation ne se renomme pas, elle garde le titre de sa première question.
+
+![Menu d'une conversation](../img/05-assistants-et-citations/27-menu-d-une-conversation.png)
+*Écran : colonne « Conversations », menu « … » d'une conversation ouvert.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Supprimer » | supprime la conversation, après confirmation |
 
 *Résultat* : la conversation disparaît de la liste.
 
 **Étape 9. Supprimer plusieurs conversations**
 *Où* : colonne « Conversations » › icône de suppression groupée (capture de l'étape 2, pastille 4).
-Une case apparaît devant chaque conversation. Cocher celles à supprimer, cliquer sur la corbeille, puis sur « Supprimer » dans la fenêtre « Suppression en masse ». La flèche de retour quitte le mode sélection sans rien supprimer.
+Une case apparaît devant chaque conversation (pastille 1). Cocher celles à supprimer, cliquer sur la corbeille (pastille 3), puis sur « Supprimer » dans la fenêtre « Suppression en masse ». La flèche de retour (pastille 2) quitte le mode sélection sans rien supprimer.
+
+![Suppression groupée](../img/05-assistants-et-citations/28-suppression-groupee.png)
+*Écran : colonne « Conversations » en mode sélection.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | case d'une conversation | coche la conversation à supprimer |
+| 2 | flèche de retour | quitte le mode sélection |
+| 3 | corbeille | supprime les conversations cochées, après confirmation |
 
 *Résultat* : les conversations cochées sont supprimées, définitivement.
 
@@ -126,7 +160,15 @@ Une case apparaît devant chaque conversation. Cocher celles à supprimer, cliqu
 
 **Étape 10. Joindre le fichier**
 *Où* : zone de saisie › trombone « Attach file ».
-Choisir le fichier (5 fichiers au plus, 5 Mo chacun) : il s'affiche au-dessus de la zone de saisie, avec son nom et sa taille, et part avec la prochaine question.
+Cliquer sur le trombone (pastille 2) et choisir le fichier (5 fichiers au plus, 5 Mo chacun), ici `faq-sav.html` : il s'affiche au-dessus de la zone de saisie, avec son nom et sa taille (pastille 1), et part avec la prochaine question.
+
+![Fichier joint](../img/05-assistants-et-citations/30-piece-jointe.png)
+*Écran : zone de saisie, fichier joint.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | fichier joint | nom et taille du fichier qui partira avec la question |
+| 2 | « Attach file » | trombone qui ouvre le choix des fichiers |
 
 *Résultat* : le modèle lit le fichier avec la question, sans l'ajouter à une base. Une conversation ouverte ainsi prend le nom du fichier. Pour qu'un document serve durablement, l'ajouter plutôt à une base (chapitre 05).
 
@@ -134,7 +176,13 @@ Choisir le fichier (5 fichiers au plus, 5 Mo chacun) : il s'affiche au-dessus de
 
 « Naive » fait une recherche puis une réponse, en une seule passe : c'est le mode par défaut. « Agentic » laisse le modèle décider lui-même de plusieurs recherches successives avant de répondre, comme un enquêteur qui reformule ses questions. Avec un petit modèle comme celui des essais, « Agentic » est plus lent, plus coûteux et moins fiable ; « Naive » avec un assistant bien réglé (chapitre 08) donne de meilleurs résultats.
 
-**Étape 11. Ouvrir le sélecteur de mode**
+**Étape 11. Créer l'assistant d'essai « Manuel-Agentic »**
+*Où* : barre du haut › « Discussion » › « Créer un chat ».
+Les étapes 12 à 15 comparent les deux modes avec un assistant laissé à ses réglages d'origine, pour ne pas mêler l'effet du mode et celui des réglages. Créer l'assistant « Manuel-Agentic », puis le relier à la base « Démo Vélanor » sans changer aucun autre réglage : mêmes gestes et mêmes écrans qu'au chapitre 04, étapes 10 à 16 (fenêtre de création, panneau « Paramètres du chat », liste des bases, « Enregistrer »), avec « Démo Vélanor » cochée au lieu de « Manuel-Prise-en-main ».
+
+*Résultat* : l'assistant « Manuel-Agentic » est relié à « Démo Vélanor », avec « Top N » 8 et un poids des mots-clés de 0,7, les valeurs de création à la souris. Ouvrir une nouvelle conversation (« + » à côté de « Conversations »).
+
+**Étape 12. Ouvrir le sélecteur de mode**
 *Où* : nouvelle conversation › zone de saisie › « Naive ».
 Cliquer sur le sélecteur : il propose les deux modes. Le mode se choisit question par question.
 
@@ -148,9 +196,9 @@ Cliquer sur le sélecteur : il propose les deux modes. Le mode se choisit questi
 
 *Résultat* : le mode choisi s'affiche dans la zone de saisie.
 
-**Étape 12. Poser la question en mode « Agentic »**
+**Étape 13. Poser la question en mode « Agentic »**
 *Où* : zone de saisie, mode « Agentic » choisi.
-Taper la question (pastille 1), vérifier le mode (pastille 2), puis cliquer sur « Send message » (pastille 3). L'exemple reprend la question du délai de livraison de Batterix, avec un assistant laissé à ses réglages d'origine.
+Taper la question (pastille 1), vérifier le mode (pastille 2), puis cliquer sur « Send message » (pastille 3). L'exemple reprend la question du délai de livraison de Batterix, posée à l'assistant « Manuel-Agentic » de l'étape 11.
 
 ![Question en mode Agentic](../img/06-agentic-rag/02-question-agentic.png)
 *Écran : zone de saisie, question en mode « Agentic ».*
@@ -163,7 +211,7 @@ Taper la question (pastille 1), vérifier le mode (pastille 2), puis cliquer sur
 
 *Résultat* : la réponse arrive après cinq secondes environ (étape suivante).
 
-**Étape 13. Lire la réponse agentique**
+**Étape 14. Lire la réponse agentique**
 *Où* : conversation.
 Un bloc « Thought » repliable précède la réponse : c'est le raisonnement du modèle. Le compteur (pastille 3) montre le coût : environ 32 000 jetons lus, vingt fois plus qu'en mode « Naive ».
 
@@ -178,9 +226,9 @@ Un bloc « Thought » repliable précède la réponse : c'est le raisonnement du
 
 *Résultat* : ici la réponse trouve le délai du contrat mais déclare absent le délai constaté. Posée deux fois, la même question a donné une fois la réponse complète, une fois la réponse partielle : ce mode n'est pas stable avec ce modèle.
 
-**Étape 14. Comparer avec « Naive »**
+**Étape 15. Comparer avec « Naive »**
 *Où* : « + » (nouvelle conversation) › sélecteur › « Naive ».
-Poser la même question en mode « Naive », avec le même assistant laissé à ses réglages d'origine.
+Poser la même question en mode « Naive », au même assistant « Manuel-Agentic », laissé à ses réglages d'origine.
 
 ![Réponse Naive](../img/06-agentic-rag/04-reponse-naive.png)
 *Écran : conversation, réponse en mode « Naive ».*
@@ -199,7 +247,7 @@ Quand utiliser lequel :
 
 ## Comparer plusieurs modèles
 
-**Étape 15. Ouvrir la comparaison**
+**Étape 16. Ouvrir la comparaison**
 *Où* : page de l'assistant › « Plusieurs modèles » (en haut à droite).
 Chaque colonne a son propre modèle (pastille 2) et ses propres réglages ; le « + » (pastille 4) ajoute une colonne, jusqu'à trois. Une seule zone de saisie envoie la même question à toutes les colonnes.
 
@@ -217,7 +265,7 @@ Chaque colonne a son propre modèle (pastille 2) et ses propres réglages ; le �
 
 ## Publier l'assistant dans une page web
 
-**Étape 16. Ouvrir la fenêtre d'intégration**
+**Étape 17. Ouvrir la fenêtre d'intégration**
 *Où* : page de l'assistant › avion en papier, à côté du nom de l'assistant.
 Choisir le type d'intégration (pastille 1), le thème (pastille 2) et la langue (pastille 4), puis copier le code (pastille 5) pour le coller dans la page d'un site. Le code est masqué sur la capture, car il contient la clé d'accès.
 

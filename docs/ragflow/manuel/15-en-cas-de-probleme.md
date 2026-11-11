@@ -88,7 +88,7 @@ Ces problèmes sont montrés, avec leur écran, dans le chapitre de la fonction 
 |---|---|---|---|
 | Réponse fausse ou refus sur un document scanné ; chiffres étranges dans un passage (« 40 0oo ») | la reconnaissance de caractères a mal lu le scan | corriger ou ajouter le passage, puis appliquer les réglages conseillés | 06, étapes 18 à 25 ; 08, étape 11 |
 | L'analyse d'un fichier reste en échec (point rouge) | format illisible ou erreur pendant l'analyse | lire le détail de la tâche dans « Journaux » | 05, étapes 14 et 15 |
-| Réponse « Agentic » « je n'ai accès à aucun document… », sans citation | le modèle n'a pas lancé de recherche | reposer la question en « Naive » | 07, étapes 11 à 14 |
+| Réponse « Agentic » « je n'ai accès à aucun document… », sans citation | le modèle n'a pas lancé de recherche | reposer la question en « Naive » | 07, étapes 12 à 15 |
 | La base n'apparaît pas dans la liste de l'assistant | aucun document de la base n'est analysé | attendre la fin de l'analyse | 04, étape 8 |
 | « Model is required when AI summary, related search, or query mindmap is enabled » | une fonction de la recherche demande un modèle | choisir un « Modèle » | 09, étape 4 |
 | L'agent répond en anglais | consignes du modèle d'agent en anglais | traduire « Invite système » et « Invite utilisateur » | 10, étape 5 |
