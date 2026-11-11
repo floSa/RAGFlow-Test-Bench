@@ -1,6 +1,6 @@
 # RAGFlow — banc d'essai et manuels vérifiés
 
-**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 chapitres suivi de 6 annexes, avec 164 captures d'écran annotées.**
+**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 chapitres suivis de 6 annexes, avec 196 captures d'écran annotées.**
 
 **Le manuel utilisateur commence ici : [docs/ragflow/README.md](docs/ragflow/README.md).**
 
@@ -112,7 +112,7 @@ Réseaux : `rag-ragflow` (interne à la pile), `llm-net` (LLM-Service, externe),
 
 ## Démarrage
 
-Prérequis : WSL2 (Ubuntu), Docker et Compose, LLM-Service démarré (`outils/communs/llm_service_vllm.sh` avec GPU, `outils/communs/llm_service.sh` sans), uv. Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
+Prérequis : WSL2 (Ubuntu), Docker et Compose, un serveur de modèles existant, compatible OpenAI ou Ollama, qui sert un modèle de chat et un modèle d'embedding (sur la machine d'essai : LLM-Service, `outils/communs/llm_service_vllm.sh` avec GPU, `outils/communs/llm_service.sh` sans, voir l'annexe A2), uv. Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
 
 ```bash
 outils/ragflow/installer.sh
@@ -156,7 +156,7 @@ LLM-Service (dépôt séparé, branche `service-vllm`) : `gemma4:e4b` (`--max-mo
 | Modèles | `POST /api/v1/providers/{fournisseur}/instances`, `PATCH /api/v1/models/default` |
 | Administration | `POST /api/v1/admin/login`, `GET /api/v1/admin/users` (port 9381) |
 
-SDK `ragflow-sdk` 1.0.0 (Python 3.13) : deux défauts et leurs contournements dans le [annexe A3](docs/ragflow/annexes/A3-automatiser-par-l-api.md).
+SDK `ragflow-sdk` 1.0.0 (Python 3.13) : deux défauts et leurs contournements dans l'[annexe A3](docs/ragflow/annexes/A3-automatiser-par-l-api.md).
 
 ## Tests
 
