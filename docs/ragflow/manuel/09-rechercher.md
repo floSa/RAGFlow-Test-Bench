@@ -2,7 +2,7 @@
 
 > Ce chapitre apprend à créer une page de recherche sur une base de connaissances, à la régler, à lire ses résultats (résumé, passages, recherches connexes, carte mentale), puis à l'intégrer dans un site, la renommer ou la supprimer.
 > **Point de départ** : barre du haut › « Recherche » (page vide tant qu'aucune recherche n'existe).
-> **Durée** : environ 15 minutes. **Avant** : chapitre 04 (une base dont les documents sont analysés).
+> **Durée** : environ 15 minutes. **Avant** : chapitre 05 (base « Démo Vélanor », créée dans sa dernière partie).
 
 **Attention** : le code d'intégration d'une recherche dans une page web contient une clé d'accès ; toute personne qui possède ce code peut interroger les bases de la recherche sans compte. Ne pas le publier ni le transmettre hors du poste.
 
