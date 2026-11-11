@@ -16,3 +16,5 @@ sources/
 kit/
 CLAUDE.md
 .claude/
+# Clés locales (copie de .env.example)
+.env
