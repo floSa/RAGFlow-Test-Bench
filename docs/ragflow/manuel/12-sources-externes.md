@@ -163,6 +163,14 @@ Pour lire malgré tout un site interne, un réglage du serveur l'autorise :
 2. redémarrer le serveur de RAGFlow : `outils/ragflow/compose.sh up -d ragflow-cpu` ;
 3. une fois la synchronisation faite, retirer la ligne et redémarrer de la même façon.
 
+Pour voir le cas réussi sur la machine elle-même, le dépôt fournit un petit site de test : deux pages fictives et leur plan de site, dans le dossier `outils/ragflow/site-test/`. Depuis le dossier du dépôt, la commande suivante le démarre sur le réseau interne de RAGFlow, sans l'ouvrir à aucune autre machine :
+
+```bash
+docker run -d --name rag-site-test --network rag-local -v "$PWD/outils/ragflow/site-test:/usr/share/nginx/html:ro" nginx:alpine
+```
+
+RAGFlow le joint alors à l'adresse `http://rag-site-test/sitemap.xml`, celle de l'étape 2 ; `docker rm -f rag-site-test` le supprime. Son adresse est interne à Docker : il est refusé tant que le réglage `ALLOW_ANY_HOST` n'est pas en place. Le script `outils/ragflow/essai_sitemap_autorise.sh` enchaîne tout l'essai : il ajoute le réglage, redémarre le serveur, démarre le site, crée la source, la relie à une base d'essai, attend la synchronisation, puis supprime la source, la base et le site et remet le réglage d'origine ; son compte rendu s'écrit dans `outils/resultats/ragflow/`.
+
 Avec ce réglage, le test répond « success » et les deux pages du site de test sont devenues deux documents de deux passages chacun, convertis en texte avant l'analyse (noms en `.html.md`). Le risque est celui signalé en tête de chapitre : le réglage vaut pour tout le serveur, agents compris. Pour un usage durable, préférer un site joignable par une adresse publique, ou déposer les pages dans la base par « Ajouter un fichier » (chapitre 05).
 
 ## Connaître les canaux de chat
