@@ -41,14 +41,7 @@ But : créer « Manuel-Assistant-05 » et repérer l'écran de discussion. La cr
 | 4 | carte d'un assistant | nom et date ; un clic ouvre l'assistant |
 | 5 | menu « … » de la carte | menu de l'assistant (étape 2) |
 
-2. Le menu « … » d'une carte :
-
-![Menu d'un assistant](img/05-assistants-et-citations/02-menu-d-un-assistant.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Renommer » | change le nom de l'assistant |
-| 2 | « Supprimer » | supprime l'assistant et ses conversations, après confirmation |
+2. Le menu « … » d'une carte propose « Renommer » (change le nom de l'assistant) et « Supprimer » (supprime l'assistant et ses conversations, après confirmation), comme celui d'une base (manuel [03](03-datasets-et-decoupage.md), section 1, étape 2).
 
 3. Créer l'assistant puis cliquer sur sa carte. La colonne de gauche liste ses conversations.
 
@@ -56,25 +49,14 @@ But : créer « Manuel-Assistant-05 » et repérer l'écran de discussion. La cr
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | avion en papier | « Intégrer dans la page web » (section 5, étape 4) |
+| 1 | avion en papier | « Intégrer dans la page web » (section 5, étape 3) |
 | 2 | icône de repli | replie la colonne des conversations |
 | 3 | « + » | ouvre une nouvelle conversation |
 | 4 | icône de suppression groupée | passe la liste en mode sélection (section 4, étape 6) |
 | 5 | « Rechercher » | filtre les conversations par titre |
 | 6 | engrenage | ouvre le panneau « Paramètres du chat » (section 2) |
 
-4. La zone de saisie, en bas :
-
-![Zone de saisie](img/05-assistants-et-citations/04-zone-de-saisie.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Plusieurs modèles » | compare les réponses de plusieurs modèles (section 5, étape 2) |
-| 2 | zone de saisie | question ; la poignée au-dessus agrandit la zone |
-| 3 | « Attach file » | joint un fichier à la question (section 5, étape 1) |
-| 4 | « Naive » | mode de réponse, « Naive » ou « Agentic » (manuel [06](06-agentic-rag.md)) |
-| 5 | micro | dictée vocale (section 5) |
-| 6 | « Send message » | envoie la question |
+4. La zone de saisie occupe le bas de la même page. Elle contient la zone de la question (la poignée au-dessus l'agrandit), « Attach file » (trombone, joint un fichier à la question, section 5, étape 1), le mode de réponse « Naive » ou « Agentic » (manuel [06](06-agentic-rag.md)), le micro (dictée vocale, section 5) et « Send message » (envoie la question). « Plusieurs modèles », en haut à droite de la discussion, compare les réponses de plusieurs modèles (section 5, étape 2).
 
 ## 2. Le panneau « Paramètres du chat »
 
@@ -95,13 +77,7 @@ But : régler l'assistant et le relier à la base « Démo Vélanor » avec les 
 | 5 | « Paramètres du modèle » | réglages de génération, repliés (étapes 3 à 5) |
 | 6 | « Message d'accueil » | premier message de chaque conversation |
 
-2. La liste « Modèle » propose les modèles de chat déclarés, groupés par fournisseur et instance ; ici un seul, `gemma4:e4b`.
-
-![Choix du modèle](img/05-assistants-et-citations/06-choix-du-modele.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « gemma4:e4b » | modèle de l'instance `llm-service-chat` du fournisseur VLLM (manuel [01](01-installation.md)) |
+2. La liste « Modèle » propose les modèles de chat déclarés, groupés par fournisseur et instance ; ici un seul, `gemma4:e4b`, de l'instance `llm-service-chat` du fournisseur VLLM (manuel [01](01-installation.md)).
 
 3. Déplier « Paramètres du modèle ». Chaque réglage a un interrupteur : désactivé, la valeur du fournisseur s'applique. Tous sont désactivés à la création. [Vérifié] (`outils/resultats/ragflow/captures/05-assistants-et-citations/07-parametres-du-modele.txt`)
 
@@ -116,35 +92,11 @@ But : régler l'assistant et le relier à la base « Démo Vélanor » avec les 
 | 5 | « Pénalité de fréquence » | décourage la répétition fréquente des mêmes mots |
 | 6 | « Nombre max de tokens » | longueur maximale de la réponse ; trop bas, la réponse est coupée |
 
-4. « Liberté » propose quatre préréglages. « Précis » convient à un assistant documentaire ; « Personnalisé » laisse les curseurs tels qu'ils sont.
+4. « Liberté » propose quatre préréglages : « Improviser » (réponses plus créatives), « Précis » (réponses plus conservatrices), « Équilibre » (compromis entre les deux) et « Personnalisé » (valeurs réglées à la main ; valeur affichée à la création). « Précis » convient à un assistant documentaire ; « Personnalisé » laisse les curseurs tels qu'ils sont.
 
-![Liberté](img/05-assistants-et-citations/08-liberte.png)
+5. « Thinking », sous ces réglages, règle la réflexion préalable du modèle, pour les modèles qui la proposent : « System default » (comportement par défaut du modèle, valeur à la création), « Enabled » (force la réflexion : réponses plus lentes) ou « Disabled » (la désactive).
 
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Improviser » | réponses plus créatives |
-| 2 | « Précis » | réponses plus conservatrices |
-| 3 | « Équilibre » | compromis entre les deux |
-| 4 | « Personnalisé » | valeurs réglées à la main ; valeur affichée à la création |
-
-5. « Thinking » règle la réflexion préalable du modèle, pour les modèles qui la proposent.
-
-![Thinking](img/05-assistants-et-citations/09-thinking.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « System default » | comportement par défaut du modèle (valeur à la création) |
-| 2 | « Enabled » | force la réflexion : réponses plus lentes |
-| 3 | « Disabled » | la désactive |
-
-6. Replier « Paramètres du modèle », ouvrir « Bases de connaissances » et cocher « Démo Vélanor ». Une base sans fichier analysé n'apparaît pas dans la liste.
-
-![Choix de la base](img/05-assistants-et-citations/10-choix-de-la-base.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Rechercher... » | filtre les bases |
-| 2 | « Démo Vélanor » | base interrogée par l'assistant ; plusieurs bases peuvent être cochées |
+6. Replier « Paramètres du modèle », ouvrir « Bases de connaissances » et cocher « Démo Vélanor » ; « Rechercher... » filtre la liste, et plusieurs bases peuvent être cochées. Une base sans fichier analysé n'apparaît pas dans la liste.
 
 7. Déplier « Paramètres avancés ».
 
@@ -159,24 +111,9 @@ But : régler l'assistant et le relier à la base « Démo Vélanor » avec les 
 | 5 | « Naive » | réglages du mode de réponse direct (étapes 10 à 12) |
 | 6 | « Agentic » | réglages du mode agentique (étape 13 et manuel [06](06-agentic-rag.md)) |
 
-8. « Web search provider » liste douze services de recherche web (AnySearch, Brave Search, Exa, Firecrawl, Linkup, Parallel, Querit, Search1API, SearchApi, Serply, Tavily, You.com). Chacun demande une clé chez le service : non couvert, compte en ligne exigé. Appuyer sur Échap.
+8. « Web search provider » liste douze services de recherche web à utiliser en plus des bases (AnySearch, Brave Search, Exa, Firecrawl, Linkup, Parallel, Querit, Search1API, SearchApi, Serply, Tavily, You.com). Chacun demande une clé chez le service : non couvert, compte en ligne exigé. Appuyer sur Échap.
 
-![Web search provider](img/05-assistants-et-citations/12-web-search-provider.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | fournisseurs proposés | service de recherche web à utiliser en plus des bases |
-
-9. « Métadonnées » choisit comment filtrer les documents d'après leurs métadonnées (manuel [03](03-datasets-et-decoupage.md), section 4).
-
-![Filtre de métadonnées](img/05-assistants-et-citations/13-metadonnees.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Désactivé » | aucun filtre (par défaut) |
-| 2 | « Automatique » | le modèle déduit le filtre de la question |
-| 3 | « Semi-automatique » | le modèle propose, parmi des champs choisis |
-| 4 | « Manuel » | conditions fixées à la main |
+9. « Métadonnées » choisit comment filtrer les documents d'après leurs métadonnées (manuel [03](03-datasets-et-decoupage.md), section 4) : « Désactivé » (aucun filtre, par défaut), « Automatique » (le modèle déduit le filtre de la question), « Semi-automatique » (le modèle propose, parmi des champs choisis) ou « Manuel » (conditions fixées à la main).
 
 10. Déplier « Naive ». Saisir dans « Réponse vide » : « Aucune information pertinente n'a été trouvée dans les documents. »
 
@@ -201,34 +138,11 @@ But : régler l'assistant et le relier à la base « Démo Vélanor » avec les 
 | 5 | « Modèle de réordonnancement » | reranker ; vide, aucun n'étant déclaré (section 8) |
 | 6 | « Recherche inter-langues » | traduit la question dans les langues choisies avant de chercher |
 
-12. Fin de la partie « Naive » :
+12. Fin de la partie « Naive » : « Optimisation multi-tours » reformule la question avec l'historique de la conversation (consomme des jetons en plus) ; « Variable » liste les variables du prompt système, renseignées par l'API, et son « + » en ajoute ; « knowledge » est la variable réservée des passages retrouvés, « date », en dessous, une variable optionnelle.
 
-![Naive, multi-tours et variables](img/05-assistants-et-citations/16-naive-multi-tours-variables.png)
+13. Déplier « Agentic » : « Decision model » choisit le modèle qui décide des recherches en mode agentique (vide, le modèle de chat s'en charge) ; « Agentic template » contient les consignes du mode agentique (rôle, mission, outils), modifiables ; « Reset to default » rétablit les consignes d'origine.
 
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Optimisation multi-tours » | reformule la question avec l'historique de la conversation ; consomme des jetons en plus |
-| 2 | « Variable » | variables du prompt système, renseignées par l'API ; le « + » en ajoute |
-| 3 | « knowledge » | variable réservée : les passages retrouvés ; « date », en dessous, est une variable optionnelle |
-
-13. Déplier « Agentic » :
-
-![Agentic](img/05-assistants-et-citations/17-agentic.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Decision model » | modèle qui décide des recherches en mode agentique ; vide, le modèle de chat s'en charge |
-| 2 | « Agentic template » | consignes du mode agentique (rôle, mission, outils), modifiables |
-| 3 | « Reset to default » | rétablit les consignes d'origine |
-
-14. Cliquer sur « Enregistrer ». Le message « Modifié » confirme ; après rechargement, « Top N » vaut 8, le poids des mots-clés 0,3, la réponse vide est conservée et la base est reliée. [Vérifié] (même journal)
-
-![Enregistrer](img/05-assistants-et-citations/18-enregistrer.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Annuler » | abandonne les modifications |
-| 2 | « Enregistrer » | enregistre les paramètres |
+14. Cliquer sur « Enregistrer » (« Annuler » abandonne les modifications), en bas du panneau. Le message « Modifié » confirme ; après rechargement, « Top N » vaut 8, le poids des mots-clés 0,3, la réponse vide est conservée et la base est reliée. [Vérifié] (même journal)
 
 ## 3. Tester la recherche sans le modèle
 
@@ -236,18 +150,7 @@ But : régler l'assistant et le relier à la base « Démo Vélanor » avec les 
 
 But : voir quels passages une question retrouve, et avec quels scores, avant de régler un assistant. Le test ne fait pas appel au modèle de chat ; ses réglages ne sont pas enregistrés (l'onglet le rappelle) : les reporter ensuite dans l'assistant.
 
-1. Ouvrir la base « Démo Vélanor », onglet « Test de récupération ». Les réglages sont ceux de la section 2, étape 11.
-
-![Réglages du test](img/05-assistants-et-citations/19-test-reglages.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Seuil de similarité » | score minimal, 20 par défaut |
-| 2 | « Poids de similarité par mots-clés » | full-text 0,70 et vector 0,30 par défaut |
-| 3 | « Modèle de réordonnancement » | reranker éventuel |
-| 4 | « Recherche inter-langues » | langues de traduction de la question |
-| 5 | « Métadonnées » | filtre par métadonnées |
-| 6 | « Rerank candidates », « Top N » | 64 et 10 par défaut dans cet onglet |
+1. Ouvrir la base « Démo Vélanor », onglet « Test de récupération ». Les réglages, à gauche, sont ceux de la section 2, étape 11, plus « Métadonnées » (filtre par métadonnées). Valeurs par défaut de cet onglet : « Seuil de similarité » 20, « Poids de similarité par mots-clés » full-text 0,70 et vector 0,30, « Rerank candidates » 64 et « Top N » 10.
 
 2. Saisir la question Q30 du banc (« Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ? ») et cliquer sur « Test ». 25 passages dépassent le seuil ; le premier est le tableau des fournisseurs du classeur de stocks (42,50 en similarité hybride, 25,87 en mots-clés, 81,31 en vecteurs). [Vérifié] (`outils/resultats/ragflow/captures/05-assistants-et-citations/20-test-resultats.txt`)
 
@@ -261,15 +164,7 @@ But : voir quels passages une question retrouve, et avec quels scores, avant de 
 | 4 | « Similarité hybride » | score combiné du premier passage, suivi des scores « de terme » (mots-clés) et « vectorielle » |
 | 5 | document | fichier d'origine du passage |
 
-3. Porter le poids des mots-clés à 0,3 et relancer : 26 passages, le premier monte à 64,68 en similarité hybride. Le score vectoriel pèse davantage, ce qui aide les textes mal lus par l'OCR, comme le contrat scanné. [Vérifié] (`outils/resultats/ragflow/captures/05-assistants-et-citations/21-test-vecteurs-07.txt`)
-
-![Test avec vecteurs 0,7](img/05-assistants-et-citations/21-test-vecteurs-07.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Poids de similarité par mots-clés » | full-text 0,30, vector 0,70 |
-| 2 | « Total: 26 » | passages au-dessus du seuil |
-| 3 | scores | 64,68 en similarité hybride pour le premier passage |
+3. Porter le poids des mots-clés à 0,3 (full-text 0,30, vector 0,70) et relancer : le total passe à 26 passages, le premier monte à 64,68 en similarité hybride. Le score vectoriel pèse davantage, ce qui aide les textes mal lus par l'OCR, comme le contrat scanné. [Vérifié] (`outils/resultats/ragflow/captures/05-assistants-et-citations/21-test-vecteurs-07.txt`)
 
 ### Pour aller plus loin
 
@@ -292,18 +187,7 @@ But : poser une question, vérifier ses sources, puis gérer les conversations.
 | 3 | document cité | vignette du document ; un clic l'ouvre (étape 4) |
 | 4 | conversation | nommée d'après la première question |
 
-2. Survoler une réponse ou une question affiche ses actions.
-
-![Actions sur un message](img/05-assistants-et-citations/23-actions-sur-une-reponse.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | copier | copie la réponse |
-| 2 | régénérer | relance la question (sur la question) |
-| 3 | supprimer | retire la question et sa réponse de la conversation |
-| 4 | lire à voix haute | lecture audio ; demande un modèle TTS [À tester] |
-| 5 | pouce haut | note la réponse comme bonne |
-| 6 | pouce bas | note la réponse comme mauvaise |
+2. Survoler une réponse ou une question affiche ses actions, en petites icônes au-dessus du message : copier ; régénérer (relance la question, sur la question) ; supprimer (retire la question et sa réponse de la conversation) ; lire à voix haute (demande un modèle TTS [À tester]) ; pouce haut et pouce bas (notent la réponse comme bonne ou mauvaise).
 
 3. Survoler un renvoi affiche le passage cité, avec la vignette de sa page et le nom du document : c'est le moyen de vérifier la réponse.
 
@@ -322,53 +206,15 @@ But : poser une question, vérifier ses sources, puis gérer les conversations.
 | 1 | « contrat-batterix-scan.pdf » | document cité, affiché en entier |
 | 2 | croix | referme l'aperçu |
 
-5. Une question sans réponse dans les documents (Q35, chiffre d'affaires 2022) est refusée par la phrase du « Prompt système » (« La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! »), pas par la « Réponse vide » : des passages ont été retrouvés, c'est le modèle qui conclut. Selon les essais, la phrase est suivie ou non de la liste des passages consultés. [Vérifié] (`outils/resultats/ragflow/captures/05-assistants-et-citations/26-question-sans-reponse.txt`, `scenario.log`)
+5. Une question sans réponse dans les documents (Q35, chiffre d'affaires 2022) est refusée par la phrase du « Prompt système » (« La réponse que vous cherchez ne se trouve pas dans la base de connaissances ! »), pas par la « Réponse vide » : des passages ont été retrouvés, c'est le modèle qui conclut. Selon les essais, la phrase est suivie ou non de la liste des passages consultés. Le refus s'affiche comme une réponse ordinaire (capture de l'étape 1), suivi d'un renvoi : un renvoi ne prouve donc pas qu'une réponse a été trouvée. [Vérifié] (`outils/resultats/ragflow/captures/05-assistants-et-citations/26-question-sans-reponse.txt`, `scenario.log`)
 
-![Question sans réponse](img/05-assistants-et-citations/26-question-sans-reponse.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | début de la réponse | refus, suivi d'un renvoi : un renvoi ne prouve donc pas qu'une réponse a été trouvée |
-
-6. Le menu « … » d'une conversation (au survol) ne propose que « Supprimer » : le titre d'une conversation ne se renomme pas dans l'interface v1.0.0. [Vérifié] (même journal ; `web/src/pages/next-chats/chat/conversation-dropdown.tsx`)
-
-![Menu d'une conversation](img/05-assistants-et-citations/27-menu-d-une-conversation.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Supprimer » | supprime la conversation |
-
-7. Pour supprimer plusieurs conversations, cliquer sur l'icône de suppression groupée, cocher les conversations, puis la corbeille.
-
-![Suppression groupée](img/05-assistants-et-citations/28-suppression-groupee.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | case d'une conversation | coche la conversation |
-| 2 | flèche de retour | quitte le mode sélection |
-| 3 | corbeille | supprime les conversations cochées |
-
-8. Confirmer.
-
-![Confirmer la suppression](img/05-assistants-et-citations/29-confirmer-la-suppression.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | fenêtre de confirmation | rappelle l'action |
-| 2 | « Supprimer » | supprime ; irréversible |
+6. Le menu « … » d'une conversation (au survol) ne propose que « Supprimer » : le titre d'une conversation ne se renomme pas dans l'interface v1.0.0. [Vérifié] (même journal ; `web/src/pages/next-chats/chat/conversation-dropdown.tsx`) Pour supprimer plusieurs conversations, cliquer sur l'icône de suppression groupée (section 1, étape 3) : une case apparaît devant chaque conversation et une flèche de retour permet de quitter le mode sélection. Cocher les conversations, cliquer sur la corbeille, puis sur « Supprimer » dans la fenêtre « Suppression en masse » ; la suppression est irréversible.
 
 ## 5. Autres fonctions de l'écran de discussion
 
 ### Essentiel
 
-1. « Attach file » joint un fichier (5 au plus, 5 Mo chacun, d'après le texte de la zone) que le modèle lit avec la question, sans l'ajouter à une base. Joindre un fichier ouvre une conversation nommée d'après le fichier. [Vérifié] (`outils/resultats/ragflow/captures/05-assistants-et-citations/30-piece-jointe.txt` ; texte « Upload max 5 files each up to 5MB » relevé par la carte)
-
-![Pièce jointe](img/05-assistants-et-citations/30-piece-jointe.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | fichier joint | nom et taille ; à envoyer avec la prochaine question |
-| 2 | « Attach file » | choisit un fichier |
+1. « Attach file » joint un fichier (5 au plus, 5 Mo chacun, d'après le texte de la zone) que le modèle lit avec la question, sans l'ajouter à une base. Le fichier joint (nom et taille) s'affiche au-dessus de la zone de saisie, à envoyer avec la prochaine question. Joindre un fichier ouvre une conversation nommée d'après le fichier. [Vérifié] (`outils/resultats/ragflow/captures/05-assistants-et-citations/30-piece-jointe.txt` ; texte « Upload max 5 files each up to 5MB » relevé par la carte)
 
 2. « Plusieurs modèles » ouvre une page de comparaison : la même question part vers chaque colonne, avec son propre modèle et ses propres réglages.
 
@@ -381,16 +227,9 @@ But : poser une question, vérifier ses sources, puis gérer les conversations.
 | 3 | « Appliquer la configuration du modèle » | reporte les réglages de la colonne dans l'assistant |
 | 4 | « + » | ajoute une colonne, jusqu'à 3 |
 
-3. Avec deux colonnes, une seule zone de saisie sert aux deux. Utile pour comparer deux modèles ou deux réglages sur les mêmes questions ; le banc n'a qu'un modèle de chat, la comparaison n'a donc pas été lancée.
+Avec deux colonnes, le titre devient « Plusieurs modèles (2/3) » et une seule zone de saisie, commune, envoie la question à toutes les colonnes. Utile pour comparer deux modèles ou deux réglages sur les mêmes questions ; le banc n'a qu'un modèle de chat, la comparaison n'a donc pas été lancée.
 
-![Deux colonnes](img/05-assistants-et-citations/32-deux-colonnes.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Plusieurs modèles (2/3) » | deux colonnes sur trois possibles |
-| 2 | zone de saisie commune | question envoyée à toutes les colonnes |
-
-4. L'avion en papier, à côté du nom de l'assistant, ouvre « Intégrer dans la page web » : un code à coller dans un site pour y publier l'assistant. Le code est masqué sur la capture (jeton d'accès).
+3. L'avion en papier, à côté du nom de l'assistant, ouvre « Intégrer dans la page web » : un code à coller dans un site pour y publier l'assistant. Le code est masqué sur la capture (jeton d'accès).
 
 ![Intégrer dans la page web](img/05-assistants-et-citations/33-integrer-dans-la-page-web.png)
 
@@ -403,13 +242,7 @@ But : poser une question, vérifier ses sources, puis gérer les conversations.
 | 5 | « Code d'intégration » | code `iframe` à copier ; contient l'adresse du serveur et le jeton (masqués) |
 | 6 | « Ouvrir dans un nouvel onglet » | ouvre la page de discussion publique ; « Discussion ID », en dessous, sert à l'API |
 
-5. L'onglet « Widget Customization » règle l'apparence du widget flottant : titre, sous-titre, pied de page, couleurs.
-
-![Widget Customization](img/05-assistants-et-citations/34-widget-customization.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Widget Customization » | « Widget title », « Subtitle », « Footer text », « Footer redirect link », couleurs d'accent, de fond et de texte |
+L'onglet « Widget Customization » de la même fenêtre règle l'apparence du widget flottant : « Widget title », « Subtitle », « Footer text », « Footer redirect link », couleurs d'accent, de fond et de texte ; le code d'intégration suit, comme dans le premier onglet.
 
 ### Pour aller plus loin
 
