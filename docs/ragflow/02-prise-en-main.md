@@ -275,33 +275,29 @@ But : interroger l'assistant et vérifier sur quels passages s'appuie la répons
 | 3 | « Naive » | mode de réponse directe ; l'autre mode, « Agentic », est comparé au manuel [06](06-agentic-rag.md) |
 | 4 | « Send message » | envoie la question |
 
-L'envoi de cette question à « Manuel-Assistant » n'a pas pu être fait le 11 novembre 2026 : le serveur de chat de LLM-Service (`vllm-central`) redémarrait en boucle, faute de mémoire GPU libre. L'étape est [À tester] pour cet assistant. La réponse attendue d'après le corpus est 1 150 euros par salarié (question Q27, `corpus/questions.json`), passage visible à l'étape 3 de la section 4.
-
-2. La réponse s'affiche sous la question. La capture ci-dessous montre une réponse réelle du jeu de démonstration (assistant « Démo Vélanor », conversation « Contrat Batterix », créée le 9 novembre) : la présentation est la même pour tout assistant.
+2. La réponse s'affiche sous la question, avec ses renvois. Ici : « Le montant de la prime d'intéressement 2025 est de 1 150 euros par salarié, et elle sera versée en avril 2026 [1]. », conforme à la réponse attendue de la question Q27 (`corpus/questions.json`). Elle est apparue 3,4 s après le clic ; RAGFlow affiche 1,3 s de génération. [Vérifié] (`outils/resultats/ragflow/captures/02-prise-en-main/scenario.log`, `outils/resultats/ragflow/captures/02-prise-en-main/21-reponse-citee.txt`)
 
 ![Réponse citée](img/02-prise-en-main/21-reponse-citee.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | question | question posée, à droite |
+| 1 | question | question posée, à droite ; elle devient aussi le titre de la conversation |
 | 2 | renvoi « [1] » | numéro du passage qui justifie la phrase ; le survol affiche l'extrait (étape 3) |
-| 3 | « 1895 tokens (1841 input, 54 output) · 2.3s » | jetons consommés (consignes et passages en entrée, réponse en sortie) et durée |
-| 4 | vignette du document | document cité (`contrat-batterix-scan.pdf`) |
+| 3 | « 652 tokens (611 input, 41 output) · 1.3s » | jetons consommés (consignes et passages en entrée, réponse en sortie) et durée de génération |
+| 4 | conversation | nouvelle conversation dans la liste de gauche, nommée d'après la première question |
 
-Réponse obtenue : « Le prix unitaire des batteries est de 212 euros HT, ce prix étant révisable une fois par an [1]. De plus, le Fournisseur s'engage à livrer sous 21 jours après la commande [1]. » en 2,3 s. [Vérifié] (`outils/resultats/ragflow/demo-2026-11-09.log`, `outils/resultats/ragflow/captures/02-prise-en-main/21-reponse-citee.txt`)
-
-3. Survoler un renvoi pour lire le passage cité, avec l'image de la page d'origine et le nom du document.
+3. Survoler un renvoi pour lire le passage cité et le nom du document d'où il vient.
 
 ![Extrait cité au survol](img/02-prise-en-main/22-citation.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | bulle de citation | texte du passage cité, vignette de la page et nom du fichier ; permet de vérifier la réponse |
+| 1 | bulle de citation | texte du passage cité (section « Décisions » du compte rendu) et nom du fichier `cse-2025-10-14.md` ; permet de vérifier la réponse |
 
 ### Pour aller plus loin
 
-- La question coûte 1 841 jetons d'entrée pour 54 de sortie : l'essentiel est fait des consignes et des passages retrouvés. C'est ce budget qui doit tenir dans le contexte déclaré ; voir [Qualité et performances](12-qualite-et-performances.md).
-- Le passage cité vient d'un PDF scanné : l'OCR colle des mots (« Volumeminimalannuel:40 0oo batteries »), sans empêcher la bonne réponse. [Vérifié] (`outils/resultats/ragflow/captures/02-prise-en-main/22-citation.txt`) Voir le manuel [04](04-deepdoc.md).
+- La question coûte 611 jetons d'entrée pour 41 de sortie : l'essentiel est fait des consignes et des passages retrouvés. Sur la base de démonstration (9 documents), une question sur le contrat Batterix en coûte 1 841 en entrée. C'est ce budget qui doit tenir dans le contexte déclaré ; voir [Qualité et performances](12-qualite-et-performances.md). [Vérifié] (`outils/resultats/ragflow/demo-2026-11-09.log`, `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`)
+- Pour un PDF scanné, la réponse affiche en plus une vignette de la page citée sous le texte ; un document Markdown, comme ici, n'en a pas. [Vérifié] (`outils/resultats/ragflow/captures/carte/15-discussion-conversation.txt`)
 - Pour une question sans réponse dans les documents, l'assistant répond « The answer you are looking for is not found in the dataset! » (texte réglable, manuel [05](05-assistants-et-citations.md)).
 
 ## Dépannage
@@ -316,7 +312,7 @@ Réponse obtenue : « Le prix unitaire des batteries est de 212 euros HT, ce pri
 
 ## Sources
 
-- Scénario : `outils/ragflow/captures/captures.py` (scénario `prise_en_main`, phases `base`, `assistant`, `saisie`, `demo`), lancé par `outils/communs/captures/lancer.sh` ; nettoyage : `outils/ragflow/nettoyer_manuel.py`
+- Scénario : `outils/ragflow/captures/captures.py` (scénario `prise_en_main`, phases `base`, `assistant`, `envoi`), lancé par `outils/communs/captures/lancer.sh` ; nettoyage : `outils/ragflow/nettoyer_manuel.py`
 - Images : `docs/ragflow/img/02-prise-en-main/` ; textes des pages et déroulé : `outils/resultats/ragflow/captures/02-prise-en-main/`
 - Jeu de démonstration : `outils/ragflow/demo.py`, [journal](../../outils/resultats/ragflow/demo-2026-11-09.log)
 - Documentation officielle : https://ragflow.io/docs/
