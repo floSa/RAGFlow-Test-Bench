@@ -1,6 +1,6 @@
 # 13. Gérer son compte, son équipe et ses clés
 
-> Ce chapitre apprend à se repérer dans les réglages du compte, à inviter un collègue dans son équipe, à régler son profil (nom, avatar, fuseau horaire, mot de passe), à créer et supprimer une clé d'accès pour les programmes, et à ouvrir la console d'administration de l'installation.
+> Ce chapitre apprend à se repérer dans les réglages du compte, à inviter un collègue dans son équipe, à accepter une invitation, à partager une base avec l'équipe, à régler son profil (nom, avatar, fuseau horaire, mot de passe), à créer et supprimer une clé d'accès pour les programmes, et à ouvrir la console d'administration de l'installation.
 > **Point de départ** : menu du compte (pastille aux initiales, en haut à droite) › « Équipe ».
 > **Durée** : environ 20 minutes. **Avant** : chapitre 03.
 
@@ -58,14 +58,38 @@ Le compte invité apparaît dans la liste (pastille 1), avec son rôle (pastille
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | membre invité | « admin », `admin@ragflow.io` (compte d'administration, invité pour l'exemple) |
-| 2 | « Rôle » | « Invite » : invitation en attente d'acceptation par le compte invité |
+| 2 | « Rôle » | « Invite » : invitation en attente d'acceptation par le compte invité (étape 4) |
 | 3 | corbeille | retire le membre, après confirmation |
 
 *Résultat* : le membre est ajouté ; retiré, il disparaît aussitôt de la liste.
 
+## Accepter une invitation et partager une base
+
+**Étape 4. Accepter l'invitation, côté invité**
+*Où* : compte invité › menu du compte › « Équipe » › « Équipes rejointes ».
+Le collègue invité se connecte à son propre compte et ouvre « Équipe » : l'équipe qui l'invite apparaît dans « Équipes rejointes » (pastille 2), avec deux boutons. Cliquer sur « Accepter » (pastille 3).
+
+![Invitation reçue](../img/13-exploitation/10-invitation-recue.png)
+*Écran : réglages du compte invité, page « Équipe », invitation reçue.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Équipes rejointes » | équipes dont ce compte est membre ; la dernière ligne est son propre espace |
+| 2 | équipe qui invite | nom du compte qui invite (ici « Banc RAGFlow »), date de l'invitation et adresse |
+| 3 | « Accepter » | rejoint l'équipe |
+| 4 | « Refuser » | décline l'invitation |
+
+*Résultat* : le message « Opéré » confirme ; les deux boutons disparaissent de la ligne, qui reste dans « Équipes rejointes ».
+
+**Étape 5. Partager une base avec l'équipe**
+*Où* : compte propriétaire › barre du haut › « Base de connaissances » › base ouverte › menu de gauche › « Configuration » › « Autorisations ».
+Ouvrir la liste « Autorisations » (montrée au chapitre 06, étape 6, pastille 5), choisir « Équipe » au lieu de « Moi uniquement », puis cliquer sur « Enregistrer » en bas de la page. Un message « No PaddleOCR models added… » peut s'afficher en même temps : il ne concerne que le choix du lecteur des PDF et n'empêche pas l'enregistrement.
+
+*Résultat* : le message « Mis à jour » confirme, et « Équipe » reste affiché après rechargement. Le membre voit la base dans sa propre liste « Base de connaissances », avec le nom du propriétaire sur la carte, et peut l'ouvrir avec tous ses onglets. Un agent se partage par le même réglage, dans « Gestion » › « Paramètres » (chapitre 10, étape 12) ; ce dernier cas n'a pas été essayé.
+
 ## Régler son profil
 
-**Étape 4. Ouvrir la page « Profil »**
+**Étape 6. Ouvrir la page « Profil »**
 *Où* : menu du compte › « Profil ».
 Chaque réglage a son bouton « Modifier » à droite.
 
@@ -82,7 +106,7 @@ Chaque réglage a son bouton « Modifier » à droite.
 
 *Résultat* : le profil est affiché et modifiable.
 
-**Étape 5. Changer le fuseau horaire**
+**Étape 7. Changer le fuseau horaire**
 *Où* : « Profil » › « Modifier » en face de « Fuseau horaire ».
 Choisir le fuseau dans la liste (pastille 1), par exemple celui de Paris, puis cliquer sur « Enregistrer » (pastille 3).
 
@@ -99,7 +123,7 @@ Choisir le fuseau dans la liste (pastille 1), par exemple celui de Paris, puis c
 
 ## Créer et supprimer une clé d'accès
 
-**Étape 6. Ouvrir la page « API »**
+**Étape 8. Ouvrir la page « API »**
 *Où* : menu du compte › « API ».
 La page « RAGFlow API » donne l'adresse du serveur (pastille 3) et l'accès aux clés (pastille 2).
 
@@ -116,7 +140,7 @@ La page « RAGFlow API » donne l'adresse du serveur (pastille 3) et l'accès au
 
 *Résultat* : la page est ouverte. Sous la documentation, la carte « Langfuse » relie RAGFlow à un service de suivi des appels aux modèles ; elle n'a pas été utilisée.
 
-**Étape 7. Créer une clé**
+**Étape 9. Créer une clé**
 *Où* : page « API » › « Clé API » › « Créer une nouvelle clé ».
 Cliquer sur « Créer une nouvelle clé » (pastille 5) : la clé s'ajoute au tableau (pastille 1). La copier (pastille 3) et la coller dans le programme qui en a besoin. Les clés sont masquées sur la capture.
 
@@ -133,7 +157,7 @@ Cliquer sur « Créer une nouvelle clé » (pastille 5) : la clé s'ajoute au ta
 
 *Résultat* : la clé est créée et copiée.
 
-**Étape 8. Supprimer une clé**
+**Étape 10. Supprimer une clé**
 *Où* : fenêtre « Clé API » › corbeille de la ligne.
 Cliquer sur la corbeille de la clé, puis sur « Supprimer » (pastille 2) dans la confirmation.
 
@@ -151,7 +175,7 @@ Cliquer sur la corbeille de la clé, puis sur « Supprimer » (pastille 2) dans 
 
 La console d'administration n'a aucun lien dans l'interface ordinaire : elle s'ouvre par son adresse, `http://127.0.0.1:8088/admin`, et seul le compte `admin@ragflow.io` y entre. Son mot de passe a été tiré au hasard à l'installation ; il se trouve à la ligne `ADMIN_DEFAULT_PASSWORD` du fichier `donnees/ragflow/ragflow.env`.
 
-**Étape 9. Se connecter à la console**
+**Étape 11. Se connecter à la console**
 *Où* : navigateur Windows › `http://127.0.0.1:8088/admin`.
 Saisir le courriel (pastille 2) et le mot de passe (pastille 3), puis cliquer sur « Se connecter » (pastille 4).
 
@@ -167,7 +191,7 @@ Saisir le courriel (pastille 2) et le mot de passe (pastille 3), puis cliquer su
 
 *Résultat* : la page « Services » s'affiche (étape suivante).
 
-**Étape 10. Lire l'état des services**
+**Étape 12. Lire l'état des services**
 *Où* : console › « Services ».
 Chaque ligne est un service de l'installation (pastille 2), avec son état (pastille 3).
 
@@ -183,7 +207,7 @@ Chaque ligne est un service de l'installation (pastille 2), avec son état (past
 
 *Résultat* : l'état est lu. Les trois processus de RAGFlow sont marqués « Délai Expiré » alors que l'interface fonctionnait normalement : cet affichage n'est pas fiable ; l'état réel se vérifie comme au chapitre 02, étape 9.
 
-**Étape 11. Gérer les comptes**
+**Étape 13. Gérer les comptes**
 *Où* : console › « Utilisateurs ».
 La page liste les comptes (pastille 1) ; les icônes d'action d'une ligne apparaissent au survol.
 
@@ -201,7 +225,7 @@ La page liste les comptes (pastille 1) ; les icônes d'action d'une ligne appara
 
 *Résultat* : les comptes sont listés. Ces actions n'ont pas été essayées, pour ne pas toucher au compte de démonstration.
 
-**Étape 12. Lire le réglage du bac à sable**
+**Étape 14. Lire le réglage du bac à sable**
 *Où* : console › « Bac à sable ».
 Cette page règle où s'exécute le code lancé par le bloc « Code » des agents (chapitre 10, étape 14).
 
@@ -229,8 +253,8 @@ Cette page règle où s'exécute le code lancé par le bloc « Code » des agent
 | Symptôme | Cause | Que faire |
 |---|---|---|
 | « Astuce : 102 user not found » à l'invitation | l'adresse n'a pas de compte | faire créer le compte (« Sign up »), puis inviter |
-| Heures décalées dans certaines pages | heures affichées en temps universel | ajouter une heure (deux en été) pour Paris ; régler aussi « Fuseau horaire » (étape 5) |
-| Un programme est refusé après la suppression d'une clé | la clé supprimée était la sienne | créer une nouvelle clé (étape 7) et la donner au programme |
+| Heures décalées dans certaines pages | heures affichées en temps universel | ajouter une heure (deux en été) pour Paris ; régler aussi « Fuseau horaire » (étape 7) |
+| Un programme est refusé après la suppression d'une clé | la clé supprimée était la sienne | créer une nouvelle clé (étape 9) et la donner au programme |
 | « Délai Expiré » sur le serveur dans la console | affichage peu fiable de la console | vérifier l'état comme au chapitre 02, étape 9 |
 
 Les autres problèmes sont traités au chapitre [15. En cas de problème](15-en-cas-de-probleme.md).

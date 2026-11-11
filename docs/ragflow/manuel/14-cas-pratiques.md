@@ -69,7 +69,7 @@ L'assistant répond dans la langue de la question. Ses réglages se relisent dan
 
 **Les étapes**
 
-1. Vérifier la clé d'accès du programme : le script du dépôt utilise celle créée à l'installation, rangée dans le fichier `donnees/ragflow/compte.json` (chapitre 02, étape 7). Si elle a été supprimée, en créer une (chapitre 13, étape 7) et la recopier dans ce fichier, à la ligne `api_key`.
+1. Vérifier la clé d'accès du programme : le script du dépôt utilise celle créée à l'installation, rangée dans le fichier `donnees/ragflow/compte.json` (chapitre 02, étape 7). Si elle a été supprimée, en créer une (chapitre 13, étape 9) et la recopier dans ce fichier, à la ligne `api_key`.
 2. Lancer une première fois l'envoi, dans le terminal WSL, depuis le dossier du dépôt ; la base est créée si elle n'existe pas :
 
    ```bash
