@@ -12,6 +12,8 @@ Avant de pouvoir répondre, RAGFlow lit chaque document et le coupe en **passage
 
 ## Choisir le gabarit d'une base à sa création
 
+Rappel : la base « Manuel-Decoupage » utilisée dans ce chapitre a été créée au début du chapitre 05, avec le gabarit « General » ; il n'y a pas à la recréer. Les étapes 1 et 2 montrent en détail le choix du gabarit fait à cette création, et servent pour toute nouvelle base.
+
 **Étape 1. Ouvrir la liste des gabarits**
 *Où* : barre du haut › « Base de connaissances » › « Créer une base de connaissances ».
 Saisir le nom (pastille 1), puis cliquer sur la liste du gabarit (pastille 3).
@@ -21,7 +23,7 @@ Saisir le nom (pastille 1), puis cliquer sur la liste du gabarit (pastille 3).
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | « Nom » | nom de la base, ici « Manuel-Decoupage », la base du chapitre 05, créée ainsi avant l'envoi de ses trois fichiers |
+| 1 | « Nom » | nom de la base ; la capture montre la création de « Manuel-Decoupage », faite au chapitre 05 avant l'envoi de ses trois fichiers |
 | 2 | « Modèle d'embedding » | modèle de la recherche par le sens, `bge-m3` (modèle par défaut du chapitre 03) |
 | 3 | gabarit | gabarit de la base, « General (built in) » par défaut |
 | 4 | « Enregistrer » | crée la base et l'ouvre |
@@ -48,7 +50,7 @@ La liste montre d'abord les chaînes de lecture personnalisées créées dans «
 
 **Étape 3. Changer le gabarit du fichier**
 *Où* : onglet « Fichiers » › colonne « Analyser » › nom du gabarit du fichier (« General ») › « Changer ou configurer le pipeline d'ingestion. ».
-La fenêtre « Mode d'analyse » propre au fichier s'ouvre. Ouvrir la liste du gabarit (la même qu'à l'étape 2), choisir « Table » pour un tableur (pastille 1), puis cliquer sur « Enregistrer » (pastille 2). Les onglets de la fenêtre s'adaptent au gabarit choisi.
+Cliquer sur le nom du gabarit dans la ligne du tableur (« General », colonne « Analyser ») : un petit menu d'une seule ligne s'ouvre juste en dessous, « Changer ou configurer le pipeline d'ingestion. » ; c'est une entrée de menu, pas une infobulle : cliquer dessus. La fenêtre « Mode d'analyse » propre au fichier s'ouvre. Ouvrir la liste du gabarit (la même qu'à l'étape 2), choisir « Table » pour un tableur (pastille 1), puis cliquer sur « Enregistrer » (pastille 2). Les onglets de la fenêtre s'adaptent au gabarit choisi.
 
 ![Gabarit Table choisi](../img/03-datasets-et-decoupage/13-gabarit-table-choisi.png)
 *Écran : fenêtre « Mode d'analyse » d'un fichier, gabarit « Table » choisi.*
@@ -369,22 +371,12 @@ Dans cette version de RAGFlow, pour un passage tiré d'un PDF, « Confirmer » n
 
 ## Écarter un passage faux
 
-**Étape 22. Désactiver le passage**
-*Où* : « Résultat du segment » › interrupteur du passage.
-Cliquer sur l'interrupteur du passage (pastille 1) : il est écarté des réponses sans être supprimé.
-
-![Passage désactivé](../img/04-deepdoc/10-passage-desactive.png)
-*Écran : « Résultat du segment », passage désactivé.*
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | interrupteur du passage | gris : passage désactivé, absent des recherches |
-
-*Où* : « Résultat du segment » › filtre (entonnoir).
-Pour retrouver plus tard les passages écartés, ouvrir le filtre et choisir « Désactivé » (pastille 3).
+**Étape 22. Désactiver le passage et retrouver les passages écartés**
+*Où* : « Résultat du segment » › interrupteur en haut à droite du passage, puis filtre (entonnoir) au-dessus des passages.
+Cliquer sur l'interrupteur du passage : il devient gris, et le passage est écarté des réponses sans être supprimé. Pour retrouver plus tard les passages écartés, ouvrir le filtre et choisir « Désactivé » (pastille 3). La capture montre le filtre ouvert, avec l'interrupteur du passage déjà gris à droite du texte.
 
 ![Filtre des passages](../img/04-deepdoc/11-filtre-des-passages.png)
-*Écran : « Résultat du segment », filtre des passages ouvert.*
+*Écran : « Résultat du segment », passage désactivé, filtre des passages ouvert.*
 
 | N° | Élément | Rôle |
 |---|---|---|
