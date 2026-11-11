@@ -188,18 +188,18 @@ Saisir le nom (pastille 1), laisser la clé vide (pastille 2), saisir l'adresse 
 
 **Étape 11. Garder les bons modèles et enregistrer**
 *Où* : même carte, après « Lister les modèles ».
-Les modèles apparaissent déjà retenus (signe « − »). Retirer ceux qui ne servent pas (pastille 2), puis cliquer sur « Enregistrer » (pastille 3).
+Les modèles apparaissent tous retenus (signe « − » à droite de chacun). Le serveur `vllm-embed` propose le même modèle sous deux noms : `bge-m3` (pastille 1), à garder, et `BAAI/bge-m3`, son nom complet, à retirer. Cliquer sur le signe « − » de `BAAI/bge-m3` (pastille 2), confirmer par « Retirer » dans la fenêtre « Are you sure to remove it ? », puis cliquer sur « Enregistrer » (pastille 3).
 
 ![Modèles listés pour la nouvelle instance](../img/01-installation/06-modeles-listes.png)
 *Écran : « Fournisseurs de modèles », modèles listés pour la nouvelle instance.*
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | `bge-m3` | modèle proposé par ce serveur, avec son type (« Embedding » : recherche par le sens) ; `BAAI/bge-m3` est le même modèle sous son nom complet |
-| 2 | signe « − » | retire le modèle de l'instance |
-| 3 | « Enregistrer » | crée l'instance |
+| 1 | `bge-m3` | modèle à garder, avec son type (« Embedding » : recherche par le sens) ; c'est le nom repris dans les listes de modèles |
+| 2 | signe « − » de `BAAI/bge-m3` | retire le doublon ; le signe devient « + », qui permettrait de le reprendre |
+| 3 | « Enregistrer » | crée l'instance avec le seul modèle `bge-m3` |
 
-*Résultat* : l'instance est enregistrée (étape suivante).
+*Résultat* : l'instance est enregistrée avec un seul modèle (étape suivante). Pour l'instance « llm-service-chat », garder de même `gemma4:e4b` et retirer son nom complet `google/gemma-4-E4B-it-qat-w4a16-ct`.
 
 **Étape 12. Vérifier l'instance enregistrée**
 *Où* : « Fournisseurs de modèles » › « VLLM », haut de la liste.
