@@ -208,7 +208,8 @@ Chaque pastille est une entité, colorée par type, et les traits sont les relat
 *Résultat* : le graphe est exact (présidente, secrétaire, deux sites) mais pauvre : quatre entités, aucune relation ; les élus, la prime et le restaurant d'entreprise n'y figurent pas.
 
 **Étape 14. Lire un arbre de résumés**
-*Où* : base « Manuel-KC-Tree » (même procédure, opérateur de type « Tree ») › « Artifacts » › vue « Tree/PageIndex ».
+*Où* : base « Manuel-KC-Tree » › « Artifacts » › vue « Tree/PageIndex ».
+La base se prépare par la même procédure que « Manuel-KC-Graphe », avec un autre type : opérateur « Manuel-Operateur-Tree » de Template « Tree » (étapes 1 à 3), chaîne « Manuel-Pipeline-Tree » qui l'utilise dans son bloc « Compiler » (étapes 4 à 9), puis base « Manuel-KC-Tree » reliée à cette chaîne et `cse-2025-10-14.md` envoyé (étapes 10 et 11).
 L'arbre de navigation est à gauche (pastille 2) ; un clic sur un nœud affiche son résumé à droite, sa flèche déplie les nœuds enfants.
 
 ![Vue Tree/PageIndex](../img/07-knowledge-compilation/33-vue-tree.png)
@@ -223,7 +224,8 @@ L'arbre de navigation est à gauche (pastille 2) ; un clic sur un nœud affiche 
 *Résultat* : le nœud « Décisions du CSE » donne un résumé exact : « Ce compte-rendu détaille les décisions prises lors de la réunion du CSE, incluant l'attribution d'une prime d'intéressement, l'autorisation du télétravail, l'ouverture d'un restaurant d'entreprise et le report d'une discussion sur les horaires d'été. » Cette synthèse a pris un peu plus de deux minutes.
 
 **Étape 15. Lire une frise**
-*Où* : base « Manuel-KC-Timeline » (opérateur de type « Timeline ») › « Artifacts » › vue « Timeline ».
+*Où* : base « Manuel-KC-Timeline » › « Artifacts » › vue « Timeline ».
+Même préparation qu'à l'étape 14, avec le Template « Timeline » : opérateur « Manuel-Operateur-Timeline », chaîne « Manuel-Pipeline-Timeline », base « Manuel-KC-Timeline ».
 Les événements sont reliés à leur date (pastille 2).
 
 ![Vue Timeline](../img/07-knowledge-compilation/35-vue-timeline.png)
@@ -237,7 +239,8 @@ Les événements sont reliés à leur date (pastille 2).
 *Résultat* : la frise ne garde que la date de la réunion et oublie les autres dates du compte rendu (avril 2026, janvier 2026, décembre).
 
 **Étape 16. Lire une carte mentale**
-*Où* : base de démonstration « Essai-KC-mind_map-1835 » › « Artifacts » › vue « Mind map ».
+*Où* : base « Essai-KC-mind_map-1835 » › « Artifacts » › vue « Mind map ».
+La capture vient de la base « Essai-KC-mind_map-1835 » du jeu de démonstration, préparée pendant les essais par un programme, avec le même document `cse-2025-10-14.md`. Pour obtenir la même carte à la souris, suivre la même procédure qu'à l'étape 14 avec le Template « Mindmap » : opérateur « Manuel-Operateur-Mindmap », chaîne « Manuel-Pipeline-Mindmap », base « Manuel-KC-Mindmap ».
 Le sujet central est à gauche, les branches vont vers la droite (pastille 2).
 
 ![Vue Mind map](../img/07-knowledge-compilation/36-carte-mentale-demo.png)
