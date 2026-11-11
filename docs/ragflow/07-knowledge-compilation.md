@@ -81,28 +81,9 @@ But : créer l'opérateur « Manuel-Operateur-Graphe », qui fera extraire un gr
 | 4 | « Global rules » | consignes ajoutées à toutes les demandes faites au modèle (langue, style, ce qu'il faut ignorer) ; laissé vide ici |
 | 5 | « Enregistrer » | crée l'opérateur |
 
-3. La liste propose six gabarits. Choisir « Graph ».
+3. La liste propose six gabarits : « Graph » (graphe de connaissances : entités et relations entre elles), « Mindmap » (carte mentale : un sujet central et ses branches), « PageIndex » (table des matières hiérarchique du document), « Timeline » (frise des événements datés), « Tree » (arbre de résumés, des passages vers un résumé général) et « Wiki » (pages de wiki par sujet, reliées entre elles). Choisir « Graph ».
 
-![Liste des gabarits](img/07-knowledge-compilation/03-liste-des-templates.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Graph » | graphe de connaissances : entités et relations entre elles |
-| 2 | « Mindmap » | carte mentale : un sujet central et ses branches |
-| 3 | « PageIndex » | table des matières hiérarchique du document |
-| 4 | « Timeline » | frise des événements datés |
-| 5 | « Tree » | arbre de résumés, des passages vers un résumé général |
-| 6 | « Wiki » | pages de wiki par sujet, reliées entre elles |
-
-4. Le gabarit choisi affiche ses réglages propres.
-
-![Gabarit Graph choisi](img/07-knowledge-compilation/04-operateur-graph.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Graph » | gabarit retenu |
-| 2 | « Global rules » | consignes générales (voir étape 2) |
-| 3 | « Re-chunk parser output » | redécoupe la sortie du Parser avant la compilation, au lieu de reprendre les passages du Chunker ; laissé désactivé |
+4. Le gabarit choisi affiche ses réglages propres, sous « Global rules » : « Re-chunk parser output » redécoupe la sortie du Parser avant la compilation, au lieu de reprendre les passages du Chunker ; laissé désactivé.
 
 5. Plus bas, les types d'entités et de relations que le modèle doit chercher. Chaque carte se modifie (crayon) ou se supprime (corbeille) au survol. Cliquer sur « Enregistrer ».
 
@@ -116,13 +97,7 @@ But : créer l'opérateur « Manuel-Operateur-Graphe », qui fera extraire un gr
 | 4 | « Add field » | ajoute un type d'entité ou de relation (par exemple `contrat` pour des documents juridiques) |
 | 5 | « Enregistrer » | crée l'opérateur et revient à la liste |
 
-6. L'opérateur apparaît dans la liste, avec son gabarit « Graph ».
-
-![Opérateur créé](img/07-knowledge-compilation/06-operateur-cree.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | carte « Manuel-Operateur-Graphe » | nom, description, gabarit « Graph », date de dernière sauvegarde |
+6. L'opérateur apparaît dans la liste de l'étape 1, sous la forme d'une carte « Manuel-Operateur-Graphe » : nom, description, gabarit « Graph », date de dernière sauvegarde.
 
 ### Pour aller plus loin
 
@@ -146,14 +121,7 @@ But : créer le pipeline « Manuel-Pipeline-Graphe » (lecture, découpage, comp
 | 3 | « Créer depuis un modèle » | part d'un gabarit (par exemple « Title Chunker », « Chunk Summary », manuel [08](08-agents.md)) |
 | 4 | « Importer un fichier JSON » | recrée un pipeline exporté (même fenêtre que pour un agent, manuel [08](08-agents.md)) |
 
-2. Saisir le nom du pipeline, puis cliquer sur « Confirmer ».
-
-![Nom du pipeline](img/07-knowledge-compilation/08-nom-du-pipeline.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Nom » | nom du pipeline, ici « Manuel-Pipeline-Graphe » |
-| 2 | « Confirmer » | crée le pipeline et ouvre son canevas |
+2. La fenêtre « Create ingestion pipeline » demande un « Nom » (ici « Manuel-Pipeline-Graphe ») : le saisir, puis cliquer sur « Confirmer », qui crée le pipeline et ouvre son canevas.
 
 3. Le canevas s'ouvre avec deux blocs reliés.
 
@@ -168,14 +136,7 @@ But : créer le pipeline « Manuel-Pipeline-Graphe » (lecture, découpage, comp
 | 5 | « Gestion » | menu du pipeline (importer, exporter, réglages ; décrit au manuel [08](08-agents.md)) |
 | 6 | commandes du canevas | zoom avant, zoom arrière, « Fit View » (tout afficher), verrouillage du déplacement des blocs |
 
-4. Un clic sur un bloc ouvre son panneau de réglages à droite. Celui du « Parser » règle la lecture de chaque format ; les réglages sont ceux de l'onglet « Parser » de la « Configuration » d'une base, détaillés au manuel [03](03-datasets-et-decoupage.md). La croix en haut à droite ferme le panneau.
-
-![Panneau du Parser](img/07-knowledge-compilation/10-parser.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Parser » | titre du bloc ; le crayon le renomme |
-| 2 | « PDF » | réglages du format PDF (« Analyseur PDF » : « DeepDOC », « Plages de pages ») ; viennent ensuite « Tableur », « Image » et les autres formats, chacun supprimable par sa corbeille |
+4. Un clic sur un bloc ouvre son panneau de réglages à droite ; le titre du bloc s'y renomme par le crayon, et la croix en haut à droite ferme le panneau. Celui du « Parser » règle la lecture de chaque format (« PDF » avec « Analyseur PDF » : « DeepDOC » et « Plages de pages », puis « Tableur », « Image » et les autres formats, chacun supprimable par sa corbeille) ; les réglages sont ceux de l'onglet « Parser » de la « Configuration » d'une base, détaillés au manuel [03](03-datasets-et-decoupage.md), section 5, étape 7.
 
 5. Survoler le bloc « Parser » : un « + » apparaît sur son bord droit. Le cliquer : le menu « Étape suivante » propose les découpeurs. Choisir « Découpeur par tokens ».
 
@@ -187,16 +148,7 @@ But : créer le pipeline « Manuel-Pipeline-Graphe » (lecture, découpage, comp
 | 2 | « Découpeur par tokens » | coupe le texte en passages d'une taille donnée (512 jetons par défaut) |
 | 3 | « Découpeur par titres » | coupe aux titres du document |
 
-6. Cliquer sur « Save draft », puis sur le « + » du bloc « Chunker ». Choisir « Compiler ».
-
-![Étape suivante après le Chunker](img/07-knowledge-compilation/12-etape-suivante-compiler.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « + » | ajoute une étape après le découpage |
-| 2 | « Indexeur » | indexe les passages (vecteurs et texte intégral) : fin d'un pipeline sans compilation |
-| 3 | « Compiler » | compile les passages en artefacts avec un opérateur |
-| 4 | « Transformateur » | fait réécrire ou enrichir les passages par un modèle avant l'indexation |
+6. Cliquer sur « Save draft », puis sur le « + » du bloc « Chunker ». Le même menu « Étape suivante » propose alors « Indexeur » (indexe les passages, vecteurs et texte intégral : fin d'un pipeline sans compilation), « Compiler » (compile les passages en artefacts avec un opérateur) et « Transformateur » (fait réécrire ou enrichir les passages par un modèle avant l'indexation). Choisir « Compiler ».
 
 7. Cliquer sur « Save draft », puis sur le bloc « Compiler » pour ouvrir son panneau.
 
@@ -210,24 +162,9 @@ But : créer le pipeline « Manuel-Pipeline-Graphe » (lecture, découpage, comp
 | 4 | « Température » | réglages du modèle : « Liberté », « Température » (0,1), « Top P », pénalités, « Nombre max de tokens », comme pour un assistant (manuel [05](05-assistants-et-citations.md)) |
 | 5 | « Thinking » | raisonnement du modèle : « System default », « Enabled », « Disabled » |
 
-8. Ouvrir la liste « Operator » et choisir « Manuel-Operateur-Graphe ».
+8. Ouvrir la liste « Operator » et choisir « Manuel-Operateur-Graphe », l'opérateur créé à la section 2 ; la liste propose aussi « Essai-KC-mind_map-1835 », l'opérateur du jeu de démonstration (carte mentale).
 
-![Choix de l'opérateur](img/07-knowledge-compilation/14-choix-de-l-operateur.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Manuel-Operateur-Graphe » | opérateur créé à la section 2 |
-| 2 | « Essai-KC-mind_map-1835 » | opérateur du jeu de démonstration (carte mentale) |
-
-9. Cliquer sur « Save draft », puis sur le « + » du bloc « Compiler ». Choisir « Indexeur ».
-
-![Étape suivante après le Compiler](img/07-knowledge-compilation/15-etape-suivante-indexeur.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « + » | ajoute une étape après la compilation |
-| 2 | « Indexeur » | dernière étape : sans elle, aucun passage n'est cherchable |
-| 3 | « Transformateur » | voir l'étape 6 |
+9. Cliquer sur « Save draft », puis sur le « + » du bloc « Compiler ». Le menu « Étape suivante » ne propose plus que « Indexeur » et « Transformateur » (voir l'étape 6). Choisir « Indexeur » : c'est la dernière étape, sans laquelle aucun passage n'est cherchable.
 
 10. Le pipeline est complet. Cliquer sur « Save draft ».
 
@@ -250,13 +187,7 @@ But : créer le pipeline « Manuel-Pipeline-Graphe » (lecture, découpage, comp
 | 1 | « Alias » | nom court de la version, ici « v1 » |
 | 2 | « Confirmer » | publie : la version devient choisissable dans une base |
 
-12. Revenir à « Agent », onglet « Ingestion pipeline » : le pipeline porte une date « Publié le ».
-
-![Pipeline publié](img/07-knowledge-compilation/18-pipeline-publie.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | carte « Manuel-Pipeline-Graphe » | « Dernière sauvegarde à » et « Publié le » ; un clic rouvre le canevas |
+12. Revenir à « Agent », onglet « Ingestion pipeline » (capture de l'étape 1) : la carte « Manuel-Pipeline-Graphe » porte « Dernière sauvegarde à » et une date « Publié le » ; un clic rouvre le canevas.
 
 ### Pour aller plus loin
 
@@ -269,25 +200,9 @@ But : créer le pipeline « Manuel-Pipeline-Graphe » (lecture, découpage, comp
 
 But : créer la base « Manuel-KC-Graphe », remplacer son gabarit par le pipeline publié, puis importer le compte rendu du CSE.
 
-1. « Base de connaissances », « Créer une base de connaissances » : saisir le nom et cliquer sur « Enregistrer » (le gabarit proposé, « General », est remplacé à l'étape suivante).
+1. « Base de connaissances », « Créer une base de connaissances » : saisir le nom (« Manuel-KC-Graphe ») et cliquer sur « Enregistrer », dans la fenêtre décrite au manuel [03](03-datasets-et-decoupage.md), section 1, étape 3 (le gabarit proposé, « General », est remplacé à l'étape suivante).
 
-![Création de la base](img/07-knowledge-compilation/19-creation-de-la-base.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Nom » | ici « Manuel-KC-Graphe » |
-| 2 | « Enregistrer » | crée la base et l'ouvre |
-
-2. Cliquer sur « Configuration » dans le menu de gauche, puis ouvrir la liste « Mode d'analyse ». Les pipelines créés dans « Agent » sont en tête, avant les gabarits « (built in) ». Cliquer sur « Manuel-Pipeline-Graphe ».
-
-![Liste Mode d'analyse](img/07-knowledge-compilation/20-mode-d-analyse.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Manuel-Pipeline-Graphe » | pipeline personnalisé ; un clic déplie ses versions publiées |
-| 2 | « General » | gabarit intégré actuel de la base |
-
-3. Choisir la version publiée.
+2. Cliquer sur « Configuration » dans le menu de gauche, puis ouvrir la liste « Mode d'analyse ». Les pipelines créés dans « Agent » sont en tête, avant les gabarits « (built in) » (« General » est le gabarit intégré actuel de la base). Cliquer sur « Manuel-Pipeline-Graphe » pour déplier ses versions publiées, puis choisir la version publiée.
 
 ![Version du pipeline](img/07-knowledge-compilation/21-version-du-pipeline.png)
 
@@ -296,35 +211,11 @@ But : créer la base « Manuel-KC-Graphe », remplacer son gabarit par le pipeli
 | 1 | « Manuel-Pipeline-Graphe » | pipeline déplié |
 | 2 | « Manuel-Pipeline-Graphe_2026-11-11 14:30:37 v1 » | version publiée : nom, date de publication, alias |
 
-4. Les onglets sous « Mode d'analyse » deviennent les étapes du pipeline. Cliquer sur « Enregistrer ».
+3. « Mode d'analyse » affiche alors « Manuel-Pipeline-Graphe_2026-11-11 14:30:37 v1 », et les onglets en dessous deviennent les étapes du pipeline (« Parser », « Découpeur par tokens », « Compiler », « Indexeur ») ; l'onglet « Compiler » reprend les réglages du canevas, modifiables pour cette base. Cliquer sur « Enregistrer » : le pipeline s'applique aux prochaines analyses, et le choix est relu tel quel après rechargement de la page.
 
-![Pipeline choisi](img/07-knowledge-compilation/22-pipeline-choisi.png)
+4. Cliquer sur « Fichiers », « Ajouter un fichier », « Téléverser un fichier ». Choisir `cse-2025-10-14.md` (compte rendu fictif du CSE de Vélanor : présidente, secrétaire, décisions, points reportés), activer « Analyser à la création », puis cliquer sur « Enregistrer » (fenêtre du manuel [03](03-datasets-et-decoupage.md), section 2, étape 1) : le pipeline se lance dès le téléversement.
 
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Manuel-Pipeline-Graphe_2026-11-11 14:30:37 v1 » | mode d'analyse de la base |
-| 2 | « Compiler » | onglet du composant de compilation : mêmes réglages que dans le canevas, modifiables pour cette base |
-| 3 | « Enregistrer » | applique le pipeline aux prochaines analyses ; relu tel quel après rechargement de la page |
-
-5. Cliquer sur « Fichiers », « Ajouter un fichier », « Téléverser un fichier ». Choisir `cse-2025-10-14.md`, activer « Analyser à la création », puis cliquer sur « Enregistrer ».
-
-![Téléversement du document](img/07-knowledge-compilation/23-televersement.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Analyser à la création » | lance le pipeline dès le téléversement |
-| 2 | `cse-2025-10-14.md` | compte rendu fictif du CSE de Vélanor (présidente, secrétaire, décisions, points reportés) |
-| 3 | « Enregistrer » | téléverse et lance l'analyse |
-
-6. Attendre la fin de l'analyse. La colonne « Analyser » affiche le pipeline et sa version au lieu d'un gabarit.
-
-![Analyse terminée](img/07-knowledge-compilation/24-analyse-terminee.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | `cse-2025-10-14.md` | document analysé |
-| 2 | « Nombre de segments » | 1 passage : le document (159 jetons) tient dans un passage de 512 jetons |
-| 3 | « Analyser » | « Manuel-Pipeline-Graphe_2026-11-11 14:30:37 v1 » : pipeline utilisé pour ce fichier |
+5. Attendre la fin de l'analyse. Dans le tableau des fichiers, « Nombre de segments » indique 1 passage (le document, 159 jetons, tient dans un passage de 512 jetons) et la colonne « Analyser » affiche le pipeline et sa version, « Manuel-Pipeline-Graphe_2026-11-11 14:30:37 v1 », au lieu d'un gabarit.
 
 Ingestion et compilation ont pris 8 s en tout (relevé toutes les 5 s par l'API de suivi). [Vérifié] (`scenario.log`, ligne « ingestion et compilation »)
 
@@ -338,13 +229,7 @@ Le même choix se fait fichier par fichier : dans la colonne « Analyser », un 
 
 But : lire le graphe produit, puis voir ce qu'affiche une vue dont le type n'a pas été compilé.
 
-1. Dans la base, cliquer sur « Artifacts » dans le menu de gauche. La page s'ouvre en plein écran (bouton « Retour » pour revenir).
-
-![Onglet Artifacts](img/07-knowledge-compilation/25-onglet-artifacts.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Artifacts » | artefacts compilés de la base |
+1. Dans la base, cliquer sur « Artifacts » dans le menu de gauche. La page des artefacts compilés de la base s'ouvre en plein écran (bouton « Retour » pour revenir).
 
 2. Ouvrir le sélecteur en haut à droite et choisir « Graph ».
 
@@ -369,22 +254,9 @@ But : lire le graphe produit, puis voir ce qu'affiche une vue dont le type n'a p
 | 3 | « 4 / 4 entities » | entités affichées sur le total |
 | 4 | graphe | les entités : « Nantes », « Cholet » (lieux), « Sophie Le Gall », « Hélène Marchais » (personnes) |
 
-4. La liste « Search entity » donne les entités par leur nom.
+4. La liste « Search entity » donne les entités par leur nom : « Sophie Le Gall », « Cholet », « Nantes », « Hélène Marchais » ; un choix centre le graphe sur l'entité.
 
-![Liste des entités](img/07-knowledge-compilation/28-liste-des-entites.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | liste des entités | « Sophie Le Gall », « Cholet », « Nantes », « Hélène Marchais » ; un choix centre le graphe sur l'entité |
-
-5. Choisir « Wiki » dans le sélecteur : la base n'a pas de wiki, la vue l'indique.
-
-![Vue vide](img/07-knowledge-compilation/29-vue-vide.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Wiki » | vue choisie |
-| 2 | « No wiki yet » | aucun artefact de ce type ; « Compiled automatically when documents are parsed. » rappelle que la compilation se fait à l'analyse |
+5. Choisir « Wiki » dans le sélecteur : la base n'a pas de wiki, la vue l'indique par « No wiki yet » (visible derrière la liste, capture de l'étape 2), avec « Compiled automatically when documents are parsed. », qui rappelle que la compilation se fait à l'analyse.
 
 Le graphe est exact par rapport au document (présidente Hélène Marchais, secrétaire Sophie Le Gall, sites de Nantes et Cholet) mais pauvre : 4 entités, 0 relation, d'après la même structure lue par l'API. Les élus, la prime d'intéressement et le restaurant d'entreprise n'y figurent pas. [Vérifié] (`scenario.log`, ligne « artefact graph (API) »)
 
@@ -398,38 +270,15 @@ Le graphe obtenu le 9 novembre par l'API avec le gabarit intégré `knowledge_gr
 
 Pour montrer chaque vue remplie, la procédure des sections 2 à 4 a été rejouée à la souris pour quatre autres gabarits, une base par gabarit, avec le même document (bases « Manuel-KC-Wiki », « Manuel-KC-Tree », « Manuel-KC-PageIndex », « Manuel-KC-Timeline »). La carte mentale vient de la base de démonstration. [Vérifié] (`scenario.log`, phases `autres` et `vues`)
 
-Résultat : deux gabarits sur quatre ont produit un artefact (« Tree », « Timeline ») ; « Wiki » et « PageIndex » ont échoué, le modèle `gemma4:e4b` ne rendant pas un JSON lisible par RAGFlow. Les deux échecs sont montrés ci-dessous, puis les vues remplies.
+Résultat : deux gabarits sur quatre ont produit un artefact (« Tree », « Timeline ») ; « Wiki » et « PageIndex » ont échoué, le modèle `gemma4:e4b` ne rendant pas un JSON lisible par RAGFlow. Les deux échecs sont décrits ci-dessous, puis les vues remplies.
 
-But : repérer une compilation en échec et en lire la cause.
+But : repérer une compilation en échec et en lire la cause. Les écrans sont ceux de la page « Fichiers » et de l'onglet « Journaux » d'une base (manuel [03](03-datasets-et-decoupage.md), sections 2 et 6) ; seul leur contenu change.
 
-1. Dans la base « Manuel-KC-Wiki », le fichier reste à 0 passage, avec un point rouge dans la colonne « Analyser ».
+1. Dans la base « Manuel-KC-Wiki », le fichier reste à 0 passage dans « Nombre de segments » : un échec du « Compiler » arrête tout le pipeline, l'« Indexeur » ne tourne pas et le document n'est pas cherchable. La colonne « Analyser » montre un point rouge (échec) et le triangle de relance, qui relance le pipeline sur ce fichier sans fenêtre de confirmation pour un fichier en échec.
 
-![Fichier en échec](img/07-knowledge-compilation/30-fichier-en-echec.png)
+2. Cliquer sur « Journaux » : chaque analyse est une tâche, avec son statut. Dans le cadre « Traitement », le compteur « Échec » compte 1 fichier (deux tentatives) ; la colonne « Pipeline d'ingestion » indique « Manuel-Pipeline-Wiki » ; le statut est « Failed », la tâche du dessous étant la première tentative et celle du dessus la relance. L'œil d'une ligne ouvre la fenêtre « Fichier » de la tâche.
 
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Nombre de segments » | 0 : un échec du « Compiler » arrête tout le pipeline, l'« Indexeur » ne tourne pas et le document n'est pas cherchable |
-| 2 | état de l'analyse | point rouge : échec |
-| 3 | relancer l'analyse | triangle : relance le pipeline sur ce fichier, sans fenêtre de confirmation pour un fichier en échec |
-
-2. Cliquer sur « Journaux » : chaque analyse est une tâche, avec son statut.
-
-![Journaux d'une base en échec](img/07-knowledge-compilation/31-journaux-echec.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Échec » | compteur des fichiers en échec dans le cadre « Traitement » (1 fichier, deux tentatives) |
-| 2 | « Pipeline d'ingestion » | pipeline qui a traité le fichier, ici « Manuel-Pipeline-Wiki » |
-| 3 | « Failed » | statut de la tâche ; la tâche du dessous est la première tentative, celle du dessus la relance |
-| 4 | détail | œil : ouvre la fenêtre « Fichier » de la tâche |
-
-3. La fenêtre « Fichier » donne la durée et, sous « Détails », chaque étape horodatée.
-
-![Détail de la tâche en échec](img/07-knowledge-compilation/32-detail-de-l-echec.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Détails » | étapes du pipeline (« Parser », « TokenChunker », « Compiler: Wiki MAP Started ») puis, en orange, « LLM call failed (attempt 1/6): knowledge_compiler: LLM response is not parseable JSON » ; six tentatives, puis « Task failed » |
+3. La fenêtre « Fichier » donne la durée et, sous « Détails », chaque étape horodatée : étapes du pipeline (« Parser », « TokenChunker », « Compiler: Wiki MAP Started ») puis, en orange, « LLM call failed (attempt 1/6): knowledge_compiler: LLM response is not parseable JSON » ; six tentatives, puis « Task failed ».
 
 La tâche a duré 3 min 0 s la première fois et 3 min 3 s à la relance, avec la même erreur. « PageIndex » a échoué de la même façon en 2 min environ. Les heures des « Détails » sont en temps universel (13:39 pour une tâche lancée à 14:39, heure de Paris). [Vérifié] (`outils/resultats/ragflow/captures/07-knowledge-compilation/echec-wiki.log`, `echec-pageindex.log`, `scenario.log`)
 
@@ -445,14 +294,7 @@ But : lire les vues remplies.
 | 2 | « Navigation tree (1) » | arbre des résumés ; le nombre donne les nœuds de premier niveau |
 | 3 | « Rechercher » | filtre les nœuds par leur titre |
 
-5. Cliquer sur un nœud affiche son résumé.
-
-![Détail d'un nœud de l'arbre](img/07-knowledge-compilation/34-detail-d-un-noeud.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | nœud de l'arbre | « Décisions du CSE 342422f6 » : titre produit par le modèle et identifiant ; la flèche déplie les nœuds enfants |
-| 2 | détail | titre, nombre de documents résumés (« 1 documents ») et « Description » : « Ce compte-rendu détaille les décisions prises lors de la réunion du CSE, incluant l'attribution d'une prime d'intéressement, l'autorisation du télétravail, l'ouverture d'un restaurant d'entreprise et le report d'une discussion sur les horaires d'été. » |
+5. Cliquer sur un nœud affiche son résumé à droite. Le nœud « Décisions du CSE 342422f6 » porte un titre produit par le modèle et un identifiant ; sa flèche déplie les nœuds enfants. Le détail donne le titre, le nombre de documents résumés (« 1 documents ») et la « Description » : « Ce compte-rendu détaille les décisions prises lors de la réunion du CSE, incluant l'attribution d'une prime d'intéressement, l'autorisation du télétravail, l'ouverture d'un restaurant d'entreprise et le report d'une discussion sur les horaires d'été. »
 
 6. Base « Manuel-KC-Timeline », vue « Timeline » : les événements reliés à leur date.
 
