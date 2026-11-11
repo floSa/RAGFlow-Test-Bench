@@ -1,0 +1,82 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Reglages
+Conversations
+3
+Quel est le plafond des pénalités de retard du contrat Batterix ?
+essai
+essai
+Quel est le plafond des pénalités de retard du contrat Batterix ?
+Plusieurs modèles
+
+Hi! I'm your assistant. What can I do for you?
+
+Quel est le plafond des pénalités de retard du contrat Batterix ?
+
+Le plafond des pénalités de retard contractuelles est fixé à 8 % du montant de la commande [1].
+
+1865 tokens (1834 input, 31 output) · 1.5s
+contrat-ba…an.pdf
+[1]
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload
+
+== adresse ==
+/chat/37b4d4476b464588a9326781b107a2fe?conversationId=e02b9b81f17b4710b3082c12cb24031c&isNew=
+== pastilles ==
+1. jetons et durée
+2. renvoi
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+button | [icône lucide-panel-left-close]
+button | [icône lucide-plus]
+button | [icône lucide-copy-x]
+input:text | Rechercher
+button | Quel est le plafond des pénalités de retard du contrat Batterix ?
+button | [icône lucide-ellipsis]
+button | essai
+button | Plusieurs modèles
+button | [icône lucide-copy]
+button | [icône lucide-refresh-cw]
+button | [icône lucide-trash]
+button | [icône lucide-volume-2]
+button | [icône lucide-thumbs-up]
+button | [icône lucide-thumbs-down]
+button | [icône sans nom]
+button | contrat-ba…an.pdf
+button | Drag to resize height
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+combobox | Naive
+button | [icône lucide-mic]
+button | Send message
+input:file | 
+button | [icône lucide-settings]

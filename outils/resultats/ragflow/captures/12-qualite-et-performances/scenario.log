@@ -1,0 +1,9 @@
+== phase jetons
+réponse (mode Naive) affichée après 1.9 s : Le plafond des pénalités de retard contractuelles est fixé à 8 % du montant de la commande [1].
+
+1865 tokens (1834 input, 31 output) · 1.5s
+ligne des jetons : 1865 tokens (1834 input, 31 output) · 1.5s ; zone : {'x': 337, 'y': 375, 'width': 831.1875, 'height': 338.796875}
+capture docs/ragflow/img/12-qualite-et-performances/01-jetons-et-duree.png [(1, 'jetons et durée'), (2, 'renvoi')]
+== phase contexte
+fenêtre Modifier le modèle : Modifier le modèle | Nom du modèle | Type de modèle | Chat | Tokens maximum | Fonctionnalités du modèle | Appel d'outil | Non | Confirmer | Close ; Tokens maximum = 16384
+capture docs/ragflow/img/12-qualite-et-performances/02-tokens-maximum.png [(1, 'Type de modèle'), (2, 'Tokens maximum'), (3, "Appel d'outil"), (4, 'Non'), (5, 'Confirmer')]
