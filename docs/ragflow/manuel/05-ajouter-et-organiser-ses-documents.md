@@ -30,7 +30,15 @@ La liste montre une carte par base. Le filtre (pastille 1) et la zone « Recherc
 
 **Étape 2. Renommer ou supprimer la base**
 *Où* : liste des bases › carte de la base › menu « … ».
-Cliquer sur « Renommer » pour changer le nom sans ouvrir la base, ou sur « Supprimer » pour supprimer la base avec tous ses fichiers et passages, après confirmation. Échap referme le menu sans rien faire.
+Survoler la carte, cliquer sur son menu « … » (capture de l'étape 1, pastille 4), puis sur « Renommer » (pastille 1) pour changer le nom sans ouvrir la base, ou sur « Supprimer » (pastille 2) pour supprimer la base avec tous ses fichiers et passages, après confirmation. Échap referme le menu sans rien faire. La capture montre le menu sur la carte de la base « Démo Vélanor », refermé sans rien choisir.
+
+![Menu d'une base](../img/03-datasets-et-decoupage/02-menu-d-une-base.png)
+*Écran : Base de connaissances, menu « … » d'une carte ouvert.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Renommer » | ouvre une fenêtre avec le seul champ du nom |
+| 2 | « Supprimer » | supprime la base, ses fichiers et ses passages, après confirmation |
 
 *Résultat* : la carte affiche le nouveau nom, ou disparaît de la liste.
 
@@ -38,7 +46,7 @@ Cliquer sur « Renommer » pour changer le nom sans ouvrir la base, ou sur « Su
 
 **Étape 3. Envoyer les fichiers**
 *Où* : base « Manuel-Decoupage » › onglet « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
-L'exemple de ce chapitre et du suivant utilise une base nommée « Manuel-Decoupage », à créer d'abord avec le gabarit « General », comme au chapitre 04 (étapes 1 et 2). Y envoyer trois fichiers du dossier `corpus/documents/` : le tableur `stocks-octobre-2025.xlsx`, le document Word `procedure-batteries.docx` et le compte rendu `cse-2025-10-14.md`. Choisir les fichiers (pastille 3), activer « Analyser à la création » (pastille 1) pour que chaque fichier soit analysé dès son arrivée, puis cliquer sur « Enregistrer » (pastille 4). L'onglet « Dossier » (pastille 2) envoie tout le contenu d'un dossier du poste.
+L'exemple de ce chapitre et du suivant utilise une base nommée « Manuel-Decoupage », à créer d'abord avec le gabarit « General », comme au chapitre 04 (étapes 1 et 2) ; le chapitre 06 (étapes 1 et 2) revient sur le choix du gabarit à cette création. Y envoyer trois fichiers du dossier `corpus/documents/` : le tableur `stocks-octobre-2025.xlsx`, le document Word `procedure-batteries.docx` et le compte rendu `cse-2025-10-14.md`. Choisir les fichiers (pastille 3), activer « Analyser à la création » (pastille 1) pour que chaque fichier soit analysé dès son arrivée, puis cliquer sur « Enregistrer » (pastille 4). L'onglet « Dossier » (pastille 2) envoie tout le contenu d'un dossier du poste.
 
 ![Téléversement avec analyse à la création](../img/03-datasets-et-decoupage/05-televersement-analyse.png)
 *Écran : fenêtre « Téléverser un fichier », « Analyser à la création » activé.*
@@ -74,19 +82,46 @@ Chaque ligne résume un fichier : nom, date d'arrivée, activation, nombre de pa
 
 **Étape 5. Afficher les actions d'un fichier**
 *Où* : onglet « Fichiers » › survol d'une ligne › colonne « Action ».
-Passer la souris sur la ligne : quatre icônes apparaissent. Le crayon renomme le fichier ; l'œil affiche ses propriétés (date de création, nom, taille, type, date de mise à jour) ; la flèche vers le bas télécharge le fichier d'origine ; la corbeille le supprime avec ses passages. Ce sont les mêmes icônes que dans « Gestion des fichiers » (étape 18).
+Passer la souris sur la ligne : quatre icônes apparaissent dans la colonne « Action ». Le survol de l'œil affiche les propriétés du fichier. Ce sont les mêmes icônes que dans « Gestion des fichiers » (étape 18).
+
+![Actions d'un fichier](../img/03-datasets-et-decoupage/07-actions-d-un-fichier.png)
+*Écran : onglet « Fichiers », actions d'une ligne au survol, propriétés affichées.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | crayon | renomme le fichier (étape 6) |
+| 2 | œil | au survol, affiche les propriétés du fichier |
+| 3 | propriétés | date de création, nom, taille, type, date de mise à jour |
+| 4 | flèche vers le bas | télécharge le fichier d'origine |
+| 5 | corbeille | supprime le fichier avec ses passages (étape 7) |
 
 *Résultat* : les actions de la ligne sont accessibles.
 
 **Étape 6. Renommer le fichier**
 *Où* : ligne du fichier › crayon.
-La fenêtre « Renommer » ne contient qu'un champ « Nom » et le bouton « Enregistrer ». Garder l'extension (`.xlsx`, `.pdf`…) : elle indique le format du fichier.
+Cliquer sur le crayon (capture de l'étape 5, pastille 1). Saisir le nouveau nom (pastille 1), ici `stocks-octobre-2025-manuel.xlsx`, puis cliquer sur « Enregistrer » (pastille 2). Garder l'extension (`.xlsx`, `.pdf`…) : elle indique le format du fichier.
+
+![Renommer un fichier](../img/03-datasets-et-decoupage/08-renommer.png)
+*Écran : fenêtre « Renommer ».*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Nom » | nouveau nom du fichier, extension comprise |
+| 2 | « Enregistrer » | renomme le fichier |
 
 *Résultat* : le nouveau nom s'affiche ; les passages ne sont pas recalculés.
 
 **Étape 7. Supprimer le fichier**
 *Où* : ligne du fichier › corbeille.
-Cliquer sur la corbeille, puis sur « Supprimer » dans la fenêtre de confirmation.
+Cliquer sur la corbeille (capture de l'étape 5, pastille 5), puis sur « Supprimer » (pastille 2) dans la fenêtre de confirmation (pastille 1). « Non » annule. La capture montre la suppression du fichier vide « Manuel-note.txt », créé à l'étape 13.
+
+![Confirmation de suppression d'un fichier](../img/03-datasets-et-decoupage/23-suppression-d-un-fichier.png)
+*Écran : onglet « Fichiers », confirmation de suppression.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Êtes-vous sûr de vouloir supprimer cet élément ? » | confirmation ; « Non » annule |
+| 2 | « Supprimer » | supprime le fichier et ses passages |
 
 *Résultat* : le fichier et ses passages disparaissent, définitivement.
 
@@ -102,7 +137,15 @@ Cliquer sur l'interrupteur « Activé » du fichier, par exemple un document pé
 
 **Étape 9. Relancer l'analyse**
 *Où* : onglet « Fichiers » › colonne « Analyser » › icône de relance.
-Utile après un changement de réglage de la base (chapitre 06). Cliquer sur l'icône de relance du fichier. La fenêtre « Analyser le fichier » demande « Are you sure to clear chunks to re-parse? » : cliquer sur « Confirmer ». Le point d'état voisin, vert quand l'analyse a réussi, ouvre au clic le détail de l'analyse (étape 15).
+Utile après un changement de réglage de la base (chapitre 06). Cliquer sur l'icône de relance du fichier, le rond à flèche de la colonne « Analyser », à droite du nom du gabarit (capture de l'étape 4, pastille 6). La fenêtre « Analyser le fichier » (pastille 1) demande « Are you sure to clear chunks to re-parse? » : cliquer sur « Confirmer » (pastille 2). Le point d'état voisin de l'icône, vert quand l'analyse a réussi, ouvre au clic le détail de l'analyse (étape 15).
+
+![Confirmer la relance](../img/03-datasets-et-decoupage/17-confirmer-la-relance.png)
+*Écran : fenêtre « Analyser le fichier ».*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Analyser le fichier » | fenêtre de confirmation ; « Non » annule |
+| 2 | « Confirmer » | efface les passages du fichier et relance son analyse |
 
 *Résultat* : les passages existants sont effacés puis recalculés ; pour un document court, en moins de trois secondes.
 
@@ -147,7 +190,17 @@ Cocher plusieurs fichiers : une barre d'actions groupées apparaît.
 
 **Étape 12. Filtrer la liste des fichiers**
 *Où* : onglet « Fichiers » › filtre (entonnoir).
-Le filtre propose « Type de fichier » (un seul format), « Statut » (un seul état d'analyse : réussi, en échec…) et « Champ de métadonnée » (les fichiers qui portent ce champ). « Soumettre » applique le filtre, « Effacer » le retire, Échap referme. Utile dans une grande base pour retrouver les fichiers en échec.
+Cliquer sur l'entonnoir, à gauche de « Rechercher ». Choisir un critère, puis cliquer sur « Soumettre » (pastille 4) ; « Effacer » retire le filtre, Échap referme. Utile dans une grande base pour retrouver les fichiers en échec.
+
+![Filtre des fichiers](../img/03-datasets-et-decoupage/20-filtre-des-fichiers.png)
+*Écran : onglet « Fichiers », filtre ouvert.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Type de fichier » | ne garde qu'un format |
+| 2 | « Statut » | ne garde qu'un état d'analyse : réussi, en échec… |
+| 3 | « Champ de métadonnée » | ne garde que les fichiers qui portent ce champ (étape 10) |
+| 4 | « Soumettre » | applique le filtre |
 
 *Résultat* : seul le sous-ensemble choisi reste affiché.
 
@@ -155,7 +208,15 @@ Le filtre propose « Type de fichier » (un seul format), « Statut » (un seul 
 
 **Étape 13. Créer un fichier vide**
 *Où* : onglet « Fichiers » › « Ajouter un fichier » › « Créer un fichier vide ».
-La fenêtre « Nom du fichier » ne demande qu'un « Nom », par exemple « Manuel-note.txt », puis « Enregistrer ». Le document sert à recevoir des passages écrits à la main (chapitre 06, « Ajouter un passage »).
+Le menu « Ajouter un fichier » est celui du chapitre 04, étape 4. Choisir « Créer un fichier vide » : la fenêtre « Nom du fichier » ne demande qu'un « Nom » (pastille 1), ici « Manuel-note.txt » ; cliquer sur « Enregistrer » (pastille 2). Le document sert à recevoir des passages écrits à la main (chapitre 06, « Ajouter un passage écrit à la main »).
+
+![Créer un fichier vide](../img/03-datasets-et-decoupage/21-fichier-vide.png)
+*Écran : fenêtre « Nom du fichier ».*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Nom » | nom du document vide, extension comprise |
+| 2 | « Enregistrer » | crée le document dans la base |
 
 *Résultat* : le document apparaît avec 0 segment et sans bouton d'analyse, puisqu'il n'y a rien à lire.
 
@@ -213,7 +274,17 @@ La page montre tous les fichiers du compte. Le dossier « .knowledgebase » (pas
 
 **Étape 17. Créer un dossier et y déposer un fichier**
 *Où* : Gestion des fichiers › « Ajouter un fichier » › « Nouveau dossier ».
-Saisir le nom du dossier (ici « Manuel-dossier ») dans le champ « Nom », puis « Enregistrer ». Ouvrir le dossier, puis « Ajouter un fichier » › « Téléverser un fichier » ; choisir le fichier (ici `faq-sav.html`) et cliquer sur « Enregistrer ». La fenêtre est celle de l'étape 3, sans l'option « Analyser à la création ».
+Cliquer sur « Ajouter un fichier » (capture de l'étape 16, pastille 2) : le menu propose « Téléverser un fichier » et « Nouveau dossier ». Choisir « Nouveau dossier », saisir le nom (pastille 1), ici « Manuel-dossier », puis cliquer sur « Enregistrer » (pastille 2).
+
+![Nouveau dossier](../img/03-datasets-et-decoupage/47-nouveau-dossier.png)
+*Écran : Gestion des fichiers, fenêtre « Nouveau dossier ».*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Nom » | nom du dossier |
+| 2 | « Enregistrer » | crée le dossier |
+
+Ouvrir le dossier d'un clic sur son nom, puis « Ajouter un fichier » › « Téléverser un fichier » ; choisir le fichier (ici `faq-sav.html`) et cliquer sur « Enregistrer ». La fenêtre est celle de l'étape 3, sans l'option « Analyser à la création ».
 
 *Résultat* : le fichier est rangé dans le dossier, relié à aucune base.
 
@@ -251,7 +322,15 @@ Ouvrir la liste « Nom », cocher la base voulue (pastille 1), puis cliquer sur 
 
 **Étape 20. Supprimer un dossier**
 *Où* : Gestion des fichiers (racine) › survol du dossier › corbeille.
-Cliquer sur la corbeille du dossier, puis sur « Supprimer » dans la fenêtre « Supprimer le fichier », qui rappelle le dossier visé.
+Revenir à la racine, survoler la ligne du dossier, cliquer sur sa corbeille (même icône qu'à l'étape 18, pastille 6), puis sur « Supprimer » (pastille 2) dans la fenêtre « Supprimer le fichier » (pastille 1), qui rappelle le dossier visé.
+
+![Supprimer un dossier](../img/03-datasets-et-decoupage/53-supprimer-le-dossier.png)
+*Écran : Gestion des fichiers, fenêtre « Supprimer le fichier ».*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Supprimer le fichier » | confirmation, avec le nom du dossier « Manuel-dossier » ; « Non » annule |
+| 2 | « Supprimer » | supprime le dossier et tout son contenu |
 
 *Résultat* : le dossier et son contenu sont supprimés.
 
@@ -261,30 +340,30 @@ Les chapitres 07, 09, 10 et 14 s'appuient sur une base et un assistant nommés �
 
 **Étape 21. Créer la base « Démo Vélanor »**
 *Où* : barre du haut › « Base de connaissances » › « Créer une base de connaissances ».
-Saisir le nom « Démo Vélanor », garder le gabarit « General » et cliquer sur « Enregistrer », comme au chapitre 04, étapes 1 et 2.
+Saisir le nom « Démo Vélanor », garder le gabarit « General » et cliquer sur « Enregistrer » : mêmes gestes et même fenêtre qu'au chapitre 04, étapes 1 et 2 (captures « Créer une base de connaissances » et fenêtre remplie).
 
 *Résultat* : la base s'ouvre, vide, sur son onglet « Fichiers ».
 
 **Étape 22. Ajouter et analyser les neuf documents**
 *Où* : base « Démo Vélanor » › onglet « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
-Choisir les neuf fichiers du dossier `corpus/documents/` : `contrat-batterix-scan.pdf`, `cse-2025-10-14.md`, `faq-sav.html`, `message-vocal-production.mp3`, `procedure-batteries.docx`, `rapport-annuel-2025.pdf`, `stocks-octobre-2025.xlsx`, `strategie-2026.pptx` et `supplier-audit-batterix-en.pdf`. Activer « Analyser à la création » (étape 3), puis cliquer sur « Enregistrer ».
+Choisir les neuf fichiers du dossier `corpus/documents/` : `contrat-batterix-scan.pdf`, `cse-2025-10-14.md`, `faq-sav.html`, `message-vocal-production.mp3`, `procedure-batteries.docx`, `rapport-annuel-2025.pdf`, `stocks-octobre-2025.xlsx`, `strategie-2026.pptx` et `supplier-audit-batterix-en.pdf`. Activer « Analyser à la création », puis cliquer sur « Enregistrer » : même fenêtre qu'à l'étape 3 de ce chapitre (capture « Téléversement avec analyse à la création »).
 
 *Résultat* : les neuf fichiers s'analysent seuls, en moins d'une minute avec une carte graphique ; chacun affiche ensuite un « Nombre de segments » supérieur à 0 (étape 4). RAGFlow choisit seul le gabarit « Presentation » pour le diaporama et « Audio » pour le message vocal.
 
 **Étape 23. Créer l'assistant « Démo Vélanor » et le relier à la base**
 *Où* : barre du haut › « Discussion » › « Créer un chat ».
-Nommer l'assistant « Démo Vélanor » et cliquer sur « Enregistrer ». Ouvrir l'assistant, puis l'engrenage, cocher la base « Démo Vélanor » dans « Bases de connaissances » et cliquer sur « Enregistrer », comme au chapitre 04, étapes 10 à 16.
+Nommer l'assistant « Démo Vélanor » et cliquer sur « Enregistrer ». Ouvrir l'assistant, puis l'engrenage, cocher la base « Démo Vélanor » dans « Bases de connaissances » et cliquer sur « Enregistrer » : mêmes gestes et mêmes écrans qu'au chapitre 04, étapes 10 à 16 (fenêtre de création de l'assistant, panneau « Paramètres du chat », liste des bases).
 
 *Résultat* : l'assistant est relié à la base.
 
 **Étape 24. Régler l'assistant**
 *Où* : page de l'assistant « Démo Vélanor » › engrenage › panneau « Paramètres du chat ».
-Remplir les réglages suivants, expliqués un par un au chapitre 08 (étapes 1, 10 et 11), puis cliquer sur « Enregistrer » en bas du panneau :
+Remplir les réglages suivants, puis cliquer sur « Enregistrer » en bas du panneau. Chacun est montré, avec sa capture, au chapitre 08 :
 
-- « Message d'accueil » : « Bonjour, je réponds aux questions sur les documents fictifs de Vélanor, avec mes sources. » ;
-- « Paramètres avancés » › « Naive » › « Réponse vide » : « Aucune information pertinente n'a été trouvée dans les documents. » ;
-- « Poids de similarité par mots-clés » : 0,3 (0,7 va alors à la recherche par le sens) ;
-- « Top N » : 8, valeur déjà en place pour un assistant créé à la souris.
+- « Paramètres du chat » › « Message d'accueil » : « Bonjour, je réponds aux questions sur les documents fictifs de Vélanor, avec mes sources. » (chapitre 08, étape 1, pastille 6) ;
+- « Paramètres du chat » › « Paramètres avancés » › « Naive » › « Réponse vide » : « Aucune information pertinente n'a été trouvée dans les documents. » (chapitre 08, étape 10, pastille 1) ;
+- « Paramètres du chat » › « Paramètres avancés » › « Naive », plus bas › « Poids de similarité par mots-clés » : 0,3, ce qui donne 0,7 à la recherche par le sens (chapitre 08, étape 11, capture « Naive, recherche », pastille 2) ;
+- même endroit › « Top N » : 8, valeur déjà en place pour un assistant créé à la souris (même capture, pastille 4).
 
 *Résultat* : le message « Modifié » confirme. L'assistant « Démo Vélanor » est prêt : c'est lui qu'interrogent les exemples des chapitres 07, 09, 10 et 14.
 
