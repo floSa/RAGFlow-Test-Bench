@@ -267,7 +267,7 @@ Ouvrir la liste : les modèles sont groupés par fournisseur puis par instance. 
 |---|---|---|
 | « email and password do not match » à la connexion | mot de passe faux, ou compte créé par un programme mal réglé | vérifier le mot de passe dans `donnees/IDENTIFIANTS-LOCAUX.txt` ; sinon voir le chapitre 02 |
 | L'interface revient en anglais | langue mémorisée par le navigateur seulement | barre du haut › « English » › « Français » |
-| « Lister les modèles » n'affiche rien | adresse fausse ou service de modèles arrêté | vérifier l'adresse (terminée par `/v1`) et relancer LLM-Service (chapitre 02, étape 3) |
+| « Lister les modèles » n'affiche rien | adresse fausse ou service de modèles arrêté | vérifier l'adresse (terminée par `/v1`) et relancer LLM-Service (chapitre 02, étape 4) |
 | Impossible de créer une discussion | aucun « Modèle de chat » par défaut | étapes 14 et 15 |
 
 Les autres problèmes sont traités au chapitre [15. En cas de problème](15-en-cas-de-probleme.md).
