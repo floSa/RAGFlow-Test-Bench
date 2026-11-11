@@ -65,13 +65,4 @@ Les quatre premiers chapitres mènent, en une heure environ, de rien à une prem
 - Aucun modèle de second tri des passages (reranker) dans le socle : non essayé.
 - Module Python `ragflow-sdk` 1.0.0 : deux défauts, contournés dans l'annexe [A3](annexes/A3-automatiser-par-l-api.md).
 
-## Ce qui reste ouvert
-
-| Sujet | État |
-|---|---|
-| Non traité | mise à jour de version (aucune plus récente que v1.0.0) ; reranking ; second modèle et modèle de moins de 3 milliards de paramètres ; synthèses « Wiki » et « PageIndex » en échec avec `gemma4:e4b` (chapitre [11](manuel/11-syntheses-automatiques.md)) ; gabarit « Picture » ; modèles d'agents qui demandent Internet |
-| Estimé, non mesuré | configuration sans carte graphique (annexe [A2](annexes/A2-choisir-son-materiel-et-ses-modeles.md)) |
-| Décisions en attente | montée de vLLM dans LLM-Service ; port 8088 au lieu de 8080 ; reranker ; ports ouverts sur tout le réseau par des services hors mission (voir le [rapport](../../RAPPORT-ragflow.md)) |
-| Ménage à faire à la main | images Docker gardées en cache ; sauvegarde de test dans `donnees/sauvegardes/` |
-| Écarts de version | moteur de recherche, mémoire tampon, file d'attente et stockage à la version du fichier officiel (Elasticsearch 8.11.3, Kvrocks 2.16.0, NATS 2.14.2, MinIO d'août 2026) : plus récentes disponibles, non montées sans essai |
-| Relectures | relecture par un lecteur novice de la partie 1 et relecture adversariale des annexes, à refaire sur le manuel restructuré |
+Ce qui reste ouvert (sujets non traités, estimations, décisions en attente, relectures) est suivi dans le [rapport de fin de mission](../../RAPPORT-ragflow.md#11-ce-qui-reste-ouvert).

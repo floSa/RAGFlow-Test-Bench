@@ -14,6 +14,7 @@ Mission : `kit/PROMPT.md` pour la fiche `kit/fiches/02-ragflow.md`, exécutée l
 8. [Disque, RAM et VRAM](#8-disque-ram-et-vram)
 9. [Arrêter ou tout supprimer](#9-arrêter-ou-tout-supprimer)
 10. [Proposition pour la solution suivante](#10-proposition-pour-la-solution-suivante)
+11. [Ce qui reste ouvert](#11-ce-qui-reste-ouvert)
 
 ## 1. Ce qui a été installé
 
@@ -119,3 +120,14 @@ outils/communs/nettoyer.sh ragflow
 ## 10. Proposition pour la solution suivante
 
 Kotaemon (fiche 03), pour vérifier les citations dans le PDF. Avant de la lancer : arrêter RAGFlow (`outils/ragflow/arreter.sh`), préparer le dépôt avec `outils/communs/nouvelle_solution.sh` en corrigeant au passage les chemins `~/Projets` en `~/mes_projets` et les droits d'exécution, et reprendre `outils/communs/banc/tableau.py`, désormais générique, pour le comparatif. Le banc gagnerait à noter les citations sur les seules sources réellement citées par la réponse, comme ici.
+
+## 11. Ce qui reste ouvert
+
+| Sujet | État |
+|---|---|
+| Non traité | mise à jour de version (aucune plus récente que v1.0.0) ; reranking ; second modèle et modèle de moins de 3 milliards de paramètres ; synthèses « Wiki » et « PageIndex » en échec avec `gemma4:e4b` (chapitre [11](docs/ragflow/manuel/11-syntheses-automatiques.md)) ; gabarit « Picture » ; modèles d'agents qui demandent Internet |
+| Estimé, non mesuré | configuration sans carte graphique (annexe [A2](docs/ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md)) |
+| Décisions en attente | montée de vLLM dans LLM-Service ; port 8088 au lieu de 8080 ; reranker ; ports ouverts sur tout le réseau par des services hors mission (section 7) |
+| Ménage à faire à la main | images Docker gardées en cache ; sauvegarde de test dans `donnees/sauvegardes/` |
+| Écarts de version | moteur de recherche, mémoire tampon, file d'attente et stockage à la version du fichier officiel (Elasticsearch 8.11.3, Kvrocks 2.16.0, NATS 2.14.2, MinIO d'août 2026) : plus récentes disponibles, non montées sans essai |
+| Relectures | relecture par un lecteur novice de la partie 1 faite le 11 novembre 2026 et corrigée (journal) ; relecture adversariale des annexes à refaire sur le manuel restructuré |
