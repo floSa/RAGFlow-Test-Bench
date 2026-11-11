@@ -1,0 +1,54 @@
+Retour
+contrat-batterix-scan.pdf
+Taille
+747 KB
+Date de téléversement
+11/11/2026 13:38:14
+Aperçu
+Artifact
+Résultat du segment
+Affiche les segments utilisés pour l'embedding et la récupération.
+Texte complet
+Ellipse
+Tout sélectionner
+Texte
+CONTRATD'APPROVISIONNEMENTN°BX-2025-117
+Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur)
+Articlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah
+Article2-Durée Troisans a compterdu lermars2025
+Article3-Volumes Volumeminimalannuel:40 0oo batteries.
+Article4-Prix Prix unitaire:212 euros HT,revisable une fois par an.
+Article 5-Delais de livraison Le Fournisseur livre sous 21 jours apres la commande
+Article 6-Penalitesderetard 0,5% du montant de la commande par jour de retard, plafonnees a 8% du montant de la commande.
+Article 7-Garantie 5ans ou 1 0o0 cycles de charge, au premier terme atteint.
+Article8-Litiges Tribunal de commerce de Nantes.
+FaitaNantes,le14 fevrier2025 Pour Velanor:Helene Marchais Pour Batterix:Jonas Weber
+Total 1
+1
+50 / Page
+
+== adresse ==
+/chunk/parsed/chunks?id=54ad6274b2ed4569a31c71d6d384df95&doc_id=81cb3874b79341cf8495ce11afcb49d6
+== pastilles ==
+1. Aperçu
+2. page du document
+3. passage
+4. interrupteur du passage
+5. Texte complet, Ellipse
+== éléments visibles ==
+button | Retour
+button | Aperçu
+button | Artifact
+button | Texte complet
+button | Ellipse
+button | [icône lucide-funnel]
+input:text | Rechercher
+button | [icône lucide-plus]
+label | Tout sélectionner
+checkbox | 
+button | 
+switch | 
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page

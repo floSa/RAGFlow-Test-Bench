@@ -1,0 +1,38 @@
+2026-11-11 13:37:44
+               total        used        free      shared  buff/cache   available
+Mem:           32098       15148        1003         160       16477       16950
+Swap:           4096          10        4085
+== phase base
+capture docs/ragflow/img/04-deepdoc/01-analyse-en-cours.png [(1, "progression de l'analyse")]
+scan analysé en moins de 14 s (relevé toutes les 2 s environ, rechargement compris) : 1 segment(s)
+capture docs/ragflow/img/04-deepdoc/02-scan-analyse.png [(1, 'Nombre de segments'), (2, "état de l'analyse"), (3, 'contrat-batterix-scan.pdf')]
+journal d'analyse : Fichier | Type de fichier | pdf | Téléversé par | Banc RAGFlow | Nom du fichier | contrat-batterix-scan.pdf | Date de téléversement | 11/11/2026 13:38:14 | Taille du fichier | 747 KB | Commencé à | 11/11/2026 13:38:14 | Nombre de segments | 1 | Durée | 10.756s | Statut | Success | Détails | 12:38:14Task is queued... | 12:38:14Task is running... | 12:38:14File Started | 12:38:14File Done | 12:38:14Parser Started | 12:38:24Parser Done | 12:38:24GeneralChunker Started | 12:38:24GeneralChunker Done | 12:38:24Extractor Started | 12:38:24Extractor Done | 12:38:24Tokenizer Started | 12:38:24Tokenizer Done | 12:38:25Task completed. | Fermer
+capture docs/ragflow/img/04-deepdoc/03-journal-d-analyse.png [(1, 'Durée'), (2, 'Détails')]
+== phase test
+résultats : Paramètres | Seuil de similarité | Poids de similarité par mots-clés | full-text | 0.70 | vector | 0.30 | Modèle de réordonnancement | Recherche inter-langues | Sélectionner une valeur | Métadonnées | Sélectionner une valeur | Rerank candidates | Top N | Test | Résultats | Total: 2 | 34.55 Similarité hybride | 15.07 Similarité de terme | 80.01 Similarité vectorielle | CONTRATD'APPROVISIONNEMENTN°BX-2025-117 | Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur) | Articlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah | Article2-Durée Troisans a compterdu lermars2025 | Article3-Volumes Volumeminimalannuel:40 0oo batteries. | Article4-Prix Prix unitaire:212 euros HT,revisable une fois par an. | Article 5-Delais de livraison Le Fournisseur livre sous 21 jours apres la commande | Article 6-Penalitesderetard 0,5% du mo
+capture docs/ragflow/img/04-deepdoc/04-test-avant-correction.png [(1, 'question'), (2, 'Test'), (3, 'scores du premier passage'), (4, 'Total')]
+== phase passages
+capture docs/ragflow/img/04-deepdoc/05-resultat-du-segment.png [(1, 'Aperçu'), (2, 'page du document'), (3, 'passage'), (4, 'interrupteur du passage'), (5, 'Texte complet, Ellipse')]
+capture docs/ragflow/img/04-deepdoc/06-outils-des-passages.png [(1, 'filtre'), (2, 'Recherche'), (3, 'ajouter un passage'), (4, 'Tout sélectionner'), (5, 'Retour')]
+capture docs/ragflow/img/04-deepdoc/07-modifier-le-segment.png [(1, 'Segment'), (2, 'Type'), (3, 'Mot-clé'), (4, 'Question'), (5, 'Étiquettes'), (6, 'Activé')]
+capture docs/ragflow/img/04-deepdoc/08-segment-corrige.png [(1, 'Segment'), (2, 'Confirmer')]
+requêtes après « Confirmer » (passage du PDF modifié) : [] ; fenêtre encore ouverte : True
+capture docs/ragflow/img/04-deepdoc/09-confirmer-sans-effet.png [(1, 'Modifier le segment'), (2, 'Annuler')]
+capture docs/ragflow/img/04-deepdoc/10-passage-desactive.png [(1, 'interrupteur du passage')]
+capture docs/ragflow/img/04-deepdoc/11-filtre-des-passages.png [(1, 'Tous'), (2, 'Activé'), (3, 'Désactivé')]
+passage réactivé : true
+capture docs/ragflow/img/04-deepdoc/12-creer-un-segment.png [(1, 'Segment'), (2, 'Mot-clé'), (3, 'Question'), (4, 'Confirmer')]
+capture docs/ragflow/img/04-deepdoc/13-passage-ajoute.png [(1, 'passage ajouté'), (2, 'Total')]
+capture docs/ragflow/img/04-deepdoc/14-actions-groupees.png [(1, 'Activer'), (2, 'Désactiver'), (3, 'Supprimer')]
+capture docs/ragflow/img/04-deepdoc/15-recherche-dans-les-passages.png [(1, 'Recherche'), (2, 'Total')]
+capture docs/ragflow/img/04-deepdoc/16-ellipse.png [(1, 'Ellipse'), (2, 'passage abrégé')]
+== phase test_apres
+résultats : Paramètres | Seuil de similarité | Poids de similarité par mots-clés | full-text | 0.70 | vector | 0.30 | Modèle de réordonnancement | Recherche inter-langues | Sélectionner une valeur | Métadonnées | Sélectionner une valeur | Rerank candidates | Top N | Test | Résultats | Total: 3 | 83.17 Similarité hybride | 82.28 Similarité de terme | 85.24 Similarité vectorielle | Le contrat Batterix fixe un volume minimal annuel de 40 000 batteries 48 V. | contrat-batterix-scan.pdf | 34.55 Similarité hybride | 15.07 Similarité de terme | 80.01 Similarité vectorielle | CONTRATD'APPROVISIONNEMENTN°BX-2025-117 | Entre:Velanor SAS,12 quai de la Fosse,44000 Nantes(l'Acheteur) Et:Batterix GmbH,Breme,Allemagne (le Fournisseur) | Articlel-Objet Fourniture debatteries48V 14 Ah,reference BAT-48V-14Ah | Article2-Durée Troisans a compterdu lermars2025 | Article3-Volumes Volumeminimalannuel:40 0oo batteries. | A
+capture docs/ragflow/img/04-deepdoc/17-test-apres-correction.png [(1, 'question'), (2, 'Test'), (3, 'scores du premier passage'), (4, 'Total')]
+== phase config
+analyseurs PDF : DeepDOC | Naïf | Docling | OpenDataLoader | TCADP Parser | MonkeyOCRv2
+capture docs/ragflow/img/04-deepdoc/18-analyseurs-pdf.png [(1, 'DeepDOC'), (2, 'Naïf'), (3, 'Docling'), (4, 'MonkeyOCRv2')]
+== phase markdown
+capture docs/ragflow/img/04-deepdoc/19-passage-markdown.png [(1, 'Segment'), (2, 'Mot-clé'), (3, 'Confirmer')]
+requêtes après « Confirmer » (passage Markdown, mot-clé ajouté) : ['PATCH /api/v1/datasets/54ad6274b2ed4569a31c71d6d384df95/documents/591fe701d9a64933a6046dfc762f2136/chunks/7ea1952ed8'] ; fenêtre encore ouverte : False
+mot-clé relu dans la page : 2

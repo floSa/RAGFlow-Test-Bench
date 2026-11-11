@@ -1,0 +1,95 @@
+Retour
+cse-2025-10-14.md
+Taille
+548 bytes
+Date de téléversement
+11/11/2026 13:38:14
+Aperçu
+Artifact
+Compte rendu de la réunion du CSE du 14 octobre 2025
+
+Document fictif.
+
+Participants
+
+Hélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), sept élus.
+
+Décisions
+Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026.
+Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles.
+Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026.
+Points reportés
+
+La question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre.
+
+Résultat du segment
+Affiche les segments utilisés pour l'embedding et la récupération.
+Texte complet
+Ellipse
+Tout sélectionner
+Texte
+# Compte rendu de la réunion du CSE du 14 octobre 2025
+Document fictif.
+Texte
+## Participants
+Hélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), sept élus.
+Texte
+## Décisions
+- Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026.
+- Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles.
+- Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026.
+Texte
+## Points reportés
+La question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre.
+Total 4
+1
+50 / Page
+
+Modifier le segment
+Segment
+Type
+Mot-clé
+prime d'intéressement
+Question
+?
+Étiquettes
+Ajouter une étiquette
+Activé
+Annuler
+Confirmer
+
+== adresse ==
+/chunk/parsed/chunks?id=54ad6274b2ed4569a31c71d6d384df95&doc_id=591fe701d9a64933a6046dfc762f2136
+== pastilles ==
+1. Segment
+2. Mot-clé
+3. Confirmer
+== éléments visibles ==
+button | Retour
+button | Aperçu
+button | Artifact
+button | Texte complet
+button | Ellipse
+button | [icône lucide-funnel]
+input:text | Rechercher
+button | [icône lucide-plus]
+label | Tout sélectionner
+checkbox | 
+switch | 
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page
+button | [icône lucide-x]
+label | Segment
+textarea:textarea | content_with_weight
+label | Type
+input:text | 
+label | Mot-clé
+button | [icône lucide-trash]
+button | [icône sans nom]
+label | Question ?
+label | Étiquettes
+button | Ajouter une étiquette
+button | Annuler
+button | Confirmer
