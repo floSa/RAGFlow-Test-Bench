@@ -8,17 +8,20 @@
 
 ## Ce qu'il faut savoir
 
-RAGFlow ne s'installe pas comme un programme Windows : il tourne dans **Docker**, un outil qui fait fonctionner des applications prêtes à l'emploi, appelées conteneurs, à l'intérieur d'Ubuntu (WSL2). RAGFlow en utilise six : l'application elle-même, un moteur de recherche, une base de données, un stockage de fichiers, une mémoire tampon et une file d'attente des tâches. Les modèles d'IA tournent à part, dans un service commun appelé **LLM-Service**, partagé avec d'autres applications. Une fois installé, RAGFlow s'ouvre dans le navigateur de Windows, à l'adresse `http://127.0.0.1:8088`, comme un site web, mais visible de ce poste seulement.
+RAGFlow ne s'installe pas comme un programme Windows : il tourne dans **Docker**, un outil qui fait fonctionner des applications prêtes à l'emploi, appelées conteneurs, à l'intérieur d'Ubuntu (WSL2). RAGFlow en utilise six : l'application elle-même, un moteur de recherche, une base de données, un stockage de fichiers, une mémoire tampon et une file d'attente des tâches. Les modèles d'IA qui rédigent les réponses et qui comparent le sens des textes ne sont pas fournis : RAGFlow les interroge sur un **serveur de modèles** déjà en place, sur ce poste ou ailleurs ; ce chapitre n'en installe aucun. Une fois installé, RAGFlow s'ouvre dans le navigateur de Windows, à l'adresse `http://127.0.0.1:8088`, comme un site web, mais visible de ce poste seulement.
 
 Ce qu'il faut avant de commencer :
 
 - Windows 11 avec WSL2 et une distribution Ubuntu ;
 - **uv**, l'outil qui installe Python et les bibliothèques des scripts : la commande `uv --version` doit afficher un numéro de version (sinon, l'installer depuis son site officiel, docs.astral.sh/uv) ;
 - Docker en marche dans Ubuntu (Docker Desktop avec l'intégration WSL2 activée, ou Docker installé dans Ubuntu) ;
-- un accès au dépôt de **LLM-Service**, le service de modèles d'IA (dépôt séparé, installé à l'étape 4) ;
-- avec une carte graphique NVIDIA : son pilote installé sous Windows (la commande `nvidia-smi` répond dans Ubuntu) ;
-- 16 Go de mémoire au moins (32 Go avec une carte graphique), 10 Go de disque libre ;
+- **un serveur de modèles existant** : RAGFlow a besoin de modèles servis par un serveur existant (Ollama, vLLM, LM Studio ou tout serveur compatible OpenAI, local ou distant) : un modèle de réponse (chat) et un modèle d'embedding au minimum ; reranker et transcription en option. Il faut connaître l'adresse du serveur (son « URL de base »), le nom exact de chaque modèle et, si le serveur en demande une, sa clé. Le chapitre 03 montre comment les brancher ;
+- 16 Go de mémoire au moins pour RAGFlow et le système, plus celle du serveur de modèles s'il tourne sur le même poste ; 10 Go de disque libre ;
 - les autres applications gourmandes arrêtées, pour libérer la mémoire.
+
+Quelques mots utiles. **Ollama** et **vLLM** sont deux logiciels libres qui font tourner des modèles d'IA et les rendent accessibles à d'autres applications par une adresse web : Ollama fonctionne aussi sans carte graphique, sur le processeur ; vLLM demande une carte graphique NVIDIA et répond plus vite. Un serveur « compatible OpenAI » répond aux mêmes requêtes que le service en ligne d'OpenAI, ce que font Ollama, vLLM et LM Studio.
+
+**Chemin vérifié** : les essais de ce manuel ont été faits avec une carte graphique NVIDIA et un serveur vLLM, appelé LLM-Service, qui sert `gemma4:e4b` (réponses) et `bge-m3` (embedding) ; un serveur de transcription local s'y ajoute (étape 5). Un serveur Ollama ou distant se branche de la même façon dans l'interface (chapitre 03), mais n'a pas été essayé avec RAGFlow. La mise en place du serveur de la machine d'essai et les configurations minimales sans et avec carte graphique sont décrites dans l'annexe [A2. Choisir son matériel et ses modèles](../annexes/A2-choisir-son-materiel-et-ses-modeles.md).
 
 ## Préparer l'installation
 
@@ -59,60 +62,31 @@ docker run --rm --entrypoint cat nginx:alpine /proc/sys/vm/max_map_count
 
 La commande affiche un nombre, par exemple `1048576` sur la machine d'essai : c'est suffisant dès qu'il atteint `262144`. Le moteur de recherche de RAGFlow est Elasticsearch ; sa documentation explique ce réglage : [Virtual memory](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html). Le remède, s'il le faut, est décrit dans « En cas de problème ».
 
-**Étape 4. Installer LLM-Service**
-*Où* : terminal Ubuntu, dossier personnel.
-LLM-Service est un dépôt distinct, partagé par plusieurs applications : il fait tourner les modèles d'IA que RAGFlow interroge. Les scripts de ce manuel le cherchent dans `~/mes_projets/Projet-IA/LLM-Service` (pour un autre emplacement, indiquer le dossier dans la variable `LLM_SERVICE_DIR`). Le récupérer, puis choisir sa version : la branche `service-vllm` avec une carte graphique NVIDIA (celle des essais de ce manuel), la branche `service-ollama` sans carte graphique.
-
-```bash
-git clone https://github.com/floSa/LLM-Service.git ~/mes_projets/Projet-IA/LLM-Service
-cd ~/mes_projets/Projet-IA/LLM-Service
-git checkout service-vllm      # sans carte graphique : git checkout service-ollama
-cp .env.example .env
-```
-
-Le dépôt est privé : l'accès se demande à son propriétaire. Le fichier `.env` contient les réglages du service. Avec la branche `service-vllm`, y remplacer le modèle de recherche par le sens proposé par défaut par celui des essais, `bge-m3`, en modifiant ces deux lignes :
-
-```text
-VLLM_EMBED_MODEL=BAAI/bge-m3
-VLLM_EMBED_SERVED_NAMES=bge-m3 BAAI/bge-m3
-```
-
-Si la carte graphique sert aussi à d'autres programmes (une autre application d'IA, par exemple), limiter en plus la mémoire que le serveur de réponses réserve sur la carte, toujours dans `.env` :
-
-```text
-VLLM_EXTRA_ARGS=--kv-cache-memory=700000000
-```
-
-Sans cette ligne, le serveur de réponses peut redémarrer en boucle avec le message « No available memory for the cache blocks » : c'est arrivé pendant les essais, le 11 novembre 2026, quand un autre programme occupait déjà 2,6 Go de la carte. Démarrer enfin le service :
-
-```bash
-make up
-```
-
-*Résultat* : au premier démarrage, le service télécharge environ 12 Go de modèles, puis prépare la carte graphique pendant une minute environ ; les démarrages suivants prennent environ deux minutes. La commande `docker ps --format '{{.Names}}   {{.Status}}'` montre alors les deux conteneurs du service, `vllm-central` (rédaction des réponses) et `vllm-embed` (recherche par le sens), d'abord « (health: starting) » puis « (healthy) » :
-
-```text
-vllm-central   Up 3 minutes (healthy)
-vllm-embed     Up 3 minutes (healthy)
-```
-
-Avec la branche `service-ollama`, `make up` démarre un seul conteneur, `ollama-central` ; ce chemin n'a pas été essayé pendant les essais de ce manuel.
-
-**Étape 5. Vérifier le service de modèles**
+**Étape 4. Vérifier que le serveur de modèles répond**
 *Où* : terminal Ubuntu, dossier `RAGFlow-Test-Bench`.
-Revenir dans le dossier du dépôt (`cd` suivi de son chemin), puis lancer le script de vérification. Il démarre LLM-Service s'il est arrêté, attend qu'il réponde et liste ses modèles. Avec la version vLLM :
+Demander au serveur la liste de ses modèles. La commande ci-dessous interroge le serveur de réponses de la machine d'essai, sur le port 8001. Avec un autre serveur compatible OpenAI (vLLM, LM Studio…), remplacer l'adresse par celle du serveur, suivie de `/v1/models` ; avec Ollama, l'adresse se termine par `/api/tags`, par exemple `http://127.0.0.1:11434/api/tags`.
 
 ```bash
-outils/communs/llm_service_vllm.sh
+curl -s http://127.0.0.1:8001/v1/models
 ```
 
-Sans carte graphique, la version Ollama :
+*Résultat* : un texte qui contient le nom de chaque modèle servi ; ces noms se recopient tels quels au chapitre 03. Sur la machine d'essai, le script `outils/communs/llm_service_vllm.sh` fait cette vérification pour les deux serveurs de LLM-Service et affiche `gemma4:e4b` et `bge-m3`. Si la commande n'affiche rien, le serveur est arrêté ou l'adresse est fausse : RAGFlow s'installera, mais ne pourra ni analyser de documents ni répondre.
+
+**Étape 5. Démarrer le serveur de transcription (facultatif)**
+*Où* : terminal Ubuntu, dossier `RAGFlow-Test-Bench`.
+Cette étape ne sert qu'aux fichiers audio : RAGFlow les transcrit en texte avant de les découper, grâce à un modèle de transcription (« speech2text »). Le dépôt fournit pour cela un petit serveur local, `rag-speaches`, qui tourne sur le processeur avec le modèle `Systran/faster-whisper-small`. Si un serveur de transcription existe déjà ailleurs, cette étape est inutile. Lancer :
 
 ```bash
-outils/communs/llm_service.sh
+outils/communs/voix.sh
 ```
 
-*Résultat* : avec la version vLLM, le script confirme les deux adresses (`http://vllm-central:8000/v1` pour les réponses, `http://vllm-embed:8000/v1` pour la recherche par le sens) et liste `gemma4:e4b` et `bge-m3`. Avec la version Ollama, il télécharge les modèles manquants.
+*Résultat* : au premier lancement, le script télécharge l'image du serveur et le modèle ; ensuite, il répond en quelques secondes (moins de dix sur la machine d'essai). La dernière ligne liste les modèles du serveur :
+
+```text
+modèles : ['speaches-ai/Kokoro-82M-v1.0-ONNX', 'Systran/faster-whisper-small']
+```
+
+Le serveur reste joignable par RAGFlow à l'adresse `http://rag-speaches:8000/v1` et se relance seul au démarrage de Docker. Sans lui (ou sans autre serveur de transcription déclaré au chapitre 03), le fichier `message-vocal-production.mp3` du jeu de démonstration ne peut pas être transcrit et n'apporte aucun passage (chapitre 05, étape 22 ; cas non provoqué pendant les essais), et la question « Qui est le directeur de production de Vélanor ? » du chapitre 10, dont la réponse ne figure que dans ce message vocal, reste sans réponse.
 
 ## Installer l'application
 
@@ -140,15 +114,17 @@ RAGFlow n'a aucun compte au départ, et aucun modèle d'IA n'y est déclaré. De
 
 **Étape 7. Créer le compte et déclarer les modèles par le script**
 *Où* : terminal Ubuntu, dossier `RAGFlow-Test-Bench`.
-Lancer le script de configuration. Il crée un compte local fictif avec un mot de passe aléatoire, déclare les modèles de LLM-Service (réponse, recherche par le sens, transcription audio) et les choisit comme modèles par défaut.
+Lancer le script de configuration. Il crée un compte local fictif avec un mot de passe aléatoire, une clé d'accès pour les programmes, déclare les modèles de la machine d'essai (réponse, embedding, transcription audio) et les choisit comme modèles par défaut.
 
 ```bash
-python3 outils/ragflow/configurer.py
+uv run python outils/ragflow/configurer.py
 ```
 
-*Résultat* : chaque ligne se termine par `"message": "success"`. Le courriel et le mot de passe du compte sont rangés dans le fichier `donnees/IDENTIFIANTS-LOCAUX.txt`, à lire pour se connecter (chapitre 03). Ce script est écrit pour la version vLLM de LLM-Service ; avec la version Ollama, créer le compte à la souris (étape 8) et déclarer les modèles comme au chapitre 03.
+*Résultat* : chaque ligne se termine par `"message": "success"`. Le courriel et le mot de passe du compte sont rangés dans le fichier `donnees/IDENTIFIANTS-LOCAUX.txt`, à lire pour se connecter (chapitre 03) ; le script range aussi le compte et sa clé d'accès dans `donnees/ragflow/compte.json`, que lisent les autres scripts du dépôt (chapitre 14).
 
-En option, le script suivant crée ensuite le jeu de démonstration utilisé à partir du chapitre 07 : la base « Démo Vélanor » avec les neuf documents du dossier `corpus/documents/`, analysés, l'assistant « Démo Vélanor » réglé, et trois conversations d'exemple. Il remplace les objets de même nom déjà présents. Le chapitre 05, dernière partie, montre la même création à la souris.
+Ce script déclare les serveurs de la machine d'essai : le fournisseur « VLLM » aux adresses `http://vllm-central:8000/v1` (`gemma4:e4b`) et `http://vllm-embed:8000/v1` (`bge-m3`), et « OpenAI-API-Compatible » pour la transcription. Avec un autre serveur, Ollama par exemple, il ne déclarerait que des adresses injoignables. Deux solutions : créer le compte à la souris (étape 8) et brancher les modèles au chapitre 03, chemin conseillé ; ou modifier, avant de lancer le script, le tableau `MODELES` en tête du fichier `outils/ragflow/configurer.py` (ouvert par exemple avec `nano`, l'éditeur de texte du terminal : Ctrl+O enregistre, Ctrl+X quitte) : pour Ollama, mettre `"Ollama"` comme fournisseur, `http://ollama-central:11434` comme adresse et les noms de modèles affichés à l'étape 4. Cette variante n'a pas été essayée.
+
+En option, le script suivant crée ensuite le jeu de démonstration utilisé à partir du chapitre 07 : la base « Démo Vélanor » avec les neuf documents du dossier `corpus/documents/`, analysés, l'assistant « Démo Vélanor » réglé, et trois conversations d'exemple. Il remplace les objets de même nom déjà présents. Il utilise les modèles par défaut du compte, quels qu'ils soient : il fonctionne donc aussi avec un autre serveur, une fois les modèles branchés (non essayé hors de la machine d'essai). Il lit la clé d'accès dans `donnees/ragflow/compte.json` : après un compte créé à la souris, créer d'abord ce fichier comme indiqué au chapitre 14. Le chapitre 05, dernière partie, montre la même création à la souris.
 
 ```bash
 uv run python outils/ragflow/demo.py
@@ -169,7 +145,7 @@ La page de connexion est en anglais au premier lancement. Cliquer sur « Sign up
 | 4 | « Continue » | crée le compte |
 | 5 | « Sign in » | revient au formulaire de connexion |
 
-*Résultat* : le compte est créé ; la connexion se fait ensuite comme au chapitre 03. Les modèles restent à déclarer (chapitre 03, « Déclarer les modèles d'IA »).
+*Résultat* : le compte est créé ; la connexion se fait ensuite comme au chapitre 03. Les modèles restent à brancher (chapitre 03, « Brancher les modèles d'un serveur existant »).
 
 ## Vérifier, arrêter et redémarrer
 
@@ -181,7 +157,7 @@ Lancer :
 outils/ragflow/etat.sh
 ```
 
-*Résultat* : la liste des six conteneurs, chacun « Up » et la plupart « (healthy) », puis l'état des services et du service de modèles :
+*Résultat* : la liste des six conteneurs, chacun « Up » et la plupart « (healthy) », puis l'état des services et, sur la machine d'essai, du serveur de modèles LLM-Service :
 
 ```text
 santé : {"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
@@ -200,11 +176,11 @@ Lancer :
 outils/ragflow/arreter.sh
 ```
 
-*Résultat* : le message « RAGFlow arrêté. » s'affiche. Les bases, documents, assistants et comptes sont conservés ; LLM-Service, partagé, reste en marche.
+*Résultat* : le message « RAGFlow arrêté. » s'affiche. Les bases, documents, assistants et comptes sont conservés ; le serveur de modèles, indépendant de RAGFlow, reste en marche.
 
 **Étape 11. Redémarrer RAGFlow**
 *Où* : terminal Ubuntu, dossier `RAGFlow-Test-Bench`.
-Vérifier que LLM-Service tourne (étape 5), puis lancer :
+Vérifier que le serveur de modèles répond (étape 4), puis lancer :
 
 ```bash
 outils/ragflow/demarrer.sh
@@ -226,7 +202,7 @@ Lancer la commande ci-dessous. Elle annonce ce qu'elle va supprimer et demande u
 outils/communs/nettoyer.sh ragflow
 ```
 
-*Résultat* : en une quinzaine de secondes, les conteneurs, leurs données et le dossier `donnees/ragflow/` sont supprimés, et le mot « Terminé. » s'affiche. Les images téléchargées restent sur le disque (environ 3 Go) pour une réinstallation rapide ; LLM-Service n'est pas touché.
+*Résultat* : en une quinzaine de secondes, les conteneurs, leurs données et le dossier `donnees/ragflow/` sont supprimés, et le mot « Terminé. » s'affiche. Les images téléchargées restent sur le disque (environ 3 Go) pour une réinstallation rapide ; le serveur de modèles n'est pas touché.
 
 ## Bon à savoir
 
@@ -234,14 +210,16 @@ outils/communs/nettoyer.sh ragflow
 - Aucun modèle n'est téléchargé à l'installation : les outils de lecture des documents (reconnaissance de caractères, mise en page, tableaux) sont livrés avec l'application.
 - L'application occupe environ 3,7 Go de mémoire au repos et 5,4 Go pendant l'analyse de documents ; 3,1 Go d'images et 1,2 Go de données sur le disque juste après l'installation.
 - Aucune version plus récente que la 1.0.0 n'existait au moment des essais. Avant toute mise à jour, faire une sauvegarde : le passage d'une ancienne version à la 1.0 transforme la base de données sans retour possible.
-- LLM-Service, réglé dans son propre dépôt, publie ses adresses (ports 8001 et 8002) pour toutes les machines du réseau, contrairement à RAGFlow : sur un réseau partagé, le vérifier dans son fichier `docker-compose.yml`.
+- Un serveur de modèles installé à part peut être joignable par toutes les machines du réseau, contrairement à RAGFlow : sur un réseau partagé, vérifier ses réglages (c'est le cas du serveur de la machine d'essai, annexe A2).
+- RAGFlow joint le serveur de modèles depuis son conteneur : `127.0.0.1` y désigne le conteneur lui-même, pas le poste. Pour un serveur qui tourne sous Windows ou directement dans Ubuntu, utiliser l'adresse `http://host.docker.internal:<port>`, proposée en exemple par l'interface ; pour un serveur en conteneur sur le même réseau Docker, son nom de conteneur (ici `vllm-central`).
 - Le détail technique de l'installation (fichiers de configuration, adresses, mémoire par conteneur) est dans l'annexe [A4. Exploitation](../annexes/A4-exploitation.md).
 
 ## En cas de problème
 
 | Symptôme | Cause | Que faire |
 |---|---|---|
-| `vllm-central` redémarre en boucle, journal « No available memory for the cache blocks » (`docker logs vllm-central`) | la carte graphique est déjà occupée en partie par un autre programme | ajouter `VLLM_EXTRA_ARGS=--kv-cache-memory=700000000` au `.env` de LLM-Service, puis `make restart` dans son dossier (étape 4) |
+| La commande de l'étape 4 n'affiche rien | serveur de modèles arrêté, ou adresse fausse | démarrer le serveur ; vérifier l'adresse et le port ; sur la machine d'essai, `outils/communs/llm_service_vllm.sh` (annexe A2) |
+| `outils/communs/voix.sh` attend longtemps puis n'affiche aucun modèle | premier téléchargement en cours, ou pas d'accès à Internet | relancer le script une fois le téléchargement possible ; sans transcription, seuls les fichiers audio sont touchés |
 | Le moteur de recherche ne démarre pas, l'installation attend sans fin | réglage `vm.max_map_count` inférieur à 262144 (étape 3) | sous Windows, ajouter au fichier `.wslconfig` du dossier personnel Windows la section `[wsl2]` avec la ligne `kernelCommandLine = "sysctl.vm.max_map_count=262144"`, puis lancer `wsl --shutdown` dans PowerShell et rouvrir Ubuntu ; vérifier ensuite avec la commande de l'étape 3. La machine d'essai n'en a pas eu besoin : ce remède n'a pas été essayé |
 | Le script de désinstallation s'arrête aussitôt (code 126) | les scripts ont perdu leur droit d'exécution, par exemple après extraction d'une archive | lancer `chmod +x outils/communs/*.sh outils/ragflow/*.sh`, puis recommencer |
 | Le port 8088 est déjà pris par un autre programme | conflit d'adresse | changer `SVR_WEB_HTTP_PORT` dans `donnees/ragflow/ragflow.env`, puis redémarrer |

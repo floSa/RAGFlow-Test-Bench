@@ -1,0 +1,7 @@
+== outils/communs/voix.sh, 2026-11-11 (serveur rag-speaches déjà présent)
+copie : models--Systran--faster-whisper-small
+modèles : ['speaches-ai/Kokoro-82M-v1.0-ONNX', 'Systran/faster-whisper-small']
+modèles : ['speaches-ai/Kokoro-82M-v1.0-ONNX', 'Systran/faster-whisper-small']
+real 0m7.528s
+== curl -s http://127.0.0.1:8001/v1/models (début)
+{"object":"list","data":[{"id":"gemma4:e4b","object":"model","created":1794418847,"owned_by":"vllm","root":"google/gemma-4-E4B-it-qat-w4a16-ct","parent":null,"max_model_len":32768,...

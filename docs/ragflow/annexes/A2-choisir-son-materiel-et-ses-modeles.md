@@ -15,8 +15,9 @@
 5. [Volume de documents utilisable](#5-volume-de-documents-utilisable)
 6. [Modèles plus légers et second modèle](#6-modèles-plus-légers-et-second-modèle)
 7. [Fiche technique de la version essayée](#7-fiche-technique-de-la-version-essayée)
-8. [Dépannage](#dépannage)
-9. [Sources](#sources)
+8. [Serveur de modèles de la machine d'essai (LLM-Service)](#8-serveur-de-modèles-de-la-machine-dessai-llm-service)
+9. [Dépannage](#dépannage)
+10. [Sources](#sources)
 
 ## 1. Ce qui consomme la mémoire et le temps
 
@@ -125,6 +126,37 @@ Précisions sur les fonctions, en complément du tableau du chapitre [01](../man
 | API pour automatiser | Oui, complète ; le module Python a deux défauts contournés (annexe [A3](A3-automatiser-par-l-api.md)) |
 | Fonctionnement hors ligne | Oui en principe : aucun téléchargement mentionné dans le journal du serveur ; le trafic réseau n'a pas été enregistré [À tester] |
 | Sauvegarde et restauration | Oui, par copie des données, application arrêtée (une demi-minute ; annexe [A4](A4-exploitation.md)) |
+
+## 8. Serveur de modèles de la machine d'essai (LLM-Service)
+
+Le manuel ne fait installer aucun serveur de modèles : RAGFlow se branche sur un serveur existant (chapitre [03](../manuel/03-premiers-pas.md)). Cette section décrit, à titre d'exemple, celui de la machine d'essai.
+
+**LLM-Service** est un dépôt distinct (privé, accès à demander à son propriétaire), partagé par plusieurs applications. Les scripts du banc le cherchent dans `~/mes_projets/Projet-IA/LLM-Service` (autre emplacement : variable `LLM_SERVICE_DIR`). Deux branches : `service-vllm` avec carte graphique NVIDIA (vLLM, serveur de modèles pour carte graphique ; celle des essais) et `service-ollama` sans carte graphique (Ollama, serveur de modèles qui tourne aussi sur processeur ; non essayé avec RAGFlow) [Vérifié] pour la première, [À tester] pour la seconde.
+
+```bash
+git clone https://github.com/floSa/LLM-Service.git ~/mes_projets/Projet-IA/LLM-Service
+cd ~/mes_projets/Projet-IA/LLM-Service
+git checkout service-vllm      # sans carte graphique : git checkout service-ollama
+cp .env.example .env
+nano .env                      # éditeur de texte du terminal : Ctrl+O enregistre, Ctrl+X quitte
+make up                        # make lance la commande « up » définie dans le Makefile du dépôt
+```
+
+Réglages du `.env` utilisés pour les essais (branche `service-vllm`) [Vérifié] :
+
+```text
+VLLM_EMBED_MODEL=BAAI/bge-m3
+VLLM_EMBED_SERVED_NAMES=bge-m3 BAAI/bge-m3
+VLLM_EXTRA_ARGS=--kv-cache-memory=700000000
+```
+
+La troisième ligne limite la mémoire que le serveur de réponses réserve sur la carte graphique quand un autre programme l'occupe déjà : sans elle, `vllm-central` a redémarré en boucle le 11 novembre 2026 (« No available memory for the cache blocks », 2,6 Go déjà pris par un autre programme) [Vérifié].
+
+Au premier démarrage, le service télécharge environ 12 Go de modèles, puis prépare la carte graphique pendant une minute environ ; les démarrages suivants prennent environ deux minutes. Deux conteneurs passent à « (healthy) » : `vllm-central` (`gemma4:e4b`, adresse `http://vllm-central:8000/v1`) et `vllm-embed` (`bge-m3`, adresse `http://vllm-embed:8000/v1`) [Vérifié]. Vérification depuis le dépôt du banc : `outils/communs/llm_service_vllm.sh` (version vLLM) ou `outils/communs/llm_service.sh` (version Ollama, `qwen3:4b-instruct` et `bge-m3`, adresse `http://ollama-central:11434`) [Testée] pour le premier.
+
+LLM-Service publie ses ports (8001 et 8002) pour toutes les machines du réseau, contrairement à RAGFlow : sur un réseau partagé, le vérifier dans son `docker-compose.yml`.
+
+Le serveur de transcription de la machine d'essai, `rag-speaches` (Speaches 0.8.3 sur processeur, `Systran/faster-whisper-small`), est démarré par `outils/communs/voix.sh` (chapitre [02](../manuel/02-installer-ragflow.md), étape 5).
 
 ## Dépannage
 
