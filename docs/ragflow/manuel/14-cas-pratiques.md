@@ -6,7 +6,7 @@
 
 ## Ce qu'il faut savoir
 
-Un cas pratique enchaîne des tâches déjà décrites une à une dans les chapitres précédents : chaque étape renvoie au chapitre qui la montre en détail, et ce chapitre montre surtout le résultat obtenu. Les deux cas utilisent les documents fictifs de l'entreprise Vélanor, fabricant de vélos électriques : un contrat fournisseur scanné, un rapport annuel, une procédure, une présentation, un tableur, une page de foire aux questions, une note, un audit en anglais et un message vocal. Le premier cas correspond au jeu de démonstration déjà installé (base et assistant « Démo Vélanor ») : il peut être simplement ouvert pour voir le résultat.
+Un cas pratique enchaîne des tâches déjà décrites une à une dans les chapitres précédents : chaque étape renvoie au chapitre qui la montre en détail, et ce chapitre montre surtout le résultat obtenu. Les deux cas utilisent les documents fictifs de l'entreprise Vélanor, fabricant de vélos électriques : un contrat fournisseur scanné, un rapport annuel, une procédure, une présentation, un tableur, une page de foire aux questions, une note, un audit en anglais et un message vocal. Le premier cas correspond au jeu de démonstration (base et assistant « Démo Vélanor ») créé à la fin du chapitre 05, ou par le script du chapitre 02 : il peut être simplement ouvert pour voir le résultat.
 
 ## Mettre en place un assistant documentaire d'entreprise
 

@@ -1,8 +1,8 @@
 # 05. Ajouter et organiser ses documents
 
-> Ce chapitre apprend à gérer les bases et leurs documents au quotidien : ajouter des fichiers, les renommer, les écarter, les supprimer, relancer leur analyse, leur donner des métadonnées, suivre les analyses dans « Journaux » et partager un fichier entre plusieurs bases avec « Gestion des fichiers ».
+> Ce chapitre apprend à gérer les bases et leurs documents au quotidien : ajouter des fichiers, les renommer, les écarter, les supprimer, relancer leur analyse, leur donner des métadonnées, suivre les analyses dans « Journaux » et partager un fichier entre plusieurs bases avec « Gestion des fichiers ». Il se termine par la création de la base et de l'assistant de démonstration utilisés dans la suite du manuel.
 > **Point de départ** : barre du haut › « Base de connaissances » (liste des bases).
-> **Durée** : environ 20 minutes. **Avant** : chapitre 04.
+> **Durée** : environ 30 minutes. **Avant** : chapitre 04.
 
 **Attention** : supprimer une base, un fichier ou un dossier est définitif ; les passages qui en sont tirés disparaissent avec lui. Relancer l'analyse d'un fichier efface aussi ses passages corrigés à la main.
 
@@ -254,6 +254,39 @@ Ouvrir la liste « Nom », cocher la base voulue (pastille 1), puis cliquer sur 
 Cliquer sur la corbeille du dossier, puis sur « Supprimer » dans la fenêtre « Supprimer le fichier », qui rappelle le dossier visé.
 
 *Résultat* : le dossier et son contenu sont supprimés.
+
+## Créer la base de démonstration utilisée dans la suite
+
+Les chapitres 07, 09, 10 et 14 s'appuient sur une base et un assistant nommés « Démo Vélanor », qui rassemblent les neuf documents fictifs du dossier `corpus/documents/` du dépôt. Les étapes ci-dessous les créent à la souris, avec des gestes déjà montrés au chapitre 04. Le script `outils/ragflow/demo.py` fait la même chose d'un seul coup (chapitre 02, étape 6).
+
+**Étape 21. Créer la base « Démo Vélanor »**
+*Où* : barre du haut › « Base de connaissances » › « Créer une base de connaissances ».
+Saisir le nom « Démo Vélanor », garder le gabarit « General » et cliquer sur « Enregistrer », comme au chapitre 04, étapes 1 et 2.
+
+*Résultat* : la base s'ouvre, vide, sur son onglet « Fichiers ».
+
+**Étape 22. Ajouter et analyser les neuf documents**
+*Où* : base « Démo Vélanor » › onglet « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
+Choisir les neuf fichiers du dossier `corpus/documents/` : `contrat-batterix-scan.pdf`, `cse-2025-10-14.md`, `faq-sav.html`, `message-vocal-production.mp3`, `procedure-batteries.docx`, `rapport-annuel-2025.pdf`, `stocks-octobre-2025.xlsx`, `strategie-2026.pptx` et `supplier-audit-batterix-en.pdf`. Activer « Analyser à la création » (étape 3), puis cliquer sur « Enregistrer ».
+
+*Résultat* : les neuf fichiers s'analysent seuls, en moins d'une minute avec une carte graphique ; chacun affiche ensuite un « Nombre de segments » supérieur à 0 (étape 4). RAGFlow choisit seul le gabarit « Presentation » pour le diaporama et « Audio » pour le message vocal.
+
+**Étape 23. Créer l'assistant « Démo Vélanor » et le relier à la base**
+*Où* : barre du haut › « Discussion » › « Créer un chat ».
+Nommer l'assistant « Démo Vélanor » et cliquer sur « Enregistrer ». Ouvrir l'assistant, puis l'engrenage, cocher la base « Démo Vélanor » dans « Bases de connaissances » et cliquer sur « Enregistrer », comme au chapitre 04, étapes 10 à 16.
+
+*Résultat* : l'assistant est relié à la base.
+
+**Étape 24. Régler l'assistant**
+*Où* : page de l'assistant « Démo Vélanor » › engrenage › panneau « Paramètres du chat ».
+Remplir les réglages suivants, expliqués un par un au chapitre 08 (étapes 1, 10 et 11), puis cliquer sur « Enregistrer » en bas du panneau :
+
+- « Message d'accueil » : « Bonjour, je réponds aux questions sur les documents fictifs de Vélanor, avec mes sources. » ;
+- « Paramètres avancés » › « Naive » › « Réponse vide » : « Aucune information pertinente n'a été trouvée dans les documents. » ;
+- « Poids de similarité par mots-clés » : 0,3 (0,7 va alors à la recherche par le sens) ;
+- « Top N » : 8, valeur déjà en place pour un assistant créé à la souris.
+
+*Résultat* : le message « Modifié » confirme. L'assistant « Démo Vélanor » est prêt : c'est lui qu'interrogent les exemples des chapitres 07, 09, 10 et 14.
 
 ## Bon à savoir
 

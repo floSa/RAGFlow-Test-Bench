@@ -14,7 +14,7 @@ Un **agent** est un enchaînement de blocs reliés entre eux, dessiné sur un **
 
 **Étape 1. Choisir comment créer l'agent**
 *Où* : barre du haut › « Agent » › onglet « Workflow » › « + ».
-La liste des agents s'affiche (ici « Agent démo Vélanor », du jeu de démonstration). Cliquer sur « + » : le menu propose trois départs. Choisir « Créer depuis un modèle » (pastille 2).
+La liste des agents s'affiche ; « Agent démo Vélanor », visible ici, a été créé selon la procédure des étapes 1 à 3, avec le même modèle d'agent et la base « Démo Vélanor » (chapitre 05, dernière partie). Cliquer sur « + » : le menu propose trois départs. Choisir « Créer depuis un modèle » (pastille 2).
 
 ![Menu de création d'un agent](../img/08-agents/01-menu-de-creation.png)
 *Écran : Agent, onglet « Workflow », menu de création ouvert.*

@@ -131,6 +131,12 @@ python3 outils/ragflow/configurer.py
 
 *Résultat* : chaque ligne se termine par `"message": "success"`. Le courriel et le mot de passe du compte sont rangés dans le fichier `donnees/IDENTIFIANTS-LOCAUX.txt`, à lire pour se connecter (chapitre 03). Ce script est écrit pour la version vLLM de LLM-Service ; avec la version Ollama, créer le compte à la souris (étape 7) et déclarer les modèles comme au chapitre 03.
 
+En option, le script suivant crée ensuite le jeu de démonstration utilisé à partir du chapitre 07 : la base « Démo Vélanor » avec les neuf documents du dossier `corpus/documents/`, analysés, l'assistant « Démo Vélanor » réglé, et trois conversations d'exemple. Il remplace les objets de même nom déjà présents. Le chapitre 05, dernière partie, montre la même création à la souris.
+
+```bash
+uv run python outils/ragflow/demo.py
+```
+
 **Étape 7. Ou créer le compte à la souris**
 *Où* : navigateur Windows › `http://127.0.0.1:8088` › lien « Sign up » sous le formulaire de connexion.
 La page de connexion est en anglais au premier lancement. Cliquer sur « Sign up », remplir l'adresse (pastille 1), le nom affiché (pastille 2) et le mot de passe (pastille 3), puis cliquer sur « Continue » (pastille 4).

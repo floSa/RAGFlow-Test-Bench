@@ -44,7 +44,7 @@ Saisir le nom (pastille 1), ici « Manuel-Recherche », puis cliquer sur « Enre
 
 **Étape 3. Choisir la base et le tri des passages**
 *Où* : page de la recherche › panneau « Paramètres de recherche » (à droite).
-Ouvrir la liste « Bases de connaissances » (pastille 4) et cocher « Démo Vélanor », comme pour un assistant (chapitre 04, étape 15). Laisser les deux réglages suivants à leur valeur.
+Ouvrir la liste « Bases de connaissances » (pastille 4) et cocher « Démo Vélanor » (base créée à la fin du chapitre 05), comme pour un assistant (chapitre 04, étape 15). Laisser les deux réglages suivants à leur valeur.
 
 ![Paramètres de recherche](../img/15-recherche/03-parametres-de-recherche.png)
 *Écran : page de la recherche, panneau « Paramètres de recherche ».*
