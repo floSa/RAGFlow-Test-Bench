@@ -95,7 +95,7 @@ Le volume de documents n'est pas limité par le contexte : seuls les `top_n` pas
 
 - Un modèle plus léger que le modèle principal (moins de 3 milliards de paramètres) n'a pas pu être essayé : il aurait fallu changer le modèle servi par LLM-Service, partagé avec d'autres applications. Plancher de qualité [À tester].
 - Second modèle : la fiche prévoit `ministral-3:3b` ; LLM-Service en branche `service-vllm` ne sert qu'un modèle de réponse par serveur : non essayé, [À tester].
-- Reranker : aucun dans le socle, non essayé (annexe [A1](A1-evaluation-qualite-et-performances.md), section 7).
+- Reranker sur la même carte que les deux autres modèles : ne tient pas sur 16 Go avec le bureau Windows actif. Le 11 novembre 2026, avec `vllm-central` (11,06 Gio de poids et 0,7 Go de cache) et `vllm-embed` (1,06 Gio de poids) chargés, la VRAM libre est restée entre 211 et 461 Mio sur 16 380 pendant 33 minutes (66 relevés `nvidia-smi`), alors qu'un `vllm-rerank` avec `bge-reranker-v2-m3` demanderait environ 1,6 Go [Vérifié] pour la VRAM libre et les poids, [Estimation] pour le besoin (`outils/resultats/ragflow/reranker-2026-11-11.log`). Une trentaine de programmes Windows occupent aussi la carte (navigateur, lanceurs de jeux, LM Studio…). Pour loger le trio : fermer ces programmes, ou réduire la longueur maximale de `vllm-central` (32 768 jetons servis pour 16 384 déclarés dans RAGFlow) [À tester]. Sur processeur, le reranker TEI démarre (4,6 Gio de RAM) mais RAGFlow ne sait pas l'appeler (annexe [A1](A1-evaluation-qualite-et-performances.md), section 7).
 
 ## 7. Fiche technique de la version essayée
 
@@ -165,11 +165,12 @@ Le serveur de transcription de la machine d'essai, `rag-speaches` (Speaches 0.8.
 | La machine ralentit fortement pendant une indexation | Elasticsearch (2,7 Gio) et le modèle se disputent la mémoire | arrêter les autres solutions ; garder 4 096 jetons sur le profil A |
 | Réponses de 30 s ou plus sans carte graphique | lecture du prompt sur CPU | normal sur le profil A ; garder « Naive » et 4 096 jetons |
 | Erreur du serveur de modèles sur une longue question | « Tokens maximum » déclaré plus grand que le contexte servi [Estimation] | déclarer une taille inférieure ou égale à celle du serveur |
+| Pas de place sur la carte pour un troisième modèle (reranker) | modèle de réponse et embedding déjà chargés, programmes Windows sur la même carte | fermer les programmes Windows qui utilisent la carte, ou réduire la longueur maximale du modèle de réponse ; voir la section 6 |
 | Mémoire graphique saturée au démarrage de LLM-Service | autre conteneur sur la carte, ou mémoire prise par Windows | voir le `.env` local de LLM-Service (`VLLM_EXTRA_ARGS`) et l'annexe [A4](A4-exploitation.md) |
 
 ## Sources
 
-- Mesures de ressources : `outils/resultats/ragflow/ressources-2026-11-09-*.txt` ; journal vLLM : `outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log`
+- Mesures de ressources : `outils/resultats/ragflow/ressources-2026-11-09-*.txt` ; VRAM avec reranker : `outils/resultats/ragflow/reranker-2026-11-11.log` ; journal vLLM : `outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log`
 - Bancs : `outils/resultats/ragflow/banc-2026-11-09-*.json` ; [banc par défaut](../../../outils/resultats/ragflow/banc-2026-11-09-defaut.md)
 - Socle CPU : `outils/resultats/socle/mesures-2026-11-08-passe1.log` ; diagnostic : `outils/resultats/machine/diagnostic-2026-11-09.json`
 - Identité du projet : [relevé GitHub](../../../outils/resultats/ragflow/identite-github-2026-11-09.json) ; [relecture du code](../../../outils/resultats/ragflow/relecture.md) ; [résultats des essais](../../../outils/resultats/ragflow/)
