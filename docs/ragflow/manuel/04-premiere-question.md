@@ -230,7 +230,7 @@ Cliquer sur la liste « Bases de connaissances » (pastille 4).
 
 **Étape 15. Cocher la base**
 *Où* : panneau « Paramètres du chat » › liste « Bases de connaissances ».
-Cocher « Manuel-Prise-en-main » (pastille 2), puis cliquer sur « Fermer », en bas de la liste, pour la refermer. Seules les bases qui contiennent au moins un document analysé figurent dans la liste.
+Cocher « Manuel-Prise-en-main » (pastille 2), puis cliquer sur « Fermer », dernière ligne de la liste, sous les bases (visible en bas de la capture, sans pastille), pour la refermer. Seules les bases qui contiennent au moins un document analysé figurent dans la liste.
 
 ![Choix de la base](../img/02-prise-en-main/18-choix-base.png)
 *Écran : panneau « Paramètres du chat », liste des bases ouverte.*
@@ -288,7 +288,7 @@ Lire la réponse et repérer le numéro entre crochets (pastille 2) : il renvoie
 | 3 | « 652 tokens (611 input, 41 output) · 1.3s » | quantité de texte lue et écrite par le modèle (en jetons) et durée de rédaction |
 | 4 | conversation | nouvelle conversation dans la liste de gauche, nommée d'après la première question |
 
-*Résultat* : la réponse est apparue un peu plus de trois secondes après le clic.
+*Résultat* : le modèle a rédigé la réponse en 1,3 seconde (pastille 3) ; la réponse complète, citations comprises, s'est affichée environ trois secondes après le clic.
 
 **Étape 19. Vérifier la source**
 *Où* : réponse › renvoi « [1] ».
