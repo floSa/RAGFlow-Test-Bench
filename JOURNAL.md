@@ -121,3 +121,11 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Retirés : anciens manuels `docs/ragflow/00-*.md` à `15-*.md`, `presentation.md`, `plan-des-manuels.md` (contenu repris ; historique dans git).
 - `verifier_docs.py` : 0 point avant chaque commit. Un commit par chapitre et par annexe, puis carte, liens et nettoyage, tous poussés.
 - Reste ouvert : relecture par un lecteur novice de la partie 1 restructurée et relecture adversariale des annexes (§4 phase H, §10 point 9).
+
+### 2026-11-11 18:45 — Relecture novice de la partie 1 : corrections
+
+- Fait : trois bloquants (chapitre 02 : installation de LLM-Service, `.env` avec `bge-m3` et `VLLM_EXTRA_ARGS=--kv-cache-memory=700000000` ; chapitre 05 : création de la base et de l'assistant « Démo Vélanor », `demo.py` en option au 02 ; chapitre 03 : tableau des trois instances et étape « Tokens maximum », capture retirée du 15), quinze gênants et les mineurs, un commit par point. Chapitre 02 renuméroté (uv, LLM-Service), chapitres 10 (export) et 13 (invitation) aussi, renvois des autres chapitres mis à jour.
+- Vérifié dans l'interface (`outils/ragflow/captures/relecture_novice.py`, journaux `outils/resultats/ragflow/captures/relecture/`) : retrait d'un modèle confirmé par « Retirer » ; modèles par défaut enregistrés dès le choix (`PATCH /api/v1/models/default`, aucun bouton) ; page de connexion « Se connecter » quand le français est mémorisé ; menu « Gestion » d'un agent et export `<nom>.json` ; invitation acceptée côté invité (« Accepter », « Refuser », « Opéré ») ; base en « Équipe » visible et ouvrable par l'invité. « Top N » 8 à la création à la souris : relevé existant (`captures/05-assistants-et-citations/scenario.log`).
+- Captures : `01-inscription` et `06-modeles-listes` refaites, `08-agents/16-menu-gestion` et `13-exploitation/10-invitation-recue` nouvelles.
+- Nettoyage : objets « Manuel-… » supprimés (`nettoyer_manuel.py`), compte invité désactivé puis supprimé par l'API d'administration ; jeu de démonstration intact. `verifier_docs.py` : 0 point avant chaque commit.
+- Non vérifié : remède `.wslconfig` pour `vm.max_map_count` (machine d'essai à 1 048 576) ; partage d'un agent en « Équipe ».
