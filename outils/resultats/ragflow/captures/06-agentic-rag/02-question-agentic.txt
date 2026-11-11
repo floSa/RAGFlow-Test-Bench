@@ -1,0 +1,67 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Agentic
+Conversations
+2
+Nouvelle conversation
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Nouvelle conversation
+Plusieurs modèles
+
+Bonjour ! Je suis votre assistant, que puis-je faire pour vous ?
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Agentic
+Send message
+File upload
+
+== adresse ==
+/chat/03b9d7dd398947fe8e494970b01c4f29?conversationId=0979044a3b69496294edf2d590626170&isNew=true
+== pastilles ==
+1. question
+2. Agentic
+3. Send message
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+button | [icône lucide-panel-left-close]
+button | [icône lucide-plus]
+button | [icône lucide-copy-x]
+input:text | Rechercher
+button | Nouvelle conversation
+button | [icône lucide-ellipsis]
+button | Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement 
+button | Plusieurs modèles
+button | Drag to resize height
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+combobox | Agentic
+button | [icône lucide-mic]
+button | Send message
+input:file | 
+button | [icône lucide-settings]

@@ -1,0 +1,49 @@
+2026-11-11 13:53:47
+               total        used        free      shared  buff/cache   available
+Mem:           32098       15164        1258         160       16207       16933
+Swap:           4096          10        4085
+== phase assistant
+assistant relié : ['Modifié']
+== phase questions
+capture docs/ragflow/img/06-agentic-rag/01-modes-de-reponse.png [(1, 'Agentic'), (2, 'Naive')]
+capture docs/ragflow/img/06-agentic-rag/02-question-agentic.png [(1, 'question'), (2, 'Agentic'), (3, 'Send message')]
+réponse (mode Agentic) affichée après 5.4 s : Thought
+
+Le délai de livraison contractuel de Batterix est de 21 jours après la commande [1]. En ce qui concerne le délai moyen réellement constaté, un document indique que le délai moyen pour Batterix GmbH est de 24 jours [2].
+
+32198 tokens (31988 input, 210 output) · 5.2s
+capture docs/ragflow/img/06-agentic-rag/03-reponse-agentic.png [(1, 'question'), (2, 'réponse'), (3, 'jetons et durée')]
+réponse (mode Naive) affichée après 3.9 s : La base de connaissances indique le délai moyen constaté pour les composants fournis par Batterix GmbH [1].
+
+Voici les données pertinentes :
+
+Fournisseur : Batterix GmbH [1]
+Composant : Batteries [1]
+Délai moyen constaté (jours) : 24 [1]
+
+Il n'est pas précisé de délai de livraison contractuel dans les documents fournis [1][2][3][4][5][6][7][8]. Le seul délai fourni concerne le délai moyen réellement constaté, qui est de 24 jours pour les batteries fournies par Batterix GmbH [1].
+
+1710 tokens (1524 input, 186 output) · 3.4s
+capture docs/ragflow/img/06-agentic-rag/04-reponse-naive.png [(1, 'question'), (2, 'réponse'), (3, 'jetons et durée'), (4, 'Naive')]
+== reprise 2026-11-11 13:55:08 : phase questions (capture 04 : annotations stables)
+== phase questions
+capture docs/ragflow/img/06-agentic-rag/01-modes-de-reponse.png [(1, 'Agentic'), (2, 'Naive')]
+capture docs/ragflow/img/06-agentic-rag/02-question-agentic.png [(1, 'question'), (2, 'Agentic'), (3, 'Send message')]
+réponse (mode Agentic) affichée après 5.4 s : Thought
+
+Le délai de livraison contractuel de Batterix est de 21 jours après la commande, comme stipulé dans l'article 5 du contrat d'approvisionnement [1]. Le document consulté ne fournit pas de délai moyen réellement constaté.
+
+32396 tokens (32205 input, 191 output) · 5.0s
+capture docs/ragflow/img/06-agentic-rag/03-reponse-agentic.png [(1, 'question'), (2, 'réponse'), (3, 'jetons et durée')]
+réponse (mode Naive) affichée après 5.9 s : La base de connaissances fournit les informations suivantes concernant Batterix GmbH :
+
+Données de la base de connaissances :
+
+ID: 0 (stocks-octobre-2025.xlsx - Fournisseurs) : Indique que pour le fournisseur Batterix GmbH, le délai moyen constaté est de 24 jours pour les composants "Batteries" [1].
+ID: 2 (supplier-audit-batterix-en.pdf) : Mentionne un audit de qualité de Batterix GmbH en date du 18 June 2025 [3].
+ID: 1 (faq-sav.html) : Détaille les garanties pour la batterie (2 ans) et les délais de réparation en atelier (10 jours ouvrés) [2].
+
+Réponse détaillée :
+
+La base de connaissances ne mentionne pas de "délai de livraison contractuel" spécifié pour Batterix GmbH. Cependant, elle indi
+capture docs/ragflow/img/06-agentic-rag/04-reponse-naive.png [(1, 'jetons et durée'), (2, 'Naive')]

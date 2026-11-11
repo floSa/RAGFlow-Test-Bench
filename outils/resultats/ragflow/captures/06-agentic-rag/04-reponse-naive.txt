@@ -1,0 +1,94 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Agentic
+Conversations
+4
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+Plusieurs modèles
+
+Bonjour ! Je suis votre assistant, que puis-je faire pour vous ?
+
+Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?
+
+La base de connaissances fournit les informations suivantes concernant Batterix GmbH :
+
+Données de la base de connaissances :
+
+ID: 0 (stocks-octobre-2025.xlsx - Fournisseurs) : Indique que pour le fournisseur Batterix GmbH, le délai moyen constaté est de 24 jours pour les composants "Batteries" [1].
+ID: 2 (supplier-audit-batterix-en.pdf) : Mentionne un audit de qualité de Batterix GmbH en date du 18 June 2025 [3].
+ID: 1 (faq-sav.html) : Détaille les garanties pour la batterie (2 ans) et les délais de réparation en atelier (10 jours ouvrés) [2].
+
+Réponse détaillée :
+
+La base de connaissances ne mentionne pas de "délai de livraison contractuel" spécifié pour Batterix GmbH. Cependant, elle indique que le délai moyen constaté par ce fournisseur pour les "Batteries" est de 24 jours [1].
+
+Il n'y a pas d'information dans les documents fournis permettant de déterminer un délai contractuel fixe, ni de données comparatives pour valider si le délai moyen constaté est conforme à un contrat.
+
+1840 tokens (1524 input, 316 output) · 5.3s
+supplier-a…en.pdf
+[3]
+
+Drag & drop files here
+
+Upload max 5 files each up to 5MB
+
+Attach file
+Naive
+Send message
+File upload
+
+== adresse ==
+/chat/03b9d7dd398947fe8e494970b01c4f29?conversationId=649958aeaf9c476ca77cda759f50c0b3&isNew=
+== pastilles ==
+1. jetons et durée
+2. Naive
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-send]
+button | [icône lucide-panel-left-close]
+button | [icône lucide-plus]
+button | [icône lucide-copy-x]
+input:text | Rechercher
+button | Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement 
+button | [icône lucide-ellipsis]
+button | Plusieurs modèles
+button | [icône lucide-copy]
+button | [icône lucide-refresh-cw]
+button | [icône lucide-trash]
+button | [icône lucide-volume-2]
+button | [icône lucide-thumbs-up]
+button | [icône lucide-thumbs-down]
+button | [icône sans nom]
+button | supplier-a…en.pdf
+button | Drag to resize height
+textarea:textarea | Saisissez votre message ici...
+button | Attach file
+combobox | Naive
+button | [icône lucide-mic]
+button | Send message
+input:file | 
+button | [icône lucide-settings]
