@@ -63,7 +63,7 @@ Première page : [présentation](docs/ragflow/presentation.md) ; index : [docs/r
 | 14 | [Dépannage et FAQ](docs/ragflow/14-depannage.md) |
 | 15 | [Applications de recherche](docs/ragflow/15-recherche.md) |
 
-Manuel utilisateur refait le 11 novembre 2026 : chaque action faite à la souris, 164 captures annotées (rectangle rouge, pastille numérotée, tableau N° | Élément | Rôle), carte de l'interface dans [docs/ragflow/carte-interface.md](docs/ragflow/carte-interface.md) (4 éléments non couverts, raison donnée). Exemples exécutés : `exemples/ragflow/` et [sorties vérifiées](exemples/ragflow/sorties_verifiees.txt).
+Manuel utilisateur refait le 11 novembre 2026 : chaque action faite à la souris, 164 captures annotées (rectangle rouge, pastille numérotée, tableau N° | Élément | Rôle), carte de l'interface dans [docs/ragflow/annexes/carte-interface.md](docs/ragflow/annexes/carte-interface.md) (4 éléments non couverts, raison donnée). Exemples exécutés : `exemples/ragflow/` et [sorties vérifiées](exemples/ragflow/sorties_verifiees.txt).
 
 ## 4. Résultats du banc
 

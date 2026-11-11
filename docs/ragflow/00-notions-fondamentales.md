@@ -147,7 +147,7 @@ L'interface web s'ouvre dans le navigateur Windows à l'adresse `http://127.0.0.
 
 ### Pour aller plus loin
 
-La [carte de l'interface](carte-interface.md) recense chaque page, menu, onglet et réglage, avec le manuel qui le couvre. Trois pages s'ouvrent en plein écran, sans barre du haut : l'onglet « Artifacts » d'une base, les passages d'un document et le canevas d'un agent ; le bouton « Retour » les referme. [Vérifié] (`outils/resultats/ragflow/captures/carte/`)
+La [carte de l'interface](annexes/carte-interface.md) recense chaque page, menu, onglet et réglage, avec le manuel qui le couvre. Trois pages s'ouvrent en plein écran, sans barre du haut : l'onglet « Artifacts » d'une base, les passages d'un document et le canevas d'un agent ; le bouton « Retour » les referme. [Vérifié] (`outils/resultats/ragflow/captures/carte/`)
 
 ## Dépannage
 

@@ -31,7 +31,7 @@ Plan établi au cadrage le 9 novembre 2026 à partir du plan type du kit et des 
 
 ## Contenu détaillé
 
-La [carte de l'interface](carte-interface.md) dit, page par page, quel manuel couvre chaque écran, menu et réglage.
+La [carte de l'interface](annexes/carte-interface.md) dit, page par page, quel manuel couvre chaque écran, menu et réglage.
 
 ### 00. Notions fondamentales
 
