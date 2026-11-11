@@ -3,7 +3,7 @@ cse-2025-10-14.md
 Taille
 548 bytes
 Date de téléversement
-11/11/2026 11:05:36
+11/11/2026 12:24:27
 Aperçu
 Artifact
 Compte rendu de la réunion du CSE du 14 octobre 2025
@@ -46,7 +46,7 @@ Total 4
 50 / Page
 
 == adresse ==
-/chunk/parsed/chunks?id=717a922410584654ae5a7a58ca7f0b9e&doc_id=c7c85d00489a4db29c68e58ca10d2c74
+/chunk/parsed/chunks?id=05d91523ceaf4b79a98ba152adda1fce&doc_id=20d7513ce1b546bf979a7d4e905fb842
 == pastilles ==
 1. Aperçu
 2. passage

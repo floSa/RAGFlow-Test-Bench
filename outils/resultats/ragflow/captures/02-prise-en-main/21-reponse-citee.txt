@@ -7,25 +7,21 @@ Mémoire
 Gestion des fichiers
 Français
 BR
-DV
-Démo Vélanor
+M
+Manuel-Assistant
 Conversations
-3
-Audit fournisseur
-Objectifs 2026
-Contrat Batterix
-Contrat Batterix
+1
+Quel est le montant de la prime d'intéressement 2025 ?
+Quel est le montant de la prime d'intéressement 2025 ?
 Plusieurs modèles
 
-Bonjour, je réponds aux questions sur les documents fictifs de Vélanor, avec mes sources.
+Bonjour ! Je suis votre assistant, que puis-je faire pour vous ?
 
-Quel est le prix unitaire des batteries et le délai de livraison prévus par le contrat Batterix ?
+Quel est le montant de la prime d'intéressement 2025 ?
 
-Le prix unitaire des batteries est de 212 euros HT, ce prix étant révisable une fois par an [1]. De plus, le Fournisseur s'engage à livrer sous 21 jours après la commande [1].
+Le montant de la prime d'intéressement 2025 est de 1 150 euros par salarié, et elle sera versée en avril 2026 [1].
 
-1895 tokens (1841 input, 54 output) · 2.3s
-contrat-ba…an.pdf
-[1]
+652 tokens (611 input, 41 output) · 1.3s
 
 Drag & drop files here
 
@@ -37,12 +33,12 @@ Send message
 File upload
 
 == adresse ==
-/chat/ebd015d0553446598244f91d2cd23f41?conversationId=0da705af45024f34b753469c8b1ba0d9&isNew=
+/chat/2b150aa90bff4e80af2fb08eaca30e97?conversationId=fc971a58c94b40628241d4f9e1c248bf&isNew=
 == pastilles ==
 1. question
 2. [1]
 3. jetons et durée
-4. document cité
+4. conversation
 == éléments visibles ==
 a | 
 a | Accueil
@@ -62,9 +58,7 @@ button | [icône lucide-panel-left-close]
 button | [icône lucide-plus]
 button | [icône lucide-copy-x]
 input:text | Rechercher
-button | Audit fournisseur
-button | Objectifs 2026
-button | Contrat Batterix
+button | Quel est le montant de la prime d'intéressement 2025 ?
 button | [icône lucide-ellipsis]
 button | Plusieurs modèles
 button | [icône lucide-copy]
@@ -74,7 +68,6 @@ button | [icône lucide-volume-2]
 button | [icône lucide-thumbs-up]
 button | [icône lucide-thumbs-down]
 button | [icône sans nom]
-button | contrat-ba…an.pdf
 button | Drag to resize height
 textarea:textarea | Saisissez votre message ici...
 button | Attach file

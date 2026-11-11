@@ -40,7 +40,7 @@ Paramètres avancés
 AnnulerEnregistrer
 
 == adresse ==
-/chat/5e25ce51bb7b41c38ea48a44fadd8a78
+/chat/2b150aa90bff4e80af2fb08eaca30e97
 == pastilles ==
 1. Manuel-Prise-en-main
 2. Enregistrer

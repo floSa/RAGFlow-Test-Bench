@@ -380,7 +380,7 @@ def citations(s, m, question):
     cap(s, m, "21-reponse-citee", [
         (s.pg.get_by_text(question).last, "question"), (renvoi, "[1]"),
         (s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).first, "jetons et durée"),
-        (s.pg.get_by_role("button").filter(has_text=re.compile(r"\.(pdf|md|html)|…")).first, "document cité")])
+        (s.pg.get_by_role("button").filter(has_text=question[:20]).first, "conversation")])
     renvoi.hover(); s.pg.wait_for_timeout(2000)
     bulle = s.pg.locator("[data-radix-popper-content-wrapper]").last
     cap(s, m, "22-citation", [(bulle, "extrait cité")])
