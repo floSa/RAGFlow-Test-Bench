@@ -1,0 +1,2 @@
+== 2026-11-11T20:52:16 base Manuel-Prise-en-main (chapitre 04, étape 15)
+analyse en 3 s : {'faq-sav.html': {'fini': True, 'echec': False, 'progress': 1, 'chunks': 1, 'jetons': 153, 'message': ''}, 'cse-2025-10-14.md': {'fini': True, 'echec': False, 'progress': 1, 'chunks': 4, 'jetons': 159, 'message': ''}}

@@ -1,0 +1,4 @@
+liste : M | Manuel-Prise-en-main | Banc RAGFlow | bge-m3@llm-service-embed@VLLM | E | Essai-KC-mind_map-1835 | Banc RAGFlow | bge-m3@llm-service-embed@VLLM | DV | Démo Vélanor | Banc RAGFlow | bge-m3@llm-service-embed@VLLM | Effacer | Fermer
+capture docs/ragflow/img/02-prise-en-main/18-choix-base.png [(1, 'Rechercher...'), (2, 'Manuel-Prise-en-main'), (3, 'Fermer')]
+liste refermée par « Fermer » : True ; champ : M
+Manuel-Prise-en-main

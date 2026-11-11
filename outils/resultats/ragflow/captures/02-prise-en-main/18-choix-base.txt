@@ -34,7 +34,8 @@ llm-service-chat
 Paramètres du modèle
 Message d'accueil
 Bases de connaissances
-Sélectionner une valeur
+M
+Manuel-Prise-en-main
 Paramètres avancés
 AnnulerEnregistrer
 M
@@ -49,13 +50,15 @@ DV
 Démo Vélanor
 Banc RAGFlow
 bge-m3@llm-service-embed@VLLM
+Effacer
 Fermer
 
 == adresse ==
-/chat/2b150aa90bff4e80af2fb08eaca30e97
+/chat/508abaa9f86d41498fa4eb7b89b7b301
 == pastilles ==
 1. Rechercher...
 2. Manuel-Prise-en-main
+3. Fermer
 == éléments visibles ==
 a | 
 a | Accueil
@@ -93,7 +96,7 @@ button | Paramètres du modèle
 label | Message d'accueil
 textarea:textarea | prompt_config.prologue
 label | Bases de connaissances
-button | Sélectionner une valeur
+button | M Manuel-Prise-en-main
 button | Paramètres avancés
 button | Annuler
 button | Enregistrer
@@ -102,4 +105,5 @@ combobox | Rechercher...
 option | M Manuel-Prise-en-main Banc RAGFlow bge-m3@llm-service-embed@VLLM
 option | E Essai-KC-mind_map-1835 Banc RAGFlow bge-m3@llm-service-embed@VLLM
 option | DV Démo Vélanor Banc RAGFlow bge-m3@llm-service-embed@VLLM
+option | Effacer
 option | Fermer
