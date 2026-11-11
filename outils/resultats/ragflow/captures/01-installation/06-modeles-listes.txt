@@ -147,7 +147,7 @@ Add instance
 /user-setting/model
 == pastilles ==
 1. bge-m3
-2. retirer le modèle
+2. retirer BAAI/bge-m3
 3. Enregistrer
 == éléments visibles ==
 a | 

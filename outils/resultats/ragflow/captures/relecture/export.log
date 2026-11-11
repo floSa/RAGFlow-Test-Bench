@@ -1,0 +1,4 @@
+menu « Gestion » : ['Variable de conversation', 'Historique des versions', 'Exporter', 'Paramètres', 'Intégrer dans la page web']
+capture docs/ragflow/img/08-agents/16-menu-gestion.png [(1, 'Gestion'), (2, 'Variable de conversation'), (3, 'Historique des versions'), (4, 'Exporter'), (5, 'Paramètres'), (6, 'Intégrer dans la page web')]
+fichier téléchargé : Manuel-Agent-Export.json ; taille 1104 octets ; clés ['components', 'globals', 'graph', 'history', 'messages', 'path', 'retrieval', 'variables']
+messages : []

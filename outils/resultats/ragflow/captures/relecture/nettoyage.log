@@ -1,0 +1,9 @@
+agent ou pipeline supprimé : Manuel-Agent-Export 0
+base supprimée : Manuel-Partage
+restent : bases ['Démo Vélanor', 'Essai-KC-mind_map-1835'] ; assistants ['Démo Vélanor']
+comptes avant : ['manuel.invite@exemple.fr', 'banc.demo@exemple.fr', 'admin@ragflow.io']
+suppression de manuel.invite@exemple.fr : HTTP 200 {'code': 500, 'message': "user 'manuel.invite@exemple.fr' is active and can't be deleted. Please deactivate the user first"}
+comptes après : ['manuel.invite@exemple.fr', 'banc.demo@exemple.fr', 'admin@ragflow.io']
+désactivation : HTTP 200 {'code': 0, 'message': 'Activation status updated'}
+suppression : HTTP 200 {'code': 0, 'message': 'Successfully deleted user. Details:\nDrop user: manuel.invite@exemple.fr\n- Deleted 1 files records.\n- Deleted 1 tenant memberships records.\n- Deleted 1 tenants records.\n- Deleted 1 user tenant memberships records.\n- Deleted 1 users records.\nDelete done!\n'}
+comptes après : ['banc.demo@exemple.fr', 'admin@ragflow.io']

@@ -1,0 +1,43 @@
+Agent
+Manuel-Agent-Export
+Sauvegardé automatiquement 11/11/2026 17:16:38
+Save draft
+Exécuter
+Lancer
+Publier
+Gestion
+Commencer
+Conversationnel
+React Flow
+Variable de conversation
+Historique des versions
+Exporter
+Paramètres
+Intégrer dans la page web
+
+== adresse ==
+/agent/08a6538a67c0480d8d149a78f5788a66?category=agent_canvas
+== pastilles ==
+1. Gestion
+2. Variable de conversation
+3. Historique des versions
+4. Exporter
+5. Paramètres
+6. Intégrer dans la page web
+== éléments visibles ==
+button | Save draft
+button | Exécuter
+button | Lancer
+button | Publier
+button | Gestion
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+menuitem | Variable de conversation
+menuitem | Historique des versions
+menuitem | Exporter
+menuitem | Paramètres
+menuitem | Intégrer dans la page web
