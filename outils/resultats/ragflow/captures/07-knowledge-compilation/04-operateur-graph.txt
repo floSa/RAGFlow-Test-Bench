@@ -1,0 +1,64 @@
+Retour
+Add template
+Manuel-Operateur-Graphe
+Nom
+Description
+Template
+Graph
+Global rules
+Re-chunk parser output
+Entity specification
+Relation specification
+person
+
+A natural person (individual human).
+
+org
+
+Organization, company, institution, agency, or any collective group.
+
+product
+
+Tangible or intangible product, service, software, or offering.
+
+regulation
+
+Law, policy, standard, guideline, or regulatory document.
+
+location
+
+Geographic place (country, city, address, region, natural feature).
+
+other
+
+Entities that do not fit any above category.
+
+Add field
+Retour
+Enregistrer
+
+== adresse ==
+/compilation-templates/edit-next?source=agents&canvas_category=compilation_template_group
+== pastilles ==
+1. Graph
+2. Global rules
+3. Re-chunk parser output
+== éléments visibles ==
+button | Retour
+button | [icône lucide-braces]
+label | Nom
+input:text | Veuillez saisir le nom
+label | Description
+textarea:textarea | Saisir une description
+label | Template
+combobox | Graph
+label | Global rules
+textarea:textarea | Input global compilation rules
+label | Re-chunk parser output
+switch | 
+input:checkbox | 
+tab | Entity specification
+tab | Relation specification
+button | [icône lucide-pencil]
+button | [icône lucide-trash]
+button | Enregistrer

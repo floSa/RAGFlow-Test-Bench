@@ -1,0 +1,87 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-KC-Graphe
+1 Fichiers
+548 Bytes
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers
+
+😉 Veuillez attendre la fin de l'analyse de vos fichiers avant de démarrer une discussion avec l'IA.
+
+Ajouter un fichier
+	
+Nom
+	
+Date de téléversement
+	Activé	Nombre de segments	Métadonnées	Analyser		Action
+	
+cse-2025-10-14.md
+	11/11/2026 13:33:29	
+	
+1
+	0 fields	
+Manuel-Pipeline-Graphe_2026-11-11 14:30:37
+v1
+	
+	
+Total 1
+1
+50 / Page
+
+== adresse ==
+/dataset/files/a17e25d5237d4d3ab87853ea0dd93d10
+== pastilles ==
+1. cse-2025-10-14.md
+2. Nombre de segments
+3. Analyser
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | Ajouter un fichier
+checkbox | Select all
+button | [icône lucide-arrow-up-down]
+checkbox | Select row
+switch | 
+button | 0 fields
+button | Manuel-Pipeline-Graphe_2026-11-11 14:30:37 v1
+button | [icône sans nom]
+button | 
+button | [icône lucide-pen-line]
+button | [icône lucide-eye]
+button | [icône lucide-download]
+button | [icône lucide-trash]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page

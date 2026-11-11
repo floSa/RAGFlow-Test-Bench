@@ -1,0 +1,32 @@
+Retour
+M
+Manuel-KC-Graphe dataset
+Wiki
+
+No wiki yet
+
+Compiled automatically when documents are parsed.
+
+Wiki
+Tree/PageIndex
+Graph
+Mind map
+Timeline
+
+== adresse ==
+/dataset/compilation/a17e25d5237d4d3ab87853ea0dd93d10
+== pastilles ==
+1. Wiki
+2. Tree/PageIndex
+3. Graph
+4. Mind map
+5. Timeline
+== éléments visibles ==
+button | Retour
+combobox | Wiki
+label | 
+option | Wiki
+option | Tree/PageIndex
+option | Graph
+option | Mind map
+option | Timeline

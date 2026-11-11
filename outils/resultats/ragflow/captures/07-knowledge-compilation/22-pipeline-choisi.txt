@@ -1,0 +1,173 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-KC-Graphe
+0 Fichiers
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Dataset configuration
+Modifiez ici la configuration de votre base de connaissances, notamment la méthode de découpage.
+Informations de base
+*Nom
+Langue
+English
+Avatar
+Télécharger
+Vous pouvez télécharger une image jusqu'à 4 Mo.
+Description
+Autorisations
+Moi uniquement
+Modèle d'embedding
+bge-m3
+llm-service-embed
+Rang de page
+Changer ou configurer le pipeline d'ingestion.
+Mode d'analyse
+Manuel-Pipeline-Graphe_2026-11-11 14:30:37
+v1
+Parser
+Découpeur par tokens
+Compiler
+Indexeur
+Enable vision enhancement
+PDF
+Détecter la mise en page multi-colonnes
+Supprimer la table des matières d'origine
+Supprimer en-tête et pied de page
+Analyseur PDF
+DeepDOC
+Plages de pages
+
+Ajouter une page
+Tableur
+Analyseur PDF
+DeepDOC
+Image
+OCR
+Parsing method
+DeepDoc
+OCR + layout analysis + table structure
+External OCR model
+Text only; no table structure
+
+No PaddleOCR models added. Use DeepDoc for local OCR, or add a PaddleOCR model in model settings.
+
+Email
+Champ
+from
+to
+cc
++ 5 more
+Markdown
+Texte & Code
+HTML
+Supprimer en-tête et pied de page
+DOC
+Supprimer en-tête et pied de page
+DOCX
+Supprimer en-tête et pied de page
+PPTX
+Analyseur PDF
+DeepDOC
+Audio
+Modèle
+Source de données
+Gérer la liaison de source de données avec cette base
+Lier une source de données
+Annuler
+Enregistrer
+
+== adresse ==
+/dataset/configuration/a17e25d5237d4d3ab87853ea0dd93d10
+== pastilles ==
+1. Manuel-Pipeline-Graphe
+2. Enregistrer
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+label | *Nom
+input:text | name
+label | Langue
+combobox | English
+label | Avatar
+button | Télécharger
+label | Description
+input:text | Décrivez votre base de connaissances
+label | Autorisations
+combobox | Moi uniquement
+label | Modèle d'embedding
+button | bge-m3 llm-service-embed
+label | Rang de page
+slider | 
+input:number | 
+label | Mode d'analyse
+button | Manuel-Pipeline-Graphe_2026-11-11 14:30:37 v1
+tab | Parser
+tab | Découpeur par tokens
+tab | Compiler
+tab | Indexeur
+label | Enable vision enhancement
+switch | 
+input:checkbox | 
+button | PDF
+label | Détecter la mise en page multi-colonnes
+label | Supprimer la table des matières d'origine
+label | Supprimer en-tête et pied de page
+label | Analyseur PDF
+button | DeepDOC
+label | Plages de pages
+input:number | Veuillez saisir
+button | [icône lucide-trash]
+button | Ajouter une page
+button | Tableur
+combobox | DeepDOC
+button | Image
+label | OCR
+label | Parsing method
+label | DeepDoc OCR + layout analysis + table structure
+radio | DeepDoc
+input:radio | 
+label | External OCR model Text only; no table structure
+radio | External OCR model
+button | Email
+label | Champ
+button | from to cc + 5 more
+button | Markdown
+button | Texte & Code
+button | HTML
+button | DOC
+button | DOCX
+button | PPTX
+button | Audio
+label | Modèle
+button | [icône lucide-chevron-down]
+button | Lier une source de données
+button | Annuler
+button | Enregistrer

@@ -1,0 +1,17 @@
+Retour
+M
+Manuel-KC-Graphe dataset
+Wiki
+
+No wiki yet
+
+Compiled automatically when documents are parsed.
+
+== adresse ==
+/dataset/compilation/a17e25d5237d4d3ab87853ea0dd93d10
+== pastilles ==
+1. Wiki
+2. No wiki yet
+== éléments visibles ==
+button | Retour
+combobox | Wiki

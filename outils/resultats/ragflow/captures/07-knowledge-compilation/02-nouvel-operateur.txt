@@ -1,0 +1,31 @@
+Retour
+Add template
+Manuel-Operateur-Graphe
+Nom
+Description
+Template
+Sélectionner une valeur
+Global rules
+Retour
+Enregistrer
+
+== adresse ==
+/compilation-templates/edit-next?source=agents&canvas_category=compilation_template_group
+== pastilles ==
+1. Nom
+2. Description
+3. Template
+4. Global rules
+5. Enregistrer
+== éléments visibles ==
+button | Retour
+button | [icône lucide-braces]
+label | Nom
+input:text | Veuillez saisir le nom
+label | Description
+textarea:textarea | Saisir une description
+label | Template
+combobox | Sélectionner une valeur
+label | Global rules
+textarea:textarea | Input global compilation rules
+button | Enregistrer

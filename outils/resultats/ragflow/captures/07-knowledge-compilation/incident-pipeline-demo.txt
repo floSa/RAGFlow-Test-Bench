@@ -1,0 +1,20 @@
+Incident du 11 novembre 2026 (repérage du lot 3) : pipeline « Essai-KC-mind_map-1835 » (id 78f66edbd128442a86868bc9d0b1836d),
+créé le 9 novembre par outils/ragflow/essai_compilation.py (API), ouvert dans le canevas par un repérage Playwright.
+
+Canevas affiché : Commencer, Parser, Chunker (General Chunker), Extractor, Indexer ; aucun bloc Compiler.
+« Sauvegardé automatiquement 11/11/2026 13:07:42 » affiché quelques secondes après l'ouverture.
+
+GET /api/v1/agents/78f66edbd128442a86868bc9d0b1836d, juste après :
+  components ['Extractor:AutoExtractDefault', 'File', 'GeneralChunker:SixApplesFall', 'Parser:HipSignsRhyme', 'Tokenizer:LegalReadersDecide']
+  graph nodes ['File', 'Parser:HipSignsRhyme', 'GeneralChunker:SixApplesFall', 'Tokenizer:LegalReadersDecide', 'Extractor:AutoExtractDefault']
+  update_date 2026-11-11T14:07:42+01:00
+GET /api/v1/agents/78f66edbd128442a86868bc9d0b1836d/versions : version publiée (release true) du 2026-11-09 18:35:37
+  avec le composant 'Compiler:EssaiBanc' (compilation_template_group_id 0f4d1e03e99e4864b14e2d3e15351989, llm_id gemma4:e4b@llm-service-chat@VLLM).
+
+Conclusion : l'enregistrement automatique du canevas écrit le brouillon d'après le graphe affiché ; le nœud Compiler, absent
+du graphe (créé par l'API dans dsl.components seulement), disparaît du brouillon. La version publiée n'est pas touchée.
+
+Remise en état : PUT /api/v1/agents/78f66edbd128442a86868bc9d0b1836d avec le DSL de la version publiée -> code 0 ;
+composants relus : ['Compiler:EssaiBanc', 'Extractor:AutoExtractDefault', 'File', 'GeneralChunker:SixApplesFall',
+'Parser:HipSignsRhyme', 'Tokenizer:LegalReadersDecide']. Le PUT a ajouté une version non publiée
+« Essai-KC-mind_map-1835_2026-11-11 14:11:47 » (release false) ; la version publiée reste celle du 9 novembre.

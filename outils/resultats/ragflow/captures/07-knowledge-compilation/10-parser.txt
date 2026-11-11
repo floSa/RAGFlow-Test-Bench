@@ -1,0 +1,121 @@
+Agent
+Manuel-Pipeline-Graphe
+Sauvegardé automatiquement 11/11/2026 13:29:45
+Save draft
+Publier
+Gestion
+Commencer
+Parser
+PDF
+Tableur
+Image
+Email
+Markdown
+Texte & Code
+HTML
+DOC
+DOCX
+PPTX
+Audio
+React Flow
+Parser
+
+Extrait le texte brut et la structure des fichiers pour le traitement en aval.
+
+Enable vision enhancement
+PDF
+Détecter la mise en page multi-colonnes
+Supprimer la table des matières d'origine
+Supprimer en-tête et pied de page
+Analyseur PDF
+DeepDOC
+Plages de pages
+
+Ajouter une page
+Tableur
+Analyseur PDF
+DeepDOC
+Image
+OCR
+Parsing method
+DeepDoc
+OCR + layout analysis + table structure
+External OCR model
+Text only; no table structure
+
+No PaddleOCR models added. Use DeepDoc for local OCR, or add a PaddleOCR model in model settings.
+
+Email
+Champ
+from
+to
+cc
++ 5 more
+Markdown
+Texte & Code
+HTML
+Supprimer en-tête et pied de page
+DOC
+Supprimer en-tête et pied de page
+DOCX
+Supprimer en-tête et pied de page
+PPTX
+Analyseur PDF
+DeepDOC
+Audio
+Modèle
+Sortie
+json: Array<object>
+
+== adresse ==
+/agent/f2c4cdc68d59495f8517bfbe0b379ff5?category=dataflow_canvas
+== pastilles ==
+1. Parser
+2. formats
+== éléments visibles ==
+button | Save draft
+button | Publier
+button | Gestion
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+button | [icône lucide-pen-line]
+button | [icône lucide-x]
+label | Enable vision enhancement
+switch | 
+input:checkbox | 
+button | PDF
+button | [icône lucide-trash]
+label | Détecter la mise en page multi-colonnes
+label | Supprimer la table des matières d'origine
+label | Supprimer en-tête et pied de page
+label | Analyseur PDF
+button | DeepDOC
+label | Plages de pages
+input:number | Veuillez saisir
+button | Ajouter une page
+button | Tableur
+combobox | DeepDOC
+button | Image
+label | OCR
+label | Parsing method
+label | DeepDoc OCR + layout analysis + table structure
+radio | DeepDoc
+input:radio | 
+label | External OCR model Text only; no table structure
+radio | External OCR model
+button | Email
+label | Champ
+button | from to cc + 5 more
+button | Markdown
+button | Texte & Code
+button | HTML
+button | DOC
+button | DOCX
+button | PPTX
+button | Audio
+label | Modèle
+button | [icône lucide-chevron-down]

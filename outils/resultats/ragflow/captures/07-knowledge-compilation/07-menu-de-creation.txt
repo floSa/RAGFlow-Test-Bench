@@ -1,0 +1,115 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+Workflow
+Ingestion pipeline
+Compilation operator
+E
+Essai-KC-mind_map-1835
+Dernière sauvegarde à:
+
+11/11/2026 13:11:47
+
+Publié le:
+
+09/11/2026 17:35:37
+
+Built-in pipelines
+G
+General
+This general-purpose template segments parsed files by token count. Ideal for unstructured documents that lack a fixed layout.
+
+Q
+Q&A
+This template segments parsed files by Q&A pairs. Best for documents structured as questions and answers, such as FAQ pages, interview transcripts, and knowledge bases organized in a question-answer format.
+
+M
+Manual
+This template segments parsed files by manual structure. Best for technical documents with clearly defined sections and operational guidance, such as product manuals, user guides, and installation instructions.
+
+T
+Table
+This template extracts and segments tables from parsed documents. Best for spreadsheet files, financial reports, statistical documents, and any content organized in tabular format.
+
+P
+Paper
+This template segments parsed files by paper structure. Best for documents with clearly defined sections, such as scholarly works, conference articles, and research studies.
+
+B
+Book
+This template segments parsed files by book structure. Best for books, long-form manuscripts, literary works, and other documents with defined chapters and sections.
+
+L
+Laws
+This template segments parsed files by legal provision hierarchy. Best for documents with clearly defined articles, such as laws, regulations, judicial interpretations, and compliance policies.
+
+P
+Presentation
+This template segments parsed slide content. Best for presentation files such as PowerPoint slides, keynote files, and lecture materials organized slide by slide.
+
+P
+Picture
+This template extracts text from images via OCR and describes video content using vision models. Supports .jpg, .png, .gif image formats and .mp4, .avi, .mkv video formats.
+
+O
+One
+This template treats the entire parsed file as one segment. Best for short documents or highly coherent text where maintaining full context is critical.
+
+A
+Audio
+This template transcribes audio files into text using a speech-to-text model. Supports .wav, .mp3, .aac, .flac, .ogg and other common audio formats.
+
+E
+Email
+This template parses email files, extracting headers, body content, and attachments. Best for .eml and .msg files.
+
+Total 1
+1
+50 / Page
+Créer depuis un blanc
+Créer depuis un modèle
+Importer un fichier JSON
+
+== adresse ==
+/agents?canvas_category=dataflow_canvas&page=1
+== pastilles ==
+1. Ingestion pipeline
+2. Créer depuis un blanc
+3. Créer depuis un modèle
+4. Importer un fichier JSON
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+radio | Workflow
+radio | Ingestion pipeline
+radio | Compilation operator
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | [icône lucide-plus]
+button | [icône lucide-route]
+button | [icône lucide-ellipsis]
+button | Copier
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page
+menuitem | Créer depuis un blanc
+menuitem | Créer depuis un modèle
+menuitem | Importer un fichier JSON

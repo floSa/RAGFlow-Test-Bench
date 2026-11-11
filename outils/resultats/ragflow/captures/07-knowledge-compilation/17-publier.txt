@@ -1,0 +1,63 @@
+Agent
+Manuel-Pipeline-Graphe
+Sauvegardé automatiquement 11/11/2026 13:30:29
+Save draft
+Publier
+Gestion
+Commencer
+Parser
+PDF
+Tableur
+Image
+Email
+Markdown
+Texte & Code
+HTML
+DOC
+DOCX
+PPTX
+Audio
+Chunker
+Découpeur par tokens
+Compiler
+gemma4:e4b
+llm-service-chat
+Operator
+Manuel-Operateur-Graphe
+Indexeur
+Méthode de recherche
+Embedding
+Texte intégral
+React Flow
+Confirmer la publication
+
+Vous êtes sur le point de publier ce pipeline d'ingestion.
+
+M
+Manuel-Pipeline-Graphe
+Alias
+Non
+Confirmer
+Close
+
+== adresse ==
+/agent/f2c4cdc68d59495f8517bfbe0b379ff5?category=dataflow_canvas
+== pastilles ==
+1. Alias
+2. Confirmer
+== éléments visibles ==
+button | Save draft
+button | Publier
+button | Gestion
+button | [icône lucide-trash]
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+label | Alias
+input:text | Alias
+button | Non
+button | Confirmer
+button | Close

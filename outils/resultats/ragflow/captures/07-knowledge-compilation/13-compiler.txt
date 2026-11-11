@@ -1,0 +1,101 @@
+Agent
+Manuel-Pipeline-Graphe
+Sauvegardé automatiquement 11/11/2026 13:30:10
+Save draft
+Publier
+Checklist
+1
+Gestion
+Commencer
+Parser
+PDF
+Tableur
+Image
+Email
+Markdown
+Texte & Code
+HTML
+DOC
+DOCX
+PPTX
+Audio
+Chunker
+Découpeur par tokens
+Compiler
+gemma4:e4b
+llm-service-chat
+Operator
+React Flow
+Compiler
+
+Compiles document chunks using knowledge compilation templates into structured artifacts.
+
+Operator
+Create template
+Sélectionner une valeur
+Modèle
+gemma4:e4b
+llm-service-chat
+Liberté
+Improviser
+Précis
+Équilibre
+Personnalisé
+Température
+Top P
+Pénalité de présence
+Pénalité de fréquence
+Nombre max de tokens
+Thinking
+System default
+System default
+Enabled
+Disabled
+Sortie
+chunks: Array<Object>
+
+== adresse ==
+/agent/f2c4cdc68d59495f8517bfbe0b379ff5?category=dataflow_canvas
+== pastilles ==
+1. Operator
+2. Create template
+3. Modèle
+4. Température
+5. Thinking
+== éléments visibles ==
+button | Save draft
+button | Publier
+button | Checklist 1
+button | Gestion
+button | [icône lucide-trash]
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+button | [icône lucide-pen-line]
+button | [icône lucide-x]
+label | Operator
+combobox | Sélectionner une valeur
+label | Modèle
+button | gemma4:e4b llm-service-chat
+label | Liberté
+combobox | [icône lucide-chevron-down]
+select:select-one | Improviser Précis Équilibre Personnalisé
+label | Température
+switch | 
+input:checkbox | 
+slider | 
+input:number | temperature
+label | Top P
+input:number | top_p
+label | Pénalité de présence
+input:number | presence_penalty
+label | Pénalité de fréquence
+input:number | frequency_penalty
+label | Nombre max de tokens
+input:number | max_tokens
+label | Thinking
+combobox | System default
+select:select-one | System default Enabled Disabled

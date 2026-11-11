@@ -1,0 +1,25 @@
+Retour
+M
+Manuel-KC-Graphe dataset
+Graph
+Search entity
+4 / 4 entities
+Sophie Le Gall
+Cholet
+Nantes
+Hélène Marchais
+
+== adresse ==
+/dataset/compilation/a17e25d5237d4d3ab87853ea0dd93d10
+== pastilles ==
+1. entités
+== éléments visibles ==
+button | Retour
+combobox | Graph
+combobox | Search entity
+label | 
+combobox | Rechercher...
+option | Sophie Le Gall
+option | Cholet
+option | Nantes
+option | Hélène Marchais

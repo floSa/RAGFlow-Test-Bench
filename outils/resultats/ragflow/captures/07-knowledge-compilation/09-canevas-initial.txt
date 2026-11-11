@@ -1,0 +1,40 @@
+Agent
+Manuel-Pipeline-Graphe
+Sauvegardé automatiquement 11/11/2026 13:29:45
+Save draft
+Publier
+Gestion
+Commencer
+Parser
+PDF
+Tableur
+Image
+Email
+Markdown
+Texte & Code
+HTML
+DOC
+DOCX
+PPTX
+Audio
+React Flow
+
+== adresse ==
+/agent/f2c4cdc68d59495f8517bfbe0b379ff5?category=dataflow_canvas
+== pastilles ==
+1. Commencer
+2. Parser
+3. Save draft
+4. Publier
+5. Gestion
+6. commandes du canevas
+== éléments visibles ==
+button | Save draft
+button | Publier
+button | Gestion
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow

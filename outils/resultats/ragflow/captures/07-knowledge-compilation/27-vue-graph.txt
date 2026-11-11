@@ -1,0 +1,18 @@
+Retour
+M
+Manuel-KC-Graphe dataset
+Graph
+Search entity
+4 / 4 entities
+
+== adresse ==
+/dataset/compilation/a17e25d5237d4d3ab87853ea0dd93d10
+== pastilles ==
+1. Graph
+2. Search entity
+3. entities
+4. graphe
+== éléments visibles ==
+button | Retour
+combobox | Graph
+combobox | Search entity

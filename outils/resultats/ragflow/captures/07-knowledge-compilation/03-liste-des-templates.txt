@@ -1,0 +1,46 @@
+Retour
+Add template
+Manuel-Operateur-Graphe
+Nom
+Description
+Template
+Sélectionner une valeur
+Global rules
+Retour
+Enregistrer
+Graph
+Mindmap
+PageIndex
+Timeline
+Tree
+Wiki
+
+== adresse ==
+/compilation-templates/edit-next?source=agents&canvas_category=compilation_template_group
+== pastilles ==
+1. Graph
+2. Mindmap
+3. PageIndex
+4. Timeline
+5. Tree
+6. Wiki
+== éléments visibles ==
+button | Retour
+button | [icône lucide-braces]
+label | Nom
+input:text | Veuillez saisir le nom
+label | Description
+textarea:textarea | Saisir une description
+label | Template
+combobox | Sélectionner une valeur
+label | Global rules
+textarea:textarea | Input global compilation rules
+button | Enregistrer
+label | 
+combobox | Rechercher...
+option | Graph
+option | Mindmap
+option | PageIndex
+option | Timeline
+option | Tree
+option | Wiki

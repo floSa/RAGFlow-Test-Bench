@@ -1,0 +1,48 @@
+Agent
+Manuel-Pipeline-Graphe
+Sauvegardé automatiquement 11/11/2026 13:30:02
+Save draft
+Publier
+Gestion
+Commencer
+Parser
+PDF
+Tableur
+Image
+Email
+Markdown
+Texte & Code
+HTML
+DOC
+DOCX
+PPTX
+Audio
+Chunker
+Découpeur par tokens
+React Flow
+Étape suivante
+Indexeur
+Compiler
+Transformateur
+
+== adresse ==
+/agent/f2c4cdc68d59495f8517bfbe0b379ff5?category=dataflow_canvas
+== pastilles ==
+1. +
+2. Indexeur
+3. Compiler
+4. Transformateur
+== éléments visibles ==
+button | Save draft
+button | Publier
+button | Gestion
+button | [icône lucide-trash]
+button | Zoom In
+button | Zoom Out
+button | Fit View
+button | Toggle Interactivity
+button | [icône lucide-notebook-pen]
+a | React Flow
+menuitem | Indexeur
+menuitem | Compiler
+menuitem | Transformateur

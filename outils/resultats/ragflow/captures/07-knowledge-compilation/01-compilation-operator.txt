@@ -1,0 +1,56 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+Workflow
+Ingestion pipeline
+Compilation operator
+E
+Essai-KC-mind_map-1835
+
+Mindmap
+Dernière sauvegarde à:
+
+09/11/2026 17:35:37
+
+Total 1
+1
+50 / Page
+
+== adresse ==
+/agents?canvas_category=compilation_template_group&page=1
+== pastilles ==
+1. Compilation operator
+2. opérateur existant
+3. +
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+radio | Workflow
+radio | Ingestion pipeline
+radio | Compilation operator
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | [icône lucide-plus]
+button | [icône lucide-shapes]
+button | [icône lucide-ellipsis]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page
