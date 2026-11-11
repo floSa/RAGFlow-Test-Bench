@@ -3,7 +3,7 @@
 > **Objet** : installer RAGFlow v1.0.0 dans WSL2, branché sur LLM-Service, sans rien exposer au réseau, puis le désinstaller entièrement.
 > **Prérequis** : [notions fondamentales](00-notions-fondamentales.md) ; machine préparée (WSL2, Docker, LLM-Service), voir `kit/LANCEMENT.md` du kit de la série.
 > **Version décrite** : RAGFlow v1.0.0 (tag `v1.0.0`, commit `db1cd59`), Windows 11 + WSL2 (Ubuntu 24.04.5, Docker 29.9.3, Compose 5.7.0), LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b`, `bge-m3`), contexte déclaré de 16 384 jetons.
-> **Statut des informations** : [Vérifié] observé ou mesuré le 9 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go de RAM dans WSL, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
+> **Statut des informations** : [Vérifié] observé ou mesuré les 9 et 11 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go de RAM dans WSL, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
 > **Précautions** : compose officiel, scripts et code relus avant tout lancement ([relecture](../../outils/resultats/ragflow/relecture.md)) ; données fictives ; aucun `sudo`, aucun réglage de Windows ni de WSL.
 
 **Risque — exposition réseau et mots de passe par défaut.** Le `docker-compose.yml` officiel publie l'interface, l'API, l'administration, Elasticsearch, MySQL, MinIO, Kvrocks et NATS sur toutes les interfaces réseau (`0.0.0.0`), avec des mots de passe connus (`infini_rag_flow`, `admin`). Lancé tel quel sur un portable connecté à un réseau partagé, il ouvre la base de données et les fichiers à n'importe quel voisin. L'installation décrite ici corrige les deux points. [Source] (`docker/docker-compose.yml`, `docker/docker-compose-base.yml`, `docker/.env`)
@@ -105,7 +105,9 @@ Aucun modèle n'est téléchargé à l'installation : les modèles DeepDoc (OCR,
 
 ### Essentiel
 
-RAGFlow 1.0 ne lit pas de modèles par défaut dans sa configuration : il faut un compte, puis déclarer les modèles dans « Fournisseurs de modèles ». Le script suivant le fait par l'API [Testée] :
+RAGFlow 1.0 ne lit pas de modèles par défaut dans sa configuration : il faut un compte, puis déclarer les modèles dans « Fournisseurs de modèles ». Deux chemins mènent au même résultat : le script du banc, par l'API, ou l'interface, à la souris.
+
+**Par le script du banc** [Testée] :
 
 ```bash
 python3 outils/ragflow/configurer.py
@@ -123,9 +125,110 @@ python3 outils/ragflow/configurer.py
 
 [Vérifié] (`outils/resultats/ragflow/configuration-2026-11-09.log`)
 
-Résultat dans l'interface (menu du compte, « Fournisseurs de modèles ») :
+**Dans l'interface**, la même chose se fait en trois temps : créer le compte, déclarer une instance de fournisseur, choisir les modèles par défaut. Les captures viennent du scénario `installation` de `outils/ragflow/captures/captures.py` ; l'instance d'exemple, nommée « Manuel-instance », est créée puis supprimée à la souris par ce scénario. [Vérifié] (textes des pages dans `outils/resultats/ragflow/captures/01-installation/`)
 
-![Modèles par défaut déclarés](img/01-installation/01-modeles-par-defaut.png)
+1. Ouvrir `http://127.0.0.1:8088` dans le navigateur Windows, cliquer sur « Sign up », remplir le formulaire « Create an account », puis « Continue ». La page de connexion reste en anglais tant que la langue n'a pas été choisie (voir la [prise en main](02-prise-en-main.md)). Le formulaire montré ici est rempli avec un compte fictif et n'a pas été validé : le compte du banc existe déjà.
+
+![Formulaire de création du premier compte](img/01-installation/01-inscription.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Email » | adresse du compte, sert d'identifiant ; une adresse fictive suffit pour un compte local |
+| 2 | « Nickname » | nom affiché dans l'interface |
+| 3 | « Password » | mot de passe du compte (masqué sur la capture) |
+| 4 | « Continue » | crée le compte |
+| 5 | « Sign in » | revient au formulaire de connexion |
+
+2. Une fois connecté, cliquer sur la pastille du compte (en haut à droite), puis sur « Fournisseurs de modèles ».
+
+![Page Fournisseurs de modèles](img/01-installation/02-fournisseurs-de-modeles.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Fournisseurs de modèles » | entrée du menu du compte qui ouvre cette page |
+| 2 | « Définir les modèles par défaut » | modèles utilisés par défaut par les bases et les assistants (étape 9) |
+| 3 | « Rechercher » | filtre la liste des fournisseurs, une centaine |
+| 4 | « VLLM » | fournisseur choisi pour LLM-Service ; le point vert signale un fournisseur déjà configuré |
+
+3. Cliquer sur « VLLM ». Chaque instance déclarée a sa carte ; celle de l'embedding, « llm-service-embed », est dépliée ici.
+
+![Instances du fournisseur VLLM](img/01-installation/03-fournisseur-vllm.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « llm-service-embed » | nom de l'instance, choisi à sa création |
+| 2 | « URL de base » | adresse du serveur vue depuis le conteneur RAGFlow (réseau `llm-net`) |
+| 3 | « Lister les modèles » | interroge le serveur et affiche les modèles qu'il sert |
+| 4 | signe « − » de `bge-m3` | retire ce modèle de l'instance ; le signe « + » d'un modèle non retenu l'ajoute |
+| 5 | « Enregistrer » | enregistre les changements de la carte |
+
+4. Descendre en bas de la liste des instances et cliquer sur « Add instance ».
+
+![Bouton Add instance](img/01-installation/04-add-instance.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Add instance » | ajoute une carte d'instance vide en bas de la liste |
+
+5. Remplir la nouvelle carte : nom de l'instance, adresse du serveur (ici `http://vllm-embed:8000/v1`), puis cliquer sur « Lister les modèles ». La clé reste vide pour un serveur local sans clé.
+
+![Nouvelle instance remplie](img/01-installation/05-ajout-instance.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Nom de l'instance » | nom libre, repris dans les listes de modèles (« modèle nom-de-l'instance ») |
+| 2 | « Clé API » | clé du serveur ; vide pour LLM-Service |
+| 3 | « URL de base » | adresse compatible OpenAI du serveur, terminée par `/v1` |
+| 4 | « Lister les modèles » | récupère les modèles servis à cette adresse |
+
+6. Les modèles servis apparaissent, déjà retenus (signe « − »). Retirer ceux qui ne servent pas, puis cliquer sur « Enregistrer ».
+
+![Modèles listés pour la nouvelle instance](img/01-installation/06-modeles-listes.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | `bge-m3` | modèle servi par `vllm-embed`, avec son type (« Embedding ») ; `BAAI/bge-m3` est le même modèle sous son nom complet |
+| 2 | signe « − » | retire le modèle de l'instance |
+| 3 | « Enregistrer » | crée l'instance |
+
+7. Résultat : l'instance enregistrée apparaît en tête de la liste. La corbeille de sa carte la supprime.
+
+![Instance enregistrée](img/01-installation/07-instance-enregistree.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Manuel-instance » | instance créée, désormais proposée dans les listes de modèles |
+| 2 | corbeille | supprime l'instance (étape 8) |
+
+8. Pour supprimer une instance d'essai : corbeille de sa carte, puis « Supprimer » dans la confirmation.
+
+![Confirmation de suppression](img/01-installation/08-suppression-instance.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Êtes-vous sûr de vouloir supprimer cet élément ? » | confirmation ; « Non » annule |
+| 2 | « Supprimer » | supprime l'instance |
+
+9. Cliquer sur « Définir les modèles par défaut » et choisir un modèle par usage. Sans « Modèle de chat », aucune discussion n'est possible (champ marqué obligatoire).
+
+![Modèles par défaut](img/01-installation/09-modeles-par-defaut.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Modèle de chat » | rédige les réponses (`gemma4:e4b`, instance `llm-service-chat`) ; obligatoire |
+| 2 | « Modèle d'embedding » | vectorise les passages et les questions (`bge-m3`) |
+| 3 | « Modèle Img2txt » | décrit les images (vide ici) |
+| 4 | « Modèle Speech2txt » | transcrit l'audio (`Systran/faster-whisper-small`, instance `voix-locale`) |
+| 5 | « Modèle de rerank » | reclasse les passages (vide : aucun reranker dans le socle) |
+| 6 | « Modèle TTS » | lit les réponses à voix haute (vide ici) ; la ligne suivante, « Decision model », reste vide aussi |
+
+10. Chaque liste regroupe les modèles par fournisseur puis par instance ; cliquer sur le modèle voulu.
+
+![Choix du modèle de chat](img/01-installation/10-choix-modele-de-chat.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | liste « VLLM », « llm-service-chat », `gemma4:e4b` | modèles de chat disponibles, avec un champ « Rechercher » |
 
 ### Pour aller plus loin
 
@@ -229,6 +332,7 @@ Le cycle complet désinstallation, réinstallation, configuration et vérificati
 ## Sources
 
 - Dépôt : https://github.com/infiniflow/ragflow (tag `v1.0.0`) ; documentation : https://ragflow.io/docs/
+- Captures : `outils/ragflow/captures/captures.py` (scénario `installation`), images dans `docs/ragflow/img/01-installation/`, textes dans `outils/resultats/ragflow/captures/01-installation/`
 - Scripts : `outils/ragflow/installer.sh`, `outils/ragflow/compose.override.yml`, `outils/ragflow/configurer.py`, `outils/ragflow/verif_minimale.py`, `outils/ragflow/essai_reinstallation.sh`, `outils/ragflow/ressources.sh`, `outils/communs/nettoyer.sh`
 - Résultats : [installation](../../outils/resultats/ragflow/installation-2026-11-09.log), [vérification](../../outils/resultats/ragflow/installation-2026-11-09-verif.log), [réinstallation](../../outils/resultats/ragflow/essai-2026-11-09-reinstallation.log), [versions](../../outils/resultats/ragflow/versions-2026-11-09.json), [relecture](../../outils/resultats/ragflow/relecture.md)
 - Images : `infiniflow/ragflow:v1.0.0@sha256:ed8dff41…`, `elasticsearch:8.11.3@sha256:58a3a280…`, `mysql:8.0.40@sha256:d58ac933…`, `pgsty/silo:RELEASE.2026-08-06T00-00-00Z@sha256:29a498b2…`, `apache/kvrocks:2.16.0@sha256:9e632c31…`, `nats:2.14.2@sha256:bbfbb6c4…`

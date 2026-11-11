@@ -1,0 +1,36 @@
+RAGFlow
+A leading RAG engine for LLM context
+Create an account
+Email
+Nickname
+Password
+Continue
+
+Already have an account?Sign in
+
+Create an account
+Email
+Nickname
+Password
+Continue
+
+Already have an account?Sign in
+
+== adresse ==
+/login
+== pastilles ==
+1. Email
+2. Nickname
+3. Password
+4. Continue
+5. Sign in
+== éléments visibles ==
+label | Email
+input:text | Please input email
+label | Nickname
+input:text | Please input nickname
+label | Password
+input:password | Please input password
+button | [icône lucide-eye]
+button | Continue
+button | Sign in
