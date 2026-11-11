@@ -244,17 +244,16 @@ Détail et variantes : [annexe A1](docs/ragflow/annexes/A1-evaluation-qualite-et
 
 ## Versions
 
-| Composant | Version | Dernière stable au 9 novembre 2026 |
-|---|---|---|
-| RAGFlow, `ragflow-sdk` | v1.0.0 | v1.0.0 |
-| Elasticsearch | 8.11.3 (imposée par le compose) | 9.5.6 |
-| Kvrocks | 2.16.0 (imposée) | 2.17.0 |
-| NATS | 2.14.2 (imposée) | 2.15.2 |
-| MinIO (`pgsty/silo`) | RELEASE.2026-08-06 (imposée) | RELEASE.2026-10-26 |
-| vLLM (LLM-Service) | 0.29.0 | 0.32.0 (décision en attente) |
-| Playwright (captures) | 1.64.1 | 1.64.1 |
-
-Relevé brut : [versions-2026-11-09.json](outils/resultats/ragflow/versions-2026-11-09.json).
+| Composant | Version |
+|---|---|
+| RAGFlow, `ragflow-sdk` | v1.0.0 |
+| Elasticsearch | 8.11.3 |
+| MySQL | 8.0.40 |
+| Kvrocks | 2.16.0 |
+| NATS | 2.14.2 |
+| MinIO (`pgsty/silo`) | RELEASE.2026-08-06 |
+| vLLM (serveur de modèles de la machine d'essai) | 0.29.0 |
+| Playwright (captures) | 1.64.1 |
 
 ## Ressources
 
