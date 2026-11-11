@@ -1,0 +1,226 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Decoupage
+3 Fichiers
+43 KB
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Dataset configuration
+Modifiez ici la configuration de votre base de connaissances, notamment la méthode de découpage.
+Informations de base
+*Nom
+Langue
+English
+Avatar
+Télécharger
+Vous pouvez télécharger une image jusqu'à 4 Mo.
+Description
+Autorisations
+Moi uniquement
+Modèle d'embedding
+bge-m3
+llm-service-embed
+Rang de page
+Changer ou configurer le pipeline d'ingestion.
+Mode d'analyse
+General
+(built in)
+Parser
+General Chunker
+Extractor
+Indexer
+Enable vision enhancement
+DOC
+Supprimer en-tête et pied de page
+DOCX
+Supprimer en-tête et pied de page
+Email
+Champ
+from
+to
+cc
++ 5 more
+HTML
+Supprimer en-tête et pied de page
+Image
+OCR
+Parsing method
+DeepDoc
+OCR + layout analysis + table structure
+External OCR model
+Text only; no table structure
+
+No PaddleOCR models added. Use DeepDoc for local OCR, or add a PaddleOCR model in model settings.
+
+Markdown
+PDF
+Détecter la mise en page multi-colonnes
+Supprimer la table des matières d'origine
+Supprimer en-tête et pied de page
+Analyseur PDF
+DeepDOC
+Plages de pages
+
+Ajouter une page
+Tableur
+Analyseur PDF
+DeepDOC
+Texte & Code
+Source de données
+Gérer la liaison de source de données avec cette base
+Lier une source de données
+Annuler
+Enregistrer
+Introduction au pipeline intégré
+English
+Chinese
+Traditional Chinese
+Russian
+Indonesian
+Indonesia
+Spanish
+Vietnamese
+Japanese
+Korean
+Portuguese BR
+pt-br
+pt-BR
+German
+French
+Italian
+Tamil
+Telugu
+Kannada
+Thai
+Greek
+Hindi
+Ukrainian
+Bulgarian
+Arabic
+Turkish
+Dutch
+Slovak
+Czech
+
+== adresse ==
+/dataset/configuration/406cd7709b384eafa143a097c673e878
+== pastilles ==
+1. French
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+label | *Nom
+input:text | name
+label | Langue
+combobox | English
+label | Avatar
+button | Télécharger
+label | Description
+input:text | Décrivez votre base de connaissances
+label | Autorisations
+combobox | Moi uniquement
+label | Modèle d'embedding
+button | bge-m3 llm-service-embed
+label | Rang de page
+slider | 
+input:number | 
+label | Mode d'analyse
+button | General (built in)
+tab | Parser
+tab | General Chunker
+tab | Extractor
+tab | Indexer
+label | Enable vision enhancement
+switch | 
+input:checkbox | 
+button | DOC
+label | Supprimer en-tête et pied de page
+button | DOCX
+button | Email
+label | Champ
+button | from to cc + 5 more
+button | HTML
+button | Image
+label | OCR
+label | Parsing method
+label | DeepDoc OCR + layout analysis + table structure
+radio | DeepDoc
+input:radio | 
+label | External OCR model Text only; no table structure
+radio | External OCR model
+button | Markdown
+button | PDF
+label | Détecter la mise en page multi-colonnes
+label | Supprimer la table des matières d'origine
+label | Analyseur PDF
+button | DeepDOC
+label | Plages de pages
+input:number | Veuillez saisir
+button | [icône lucide-trash]
+button | Ajouter une page
+button | Tableur
+combobox | DeepDOC
+button | Texte & Code
+button | Lier une source de données
+button | Annuler
+button | Enregistrer
+button | Introduction au pipeline intégré
+label | 
+combobox | Rechercher...
+option | English
+option | Chinese
+option | Traditional Chinese
+option | Russian
+option | Indonesian
+option | Indonesia
+option | Spanish
+option | Vietnamese
+option | Japanese
+option | Korean
+option | Portuguese BR
+option | pt-br
+option | pt-BR
+option | German
+option | French
+option | Italian
+option | Tamil
+option | Telugu
+option | Kannada
+option | Thai
+option | Greek
+option | Hindi
+option | Ukrainian
+option | Bulgarian
+option | Arabic
+option | Turkish
+option | Dutch
+option | Slovak
+option | Czech

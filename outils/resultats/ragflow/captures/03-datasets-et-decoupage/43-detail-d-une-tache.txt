@@ -1,0 +1,185 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Decoupage
+3 Fichiers
+43 KB
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers totaux
+3
+0% de la semaine dernière
+Téléchargement
+0
+Succès
+0
+Échec
+0
+Traitement
+0
+Succès
+3
+Échec
+0
+Fichier
+Base de connaissances
+Data source
+ID	Nom du fichier	Source	Pipeline d'ingestion	
+Date de début
+	Tâche	Statut	Opérations
+
+7b64d3540f8a42d58e6f1ac24fca2bca
+	
+procedure-batteries.docx
+	
+	
+G
+general
+	
+11/11/2026 13:33:05
+	
+Parse
+	
+Success	
+
+
+e24b25c1b59543449eb5589b7a4ab749
+	
+stocks-octobre-2025-manuel.xlsx
+	
+	
+T
+table
+	
+11/11/2026 13:32:55
+	
+Parse
+	
+Success	
+
+
+2a93193b31d543b590cef55c225c677c
+	
+cse-2025-10-14.md
+	
+	
+G
+general
+	
+11/11/2026 13:32:13
+	
+Parse
+	
+Success	
+
+
+bc87ea7052ec40d391405ca6eea1ecca
+	
+procedure-batteries.docx
+	
+	
+G
+general
+	
+11/11/2026 13:32:12
+	
+Parse
+	
+Success	
+
+
+8279b0d8171d43c9b05ccfea9958e0bc
+	
+stocks-octobre-2025.xlsx
+	
+	
+G
+general
+	
+11/11/2026 13:32:11
+	
+Parse
+	
+Success	
+Total 5
+1
+50 / Page
+
+Fichier
+Nom du fichier
+procedure-batteries.docx
+Source
+local
+Tâche
+Parse
+Statut
+Success
+Date de début
+11/11/2026 13:33:05
+Durée
+0.563s
+Détails
+12:33:05Task is queued...
+12:33:05Task is running...
+12:33:05File Started
+12:33:05File Done
+12:33:05Parser Started
+12:33:05Parser Done
+12:33:05GeneralChunker Started
+12:33:05GeneralChunker Done
+12:33:06Extractor Started
+12:33:06Extractor Done
+12:33:06Tokenizer Started
+12:33:06Tokenizer Done
+12:33:06Task completed.
+Fermer
+
+== adresse ==
+/dataset/logs/406cd7709b384eafa143a097c673e878
+== pastilles ==
+1. Durée
+2. Détails
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+button | [icône lucide-circle-question-mark]
+button | Fichier
+button | Base de connaissances
+button | Data source
+button | [icône lucide-funnel]
+input:text | Rechercher
+button | [icône lucide-arrow-up-down]
+button | [icône lucide-eye]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page
+button | [icône lucide-x]
+button | Fermer

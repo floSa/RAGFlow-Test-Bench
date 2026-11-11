@@ -1,0 +1,99 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+Base de connaissances
+Créer une base de connaissances
+E
+Essai-KC-mind_map-1835
+1 Fichiers
+
+09/11/2026 17:36:12
+
+DV
+Démo Vélanor
+9 Fichiers
+
+09/11/2026 17:06:50
+
+Total 2
+1
+50 / Page
+Créer une base de connaissances
+
+Nom
+Modèle d'embedding
+bge-m3
+llm-service-embed
+General
+(built in)
+Enregistrer
+Close
+Essai-KC-mind_map-1835
+General
+(built in)
+Q&A
+(built in)
+Manual
+(built in)
+Table
+(built in)
+Paper
+(built in)
+Book
+(built in)
+Laws
+(built in)
+Presentation
+(built in)
+Picture
+(built in)
+One
+(built in)
+Audio
+(built in)
+Email
+(built in)
+
+== adresse ==
+/datasets
+== pastilles ==
+1. Rechercher
+2. pipeline personnalisé
+3. General
+4. Table
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | Créer une base de connaissances
+button | [icône lucide-ellipsis]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page
+label | Nom
+input:text | Veuillez saisir un nom !
+label | Modèle d'embedding
+button | bge-m3 llm-service-embed
+button | General (built in)
+button | Enregistrer
+button | Close
+input:text | Rechercher

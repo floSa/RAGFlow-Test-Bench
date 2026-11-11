@@ -1,0 +1,76 @@
+2026-11-11 13:31:29
+               total        used        free      shared  buff/cache   available
+Mem:           32098       15276         894         160       16459       16822
+Swap:           4096          10        4085
+== phase base
+capture docs/ragflow/img/03-datasets-et-decoupage/01-liste-des-bases.png [(1, 'filtre'), (2, 'Rechercher'), (3, 'Créer une base de connaissances'), (4, 'menu de la carte')]
+capture docs/ragflow/img/03-datasets-et-decoupage/02-menu-d-une-base.png [(1, 'Renommer'), (2, 'Supprimer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/03-fenetre-de-creation.png [(1, 'Nom'), (2, "Modèle d'embedding"), (3, 'gabarit'), (4, 'Enregistrer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/04-liste-des-gabarits.png [(1, 'Rechercher'), (2, 'pipeline personnalisé'), (3, 'General'), (4, 'Table')]
+base créée : /dataset/files/406cd7709b384eafa143a097c673e878
+== phase fichiers
+capture docs/ragflow/img/03-datasets-et-decoupage/05-televersement-analyse.png [(1, 'Analyser à la création'), (2, 'Dossier'), (3, 'fichier choisi'), (4, 'Enregistrer')]
+analyse terminée en moins de 6 s (relevé toutes les 3 s environ) : {'stocks-octobre-2025.xlsx': 2, 'procedure-batteries.docx': 2, 'cse-2025-10-14.md': 4}
+capture docs/ragflow/img/03-datasets-et-decoupage/06-tableau-des-fichiers.png [(1, 'Nom'), (2, 'Date de téléversement'), (3, 'Activé'), (4, 'Nombre de segments'), (5, 'Métadonnées'), (6, 'Analyser')]
+boutons d'action : 4
+capture docs/ragflow/img/03-datasets-et-decoupage/07-actions-d-un-fichier.png [(1, 'renommer'), (2, 'aperçu des propriétés'), (3, 'propriétés du fichier'), (4, 'télécharger'), (5, 'supprimer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/08-renommer.png [(1, 'Nom'), (2, 'Enregistrer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/09-fichier-desactive.png [(1, 'Activé'), (2, 'cse-2025-10-14.md')]
+activé après réactivation : true
+== phase gabarit
+capture docs/ragflow/img/03-datasets-et-decoupage/10-menu-du-gabarit.png [(1, "Changer ou configurer le pipeline d'ingestion.")]
+capture docs/ragflow/img/03-datasets-et-decoupage/11-fenetre-du-gabarit.png [(1, 'titre'), (2, 'gabarit du fichier')]
+capture docs/ragflow/img/03-datasets-et-decoupage/12-choix-table.png [(1, 'Table')]
+capture docs/ragflow/img/03-datasets-et-decoupage/13-gabarit-table-choisi.png [(1, 'Table'), (2, 'Enregistrer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/14-confirmer-reanalyse.png [(1, 'Analyser le fichier'), (2, 'Oui')]
+tableur : 2 segments avec General, 10 avec Table (relevé après 3 s)
+capture docs/ragflow/img/03-datasets-et-decoupage/15-gabarit-table-applique.png [(1, 'Table'), (2, 'Nombre de segments')]
+capture docs/ragflow/img/03-datasets-et-decoupage/16-relancer-l-analyse.png [(1, "relancer l'analyse"), (2, "état de l'analyse")]
+capture docs/ragflow/img/03-datasets-et-decoupage/17-confirmer-la-relance.png [(1, 'confirmation'), (2, 'Confirmer')]
+analyse terminée en moins de 3 s (relevé toutes les 3 s environ) : {'procedure-batteries.docx': 2}
+capture docs/ragflow/img/03-datasets-et-decoupage/18-metadonnees.png [(1, 'Ajouter'), (2, 'tableau des champs'), (3, 'Enregistrer')]
+== phase groupe
+capture docs/ragflow/img/03-datasets-et-decoupage/19-actions-groupees.png [(1, 'Analyser'), (2, 'Annuler'), (3, 'Activé'), (4, 'Désactivé'), (5, 'Métadonnées'), (6, 'Supprimer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/20-filtre-des-fichiers.png [(1, 'Type de fichier'), (2, 'Statut'), (3, 'Champ de métadonnée'), (4, 'Soumettre')]
+capture docs/ragflow/img/03-datasets-et-decoupage/21-fichier-vide.png [(1, 'Nom'), (2, 'Enregistrer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/22-fichier-vide-cree.png [(1, 'Manuel-note.txt'), (2, 'supprimer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/23-suppression-d-un-fichier.png [(1, 'confirmation'), (2, 'Supprimer')]
+fichier vide supprimé : True
+== phase config
+capture docs/ragflow/img/03-datasets-et-decoupage/24-configuration-informations.png [(1, 'Nom'), (2, 'Langue'), (3, 'Avatar'), (4, 'Description'), (5, 'Autorisations'), (6, "Modèle d'embedding")]
+capture docs/ragflow/img/03-datasets-et-decoupage/25-langue.png [(1, 'French')]
+capture docs/ragflow/img/03-datasets-et-decoupage/26-autorisations.png [(1, 'Moi uniquement'), (2, 'Équipe')]
+capture docs/ragflow/img/03-datasets-et-decoupage/27-rang-et-mode-d-analyse.png [(1, 'Rang de page'), (2, "Mode d'analyse"), (3, 'Parser'), (4, 'General Chunker'), (5, 'Extractor'), (6, 'Indexer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/28-introduction-au-pipeline.png [(1, 'Introduction au pipeline intégré'), (2, 'description du gabarit')]
+capture docs/ragflow/img/03-datasets-et-decoupage/29-mode-d-analyse.png [(1, 'pipeline personnalisé'), (2, 'General'), (3, 'Q&A')]
+capture docs/ragflow/img/03-datasets-et-decoupage/30-parser-formats.png [(1, 'Enable vision enhancement'), (2, 'DOC'), (3, 'DOCX'), (4, 'Email'), (5, 'Champ'), (6, 'HTML')]
+capture docs/ragflow/img/03-datasets-et-decoupage/31-parser-image.png [(1, 'Image'), (2, 'OCR'), (3, 'DeepDoc'), (4, 'External OCR model'), (5, 'Markdown')]
+capture docs/ragflow/img/03-datasets-et-decoupage/32-parser-pdf.png [(1, 'Détecter la mise en page multi-colonnes'), (2, "Supprimer la table des matières d'origine"), (3, 'Supprimer en-tête et pied de page'), (4, 'Analyseur PDF'), (5, 'Plages de pages'), (6, 'Ajouter une page')]
+capture docs/ragflow/img/03-datasets-et-decoupage/34-general-chunker.png [(1, 'Taille de segment recommandée'), (2, 'Pourcentage de chevauchement (%)'), (3, 'Table context window'), (4, 'Image context window'), (5, 'Délimiteurs')]
+capture docs/ragflow/img/03-datasets-et-decoupage/35-general-chunker-suite.png [(1, 'Splits at:'), (2, 'Ajouter'), (3, 'Les blocs enfants sont utilisés pour la récupération')]
+capture docs/ragflow/img/03-datasets-et-decoupage/36-extractor-mots-cles.png [(1, 'Modèle'), (2, 'Mots-clés'), (3, 'Mots-clés automatiques'), (4, 'Invite système')]
+capture docs/ragflow/img/03-datasets-et-decoupage/37-extractor-questions-etiquettes.png [(1, 'Questions'), (2, 'Questions automatiques'), (3, 'Étiquettes')]
+capture docs/ragflow/img/03-datasets-et-decoupage/38-extractor-resume-metadonnees.png [(1, 'Résumé'), (2, 'Métadonnées'), (3, 'Paramètres')]
+capture docs/ragflow/img/03-datasets-et-decoupage/39-indexer.png [(1, 'Méthode de recherche'), (2, "Poids d'embedding du nom de fichier"), (3, 'Champ')]
+capture docs/ragflow/img/03-datasets-et-decoupage/40-source-et-enregistrement.png [(1, 'Lier une source de données'), (2, 'Annuler'), (3, 'Enregistrer')]
+après enregistrement : ['Mis à jour']
+capture docs/ragflow/img/03-datasets-et-decoupage/41-configuration-enregistree.png [(1, 'message')]
+langue relue : French ; description relue : Essai du manuel 03 : gabarits de découpage
+== phase journaux
+capture docs/ragflow/img/03-datasets-et-decoupage/42-journaux.png [(1, 'Fichiers totaux'), (2, 'Téléchargement'), (3, 'Traitement'), (4, 'Fichier, Base de connaissances, Data source'), (5, 'tâche'), (6, 'détail')]
+capture docs/ragflow/img/03-datasets-et-decoupage/43-detail-d-une-tache.png [(1, 'Durée'), (2, 'Détails')]
+== phase gestion
+capture docs/ragflow/img/03-datasets-et-decoupage/45-gestion-des-fichiers.png [(1, 'Rechercher'), (2, 'Ajouter un fichier'), (3, '.knowledgebase'), (4, 'Base de connaissances')]
+menu d'ajout : ['Téléverser un fichier', 'Nouveau dossier']
+capture docs/ragflow/img/03-datasets-et-decoupage/46-menu-d-ajout.png [(1, 'Téléverser un fichier'), (2, 'Nouveau dossier')]
+capture docs/ragflow/img/03-datasets-et-decoupage/47-nouveau-dossier.png [(1, 'Nom'), (2, 'Enregistrer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/48-televerser-dans-le-dossier.png [(1, 'faq-sav.html'), (2, 'Enregistrer')]
+actions d'un fichier : 6
+capture docs/ragflow/img/03-datasets-et-decoupage/49-actions-gestion.png [(1, 'action 1'), (2, 'action 2'), (3, 'action 3'), (4, 'action 4'), (5, 'action 5'), (6, 'action 6')]
+capture docs/ragflow/img/03-datasets-et-decoupage/50-lier-a-la-base.png [(1, 'Manuel-Decoupage'), (2, 'Fermer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/51-lier-enregistrer.png [(1, 'Manuel-Decoupage'), (2, 'Save')]
+capture docs/ragflow/img/03-datasets-et-decoupage/52-fichier-lie.png [(1, 'Manuel-Decoupage')]
+capture docs/ragflow/img/03-datasets-et-decoupage/53-supprimer-le-dossier.png [(1, 'confirmation'), (2, 'Supprimer')]
+dossier supprimé : True
+== phase pipelines
+capture docs/ragflow/img/03-datasets-et-decoupage/54-pipelines-integres.png [(1, 'Ingestion pipeline'), (2, 'Built-in pipelines'), (3, 'Table')]

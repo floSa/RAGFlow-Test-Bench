@@ -1,0 +1,104 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Decoupage
+0 Fichiers
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers
+
+😉 Veuillez attendre la fin de l'analyse de vos fichiers avant de démarrer une discussion avec l'IA.
+
+Ajouter un fichier
+	
+Nom
+	
+Date de téléversement
+	Activé	Nombre de segments	Métadonnées	Analyser		Action
+
+Aucune donnée disponible
+Total 0
+50 / Page
+Téléverser un fichier
+Analyser à la création
+Fichiers
+Dossier
+
+Glissez-déposez votre fichier ici pour le téléverser
+
+Prise en charge du téléversement unique ou en lot. Pour RAGFlow en local : 1 Go max par téléversement, jusqu'à 32 fichiers. Pour cloud.ragflow.io : 10 Mo max par fichier uploadDescription128 fichiers au total.
+
+stocks-octobre-2025.xlsx
+
+6 KB
+
+Remove file
+
+procedure-batteries.docx
+
+36 KB
+
+Remove file
+
+cse-2025-10-14.md
+
+548 Bytes
+
+Remove file
+Enregistrer
+Close
+
+== adresse ==
+/dataset/files/406cd7709b384eafa143a097c673e878
+== pastilles ==
+1. Analyser à la création
+2. Dossier
+3. fichier choisi
+4. Enregistrer
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | Ajouter un fichier
+checkbox | Select all
+button | [icône lucide-arrow-up-down]
+a | Go to previous page
+a | Go to next page
+combobox | 50 / Page
+label | Analyser à la création
+switch | 
+input:checkbox | 
+tab | Fichiers
+tab | Dossier
+input:file | 
+button | Remove file
+button | Enregistrer
+button | Close

@@ -1,0 +1,187 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Decoupage
+3 Fichiers
+43 KB
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers
+
+😉 Veuillez attendre la fin de l'analyse de vos fichiers avant de démarrer une discussion avec l'IA.
+
+Ajouter un fichier
+	
+Nom
+	
+Date de téléversement
+	Activé	Nombre de segments	Métadonnées	Analyser		Action
+	
+cse-2025-10-14.md
+	11/11/2026 12:32:10	
+	
+4
+	0 fields	
+General
+	
+	
+
+	
+procedure-batteries.docx
+	11/11/2026 12:32:10	
+	
+2
+	0 fields	
+General
+	
+	
+
+	
+stocks-octobre-2025-manuel.xlsx
+	11/11/2026 12:32:10	
+	
+2
+	0 fields	
+General
+	
+	
+Total 3
+1
+50 / Page
+Mode d'analyse
+General
+(built in)
+Parser
+General Chunker
+Extractor
+Indexer
+Enable vision enhancement
+DOC
+Supprimer en-tête et pied de page
+DOCX
+Supprimer en-tête et pied de page
+Email
+Champ
+from
+to
+cc
++ 5 more
+HTML
+Supprimer en-tête et pied de page
+Image
+OCR
+Parsing method
+DeepDoc
+OCR + layout analysis + table structure
+External OCR model
+Text only; no table structure
+
+No PaddleOCR models added. Use DeepDoc for local OCR, or add a PaddleOCR model in model settings.
+
+Markdown
+PDF
+Détecter la mise en page multi-colonnes
+Supprimer la table des matières d'origine
+Supprimer en-tête et pied de page
+Analyseur PDF
+DeepDOC
+Plages de pages
+
+Ajouter une page
+Tableur
+Analyseur PDF
+DeepDOC
+Texte & Code
+Enregistrer
+Close
+
+== adresse ==
+/dataset/files/406cd7709b384eafa143a097c673e878
+== pastilles ==
+1. titre
+2. gabarit du fichier
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | Ajouter un fichier
+checkbox | Select all
+button | [icône lucide-arrow-up-down]
+checkbox | Select row
+switch | 
+button | 0 fields
+button | General
+button | [icône sans nom]
+button | 
+button | [icône lucide-pen-line]
+button | [icône lucide-eye]
+button | [icône lucide-download]
+button | [icône lucide-trash]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page
+button | General (built in)
+tab | Parser
+tab | General Chunker
+tab | Extractor
+tab | Indexer
+label | Enable vision enhancement
+input:checkbox | 
+button | DOC
+label | Supprimer en-tête et pied de page
+button | DOCX
+button | Email
+label | Champ
+button | from to cc + 5 more
+button | HTML
+button | Image
+label | OCR
+label | Parsing method
+label | DeepDoc OCR + layout analysis + table structure
+radio | DeepDoc
+input:radio | 
+label | External OCR model Text only; no table structure
+radio | External OCR model
+button | Markdown
+button | PDF
+label | Détecter la mise en page multi-colonnes
+label | Supprimer la table des matières d'origine
+label | Analyseur PDF
+button | DeepDOC
+label | Plages de pages
+input:number | Veuillez saisir
+button | Ajouter une page
+button | Tableur
+combobox | DeepDOC
+button | Texte & Code
+button | Enregistrer
+button | Close

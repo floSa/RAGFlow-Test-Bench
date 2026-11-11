@@ -1,0 +1,70 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+root
+Manuel-dossier
+Ajouter un fichier
+	
+Nom
+	
+Date de téléversement
+	
+Taille
+	Base de connaissances	Action
+	
+faq-sav.html
+	
+11/11/2026 12:35:01
+	
+810 B
+		
+Total 1
+1
+50 / Page
+
+== adresse ==
+/files?folderId=59f4023c237b4bc5bc4ff86d97bccc2d&page=1
+== pastilles ==
+1. action 1
+2. action 2
+3. action 3
+4. action 4
+5. action 5
+6. action 6
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+searchbox | Rechercher
+button | Ajouter un fichier
+checkbox | Select all
+button | [icône lucide-arrow-up-down]
+checkbox | Select row
+button | faq-sav.html
+button | [icône lucide-link-2]
+button | [icône lucide-folder-input]
+button | [icône lucide-folder-pen]
+button | [icône lucide-arrow-down-to-line]
+a | [icône lucide-eye]
+button | [icône lucide-eye]
+button | [icône lucide-trash]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page

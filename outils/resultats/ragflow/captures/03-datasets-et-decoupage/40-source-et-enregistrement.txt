@@ -1,0 +1,123 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Decoupage
+3 Fichiers
+43 KB
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Dataset configuration
+Modifiez ici la configuration de votre base de connaissances, notamment la méthode de découpage.
+Informations de base
+*Nom
+Langue
+French
+Avatar
+Télécharger
+Vous pouvez télécharger une image jusqu'à 4 Mo.
+Description
+Autorisations
+Moi uniquement
+Modèle d'embedding
+bge-m3
+llm-service-embed
+Rang de page
+Changer ou configurer le pipeline d'ingestion.
+Mode d'analyse
+General
+(built in)
+Parser
+General Chunker
+Extractor
+Indexer
+Méthode de recherche
+Embedding
+Texte intégral
+Poids d'embedding du nom de fichier
+Champ
+Texte traité
+Source de données
+Gérer la liaison de source de données avec cette base
+Lier une source de données
+Annuler
+Enregistrer
+Introduction au pipeline intégré
+"General" Description de la méthode de découpage
+
+Les formats de fichiers pris en charge sont MD, MDX, DOCX, XLSX, XLS, PPTX, PDF, TXT, JPEG, JPG, PNG, TIF, GIF, CSV, JSON, EML, HTML.
+
+Cette méthode découpe les fichiers de façon 'naïve' :
+
+Utilise un modèle de détection visuelle pour diviser les textes en segments plus petits.
+Combine ensuite les segments adjacents jusqu'à ce que le nombre de tokens dépasse le seuil spécifié, moment auquel un segment est créé.
+
+"General" Exemples
+Les captures d'écran suivantes sont fournies à titre explicatif.
+General voir
+
+== adresse ==
+/dataset/configuration/406cd7709b384eafa143a097c673e878
+== pastilles ==
+1. Lier une source de données
+2. Annuler
+3. Enregistrer
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+label | *Nom
+input:text | name
+label | Langue
+combobox | French
+label | Avatar
+button | Télécharger
+label | Description
+input:text | Décrivez votre base de connaissances
+label | Autorisations
+combobox | Moi uniquement
+label | Modèle d'embedding
+button | bge-m3 llm-service-embed
+label | Rang de page
+slider | 
+input:number | 
+label | Mode d'analyse
+button | General (built in)
+tab | Parser
+tab | General Chunker
+tab | Extractor
+tab | Indexer
+label | Méthode de recherche
+label | Poids d'embedding du nom de fichier
+label | Champ
+combobox | Texte traité
+button | Lier une source de données
+button | Annuler
+button | Enregistrer
+button | Introduction au pipeline intégré
+button | [icône lucide-x]
