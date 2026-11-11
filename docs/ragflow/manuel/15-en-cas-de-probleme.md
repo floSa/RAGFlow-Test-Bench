@@ -60,18 +60,7 @@ La réponse est remplacée par un message d'erreur (pastille 1), sans citation n
 
 **Étape 4. Agrandir la taille de contexte déclarée**
 *Où* : menu du compte › « Fournisseurs de modèles » › « VLLM » › carte de l'instance « llm-service-chat » › ligne `gemma4:e4b` › crayon « Modifier le modèle » (au survol, à droite du badge « LLM »).
-Saisir 16384 dans « Tokens maximum » (pastille 2), puis cliquer sur « Confirmer » (pastille 5).
-
-![Fenêtre Modifier le modèle](../img/12-qualite-et-performances/02-tokens-maximum.png)
-*Écran : « Fournisseurs de modèles », fenêtre « Modifier le modèle ».*
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Type de modèle » | « Chat » : modèle qui rédige les réponses |
-| 2 | « Tokens maximum » | taille de contexte déclarée : 16384 conseillé, 4096 au minimum ; jamais plus que ce que le service de modèles sert réellement |
-| 3 | « Appel d'outil » | indique que le modèle sait appeler des outils (agents) ; désactivé ici |
-| 4 | « Non » | referme sans rien changer |
-| 5 | « Confirmer » | enregistre ; prend effet à la question suivante |
+Saisir 16384 dans « Tokens maximum », puis cliquer sur « Confirmer », dans la fenêtre « Modifier le modèle » montrée au chapitre 03, étape 16.
 
 *Résultat* : la question suivante reçoit une réponse normale. Une question ordinaire consomme de 600 à 3 300 jetons sur les documents d'exemple ; le mode « Agentic » peut en consommer dix fois plus.
 

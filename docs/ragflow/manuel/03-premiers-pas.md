@@ -1,6 +1,6 @@
 # 03. Premiers pas
 
-> Ce chapitre apprend à se connecter, à passer l'interface en français, à se repérer dans l'écran et à déclarer les modèles d'IA que RAGFlow utilisera.
+> Ce chapitre apprend à se connecter, à passer l'interface en français, à se repérer dans l'écran, à déclarer les modèles d'IA que RAGFlow utilisera et à régler la quantité de texte que le modèle lit d'un coup.
 > **Point de départ** : page de connexion, à l'adresse `http://127.0.0.1:8088` ouverte dans le navigateur Windows, RAGFlow démarré (chapitre 02).
 > **Durée** : environ 15 minutes. **Avant** : chapitre 02.
 
@@ -114,7 +114,15 @@ L'accueil résume le contenu du compte : les bases en haut, les objets récents 
 
 ## Déclarer les modèles d'IA
 
-Un **fournisseur** est un type de service de modèles (« VLLM », « Ollama », OpenAI…). Une **instance** est une adresse précise de ce service, déclarée sous un nom libre : par exemple « llm-service-chat » pour le serveur qui rédige les réponses. Les étapes 7 à 13 montrent l'ajout puis la suppression d'une instance d'exemple nommée « Manuel-instance » ; les instances utiles (« llm-service-chat » et « llm-service-embed ») se déclarent de la même façon.
+Un **fournisseur** est un type de service de modèles (« VLLM », « Ollama », OpenAI…). Une **instance** est une adresse précise de ce service, déclarée sous un nom libre : par exemple « llm-service-chat » pour le serveur qui rédige les réponses. Les étapes 7 à 13 montrent l'ajout puis la suppression d'une instance d'exemple nommée « Manuel-instance » ; les instances utiles se déclarent de la même façon, avec les valeurs du tableau ci-dessous (celles que le script de configuration du chapitre 02 enregistre).
+
+| Instance | Fournisseur | URL de base | Modèle à garder | Type |
+|---|---|---|---|---|
+| llm-service-chat | VLLM | `http://vllm-central:8000/v1` | `gemma4:e4b` | chat (rédaction des réponses) |
+| llm-service-embed | VLLM | `http://vllm-embed:8000/v1` | `bge-m3` | embedding (recherche par le sens) |
+| voix-locale | OpenAI-API-Compatible | `http://rag-speaches:8000/v1` | `Systran/faster-whisper-small` | speech2text (transcription des fichiers audio) |
+
+Les deux premières sont indispensables. La troisième ne sert qu'aux fichiers audio ; son serveur, `rag-speaches`, se démarre par `outils/communs/voix.sh`, et elle se déclare dans le fournisseur « OpenAI-API-Compatible » au lieu de « VLLM ».
 
 **Étape 7. Ouvrir « Fournisseurs de modèles »**
 *Où* : pastille du compte (en haut à droite) › « Fournisseurs de modèles ».
@@ -252,11 +260,31 @@ Ouvrir la liste : les modèles sont groupés par fournisseur puis par instance. 
 |---|---|---|
 | 1 | liste « VLLM », « llm-service-chat », `gemma4:e4b` | modèles de chat disponibles, avec un champ « Rechercher » |
 
-*Résultat* : les modèles par défaut sont fixés. Toute nouvelle base et tout nouvel assistant les reprendront ; RAGFlow est prêt pour la première question (chapitre 04).
+*Résultat* : les modèles par défaut sont fixés. Toute nouvelle base et tout nouvel assistant les reprendront.
+
+## Régler la taille de contexte
+
+La « taille de contexte » d'un modèle est la quantité de texte qu'il peut lire d'un coup : consignes, passages trouvés et question. RAGFlow ne la lit pas sur le service de modèles : elle se déclare avec le modèle. Une valeur trop petite empêche toute réponse (chapitre 15, étape 3). Les essais de ce manuel utilisent 16 384 jetons, largement assez : une question ordinaire en consomme de 600 à 3 300.
+
+**Étape 16. Déclarer 16 384 jetons pour le modèle de chat**
+*Où* : pastille du compte › « Fournisseurs de modèles » › « VLLM » › carte de l'instance « llm-service-chat » › ligne `gemma4:e4b` › crayon « Modifier le modèle » (au survol, à droite du badge « LLM »).
+Saisir 16384 dans « Tokens maximum » (pastille 2), puis cliquer sur « Confirmer » (pastille 5).
+
+![Fenêtre Modifier le modèle](../img/12-qualite-et-performances/02-tokens-maximum.png)
+*Écran : « Fournisseurs de modèles », fenêtre « Modifier le modèle ».*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Type de modèle » | « Chat » : modèle qui rédige les réponses |
+| 2 | « Tokens maximum » | taille de contexte déclarée : 16384 conseillé, 4096 au minimum ; jamais plus que ce que le service de modèles sert réellement (32 768 pour LLM-Service) |
+| 3 | « Appel d'outil » | indique que le modèle sait appeler des outils (agents) ; désactivé ici |
+| 4 | « Non » | referme sans rien changer |
+| 5 | « Confirmer » | enregistre ; prend effet à la question suivante |
+
+*Résultat* : la taille de contexte est déclarée. Le script de configuration du chapitre 02 enregistre déjà cette valeur ; l'étape sert alors à la vérifier. RAGFlow est prêt pour la première question (chapitre 04).
 
 ## Bon à savoir
 
-- La « taille de contexte » d'un modèle est la quantité de texte qu'il peut lire d'un coup (consignes, passages trouvés et question). Elle est déclarée avec le modèle ; les essais utilisent 16 384 jetons, largement assez : une question en consomme 600 à 3 300.
 - Sans carte graphique, LLM-Service sert les modèles par Ollama : choisir le fournisseur « Ollama » au lieu de « VLLM », avec l'adresse `http://ollama-central:11434`. Ce chemin n'a pas été essayé pendant les essais de ce manuel.
 - Le compte d'administration créé automatiquement par RAGFlow (`admin@ragflow.io`) ne sert qu'à la console d'administration : le travail courant se fait avec un compte ordinaire.
 - L'icône de lune et le menu de langue ne changent que l'affichage ; ils n'ont aucun effet sur les données.
