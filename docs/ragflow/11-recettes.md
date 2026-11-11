@@ -3,8 +3,10 @@
 > **Objet** : deux cas d'usage complets, de bout en bout : un assistant documentaire d'entreprise et une ingestion automatique quotidienne.
 > **Prérequis** : [prise en main](02-prise-en-main.md), [assistants de chat et citations](05-assistants-et-citations.md), [API HTTP et SDK Python](10-api-et-sdk.md).
 > **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), `ragflow-sdk` 1.0.0, Windows 11 + WSL2 (Ubuntu 24.04), LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b`, `bge-m3`), contexte déclaré de 16 384 jetons.
-> **Statut des informations** : [Vérifié] observé ou mesuré le 9 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
-> **Précautions** : documents fictifs ; la recette 2 travaille dans une base et un dossier d'essai supprimés à la fin.
+> **Statut des informations** : [Vérifié] observé ou mesuré les 9 et 11 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
+> **Précautions** : documents fictifs ; la recette 2 travaille dans une base et un dossier d'essai supprimés à la fin (« Recette-ingestion » le 9 novembre, « Manuel-Ingestion » le 11 pour les captures, supprimée par `outils/ragflow/nettoyer_manuel.py`) ; la base et l'assistant « Démo Vélanor » sont seulement ouverts, aucune question ne leur est posée pour les captures.
+
+Une capture par écran nouveau : les procédures elles-mêmes (créer une base, régler un assistant, poser une question) sont montrées dans les manuels [02](02-prise-en-main.md), [03](03-datasets-et-decoupage.md) et [05](05-assistants-et-citations.md) ; ce manuel montre le résultat de chaque recette dans l'interface. Captures du scénario `recettes` de `outils/ragflow/captures/manuels_10_14.py` ; textes des pages et déroulé dans `outils/resultats/ragflow/captures/11-recettes/`. [Vérifié]
 
 ## Sommaire
 
@@ -32,6 +34,32 @@ But : répondre aux questions des salariés sur les documents de l'entreprise, a
 
 [Vérifié] (`outils/resultats/ragflow/demo-2026-11-09.log`)
 
+Résultat dans l'interface. « Base de connaissances », « Démo Vélanor » : les 9 fichiers, tous analysés.
+
+![Base Démo Vélanor](img/11-recettes/01-base-demo.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | `contrat-batterix-scan.pdf` | contrat scanné, lu par l'OCR de DeepDoc (manuel [04](04-deepdoc.md)) : 1 passage |
+| 2 | `message-vocal-production.mp3` | message vocal, transcrit par le modèle de transcription : 1 passage, gabarit « Audio » |
+| 3 | « Nombre de segments » | passages de chaque fichier : 1 à 9, 26 au total |
+| 4 | « Analyser » | gabarit appliqué : « General » demandé par le script, mais RAGFlow a pris « Presentation » pour le PPTX et « Audio » pour le MP3 |
+
+« Discussion », « Démo Vélanor », puis la conversation « Contrat Batterix » : les trois conversations de la recette sont dans la colonne « Conversations ».
+
+![Assistant Démo Vélanor](img/11-recettes/02-assistant-demo.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Contrat Batterix » | conversation ouverte : message d'accueil en français, question, réponse citée |
+| 2 | « Objectifs 2026 » | deuxième conversation de la recette |
+| 3 | « Audit fournisseur » | troisième conversation, question et réponse en anglais |
+| 4 | réponse citée | 212 euros HT et 21 jours, chaque phrase suivie de son renvoi « [1] » vers le contrat scanné ; dessous, « 1895 tokens (1841 input, 54 output) · 2.3s » (manuel [12](12-qualite-et-performances.md), section 1) |
+
+[Vérifié] (`outils/resultats/ragflow/captures/11-recettes/scenario.log`)
+
+Les réglages de l'assistant (« Top N » 8, poids des vecteurs 0,7, « Réponse vide » et « Message d'accueil » en français) se lisent dans le panneau « Paramètres du chat », décrit réglage par réglage au manuel [05](05-assistants-et-citations.md), section 2.
+
 ### Pour aller plus loin
 
 L'assistant répond dans la langue de la question (anglais pour la troisième). Il reste ouvert dans l'interface (« Discussion », « Démo Vélanor ») avec ses trois conversations. Pour des documents scannés, ajouter la correction des passages mal lus (manuel [04](04-deepdoc.md)).
@@ -56,6 +84,19 @@ Il crée la base si besoin, compare les noms de fichiers à ceux déjà présent
 
 Question posée ensuite : « Les batteries doivent être stockées entre 10 °C et 25 °C, dans le local B2 qui est équipé d'une détection incendie [ID:0]. » (1,7 s). [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-recette-ingestion.log`)
 
+Résultat dans l'interface. La recette a été rejouée le 11 novembre dans la base « Manuel-Ingestion » (`outils/ragflow/manuels_10_14_preparer.py ingestion`, même fonction `ingerer`) : jour 1, 2 fichiers en 3 s ; jour 2, aucun ; jour 3, 1 fichier en 3 s ; 3 documents. [Vérifié] (`outils/resultats/ragflow/captures/11-recettes/ingestion.log`) « Base de connaissances », « Manuel-Ingestion » :
+
+![Base remplie par la recette](img/11-recettes/03-base-ingestion.png)
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | `cse-2025-10-14.md` | versé le jour 1 : 4 passages |
+| 2 | `faq-sav.html` | versé le jour 1 : 1 passage |
+| 3 | `procedure-batteries.docx` | versé le jour 3, trois secondes après les deux autres dans l'essai (« Date de téléversement » 15:10:12 contre 15:10:09) ; le jour 2 n'a rien ajouté, aucun doublon |
+| 4 | « Nombre de segments » | passages créés : une valeur supérieure à 0 indique une analyse terminée |
+
+Les heures de « Date de téléversement » sont en temps universel (16:10 à Paris), comme dans les autres pages (manuel [13](13-exploitation.md), section 5). Le déroulé de chaque analyse se lit dans l'onglet « Journaux » de la base (manuel [03](03-datasets-et-decoupage.md), section 6) ; pour vérifier le contenu versé, « Test de récupération » (manuel [05](05-assistants-et-citations.md), section 3).
+
 ### Pour aller plus loin
 
 Lancement quotidien par `cron` dans WSL, par exemple à 7 h [Aide] :
@@ -72,8 +113,10 @@ Un fichier modifié sous le même nom n'est pas réimporté : la comparaison se 
 |---|---|---|
 | Un fichier modifié n'est pas repris | comparaison par nom | renommer, ou supprimer l'ancien document |
 | Assistant impossible à créer juste après l'import | analyse pas terminée | le script attend `chunk_count` > 0 avant de rendre la main |
+| Un PPTX ou un MP3 n'a pas le gabarit demandé | RAGFlow choisit « Presentation » ou « Audio » selon le type de fichier | normal ; changer le gabarit du fichier si besoin (manuel [03](03-datasets-et-decoupage.md)) |
 
 ## Sources
 
-- Scripts : `outils/ragflow/demo.py`, `outils/ragflow/recette_ingestion.py`, `outils/ragflow/client.py`
-- Journaux : [démonstration](../../outils/resultats/ragflow/demo-2026-11-09.log), [ingestion](../../outils/resultats/ragflow/essai-2026-11-09-recette-ingestion.log)
+- Scripts : `outils/ragflow/demo.py`, `outils/ragflow/recette_ingestion.py`, `outils/ragflow/manuels_10_14_preparer.py`, `outils/ragflow/client.py`
+- Journaux : [démonstration](../../outils/resultats/ragflow/demo-2026-11-09.log), [ingestion](../../outils/resultats/ragflow/essai-2026-11-09-recette-ingestion.log), [ingestion rejouée](../../outils/resultats/ragflow/captures/11-recettes/ingestion.log)
+- Captures : `outils/ragflow/captures/manuels_10_14.py` (scénario `recettes`) ; images `docs/ragflow/img/11-recettes/` ; textes et déroulé `outils/resultats/ragflow/captures/11-recettes/`
