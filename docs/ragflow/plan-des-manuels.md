@@ -27,7 +27,7 @@ Plan établi au cadrage le 9 novembre 2026 à partir du plan type du kit et des 
 | 12 | [Qualité et performances](12-qualite-et-performances.md) | Résultats du banc, réglages utiles, profils matériels. |
 | 13 | [Exploitation](13-exploitation.md) | Sauvegarde, mise à jour, journaux, sécurité, comptes. |
 | 14 | [Dépannage et FAQ](14-depannage.md) | Les échecs réellement rencontrés et leur remède. |
-| 15 | Applications de recherche (prévu) | Créer une page de recherche sur une ou plusieurs bases, la régler et la partager. |
+| 15 | [Applications de recherche](15-recherche.md) | Créer une page de recherche sur une ou plusieurs bases, la régler et la partager. |
 
 ## Contenu détaillé
 
@@ -93,12 +93,13 @@ Sauvegarde et restauration des volumes, mise à jour (migration irréversible de
 
 Tableau Symptôme | Cause probable | Action, tiré des journaux d'essai.
 
-### 15. Applications de recherche (prévu)
+### 15. Applications de recherche
 
-Page « Recherche » : création d'une application de recherche (« Nom »), choix des bases, réglages de recherche, affichage des résultats et partage. Manuel ajouté au plan d'après la carte de l'interface ; fichier pas encore écrit.
+Page « Recherche » : création d'une application de recherche (« Nom »), choix des bases, réglages de recherche, affichage des résultats et partage. Manuel ajouté au plan d'après la carte de l'interface.
 
 ## Écarts au plan
 
 - 11 novembre 2026, carte de l'interface (`carte-interface.md`) : le plan initial ne couvrait pas les pages « Recherche », « Mémoire », « Gestion des fichiers », ni, dans le menu du compte, « Sources de données », « Canaux de chat », « MCP », « Équipe », « Profil » et « API ». Elles sont rattachées aux manuels les plus proches (03, 05, 07, 08, 09, 10, 13, voir ci-dessus), sauf « Recherche », qui reçoit un manuel 15. Le numéro 15 suit le dépannage pour ne pas renuméroter les manuels déjà écrits et leurs liens.
 - 11 novembre 2026 : la déclaration des modèles passe du manuel 02 au manuel 01 (« Fournisseurs de modèles » à la souris) ; le manuel 02 devient une procédure complète à la souris, de la connexion à la première réponse citée.
 - 11 novembre 2026, manuels 03 à 06 réécrits en procédures à la souris : la page « Gestion des fichiers » et l'onglet « Ingestion pipeline » sont traités au manuel 03 ; l'icône d'avion en papier d'un assistant (« Intégrer dans la page web ») au manuel 05 et non au manuel 10 ; le manuel 04 montre un défaut de v1.0.0 (« Confirmer » sans effet sur un passage de PDF modifié) et son contournement par un passage ajouté. Les conversations ne se renomment pas dans l'interface v1.0.0.
+- 11 novembre 2026, manuels 07 à 09 et 15 réécrits en procédures à la souris : le manuel 07 crée l'opérateur, le pipeline et la base dans l'interface (une base par type d'artefact ; Wiki et PageIndex échouent avec `gemma4:e4b`) ; le manuel 08 couvre aussi « Mémoire » et « MCP » ; le manuel 09 montre « Sources de données » et « Canaux de chat » ; le manuel 15 est écrit.

@@ -16,7 +16,7 @@ Le parcours est en lecture seule : les fenêtres de création sont ouvertes puis
 - [Menu du compte](#menu-du-compte)
 - [Ce qui n'est pas couvert](#ce-qui-nest-pas-couvert)
 
-Les manuels marqués « prévu » sont inscrits au [plan des manuels](plan-des-manuels.md) et pas encore écrits.
+Les manuels marqués « prévu » sont inscrits au [plan des manuels](plan-des-manuels.md) et pas encore réécrits.
 
 ## En-tête et accueil
 
@@ -102,8 +102,10 @@ Les manuels marqués « prévu » sont inscrits au [plan des manuels](plan-des-m
 
 | Page ou menu | Chemin d'accès | Éléments (boutons, onglets, réglages) | Manuel qui le couvre |
 |---|---|---|---|
-| Liste des applications de recherche | « Recherche » | « Aucune recherche créée pour le moment », « + » (création) | 15 Applications de recherche (prévu) |
-| Fenêtre « Créer une recherche » | « + » | « Nom », « Enregistrer », « Close » | 15 Applications de recherche (prévu) |
+| Liste des applications de recherche | « Recherche » | « Aucune recherche créée pour le moment », « + » (création) ; une fois remplie : « Applications de recherche », « Créer une recherche », cartes (menu « … » : « Renommer », « Supprimer ») | [15](15-recherche.md) |
+| Fenêtre « Créer une recherche » | « + » | « Nom », « Enregistrer », « Close » | [15](15-recherche.md) |
+| Page d'une application de recherche | clic sur une carte | logo « RAGFlow », avion en papier (« Intégrer dans la page web » : « Masquer le profil », « Paramètres régionaux », « Code d'intégration », « Ouvrir dans un nouvel onglet », « ID »), zone « Comment puis-je vous aider ? », loupe, roue dentée ; résultats : « Résumé IA », « Fichiers » (filtre par document), « Top 10 », « Total », passages et document source, « Recherche connexe », icône de carte mentale (panneau « Carte mentale ») | [15](15-recherche.md) |
+| Panneau « Paramètres de recherche » | roue dentée | « Télécharger », nom et description (crayon), « Bases de connaissances », « Métadonnées », « Seuil de similarité », « Poids de similarité par mots-clés », « Rerank candidates », « Modèle de réordonnancement », « Modèle », « Paramètres du modèle », « Résumé IA », « Activer la recherche connexe », « Afficher la carte mentale de la requête », « Annuler », « Enregistrer » | [15](15-recherche.md) |
 
 ## Agent
 

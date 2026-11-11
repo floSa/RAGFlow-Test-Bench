@@ -17,14 +17,15 @@ Première page à lire : [présentation](presentation.md). Plan détaillé : [pl
 | 04 | [DeepDoc et correction des passages](04-deepdoc.md) | scan, tableaux, correction manuelle |
 | 05 | [Assistants de chat et citations](05-assistants-et-citations.md) | réglages de recherche et effet mesuré |
 | 06 | [Agentic RAG](06-agentic-rag.md) | mode agentique contre réponse directe |
-| 07 | [Knowledge Compilation](07-knowledge-compilation.md) | graphes, cartes mentales, frises, wikis |
-| 08 | [Agents et gabarits](08-agents.md) | un flux d'agent complet |
-| 09 | [Sources externes](09-sources-externes.md) | sitemap, synchronisation |
+| 07 | [Knowledge Compilation](07-knowledge-compilation.md) | opérateur, pipeline avec Compiler, artefacts (graphe, arbre, frise, carte mentale) ; échecs Wiki et PageIndex |
+| 08 | [Agents et gabarits](08-agents.md) | agent depuis un gabarit, blocs, essai, publication, import, mémoire, MCP |
+| 09 | [Sources externes](09-sources-externes.md) | sources de données, liaison à une base, sitemap refusé, canaux de chat |
 | 10 | [API HTTP et SDK Python](10-api-et-sdk.md) | automatisation, défauts du SDK 1.0.0 |
 | 11 | [Recettes](11-recettes.md) | cas d'usage de bout en bout |
 | 12 | [Qualité et performances](12-qualite-et-performances.md) | banc, réglages, profils matériels |
 | 13 | [Exploitation](13-exploitation.md) | sauvegarde, mise à jour, journaux, sécurité |
 | 14 | [Dépannage et FAQ](14-depannage.md) | échecs rencontrés et remèdes |
+| 15 | [Applications de recherche](15-recherche.md) | page « Recherche » : moteur de recherche sur une base, résumé, carte mentale, intégration |
 
 ## Parcours de lecture
 
@@ -45,7 +46,7 @@ Première page à lire : [présentation](presentation.md). Plan détaillé : [pl
 
 | Sujet | État |
 |---|---|
-| Non traité | mise à jour de version (aucune plus récente que v1.0.0) ; reranking ; second modèle et modèle de moins de 3 milliards de paramètres ; Wiki, Tree, PageIndex, Timeline ; gabarit Picture ; gabarits d'agents qui demandent le web |
+| Non traité | mise à jour de version (aucune plus récente que v1.0.0) ; reranking ; second modèle et modèle de moins de 3 milliards de paramètres ; Wiki et PageIndex en échec avec `gemma4:e4b` (manuel [07](07-knowledge-compilation.md)) ; gabarit Picture ; gabarits d'agents qui demandent le web |
 | Estimé, non mesuré | profil sans GPU (manuel [12](12-qualite-et-performances.md)) |
 | Décisions en attente | montée de vLLM dans LLM-Service ; port 8088 au lieu de 8080 ; création du dépôt distant ; reranker ; ports `0.0.0.0` de services hors mission (voir [rapport](../../RAPPORT-ragflow.md)) |
 | Ménage à faire à la main | images Docker gardées en cache (`docker rmi`) ; sauvegarde de test dans `donnees/sauvegardes/` |

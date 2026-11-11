@@ -179,14 +179,15 @@ Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](o
 | 04 | [DeepDoc](docs/ragflow/04-deepdoc.md) | lire un scan, corriger un passage |
 | 05 | [Assistants et citations](docs/ragflow/05-assistants-et-citations.md) | régler la recherche, vérifier les sources |
 | 06 | [Agentic RAG](docs/ragflow/06-agentic-rag.md) | savoir quand le mode agentique aide |
-| 07 | [Knowledge Compilation](docs/ragflow/07-knowledge-compilation.md) | produire une carte mentale, un graphe |
-| 08 | [Agents](docs/ragflow/08-agents.md) | construire et appeler un agent |
-| 09 | [Sources externes](docs/ragflow/09-sources-externes.md) | ingérer un site par sitemap |
+| 07 | [Knowledge Compilation](docs/ragflow/07-knowledge-compilation.md) | produire un graphe, un arbre, une frise, une carte mentale à la souris |
+| 08 | [Agents](docs/ragflow/08-agents.md) | construire, essayer, publier un agent ; mémoire, MCP |
+| 09 | [Sources externes](docs/ragflow/09-sources-externes.md) | déclarer une source, la lier à une base ; canaux de chat |
 | 10 | [API et SDK](docs/ragflow/10-api-et-sdk.md) | automatiser |
 | 11 | [Recettes](docs/ragflow/11-recettes.md) | assistant d'entreprise, ingestion quotidienne |
 | 12 | [Qualité et performances](docs/ragflow/12-qualite-et-performances.md) | lire le banc, dimensionner la machine |
 | 13 | [Exploitation](docs/ragflow/13-exploitation.md) | sauvegarder, mettre à jour, sécuriser |
 | 14 | [Dépannage](docs/ragflow/14-depannage.md) | résoudre les problèmes rencontrés |
+| 15 | [Applications de recherche](docs/ragflow/15-recherche.md) | chercher dans une base, lire le résumé et la carte mentale, intégrer la recherche |
 
 Parcours conseillés : découvrir ([présentation](docs/ragflow/presentation.md), 00, 01, 02) ; améliorer les réponses (03, 04, 05, 12) ; automatiser (10, 11, 08).
 
