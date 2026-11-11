@@ -915,22 +915,21 @@ def assistants_conversation(s):
     texte(s, "Conversations").locator("xpath=following::button[1]").click(); attendre(s, 2000)
     envoyer(s, Q30)
     jetons = s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).last
-    renvoi = s.pg.get_by_text(re.compile(r"^\[\d+\]$")).first
+    renvoi = s.pg.locator("[data-state]").filter(has_text=re.compile(r"^\[\d+\]$")).last  # déclencheur de survol
     vignettes = jetons.locator("xpath=following::button[contains(., '…') or contains(., '.')][1]")
-    cap(s, m, "22-reponse-citee", [(s.pg.get_by_text(Q30).last, "question"), (renvoi, "renvoi"),
+    cap(s, m, "22-reponse-citee", [(renvoi, "renvoi"),
                                    (jetons, "jetons et durée"), (vignettes, "document cité"),
                                    (s.pg.get_by_role("button").filter(has_text=Q30[:20]).first, "conversation")])
-    reponse = jetons.locator("xpath=ancestor::div[.//button[.//svg[contains(@class,'lucide-thumbs-up')]]][1]")
+    reponse = jetons.locator("xpath=../..")
     reponse.hover(); attendre(s, 1000)
     noms = {"copy": "copier", "refresh-cw": "régénérer", "trash": "supprimer", "volume-2": "lire à voix haute",
             "thumbs-up": "pouce haut", "thumbs-down": "pouce bas", "lightbulb": "ampoule"}
     icones = []
     for cle_, nom_ in noms.items():
-        b = reponse.locator(f"button:has(svg.lucide-{cle_})")
+        b = s.pg.locator(f"button:has(svg.lucide-{cle_}):visible")
         if b.count():
-            icones.append((b.first, nom_))
-    print("actions de la réponse :", [n for _, n in icones], "; classes :", reponse.evaluate(
-        "e => [...e.querySelectorAll('button svg')].map(s => (s.getAttribute('class') || '').split(' ').find(c => c.startsWith('lucide-')))"), flush=True)
+            icones.append((b.last, nom_))
+    print("actions de la réponse :", [n for _, n in icones], flush=True)
     cap(s, m, "23-actions-sur-une-reponse", icones[:6])
     renvoi.hover(); attendre(s, 2000)
     cap(s, m, "24-citation-au-survol", [(popover(s), "extrait cité")])
@@ -941,8 +940,8 @@ def assistants_conversation(s):
                                    (dlg.locator("button").last, "fermer")])
     s.pg.keyboard.press("Escape"); attendre(s, 1000)
     envoyer(s, Q35)
-    cap(s, m, "26-question-sans-reponse", [(s.pg.get_by_text(Q35).last, "question piège"),
-                                           (s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).last.locator("xpath=preceding-sibling::*[1]"), "réponse")])
+    rep35 = s.pg.get_by_text(re.compile("ne se trouve pas|Aucune information")).last
+    cap(s, m, "26-question-sans-reponse", [(rep35, "début de la réponse")])
     conv = s.pg.get_by_role("button").filter(has_text=Q30[:20]).first
     conv.hover(); attendre(s, 600)
     conv.locator("xpath=..").locator("button:has(svg.lucide-ellipsis)").first.click(); attendre(s, 1000)
