@@ -10,6 +10,16 @@
 
 Une **source de données** (l'interface dit aussi « connecteur ») est un système extérieur que RAGFlow relit à intervalle régulier pour garder une base à jour : un wiki, un espace de stockage, une messagerie, un site web. Elle se déclare une fois dans le menu du compte, puis se relie à une ou plusieurs bases ; chaque relecture s'appelle une **synchronisation**. Par exemple, un site web décrit par son **plan de site** (fichier `sitemap.xml`, la liste de ses pages) devient une base dont chaque page est un document, mis à jour toutes les cinq minutes. Pour des raisons de sécurité, RAGFlow refuse par défaut toute adresse qui n'est pas publique sur Internet, y compris un site de l'intranet de l'entreprise ou un site sur la même machine. L'exemple déclare le site de test des essais, servi sur la machine elle-même : il est refusé, ce qui permet de montrer le journal d'un échec.
 
+## Démarrer le site de test (facultatif)
+
+L'exemple de ce chapitre lit un petit site de test fourni par le dépôt : deux pages fictives et leur plan de site, dans le dossier `outils/ragflow/site-test/`. Pour reproduire les étapes 2 à 9 à l'identique, le démarrer avant l'étape 1, depuis le dossier du dépôt dans le terminal Ubuntu. La commande le lance sur le réseau interne de RAGFlow, sans l'ouvrir à aucune autre machine :
+
+```bash
+docker run -d --name rag-site-test --network rag-local -v "$PWD/outils/ragflow/site-test:/usr/share/nginx/html:ro" nginx:alpine
+```
+
+RAGFlow le joint alors à l'adresse `http://rag-site-test/sitemap.xml`, celle de l'étape 2. La commande `docker rm -f rag-site-test` le supprime, une fois le chapitre terminé. Avec le réglage d'origine, ce site est refusé (étape 3) : c'est le cas montré par ce chapitre ; la fin du chapitre explique comment l'autoriser.
+
 ## Déclarer une source de données
 
 **Étape 1. Choisir le type de source**
@@ -160,16 +170,10 @@ RAGFlow cherche l'adresse réelle du site avant de le lire, et refuse toute adre
 Pour lire malgré tout un site interne, un réglage du serveur l'autorise :
 
 1. ajouter la ligne `ALLOW_ANY_HOST=1` au fichier `donnees/ragflow/ragflow.env` du dépôt ;
-2. redémarrer le serveur de RAGFlow : `outils/ragflow/compose.sh up -d ragflow-cpu` ;
+2. redémarrer RAGFlow avec les deux commandes du chapitre 02 (étapes 10 et 11), `outils/ragflow/arreter.sh` puis `outils/ragflow/demarrer.sh` : au démarrage, les conteneurs sont recréés avec le nouveau réglage, données conservées ;
 3. une fois la synchronisation faite, retirer la ligne et redémarrer de la même façon.
 
-Pour voir le cas réussi sur la machine elle-même, le dépôt fournit un petit site de test : deux pages fictives et leur plan de site, dans le dossier `outils/ragflow/site-test/`. Depuis le dossier du dépôt, la commande suivante le démarre sur le réseau interne de RAGFlow, sans l'ouvrir à aucune autre machine :
-
-```bash
-docker run -d --name rag-site-test --network rag-local -v "$PWD/outils/ragflow/site-test:/usr/share/nginx/html:ro" nginx:alpine
-```
-
-RAGFlow le joint alors à l'adresse `http://rag-site-test/sitemap.xml`, celle de l'étape 2 ; `docker rm -f rag-site-test` le supprime. Son adresse est interne à Docker : il est refusé tant que le réglage `ALLOW_ANY_HOST` n'est pas en place. Le script `outils/ragflow/essai_sitemap_autorise.sh` enchaîne tout l'essai : il ajoute le réglage, redémarre le serveur, démarre le site, crée la source, la relie à une base d'essai, attend la synchronisation, puis supprime la source, la base et le site et remet le réglage d'origine ; son compte rendu s'écrit dans `outils/resultats/ragflow/`.
+Le site de test démarré en début de chapitre montre alors le cas réussi sur la machine elle-même : son adresse est interne à Docker, et il est refusé tant que le réglage `ALLOW_ANY_HOST` n'est pas en place. Le script `outils/ragflow/essai_sitemap_autorise.sh` enchaîne tout l'essai : il ajoute le réglage, redémarre le serveur, démarre le site, crée la source, la relie à une base d'essai, attend la synchronisation, puis supprime la source, la base et le site et remet le réglage d'origine ; son compte rendu s'écrit dans `outils/resultats/ragflow/`.
 
 Avec ce réglage, le test répond « success » et les deux pages du site de test sont devenues deux documents de deux passages chacun, convertis en texte avant l'analyse (noms en `.html.md`). Le risque est celui signalé en tête de chapitre : le réglage vaut pour tout le serveur, agents compris. Pour un usage durable, préférer un site joignable par une adresse publique, ou déposer les pages dans la base par « Ajouter un fichier » (chapitre 05).
 

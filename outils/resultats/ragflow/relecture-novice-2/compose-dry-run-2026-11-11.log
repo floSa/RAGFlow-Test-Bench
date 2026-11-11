@@ -1,0 +1,12 @@
+== Vérification : outils/ragflow/demarrer.sh (docker compose up -d) prend-il en compte un réglage ajouté à ragflow.env ?
+Méthode : docker compose ... up -d --dry-run (aucun changement), sur une copie de ragflow.env (scratchpad, supprimée ensuite)
+avec ALLOW_ANY_HOST=1 ajouté et RAGFLOW_ENV_FILE pointant vers la copie.
+== sans changement
+ Container rag-ragflow-server Running
+== avec ALLOW_ANY_HOST=1 (copie du fichier d'environnement)
+ Container rag-ragflow-server Recreate
+ Container rag-ragflow-server Recreated
+ (les cinq autres conteneurs : Recreate, ils partagent le même env_file ; données dans des volumes liés à donnees/ragflow/)
+Conclusion : up -d recrée les conteneurs dont l'environnement change ; arreter.sh (compose stop) puis demarrer.sh
+(compose up -d) applique donc le réglage, comme « compose.sh up -d ragflow-cpu », en redémarrant aussi les autres
+conteneurs. Limite : la copie changeait aussi le chemin du fichier d'environnement ; essai réel non rejoué.
