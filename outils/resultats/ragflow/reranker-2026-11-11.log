@@ -1,0 +1,136 @@
+== 2026-11-11T20:27:32+01:00 reranker.sh
+RAM disponible : 17050 Mo
+== 2026-11-11T20:43:12+01:00 premier essai : --max-batch-tokens 16384 (défaut), échauffement à 13,6 Go de RAM puis redémarrage en boucle (RestartCount 3, aucun OOMKilled), conteneur arrêté et recréé
+== 2026-11-11T20:43:19+01:00 reranker.sh
+RAM disponible : 21093 Mo
+sain en 22 s
+conteneur : rag-reranker infiniflow/text-embeddings-inference:cpu-1.8 127.0.0.1:6380->80/tcp
+info : BAAI/bge-reranker-v2-m3 {'reranker': {'id2label': {'0': 'LABEL_0'}, 'label2id': {'LABEL_0': 0}}} 1.8.2 max_input_length 8192
+POST /rerank (format natif de TEI) : {"query":"Quel est le délai de préavis ?","texts":["Le préavis de résiliation est de trois mois.","La cantine ouvre à midi."]}
+[{"index":0,"score":0.34327868},{"index":1,"score":0.00001631286}]
+(200, 0.158926 s)
+POST /v1/rerank (format Jina/Cohere attendu par les pilotes de RAGFlow) : {"model":"BAAI/bge-reranker-v2-m3","query":"Quel est le délai de préavis ?","documents":["Le préavis de résiliation est de trois mois.","La cantine ouvre à midi."],"top_n":2}
+outils/ragflow/reranker.sh: line 37: syntax error near unexpected token `('
+
+(404, 0.003660 s)
+depuis le réseau rag-local (conteneur rag-ragflow-server) :
+http://rag-reranker:80/health -> 200
+mémoire : rag-reranker 4.646GiB / 6GiB
+== 2026-11-11T20:47:13+01:00 essai intermédiaire arrêté (docker stop rag-reranker) : changement décidé par l'utilisateur, reranker servi sur le GPU par vllm-rerank (LLM-Service). Constat : les pilotes de RAGFlow 1.0 envoient {model, query, documents, top_n} (format Jina/Cohere) ; TEI 1.8.2 répond 422 « missing field `texts` » sur /rerank et 404 sur /v1/rerank : aucun fournisseur de RAGFlow ne parle le format natif de TEI.
+== 2026-11-11T20:49:55+01:00 reranker.sh --attendre
+RAM disponible : 21068 Mo
+20:49:55 VRAM utilisée, libre, totale (Mio) : 15783, 325, 16380
+20:50:25 VRAM utilisée, libre, totale (Mio) : 15784, 324, 16380
+20:50:55 VRAM utilisée, libre, totale (Mio) : 15701, 407, 16380
+20:51:25 VRAM utilisée, libre, totale (Mio) : 15763, 345, 16380
+20:51:56 VRAM utilisée, libre, totale (Mio) : 15776, 332, 16380
+20:52:26 VRAM utilisée, libre, totale (Mio) : 15779, 329, 16380
+20:52:56 VRAM utilisée, libre, totale (Mio) : 15714, 394, 16380
+20:53:26 VRAM utilisée, libre, totale (Mio) : 15755, 353, 16380
+20:53:56 VRAM utilisée, libre, totale (Mio) : 15750, 358, 16380
+20:54:26 VRAM utilisée, libre, totale (Mio) : 15788, 320, 16380
+20:54:56 VRAM utilisée, libre, totale (Mio) : 15647, 461, 16380
+20:55:26 VRAM utilisée, libre, totale (Mio) : 15650, 458, 16380
+20:55:56 VRAM utilisée, libre, totale (Mio) : 15656, 452, 16380
+20:56:26 VRAM utilisée, libre, totale (Mio) : 15870, 238, 16380
+20:56:56 VRAM utilisée, libre, totale (Mio) : 15763, 345, 16380
+20:57:26 VRAM utilisée, libre, totale (Mio) : 15745, 363, 16380
+20:57:56 VRAM utilisée, libre, totale (Mio) : 15813, 295, 16380
+20:58:26 VRAM utilisée, libre, totale (Mio) : 15799, 309, 16380
+20:58:57 VRAM utilisée, libre, totale (Mio) : 15789, 319, 16380
+20:59:27 VRAM utilisée, libre, totale (Mio) : 15801, 307, 16380
+20:59:57 VRAM utilisée, libre, totale (Mio) : 15789, 319, 16380
+21:00:27 VRAM utilisée, libre, totale (Mio) : 15803, 305, 16380
+21:00:57 VRAM utilisée, libre, totale (Mio) : 15787, 321, 16380
+21:01:27 VRAM utilisée, libre, totale (Mio) : 15778, 330, 16380
+21:01:57 VRAM utilisée, libre, totale (Mio) : 15744, 364, 16380
+21:02:27 VRAM utilisée, libre, totale (Mio) : 15733, 375, 16380
+21:02:57 VRAM utilisée, libre, totale (Mio) : 15734, 374, 16380
+21:03:27 VRAM utilisée, libre, totale (Mio) : 15768, 340, 16380
+21:03:57 VRAM utilisée, libre, totale (Mio) : 15792, 316, 16380
+21:04:27 VRAM utilisée, libre, totale (Mio) : 15772, 336, 16380
+VRAM libre insuffisante (< 2048 Mio) : vllm-rerank non démarré
+== 2026-11-11T21:04:47+01:00 reranker.sh --attendre
+RAM disponible : 20939 Mo
+21:04:48 VRAM utilisée, libre, totale (Mio) : 15795, 313, 16380
+21:05:18 VRAM utilisée, libre, totale (Mio) : 15791, 317, 16380
+21:05:48 VRAM utilisée, libre, totale (Mio) : 15791, 317, 16380
+21:06:18 VRAM utilisée, libre, totale (Mio) : 15796, 312, 16380
+21:06:48 VRAM utilisée, libre, totale (Mio) : 15761, 347, 16380
+21:07:18 VRAM utilisée, libre, totale (Mio) : 15868, 240, 16380
+21:07:48 VRAM utilisée, libre, totale (Mio) : 15828, 280, 16380
+21:08:18 VRAM utilisée, libre, totale (Mio) : 15795, 313, 16380
+21:08:48 VRAM utilisée, libre, totale (Mio) : 15802, 306, 16380
+21:09:18 VRAM utilisée, libre, totale (Mio) : 15889, 219, 16380
+21:09:48 VRAM utilisée, libre, totale (Mio) : 15855, 253, 16380
+21:10:18 VRAM utilisée, libre, totale (Mio) : 15832, 276, 16380
+21:10:48 VRAM utilisée, libre, totale (Mio) : 15827, 281, 16380
+21:11:18 VRAM utilisée, libre, totale (Mio) : 15826, 282, 16380
+21:11:49 VRAM utilisée, libre, totale (Mio) : 15851, 257, 16380
+21:12:19 VRAM utilisée, libre, totale (Mio) : 15817, 291, 16380
+21:12:49 VRAM utilisée, libre, totale (Mio) : 15824, 284, 16380
+21:13:19 VRAM utilisée, libre, totale (Mio) : 15818, 290, 16380
+21:13:49 VRAM utilisée, libre, totale (Mio) : 15814, 294, 16380
+21:14:19 VRAM utilisée, libre, totale (Mio) : 15824, 284, 16380
+21:14:49 VRAM utilisée, libre, totale (Mio) : 15830, 278, 16380
+21:15:19 VRAM utilisée, libre, totale (Mio) : 15897, 211, 16380
+21:15:49 VRAM utilisée, libre, totale (Mio) : 15734, 374, 16380
+21:16:19 VRAM utilisée, libre, totale (Mio) : 15734, 374, 16380
+21:16:49 VRAM utilisée, libre, totale (Mio) : 15868, 240, 16380
+21:17:19 VRAM utilisée, libre, totale (Mio) : 15749, 359, 16380
+21:17:49 VRAM utilisée, libre, totale (Mio) : 15771, 337, 16380
+21:18:19 VRAM utilisée, libre, totale (Mio) : 15749, 359, 16380
+21:18:50 VRAM utilisée, libre, totale (Mio) : 15735, 373, 16380
+21:19:20 VRAM utilisée, libre, totale (Mio) : 15747, 361, 16380
+VRAM libre insuffisante (< 2048 Mio) : vllm-rerank non démarré
+== 2026-11-11T21:19:41+01:00 reranker.sh --attendre
+RAM disponible : 20944 Mo
+21:19:41 VRAM utilisée, libre, totale (Mio) : 15766, 342, 16380
+21:20:11 VRAM utilisée, libre, totale (Mio) : 15780, 328, 16380
+21:20:41 VRAM utilisée, libre, totale (Mio) : 15753, 355, 16380
+21:21:11 VRAM utilisée, libre, totale (Mio) : 15742, 366, 16380
+21:21:41 VRAM utilisée, libre, totale (Mio) : 15760, 348, 16380
+21:22:12 VRAM utilisée, libre, totale (Mio) : 15834, 274, 16380
+== 2026-11-11T21:22:58+01:00 attente arrêtée sur décision de l'utilisateur (passage du service de modèles à llama.cpp derrière LiteLLM) ; vllm-rerank jamais démarré, override de LLM-Service laissé prêt (profil rerank, non démarré)
+VRAM libre relevée pendant les trois attentes (20:49 → 21:22, 30 s d'intervalle) : 211 à 461 Mio ; besoin estimé de vllm-rerank : ~1,6 Go (poids 1,06 Gio comme bge-m3, plus le contexte CUDA)
+chargement relevé dans les journaux vLLM (docker logs) :
+  vllm-central : (EngineCore pid=146) INFO 11-11 11:19:33 [gpu_model_runner.py:5471] Model loading took 11.06 GiB memory and 3.436018 seconds
+  vllm-central : (EngineCore pid=146) INFO 11-11 11:19:47 [kv_cache_utils.py:2032] GPU KV cache size: 63,101 tokens, Maximum concurrency for 32,768 tokens per request: 1.93x
+  vllm-embed : (EngineCore pid=78) INFO 11-11 08:41:19 [gpu_model_runner.py:5471] Model loading took 1.06 GiB memory and 4.582521 seconds
+nvidia-smi (WSL) : 15845 MiB, 263 MiB, 16380 MiB
+programmes Windows sur la carte (nvidia-smi.exe, mémoire par processus non lisible) :
+|    0   N/A  N/A            1932    C+G   ...adeonsoftware\AMDRSSrcExt.exe      N/A      |
+|    0   N/A  N/A            3048    C+G   ...em32\ApplicationFrameHost.exe      N/A      |
+|    0   N/A  N/A            4224    C+G   ...s\antigravity\Antigravity.exe      N/A      |
+|    0   N/A  N/A            7632    C+G   ...ayRenderer-Win64-Shipping.exe      N/A      |
+|    0   N/A  N/A            7796    C+G   C:\Windows\explorer.exe               N/A      |
+|    0   N/A  N/A           10524    C+G   ...\AppControl\ui\AppControl.exe      N/A      |
+|    0   N/A  N/A           10924    C+G   ..._pzs8sxrjxfjjc\app\claude.exe      N/A      |
+|    0   N/A  N/A           12732    C+G   ....0.4341.42\msedgewebview2.exe      N/A      |
+|    0   N/A  N/A           14044    C+G   ...2txyewy\CrossDeviceResume.exe      N/A      |
+|    0   N/A  N/A           14692    C+G   ...y\StartMenuExperienceHost.exe      N/A      |
+|    0   N/A  N/A           14812    C+G   ..._cw5n1h2txyewy\SearchHost.exe      N/A      |
+|    0   N/A  N/A           17724    C+G   ...onsoftware\RadeonSoftware.exe      N/A      |
+|    0   N/A  N/A           18676    C+G   ...App_cw5n1h2txyewy\LockApp.exe      N/A      |
+|    0   N/A  N/A           18984    C+G   ....0.4341.42\msedgewebview2.exe      N/A      |
+|    0   N/A  N/A           20116    C+G   ...m Files\UniGetUI\UniGetUI.exe      N/A      |
+|    0   N/A  N/A           20476    C+G   ...ram Files\AdGuard\Adguard.exe      N/A      |
+|    0   N/A  N/A           21568    C+G   ...s\antigravity\Antigravity.exe      N/A      |
+|    0   N/A  N/A           22104    C+G   ...IA app\CEF\NVIDIA Overlay.exe      N/A      |
+|    0   N/A  N/A           22292    C+G   ...indows\System32\ShellHost.exe      N/A      |
+|    0   N/A  N/A           22404    C+G   ...1g1gvanyjgm\WhatsApp.Root.exe      N/A      |
+|    0   N/A  N/A           22472    C+G   ...IA app\CEF\NVIDIA Overlay.exe      N/A      |
+|    0   N/A  N/A           24564    C+G   ...5n1h2txyewy\TextInputHost.exe      N/A      |
+|    0   N/A  N/A           25004    C+G   ...\AppControl\ui\AppControl.exe      N/A      |
+|    0   N/A  N/A           25248    C+G   ...ntrolPanel\SystemSettings.exe      N/A      |
+|    0   N/A  N/A           29144    C+G   ...xyewy\ShellExperienceHost.exe      N/A      |
+|    0   N/A  N/A           29636    C+G   ...s\Mozilla Firefox\firefox.exe      N/A      |
+|    0   N/A  N/A           32616    C+G   ...s\Mozilla Firefox\firefox.exe      N/A      |
+|    0   N/A  N/A           33148    C+G   ...\cef.win64\steamwebhelper.exe      N/A      |
+|    0   N/A  N/A           33260    C+G   ...aries\Win64\EpicWebHelper.exe      N/A      |
+|    0   N/A  N/A           33784    C+G   ...8bbwe\PhoneExperienceHost.exe      N/A      |
+|    0   N/A  N/A           35332    C+G   ...s\Win64\EpicGamesLauncher.exe      N/A      |
+|    0   N/A  N/A           35428    C+G   ..._pzs8sxrjxfjjc\app\claude.exe      N/A      |
+|    0   N/A  N/A           37356    C+G   ...grams\LM Studio\LM Studio.exe      N/A      |
+La partie TEI (20:27 → 20:46) est en tête de ce journal ; journal complet du conteneur : reranker-cpu-2026-11-11-tei.log.
+Note : la ligne « syntax error … line 37 » vient du premier lancement de reranker.sh (version processeur), encore en cours quand le script a été modifié ; les résultats qui suivent sont ceux du second lancement (20:43:19).
