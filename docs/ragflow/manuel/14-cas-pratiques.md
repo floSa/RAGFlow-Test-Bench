@@ -69,7 +69,18 @@ L'assistant répond dans la langue de la question. Ses réglages se relisent dan
 
 **Les étapes**
 
-1. Vérifier la clé d'accès du programme : le script du dépôt utilise celle créée à l'installation, rangée dans le fichier `donnees/ragflow/compte.json` (chapitre 02, étape 7). Si elle a été supprimée, en créer une (chapitre 13, étape 9) et la recopier dans ce fichier, à la ligne `api_key`.
+1. Vérifier la clé d'accès du programme : le script du dépôt utilise celle créée à l'installation, rangée dans le fichier `donnees/ragflow/compte.json` (chapitre 02, étape 7). Ce fichier a la forme suivante, avec les vraies valeurs à la place des mentions entre chevrons :
+
+   ```json
+   {
+     "email": "banc.demo@exemple.fr",
+     "nickname": "Banc RAGFlow",
+     "password": "<mot de passe du compte>",
+     "api_key": "ragflow-<32 caractères>"
+   }
+   ```
+
+   Seule la clé `api_key` sert au script. Si la clé a été supprimée, en créer une (chapitre 13, étape 9) et la coller entre les guillemets de la ligne `api_key`, sans toucher aux autres lignes. Ce fichier contient des secrets : ne pas le copier hors du poste.
 2. Lancer une première fois l'envoi, dans le terminal WSL, depuis le dossier du dépôt ; la base est créée si elle n'existe pas :
 
    ```bash
@@ -79,10 +90,10 @@ L'assistant répond dans la langue de la question. Ses réglages se relisent dan
 3. Planifier ce lancement chaque matin, par exemple à 7 h : `crontab -e` dans WSL, puis ajouter la ligne
 
    ```text
-   0 7 * * * cd ~/mes_projets/Tutoriels/RAGFlow-Test-Bench && ~/.local/bin/uv run python outils/ragflow/recette_ingestion.py /chemin/du/dossier "Nom de la base" >> donnees/ingestion.log 2>&1
+   0 7 * * * cd <dossier du dépôt> && ~/.local/bin/uv run python outils/ragflow/recette_ingestion.py /chemin/du/dossier "Nom de la base" >> donnees/ingestion.log 2>&1
    ```
 
-   La tâche ne tourne que si WSL est ouvert à cette heure. Le script a été essayé sur trois jours simulés ; la planification elle-même ne l'a pas été.
+   Remplacer `<dossier du dépôt>` par le chemin complet du dossier `RAGFlow-Test-Bench` (la commande `pwd`, lancée dans ce dossier, l'affiche), et `/chemin/du/dossier` par le dossier à surveiller ; `~/.local/bin/uv` est l'emplacement habituel de uv (la commande `command -v uv` le confirme). La tâche ne tourne que si WSL est ouvert à cette heure. Le script a été essayé sur trois jours simulés ; la planification elle-même ne l'a pas été.
 4. Relier la base à l'assistant (chapitre 04, étapes 14 à 16), ou à un assistant existant (chapitre 08, étape 6).
 5. Contrôler chaque jour les analyses dans « Journaux » (chapitre 05, étapes 14 et 15) ou le fichier `donnees/ingestion.log`.
 
