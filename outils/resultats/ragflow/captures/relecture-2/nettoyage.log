@@ -1,0 +1,7 @@
+== premier passage (2026-11-11, après les scénarios de relecture_novice_2.py)
+agent ou pipeline supprimé : Manuel-Agent-Importe 0
+agent ou pipeline supprimé : Manuel-Agent-Documentaire 0
+restent : bases ['Démo Vélanor', 'Essai-KC-mind_map-1835'] ; assistants ['Démo Vélanor']
+== compte invité : supprimé par la phase « supprimer » du scénario equipe (equipe.log)
+== second passage (contrôle)
+restent : bases ['Démo Vélanor', 'Essai-KC-mind_map-1835'] ; assistants ['Démo Vélanor']
