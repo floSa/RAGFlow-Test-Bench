@@ -54,7 +54,7 @@ Résultat dans l'interface. « Base de connaissances », « Démo Vélanor » : 
 | 1 | « Contrat Batterix » | conversation ouverte : message d'accueil en français, question, réponse citée |
 | 2 | « Objectifs 2026 » | deuxième conversation de la recette |
 | 3 | « Audit fournisseur » | troisième conversation, question et réponse en anglais |
-| 4 | réponse citée | 212 euros HT et 21 jours, chaque phrase suivie de son renvoi « [1] » vers le contrat scanné ; dessous, « 1895 tokens (1841 input, 54 output) · 2.3s » (manuel [12](12-qualite-et-performances.md), section 1) |
+| 4 | réponse citée | 212 euros HT et 21 jours, chaque phrase suivie de son renvoi « [1] » vers le contrat scanné ; dessous, « 1895 tokens (1841 input, 54 output) · 2.3s » (manuel [12](12-qualite-et-performances.md), section 3) |
 
 [Vérifié] (`outils/resultats/ragflow/captures/11-recettes/scenario.log`)
 
