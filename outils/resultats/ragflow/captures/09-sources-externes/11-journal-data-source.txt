@@ -1,0 +1,79 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Sources
+0 Fichiers
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers totaux
+0
+0% de la semaine dernière
+Téléchargement
+0
+Succès
+0
+Échec
+0
+Traitement
+0
+Succès
+0
+Échec
+0
+Fichier
+Base de connaissances
+Data source
+Heure de démarrage	Statut	Task Type	Summary
+
+11/11/2026 15:46:08
+	
+Failed	sync	
+sync task failed after 2 retries, last error: URL resolves to a non-public address (172.25.0.4), which is not allowed
+Total 1
+1
+50 / Page
+
+== adresse ==
+/dataset/logs/376661dcacf442d69a0c41e07752fa97
+== pastilles ==
+1. Data source
+2. tâches
+3. Total
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+button | [icône lucide-circle-question-mark]
+button | Fichier
+button | Base de connaissances
+button | Data source
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page

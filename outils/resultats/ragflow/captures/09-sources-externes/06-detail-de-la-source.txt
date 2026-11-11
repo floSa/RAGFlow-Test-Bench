@@ -1,0 +1,77 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+Manuel-Source-Sitemap
+Name
+URL du sitemap
+Filtre d’URL (regex)
+Suivre les liens PDF
+User-Agent
+Batch Size
+Synchroniser les fichiers supprimés
+Refresh Freq
+minutes
+Timeout Secs
+secondes
+Test connection
+Enregistrer
+Journal
+Heure de démarrage	Statut	Ensemble de données	Task Type	Summary
+Aucune donnée disponible
+Total 0
+50 / Page
+
+== adresse ==
+/user-setting/data-source/data-source-detail-page?id=b195da09ae0648a180a1f42690df891e
+== pastilles ==
+1. Name
+2. URL du sitemap
+3. Filtre d’URL (regex)
+4. Suivre les liens PDF
+5. User-Agent
+6. Batch Size
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-arrow-big-left]
+label | Name
+input:text | name
+label | URL du sitemap
+input:text | https://example.com/sitemap.xml
+label | Filtre d’URL (regex)
+input:text | ^https://example\.com/docs/
+label | Suivre les liens PDF
+switch | 
+input:checkbox | 
+label | User-Agent
+input:text | RAGFlow-SitemapConnector/1.0
+label | Batch Size
+input:number | config.batch_size
+label | Synchroniser les fichiers supprimés
+checkbox | 
+label | Refresh Freq
+input:number | refresh_freq
+label | Timeout Secs
+input:number | timeout_secs
+button | Test connection
+button | Enregistrer
+a | Go to previous page
+a | Go to next page
+combobox | 50 / Page

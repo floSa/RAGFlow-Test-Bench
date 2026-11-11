@@ -1,0 +1,260 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+BR
+
+banc.demo@exemple.fr
+
+Fournisseurs de modèles
+Sources de données
+Canaux de chat
+MCP
+Équipe
+Profil
+API
+v1.0.0
+Déconnexion
+Sources de données
+
+Gérez vos sources de données et connexions
+
+Aucune source de données ajoutée. Sélectionnez-en une ci-dessous pour vous connecter.
+Sources disponibles
+Sélectionner une source de données à ajouter
+Confluence
+Ajouter
+
+Intégrez votre espace Confluence pour rechercher dans la documentation.
+
+Notion
+Ajouter
+
+Synchronisez des pages et bases de données Notion pour la recherche de connaissances.
+
+Google Drive
+Ajouter
+
+Connectez votre Google Drive via OAuth et synchronisez des dossiers ou lecteurs spécifiques.
+
+Feishu Wiki
+Ajouter
+
+Sync downloadable file nodes from a Feishu Wiki subtree.
+
+Gmail
+Ajouter
+
+Connectez votre Gmail via OAuth pour synchroniser les e-mails.
+
+Google Cloud Storage
+Ajouter
+
+Connectez votre bucket Google Cloud Storage pour importer et synchroniser des fichiers.
+
+Oracle Storage
+Ajouter
+
+Connectez votre bucket Oracle Cloud Object Storage pour importer et synchroniser des fichiers.
+
+S3
+Ajouter
+
+Connectez-vous à votre bucket AWS S3 pour importer et synchroniser les fichiers stockés.
+
+R2
+Ajouter
+
+Connectez votre bucket Cloudflare R2 pour importer et synchroniser des fichiers.
+
+Jira
+Ajouter
+
+Connectez votre espace Jira pour synchroniser les issues, commentaires et pièces jointes.
+
+Box
+Ajouter
+
+Connectez votre Box drive pour synchroniser les fichiers et dossiers.
+
+Dropbox
+Ajouter
+
+Connectez votre Dropbox pour synchroniser les fichiers et dossiers depuis un compte choisi.
+
+Bitbucket
+Ajouter
+
+Connectez Bitbucket pour synchroniser le contenu des PR.
+
+Azure DevOps
+Ajouter
+
+Connectez Azure DevOps pour synchroniser les fichiers du dépôt et les pull requests.
+
+GitLab
+Ajouter
+
+Connectez GitLab pour synchroniser les dépôts, issues, merge requests et la documentation associée.
+
+GitHub
+Ajouter
+
+Connectez GitHub pour synchroniser les pull requests et issues pour la recherche.
+
+Moodle
+Ajouter
+
+Connectez-vous à votre LMS Moodle pour synchroniser le contenu des cours, forums et ressources.
+
+Discord
+Ajouter
+
+Liez votre serveur Discord pour accéder et analyser les données de chat.
+
+Xquik
+Ajouter
+
+Search X posts with Xquik and sync matching posts into a knowledge base.
+
+Zendesk
+Ajouter
+
+Connectez votre Zendesk pour synchroniser les tickets, articles et autres contenus.
+
+Zotero
+Ajouter
+
+Connect your Zotero library to sync PDF attachments from papers and references.
+
+WebDAV
+Ajouter
+
+Connectez-vous à des serveurs WebDAV pour synchroniser des fichiers.
+
+Airtable
+Ajouter
+
+Connectez-vous à Airtable et synchronisez les fichiers d'une table spécifiée dans un espace de travail désigné.
+
+Asana
+Ajouter
+
+Connectez-vous à Asana et synchronisez les fichiers d'un espace de travail spécifié.
+
+IMAP
+Ajouter
+
+Connectez-vous à votre boîte mail IMAP pour synchroniser les e-mails et les rendre accessibles dans votre base de connaissances.
+
+Dingtalk AI Table
+Ajouter
+
+Connectez-vous à Dingtalk AI Table et synchronisez les enregistrements d'une table spécifiée.
+
+SeaFile
+Ajouter
+
+Connectez-vous à votre serveur SeaFile pour synchroniser les fichiers et documents de vos bibliothèques.
+
+MySQL
+Ajouter
+
+Connectez-vous à une base de données MySQL pour synchroniser des données de tables via des requêtes SQL.
+
+PostgreSQL
+Ajouter
+
+Connectez-vous à une base de données PostgreSQL pour synchroniser des données de tables via des requêtes SQL.
+
+BigQuery
+Ajouter
+
+Connect to Google BigQuery to sync rows from a table or a custom GoogleSQL query.
+
+REST API
+Ajouter
+
+Connectez n'importe quel point de terminaison REST API comme source de données via un connecteur flexible et configurable.
+
+RSS
+Ajouter
+
+Connectez-vous à un flux RSS ou Atom public et synchronisez les entrées dans votre base de connaissances.
+
+Sitemap
+Ajouter
+
+Connectez un sitemap.xml public pour synchroniser dans votre base de connaissances les pages web et les documents PDF qu’il répertorie.
+
+OneDrive
+Ajouter
+
+Connectez OneDrive ou OneDrive Entreprise pour indexer les fichiers et dossiers via les requêtes delta Microsoft Graph.
+
+Outlook
+Ajouter
+
+Connectez les boîtes aux lettres Outlook / Microsoft 365 et indexez les messages via les requêtes delta Microsoft Graph.
+
+Salesforce
+Ajouter
+
+Connectez une organisation Salesforce et indexez les enregistrements CRM (Comptes, Contacts, Opportunités, Dossiers, articles Knowledge) via SOQL avec synchronisation incrémentale.
+
+Azure Blob Storage
+Ajouter
+
+Indexez les blobs d'un conteneur Azure Blob Storage dans une base de connaissances. Prend en charge l'authentification par clé de compte, chaîne de connexion et jeton SAS. Les blobs inchangés sont ignorés via l'empreinte ETag.
+
+Microsoft Teams
+Ajouter
+
+Connectez Microsoft Teams via Microsoft Graph pour synchroniser les publications et réponses des canaux.
+
+Slack
+Ajouter
+
+Connectez votre espace de travail Slack pour synchroniser les messages et fils de canaux.
+
+SharePoint
+Ajouter
+
+Connectez un site SharePoint via Microsoft Graph pour synchroniser ses bibliothèques de documents.
+
+== adresse ==
+/user-setting/data-source
+== pastilles ==
+1. Sources de données
+2. Aucune source de données ajoutée
+3. Sources disponibles
+4. Confluence
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | Fournisseurs de modèles
+button | Sources de données
+button | Canaux de chat
+button | MCP
+button | Équipe
+button | Profil
+button | API
+switch | [icône lucide-sun]
+button | Déconnexion
+button | Ajouter
