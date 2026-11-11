@@ -23,6 +23,7 @@ questions, même modèle sur la même machine ; le comparatif est dans
 
 ## Sommaire
 
+- [Le parcours](#le-parcours)
 - [Architecture](#architecture)
 - [Démarrage](#démarrage)
 - [Configuration](#configuration)
@@ -30,13 +31,49 @@ questions, même modèle sur la même machine ; le comparatif est dans
 - [Tests](#tests)
 - [Structure du projet](#structure-du-projet)
 - [Licences & composants](#licences--composants)
-- [Le parcours](#le-parcours)
 - [Commandes utiles](#commandes-utiles)
 - [Données du banc](#données-du-banc)
 - [Les pièges que ce banc documente](#les-pièges-que-ce-banc-documente)
 - [Résultats](#résultats)
 - [Versions](#versions)
 - [Ressources](#ressources)
+
+## Le parcours
+
+Le manuel se lit depuis sa page d'accueil, [docs/ragflow/README.md](docs/ragflow/README.md). Partie 1 : manuel utilisateur, à lire dans l'ordre, pour un lecteur à l'aise avec un terminal.
+
+| N° | Chapitre | Ce qu'on saura faire |
+|---|---|---|
+| 01 | [Découvrir RAGFlow](docs/ragflow/manuel/01-decouvrir-ragflow.md) | dire à quoi sert RAGFlow, pour qui et avec quelle machine |
+| 02 | [Installer RAGFlow](docs/ragflow/manuel/02-installer-ragflow.md) | installer sans exposition réseau, démarrer, arrêter, désinstaller |
+| 03 | [Premiers pas](docs/ragflow/manuel/03-premiers-pas.md) | se connecter, passer en français, se repérer, déclarer les modèles |
+| 04 | [Première question en dix minutes](docs/ragflow/manuel/04-premiere-question.md) | obtenir une première réponse citée |
+| 05 | [Ajouter et organiser ses documents](docs/ragflow/manuel/05-ajouter-et-organiser-ses-documents.md) | gérer bases et fichiers, métadonnées, journaux |
+| 06 | [Régler la lecture des documents](docs/ragflow/manuel/06-regler-la-lecture-des-documents.md) | choisir un gabarit, lire un scan, corriger un passage |
+| 07 | [Poser des questions et lire les sources](docs/ragflow/manuel/07-poser-des-questions-et-lire-les-sources.md) | converser, vérifier les sources, « Naive » ou « Agentic », publier |
+| 08 | [Régler un assistant](docs/ragflow/manuel/08-regler-un-assistant.md) | appliquer les réglages qui améliorent les réponses |
+| 09 | [Rechercher dans ses documents](docs/ragflow/manuel/09-rechercher.md) | page de recherche avec résumé et carte mentale |
+| 10 | [Construire un agent](docs/ragflow/manuel/10-agents.md) | agent depuis un modèle, essai, publication, mémoire, MCP |
+| 11 | [Produire des synthèses automatiques](docs/ragflow/manuel/11-syntheses-automatiques.md) | graphe, arbre, frise, carte mentale à la souris |
+| 12 | [Alimenter une base depuis une source externe](docs/ragflow/manuel/12-sources-externes.md) | source « Sitemap », journal de synchronisation, canaux de chat |
+| 13 | [Gérer son compte, son équipe et ses clés](docs/ragflow/manuel/13-comptes-equipe-et-cles.md) | équipe, profil, clés d'accès, console d'administration |
+| 14 | [Cas pratiques](docs/ragflow/manuel/14-cas-pratiques.md) | assistant documentaire d'entreprise, base alimentée chaque jour |
+| 15 | [En cas de problème](docs/ragflow/manuel/15-en-cas-de-probleme.md) | reconnaître une erreur et appliquer le remède |
+| 16 | [Glossaire](docs/ragflow/manuel/16-glossaire.md) | retrouver la définition simple de chaque terme |
+
+Partie 2 : évaluation et compléments.
+
+| Annexe | Contenu |
+|---|---|
+| [A1. Évaluation : qualité et performances](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md) | banc de 38 questions, réglages qui changent le résultat, préconisations |
+| [A2. Choisir son matériel et ses modèles](docs/ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md) | configurations sans et avec carte graphique, contexte, temps d'attente |
+| [A3. Automatiser par l'API](docs/ragflow/annexes/A3-automatiser-par-l-api.md) | API HTTP, SDK Python, exemples exécutés, défauts contournés |
+| [A4. Exploitation](docs/ragflow/annexes/A4-exploitation.md) | installation détaillée, sauvegarde, mise à jour, journaux, sécurité, administration |
+| [A5. Fonctionnement interne](docs/ragflow/annexes/A5-fonctionnement-interne.md) | RAG, architecture, services, DeepDoc |
+| [A6. Rapport d'essais](docs/ragflow/annexes/A6-rapport-d-essais.md) | méthode, étiquettes, preuves par chapitre, défauts rencontrés |
+| [Carte de l'interface](docs/ragflow/annexes/carte-interface.md) | chaque page et réglage de l'interface, avec son chapitre |
+
+Parcours conseillés : essayer en une heure (chapitres 01 à 04) ; mettre en service pour une équipe (05 à 08, puis 13 et 14) ; améliorer les réponses (06, 08, annexe A1) ; automatiser et exploiter (annexes A3, A4, A5).
 
 ## Architecture
 
@@ -169,43 +206,6 @@ Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](o
 | Speaches, faster-whisper-small | transcription | MIT |
 | Playwright | captures d'écran | Apache License 2.0 |
 | **Ce projet** | manuels, scripts, corpus, banc | MIT — Copyright (c) 2026 floSa |
-
-## Le parcours
-
-Le manuel se lit depuis sa page d'accueil, [docs/ragflow/README.md](docs/ragflow/README.md). Partie 1 : manuel utilisateur, à lire dans l'ordre, sans prérequis technique.
-
-| N° | Chapitre | Ce qu'on saura faire |
-|---|---|---|
-| 01 | [Découvrir RAGFlow](docs/ragflow/manuel/01-decouvrir-ragflow.md) | dire à quoi sert RAGFlow, pour qui et avec quelle machine |
-| 02 | [Installer RAGFlow](docs/ragflow/manuel/02-installer-ragflow.md) | installer sans exposition réseau, démarrer, arrêter, désinstaller |
-| 03 | [Premiers pas](docs/ragflow/manuel/03-premiers-pas.md) | se connecter, passer en français, se repérer, déclarer les modèles |
-| 04 | [Première question en dix minutes](docs/ragflow/manuel/04-premiere-question.md) | obtenir une première réponse citée |
-| 05 | [Ajouter et organiser ses documents](docs/ragflow/manuel/05-ajouter-et-organiser-ses-documents.md) | gérer bases et fichiers, métadonnées, journaux |
-| 06 | [Régler la lecture des documents](docs/ragflow/manuel/06-regler-la-lecture-des-documents.md) | choisir un gabarit, lire un scan, corriger un passage |
-| 07 | [Poser des questions et lire les sources](docs/ragflow/manuel/07-poser-des-questions-et-lire-les-sources.md) | converser, vérifier les sources, « Naive » ou « Agentic », publier |
-| 08 | [Régler un assistant](docs/ragflow/manuel/08-regler-un-assistant.md) | appliquer les réglages qui améliorent les réponses |
-| 09 | [Rechercher dans ses documents](docs/ragflow/manuel/09-rechercher.md) | page de recherche avec résumé et carte mentale |
-| 10 | [Construire un agent](docs/ragflow/manuel/10-agents.md) | agent depuis un modèle, essai, publication, mémoire, MCP |
-| 11 | [Produire des synthèses automatiques](docs/ragflow/manuel/11-syntheses-automatiques.md) | graphe, arbre, frise, carte mentale à la souris |
-| 12 | [Alimenter une base depuis une source externe](docs/ragflow/manuel/12-sources-externes.md) | source « Sitemap », journal de synchronisation, canaux de chat |
-| 13 | [Gérer son compte, son équipe et ses clés](docs/ragflow/manuel/13-comptes-equipe-et-cles.md) | équipe, profil, clés d'accès, console d'administration |
-| 14 | [Cas pratiques](docs/ragflow/manuel/14-cas-pratiques.md) | assistant documentaire d'entreprise, base alimentée chaque jour |
-| 15 | [En cas de problème](docs/ragflow/manuel/15-en-cas-de-probleme.md) | reconnaître une erreur et appliquer le remède |
-| 16 | [Glossaire](docs/ragflow/manuel/16-glossaire.md) | retrouver la définition simple de chaque terme |
-
-Partie 2 : évaluation et compléments.
-
-| Annexe | Contenu |
-|---|---|
-| [A1. Évaluation : qualité et performances](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md) | banc de 38 questions, réglages qui changent le résultat, préconisations |
-| [A2. Choisir son matériel et ses modèles](docs/ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md) | configurations sans et avec carte graphique, contexte, temps d'attente |
-| [A3. Automatiser par l'API](docs/ragflow/annexes/A3-automatiser-par-l-api.md) | API HTTP, SDK Python, exemples exécutés, défauts contournés |
-| [A4. Exploitation](docs/ragflow/annexes/A4-exploitation.md) | installation détaillée, sauvegarde, mise à jour, journaux, sécurité, administration |
-| [A5. Fonctionnement interne](docs/ragflow/annexes/A5-fonctionnement-interne.md) | RAG, architecture, services, DeepDoc |
-| [A6. Rapport d'essais](docs/ragflow/annexes/A6-rapport-d-essais.md) | méthode, étiquettes, preuves par chapitre, défauts rencontrés |
-| [Carte de l'interface](docs/ragflow/annexes/carte-interface.md) | chaque page et réglage de l'interface, avec son chapitre |
-
-Parcours conseillés : essayer en une heure (chapitres 01 à 04) ; mettre en service pour une équipe (05 à 08, puis 13 et 14) ; améliorer les réponses (06, 08, annexe A1) ; automatiser et exploiter (annexes A3, A4, A5).
 
 ## Commandes utiles
 
