@@ -77,3 +77,7 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Objets d'essai : base « Manuel-Prise-en-main », assistant « Manuel-Assistant » et instance « Manuel-instance » supprimés (instance à la souris, les deux autres par `nettoyer_manuel.py`) ; jeu de démonstration intact.
 - Reste pour d'autres lots : `docs/ragflow/img/02-prise-en-main/06-passages.png` (ancienne capture non annotée) n'est plus utilisée que par le manuel 04 ; à remplacer lors de la reprise du manuel 04.
 - Prochaine étape : manuels 03 à 14 (captures annotées), manuel 15 « Applications de recherche ».
+
+### 2026-11-11 12:26 — Manuel 02 : question réelle
+
+- Scénario `prise_en_main` rejoué de zéro après réparation de `vllm-central` : réponse citée de « Manuel-Assistant » (1 150 euros, Q27) en 3,4 s, captures 21 et 22 réelles, mention [À tester] et capture de démonstration retirées ; objets « Manuel-… » supprimés (`nettoyer_manuel.py`).
