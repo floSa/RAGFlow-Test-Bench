@@ -227,8 +227,8 @@ Cliquer sur « Enregistrer » ; « Annuler » abandonne les modifications.
 ## Faire lire un document scanné
 
 **Étape 13. Envoyer le scan**
-*Où* : base ouverte › onglet « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
-Envoyer le fichier avec « Analyser à la création » activé (chapitre 05, étape 3). L'exemple envoie un contrat scanné de deux pages, légèrement de travers, `contrat-batterix-scan.pdf`, avec un compte rendu au format texte.
+*Où* : base « Manuel-DeepDoc » › onglet « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
+Créer d'abord une nouvelle base nommée « Manuel-DeepDoc », avec le gabarit « General » (chapitre 04, étapes 1 et 2). Y envoyer, avec « Analyser à la création » activé (chapitre 05, étape 3), deux fichiers du dossier `corpus/documents/` : le contrat scanné de deux pages, légèrement de travers, `contrat-batterix-scan.pdf`, et le compte rendu au format texte `cse-2025-10-14.md`. La suite du chapitre travaille dans cette base.
 
 ![Analyse en cours](../img/04-deepdoc/01-analyse-en-cours.png)
 *Écran : onglet « Fichiers », analyses en file d'attente.*
@@ -306,7 +306,7 @@ La vue « Résultat du segment » s'ouvre en plein écran : la page du document 
 ## Corriger un passage mal lu
 
 **Étape 18. Mesurer le problème avant de corriger**
-*Où* : base ouverte › menu de gauche › « Test de récupération ».
+*Où* : base « Manuel-DeepDoc » › menu de gauche › « Test de récupération ».
 Saisir une question qui vise l'information mal lue (pastille 1), ici « volume minimal annuel de 40 000 batteries », puis cliquer sur « Test » (pastille 2). Le test cherche les passages sans faire rédiger de réponse (détail au chapitre 08).
 
 ![Test avant correction](../img/04-deepdoc/04-test-avant-correction.png)
@@ -427,7 +427,7 @@ Le nouveau passage (pastille 1) est rattaché au même document.
 *Résultat* : le document compte deux passages.
 
 **Étape 25. Mesurer l'effet**
-*Où* : base ouverte › menu de gauche › « Test de récupération ».
+*Où* : base « Manuel-DeepDoc » › menu de gauche › « Test de récupération ».
 Relancer la même question qu'à l'étape 18.
 
 ![Test après ajout du passage](../img/04-deepdoc/17-test-apres-correction.png)
