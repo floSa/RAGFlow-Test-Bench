@@ -51,7 +51,13 @@ Lancer le diagnostic. Il ne modifie rien : il relève la mémoire, le disque, la
 outils/communs/diagnostic.sh
 ```
 
-*Résultat* : un résumé de la machine s'affiche. Le réglage `vm.max_map_count` doit valoir au moins 262 144 ; s'il est plus bas, le moteur de recherche ne démarrera pas (voir « En cas de problème »).
+*Résultat* : un résumé de la machine s'affiche. Le réglage `vm.max_map_count` doit valoir au moins 262 144 ; s'il est plus bas, le moteur de recherche ne démarrera pas. Pour le lire seul, tel que les conteneurs le voient :
+
+```bash
+docker run --rm --entrypoint cat nginx:alpine /proc/sys/vm/max_map_count
+```
+
+La commande affiche un nombre, par exemple `1048576` sur la machine d'essai : c'est suffisant dès qu'il atteint `262144`. Le moteur de recherche de RAGFlow est Elasticsearch ; sa documentation explique ce réglage : [Virtual memory](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html). Le remède, s'il le faut, est décrit dans « En cas de problème ».
 
 **Étape 4. Installer LLM-Service**
 *Où* : terminal Ubuntu, dossier personnel.
@@ -236,7 +242,7 @@ outils/communs/nettoyer.sh ragflow
 | Symptôme | Cause | Que faire |
 |---|---|---|
 | `vllm-central` redémarre en boucle, journal « No available memory for the cache blocks » (`docker logs vllm-central`) | la carte graphique est déjà occupée en partie par un autre programme | ajouter `VLLM_EXTRA_ARGS=--kv-cache-memory=700000000` au `.env` de LLM-Service, puis `make restart` dans son dossier (étape 4) |
-| Le moteur de recherche ne démarre pas, l'installation attend sans fin | réglage `vm.max_map_count` trop bas (étape 3) | le relever dans la machine virtuelle de Docker ; ce réglage sort du cadre de ce manuel |
+| Le moteur de recherche ne démarre pas, l'installation attend sans fin | réglage `vm.max_map_count` inférieur à 262144 (étape 3) | sous Windows, ajouter au fichier `.wslconfig` du dossier personnel Windows la section `[wsl2]` avec la ligne `kernelCommandLine = "sysctl.vm.max_map_count=262144"`, puis lancer `wsl --shutdown` dans PowerShell et rouvrir Ubuntu ; vérifier ensuite avec la commande de l'étape 3. La machine d'essai n'en a pas eu besoin : ce remède n'a pas été essayé |
 | Le script de désinstallation s'arrête aussitôt (code 126) | les scripts ont perdu leur droit d'exécution, par exemple après extraction d'une archive | lancer `chmod +x outils/communs/*.sh outils/ragflow/*.sh`, puis recommencer |
 | Le port 8088 est déjà pris par un autre programme | conflit d'adresse | changer `SVR_WEB_HTTP_PORT` dans `donnees/ragflow/ragflow.env`, puis redémarrer |
 | La connexion dans le navigateur est refusée (« email and password do not match ») alors que le compte existe | compte créé par un programme qui a envoyé le mot de passe sous une autre forme | recréer le compte avec le script de l'étape 7 ou à la souris (étape 8) |
