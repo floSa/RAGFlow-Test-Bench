@@ -1,0 +1,52 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+Applications de chat
+Créer un chat
+M
+Manuel-Assistant
+
+11/11/2026 10:06:06
+
+DV
+Démo Vélanor
+A helpful Assistant
+
+09/11/2026 17:06:51
+
+Total 2
+1
+50 / Page
+
+== adresse ==
+/chats
+== pastilles ==
+1. Manuel-Assistant
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | Créer un chat
+button | [icône lucide-ellipsis]
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page

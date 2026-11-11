@@ -1,0 +1,69 @@
+Accueil
+Base de connaissances
+Discussion
+Recherche
+Agent
+Mémoire
+Gestion des fichiers
+Français
+BR
+M
+Manuel-Prise-en-main
+0 Fichiers
+Créé 11/11/2026
+Fichiers
+Test de récupération
+Journaux
+Configuration
+Artifacts
+Fichiers
+
+😉 Veuillez attendre la fin de l'analyse de vos fichiers avant de démarrer une discussion avec l'IA.
+
+Ajouter un fichier
+	
+Nom
+	
+Date de téléversement
+	Activé	Nombre de segments	Métadonnées	Analyser		Action
+
+Aucune donnée disponible
+Total 0
+50 / Page
+Téléverser un fichier
+Créer un fichier vide
+
+== adresse ==
+/dataset/files/717a922410584654ae5a7a58ca7f0b9e
+== pastilles ==
+1. Téléverser un fichier
+2. Créer un fichier vide
+== éléments visibles ==
+a | 
+a | Accueil
+a | Base de connaissances
+a | Discussion
+a | Recherche
+a | Agent
+a | Mémoire
+a | Gestion des fichiers
+a | [icône sans nom]
+button | Français
+a | [icône lucide-circle-question-mark]
+button | [icône lucide-moon]
+a | BR
+a | Fichiers
+a | Test de récupération
+a | Journaux
+a | Configuration
+a | Artifacts
+button | [icône lucide-funnel]
+searchbox | Rechercher
+button | Ajouter un fichier
+checkbox | Select all
+button | [icône lucide-arrow-up-down]
+a | Go to previous page
+a | Go to next page
+combobox | 50 / Page
+menuitem | Téléverser un fichier
+menuitem | Créer un fichier vide

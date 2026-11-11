@@ -236,10 +236,11 @@ QUESTION_02 = "Quel est le montant de la prime d'intéressement 2025 ?"
 def prise_en_main(s, *phases):
     """Manuel 02, tout à la souris : connexion, langue, base de connaissances « Manuel-Prise-en-main » créée, deux
     fichiers importés et analysés, passages lus, assistant « Manuel-Assistant » créé et relié, question, citations.
-    Phases (par défaut toutes) : base, assistant, question. Objets « Manuel-… » supprimés ensuite par
+    Phases : base, assistant, saisie (question tapée sans envoi), envoi (demande le modèle de chat), demo (réponse
+    citée déjà présente dans le jeu de démonstration) ; par défaut base, assistant, envoi. Objets « Manuel-… » supprimés ensuite par
     outils/ragflow/nettoyer_manuel.py."""
     m = "02-prise-en-main"
-    phases = phases or ("base", "assistant", "question")
+    phases = phases or ("base", "assistant", "envoi")
     s.aller("/login", 3000)
     champ = lambda n: s.pg.locator(f"input[name={n}]:visible").first
     champ("email").fill(COMPTE["email"]); champ("password").fill(COMPTE["password"])
@@ -257,6 +258,7 @@ def prise_en_main(s, *phases):
                              (nav.get_by_text("Discussion", exact=True), "Discussion"),
                              (bouton(s, "Français"), "Français")])
     for ph in phases:
+        s.aller("/", 2500)  # chaque phase repart de l'accueil (les passages s'ouvrent sans barre du haut)
         globals()["phase_" + ph](s, m, nav)
 
 
@@ -275,7 +277,7 @@ def phase_base(s, m, nav):
                                    (dlg.get_by_role("button", name="Enregistrer"), "Enregistrer")])
     dlg.get_by_role("button", name="Enregistrer").click(); s.pg.wait_for_timeout(4000)
     ajout = bouton(s, "Ajouter un fichier")
-    cap(s, m, "06-base-vide", [(texte(s, BASE_02), BASE_02), (s.pg.get_by_role("link", name="Fichiers").first, "Fichiers"),
+    cap(s, m, "06-base-vide", [(texte(s, BASE_02), BASE_02), (s.pg.get_by_role("link", name="Fichiers", exact=True).first, "Fichiers"),
                                (ajout, "Ajouter un fichier")])
     ajout.click(); s.pg.wait_for_timeout(1200)
     cap(s, m, "07-menu-ajout", [(s.pg.get_by_role("menuitem").filter(has_text=t).first, t)
@@ -359,29 +361,48 @@ def phase_assistant(s, m, nav):
     print("après enregistrement :", s.pg.locator("[data-sonner-toast]").all_inner_texts(), flush=True)
 
 
-def phase_question(s, m, nav):
+def phase_saisie(s, m, nav):
+    """Question tapée dans « Manuel-Assistant », sans l'envoyer."""
     nav.get_by_text("Discussion", exact=True).click(); s.pg.wait_for_timeout(3000)
     texte(s, CHAT_02).click(); s.pg.wait_for_timeout(4000)
     zone = s.pg.get_by_placeholder("Saisissez votre message ici...")
     zone.fill(QUESTION_02)
-    envoi = s.pg.get_by_role("button", name="Send message")
     cap(s, m, "20-question", [
         (texte(s, "Conversations").locator("xpath=following::button[1]"), "nouvelle conversation"),
-        (zone, "zone de saisie"), (s.pg.get_by_role("combobox").filter(has_text="Naive").first, "Naive"), (envoi, "Send message")])
+        (zone, "zone de saisie"), (s.pg.get_by_role("combobox").filter(has_text="Naive").first, "Naive"),
+        (s.pg.get_by_role("button", name="Send message"), "Send message")])
+    return zone
+
+
+def citations(s, m, question):
+    """Réponse citée affichée (captures 21 et 22) ; `question` : texte de la question dans la conversation."""
+    renvoi = s.pg.get_by_text("[1]", exact=True).first
+    cap(s, m, "21-reponse-citee", [
+        (s.pg.get_by_text(question).last, "question"), (renvoi, "[1]"),
+        (s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).first, "jetons et durée"),
+        (s.pg.get_by_role("button").filter(has_text=re.compile(r"\.(pdf|md|html)|…")).first, "document cité")])
+    renvoi.hover(); s.pg.wait_for_timeout(2000)
+    bulle = s.pg.locator("[data-radix-popper-content-wrapper]").last
+    cap(s, m, "22-citation", [(bulle, "extrait cité")])
+
+
+def phase_envoi(s, m, nav):
+    """Envoi de la question à « Manuel-Assistant » : demande le modèle de chat (vllm-central)."""
+    phase_saisie(s, m, nav)
     t0 = time.time()
-    envoi.click()
+    s.pg.get_by_role("button", name="Send message").click()
     s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).first.wait_for(timeout=300000)
     s.pg.wait_for_timeout(1500)
     print(f"réponse affichée après {time.time() - t0:.1f} s (horloge du navigateur)", flush=True)
-    renvoi = s.pg.get_by_text("[1]", exact=True).first
-    cap(s, m, "21-reponse", [
-        (s.pg.get_by_text(QUESTION_02).last, "question"), (renvoi, "[1]"),
-        (s.pg.get_by_text(re.compile(r"tokens \(\d+ input")).first, "jetons et durée"),
-        (s.pg.get_by_role("button").filter(has_text=re.compile(r"cse|faq")).first, "document cité"),
-        (texte(s, "Conversations").locator("xpath=following::button[normalize-space()][2]"), "conversation créée")])
-    renvoi.hover(); s.pg.wait_for_timeout(2000)
-    bulle = s.pg.locator("[data-radix-popper-content-wrapper], [role=tooltip], [role=dialog]").last
-    cap(s, m, "22-citation", [(bulle, "extrait cité")])
+    citations(s, m, QUESTION_02)
+
+
+def phase_demo(s, m, nav):
+    """Réponse citée déjà présente : conversation « Contrat Batterix » de l'assistant « Démo Vélanor » (lecture seule)."""
+    nav.get_by_text("Discussion", exact=True).click(); s.pg.wait_for_timeout(3000)
+    texte(s, "Démo Vélanor").click(); s.pg.wait_for_timeout(4000)
+    texte(s, "Contrat Batterix").click(); s.pg.wait_for_timeout(4000)
+    citations(s, m, "Quel est le prix unitaire des batteries")
 
 
 def decoupage(s):

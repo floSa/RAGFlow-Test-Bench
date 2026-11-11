@@ -1,0 +1,72 @@
+Retour
+cse-2025-10-14.md
+Taille
+548 bytes
+Date de téléversement
+11/11/2026 11:05:36
+Aperçu
+Artifact
+Compte rendu de la réunion du CSE du 14 octobre 2025
+
+Document fictif.
+
+Participants
+
+Hélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), sept élus.
+
+Décisions
+Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026.
+Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles.
+Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026.
+Points reportés
+
+La question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre.
+
+Résultat du segment
+Affiche les segments utilisés pour l'embedding et la récupération.
+Texte complet
+Ellipse
+Tout sélectionner
+Texte
+# Compte rendu de la réunion du CSE du 14 octobre 2025
+Document fictif.
+Texte
+## Participants
+Hélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), sept élus.
+Texte
+## Décisions
+- Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026.
+- Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles.
+- Le nouveau restaurant d'entreprise du site de Nantes ouvrira en janvier 2026.
+Texte
+## Points reportés
+La question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre.
+Total 4
+1
+50 / Page
+
+== adresse ==
+/chunk/parsed/chunks?id=717a922410584654ae5a7a58ca7f0b9e&doc_id=c7c85d00489a4db29c68e58ca10d2c74
+== pastilles ==
+1. Aperçu
+2. passage
+3. activation du passage
+4. Texte complet, Ellipse
+5. ajouter un passage
+6. Retour
+== éléments visibles ==
+button | Retour
+button | Aperçu
+button | Artifact
+button | Texte complet
+button | Ellipse
+button | [icône lucide-funnel]
+input:text | Rechercher
+button | [icône lucide-plus]
+label | Tout sélectionner
+checkbox | 
+switch | 
+a | Go to previous page
+a | 1
+a | Go to next page
+combobox | 50 / Page
