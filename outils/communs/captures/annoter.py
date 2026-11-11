@@ -37,7 +37,13 @@ CLASSE = "rag-annotation-manuel"
 
 def _boite(page, loc, n=None, masque=False):
     loc.wait_for(state="visible", timeout=15000)
+    loc.scroll_into_view_if_needed(timeout=5000)
     b = loc.bounding_box()
+    vw, vh = page.evaluate("[window.innerWidth, window.innerHeight]")
+    # un élément sans taille ou hors de la fenêtre donnerait une pastille flottante sans rectangle : erreur explicite
+    if not b or b["width"] < 2 or b["height"] < 2 or b["x"] + b["width"] < 0 or b["y"] + b["height"] < 0 \
+            or b["x"] > vw or b["y"] > vh:
+        raise ValueError(f"élément {n or 'masqué'} invisible ou hors de la fenêtre : {b} ; locator {loc}")
     sx, sy = page.evaluate("[window.scrollX, window.scrollY]")
     return {"x": b["x"] + sx, "y": b["y"] + sy, "w": b["width"], "h": b["height"], "n": n, "masque": masque}
 
