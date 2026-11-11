@@ -44,7 +44,7 @@ Cliquer sur « English » (pastille 1), puis sur « Français » (pastille 2) da
 
 **Étape 3. Vérifier le changement**
 *Où* : accueil.
-Les libellés de la barre du haut sont maintenant en français, et le menu de langue affiche « Français » (pastille 3).
+Les libellés de la barre du haut sont maintenant en français, et le menu de langue affiche « Français » (pastille 3). Les captures de ce manuel viennent d'un compte qui contient déjà des objets (les bases, l'assistant et l'agent de démonstration, créés aux chapitres 05 et 10) ; sur un compte neuf, l'accueil et les listes sont vides, avec des messages comme « Aucun chat créé pour le moment ».
 
 ![Accueil en français](../img/02-prise-en-main/03-accueil.png)
 *Écran : accueil, interface en français.*
