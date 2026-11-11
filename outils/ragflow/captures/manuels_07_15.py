@@ -425,7 +425,7 @@ def compilation_autres(s, *quels):
                 log(f"artefact {k} (API) :", json.dumps(r, ensure_ascii=False)[:2500])
 
 
-def compilation_echec(s):
+def compilation_echec(s, relancer=True):
     """Base « Manuel-KC-Wiki » en échec : fichier, onglet « Journaux », détail de la tâche ; analyse relancée une fois."""
     m = M07
     base = "Manuel-KC-Wiki"
@@ -439,7 +439,7 @@ def compilation_echec(s):
     t = s.pg.locator("tbody tr").first
     t.hover(); attendre(s, 600)
     oeil = t.locator("td").last.locator("button").first
-    cap(s, m, "31-journaux-echec", [(s.pg.get_by_text("Échec", exact=True).first.locator("xpath=.."), "Échec"),
+    cap(s, m, "31-journaux-echec", [(s.pg.get_by_text("Échec", exact=True).last.locator("xpath=.."), "Échec"),
                                     (t.locator("td").nth(3), "Pipeline d'ingestion"),
                                     (t.get_by_text("Failed").first, "Failed"), (oeil, "détail")])
     oeil.click(); attendre(s, 1500)
@@ -447,6 +447,8 @@ def compilation_echec(s):
     log("détail de la tâche en échec :", dlg.inner_text().replace("\n", " | ")[:1500])
     cap(s, m, "32-detail-de-l-echec", [(dlg.get_by_text("Détails").first.locator("xpath=.."), "Détails")])
     s.pg.keyboard.press("Escape"); attendre(s, 800)
+    if not relancer:
+        return
     s.pg.get_by_role("link", name="Fichiers", exact=True).first.click(); attendre(s, 2500)
     ligne(s, DOC_07).get_by_test_id("document-parse-toggle").click(); attendre(s, 1500)
     conf = s.pg.get_by_role("alertdialog").or_(s.pg.get_by_role("dialog"))
@@ -457,25 +459,36 @@ def compilation_echec(s):
 
 
 def compilation_vues(s):
-    """Vue de chaque type, remplie, dans la base qui le compile ; carte mentale de la base de démonstration."""
+    """Vues « Tree/PageIndex » et « Timeline » remplies ; carte mentale de la base de démonstration (lecture seule)."""
     m = M07
-    for i, (gabarit, vue) in enumerate(AUTRES, 30):
-        artefacts_page(s, f"Manuel-KC-{gabarit}")
-        choisir_vue(s, vue)
-        nom = f"{i}-vue-{gabarit.lower()}"
-        corps = s.pg.locator("main, body").first.inner_text()
-        log(f"vue {vue} de Manuel-KC-{gabarit} :", corps[:1500].replace("\n", " | "))
-        cap(s, m, nom, [(s.pg.get_by_role("combobox").first, vue)])
+    artefacts_page(s, "Manuel-KC-Tree")
+    choisir_vue(s, "Tree/PageIndex")
+    log("vue Tree :", s.pg.locator("body").inner_text()[:1500].replace("\n", " | "))
+    arbre = s.pg.get_by_text(re.compile(r"^Navigation tree")).first
+    cap(s, m, "33-vue-tree", [(s.pg.get_by_role("combobox").first, "Tree/PageIndex"), (arbre, "Navigation tree"),
+                              (s.pg.get_by_placeholder("Rechercher").first, "Rechercher")])
+    cible = s.pg.get_by_text(re.compile(r" [0-9a-f]{8}$")).first
+    cible.click(); attendre(s, 2500)
+    log("détail d'un nœud :", s.pg.locator("body").inner_text()[:2500].replace("\n", " | "))
+    cap(s, m, "34-detail-d-un-noeud", [(cible, "nœud de l'arbre"),
+                                       (s.pg.get_by_text("Décisions du CSE").last.locator("xpath=.."), "détail")])
+    artefacts_page(s, "Manuel-KC-Timeline")
+    choisir_vue(s, "Timeline")
+    log("vue Timeline :", s.pg.locator("body").inner_text()[:1500].replace("\n", " | "))
+    cap(s, m, "35-vue-timeline", [(s.pg.get_by_role("combobox").first, "Timeline"),
+                                  (s.pg.get_by_text("14 octobre 2025").first, "14 octobre 2025")])
     artefacts_page(s, DEMO_KC)
     choisir_vue(s, "Mind map")
-    cap(s, m, "34-carte-mentale-demo", [(s.pg.get_by_role("combobox").first, "Mind map"),
+    cap(s, m, "36-carte-mentale-demo", [(s.pg.get_by_role("combobox").first, "Mind map"),
                                         (s.pg.locator("svg").filter(visible=True).last, "carte mentale")])
 
 
 def compilation(s, *phases):
     if phases and phases[0] == "autres":
         return compilation_autres(s, *phases[1:])
-    for ph in phases or ("operateur", "pipeline", "base", "configuration", "import", "artefacts", "autres", "vues"):
+    if phases == ("echec", "sans-relance"):
+        return compilation_echec(s, relancer=False)
+    for ph in phases or ("operateur", "pipeline", "base", "configuration", "import", "artefacts", "autres", "echec", "vues"):
         log("== phase", ph)
         globals()["compilation_" + ph](s)
 
