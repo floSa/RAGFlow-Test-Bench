@@ -1033,6 +1033,134 @@ def sources(s, *phases):
         globals()["sources_" + ph](s)
 
 
+# ---------------------------------------------------------------- manuel 15
+
+M15 = "15-recherche"
+RECH_15 = "Manuel-Recherche"
+Q_15 = "Quel est le montant de la prime d'intéressement ?"
+
+
+def ouvrir_recherche(s):
+    s.aller("/searches", 2500)
+    texte(s, RECH_15).click(); attendre(s, 3500)
+
+
+def recherche_creation(s):
+    """Page « Recherche » vide, création de « Manuel-Recherche »."""
+    m = M15
+    s.aller("/searches", 2500)
+    vide = s.pg.get_by_text("Aucune recherche créée", exact=False).first
+    plus = vide.locator("xpath=..").locator("svg").last
+    cap(s, m, "01-recherche-vide", [(vide, "Aucune recherche créée pour le moment"), (plus, "+")])
+    plus.click(); attendre(s, 1500)
+    dlg = s.pg.get_by_role("dialog")
+    nom = dlg.locator("input").first
+    nom.fill(RECH_15)
+    cap(s, m, "02-creer-une-recherche", [(nom, "Nom"), (dlg.get_by_role("button", name="Enregistrer"), "Enregistrer")])
+    dlg.get_by_role("button", name="Enregistrer").click(); attendre(s, 4000)
+    log("recherche créée :", s.pg.url.replace(URL, ""))
+
+
+def recherche_reglages(s):
+    """Panneau « Paramètres de recherche » : base, recherche, modèle, résumé, recherche connexe, carte mentale."""
+    m = M15
+    ouvrir_recherche(s)
+    if not s.pg.get_by_text("Paramètres de recherche").count():
+        s.pg.locator("button:has(svg.lucide-settings)").last.click(); attendre(s, 1500)
+    lab = lambda x: s.pg.locator("label").filter(has_text=x).first
+    bases = lab("Bases de connaissances").locator("xpath=following::button[1]")
+    cap(s, m, "03-parametres-de-recherche", [
+        (s.pg.get_by_text("Paramètres de recherche", exact=True).first, "Paramètres de recherche"),
+        (bouton(s, "Télécharger"), "Télécharger"), (bouton(s, "Edit Nom"), "nom et description"),
+        (lab("Bases de connaissances"), "Bases de connaissances"), (lab("Seuil de similarité"), "Seuil de similarité"),
+        (lab("Poids de similarité par mots-clés"), "Poids de similarité par mots-clés")])
+    bases.click(); attendre(s, 1000)
+    dv = s.pg.get_by_text("Démo Vélanor").last
+    dv.click(); attendre(s, 800); s.pg.keyboard.press("Escape"); attendre(s, 500)
+    for x in ("Résumé IA", "Activer la recherche connexe", "Afficher la carte mentale de la requête"):
+        sw = lab(x).locator("xpath=preceding-sibling::button[@role='switch'][1] | following-sibling::button[@role='switch'][1] | ..//button[@role='switch']").first
+        haut(lab(x))
+        if sw.get_attribute("aria-checked") != "true":
+            sw.click(); attendre(s, 600)
+    modele = lab("Modèle").locator("xpath=following::button[1]")
+    haut(lab("Modèle de réordonnancement"))
+    log("panneau après réglages :", s.pg.locator("body").inner_text()[-1500:].replace("\n", " | "))
+    if "gemma" not in modele.inner_text():
+        modele.click(); attendre(s, 1000)
+        s.pg.get_by_text("gemma4:e4b").last.click(); attendre(s, 800)
+    haut(lab("Activer la recherche connexe"))
+    cap(s, m, "04-reglages-du-resume", [(modele, "Modèle"), (lab("Résumé IA"), "Résumé IA"),
+                                        (lab("Activer la recherche connexe"), "Activer la recherche connexe"),
+                                                (lab("Afficher la carte mentale de la requête"), "Afficher la carte mentale de la requête"),
+                                                (bouton(s, "Enregistrer"), "Enregistrer")])
+    bouton(s, "Enregistrer").click(); attendre(s, 3000)
+    log("après Enregistrer :", s.pg.locator("body").inner_text()[:600].replace("\n", " | "))
+
+
+def recherche_question(s):
+    """Une recherche réelle : résumé IA, passages, recherches connexes, carte mentale ; intégration ; liste."""
+    m = M15
+    ouvrir_recherche(s)
+    if s.pg.get_by_text("Paramètres de recherche").count():
+        s.pg.locator("svg.lucide-x").filter(visible=True).first.click(); attendre(s, 800)
+    zone = s.pg.get_by_placeholder("Comment puis-je vous aider ?")
+    zone.fill(Q_15)
+    cap(s, m, "05-saisie", [(zone, "Comment puis-je vous aider ?"), (s.pg.locator("button:has(svg.lucide-search)").first, "rechercher"),
+                            (s.pg.locator("button:has(svg.lucide-send)").first, "intégrer"), (s.pg.locator("button:has(svg.lucide-settings)").last, "paramètres")])
+    t0 = time.time()
+    zone.press("Enter")
+    s.pg.get_by_text(re.compile(r"1 ?150")).first.wait_for(timeout=180000)
+    log(f"premiers passages en {time.time() - t0:.1f} s")
+    s.pg.get_by_text("Recherche connexe").first.wait_for(timeout=180000)
+    log(f"recherches connexes affichées après {time.time() - t0:.1f} s")
+    attendre(s, 3000)
+    log("page de résultats :", s.pg.locator("body").inner_text()[:1500].replace("\n", " | "))
+    resume = s.pg.get_by_text("Résumé IA", exact=True).first
+    cap(s, m, "06-resultats", [(resume.locator("xpath=following::div[1]"), "Résumé IA"),
+                               (s.pg.get_by_role("button").filter(has_text="Fichiers").first, "Fichiers"),
+                               (s.pg.get_by_role("combobox").filter(has_text="Top").first, "Top 10"),
+                               (s.pg.get_by_text(re.compile(r"^Total: \d+")).first, "Total"),
+                               (s.pg.get_by_text("cse-2025-10-14.md").first, "document source")])
+    connexe = s.pg.get_by_text("Recherche connexe").first
+    centre(connexe)
+    cap(s, m, "07-recherche-connexe", [(connexe, "Recherche connexe"),
+                                       (s.pg.get_by_role("button").filter(has_text="Comment calculer").first, "question proposée")])
+    s.pg.locator("button:has(svg.lucide-list-tree)").first.click()
+    t1 = time.time()
+    titre = s.pg.get_by_text("Carte mentale", exact=True).first
+    titre.wait_for(timeout=60000)
+    s.pg.get_by_text(re.compile("Pénalités|Prime|Inventaire")).last.wait_for(timeout=180000)
+    attendre(s, 3000)
+    log(f"carte mentale affichée après {time.time() - t1:.1f} s")
+    croix = s.pg.locator("svg.lucide-x").filter(visible=True).last
+    cap(s, m, "08-carte-mentale", [(titre, "Carte mentale"), (croix, "fermer")])
+    croix.click(); attendre(s, 800)
+    s.pg.keyboard.press("Escape"); attendre(s, 800)
+    s.pg.locator("button:has(svg.lucide-send)").first.click(); attendre(s, 2000)
+    dlg = s.pg.get_by_role("dialog").last
+    log("fenêtre d'intégration :", re.sub(r"auth=[0-9A-Za-z_-]+", "auth=<masqué>", dlg.inner_text().replace("\n", " | ")[:1500]))
+    jetons = [c for c in dlg.locator("input:visible, textarea:visible, pre:visible, code:visible").all()
+              if re.search(r"(auth|token|ragflow-)[=:\w-]{8,}", c.input_value() if c.evaluate("e => 'value' in e") else c.inner_text())]
+    labs = [l for l in dlg.locator("label").all() if l.is_visible() and l.inner_text().strip()][:4]
+    cap(s, m, "09-integrer", [(l, l.inner_text().strip()) for l in labs], masques=jetons)
+    caviarder(m, "09-integrer")
+    s.pg.keyboard.press("Escape"); attendre(s, 800)
+    s.aller("/searches", 2500)
+    carte = texte(s, RECH_15).locator("xpath=ancestor::div[.//button][1]")
+    carte.hover(); attendre(s, 600)
+    carte.locator("button").last.click(); attendre(s, 1000)
+    log("menu de la carte :", popover(s).inner_text().replace("\n", " | "))
+    items = popover(s).get_by_role("menuitem").all()[:3]
+    cap(s, m, "10-liste-et-menu", [(texte(s, RECH_15), RECH_15)] + [(i, i.inner_text().strip()) for i in items])
+    s.pg.keyboard.press("Escape")
+
+
+def recherche(s, *phases):
+    for ph in phases or ("creation", "reglages", "question"):
+        log("== phase", ph)
+        globals()["recherche_" + ph](s)
+
+
 if __name__ == "__main__":
     scenario, *args = sys.argv[1:]
     with sync_playwright() as p:
