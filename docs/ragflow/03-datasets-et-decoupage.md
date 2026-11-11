@@ -40,14 +40,7 @@ But : créer une base « Manuel-Decoupage » en choisissant son gabarit de déco
 | 3 | « Créer une base de connaissances » | ouvre la fenêtre de création (étape 3) |
 | 4 | menu « … » de la carte | menu de la base (étape 2), visible au survol de la carte |
 
-2. Le menu « … » d'une carte propose deux actions. Il sert à renommer une base sans l'ouvrir, ou à la supprimer avec ses fichiers et ses passages. Appuyer sur Échap pour le refermer.
-
-![Menu d'une base](img/03-datasets-et-decoupage/02-menu-d-une-base.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Renommer » | change le nom de la base |
-| 2 | « Supprimer » | supprime la base, après confirmation ; irréversible |
+2. Le menu « … » d'une carte propose deux actions : « Renommer » change le nom de la base sans l'ouvrir ; « Supprimer » supprime la base avec ses fichiers et ses passages, après confirmation (irréversible). Appuyer sur Échap pour le refermer.
 
 3. Cliquer sur « Créer une base de connaissances », saisir le nom, puis ouvrir la liste du gabarit.
 
@@ -60,7 +53,7 @@ But : créer une base « Manuel-Decoupage » en choisissant son gabarit de déco
 | 3 | gabarit | gabarit de découpage de la base, « General (built in) » par défaut |
 | 4 | « Enregistrer » | crée la base et l'ouvre |
 
-4. La liste propose les pipelines d'ingestion créés dans « Agent » (ici « Essai-KC-mind_map-1835 », manuel [07](07-knowledge-compilation.md)) puis les douze gabarits intégrés, marqués « (built in) ». Choisir « General », puis cliquer sur « Enregistrer ».
+4. La liste propose les pipelines d'ingestion créés dans « Agent » (ici « Essai-KC-mind_map-1835 », manuel [07](07-knowledge-compilation.md)) puis les douze gabarits intégrés, marqués « (built in) ». Choisir « General », puis cliquer sur « Enregistrer ». La même liste revient pour le gabarit d'un fichier (section 3) et dans l'onglet « Configuration » (section 5).
 
 ![Liste des gabarits](img/03-datasets-et-decoupage/04-liste-des-gabarits.png)
 
@@ -105,35 +98,11 @@ But : importer trois fichiers avec analyse immédiate, lire le tableau des fichi
 | 5 | « Métadonnées » | nombre de champs de métadonnées du fichier (« 0 fields »), modifiables (section 4) |
 | 6 | « Analyser » | gabarit du fichier, bouton de lancement ou de relance, et état de l'analyse (section 3) |
 
-3. Survoler une ligne fait apparaître ses actions dans la colonne « Action » ; survoler l'œil affiche les propriétés du fichier.
+3. Survoler une ligne fait apparaître ses actions dans la colonne « Action » : le crayon renomme le fichier (étape 4) ; l'œil affiche au survol les propriétés du fichier (date de création, nom, taille, type, date de mise à jour) ; la flèche vers le bas télécharge le fichier d'origine ; la corbeille supprime le fichier et ses passages, après confirmation (section 4, étape 4). La page « Gestion des fichiers » présente les mêmes icônes (capture de la section 7, étape 4).
 
-![Actions d'un fichier](img/03-datasets-et-decoupage/07-actions-d-un-fichier.png)
+4. Cliquer sur le crayon : la fenêtre « Renommer » ne contient qu'un champ « Nom » et le bouton « Enregistrer », comme la fenêtre de création (section 1, étape 3). Ici le tableur devient `stocks-octobre-2025-manuel.xlsx`. Garder l'extension : elle indique le format du fichier. Les passages ne sont pas recalculés.
 
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | crayon | renomme le fichier (étape 4) |
-| 2 | œil | affiche les propriétés au survol |
-| 3 | propriétés du fichier | date de création, nom, taille, type, date de mise à jour |
-| 4 | flèche vers le bas | télécharge le fichier d'origine |
-| 5 | corbeille | supprime le fichier et ses passages, après confirmation (section 4) |
-
-4. Cliquer sur le crayon, saisir le nouveau nom, puis « Enregistrer ». Ici le tableur devient `stocks-octobre-2025-manuel.xlsx`. Garder l'extension : elle indique le format du fichier.
-
-![Renommer un fichier](img/03-datasets-et-decoupage/08-renommer.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Nom » | nouveau nom du fichier |
-| 2 | « Enregistrer » | applique le nom ; les passages ne sont pas recalculés |
-
-5. Cliquer sur l'interrupteur « Activé » d'un fichier pour l'écarter des réponses sans le supprimer, par exemple un document périmé en attente de sa nouvelle version. Le message « Modifié » confirme. Un second clic le réactive.
-
-![Fichier désactivé](img/03-datasets-et-decoupage/09-fichier-desactive.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | interrupteur « Activé » | désactivé (gris) : le fichier n'est plus interrogé |
-| 2 | « cse-2025-10-14.md » | fichier concerné ; ses passages restent stockés |
+5. Cliquer sur l'interrupteur « Activé » d'un fichier pour l'écarter des réponses sans le supprimer, par exemple un document périmé en attente de sa nouvelle version. L'interrupteur passe au gris et le message « Modifié » confirme ; le fichier n'est plus interrogé mais ses passages restent stockés. Un second clic le réactive.
 
 ### Pour aller plus loin
 
@@ -146,32 +115,9 @@ But : importer trois fichiers avec analyse immédiate, lire le tableau des fichi
 
 But : passer le tableur au gabarit « Table » (une ligne de tableur par passage) sans changer le reste de la base, puis relancer l'analyse d'un autre fichier.
 
-1. Dans la colonne « Analyser », cliquer sur le nom du gabarit du fichier (« General »). Un menu à une entrée s'ouvre.
+1. Dans la colonne « Analyser », cliquer sur le nom du gabarit du fichier (« General »). Un menu à une seule entrée, « Changer ou configurer le pipeline d'ingestion. », ouvre la fenêtre « Mode d'analyse » propre à ce fichier. Elle reprend les réglages de l'onglet « Configuration » (section 5), mais pour ce fichier seulement, et affiche son gabarit actuel, « General (built in) ».
 
-![Menu du gabarit d'un fichier](img/03-datasets-et-decoupage/10-menu-du-gabarit.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Changer ou configurer le pipeline d'ingestion. » | ouvre la fenêtre de gabarit propre à ce fichier |
-
-2. La fenêtre « Mode d'analyse » reprend les réglages de l'onglet « Configuration » (section 5), mais pour ce fichier seulement. Ouvrir la liste du gabarit.
-
-![Fenêtre du gabarit d'un fichier](img/03-datasets-et-decoupage/11-fenetre-du-gabarit.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Mode d'analyse » | fenêtre de réglage du fichier |
-| 2 | gabarit du fichier | gabarit actuel, « General (built in) » |
-
-3. Choisir « Table ».
-
-![Choix du gabarit Table](img/03-datasets-et-decoupage/12-choix-table.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Table » | gabarit des tableurs : chaque ligne devient un passage, avec les en-têtes de colonnes |
-
-4. Les onglets s'adaptent au gabarit (« Parser », « Table Chunker », « Indexer »). Cliquer sur « Enregistrer ».
+2. Ouvrir la liste du gabarit (la même qu'à la création, section 1, étape 4) et choisir « Table » : chaque ligne du tableur devient un passage, avec les en-têtes de colonnes. Les onglets s'adaptent au gabarit (« Parser », « Table Chunker », « Indexer »). Cliquer sur « Enregistrer ».
 
 ![Gabarit Table choisi](img/03-datasets-et-decoupage/13-gabarit-table-choisi.png)
 
@@ -180,7 +126,7 @@ But : passer le tableur au gabarit « Table » (une ligne de tableur par passage
 | 1 | « Table (built in) » | gabarit retenu pour ce fichier |
 | 2 | « Enregistrer » | enregistre le gabarit du fichier |
 
-5. Comme le fichier a déjà des passages, RAGFlow propose de les effacer et de réanalyser le fichier avec le nouveau gabarit. Cliquer sur « Oui ». « Non » garde le gabarit enregistré sans réanalyser : les anciens passages restent jusqu'à la prochaine analyse.
+3. Comme le fichier a déjà des passages, RAGFlow propose de les effacer et de réanalyser le fichier avec le nouveau gabarit. Cliquer sur « Oui ». « Non » garde le gabarit enregistré sans réanalyser : les anciens passages restent jusqu'à la prochaine analyse.
 
 ![Confirmation de réanalyse](img/03-datasets-et-decoupage/14-confirmer-reanalyse.png)
 
@@ -189,32 +135,9 @@ But : passer le tableur au gabarit « Table » (une ligne de tableur par passage
 | 1 | « Analyser le fichier » | fenêtre de confirmation (texte en anglais : les passages existants seront effacés) |
 | 2 | « Oui » | efface les passages et relance l'analyse avec le nouveau gabarit |
 
-6. Le tableur passe de 2 passages avec « General » à 10 avec « Table », relevé 3 s après la confirmation. [Vérifié] (`outils/resultats/ragflow/captures/03-datasets-et-decoupage/scenario.log`)
+4. Le tableur passe de 2 passages avec « General » à 10 avec « Table », relevé 3 s après la confirmation. [Vérifié] (`outils/resultats/ragflow/captures/03-datasets-et-decoupage/scenario.log`) Dans le tableau des fichiers (section 2, étape 2), sa colonne « Analyser » affiche « Table » (les autres fichiers restent en « General ») et « Nombre de segments » indique 10, un passage par ligne du classeur.
 
-![Gabarit Table appliqué](img/03-datasets-et-decoupage/15-gabarit-table-applique.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Table » | gabarit propre à ce fichier ; les autres restent en « General » |
-| 2 | « Nombre de segments » | 10 passages, un par ligne du classeur |
-
-7. Pour relancer l'analyse d'un fichier avec le même gabarit (après un changement de réglage de la base, par exemple), cliquer sur son icône de relance.
-
-![Relancer l'analyse](img/03-datasets-et-decoupage/16-relancer-l-analyse.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | icône de relance | relance l'analyse du fichier |
-| 2 | point d'état | vert : analyse réussie ; un clic ouvre le journal de l'analyse (même fenêtre qu'en section 6, étape 2) |
-
-8. Confirmer. Les passages existants sont effacés puis recalculés ; pour ce document court, l'analyse est finie en moins de 3 s. [Vérifié] (même journal)
-
-![Confirmation de la relance](img/03-datasets-et-decoupage/17-confirmer-la-relance.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Analyser le fichier » | confirmation (« Are you sure to clear chunks to re-parse? ») |
-| 2 | « Confirmer » | efface les passages et relance l'analyse |
+5. Pour relancer l'analyse d'un fichier avec le même gabarit (après un changement de réglage de la base, par exemple), cliquer sur son icône de relance dans la colonne « Analyser ». Le point d'état voisin est vert quand l'analyse a réussi ; un clic dessus ouvre le journal de l'analyse (même fenêtre qu'en section 6, étape 2). La fenêtre « Analyser le fichier », semblable à celle de l'étape 3, demande « Are you sure to clear chunks to re-parse? » : cliquer sur « Confirmer ». Les passages existants sont effacés puis recalculés ; pour ce document court, l'analyse est finie en moins de 3 s. [Vérifié] (même journal)
 
 ### Pour aller plus loin
 
@@ -250,49 +173,15 @@ But : connaître les autres gestes de la page « Fichiers ».
 | 5 | « Métadonnées » | modifie leurs métadonnées en une fois |
 | 6 | « Supprimer » | les supprime, après confirmation |
 
-3. Le filtre (entonnoir) restreint le tableau, utile dans une grande base pour retrouver les fichiers en échec ou d'un type donné. Appuyer sur Échap pour le refermer.
+3. Le filtre (entonnoir) restreint le tableau, utile dans une grande base pour retrouver les fichiers en échec ou d'un type donné. Il propose « Type de fichier » (ne garde qu'un format), « Statut » (ne garde qu'un état d'analyse : réussi, en échec…) et « Champ de métadonnée » (ne garde que les fichiers portant un champ donné) ; « Soumettre » applique le filtre, « Effacer » le retire. Appuyer sur Échap pour le refermer.
 
-![Filtre des fichiers](img/03-datasets-et-decoupage/20-filtre-des-fichiers.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Type de fichier » | ne garde qu'un format |
-| 2 | « Statut » | ne garde qu'un état d'analyse (réussi, en échec…) |
-| 3 | « Champ de métadonnée » | ne garde que les fichiers portant un champ donné |
-| 4 | « Soumettre » | applique le filtre ; « Effacer » le retire |
-
-4. « Ajouter un fichier », puis « Créer un fichier vide » crée un document sans contenu, à remplir ensuite de passages saisis à la main (« + » de la page des passages, manuel [04](04-deepdoc.md)). Saisir un nom, puis « Enregistrer ».
-
-![Créer un fichier vide](img/03-datasets-et-decoupage/21-fichier-vide.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Nom » | nom du document, ici « Manuel-note.txt » |
-| 2 | « Enregistrer » | crée le document vide |
-
-5. Le document apparaît avec 0 segment et sans bouton d'analyse (rien à analyser). Pour le supprimer, survoler sa ligne et cliquer sur la corbeille.
-
-![Fichier vide créé](img/03-datasets-et-decoupage/22-fichier-vide-cree.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Manuel-note.txt » | document vide créé |
-| 2 | corbeille | supprime le document |
-
-6. Confirmer la suppression.
-
-![Confirmation de suppression](img/03-datasets-et-decoupage/23-suppression-d-un-fichier.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | fenêtre de confirmation | rappelle le fichier visé |
-| 2 | « Supprimer » | supprime le fichier et ses passages ; irréversible |
+4. « Ajouter un fichier », puis « Créer un fichier vide » crée un document sans contenu, à remplir ensuite de passages saisis à la main (« + » de la page des passages, manuel [04](04-deepdoc.md)). La fenêtre « Nom du fichier » ne demande qu'un « Nom », ici « Manuel-note.txt », puis « Enregistrer ». Le document apparaît avec 0 segment et sans bouton d'analyse (rien à analyser). Pour le supprimer, survoler sa ligne, cliquer sur la corbeille, puis sur « Supprimer » dans la fenêtre de confirmation : le fichier et ses passages sont supprimés, de façon irréversible.
 
 ## 5. L'onglet « Configuration », réglage par réglage
 
 ### Essentiel
 
-But : comprendre chaque réglage de la base, et en modifier deux (langue et description) à titre d'exemple. Les réglages de découpage ne s'appliquent qu'aux analyses suivantes : relancer l'analyse des fichiers déjà traités pour qu'ils en tiennent compte (section 3, étape 7).
+But : comprendre chaque réglage de la base, et en modifier deux (langue et description) à titre d'exemple. Les réglages de découpage ne s'appliquent qu'aux analyses suivantes : relancer l'analyse des fichiers déjà traités pour qu'ils en tiennent compte (section 3, étape 5).
 
 1. Cliquer sur « Configuration » dans le menu de gauche de la base. La partie « Informations de base » s'affiche en premier.
 
@@ -309,20 +198,7 @@ But : comprendre chaque réglage de la base, et en modifier deux (langue et desc
 
 2. Ouvrir « Langue » et choisir « French » pour un corpus français.
 
-![Choix de la langue](img/03-datasets-et-decoupage/25-langue.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « French » | langue des documents de la base |
-
-3. « Autorisations » propose deux valeurs. Garder « Moi uniquement » sur un poste personnel ; « Équipe » sert quand plusieurs comptes partagent l'instance (manuel [13](13-exploitation.md)).
-
-![Autorisations](img/03-datasets-et-decoupage/26-autorisations.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Moi uniquement » | seul le propriétaire gère la base |
-| 2 | « Équipe » | tous les membres de l'équipe peuvent gérer la base |
+3. « Autorisations » propose deux valeurs : « Moi uniquement » (seul le propriétaire gère la base) et « Équipe » (tous les membres de l'équipe peuvent la gérer). Garder « Moi uniquement » sur un poste personnel ; « Équipe » sert quand plusieurs comptes partagent l'instance (manuel [13](13-exploitation.md)).
 
 4. Plus bas, « Rang de page » et le pipeline d'ingestion. Le « Mode d'analyse » est le gabarit de la base ; ses quatre onglets détaillent ses étapes.
 
@@ -332,69 +208,22 @@ But : comprendre chaque réglage de la base, et en modifier deux (langue et desc
 |---|---|---|
 | 1 | « Rang de page » | bonus ajouté au score des passages de cette base quand un assistant interroge plusieurs bases ; 0 par défaut |
 | 2 | « Mode d'analyse » | gabarit de la base (étape 6) |
-| 3 | « Parser » | lecture des documents, format par format (étapes 7 à 9) |
-| 4 | « General Chunker » | découpage en passages (étapes 10 et 11) |
-| 5 | « Extractor » | enrichissement des passages par le modèle de chat (étapes 12 à 14) |
-| 6 | « Indexer » | ce qui est indexé et comment (étape 15) |
+| 3 | « Parser » | lecture des documents, format par format (étape 7) |
+| 4 | « General Chunker » | découpage en passages (étape 8) |
+| 5 | « Extractor » | enrichissement des passages par le modèle de chat (étape 9) |
+| 6 | « Indexer » | ce qui est indexé et comment (étape 10) |
 
-5. « Introduction au pipeline intégré » affiche à droite la description du gabarit choisi : formats acceptés et façon de découper, avec des exemples.
+5. Le bouton « Introduction au pipeline intégré », en haut à droite, affiche ou masque à droite la description du gabarit choisi : formats acceptés et façon de découper, avec des exemples. Pour « General » : MD, MDX, DOCX, XLSX, XLS, PPTX, PDF, TXT, images, CSV, JSON, EML, HTML ; découpage par un modèle de mise en page puis regroupement jusqu'au seuil de jetons.
 
-![Introduction au pipeline intégré](img/03-datasets-et-decoupage/28-introduction-au-pipeline.png)
+6. La liste « Mode d'analyse » est la même qu'à la création (section 1, étape 4) : pipelines personnalisés (« Essai-KC-mind_map-1835 », manuel [07](07-knowledge-compilation.md)), gabarit actuel « General », puis les autres gabarits intégrés (liste en section 8). Appuyer sur Échap pour la refermer sans changer de gabarit.
 
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Introduction au pipeline intégré » | affiche ou masque la description |
-| 2 | description du gabarit | pour « General » : MD, MDX, DOCX, XLSX, XLS, PPTX, PDF, TXT, images, CSV, JSON, EML, HTML ; découpage par un modèle de mise en page puis regroupement jusqu'au seuil de jetons |
+7. Onglet « Parser » (ouvert dans la capture de l'étape 4) : un bloc par format, avec ses options.
+   - « Enable vision enhancement » confie images et tableaux à un modèle de vision ; désactivé, ils sont lus comme du texte ; il demande un « Modèle Img2txt », absent du banc.
+   - « DOC » (ancien format Word), « DOCX » (Word) et « HTML » (pages web) ont l'option « Supprimer en-tête et pied de page ». « Email » (courriels) règle dans « Champ » les champs du courriel gardés (« from », « to », « cc » et 5 autres).
+   - « Image » (JPEG, PNG…) : « OCR », reconnaissance du texte des images, activée par défaut ; méthode « DeepDoc » (OCR, mise en page et structure des tableaux, en local, manuel [04](04-deepdoc.md)) ou « External OCR model » (OCR par un modèle PaddleOCR déclaré ; texte seul, sans tableaux ; grisé ici, aucun modèle déclaré). Le bloc « Markdown » n'a pas d'option.
+   - « PDF » : « Détecter la mise en page multi-colonnes » rétablit l'ordre de lecture des pages en colonnes (journal, article) ; « Supprimer la table des matières d'origine » écarte le sommaire du PDF, qui sinon devient un passage ; « Supprimer en-tête et pied de page » écarte les lignes répétées en haut et en bas de page ; « Analyseur PDF » choisit le moteur de lecture, « DeepDOC » par défaut (liste complète au manuel [04](04-deepdoc.md)) ; « Plages de pages » limite les pages analysées, de 1 à 100000 par défaut (les autres sont ignorées), et « Ajouter une page » ajoute une autre plage. Les blocs « Tableur » et « Texte & Code » suivent.
 
-6. La liste « Mode d'analyse » est la même qu'à la création (section 1, étape 4). Appuyer sur Échap pour la refermer sans changer de gabarit.
-
-![Liste du mode d'analyse](img/03-datasets-et-decoupage/29-mode-d-analyse.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Essai-KC-mind_map-1835 » | pipeline personnalisé (manuel [07](07-knowledge-compilation.md)) |
-| 2 | « General » | gabarit actuel |
-| 3 | « Q&A » | premier des autres gabarits intégrés (liste en section 8) |
-
-7. Onglet « Parser » : un bloc par format, avec ses options.
-
-![Parser, premiers formats](img/03-datasets-et-decoupage/30-parser-formats.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Enable vision enhancement » | confie images et tableaux à un modèle de vision ; désactivé, ils sont lus comme du texte ; demande un « Modèle Img2txt », absent du banc |
-| 2 | « DOC » | ancien format Word ; option « Supprimer en-tête et pied de page » |
-| 3 | « DOCX » | Word ; même option |
-| 4 | « Email » | courriels |
-| 5 | « Champ » | champs du courriel gardés (« from », « to », « cc » et 5 autres) |
-| 6 | « HTML » | pages web ; option « Supprimer en-tête et pied de page » |
-
-8. Le bloc « Image » règle la lecture des images.
-
-![Parser, images](img/03-datasets-et-decoupage/31-parser-image.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Image » | bloc des images (JPEG, PNG…) |
-| 2 | « OCR » | reconnaissance du texte des images, activée par défaut |
-| 3 | « DeepDoc » | OCR, mise en page et structure des tableaux, en local (manuel [04](04-deepdoc.md)) |
-| 4 | « External OCR model » | OCR par un modèle PaddleOCR déclaré ; texte seul, sans tableaux ; grisé ici, aucun modèle déclaré |
-| 5 | « Markdown » | bloc des fichiers Markdown, sans option |
-
-9. Le bloc « PDF » règle la lecture des PDF ; « Tableur » et « Texte & Code » suivent.
-
-![Parser, PDF](img/03-datasets-et-decoupage/32-parser-pdf.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Détecter la mise en page multi-colonnes » | rétablit l'ordre de lecture des pages en colonnes (journal, article) |
-| 2 | « Supprimer la table des matières d'origine » | écarte le sommaire du PDF, qui sinon devient un passage |
-| 3 | « Supprimer en-tête et pied de page » | écarte les lignes répétées en haut et en bas de page |
-| 4 | « Analyseur PDF » | moteur de lecture, « DeepDOC » par défaut (liste complète au manuel [04](04-deepdoc.md)) |
-| 5 | « Plages de pages » | pages à analyser, de 1 à 100000 par défaut ; les autres sont ignorées |
-| 6 | « Ajouter une page » | ajoute une autre plage |
-
-10. Onglet « General Chunker » : la taille des passages.
+8. Onglet « General Chunker » : la taille des passages.
 
 ![General Chunker](img/03-datasets-et-decoupage/34-general-chunker.png)
 
@@ -406,17 +235,9 @@ But : comprendre chaque réglage de la base, et en modifier deux (langue et desc
 | 4 | « Image context window » | même chose pour une image |
 | 5 | « Délimiteurs » | caractères où couper le texte (retour à la ligne, « ! », « ? », « ; » et leurs équivalents chinois) |
 
-11. Sous la liste des délimiteurs :
+Sous la liste des délimiteurs, « Splits at: » récapitule les 8 délimiteurs actifs ; « Ajouter » ajoute un délimiteur, une suite de caractères entre accents graves formant un seul délimiteur [Source] (`web/src/locales/en.ts`, clé `delimiterTip`) ; « Les blocs enfants sont utilisés pour la récupération » découpe chaque passage en sous-blocs, utilisés pour la recherche, le passage entier étant donné au modèle.
 
-![General Chunker, suite](img/03-datasets-et-decoupage/35-general-chunker-suite.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Splits at: » | récapitulatif des 8 délimiteurs actifs |
-| 2 | « Ajouter » | ajoute un délimiteur ; une suite de caractères entre accents graves forme un seul délimiteur [Source] (`web/src/locales/en.ts`, clé `delimiterTip`) |
-| 3 | « Les blocs enfants sont utilisés pour la récupération » | découpe chaque passage en sous-blocs, utilisés pour la recherche, le passage entier étant donné au modèle |
-
-12. Onglet « Extractor » : enrichissements calculés par le modèle de chat pendant l'analyse. Chacun consomme des jetons et allonge l'analyse ; tous sont désactivés par défaut.
+9. Onglet « Extractor » : enrichissements calculés par le modèle de chat pendant l'analyse. Chacun consomme des jetons et allonge l'analyse ; tous sont désactivés par défaut.
 
 ![Extractor, mots-clés](img/03-datasets-et-decoupage/36-extractor-mots-cles.png)
 
@@ -427,27 +248,9 @@ But : comprendre chaque réglage de la base, et en modifier deux (langue et desc
 | 3 | « Mots-clés automatiques » | nombre de mots-clés extraits par passage (0 : aucun) ; ils font remonter le passage pour les questions qui les contiennent |
 | 4 | « Invite système » | consigne donnée au modèle pour cette extraction, modifiable |
 
-13. Suite de l'onglet :
+La suite de l'onglet reprend la même présentation (interrupteur, nombre, « Invite système ») : « Questions » et « Questions automatiques » génèrent des questions par passage, qui servent au rapprochement avec les questions posées ; « Étiquettes » étiquette automatiquement à partir d'une base d'étiquettes (« Auto-tags », « Tag file ») ; « Résumé » fait résumer chaque passage par le modèle ; « Métadonnées » génère automatiquement des métadonnées pour les nouveaux fichiers, avec dans « Paramètres » les champs à extraire.
 
-![Extractor, questions et étiquettes](img/03-datasets-et-decoupage/37-extractor-questions-etiquettes.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Questions » | interrupteur de la génération de questions |
-| 2 | « Questions automatiques » | nombre de questions générées par passage ; elles servent au rapprochement avec les questions posées |
-| 3 | « Étiquettes » | étiquetage automatique à partir d'une base d'étiquettes (« Auto-tags », « Tag file ») |
-
-14. Fin de l'onglet :
-
-![Extractor, résumé et métadonnées](img/03-datasets-et-decoupage/38-extractor-resume-metadonnees.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Résumé » | résumé de chaque passage par le modèle, avec son « Invite système » |
-| 2 | « Métadonnées » | génération automatique de métadonnées pour les nouveaux fichiers |
-| 3 | « Paramètres » | champs de métadonnées à extraire |
-
-15. Onglet « Indexer » : ce qui est rangé dans les index de recherche.
+10. Onglet « Indexer » : ce qui est rangé dans les index de recherche.
 
 ![Indexer](img/03-datasets-et-decoupage/39-indexer.png)
 
@@ -457,23 +260,9 @@ But : comprendre chaque réglage de la base, et en modifier deux (langue et desc
 | 2 | « Poids d'embedding du nom de fichier » | part du nom de fichier dans le vecteur d'un passage, 0,1 par défaut |
 | 3 | « Champ » | texte indexé, « Texte traité » par défaut |
 
-16. Au bas de la page :
+Au bas de la page, « Lier une source de données » synchronise la base avec une source externe (manuel [09](09-sources-externes.md)) ; « Annuler » abandonne les modifications, « Enregistrer » enregistre la configuration.
 
-![Source de données et enregistrement](img/03-datasets-et-decoupage/40-source-et-enregistrement.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Lier une source de données » | synchronise la base avec une source externe (manuel [09](09-sources-externes.md)) |
-| 2 | « Annuler » | abandonne les modifications |
-| 3 | « Enregistrer » | enregistre la configuration |
-
-17. Après « Enregistrer », le message « Mis à jour » confirme. Après rechargement de la page, la langue relue est « French » et la description est conservée. [Vérifié] (`outils/resultats/ragflow/captures/03-datasets-et-decoupage/scenario.log`)
-
-![Configuration enregistrée](img/03-datasets-et-decoupage/41-configuration-enregistree.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Mis à jour » | confirmation de l'enregistrement |
+11. Après « Enregistrer », le message « Mis à jour » confirme. Après rechargement de la page, la langue relue est « French » et la description est conservée. [Vérifié] (`outils/resultats/ragflow/captures/03-datasets-et-decoupage/scenario.log`)
 
 ### Pour aller plus loin
 
@@ -525,47 +314,24 @@ But : comprendre l'espace de fichiers commun à toutes les bases, y déposer un 
 | 3 | « .knowledgebase » | dossier système qui contient les fichiers téléversés dans les bases |
 | 4 | « Base de connaissances » | colonne des bases auxquelles chaque fichier est relié |
 
-2. « Ajouter un fichier » propose deux entrées. Choisir « Nouveau dossier ».
+2. « Ajouter un fichier » propose deux entrées : « Téléverser un fichier » (dépose des fichiers dans le dossier courant) et « Nouveau dossier ». Choisir « Nouveau dossier », saisir le nom dans le champ « Nom » (ici « Manuel-dossier »), puis « Enregistrer ».
 
-![Menu d'ajout](img/03-datasets-et-decoupage/46-menu-d-ajout.png)
+3. Ouvrir le dossier, puis « Ajouter un fichier », « Téléverser un fichier » ; choisir `faq-sav.html` et cliquer sur « Enregistrer ». La fenêtre est celle de la section 2, étape 1, sans l'option « Analyser à la création ».
 
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Téléverser un fichier » | dépose des fichiers dans le dossier courant |
-| 2 | « Nouveau dossier » | crée un dossier |
-
-3. Saisir le nom du dossier, puis « Enregistrer ».
-
-![Nouveau dossier](img/03-datasets-et-decoupage/47-nouveau-dossier.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Nom » | nom du dossier, ici « Manuel-dossier » |
-| 2 | « Enregistrer » | crée le dossier |
-
-4. Ouvrir le dossier, puis « Ajouter un fichier », « Téléverser un fichier » ; choisir `faq-sav.html` et cliquer sur « Enregistrer ».
-
-![Téléverser dans le dossier](img/03-datasets-et-decoupage/48-televerser-dans-le-dossier.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « faq-sav.html » | fichier choisi |
-| 2 | « Enregistrer » | dépose le fichier dans le dossier |
-
-5. Survoler la ligne du fichier pour afficher ses actions.
+4. Survoler la ligne du fichier pour afficher ses actions.
 
 ![Actions d'un fichier](img/03-datasets-et-decoupage/49-actions-gestion.png)
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | maillon | « Lier à la base de connaissances » (étape 6) |
+| 1 | maillon | « Lier à la base de connaissances » (étape 5) |
 | 2 | dossier à flèche | « Déplacer » vers un autre dossier |
 | 3 | dossier à crayon | « Renommer » |
 | 4 | flèche vers le bas | télécharger |
 | 5 | œil | aperçu du fichier |
 | 6 | corbeille | supprimer |
 
-6. Cliquer sur le maillon, ouvrir la liste « Nom », cocher la base « Manuel-Decoupage », puis « Fermer ».
+5. Cliquer sur le maillon, ouvrir la liste « Nom », cocher la base « Manuel-Decoupage », puis « Fermer ». La base choisie s'affiche dans le champ « Nom » (la croix la retire) : cliquer sur « Save » (libellé non traduit) pour relier le fichier.
 
 ![Lier à une base](img/03-datasets-et-decoupage/50-lier-a-la-base.png)
 
@@ -574,31 +340,9 @@ But : comprendre l'espace de fichiers commun à toutes les bases, y déposer un 
 | 1 | « Manuel-Decoupage » | base à relier ; plusieurs bases peuvent être cochées |
 | 2 | « Fermer » | referme la liste |
 
-7. Cliquer sur « Save ».
+6. La colonne « Base de connaissances » affiche alors « Manuel-Decoupage » ; le fichier figure désormais aussi dans la page « Fichiers » de la base, à analyser comme les autres.
 
-![Enregistrer la liaison](img/03-datasets-et-decoupage/51-lier-enregistrer.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Manuel-Decoupage » | base choisie ; la croix la retire |
-| 2 | « Save » | relie le fichier (libellé non traduit) |
-
-8. La colonne « Base de connaissances » montre la liaison ; le fichier figure désormais aussi dans la page « Fichiers » de la base, à analyser comme les autres.
-
-![Fichier relié](img/03-datasets-et-decoupage/52-fichier-lie.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | « Manuel-Decoupage » | base reliée au fichier |
-
-9. Pour finir, revenir à la racine, survoler « Manuel-dossier », cliquer sur sa corbeille et confirmer.
-
-![Supprimer le dossier](img/03-datasets-et-decoupage/53-supprimer-le-dossier.png)
-
-| N° | Élément | Rôle |
-|---|---|---|
-| 1 | fenêtre de confirmation | rappelle le dossier visé |
-| 2 | « Supprimer » | supprime le dossier et son contenu |
+7. Pour finir, revenir à la racine, survoler « Manuel-dossier », cliquer sur sa corbeille, puis sur « Supprimer » dans la fenêtre « Supprimer le fichier », qui rappelle le dossier visé : le dossier et son contenu sont supprimés.
 
 ### Pour aller plus loin
 
@@ -689,7 +433,7 @@ La seule question manquée avec General, Paper et Table est Q30 (délai contract
 |---|---|---|
 | Une question sur un document court en anglais ne trouve plus rien après passage à Presentation | passages trop petits, page par page | revenir à General ou Paper pour ce type de document |
 | Le gabarit choisi ne change rien pour un fichier | le gabarit ne traite pas ce format (Markdown, HTML, DOCX, PPTX, audio) | normal ; voir la section 9 |
-| Un réglage de « Configuration » n'a pas d'effet sur les passages existants | les réglages ne s'appliquent qu'aux analyses suivantes | relancer l'analyse des fichiers (section 3, étape 7) |
+| Un réglage de « Configuration » n'a pas d'effet sur les passages existants | les réglages ne s'appliquent qu'aux analyses suivantes | relancer l'analyse des fichiers (section 3, étape 5) |
 | Les corrections manuelles de passages ont disparu | analyse relancée ou gabarit changé : passages effacés puis recalculés | refaire les corrections après la relance, ou ne pas relancer |
 | La fenêtre de liaison d'un fichier affiche « Save » au lieu d'« Enregistrer » | libellé non traduit en v1.0.0 | sans conséquence |
 
