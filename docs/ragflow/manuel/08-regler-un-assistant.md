@@ -32,7 +32,14 @@ Le haut du panneau règle l'apparence de l'assistant : image (pastille 1), nom (
 
 **Étape 2. Choisir le modèle**
 *Où* : panneau « Paramètres du chat » › liste « Modèle ».
-La liste propose les modèles de chat déclarés au chapitre 03, groupés par fournisseur et instance ; dans les essais, un seul : `gemma4:e4b`.
+Cliquer sur la liste « Modèle » (capture de l'étape 1, pastille 4). Elle propose les modèles de chat déclarés au chapitre 03, groupés par fournisseur et instance ; dans les essais, un seul : `gemma4:e4b` (pastille 1).
+
+![Choix du modèle](../img/05-assistants-et-citations/06-choix-du-modele.png)
+*Écran : panneau « Paramètres du chat », liste « Modèle » ouverte.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | `gemma4:e4b` | modèle de chat de l'instance « llm-service-chat », fournisseur « VLLM » |
 
 *Résultat* : le modèle choisi rédigera les réponses de cet assistant.
 
@@ -58,13 +65,32 @@ Chaque réglage a un interrupteur ; désactivé, c'est la valeur du service de m
 
 **Étape 4. Choisir un préréglage « Liberté »**
 *Où* : « Paramètres du modèle » › « Liberté ».
-Quatre choix : « Improviser » (réponses plus créatives), « Précis » (réponses plus prudentes), « Équilibre » (entre les deux) et « Personnalisé » (valeurs réglées à la main, affiché à la création). « Précis » convient à un assistant documentaire.
+Cliquer sur la liste « Liberté » (capture de l'étape 3, pastille 1) : quatre choix. « Précis » convient à un assistant documentaire.
+
+![Préréglages Liberté](../img/05-assistants-et-citations/08-liberte.png)
+*Écran : « Paramètres du modèle », liste « Liberté » ouverte.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Improviser » | réponses plus créatives |
+| 2 | « Précis » | réponses plus prudentes |
+| 3 | « Équilibre » | entre les deux |
+| 4 | « Personnalisé » | valeurs réglées à la main ; affiché à la création |
 
 *Résultat* : les quatre curseurs prennent les valeurs du préréglage.
 
 **Étape 5. Régler la réflexion préalable**
 *Où* : « Paramètres du modèle » › « Thinking ».
-Pour les modèles qui savent « réfléchir » avant de répondre : « System default » (comportement du modèle, valeur à la création), « Enabled » (force la réflexion : réponses plus lentes) ou « Disabled » (la supprime).
+Pour les modèles qui savent « réfléchir » avant de répondre. Ouvrir la liste « Thinking », sous les curseurs des « Paramètres du modèle ».
+
+![Réglage Thinking](../img/05-assistants-et-citations/09-thinking.png)
+*Écran : « Paramètres du modèle », liste « Thinking » ouverte.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « System default » | comportement du modèle ; valeur à la création |
+| 2 | « Enabled » | force la réflexion : réponses plus lentes |
+| 3 | « Disabled » | supprime la réflexion |
 
 *Résultat* : le comportement est fixé ; garder « System default » sauf besoin.
 
@@ -72,7 +98,15 @@ Pour les modèles qui savent « réfléchir » avant de répondre : « System de
 
 **Étape 6. Relier les bases**
 *Où* : panneau « Paramètres du chat » › « Bases de connaissances ».
-Cocher une ou plusieurs bases, comme au chapitre 04 (étapes 14 à 16) ; « Rechercher... » filtre la liste. Une base sans document analysé n'apparaît pas.
+Ouvrir la liste « Bases de connaissances » et cocher une ou plusieurs bases (pastille 2), puis cliquer sur « Fermer » en bas de la liste, comme au chapitre 04 (étapes 14 à 16) ; « Rechercher... » (pastille 1) filtre la liste. Une base sans document analysé n'apparaît pas.
+
+![Choix de la base](../img/05-assistants-et-citations/10-choix-de-la-base.png)
+*Écran : panneau « Paramètres du chat », liste « Bases de connaissances » ouverte.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Rechercher... » | filtre les bases par nom |
+| 2 | « Démo Vélanor » | base à relier ; la ligne rappelle son propriétaire et son modèle d'embedding |
 
 *Résultat* : l'assistant cherchera dans toutes les bases cochées.
 
@@ -96,13 +130,30 @@ Garder « Afficher la citation » activé (pastille 1) : c'est ce qui affiche le
 
 **Étape 8. Laisser la recherche sur Internet désactivée**
 *Où* : « Paramètres avancés » › « Web search provider ».
-La liste propose douze services de recherche sur Internet (Brave Search, Tavily, Exa…). Chacun demande un compte et une clé chez le service, et ferait sortir les questions du poste. Échap referme la liste sans rien choisir.
+Ouvrir la liste « Web search provider » (capture de l'étape 7, pastille 3) : elle propose douze services de recherche sur Internet (AnySearch, Brave Search, Exa, Tavily…). Chacun demande un compte et une clé chez le service, et ferait sortir les questions du poste. Échap referme la liste sans rien choisir.
+
+![Services de recherche web](../img/05-assistants-et-citations/12-web-search-provider.png)
+*Écran : « Paramètres avancés », liste « Web search provider » ouverte.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | services proposés | douze services ; la liste défile, « Rechercher... » la filtre |
 
 *Résultat* : l'assistant ne cherche que dans les bases.
 
 **Étape 9. Filtrer par métadonnées**
 *Où* : « Paramètres avancés » › « Métadonnées ».
-Quatre choix : « Désactivé » (aucun filtre, par défaut), « Automatique » (le modèle déduit le filtre de la question), « Semi-automatique » (le modèle choisit parmi des champs désignés) ou « Manuel » (conditions fixées à la main). Utile seulement si les fichiers ont des métadonnées (chapitre 05, étape 10).
+Ouvrir la liste « Métadonnées » (capture de l'étape 7, pastille 4) : quatre choix. Utile seulement si les fichiers ont des métadonnées (chapitre 05, étape 10).
+
+![Filtre par métadonnées](../img/05-assistants-et-citations/13-metadonnees.png)
+*Écran : « Paramètres avancés », liste « Métadonnées » ouverte.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Désactivé » | aucun filtre ; par défaut |
+| 2 | « Automatique » | le modèle déduit le filtre de la question |
+| 3 | « Semi-automatique » | le modèle choisit parmi des champs désignés |
+| 4 | « Manuel » | conditions fixées à la main |
 
 *Résultat* : l'assistant ne consulte que les documents qui répondent au filtre.
 
@@ -143,19 +194,45 @@ Régler « Poids de similarité par mots-clés » (pastille 2) sur 0,3, ce qui d
 
 **Étape 12. Régler la fin de la partie « Naive »**
 *Où* : « Paramètres avancés » › « Naive », bas de la partie.
-« Optimisation multi-tours » reformule chaque question à l'aide des précédentes de la conversation (utile pour « et pour l'année suivante ? », mais plus coûteux). « Variable » liste les variables du prompt système, remplies par les programmes qui utilisent l'assistant ; « knowledge » est réservée aux passages retrouvés.
+Descendre sous « Recherche inter-langues ».
+
+![Fin de la partie Naive](../img/05-assistants-et-citations/16-naive-multi-tours-variables.png)
+*Écran : « Paramètres avancés », partie « Naive », bas.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Optimisation multi-tours » | reformule chaque question à l'aide des précédentes de la conversation (utile pour « et pour l'année suivante ? », mais plus coûteux) |
+| 2 | « Variable » | variables du prompt système, remplies par les programmes qui utilisent l'assistant |
+| 3 | « knowledge » | variable réservée aux passages retrouvés |
 
 *Résultat* : garder ces réglages tels quels pour un usage courant.
 
 **Étape 13. Régler le mode « Agentic »**
 *Où* : « Paramètres avancés » › « Agentic ».
-« Decision model » choisit un modèle pour décider des recherches (vide : le modèle de chat s'en charge). « Agentic template » contient les consignes du mode agentique, modifiables ; « Reset to default » rétablit les consignes d'origine.
+Déplier « Agentic » (capture de l'étape 7, pastille 6).
+
+![Réglages du mode Agentic](../img/05-assistants-et-citations/17-agentic.png)
+*Écran : « Paramètres avancés », partie « Agentic ».*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Decision model » | modèle qui décide des recherches ; vide, le modèle de chat s'en charge |
+| 2 | « Agentic template » | consignes du mode agentique, modifiables |
+| 3 | « Reset to default » | rétablit les consignes d'origine |
 
 *Résultat* : ces réglages ne servent que pour les questions posées en mode « Agentic » (chapitre 07).
 
 **Étape 14. Enregistrer**
 *Où* : panneau « Paramètres du chat », bas du panneau › « Enregistrer ».
-Cliquer sur « Enregistrer » ; « Annuler » abandonne les modifications.
+Cliquer sur « Enregistrer » (pastille 2) ; « Annuler » (pastille 1) abandonne les modifications.
+
+![Enregistrer les réglages](../img/05-assistants-et-citations/18-enregistrer.png)
+*Écran : panneau « Paramètres du chat », bas du panneau.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Annuler » | abandonne les modifications |
+| 2 | « Enregistrer » | enregistre les réglages de l'assistant |
 
 *Résultat* : le message « Modifié » confirme. Après rechargement de la page, « Top N » vaut 8, le poids des mots-clés 0,3 et la réponse vide est conservée.
 
@@ -182,7 +259,16 @@ Les réglages, à gauche, sont ceux de l'étape 11, plus un filtre par métadonn
 
 **Étape 16. Comparer avec les réglages conseillés**
 *Où* : même page › « Poids de similarité par mots-clés ».
-Porter le poids des mots-clés à 0,3 (full-text 0,30, vector 0,70), puis cliquer de nouveau sur « Test ».
+Porter le poids des mots-clés à 0,3 (pastille 1 : full-text 0,30, vector 0,70), puis cliquer de nouveau sur « Test ».
+
+![Test avec les réglages conseillés](../img/05-assistants-et-citations/21-test-vecteurs-07.png)
+*Écran : base « Démo Vélanor », « Test de récupération », poids des mots-clés à 0,3.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Poids de similarité par mots-clés » | « full-text » 0.30, « vector » 0.70 |
+| 2 | « Total: 26 » | nombre de passages au-dessus du seuil |
+| 3 | « Similarité hybride » | score du premier passage, 64,68 (en partie caché par la pastille) |
 
 *Résultat* : le premier passage monte à 64,68 et 26 passages sont retenus. Le score par le sens pèse davantage, ce qui aide les textes mal lus comme le contrat scanné. Reporter ensuite le réglage dans l'assistant (étape 11).
 
