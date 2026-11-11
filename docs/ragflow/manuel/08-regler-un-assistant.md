@@ -8,7 +8,7 @@
 
 Un assistant fait deux choses : il **cherche** les passages proches de la question, puis il les donne au **modèle** qui rédige. Les réglages agissent sur l'une ou l'autre. Les plus importants sont ceux de la recherche : combien de passages transmettre au modèle (« Top N »), et quelle part donner à la recherche par les mots et à la recherche par le sens (« Poids de similarité par mots-clés »). Par défaut, RAGFlow donne 70 % du poids aux mots. Or un document scanné contient souvent des mots mal lus (« Volumeminimalannuel ») que la recherche par les mots ne reconnaît pas ; la recherche par le sens, elle, s'en accommode mieux.
 
-**Réglages conseillés** : donner 70 % du poids à la recherche par le sens, c'est-à-dire régler « Poids de similarité par mots-clés » sur 0,3, et transmettre 8 passages au modèle (« Top N » sur 8). Pendant les essais, ce réglage a fait passer l'assistant de 33 à 34 bonnes réponses sur 34, sans ralentissement sensible ; la question gagnée croisait un contrat scanné et un tableur.
+**Réglages conseillés** : donner 70 % du poids à la recherche par le sens, c'est-à-dire régler « Poids de similarité par mots-clés » sur 0,3, et transmettre 8 passages au modèle (« Top N » sur 8). Un assistant créé à la souris a déjà « Top N » à 8 : **seul le poids des mots-clés est à changer** (0,7 à la création). Un assistant créé par un programme part de « Top N » 6, à porter à 8. Pendant les essais, ce réglage a fait passer l'assistant de 33 à 34 bonnes réponses sur 34, sans ralentissement sensible ; la question gagnée croisait un contrat scanné et un tableur.
 
 ## Ouvrir le panneau et régler l'identité de l'assistant
 
@@ -125,7 +125,7 @@ Saisir dans « Réponse vide » (pastille 1) un message en français, par exempl
 
 **Étape 11. Appliquer les réglages conseillés**
 *Où* : « Paramètres avancés » › « Naive », plus bas.
-Régler « Poids de similarité par mots-clés » (pastille 2) sur 0,3, ce qui donne 0,7 à la recherche par le sens, et « Top N » (pastille 4) sur 8.
+Régler « Poids de similarité par mots-clés » (pastille 2) sur 0,3, ce qui donne 0,7 à la recherche par le sens. Vérifier que « Top N » (pastille 4) vaut 8 : c'est sa valeur à la création à la souris, il n'y a alors rien à changer.
 
 ![Naive, recherche](../img/05-assistants-et-citations/15-naive-recherche.png)
 *Écran : « Paramètres avancés », partie « Naive », réglages de recherche.*
