@@ -1,6 +1,6 @@
 # RAGFlow — banc d'essai et manuels vérifiés
 
-**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 chapitres suivis de 6 annexes, avec 196 captures d'écran annotées.**
+**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 chapitres suivis de 6 annexes, avec 195 captures d'écran annotées.**
 
 **Le manuel utilisateur commence ici : [docs/ragflow/README.md](docs/ragflow/README.md).**
 
@@ -17,8 +17,10 @@ tourné. Chaque commande a été exécutée, chaque chiffre renvoie à un résul
 brut dans `outils/resultats/`.
 
 Deuxième banc de la série, après Open Notebook : mêmes documents, mêmes
-questions, même modèle sur la même machine ; le comparatif est dans
-[docs/README.md](docs/README.md).
+questions, même machine. Les premiers bancs (9 novembre 2026) utilisaient le même
+modèle qu'Open Notebook (`gemma4:e4b` sur vLLM) ; depuis le 12 novembre, les
+modèles viennent du service LLM central (`chat`, `embed`, `rerank`, `transcribe`).
+Le comparatif est dans [docs/README.md](docs/README.md).
 
 ## Sommaire
 
@@ -161,7 +163,7 @@ Procédure complète et justification : [annexe A7](docs/ragflow/annexes/A7-basc
 
 1. Menu du compte › « Fournisseurs de modèles » › ajouter `OpenAI-API-Compatible` : nom d'instance `llm-central`, URL `http://llm-central:8080/v1`, clé = `LLM_CENTRAL_KEY` ; modèles `chat` (type chat, 16 384), `embed` (embedding), `rerank` (rerank), `transcribe` (speech2text).
 2. Modèles par défaut du compte : chat `chat`, embedding `embed`, rerank `rerank`, transcription `transcribe`.
-3. Réindexer chaque base de connaissances (changer son modèle d'embedding, puis relancer l'analyse) : `bge-m3` est maintenant en Q8_0 GGUF au lieu de bf16, vecteurs proches mais pas identiques.
+3. Recréer les bases de connaissances après avoir déclaré l'instance (une base retient l'identifiant interne de son modèle d'embedding) : `bge-m3` est maintenant en Q8_0 GGUF au lieu de bf16 ; le jeu de démonstration se recrée par `outils/ragflow/demo.py`, `essai_agent.py` et `essai_compilation.py`.
 4. Réflexion de `chat` : activée par défaut, elle consomme des jetons et de la latence ; RAGFlow n'a pas de champ de paramètres supplémentaires par instance (voir A7).
 
 ## API / Endpoints
@@ -187,7 +189,7 @@ uv run python outils/ragflow/banc.py --etiquette defaut --reindexer
 python3 outils/communs/verifier_docs.py
 ```
 
-Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](outils/resultats/ragflow/installation-2026-11-09-verif.log)) ; six exemples en code 0 ([sorties vérifiées](exemples/ragflow/sorties_verifiees.txt)) ; banc 33/34 ([résultat](outils/resultats/ragflow/banc-2026-11-09-defaut.md)) ; documentation à 0 point ([sortie du vérificateur](outils/resultats/ragflow/verifier-docs-2026-11-09.txt)).
+Sorties obtenues le 12 novembre 2026 avec le service LLM central : vérification minimale, 4 passages et réponse citée en 14,1 s ([journal](outils/resultats/ragflow/installation-2026-11-12-verif.log)) ; six exemples en code 0 ([sorties vérifiées](exemples/ragflow/sorties_verifiees.txt)) ; banc 33/34 par défaut, 34/34 avec `--reranker` ([résultat](outils/resultats/ragflow/banc-2026-11-12-defaut.md), [avec reranker](outils/resultats/ragflow/banc-2026-11-12-defaut-reranker.md)) ; documentation à 0 point ([sortie du vérificateur](outils/resultats/ragflow/verifier-docs-2026-11-09.txt)).
 
 ## Structure du projet
 
@@ -253,8 +255,25 @@ Entreprise fictive Vélanor (vélos électriques), 9 documents, 1 Mo, empreintes
 - À 3 072 jetons de contexte, 12 réponses sur 38 deviennent des messages d'erreur, avec un code d'API 0 ; 4 096 suffit.
 - Un site interne est refusé par la synchronisation sitemap (protection contre les adresses privées).
 - L'interface reste en anglais tant que le sélecteur de langue n'est pas utilisé.
+- Une base retient l'identifiant interne de son modèle d'embedding : supprimer puis recréer l'instance de même nom laisse la base liée à un modèle disparu.
+- « Lister les modèles » laisse « Tokens maximum » à 0 pour les noms fixes du service central : à régler à la main (16 384 pour `chat`).
+- Un reranker nommé exactement `BAAI/bge-reranker-v2-m3` est pris pour un ancien reranker intégré ; le nom `rerank` évite le piège.
+- Avec un modèle qui réfléchit (`chat`), la réponse d'un agent montre ce raisonnement entre balises `<think>`.
 
 ## Résultats
+
+Service LLM central, 12 novembre 2026 (modèle `chat`, Qwen3.5-4B, réflexion activée) :
+
+| Banc | Reranker | Exactes (34) | Refus pièges (4) | Bon document cité | Médiane | Pic RAM application |
+|---|---|---|---|---|---|---|
+| Défaut | non | 33 | 4 | 34 | 7,8 s | 5,3 Gio |
+| Défaut | `rerank` | 34 | 4 | 33 | 8,3 s | 5,0 Gio |
+| Vecteurs 0,7, `top_n` 8 | non | 34 | 4 | 34 | 7,8 s | 5,0 Gio |
+| Vecteurs 0,7, `top_n` 8 | `rerank` | 34 | 4 | 34 | 8,8 s | 5,0 Gio |
+
+Le reranker rattrape la question manquée avec les réglages d'origine, mais n'ajoute rien aux réglages conseillés (vecteurs 0,7, `top_n` 8) et coûte 0,5 à 1 s par réponse. Carte graphique : 8,2 à 8,4 Go occupés sur 16 avec `chat`, `embed` et `rerank`.
+
+Historique, 9 novembre 2026 (`gemma4:e4b` sur vLLM, sans réflexion) :
 
 | Banc | Exactes (34) | Refus pièges (4) | Bon document cité | Médiane | Pic RAM application |
 |---|---|---|---|---|---|
