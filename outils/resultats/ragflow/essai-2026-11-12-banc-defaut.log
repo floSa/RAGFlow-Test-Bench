@@ -1,0 +1,153 @@
+{
+ "supplier-audit-batterix-en.pdf": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 1,
+  "jetons": 123,
+  "message": ""
+ },
+ "strategie-2026.pptx": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 5,
+  "jetons": 149,
+  "message": ""
+ },
+ "stocks-octobre-2025.xlsx": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 2,
+  "jetons": 177,
+  "message": ""
+ },
+ "rapport-annuel-2025.pdf": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 9,
+  "jetons": 871,
+  "message": ""
+ },
+ "procedure-batteries.docx": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 2,
+  "jetons": 235,
+  "message": ""
+ },
+ "message-vocal-production.mp3": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 1,
+  "jetons": 111,
+  "message": ""
+ },
+ "faq-sav.html": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 1,
+  "jetons": 153,
+  "message": ""
+ },
+ "cse-2025-10-14.md": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 4,
+  "jetons": 159,
+  "message": ""
+ },
+ "contrat-batterix-scan.pdf": {
+  "fini": true,
+  "echec": false,
+  "progress": 1,
+  "chunks": 1,
+  "jetons": 258,
+  "message": ""
+ }
+}
+indexation : 64.0 s
+Q01 tableau         OK     8.5s  "Le chiffre d'affaires de Vélanor en 2025 s'élève à **48,6 M€**. [ID:1][ID:3] Cette perform"
+Q02 fait simple     OK    50.0s  "Voici les données pertinentes extraites du dataset concernant la fondation de l'entreprise"
+Q03 fait simple     OK    50.3s  "La présidente de Vélanor est Hélène Marchais [ID:0]. Elle dirige l'entreprise depuis 2019 "
+Q04 fait simple     OK     6.1s  "L'adresse du siège de Vélanor est située au 12 quai de la Fosse, à Nantes [ID:0]. L'entrep"
+Q05 tableau         OK     8.8s  'Vélanor compte **412 salariés** au 31 décembre 2025. Cette information apparaît dans le ra'
+Q06 tableau         OK     6.3s  "Le chiffre d'affaires du troisième trimestre de l'année 2025 a été de **14,2 M€** [ID:0]. "
+Q07 tableau         OK    48.4s  "En 2025, **15 400 unités** du modèle Sèvre Trail ont été produites par l'entreprise [ID:0]"
+Q08 tableau         OK     5.5s  'Selon le rapport annuel 2025 de Vélanor SAS, le prix public du modèle **Erdre Cargo** est '
+Q09 tableau         OK     6.0s  'Le site de **Cholet** compte **97 salariés** au 31 décembre 2025, qui y travaillent princi'
+Q10 fait simple     OK     7.0s  "Selon le document, les cadres sont fabriqués à partir d'aluminium recyclé à 82 %. [ID:0]\n\n"
+Q11 fait simple     OK    43.6s  'Selon le rapport annuel 2025, le taux de recyclage des batteries usagées collectées attein'
+Q12 tableau         OK     4.4s  'Le fournisseur qui livre les moteurs est **Motodrive Co.**, et il est installé en **Taïwan'
+Q13 tableau         OK     5.9s  'Vélanor a dégagé un résultat net de 3,1 M€ en 2025 [ID:2]. Cela représente une amélioratio'
+Q14 fait simple     OK     9.0s  "Selon les documents du rapport annuel 2025, le taux de retour sous garantie s'établit à **"
+Q15 scan            OK     5.7s  "Selon le contrat d'approvisionnement avec Batterix, le prix unitaire des batteries est fix"
+Q16 scan            OK    10.7s  'Based on the provided dataset, I found relevant information in the Batterix supply contrac'
+Q17 scan            OK    36.0s  "Le contrat d'approvisionnement avec Batterix spécifie un plafond de pénalités pour les ret"
+Q18 scan            OK    10.9s  'Le volume minimal annuel prévu par le contrat Batterix est de **40 000 batteries** (40 0oo'
+Q19 fait simple     OK     5.3s  'Selon la procédure de stockage des batteries, les batteries doivent être stockées entre **'
+Q20 fait simple     OK     4.0s  'La procédure de charge et de stockage des batteries est assurée par **Karim Benali**, iden'
+Q21 tableau         OK    46.4s  "Selon le document procedure-batteries.docx, la fréquence de l'inspection du local B2 est d"
+Q22 fait simple     OK     7.0s  'Le prix du Vilaine Compact est de **2 490 € TTC** selon les documents disponibles [ID:0]. '
+Q23 fait simple     OK    88.2s  "D'après les documents fournis, la capacité prévue de l'usine de Saint-Nazaire est de 25 00"
+Q24 tableau         OK     8.1s  'Il reste **1240 unités** de batteries BAT-48V-14Ah (référence exacte : Batterie 48 V 14 Ah'
+Q25 fait simple     OK     5.2s  'La durée de garantie du cadre est de **7 ans**. Cette information provient du document FAQ'
+Q26 fait simple     OK     5.4s  'Le numéro de téléphone du service après-vente est le **02 40 00 12 34** [ID:0]. Le service'
+Q27 fait simple     OK     4.5s  "Selon les décisions documentées, le montant de la prime d'intéressement 2025 est de **1 15"
+Q28 anglais         OK     4.3s  'Batterix obtained an overall score of 87 out of 100 at the supplier audit conducted on Jun'
+Q29 anglais         OK     3.7s  "Selon l'audit qualité du fournisseur Batterix GmbH à Bremen, le taux de cellules défectueu"
+Q30 multi-documents NON   12.8s  '# Réponse sur les délais de livraison de Batterix GmbH\n\n## Délai moyen réellement constaté'
+Q31 multi-documents OK     6.4s  "Batterix a obtenu un score de **87 sur 100** à l'audit de qualité, ce qui lui a permis d'ê"
+Q32 multi-documents OK     7.8s  "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0][ID:2]. La société prévoit d'emb"
+Q33 audio           OK    12.5s  'Voici la réponse basée sur les données du dataset :\n\n## Information trouvée dans le datase'
+Q34 audio           OK    36.7s  "D'après les documents disponibles, **Julien Moreau** est le responsable de la production p"
+Q35 piège           OK    13.4s  "Le chiffre d'affaires de Vélanor en 2022 n'est pas mentionné dans les documents fournis.\n\n"
+Q36 piège           OK    32.1s  'Après avoir examiné les documents fournis concernant Vélanor SAS, aucun nom de directeur f'
+Q37 piège           OK    13.4s  "Based on the provided knowledge base, I've searched through all the documents to answer yo"
+Q38 piège           OK     6.7s  "D'après les documents disponibles dans la base de connaissances, il n'y a **aucune informa"
+-> outils/resultats/ragflow/banc-2026-11-12-defaut.json
+{
+ "questions": 38,
+ "exactes": 33,
+ "sur": 34,
+ "refus_corrects": 4,
+ "pieges": 4,
+ "citation_bon_document": 34,
+ "citation_bonne_page": 24,
+ "citations_avec_page": 24,
+ "juge_llm_oui": 0,
+ "juge_llm_sur": 0,
+ "erreurs": 0,
+ "latence_p50_s": 7.8,
+ "latence_p95_s": 50.03,
+ "par_type": {
+  "tableau": "10/10",
+  "fait simple": "13/13",
+  "scan": "4/4",
+  "anglais": "2/2",
+  "multi-documents": "2/3",
+  "audio": "2/2",
+  "piège": "4/4"
+ },
+ "pic_ram_mo": {
+  "rag-ragflow-server": 1765,
+  "rag-ragflow-es01": 2861,
+  "rag-ragflow-mysql": 547,
+  "rag-ragflow-minio": 159,
+  "rag-ragflow-kvrocks": 53,
+  "rag-ragflow-nats": 22,
+  "llm-central": 699,
+  "llm-swap": 6511,
+  "llm-speaches": 1452
+ },
+ "pic_ram_application_mo": 5407,
+ "vram": "8238 Mo / 16380 Mo (nvidia-smi, mesuré en fin de banc)",
+ "indexation_s": 64.0
+}
+code 0

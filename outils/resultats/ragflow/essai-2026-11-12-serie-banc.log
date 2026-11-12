@@ -1,0 +1,40 @@
+== 2026-11-12T08:20:07+01:00 banc --etiquette defaut --reindexer
+               total        used        free      shared  buff/cache   available
+Mem:           32098       11410         391         911       21578       20688
+Swap:           4096           1        4094
+8291 MiB, 16380 MiB
+== 2026-11-12T08:32:41+01:00 banc --etiquette defaut-reranker --reranker
+               total        used        free      shared  buff/cache   available
+Mem:           32098       12477         538         911       20364       19620
+Swap:           4096           1        4094
+8235 MiB, 16380 MiB
+llm-central 694.1MiB / 31.35GiB
+llm-swap 6.196GiB / 31.35GiB
+llm-speaches 1.354GiB / 31.35GiB
+code 0 (2026-11-12T08:43:38+01:00)
+== 2026-11-12T08:43:38+01:00 banc --etiquette hybride-vecteurs07-top8 --poids-vecteurs 0.7 --top-n 8
+               total        used        free      shared  buff/cache   available
+Mem:           32098       12621         557         913       20489       19477
+Swap:           4096           1        4094
+8256 MiB, 16380 MiB
+llm-central 694MiB / 31.35GiB
+llm-swap 6.467GiB / 31.35GiB
+llm-speaches 1.35GiB / 31.35GiB
+code 0 (2026-11-12T08:54:22+01:00)
+== 2026-11-12T08:54:22+01:00 banc --etiquette hybride-vecteurs07-top8-reranker --poids-vecteurs 0.7 --top-n 8 --reranker
+               total        used        free      shared  buff/cache   available
+Mem:           32098       12644         790         913       20232       19454
+Swap:           4096           1        4094
+8246 MiB, 16380 MiB
+llm-central 693.1MiB / 31.35GiB
+llm-swap 6.342GiB / 31.35GiB
+llm-speaches 1.345GiB / 31.35GiB
+code 0 (2026-11-12T09:03:50+01:00)
+== 2026-11-12T09:03:50+01:00 fin de série
+               total        used        free      shared  buff/cache   available
+Mem:           32098       12722         679         913       20265       19375
+Swap:           4096           1        4094
+8440 MiB, 16380 MiB
+llm-central 693MiB / 31.35GiB
+llm-swap 6.385GiB / 31.35GiB
+llm-speaches 1.345GiB / 31.35GiB

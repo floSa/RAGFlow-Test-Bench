@@ -1,0 +1,15 @@
+== 2026-11-12T08:28:00+01:00 service LLM central pendant le banc defaut (lecture seule)
+8244 MiB, 16380 MiB, 91 %
+llm-central 694.1MiB / 31.35GiB 0.12%
+llm-swap 6.273GiB / 31.35GiB 99.76%
+llm-speaches 1.357GiB / 31.35GiB 0.11%
+-- llama-swap /running :
+  chat ready /app/llama-server --host 127.0.0.1 --port 10001 -ngl 99 --metrics -m /models/unsloth/Qwen3.5-4B-GGUF/Qwen3.5-4B-Q4_K_M.gguf --alias qwen3.5-4b --mmproj /models/unsloth/Qwen3.5-4B-GGUF/mmproj-F16.gguf -np 4 --kv-unified --kv-unified-per-slot 16384 -ctk q8_0 -ctv q8_0 -fa on --jinja --reasoning on --reasoning-budget -1 --cache-ram 2048 --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 1.5
+  embed ready /app/llama-server --host 127.0.0.1 --port 10002 -ngl 99 --metrics -m /models/gpustack/bge-m3-GGUF/bge-m3-Q8_0.gguf --alias bge-m3 --embeddings -np 4 --kv-unified --kv-unified-per-slot 8192 -b 8192 -ub 8192
+  rerank ready /app/llama-server --host 127.0.0.1 --port 10004 -ngl 99 --metrics -m /models/gpustack/bge-reranker-v2-m3-GGUF/bge-reranker-v2-m3-Q8_0.gguf --alias bge-reranker-v2-m3 --rerank -np 4 --kv-unified --kv-unified-per-slot 8192 -b 8192 -ub 8192
+== 2026-11-12T08:37:08+01:00 appels de rerank reçus par llm-central pendant le banc defaut-reranker (docker logs --since 10m, lecture seule)
+13
+07:36:48 - LiteLLM Router:INFO: router_python_core.py:6406 - litellm.arerank(model=hosted_vllm/rerank) 200 OK
+INFO:     172.18.0.2:37070 - "POST /v1/rerank HTTP/1.1" 200 OK
+07:36:53 - LiteLLM Router:INFO: router_python_core.py:6406 - litellm.arerank(model=hosted_vllm/rerank) 200 OK
+INFO:     172.18.0.2:37070 - "POST /v1/rerank HTTP/1.1" 200 OK
