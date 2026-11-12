@@ -38,7 +38,7 @@ Aucun modèle téléchargé (modèles déjà servis par LLM-Service ; modèles D
 
 - Interface : **http://127.0.0.1:8088** dans le navigateur Windows (8080 était déjà occupé par un autre programme de la machine). Langue : sélecteur « English » puis « Français » dans l'en-tête.
 - Identifiants locaux fictifs, clé d'API et accès d'administration : `donnees/IDENTIFIANTS-LOCAUX.txt`.
-- Jeu de démonstration : base « Démo Vélanor » (9 documents, 26 passages), assistant « Démo Vélanor » avec trois conversations citées (« Contrat Batterix », « Objectifs 2026 », « Audit fournisseur »), agent « Agent démo Vélanor », base « Essai-KC-mind_map-1835 » (onglet « Artifacts », « Mind map »).
+- Jeu de démonstration : base « Démo Vélanor » (9 documents, 26 passages), assistant « Démo Vélanor » avec trois conversations citées (« Contrat Batterix », « Objectifs 2026 », « Audit fournisseur »), agent « Agent démo Vélanor », base « Essai-KC-mind_map-0816 » (onglet « Artifacts », « Mind map »).
 - Vérification depuis WSL : `curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8088/` renvoie 200 ; `outils/ragflow/etat.sh`.
 
 ## 3. Manuels écrits

@@ -5,7 +5,7 @@ Scénarios : reperage (non versionné, donnees/captures-explorer), cles (manuel 
 exploitation (13), depannage (14). Une capture par écran nouveau ; les écrans déjà montrés ailleurs sont renvoyés.
 Objets créés, tous nommés « Manuel-… » (clé d'API repérée par différence, assistant, base de la recette d'ingestion),
 supprimés ensuite (clé : dans le scénario ; le reste : outils/ragflow/nettoyer_manuel.py).
-Le jeu de démonstration (« Démo Vélanor », « Agent démo Vélanor », « Essai-KC-mind_map-1835 ») n'est ouvert qu'en
+Le jeu de démonstration (« Démo Vélanor », « Agent démo Vélanor », « Essai-KC-mind_map-0816 ») n'est ouvert qu'en
 lecture : aucune question n'est posée à l'assistant « Démo Vélanor ».
 Helpers repris des lots précédents : captures.py, manuels_03_06.py, manuels_07_15.py.
 """

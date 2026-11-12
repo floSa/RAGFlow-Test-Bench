@@ -40,7 +40,7 @@ La liste montre d'abord les chaînes de lecture personnalisées créées dans «
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Rechercher » | filtre la liste par nom |
-| 2 | « Essai-KC-mind_map-1835 » | chaîne de lecture personnalisée ; la flèche la déplie pour choisir sa version |
+| 2 | « Essai-KC-mind_map-0816 » | chaîne de lecture personnalisée ; la flèche la déplie pour choisir sa version |
 | 3 | « General » | gabarit généraliste, choisi ici |
 | 4 | « Table » | gabarit des tableurs, une ligne par passage (étape 3) |
 

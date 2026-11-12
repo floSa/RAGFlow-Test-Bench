@@ -3,7 +3,7 @@
 Option « assistants » : ne supprime que les assistants (pour rejouer la phase assistant du manuel 02).
 Couvre aussi (lot 3) : agents et pipelines d'ingestion, opérateurs de compilation, applications de recherche,
 mémoires et sources de données nommés « Manuel-… ». Option « garder=<nom>,<nom> » : objets à laisser en place.
-Ne touche à rien d'autre : le jeu de démonstration (« Démo Vélanor », « Agent démo Vélanor », « Essai-KC-mind_map-1835 »)
+Ne touche à rien d'autre : le jeu de démonstration (« Démo Vélanor », « Agent démo Vélanor », « Essai-KC-mind_map-0816 »)
 reste en place. Usage : uv run python outils/ragflow/nettoyer_manuel.py   (sortie affichée, à archiver par l'appelant)
 """
 import sys

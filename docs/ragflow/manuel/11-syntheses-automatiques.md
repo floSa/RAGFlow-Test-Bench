@@ -20,7 +20,7 @@ Cliquer sur l'onglet (pastille 1), puis sur « + » (pastille 3).
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Compilation operator » | liste des opérateurs de synthèse |
-| 2 | carte « Essai-KC-mind_map-1835 » | opérateur du jeu de démonstration : nom, type « Mindmap », date ; un clic l'ouvre en modification |
+| 2 | carte « Essai-KC-mind_map-0816 » | opérateur du jeu de démonstration : nom, type « Mindmap », date ; un clic l'ouvre en modification |
 | 3 | « + » | ouvre la page « Add template » de création d'un opérateur |
 
 *Résultat* : la page « Add template » s'ouvre.
@@ -255,8 +255,8 @@ Les événements sont reliés à leur date (pastille 2).
 *Résultat* : la frise ne garde que la date de la réunion et oublie les autres dates du compte rendu (avril 2026, janvier 2026, décembre).
 
 **Étape 16. Lire une carte mentale**
-*Où* : base « Essai-KC-mind_map-1835 » › « Artifacts » › vue « Mind map ».
-La capture vient de la base « Essai-KC-mind_map-1835 » du jeu de démonstration, préparée pendant les essais par un programme, avec le même document `cse-2025-10-14.md`. Pour obtenir la même carte à la souris, suivre la même procédure qu'à l'étape 14 avec le Template « Mindmap » : opérateur « Manuel-Operateur-Mindmap », chaîne « Manuel-Pipeline-Mindmap », base « Manuel-KC-Mindmap ».
+*Où* : base « Essai-KC-mind_map-0816 » › « Artifacts » › vue « Mind map ».
+La capture vient de la base « Essai-KC-mind_map-0816 » du jeu de démonstration, préparée pendant les essais par un programme, avec le même document `cse-2025-10-14.md`. Pour obtenir la même carte à la souris, suivre la même procédure qu'à l'étape 14 avec le Template « Mindmap » : opérateur « Manuel-Operateur-Mindmap », chaîne « Manuel-Pipeline-Mindmap », base « Manuel-KC-Mindmap ».
 Le sujet central est à gauche, les branches vont vers la droite (pastille 2).
 
 ![Vue Mind map](../img/07-knowledge-compilation/36-carte-mentale-demo.png)

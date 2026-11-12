@@ -23,3 +23,20 @@
     "model_provider": "OpenAI-API-Compatible",	    "model_instance": "llm-central",	    "model_name": "embed",	    "model_type": "embedding",
     "model_provider": "OpenAI-API-Compatible",	    "model_instance": "llm-central",	    "model_name": "rerank",	    "model_type": "rerank",
     "model_provider": "OpenAI-API-Compatible",	    "model_instance": "llm-central",	    "model_name": "transcribe",	    "model_type": "asr",
+
+== 2026-11-12T02:50:57+01:00 instance llm-central du script retirée pour être déclarée à la souris (captures du chapitre 03, outils/ragflow/captures/llm_central.py), avant toute base liée à ses modèles
+-- DELETE /api/v1/providers/OpenAI-API-Compatible/instances {instances: [llm-central]} :
+{"code":0,"message":"success"}
+-- GET /api/v1/models/default :
+{"code":0,"message":"success","data":{"models":[]}}
+
+== 2026-11-12T08:19:00 anciens objets liés à l'embedding bge-m3 de vLLM (instance retirée), remplacés par Essai-KC-mind_map-0816
+Démo Vélanor (base et assistant) et Agent démo Vélanor : déjà recréés par demo.py et essai_agent.py (anciens supprimés par ces scripts)
+pipeline Essai-KC-mind_map-1835 (78f66edb…) : 0
+groupe de gabarits Essai-KC-mind_map-1835 (0f4d1e03…) : 0
+base Essai-KC-mind_map-1835 (2d8d92f2…) : supprimée
+reste : base Essai-KC-mind_map-0816 embedding=embed@llm-central@OpenAI-API-Compatible passages=4
+reste : base Démo Vélanor embedding=embed@llm-central@OpenAI-API-Compatible passages=26
+reste : dataflow_canvas Essai-KC-mind_map-0816
+reste : file Essai-KC-mind_map-0816
+reste : agent_canvas Agent démo Vélanor

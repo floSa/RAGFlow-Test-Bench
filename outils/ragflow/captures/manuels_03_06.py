@@ -136,7 +136,7 @@ def decoupage_base(s):
     pop = popover(s)
     cap(s, m, "04-liste-des-gabarits", [
         (pop.get_by_placeholder("Rechercher").first, "Rechercher"),
-        (pop.get_by_text("Essai-KC-mind_map-1835").first, "pipeline personnalisé"),
+        (pop.get_by_text("Essai-KC-mind_map-0816").first, "pipeline personnalisé"),
         (pop.get_by_text("General", exact=True).first, "General"),
         (pop.get_by_text("Table", exact=True).first, "Table")])
     pop.get_by_text("General", exact=True).first.click(); attendre(s, 800)
@@ -324,7 +324,7 @@ def decoupage_config(s):
                                               (s.pg.get_by_text("Description de la méthode", exact=False).first.locator("xpath=.."), "description du gabarit")])
     mode.click(); attendre(s, 1200)
     pop = popover(s)
-    cap(s, m, "29-mode-d-analyse", [(pop.get_by_text("Essai-KC-mind_map-1835").first, "pipeline personnalisé"),
+    cap(s, m, "29-mode-d-analyse", [(pop.get_by_text("Essai-KC-mind_map-0816").first, "pipeline personnalisé"),
                                     (pop.get_by_text("General", exact=True).first, "General"),
                                     (pop.get_by_text("Q&A", exact=True).first, "Q&A")])
     s.pg.keyboard.press("Escape"); attendre(s, 600)

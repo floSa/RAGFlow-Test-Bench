@@ -1,6 +1,6 @@
 """Nettoyage des artefacts d'essai dans RAGFlow, sans toucher au jeu de démonstration.
 
-Gardés : base et assistant « Démo Vélanor », agent « Agent démo Vélanor », base « Essai-KC-mind_map-1835 »
+Gardés : base et assistant « Démo Vélanor », agent « Agent démo Vélanor », base « Essai-KC-mind_map-0816 »
 (carte mentale montrée au manuel 07) avec son pipeline et son groupe de gabarits.
 Supprimés : bases et assistants « Banc-* », autres bases « Essai-* » et « Exemple-* », pipelines et groupes de
 compilation des autres essais.
@@ -12,9 +12,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from client import RACINE, client, http  # noqa: E402
 
-GARDER_BASES = {"Démo Vélanor", "Essai-KC-mind_map-1835"}
+GARDER_BASES = {"Démo Vélanor", "Essai-KC-mind_map-0816"}
 GARDER_CHATS = {"Démo Vélanor"}
-GARDER_AGENTS = {"Agent démo Vélanor", "Essai-KC-mind_map-1835"}
+GARDER_AGENTS = {"Agent démo Vélanor", "Essai-KC-mind_map-0816"}
 lignes = [f"== {datetime.datetime.now().isoformat(timespec='seconds')} nettoyage des essais"]
 rag = client()
 for c in rag.list_chats():
@@ -31,7 +31,7 @@ for a in agents if isinstance(agents, list) else []:
 g = http("GET", "/compilation-template-groups").get("data") or []
 g = g.get("groups", g) if isinstance(g, dict) else g
 for grp in g if isinstance(g, list) else []:
-    if not str(grp.get("name", "")).startswith("Essai-KC-mind_map-1835"):
+    if not str(grp.get("name", "")).startswith("Essai-KC-mind_map-0816"):
         r = http("DELETE", f"/compilation-template-groups/{grp['id']}", json={})
         lignes.append(f"groupe de compilation supprimé : {grp.get('name')} ({r.get('code')})")
 lignes.append(f"restent : bases {sorted(d.name for d in rag.list_datasets())} ; assistants {sorted(c.name for c in rag.list_chats())} ; "

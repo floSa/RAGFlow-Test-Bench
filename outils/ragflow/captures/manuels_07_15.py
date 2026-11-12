@@ -5,8 +5,8 @@ Scénarios : compilation (manuel 07), agents (08), sources (09), recherche (15).
 rejouables une à une ; sans phase, toutes sont jouées dans l'ordre.
 Objets créés à la souris, tous nommés « Manuel-… » (opérateurs de compilation, pipelines, bases, agents, mémoire,
 source de données, application de recherche) ; supprimés ensuite par outils/ragflow/nettoyer_manuel.py.
-Le jeu de démonstration (« Démo Vélanor », « Agent démo Vélanor », « Essai-KC-mind_map-1835 ») n'est ouvert qu'en
-lecture ; le canevas du pipeline « Essai-KC-mind_map-1835 » n'est jamais ouvert (l'enregistrement automatique du
+Le jeu de démonstration (« Démo Vélanor », « Agent démo Vélanor », « Essai-KC-mind_map-0816 ») n'est ouvert qu'en
+lecture ; le canevas du pipeline « Essai-KC-mind_map-0816 » n'est jamais ouvert (l'enregistrement automatique du
 canevas en retire le composant Compiler créé par l'API, voir manuel 07).
 Helpers repris des lots 1 et 2 : captures.py (Session, cap, bouton, texte) et manuels_03_06.py.
 """
@@ -92,7 +92,7 @@ OP_07 = "Manuel-Operateur-Graphe"
 PIPE_07 = "Manuel-Pipeline-Graphe"
 BASE_07 = "Manuel-KC-Graphe"
 DOC_07 = "cse-2025-10-14.md"
-DEMO_KC = "Essai-KC-mind_map-1835"
+DEMO_KC = "Essai-KC-mind_map-0816"
 
 
 def compilation_operateur(s):
