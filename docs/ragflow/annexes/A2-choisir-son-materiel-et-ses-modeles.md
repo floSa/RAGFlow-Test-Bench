@@ -2,8 +2,8 @@
 
 > **Objet** : ce qui consomme la mémoire et le temps, configurations minimales sans et avec carte graphique (profils A et B), taille de contexte par profil, volume de documents utilisable, temps d'attente, et fiche technique de la version essayée.
 > **Prérequis** : chapitre [01. Découvrir RAGFlow](../manuel/01-decouvrir-ragflow.md) (version courte de cette annexe) ; annexe [A1](A1-evaluation-qualite-et-performances.md) pour les résultats du banc.
-> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04), LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b` quantifié w4a16, `bge-m3`), contexte déclaré de 16 384 jetons.
-> **Statut des informations** : [Vérifié] observé ou mesuré les 9 et 11 novembre 2026 sur la machine d'essai (profil B : Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré, avec son raisonnement ; [À tester] non documenté et non essayé.
+> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04), service LLM central depuis le 12 novembre 2026 (LiteLLM v1.109.0, llama-swap v272, llama.cpp build 12282 : `chat` Qwen3.5-4B Q4_K_M, `embed` bge-m3 Q8_0, `rerank` bge-reranker-v2-m3 Q8_0 sur la carte graphique, `transcribe` faster-whisper-small sur le processeur) ; historique du 9 au 11 novembre : LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b` quantifié w4a16, `bge-m3`) ; contexte déclaré de 16 384 jetons.
+> **Statut des informations** : [Vérifié] observé ou mesuré les 9, 11 et 12 novembre 2026 sur la machine d'essai (profil B : Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré, avec son raisonnement ; [À tester] non documenté et non essayé.
 > **Précautions** : seul le profil B (avec carte graphique) a été mesuré ; le profil A (sans carte graphique) est calculé à partir des mesures CPU du socle de la série, pas essayé avec RAGFlow. Sur 16 Go de mémoire, arrêter les autres solutions de la série avant de démarrer RAGFlow.
 
 ## Sommaire
@@ -26,31 +26,33 @@ RAGFlow ne contient aucun modèle d'IA : il les appelle sur LLM-Service, service
 | Mesure | Valeur |
 |---|---|
 | RAM de l'application au repos / en pointe | 3 730 Mio / 5 394 Mio, soit 3,6 / 5,3 Gio (Elasticsearch 2,7 Gio, serveur et DeepDoc 1,9 Gio) |
-| RAM de LLM-Service (hors application) | `vllm-central` 6,5 Gio, `vllm-embed` 4,1 Gio |
-| VRAM | 15 247 Mio occupés sur 16 380 (deux serveurs vLLM : `vllm-central` réserve 80 %, `vllm-embed` 5 %) |
+| RAM du service central (hors application), 12 novembre | `llm-swap` (llama.cpp : `chat`, `embed`, `rerank`) 6,2 à 6,8 Gio, `llm-speaches` (`transcribe`) 1,4 Gio, `llm-central` (LiteLLM) 0,7 Gio |
+| VRAM, 12 novembre | 8 235 à 8 440 Mio occupés sur 16 380 avec le trio `chat` + `embed` + `rerank` chargé, bureau Windows compris (part de chacun non séparable) |
+| Historique, 9 novembre : RAM et VRAM de l'ancienne pile | `vllm-central` 6,5 Gio, `vllm-embed` 4,1 Gio ; 15 247 Mio de VRAM sur 16 380 (`vllm-central` réserve 80 %, `vllm-embed` 5 %) |
 | Indexation du corpus (9 documents, 1 Mo, 26 passages) | 52 à 56 s (71 s au premier essai de l'adaptateur) |
 | OCR d'un scan | 4,7 s par page |
-| Question | 1,3 s en médiane ; 1 841 jetons d'entrée et 54 de sortie pour une question type |
+| Question | 7,8 s en médiane et 50 à 58 s au 95e centile avec `chat` (réflexion activée) ; 1,3 s en médiane avec `gemma4:e4b` sur vLLM (historique) ; 1 841 jetons d'entrée et 54 de sortie pour une question type (historique) |
 | Débit de génération de vLLM | 30 à 62 jetons/s selon la charge (journal de `vllm-central`) |
 
-[Vérifié] (`outils/resultats/ragflow/ressources-2026-11-09-*.txt`, `banc-2026-11-09-defaut.json`, `essai-2026-11-09-passages.log`, `outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log`, `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`)
+[Vérifié] (`outils/resultats/ragflow/ressources-llm-central-2026-11-12.txt`, `essai-2026-11-12-serie-banc.log`, `banc-2026-11-12-*.json`, `outils/resultats/ragflow/ressources-2026-11-09-*.txt`, `banc-2026-11-09-defaut.json`, `essai-2026-11-09-passages.log`, `outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log`, `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`)
 
-En langage courant : l'application seule occupe un peu plus de 5 Go de mémoire pendant l'ajout de documents, dont la moitié pour le moteur de recherche ; les modèles s'y ajoutent (environ 10 Go avec carte graphique, environ 5 Go sur processeur avec un contexte de 4 096 jetons). L'OCR tourne sur le processeur dans les deux profils. La mémoire par service et l'installation détaillée sont dans l'annexe [A4](A4-exploitation.md).
+En langage courant : l'application seule occupe un peu plus de 5 Go de mémoire pendant l'ajout de documents, dont la moitié pour le moteur de recherche ; les modèles s'y ajoutent (environ 8,5 Go de RAM et 8 Go de mémoire graphique pour le service central de la machine d'essai, environ 5 Go sur processeur avec un contexte de 4 096 jetons). L'OCR tourne sur le processeur dans les deux profils. La mémoire par service et l'installation détaillée sont dans l'annexe [A4](A4-exploitation.md).
 
 ## 2. Profil B, avec carte graphique NVIDIA (mesuré)
 
 | Rubrique | Valeur |
 |---|---|
-| Carte | RTX 4060 Ti 16 Go (15,2 Go occupés par les deux modèles, dont 80 % réservés par le modèle de réponse) ; minimum estimé 12 Go de VRAM pour les deux serveurs vLLM [Estimation] |
-| Processeur, RAM, disque | 6 cœurs (12 fils) ; 32 Go dans WSL, dont environ 16 Gio utilisés (application 5,3 Gio, vLLM 10,6 Go) ; 4,3 Go pour l'application (images et données) plus les modèles |
-| Modèles | `gemma4:e4b` (Gemma 4 E4B, w4a16, version 4 bits) pour les réponses, `bge-m3` pour l'embedding, tous deux sur vLLM |
-| Contexte | 16 384 déclaré ; 4 096 suffit sur ce corpus, 3 072 ne suffit plus |
-| Réglages du service | `--max-model-len 32768`, `--gpu-memory-utilization 0.8`, `--kv-cache-dtype fp8`, `--max-num-seqs 8` |
-| Réglages de RAGFlow | gabarit General, `top_n` 8, poids des vecteurs 0,7 |
-| Résultat | 34/34, médiane 1,36 s |
-| Temps d'attente | 1,3 s par question en médiane, moins de 2 s dans 95 % des cas ; ajout des 9 documents en moins d'une minute |
+| Carte | RTX 4060 Ti 16 Go ; 8,2 à 8,4 Go occupés avec le trio du service central (`chat`, `embed`, `rerank`) et le bureau Windows : il reste près de 8 Go libres ; minimum estimé 8 Go de VRAM pour le trio [Estimation] |
+| Processeur, RAM, disque | 6 cœurs (12 fils) ; 32 Go dans WSL, dont environ 16 Gio utilisés (application 5,4 Gio en pointe, service central environ 8,5 Gio) ; 4,3 Go pour l'application (images et données) plus les modèles |
+| Modèles | `chat` = Qwen3.5-4B Q4_K_M (réflexion activée par défaut, vision), `embed` = bge-m3 Q8_0, `rerank` = bge-reranker-v2-m3 Q8_0, tous trois par llama.cpp sur la carte ; `transcribe` = faster-whisper-small sur le processeur |
+| Contexte | 16 384 jetons par requête servis pour `chat` (4 requêtes en parallèle), 8 192 pour `embed` et `rerank` ; 16 384 déclarés dans RAGFlow ; 4 096 suffisait sur ce corpus avec l'ancien modèle, 3 072 ne suffisait plus |
+| Réglages du service | `llama-server -ngl 99 -np 4 --kv-unified --kv-unified-per-slot 16384 -ctk q8_0 -ctv q8_0 -fa on --reasoning on` (chat) ; géré à part, lecture seule |
+| Réglages de RAGFlow | gabarit General, `top_n` 8, poids des vecteurs 0,7, sans reranker |
+| Résultat | 34/34, médiane 7,8 s (avec reranker : 34/34, 8,8 s) |
+| Temps d'attente | 8 s par question en médiane, jusqu'à une minute pour les plus longues (réflexion du modèle) ; ajout des 9 documents en environ une minute |
+| Historique (9 novembre) | `gemma4:e4b` w4a16 et `bge-m3` sur vLLM, 15,2 Go de VRAM pour deux modèles (`--max-model-len 32768`, `--gpu-memory-utilization 0.8`) : 34/34 en 1,36 s de médiane ; pas de place pour un reranker |
 
-[Vérifié] (`outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log` : arguments de lancement des deux serveurs ; bancs de l'annexe [A1](A1-evaluation-qualite-et-performances.md))
+[Vérifié] (`outils/resultats/ragflow/ressources-llm-central-2026-11-12.txt` : arguments de lancement relevés dans llama-swap ; bancs de l'annexe [A1](A1-evaluation-qualite-et-performances.md), section 2.1 ; historique : `outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log`)
 
 ## 3. Profil A, sans carte graphique (estimé)
 
@@ -78,7 +80,7 @@ RAGFlow n'envoie pas `num_ctx` : il borne la réponse à « contexte déclaré �
 
 | Profil | Contexte servi | « Tokens maximum » déclaré dans RAGFlow | Raison |
 |---|---|---|---|
-| B (vLLM) | 32 768 (`--max-model-len`) | 16 384 | référence de la série ; 4 096 suffit sur ce corpus [Vérifié] |
+| B (service central, llama.cpp) | 16 384 par requête (`--kv-unified-per-slot`) | 16 384 | référence de la série ; égal à la taille servie [Vérifié] ; avec l'ancien vLLM (32 768 servis), 4 096 suffisait sur ce corpus [Vérifié] |
 | A (Ollama) | `OLLAMA_CONTEXT_LENGTH` du serveur | 4 096 | la lecture du prompt est deux fois plus rapide qu'à 16 384 et le modèle tient dans 15,3 Go [Estimation] |
 
 Jamais moins de 4 096 : le prompt monte à 3 301 jetons avec 6 passages, davantage avec « Top N » 8 ; à 3 072, une réponse sur trois est une erreur. [Vérifié] (`banc-2026-11-09-ctx3072.json`)
@@ -94,8 +96,8 @@ Le volume de documents n'est pas limité par le contexte : seuls les `top_n` pas
 ## 6. Modèles plus légers et second modèle
 
 - Un modèle plus léger que le modèle principal (moins de 3 milliards de paramètres) n'a pas pu être essayé : il aurait fallu changer le modèle servi par LLM-Service, partagé avec d'autres applications. Plancher de qualité [À tester].
-- Second modèle : la fiche prévoit `ministral-3:3b` ; LLM-Service en branche `service-vllm` ne sert qu'un modèle de réponse par serveur : non essayé, [À tester].
-- Reranker sur la même carte que les deux autres modèles : ne tient pas sur 16 Go avec le bureau Windows actif. Le 11 novembre 2026, avec `vllm-central` (11,06 Gio de poids et 0,7 Go de cache) et `vllm-embed` (1,06 Gio de poids) chargés, la VRAM libre est restée entre 211 et 461 Mio sur 16 380 pendant 33 minutes (66 relevés `nvidia-smi`), alors qu'un `vllm-rerank` avec `bge-reranker-v2-m3` demanderait environ 1,6 Go [Vérifié] pour la VRAM libre et les poids, [Estimation] pour le besoin (`outils/resultats/ragflow/reranker-2026-11-11.log`). Une trentaine de programmes Windows occupent aussi la carte (navigateur, lanceurs de jeux, LM Studio…). Pour loger le trio : fermer ces programmes, ou réduire la longueur maximale de `vllm-central` (32 768 jetons servis pour 16 384 déclarés dans RAGFlow) [À tester]. Sur processeur, le reranker TEI démarre (4,6 Gio de RAM) mais RAGFlow ne sait pas l'appeler (annexe [A1](A1-evaluation-qualite-et-performances.md), section 7).
+- Second modèle : la fiche prévoit `ministral-3:3b` ; non essayé. Le service central sert aussi `gemma-4-e4b` sous son nom brut : banc à faire [À tester].
+- Reranker sur la même carte que les deux autres modèles : avec le service central (llama.cpp, modèles GGUF quantifiés), le trio tient sur 16 Go avec le bureau Windows actif (8,2 à 8,4 Go occupés) [Vérifié] (`ressources-llm-central-2026-11-12.txt`). Historique : le 11 novembre, avec vLLM (`vllm-central` 11,06 Gio de poids et 0,7 Go de cache, `vllm-embed` 1,06 Gio), la VRAM libre est restée entre 211 et 461 Mio, alors qu'un `vllm-rerank` aurait demandé environ 1,6 Go [Vérifié] pour la VRAM libre, [Estimation] pour le besoin (`outils/resultats/ragflow/reranker-2026-11-11.log`) ; sur processeur, le reranker TEI démarre mais RAGFlow ne sait pas l'appeler (annexe [A1](A1-evaluation-qualite-et-performances.md), section 7).
 
 ## 7. Fiche technique de la version essayée
 
@@ -116,11 +118,11 @@ Précisions sur les fonctions, en complément du tableau du chapitre [01](../man
 |---|---|
 | Formats acceptés | PDF, Word, Excel, PowerPoint, texte, Markdown, HTML, courriels, EPUB |
 | Calcul des embeddings sur la machine | Oui |
-| Reranking | Partiel : prévu, mais aucun modèle fourni ; il faut un service séparé (non essayé) |
-| Transcription audio sur la machine | Oui, avec un serveur de voix séparé (`rag-speaches`) |
+| Reranking | Partiel : aucun modèle fourni ; essayé avec le reranker du service central (annexe [A1](A1-evaluation-qualite-et-performances.md), section 7.4) |
+| Transcription audio sur la machine | Oui, avec un modèle de transcription servi à part (`transcribe` du service central) |
 | Documents scannés | Oui, environ 5 secondes par page ; quelques confusions de caractères à corriger à la main |
 | Agents à partir de modèles prêts à l'emploi | Oui, 19 modèles ; consignes en anglais |
-| Wikis, tables des matières automatiques (« Wiki », « PageIndex ») | En échec avec `gemma4:e4b` (chapitre [11](../manuel/11-syntheses-automatiques.md)) |
+| Wikis, tables des matières automatiques (« Wiki », « PageIndex ») | En échec avec `gemma4:e4b` (chapitre [11](../manuel/11-syntheses-automatiques.md)) ; non rejoué avec `chat` |
 | Installation | Docker, six conteneurs : l'application, un moteur de recherche, une base de données, un stockage de fichiers, un cache, une file de tâches |
 | Interface en français | Oui, par le sélecteur de langue ; la page de connexion reste en anglais au premier lancement |
 | API pour automatiser | Oui, complète ; le module Python a deux défauts contournés (annexe [A3](A3-automatiser-par-l-api.md)) |
@@ -129,9 +131,21 @@ Précisions sur les fonctions, en complément du tableau du chapitre [01](../man
 
 ## 8. Serveur de modèles de la machine d'essai (LLM-Service)
 
-> **Historique.** Depuis le 11 novembre 2026, le banc utilise le service LLM central (LiteLLM, `http://llm-central:8080/v1`, clé obligatoire, modèles `chat`, `embed`, `rerank`, `transcribe`), géré à part : voir l'[annexe A7](A7-bascule-vers-le-service-llm-central.md). Les scripts `outils/communs/llm_service.sh` et `llm_service_vllm.sh`, et les branches `service-ollama` / `service-vllm` décrites ci-dessous, sont historiques : ne pas les lancer. Les mesures de cette annexe restent des preuves de l'ancienne pile.
-
 Le manuel ne fait installer aucun serveur de modèles : RAGFlow se branche sur un serveur existant (chapitre [03](../manuel/03-premiers-pas.md)). Cette section décrit, à titre d'exemple, celui de la machine d'essai.
+
+**LLM-Service** est un dépôt distinct (privé, accès à demander à son propriétaire), partagé par plusieurs applications et géré à part : ce dépôt ne l'arrête ni ne le modifie. Depuis le 12 novembre 2026, il tourne en **service LLM central** (branche `service-llamacpp`) : une passerelle LiteLLM, `llm-central`, seul point d'entrée (`http://llm-central:8080/v1` sur le réseau `llm-net`, `http://127.0.0.1:8080/v1` depuis l'hôte, clé obligatoire), devant `llm-swap` (llama-swap et llama.cpp sur la carte graphique : `chat`, `embed`, `rerank`) et `llm-speaches` (Speaches sur le processeur : `transcribe`). [Vérifié] (`outils/resultats/ragflow/versions-llm-central-2026-11-12.txt`)
+
+| Action | Commande | Statut |
+|---|---|---|
+| Démarrer (profil carte graphique), s'il est arrêté | `~/mes_projets/Projet-IA/LLM-Service/scripts/demarrer.sh` | [Testée] le 12 novembre 2026 après un redémarrage de la machine : chat, embed et rerank chargés en 12 s |
+| Vérifier depuis ce dépôt | `outils/communs/llm_central_sante.sh --essai` | [Testée] : réponses de `chat`, `embed` (1 024 dimensions), `rerank`, `transcribe` |
+| Clé | `LLM_CENTRAL_KEY` dans le `.env` de ce dépôt (copie de `.env.example`), valeur fournie par le responsable du service | jamais affichée ni commitée |
+
+Ports du service : `127.0.0.1:8080` (passerelle) et `127.0.0.1:8081` (diagnostic de llama-swap), liés à la machine seule. [Vérifié] (`docker ps`)
+
+### 8.1 Historique : ancienne pile vLLM (9 au 11 novembre 2026)
+
+Les scripts `outils/communs/llm_service.sh`, `llm_service_vllm.sh`, `voix.sh` et les branches `service-ollama` / `service-vllm` sont historiques : ne pas les lancer. Ce qui suit décrit l'ancienne pile, dont viennent les mesures datées du 9 au 11 novembre.
 
 **LLM-Service** est un dépôt distinct (privé, accès à demander à son propriétaire), partagé par plusieurs applications. Les scripts du banc le cherchent dans `~/mes_projets/Projet-IA/LLM-Service` (autre emplacement : variable `LLM_SERVICE_DIR`). Deux branches : `service-vllm` avec carte graphique NVIDIA (vLLM, serveur de modèles pour carte graphique ; celle des essais) et `service-ollama` sans carte graphique (Ollama, serveur de modèles qui tourne aussi sur processeur ; non essayé avec RAGFlow) [Vérifié] pour la première, [À tester] pour la seconde.
 
@@ -167,7 +181,8 @@ Le serveur de transcription de la machine d'essai, `rag-speaches` (Speaches 0.8.
 | La machine ralentit fortement pendant une indexation | Elasticsearch (2,7 Gio) et le modèle se disputent la mémoire | arrêter les autres solutions ; garder 4 096 jetons sur le profil A |
 | Réponses de 30 s ou plus sans carte graphique | lecture du prompt sur CPU | normal sur le profil A ; garder « Naive » et 4 096 jetons |
 | Erreur du serveur de modèles sur une longue question | « Tokens maximum » déclaré plus grand que le contexte servi [Estimation] | déclarer une taille inférieure ou égale à celle du serveur |
-| Pas de place sur la carte pour un troisième modèle (reranker) | modèle de réponse et embedding déjà chargés, programmes Windows sur la même carte | fermer les programmes Windows qui utilisent la carte, ou réduire la longueur maximale du modèle de réponse ; voir la section 6 |
+| Pas de place sur la carte pour un troisième modèle (reranker) avec vLLM (historique) | modèle de réponse et embedding déjà chargés, programmes Windows sur la même carte | service central llama.cpp (modèles GGUF quantifiés), où le trio tient ; voir la section 6 |
+| Le service central ne répond pas | arrêté (aucun démarrage automatique au lancement de la machine) | `~/mes_projets/Projet-IA/LLM-Service/scripts/demarrer.sh`, puis `outils/communs/llm_central_sante.sh --essai` |
 | Mémoire graphique saturée au démarrage de LLM-Service | autre conteneur sur la carte, ou mémoire prise par Windows | voir le `.env` local de LLM-Service (`VLLM_EXTRA_ARGS`) et l'annexe [A4](A4-exploitation.md) |
 
 ## Sources

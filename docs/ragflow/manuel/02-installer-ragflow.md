@@ -219,7 +219,7 @@ outils/communs/nettoyer.sh ragflow
 - Aucun modèle n'est téléchargé à l'installation : les outils de lecture des documents (reconnaissance de caractères, mise en page, tableaux) sont livrés avec l'application.
 - L'application occupe environ 3,7 Go de mémoire au repos et 5,4 Go pendant l'analyse de documents ; 3,1 Go d'images et 1,2 Go de données sur le disque juste après l'installation.
 - Aucune version plus récente que la 1.0.0 n'existait au moment des essais. Avant toute mise à jour, faire une sauvegarde : le passage d'une ancienne version à la 1.0 transforme la base de données sans retour possible.
-- Un serveur de modèles installé à part peut être joignable par toutes les machines du réseau, contrairement à RAGFlow : sur un réseau partagé, vérifier ses réglages (c'est le cas du serveur de la machine d'essai, annexe A2).
+- Un serveur de modèles installé à part peut être joignable par toutes les machines du réseau, contrairement à RAGFlow : sur un réseau partagé, vérifier ses réglages (le service central de la machine d'essai n'écoute que sur `127.0.0.1`, annexe A2 ; l'ancien serveur vLLM écoutait sur tout le réseau).
 - RAGFlow joint le serveur de modèles depuis son conteneur : `127.0.0.1` y désigne le conteneur lui-même, pas le poste. Pour un serveur qui tourne sous Windows ou directement dans Ubuntu, utiliser l'adresse `http://host.docker.internal:<port>`, proposée en exemple par l'interface ; pour un serveur en conteneur sur le même réseau Docker, son nom de conteneur (ici `llm-central`, sur le réseau `llm-net`).
 - Le détail technique de l'installation (fichiers de configuration, adresses, mémoire par conteneur) est dans l'annexe [A4. Exploitation](../annexes/A4-exploitation.md).
 
