@@ -2,8 +2,8 @@
 
 > **Objet** : résultats du banc de 38 questions, effet mesuré du gabarit de découpage, des réglages de recherche et du mode « Agentic », citations et refus vus par l'API, lecture des jetons et de la durée d'une réponse, taille de contexte et budget de prompt, préconisations d'usage.
 > **Prérequis** : partie 1 du [manuel](../README.md), en particulier les chapitres [06. Régler la lecture des documents](../manuel/06-regler-la-lecture-des-documents.md), [07. Poser des questions et lire les sources](../manuel/07-poser-des-questions-et-lire-les-sources.md) et [08. Régler un assistant](../manuel/08-regler-un-assistant.md).
-> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04), LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b` quantifié w4a16, `bge-m3`), contexte déclaré de 16 384 jetons sauf mention contraire.
-> **Statut des informations** : [Vérifié] observé ou mesuré les 9 et 11 novembre 2026 sur la machine d'essai (profil B : Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré, avec son raisonnement ; [À tester] non documenté et non essayé.
+> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04). Depuis le 12 novembre 2026 : service LLM central (LiteLLM v1.109.0, llama.cpp build 12282 via llama-swap v272 ; `chat` = Qwen3.5-4B Q4_K_M, `embed` = bge-m3 Q8_0, `rerank` = bge-reranker-v2-m3 Q8_0). Historique du 9 au 11 novembre : LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b` quantifié w4a16, `bge-m3`). Contexte déclaré de 16 384 jetons sauf mention contraire.
+> **Statut des informations** : [Vérifié] observé ou mesuré les 9, 11 et 12 novembre 2026 sur la machine d'essai (profil B : Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré, avec son raisonnement ; [À tester] non documenté et non essayé.
 > **Précautions** : corpus fictif de 9 documents (1 Mo), questions de `corpus/questions.json` ; un seul banc à la fois, `free -m` relevé avant chacun ; jugement par mots-clés, sans juge LLM (comme le banc GPU d'Open Notebook) ; captures faites avec l'assistant d'essai « Manuel-Reglages » (réglages conseillés), supprimé ensuite ; la fenêtre « Modifier le modèle » est refermée par « Non », sans rien changer. Le matériel nécessaire et les profils sans et avec carte graphique sont dans l'annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md).
 
 Captures de cette annexe : scénario `qualite` de `outils/ragflow/captures/manuels_10_14.py` ; textes des pages et déroulé dans `outils/resultats/ragflow/captures/12-qualite-et-performances/`. Les mesures faites à la souris sur le découpage, la recherche et le mode « Agentic » viennent des scénarios `decoupage`, `assistants` et `agentique` de `outils/ragflow/captures/manuels_03_06.py` (textes et déroulé dans `outils/resultats/ragflow/captures/03-datasets-et-decoupage/`, `05-assistants-et-citations/` et `06-agentic-rag/`). [Vérifié]
@@ -40,6 +40,35 @@ Variantes enchaînées par `outils/ragflow/serie_banc.sh`. Une première série 
 
 ## 2. Résultats
 
+### 2.1 Avec le service LLM central, sans et avec reranker (12 novembre 2026)
+
+Base « Banc-general » réindexée avec `embed`, assistant recréé pour chaque banc, modèle `chat`. Commande : `uv run python outils/ragflow/banc.py --etiquette defaut --reindexer`, puis `outils/ragflow/serie_banc_reranker.sh` (les trois autres l'un après l'autre, `free -m`, VRAM et RAM des conteneurs `llm-*` relevés avant chacun). [Testée]
+
+| Banc | Reranker | Exactes (34) | Refus pièges (4) | Bon document cité | Bonne page | Médiane | p95 | Pic RAM application |
+|---|---|---|---|---|---|---|---|---|
+| Défaut (General, `top_n` 6, vecteurs 0,3) | non | 33 | 4 | 34 | 24/24 | 7,8 s | 50,0 s | 5 407 Mo |
+| Défaut | `rerank` | **34** | 4 | 33 | 23/23 | 8,3 s | 58,3 s | 5 104 Mo |
+| Vecteurs 0,7, `top_n` 8 | non | **34** | 4 | 34 | 24/24 | 7,8 s | 56,9 s | 5 076 Mo |
+| Vecteurs 0,7, `top_n` 8 | `rerank` | **34** | 4 | 34 | 24/24 | 8,8 s | 55,0 s | 5 072 Mo |
+
+[Vérifié] (`outils/resultats/ragflow/banc-2026-11-12-defaut.json`, `banc-2026-11-12-defaut-reranker.json`, `banc-2026-11-12-hybride-vecteurs07-top8.json`, `banc-2026-11-12-hybride-vecteurs07-top8-reranker.json` ; `essai-2026-11-12-serie-banc.log`). Indexation des 9 documents : 64 s. Aucune erreur d'API. `rerank_id` relevé dans la configuration de chaque banc ; appels `POST /v1/rerank` en 200 vus dans le journal de `llm-central` pendant le banc avec reranker (`ressources-llm-central-2026-11-12.txt`).
+
+Lecture :
+
+1. La question manquée par défaut est la même qu'avec `gemma4:e4b` : Q30 (délai contractuel du contrat scanné et délai constaté dans le tableur). Le reranker la rattrape, comme le réglage vecteurs 0,7 et `top_n` 8.
+2. Ajouté à ce réglage, le reranker ne change rien à la justesse (34/34) et ajoute 0,5 à 1 s en médiane.
+3. Le seul « mauvais document » avec reranker (Q03, la présidente) cite le compte rendu du CSE, qui contient aussi la bonne réponse, au lieu du rapport annuel attendu : la notation du banc est stricte sur la source.
+4. Les réponses sont environ six fois plus lentes qu'avec `gemma4:e4b` sur vLLM (1,3 s) : `chat` réfléchit avant de répondre (réflexion activée par défaut dans le service, annexe [A7](A7-bascule-vers-le-service-llm-central.md), section 4). Les plus longues dépassent 50 s.
+5. Plusieurs réponses sont en anglais, comme avant : le « Prompt système » d'un assistant créé par programme est en anglais.
+
+Mémoire pendant les bancs : application 5,1 à 5,4 Gio en pointe ; service central `llm-swap` 6,2 à 6,8 Gio, `llm-speaches` 1,4 Gio, `llm-central` 0,7 Gio ; carte graphique occupée à 8,2 à 8,4 Go sur 16,4 (trio `chat`, `embed`, `rerank` chargé, bureau Windows compris). [Vérifié] (mêmes fichiers)
+
+Conseil d'usage : sur une petite base comme celle-ci, garder les réglages vecteurs 0,7 et `top_n` 8 sans reranker ; le reranker remplace utilement ces réglages quand ceux d'origine doivent être gardés, et vaut d'être essayé sur une grande base où beaucoup de passages se ressemblent [Estimation pour la grande base].
+
+### 2.2 Historique : `gemma4:e4b` sur vLLM (9 novembre 2026)
+
+Mesures de l'ancienne pile, gardées comme référence datée ; non comparables telles quelles aux mesures de la section 2.1 (autre modèle de réponse, autre moteur).
+
 | Banc | Exactes (34) | Refus pièges (4) | Bon document cité | Bonne page | Médiane | p95 | Indexation | Pic RAM application |
 |---|---|---|---|---|---|---|---|---|
 | Défaut (General, `top_n` 6, vecteurs 0,3) | 33 | 4 | 34 | 24/24 | 1,28 s | 1,88 s | 53 s | 5 394 Mo |
@@ -55,14 +84,14 @@ Variantes enchaînées par `outils/ragflow/serie_banc.sh`. Une première série 
 
 Résultats en cinq lignes :
 
-1. 33 bonnes réponses sur 34 avec les réglages par défaut, 34 sur 34 avec la recherche orientée vecteurs.
+1. 33 bonnes réponses sur 34 avec les réglages par défaut, 34 sur 34 avec la recherche orientée vecteurs (même résultat avec `chat` le 12 novembre).
 2. Le PDF scanné est lu (4 sur 4) grâce à l'OCR de DeepDoc.
 3. Les 4 questions pièges sont refusées dans toutes les variantes.
 4. Réponse en 1,3 s en médiane, 1,9 s au 95e centile.
 5. L'application seule demande 3,6 Gio de RAM au repos et 5,3 Gio en pointe (détail dans l'annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md)).
 
-- Comparaison avec Open Notebook 1.15.1 sur le même socle GPU (même modèle `gemma4:e4b`, même machine) : 27/34, médiane 1,86 s, 0,6 Go de RAM ; voir l'[index de la série](../../README.md).
-- Second modèle : la fiche prévoit `ministral-3:3b` ; LLM-Service en branche `service-vllm` ne sert qu'un modèle de réponse par serveur et il est partagé : non essayé, [À tester].
+- Comparaison avec Open Notebook 1.15.1 sur l'ancien socle GPU (même modèle `gemma4:e4b`, même machine) : 27/34, médiane 1,86 s, 0,6 Go de RAM ; voir l'[index de la série](../../README.md).
+- Second modèle : la fiche prévoit `ministral-3:3b` ; non essayé. Le service central sert aussi `gemma-4-e4b` (alias brut) à côté de `chat` : un banc avec ce second modèle reste à faire [À tester].
 
 ## 3. Effet du gabarit de découpage
 
@@ -189,7 +218,7 @@ Par l'API, la réponse contient des marqueurs `[ID:n]`, et `reference.chunks` li
 
 ## 7. Reranker
 
-RAGFlow 1.0 n'embarque aucun reranker ; « Modèle de réordonnancement » reste vide tant qu'aucun service de reranking n'est déclaré. Deux essais ont été faits le 11 novembre 2026 ; aucun n'a abouti à un reranker branché, le banc avec reranker n'a donc pas été joué. L'essai reprendra avec le nouveau service de modèles de la série (llama.cpp derrière une passerelle LiteLLM). [Vérifié] (`outils/resultats/ragflow/reranker-2026-11-11.log`)
+RAGFlow 1.0 n'embarque aucun reranker ; « Modèle de réordonnancement » reste vide tant qu'aucun service de reranking n'est déclaré. Deux essais du 11 novembre 2026 (sections 7.2 et 7.3, historiques) n'ont pas abouti ; le troisième, le 12 novembre, avec le service LLM central, a abouti (section 7.4). [Vérifié] (`outils/resultats/ragflow/reranker-2026-11-11.log`, `banc-2026-11-12-*-reranker.json`)
 
 ### 7.1 Ce que fait le reranker dans RAGFlow
 
@@ -197,7 +226,7 @@ Quand un assistant a un « Modèle de réordonnancement », RAGFlow envoie au re
 
 - Un modèle nommé exactement `BAAI/bge-reranker-v2-m3` ou `maidalun1020/bce-reranker-base_v1` est pris pour un ancien reranker intégré : RAGFlow n'enregistre alors pas l'instance qui le sert (`tenant_rerank_id` vide). Garder un autre nom servi, par exemple `bge-reranker-v2-m3`. [Source] (`internal/service/chat.go`, `DefaultRerankModels`, `resolveCreateRerankID`)
 
-### 7.2 Premier essai : Text Embeddings Inference sur processeur
+### 7.2 Premier essai (historique, 11 novembre) : Text Embeddings Inference sur processeur
 
 Serveur : image TEI prévue par le compose officiel (`infiniflow/text-embeddings-inference:cpu-1.8`, TEI 1.8.2), modèle `BAAI/bge-reranker-v2-m3`, conteneur `rag-reranker` (`outils/ragflow/reranker_cpu.sh`). [Vérifié] (`outils/resultats/ragflow/reranker-2026-11-11.log`, `reranker-cpu-2026-11-11-tei.log`)
 
@@ -211,7 +240,7 @@ Serveur : image TEI prévue par le compose officiel (`infiniflow/text-embeddings
 
 Les pilotes de RAGFlow 1.0 qui savent reclasser (« VLLM », « OpenAI-API-Compatible », « LocalAI », « Xinference », « GPUStack »…) envoient tous le format Jina/Cohere (`documents`, réponse `results[].relevance_score`) ; le pilote « HuggingFace », que `conf/llm_factories.json` marque pourtant `TEXT RE-RANK`, répond « no such method: Rerank ». TEI n'expose que son format natif, même dans sa dernière version (1.9.4). Aucun fournisseur de RAGFlow 1.0 ne peut donc appeler TEI pour reclasser sans adaptateur entre les deux formats ; essai arrêté. [Source] (`internal/entity/models/vllm.go`, `huggingface.go`, `openai_api_compatible.go` ; `router/src/http/server.rs` de TEI) ; [Vérifié] pour les codes 422 et 404
 
-### 7.3 Second essai : vLLM sur la carte graphique, à côté des deux autres modèles
+### 7.3 Second essai (historique, 11 novembre) : vLLM sur la carte graphique, à côté des deux autres modèles
 
 But : vérifier que modèle de réponse, embedding et reranker tiennent ensemble sur les 16 Go de la carte. Service `vllm-rerank` (même image que `vllm-embed`, `--runner pooling`, `--max-model-len 2048`, `--gpu-memory-utilization 0.05`, port `127.0.0.1:8003`) déclaré dans un fichier local non suivi de LLM-Service (`docker-compose.override.yml`, profil `rerank`), démarré seul par `outils/ragflow/reranker.sh`, qui refuse de démarrer sous 2 Go de VRAM libre. vLLM 0.29 sert `/v1/rerank` au format attendu par le fournisseur « VLLM » de RAGFlow. [Source] (`vllm/entrypoints/pooling/scoring/api_router.py` de l'image)
 
@@ -223,6 +252,17 @@ But : vérifier que modèle de réponse, embedding et reranker tiennent ensemble
 | Autres occupants de la carte | une trentaine de programmes du bureau Windows (navigateur, lanceurs de jeux, LM Studio…), mémoire par programme illisible |
 
 [Vérifié] (`outils/resultats/ragflow/reranker-2026-11-11.log`) Le trio `gemma4:e4b` + `bge-m3` + `bge-reranker-v2-m3` sur vLLM ne tient pas sur 16 Go avec le bureau Windows actif ; `vllm-rerank` n'a pas été démarré. Il faudrait libérer la carte côté Windows ou réduire la part de `vllm-central` (par exemple une longueur maximale de 16 384 jetons au lieu de 32 768) [À tester] ; détail matériel dans l'annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md).
+
+### 7.4 Troisième essai : `rerank` du service LLM central (12 novembre)
+
+Le service central sert `rerank` (bge-reranker-v2-m3 Q8_0, llama.cpp, 8 192 jetons par requête) sur la route `/v1/rerank` au format Jina/Cohere, celui qu'envoie le fournisseur `OpenAI-API-Compatible` de RAGFlow. Déclaré dans l'instance « llm-central » (type « Rerank », 8 192 jetons), choisi par défaut et dans l'assistant (chapitres [03](../manuel/03-premiers-pas.md) et [08](../manuel/08-regler-un-assistant.md), à la souris). Le nom `rerank` évite le piège du nom `BAAI/bge-reranker-v2-m3` (section 7.1). Les trois modèles tiennent ensemble sur la carte : 8,2 à 8,4 Go occupés sur 16,4, bureau Windows compris. [Vérifié] (`captures/llm-central/`, `ressources-llm-central-2026-11-12.txt`)
+
+| Mesure | Sans reranker | Avec reranker |
+|---|---|---|
+| Réglages d'origine : exactes, médiane | 33/34, 7,8 s | 34/34, 8,3 s |
+| Vecteurs 0,7, `top_n` 8 : exactes, médiane | 34/34, 7,8 s | 34/34, 8,8 s |
+
+Scores bruts non bornés (de -11 à +9 relevés par `llm_central_sante.sh --essai`) : RAGFlow les combine tels quels avec le score par mots-clés (section 7.1) ; l'effet de cette échelle sur le seuil de similarité n'a pas été étudié [À tester]. Résultats complets et conseil d'usage : section 2.1.
 
 ## 8. Lire les jetons et la durée d'une réponse
 
@@ -272,23 +312,24 @@ Ce qui suit résume les mesures des sections précédentes et de l'annexe [A2](A
 
 | Réglage | Valeur conseillée | Pourquoi |
 |---|---|---|
-| Mode | « Naive » | 34/34 en 1,4 s ; « Agentic » donne 30/34 en 4,5 s et envoie une vingtaine de fois plus de jetons (sections 5 et 8) |
+| Mode | « Naive » | 34/34 (1,4 s en médiane avec `gemma4:e4b`, 7,8 s avec `chat`) ; « Agentic » donne 30/34 en 4,5 s avec `gemma4:e4b` et envoie une vingtaine de fois plus de jetons (sections 5 et 8 ; non rejoué avec `chat`) |
 | « Top N » | 8 | une question à deux documents trouve ses deux sources (section 4) |
 | « Poids de similarité par mots-clés » | 0,3 (soit 0,7 pour les vecteurs) | retrouve les passages mal lus d'un scan, que les mots-clés ratent |
 | « Seuil de similarité » | 20 (défaut) | non modifié dans le banc ; le monter écarte des passages utiles et fait apparaître des refus à tort [Estimation] |
 | « Réponse vide » et phrase de refus du « Prompt système » | en français | un assistant créé par l'API refuse en anglais (« The answer you are looking for is not found in the dataset! », chapitre [15](../manuel/15-en-cas-de-probleme.md)) ; créé à la souris, son prompt est en français (chapitre [07](../manuel/07-poser-des-questions-et-lire-les-sources.md)) |
+| « Modèle de réordonnancement » | vide sur une petite base ; `rerank` si les réglages d'origine sont gardés ou sur une grande base | 33 → 34/34 avec les réglages d'origine ; rien de plus avec les réglages ci-dessus, pour 0,5 à 1 s de plus (sections 2.1 et 7.4) |
 | Gabarit de la base | « General » | aucun gabarit spécialisé n'a fait mieux sur ce corpus (32 à 33/34, section 3) |
 
 **Taille de contexte** (section 9) : 16 384 jetons déclarés quand le matériel le permet ; jamais moins de 4 096 (le prompt monte à 3 301 jetons avec 6 passages, davantage avec « Top N » 8) ; à 3 072, une réponse sur trois est une erreur. Sur un profil sans GPU, 4 096 est le bon compromis : la lecture du prompt est deux fois plus rapide qu'à 16 384 (annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md)).
 
-**Matériel** (annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md)) : avec un GPU de 12 à 16 Go, la réponse arrive en 1 à 2 s ; sans GPU, compter 30 à 50 s par question à 4 096 jetons [Estimation] : utilisable pour des questions ponctuelles, pas pour une conversation. Prévoir 6 Gio de RAM pour RAGFlow seul en pointe, plus le service de modèles.
+**Matériel** (annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md)) : avec un GPU de 12 à 16 Go, la réponse arrive en 1 à 2 s avec un modèle sans réflexion (`gemma4:e4b` sur vLLM), en 8 s en médiane et jusqu'à une minute avec `chat`, qui réfléchit avant de répondre ; sans GPU, compter 30 à 50 s par question à 4 096 jetons [Estimation] : utilisable pour des questions ponctuelles, pas pour une conversation. Prévoir 6 Gio de RAM pour RAGFlow seul en pointe, plus le service de modèles.
 
 **Ce qui rend l'outil lent ou inutilisable, et comment l'éviter** :
 
 | Situation | Effet constaté ou calculé | Prévention |
 |---|---|---|
 | Contexte déclaré trop petit | réponses remplacées par « **ERROR**: prompt uses N tokens… » (section 9) | 4 096 au minimum dans « Tokens maximum » |
-| Contexte déclaré plus grand que celui du serveur de modèles | erreur du serveur de modèles quand le prompt dépasse [Estimation] | « Tokens maximum » inférieur ou égal à la taille servie (ici 16 384 déclarés pour 32 768 servis) |
+| Contexte déclaré plus grand que celui du serveur de modèles | erreur du serveur de modèles quand le prompt dépasse [Estimation] | « Tokens maximum » inférieur ou égal à la taille servie (ici 16 384 déclarés pour 16 384 servis par requête par le service central ; 32 768 avec l'ancien vLLM) |
 | Mode « Agentic » | 3 à 4 fois plus lent, environ 32 000 jetons d'entrée : sur CPU, plusieurs minutes par question [Estimation] | « Naive » par défaut ; « Agentic » seulement pour une question qui demande plusieurs recherches |
 | Gros fonds scanné | OCR à 4,7 s par page : environ 80 minutes pour 1 000 pages [Estimation] | indexer hors des heures d'usage ; préférer les PDF texte |
 | Moins de 16 Go de RAM dans WSL | Elasticsearch (2,7 Gio) et le modèle se disputent la mémoire | arrêter les autres solutions ; garder 4 096 jetons |
