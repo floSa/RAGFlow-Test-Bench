@@ -2,8 +2,8 @@
 
 > **Objet** : piloter RAGFlow par son API HTTP et par le module Python `ragflow-sdk` (bases de connaissances, import, analyse, assistants, questions, agents), avec des exemples exécutés et les défauts du SDK 1.0.0 contournés.
 > **Prérequis** : partie 1 du [manuel](../README.md), chapitres 01 à 04 ; une clé d'API créée dans la page « API » ([chapitre 13](../manuel/13-comptes-equipe-et-cles.md)) ou par le script `outils/ragflow/configurer.py`.
-> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), `ragflow-sdk` 1.0.0 sous Python 3.13 (uv), Windows 11 + WSL2 (Ubuntu 24.04), LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b`, `bge-m3`), contexte déclaré de 16 384 jetons.
-> **Statut des informations** : [Vérifié] observé ou mesuré les 9 et 11 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
+> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), `ragflow-sdk` 1.0.0 sous Python 3.13 (uv), Windows 11 + WSL2 (Ubuntu 24.04), service LLM central depuis le 12 novembre 2026 (`chat`, `embed`, `rerank`, `transcribe`, instance `llm-central` du fournisseur `OpenAI-API-Compatible`) ; essais du 9 et 11 novembre avec LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b`, `bge-m3`) ; contexte déclaré de 16 384 jetons.
+> **Statut des informations** : [Vérifié] observé ou mesuré les 9, 11 et 12 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
 > **Précautions** : la clé d'API donne tous les droits du compte : elle reste dans `donnees/` (ignoré par git) et n'est jamais affichée par les exemples ; la clé créée à la souris pour les captures est supprimée dans la foulée, la clé des scripts du banc est gardée ; les clés sont masquées sur les captures et remplacées par `ragflow-<masqué>` dans les textes archivés ; objets d'exemple supprimés par `06_nettoyer_exemples.py`.
 
 **Risque — clé d'API en clair.** La fenêtre « Clé API » de la page « API » affiche chaque clé en entier, sans masque, et la clé donne tous les droits du compte (lire, modifier, supprimer les bases). Ne pas ouvrir cette fenêtre pendant un partage d'écran ; supprimer toute clé qui a pu être vue. [Vérifié] (`outils/resultats/ragflow/captures/10-api-et-sdk/02-cles-api.txt`, clés remplacées par `ragflow-<masqué>` à l'archivage)
@@ -87,14 +87,14 @@ Points d'attention :
 
 ## 5. Exemples exécutés
 
-Six exemples courts dans `exemples/ragflow/`, lancés par `exemples/ragflow/lancer.sh`, qui écrit leur sortie réelle dans [`sorties_verifiees.txt`](../../../exemples/ragflow/sorties_verifiees.txt) [Testée] :
+Six exemples courts dans `exemples/ragflow/`, lancés par `exemples/ragflow/lancer.sh` (dernière exécution le 12 novembre 2026, avec le service LLM central), qui écrit leur sortie réelle dans [`sorties_verifiees.txt`](../../../exemples/ragflow/sorties_verifiees.txt) [Testée] :
 
 | Exemple | Ce qu'il fait | Sortie obtenue (extrait) |
 |---|---|---|
 | `01_sante.sh` | santé et interface | `{"db":"ok",…,"status":"ok"}`, `interface web : HTTP 200` |
-| `02_modeles_par_defaut.sh` | modèles par défaut du compte | `chat -> gemma4:e4b @ llm-service-chat ( VLLM )` |
+| `02_modeles_par_defaut.sh` | modèles par défaut du compte | `chat -> chat @ llm-central ( OpenAI-API-Compatible )`, puis `embedding`, `rerank`, `asr` |
 | `03_importer_et_analyser.py` | base, import de `faq-sav.html`, analyse | `1 passage(s), 153 jetons` |
-| `04_question_assistant.py` | assistant et question par l'API HTTP | `Le cadre est garanti pendant 7 ans [ID:0].` |
+| `04_question_assistant.py` | assistant et question par l'API HTTP | « … le cadre bénéficie d'une garantie de 7 ans [ID:0] » (réponse plus longue, en partie en anglais, avec `chat`) |
 | `05_recherche_seule.py` | recherche sans génération | `similarité 0.407 \| faq-sav.html` |
 | `06_nettoyer_exemples.py` | suppression des objets d'exemple | `supprimés : 1 assistant(s), 1 dataset(s)` |
 
@@ -117,7 +117,7 @@ Compléments :
 - `Session.ask` est un générateur, même avec `stream=False` : il rend un seul message, à lire par `next(iter(session.ask(…)))` ; `.content` directement donne « 'generator' object has no attribute 'content' ». Pour un **agent**, il fonctionne. [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-sdk-defauts.log`, `essai-2026-11-09-agent.log`)
 - `RAGFlow.create_agent` renvoie `None` : retrouver l'agent par `list_agents()`. [Source] (`sdk/python/ragflow_sdk/ragflow.py`)
 - Le texte d'un passage HTML colle des éléments voisins (« après-venteDocument fictif.Quelle ») : sans effet sur la réponse observée. [Vérifié] (`sorties_verifiees.txt`, exemple 03)
-- La vérification minimale de l'installation (`outils/ragflow/verif_minimale.py`) passe par l'API HTTP pour la question, le SDK répondant 404 : réponse citée en 4,0 s (annexe [A4](A4-exploitation.md#5-vérifier-linstallation)). [Vérifié] (`outils/resultats/ragflow/installation-2026-11-09-verif.log`)
+- La vérification minimale de l'installation (`outils/ragflow/verif_minimale.py`) passe par l'API HTTP pour la question, le SDK répondant 404 : réponse citée en 4,0 s le 9 novembre, en 14,1 s le 12 novembre avec `chat` (`installation-2026-11-12-verif.log`) (annexe [A4](A4-exploitation.md#5-vérifier-linstallation)). [Vérifié] (`outils/resultats/ragflow/installation-2026-11-09-verif.log`)
 
 ## Dépannage
 

@@ -1,4 +1,4 @@
-# Sorties vérifiées des exemples RAGFlow — 2026-11-09T18:34:09+01:00 — RAGFlow v1.0.0, ragflow-sdk 1.0.0
+# Sorties vérifiées des exemples RAGFlow — 2026-11-12T09:09:05+01:00 — RAGFlow v1.0.0, ragflow-sdk 1.0.0
 
 ## 01_sante.sh
 {"db":"ok","redis":"ok","doc_engine":"ok","storage":"ok","message_queue":"ok","status":"ok"}
@@ -6,9 +6,10 @@ interface web : HTTP 200
 (code de sortie 0)
 
 ## 02_modeles_par_defaut.sh
-chat -> gemma4:e4b @ llm-service-chat ( VLLM )
-embedding -> bge-m3 @ llm-service-embed ( VLLM )
-asr -> Systran/faster-whisper-small @ voix-locale ( OpenAI-API-Compatible )
+chat -> chat @ llm-central ( OpenAI-API-Compatible )
+embedding -> embed @ llm-central ( OpenAI-API-Compatible )
+rerank -> rerank @ llm-central ( OpenAI-API-Compatible )
+asr -> transcribe @ llm-central ( OpenAI-API-Compatible )
 (code de sortie 0)
 
 ## 03_importer_et_analyser.py
@@ -17,7 +18,13 @@ dataset Exemple-03 : faq-sav.html, 1 passage(s), 153 jetons
 (code de sortie 0)
 
 ## 04_question_assistant.py
-réponse : Le cadre est garanti pendant 7 ans [ID:0].
+réponse : According to the available information, the frame is guaranteed for **7 years**. This warranty period is clearly stated in the after-sales service FAQ document.
+
+**Réponse détaillée avec citations :**
+
+Dans le cadre du service après-vente fourni par la marque Vélanor, le cadre bénéficie d'une garantie de 7 ans [ID:0]. Cette durée est supérieure à celle des composants électriques, dont la batterie et le moteur sont garantis pour une période de 2 ans seulement [ID:0]. Il est important de noter que seules les batteries d'origine Vélanor sont couvertes par cette garantie. Pour toute réparation, vous avez la possibilité de contacter le service après-vente par téléphone au 02 40 00 12 34 ou via le formulaire du site web [ID:0].
+
+**Note :** Vous pouvez également remplacer vous-même la batterie en utilisant la clé fournie, bien que cela n'est pas inclus dans les garanties [ID:0].
 source : faq-sav.html | FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le
 (code de sortie 0)
 
