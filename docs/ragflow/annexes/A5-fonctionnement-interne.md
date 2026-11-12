@@ -2,7 +2,7 @@
 
 > **Objet** : comprendre ce qu'est un RAG et comment RAGFlow 1.0 l'organise : notions techniques (découpage, embeddings, recherche hybride, reranking, citations), architecture et services, ports, emplacement des modèles, et fonctionnement de DeepDoc, l'analyseur de documents (OCR, tableaux, correction des passages, analyseurs PDF).
 > **Prérequis** : partie 1 du [manuel](../README.md), chapitres 01 à 04 ; le [glossaire de la série](../../glossaire.md) définit les termes techniques.
-> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04), LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b` pour les réponses, `bge-m3` pour l'embedding), contexte déclaré de 16 384 jetons.
+> **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04), service LLM central (LLM-Service : LiteLLM v1.109.0, llama-swap v272, llama.cpp build 12282 ; `chat`, `embed`, `rerank`, `transcribe`) depuis le 12 novembre 2026, contexte déclaré de 16 384 jetons ; mesures du 9 au 11 novembre avec LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b`, `bge-m3`), gardées comme historique.
 > **Statut des informations** : [Vérifié] observé ou mesuré les 9 et 11 novembre 2026 sur la machine d'essai (Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré ; [À tester] non documenté et non essayé.
 > **Précautions** : aucune commande à lancer dans cette annexe, hormis les appels d'API de la section 9, faits dans une base d'essai. Une nouvelle analyse d'un document efface ses passages, corrections et ajouts manuels compris. Le détail de l'installation (fichier d'override, ports, mémoire par service) est dans l'annexe [A4. Exploitation](A4-exploitation.md).
 
@@ -33,7 +33,7 @@ Le RAG limite les inventions du modèle sans les supprimer : la qualité dépend
 ## 2. Découpage, embeddings et recherche hybride
 
 - **Découpage (chunking)** : chaque document est coupé en passages (chunks). RAGFlow propose des **gabarits de découpage** adaptés au type de document (General, Q&A, Manual, Table, Paper, Book, Laws, Presentation, Picture, One, Audio, Email). [Source] (`docs/references/http_api_reference.md` au tag v1.0.0) Leur choix à la souris est décrit au chapitre [06](../manuel/06-regler-la-lecture-des-documents.md), leur effet mesuré dans l'annexe [A1](A1-evaluation-qualite-et-performances.md).
-- **Embedding** : un modèle transforme chaque passage en vecteur de nombres ; deux textes de sens proche ont des vecteurs proches. Ici, `bge-m3`, servi par LLM-Service.
+- **Embedding** : un modèle transforme chaque passage en vecteur de nombres ; deux textes de sens proche ont des vecteurs proches. Ici, `embed` (bge-m3 quantifié Q8_0, 1 024 dimensions), servi par le service LLM central.
 - **Recherche hybride** : RAGFlow combine une recherche par mots-clés et une recherche par vecteurs. Par défaut, un assistant créé par l'API pondère les mots-clés à 0,7 et les vecteurs à 0,3, garde les 6 meilleurs passages (`top_n`) au-dessus d'un seuil de similarité de 0,1. [Vérifié] (réglages relevés à la création d'un assistant, `outils/resultats/ragflow/banc-2026-11-09-defaut.json`)
 
 L'analyse des documents (OCR, tableaux, mise en page) est faite par **DeepDoc**, embarqué dans l'image et exécuté sur CPU (sections 7 à 11). Le corpus de test (9 documents, dont un PDF scanné, un fichier audio et un document en anglais) donne 26 passages et 2 236 jetons avec le gabarit General. [Vérifié] (`outils/resultats/ragflow/banc-2026-11-09-essai-adaptateur.json`)
@@ -69,24 +69,25 @@ flowchart LR
   S --> O[(MinIO)]
   S --> K[(Kvrocks)]
   S --> Q[(NATS)]
-  S -->|réseau llm-net| V[vllm-central : gemma4:e4b]
-  S -->|réseau llm-net| W[vllm-embed : bge-m3]
-  S -->|réseau rag-local| A[rag-speaches : transcription]
+  S -->|réseau llm-net, clé| V[llm-central : LiteLLM]
+  V --> W[llm-swap : llama.cpp, chat, embed, rerank]
+  V --> A[llm-speaches : transcribe]
 ```
 
 Le compose officiel publie tous ces ports sur toutes les interfaces réseau (`0.0.0.0`) et utilise des mots de passe par défaut connus. Le banc les ramène sur `127.0.0.1` ou les retire, et génère des secrets ; le fichier d'override et la mémoire par service sont détaillés dans l'annexe [A4](A4-exploitation.md). Au repos, la pile seule occupe 3,7 Gio de RAM, dont 2,5 Gio pour Elasticsearch. [Vérifié] (`outils/resultats/ragflow/ressources-2026-11-09-repos.txt`)
 
 ## 5. Où vivent les modèles
 
-RAGFlow ne contient aucun modèle de langage. Les modèles sont déclarés dans « Fournisseurs de modèles » (menu du compte, chapitre [03](../manuel/03-premiers-pas.md)) et servis par LLM-Service, un service commun à toutes les applications de la série :
+RAGFlow ne contient aucun modèle de langage. Les modèles sont déclarés dans « Fournisseurs de modèles » (menu du compte, chapitre [03](../manuel/03-premiers-pas.md)) et servis par LLM-Service, un service commun à toutes les applications de la série, géré à part. Une seule instance « llm-central » du fournisseur `OpenAI-API-Compatible` porte les quatre modèles, à l'adresse `http://llm-central:8080/v1` (clé obligatoire) :
 
-| Usage | Modèle | Serveur | Adresse vue par RAGFlow |
+| Usage | Nom dans RAGFlow | Modèle servi | Moteur |
 |---|---|---|---|
-| Réponses (chat) | `gemma4:e4b` (Gemma 4 E4B, quantifié 4 bits) | `vllm-central` | `http://vllm-central:8000/v1` |
-| Embedding | `bge-m3` | `vllm-embed` | `http://vllm-embed:8000/v1` |
-| Transcription audio | `Systran/faster-whisper-small` | `rag-speaches` | `http://rag-speaches:8000/v1` |
+| Réponses (chat) | `chat` | Qwen3.5-4B Q4_K_M (GGUF), réflexion activée par défaut | llama.cpp sur la carte graphique, via llama-swap |
+| Embedding | `embed` | bge-m3 Q8_0, 1 024 dimensions | idem |
+| Second tri (rerank) | `rerank` | bge-reranker-v2-m3 Q8_0 | idem |
+| Transcription audio | `transcribe` | faster-whisper-small | Speaches 0.8.3 sur le processeur |
 
-[Vérifié] (`outils/resultats/ragflow/configuration-2026-11-09.log`)
+[Vérifié] (`outils/resultats/ragflow/configuration-2026-11-12.log`, `outils/resultats/ragflow/versions-llm-central-2026-11-12.txt`, `outils/communs/llm_central_sante.sh --essai`). Du 9 au 11 novembre, les mêmes usages passaient par `vllm-central` (`gemma4:e4b`), `vllm-embed` (`bge-m3`) et `rag-speaches` (`Systran/faster-whisper-small`) (`outils/resultats/ragflow/configuration-2026-11-09.log`).
 
 RAGFlow borne la longueur de la réponse à « contexte déclaré du modèle − jetons du prompt ». Les consignes et les passages occupent 1 841 à 3 301 jetons selon la question ; un contexte déclaré trop petit produit une erreur visible dans la réponse. [Vérifié] (`outils/resultats/ragflow/essai-2026-11-09-contexte-depassement.log`, `outils/resultats/ragflow/banc-2026-11-09-ctx3072.json`, `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`) Les tailles de contexte essayées sont dans l'annexe [A1](A1-evaluation-qualite-et-performances.md), les profils matériels dans l'annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md).
 
@@ -168,7 +169,7 @@ Dans l'onglet « Configuration » de la base, bloc « PDF », la liste « Analys
 | « MonkeyOCRv2 » | OCR externe MonkeyOCR | [À tester] : service non installé |
 
 - Pour les images, le bloc « Image » propose « DeepDoc » ou « External OCR model » (PaddleOCR, grisé faute de modèle déclaré). [Vérifié] (`outils/resultats/ragflow/captures/03-datasets-et-decoupage/31-parser-image.txt`)
-- Le gabarit Picture et l'option « Enable vision enhancement » demandent un modèle de type `image2text` (« Modèle Img2txt »). Aucun n'est déclaré dans ce banc : [À tester]. Le modèle de réponse du socle, Gemma 4 E4B, accepte des images dans vLLM (jusqu'à 4 par requête selon son lancement), et RAGFlow envoie les images au fournisseur VLLM sous forme de blocs `image_url` : le déclarer aussi en type `image2text` serait donc possible sans nouveau modèle. [Source] (journal de `vllm-central` ; `internal/entity/models/vllm.go`)
+- Le gabarit Picture et l'option « Enable vision enhancement » demandent un modèle de type `image2text` (« Modèle Img2txt »). Aucun n'est déclaré dans ce banc : [À tester]. Le modèle `chat` du service central (Qwen3.5-4B) est déclaré avec la vision par le service ; le déclarer aussi en type `image2text` dans l'instance « llm-central » serait donc possible sans nouveau modèle [À tester]. Historique : Gemma 4 E4B acceptait des images dans vLLM (jusqu'à 4 par requête selon son lancement), et RAGFlow envoie les images au fournisseur sous forme de blocs `image_url`. [Source] (journal de `vllm-central` ; `internal/entity/models/vllm.go`)
 
 ## Dépannage
 

@@ -85,8 +85,9 @@ Parcours conseillés : essayer en une heure (chapitres 01 à 04) ; mettre en ser
 | Stockage | `rag-ragflow-minio` | `pgsty/silo:RELEASE.2026-08-06T00-00-00Z` | fichiers téléversés (fork de MinIO) |
 | Cache | `rag-ragflow-kvrocks` | `apache/kvrocks:2.16.0` | cache |
 | File de tâches | `rag-ragflow-nats` | `nats:2.14.2` | tâches d'analyse |
-| Service LLM central | `llm-central` (LiteLLM, LLM-Service, géré à part, hors de ce dépôt) | LiteLLM | `chat` (Qwen3.5-4B), `embed` (bge-m3), `rerank` (bge-reranker-v2-m3), `transcribe` (faster-whisper-small) |
-| Voix (ancienne) | `rag-speaches` (socle de la série) | `ghcr.io/speaches-ai/speaches:0.8.3-cpu` | transcription audio, remplacée par `transcribe` du service central |
+| Passerelle du service LLM central | `llm-central` (LLM-Service, géré à part, hors de ce dépôt) | `ghcr.io/berriai/litellm:v1.109.0` | point d'entrée unique compatible OpenAI, clé obligatoire, noms fixes `chat`, `embed`, `rerank`, `transcribe` |
+| Modèles du service central | `llm-swap` (LLM-Service) | `ghcr.io/mostlygeek/llama-swap:v272-cuda-b12282` | llama-swap devant llama.cpp (`llama-server`, build 12282) sur la carte graphique : `chat` = Qwen3.5-4B Q4_K_M, `embed` = bge-m3 Q8_0, `rerank` = bge-reranker-v2-m3 Q8_0 (GGUF) |
+| Transcription du service central | `llm-speaches` (LLM-Service) | `ghcr.io/speaches-ai/speaches:0.8.3-cpu` | `transcribe` = faster-whisper-small, sur le processeur |
 
 Toutes les images sont figées par empreinte `@sha256` (`outils/ragflow/compose.override.yml`).
 
@@ -103,19 +104,22 @@ flowchart LR
     S --> Q[(nats)]
   end
   S -->|llm-net, clé| V[llm-central :8080 LiteLLM]
-  V --> V1[chat, embed, rerank, transcribe]
+  subgraph LLM-Service, géré à part
+    V -->|chat, embed, rerank| W[llm-swap : llama-swap + llama.cpp, GPU]
+    V -->|transcribe| X[llm-speaches : faster-whisper, CPU]
+  end
 ```
 
-Réseaux : `rag-ragflow` (interne à la pile), `llm-net` (LLM-Service, externe), `rag-local` (voix et captures, externe).
+Réseaux : `rag-ragflow` (interne à la pile), `llm-net` (LLM-Service, externe : RAGFlow y joint `llm-central`), `rag-local` (captures Playwright, externe). L'ancienne pile vLLM (`vllm-central`, `vllm-embed`) et le serveur de voix `rag-speaches` ne sont plus branchés ; leurs mesures restent dans les annexes comme historique daté du 9 au 11 novembre 2026.
 
 ## Démarrage
 
-Prérequis : WSL2 (Ubuntu), Docker et Compose, le service LLM central (LLM-Service, géré à part : ce dépôt ne le démarre ni ne l'arrête), une clé du service dans `.env` (copie de `.env.example`), uv. Vérification : `outils/communs/llm_central_sante.sh --essai`. Les scripts `llm_service*.sh` sont historiques (annexe A2). Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
+Prérequis : WSL2 (Ubuntu), Docker et Compose, le service LLM central en marche (LLM-Service, géré dans son propre dépôt ; s'il est arrêté : `~/mes_projets/Projet-IA/LLM-Service/scripts/demarrer.sh`, profil carte graphique ; ce dépôt ne l'arrête ni ne le modifie), une clé du service dans `.env` (copie de `.env.example`), uv. Vérification : `outils/communs/llm_central_sante.sh --essai`. Les scripts `llm_service*.sh` et `voix.sh` sont historiques (annexe A2). Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
 
 ```bash
 outils/ragflow/installer.sh
-python3 outils/ragflow/configurer.py
 uv sync
+uv run python outils/ragflow/configurer.py
 uv run python outils/ragflow/verif_minimale.py
 ```
 
@@ -217,9 +221,11 @@ Sorties obtenues : vérification minimale, réponse citée en 4,0 s ([journal](o
 | Apache Kvrocks | cache | Apache License 2.0 |
 | NATS | file de tâches | Apache License 2.0 |
 | LiteLLM | passerelle du service LLM central (géré à part) | MIT (noyau) |
-| Gemma 4 E4B | modèle de réponse | conditions de Google, voir la fiche du modèle |
-| bge-m3 | modèle d'embedding | MIT |
-| Speaches, faster-whisper-small | transcription | MIT |
+| llama-swap, llama.cpp | service des modèles GGUF (géré à part) | MIT |
+| Qwen3.5-4B | modèle de réponse `chat` | voir la fiche du modèle |
+| bge-m3, bge-reranker-v2-m3 | modèles `embed` et `rerank` | voir la fiche de chaque modèle |
+| Speaches, faster-whisper-small | transcription `transcribe` | MIT |
+| Gemma 4 E4B (historique) | modèle de réponse des essais du 9 au 11 novembre | conditions de Google, voir la fiche du modèle |
 | Playwright | captures d'écran | Apache License 2.0 |
 | **Ce projet** | manuels, scripts, corpus, banc | MIT — Copyright (c) 2026 floSa |
 
@@ -269,6 +275,12 @@ Détail et variantes : [annexe A1](docs/ragflow/annexes/A1-evaluation-qualite-et
 | NATS | 2.14.2 |
 | MinIO (`pgsty/silo`) | RELEASE.2026-08-06 |
 | Playwright (captures) | 1.64.1 |
+| LiteLLM (service central, géré à part) | v1.109.0 |
+| llama-swap / llama.cpp (service central) | v272 / build 12282 (`llama-server` 0.9.0-dev) |
+| Speaches (service central) | 0.8.3 (CPU) |
+| Modèles du service central | Qwen3.5-4B Q4_K_M, bge-m3 Q8_0, bge-reranker-v2-m3 Q8_0, faster-whisper-small |
+
+Relevé : `outils/resultats/ragflow/versions-llm-central-2026-11-12.txt` (images figées par empreinte dans LLM-Service).
 
 ## Ressources
 

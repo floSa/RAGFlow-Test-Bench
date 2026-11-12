@@ -1,0 +1,8 @@
+== 2026-11-12T08:24:46+01:00 service LLM central (LLM-Service, géré à part) : images et versions, relevé en lecture seule
+/llm-central ghcr.io/berriai/litellm:v1.109.0@sha256:26aecfb02fb17ac6590f0549478561f9fbb3f69314317320b2e32a21beed4006
+/llm-swap ghcr.io/mostlygeek/llama-swap:v272-cuda-b12282@sha256:1e1ba956c0d6dcf0448314860a2471acb6e76f4327691297c96efbd8f7c6f690
+/llm-speaches ghcr.io/speaches-ai/speaches:0.8.3-cpu@sha256:21e3df06d842fb7802ab470dd77c25f0e8c0d22950e8d8c6ae886e851af53ef8
+llama-server (dans llm-swap) : version: 0.9.0-dev (build 12282, commit aa75ff323)
+LLAMA_CHAT_MODEL=unsloth/Qwen3.5-4B-GGUF/Qwen3.5-4B-Q4_K_M.gguf
+LLAMA_RERANK_MODEL=gpustack/bge-reranker-v2-m3-GGUF/bge-reranker-v2-m3-Q8_0.gguf
+LLAMA_EMBED_MODEL=gpustack/bge-m3-GGUF/bge-m3-Q8_0.gguf
