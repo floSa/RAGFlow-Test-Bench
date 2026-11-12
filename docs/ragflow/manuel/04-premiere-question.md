@@ -35,7 +35,7 @@ Saisir un nom (pastille 1), garder le modèle de recherche (pastille 2) et le ga
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Nom » | nom de la base, ici « Manuel-Prise-en-main » |
-| 2 | « Modèle d'embedding » | modèle qui traduit le sens des passages en nombres pour la recherche, ici `bge-m3` (modèle par défaut du chapitre 03) |
+| 2 | « Modèle d'embedding » | modèle qui traduit le sens des passages en nombres pour la recherche, ici `embed` (modèle par défaut du chapitre 03) (la capture, prise avec l'ancien serveur de modèles, affiche `bge-m3`) |
 | 3 | « General (built in) » | gabarit, c'est-à-dire la façon de découper les documents ; « General » convient à la plupart des cas (les autres sont au chapitre 06) |
 | 4 | « Enregistrer » | crée la base et l'ouvre |
 
@@ -221,7 +221,7 @@ Cliquer sur la liste « Bases de connaissances » (pastille 4).
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Paramètres du chat » | panneau de réglage de l'assistant ; l'icône à droite le referme |
-| 2 | « Modèle » | modèle qui rédige les réponses, par défaut le modèle de chat déclaré (`gemma4:e4b`) |
+| 2 | « Modèle » | modèle qui rédige les réponses, par défaut le modèle de chat déclaré (`chat`; la capture, prise avec l'ancien serveur de modèles, affiche `gemma4:e4b`) |
 | 3 | « Message d'accueil » | premier message affiché dans chaque conversation |
 | 4 | « Bases de connaissances » | bases interrogées par l'assistant ; vide à la création |
 | 5 | « Enregistrer » | enregistre les réglages |

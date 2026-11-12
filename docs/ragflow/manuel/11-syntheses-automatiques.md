@@ -121,7 +121,7 @@ Le menu « Étape suivante » propose « Indexeur » (range les passages pour la
 |---|---|---|
 | 1 | « Operator » | opérateur à appliquer ; obligatoire (tant qu'il est vide, « Checklist » signale un problème) |
 | 2 | « Create template » | ouvre la page « Add template » (étape 2) dans un nouvel onglet |
-| 3 | « Modèle » | modèle d'IA qui fait la synthèse, ici `gemma4:e4b` |
+| 3 | « Modèle » | modèle d'IA qui fait la synthèse, ici `chat` (la capture, prise avec l'ancien serveur de modèles, affiche `gemma4:e4b`) |
 | 4 | « Température » | réglages du modèle (« Liberté », « Température » à 0,1, « Top P »…), comme pour un assistant (chapitre 08) |
 | 5 | « Thinking » | réflexion préalable du modèle : « System default », « Enabled », « Disabled » |
 
@@ -271,7 +271,7 @@ Le sujet central est à gauche, les branches vont vers la droite (pastille 2).
 
 ## Bon à savoir
 
-- **Les types « Wiki » et « PageIndex » ont échoué** pendant les essais, avec le petit modèle utilisé (`gemma4:e4b`). Le modèle doit rendre sa synthèse dans un format structuré précis, et il ne l'a pas fait. Le signe : le fichier reste à 0 passage avec un point rouge dans « Analyser », la tâche est « Failed » dans « Journaux », et son détail (chapitre 05, étapes 14 et 15) affiche « LLM response is not parseable JSON », répété six fois avant « Task failed ». Un échec de la synthèse arrête toute la chaîne : le document n'est même pas cherchable. Relancer (triangle de la colonne « Analyser ») n'a pas suffi. Un modèle plus grand serait à essayer ; sinon, choisir un autre type.
+- **Les types « Wiki » et « PageIndex » ont échoué** pendant les essais du 11 novembre, avec le petit modèle utilisé alors (Gemma 4 E4B, ancien serveur de modèles) ; ils n'ont pas été refaits avec `chat`. Le modèle doit rendre sa synthèse dans un format structuré précis, et il ne l'a pas fait. Le signe : le fichier reste à 0 passage avec un point rouge dans « Analyser », la tâche est « Failed » dans « Journaux », et son détail (chapitre 05, étapes 14 et 15) affiche « LLM response is not parseable JSON », répété six fois avant « Task failed ». Un échec de la synthèse arrête toute la chaîne : le document n'est même pas cherchable. Relancer (triangle de la colonne « Analyser ») n'a pas suffi. Un modèle plus grand serait à essayer ; sinon, choisir un autre type.
 - Le résultat varie d'une fois à l'autre avec un petit modèle : le même document a donné une autre fois cinq entités et quatre relations. Des consignes dans « Global rules » (par exemple « relier chaque personne à sa fonction ») peuvent enrichir le graphe.
 - Sur un document court et avec une carte graphique, une synthèse prend de quelques secondes (graphe, frise) à deux ou trois minutes (arbre, échecs). Sur beaucoup de documents, ou sans carte graphique, elle peut prendre de plusieurs minutes à plusieurs dizaines de minutes.
 - Le « + » d'un bloc n'ouvre le menu « Étape suivante » que si ce bloc n'a pas encore de suite ; pour insérer un bloc au milieu, supprimer d'abord le bloc suivant (corbeille au survol).

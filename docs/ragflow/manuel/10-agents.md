@@ -53,7 +53,7 @@ Saisir le nom, ici « Manuel-Agent-Documentaire ». Choisir le modèle (pastille
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | « Modèle » | `gemma4:e4b` (instance « llm-service-chat », chapitre 03) : modèle de tous les blocs agents ; obligatoire |
+| 1 | « Modèle » | `chat` (instance « llm-central », chapitre 03) : modèle de tous les blocs agents ; obligatoire ; la capture, prise avec l'ancien serveur de modèles, affiche `gemma4:e4b` |
 | 2 | « Bases de connaissances » | « Démo Vélanor », appliquée à chaque étape de recherche, modifiable ensuite ; la croix retire la base |
 | 3 | « Confirmer » | crée l'agent et ouvre son canevas |
 
@@ -243,7 +243,7 @@ Le canevas contient les mêmes blocs que l'original. Cliquer sur le bloc « Retr
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Manuel-Agent-Importe » | nom donné à l'import |
-| 2 | « Docs QA Agent » | bloc agent, avec le même modèle `gemma4:e4b` |
+| 2 | « Docs QA Agent » | bloc agent, avec le même modèle (`chat` ; `gemma4:e4b` sur la capture, prise avec l'ancien serveur de modèles) |
 | 3 | « Retrieval » | outil de recherche, comme dans l'original |
 | 4 | « Récupération depuis » | « Ensemble de données » : la recherche se fait dans une base |
 | 5 | « Démo Vélanor » | même base que l'original |
@@ -285,8 +285,8 @@ La page affiche « Aucune mémoire créée pour le moment ». Cliquer sur « + �
 |---|---|---|
 | 1 | « Nom » | ici « Manuel-Memoire » |
 | 2 | « Type de mémoire » | ce qui est gardé, plusieurs choix possibles : « brut » (échanges tels quels, gardé ici), « sémantique » (faits extraits), « épisodique » (événements datés), « procédural » (façons de faire) ; refermer la liste par son bouton « Fermer », car la touche Échap ferme toute la fenêtre |
-| 3 | « Modèle d'embedding » | `bge-m3` : range les souvenirs pour la recherche par le sens |
-| 4 | « LLM » | `gemma4:e4b` : extrait les souvenirs des échanges |
+| 3 | « Modèle d'embedding » | `embed` : range les souvenirs pour la recherche par le sens ; la capture, prise avec l'ancien serveur de modèles, affiche `bge-m3` |
+| 4 | « LLM » | `chat` : extrait les souvenirs des échanges ; `gemma4:e4b` sur la capture |
 | 5 | « Confirmer » | crée la mémoire |
 
 *Résultat* : la mémoire apparaît dans la liste. Sa page a deux onglets : « Messages » (souvenirs enregistrés) et « Configuration » (nom, avatar, description, modèles, type, « Taille de la mémoire (Bytes) » et « Paramètres avancés » de l'extraction).

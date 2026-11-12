@@ -29,10 +29,10 @@ L'interface de RAGFlow mélange le français et l'anglais, et donne parfois deux
 | Document | Fichier ajouté à une base : PDF, Word, tableur, présentation, page web, note, fichier audio… Interface : « Fichiers ». | 04, 05 |
 | Embedding | Traduction du sens d'un texte en une suite de nombres ; deux textes de sens proche ont des nombres proches. C'est ce qui permet la recherche par le sens. Interface : « Modèle d'embedding ». | 03 |
 | Équipe | Groupe de comptes invités qui partagent les objets dont les « Autorisations » valent « Équipe ». | 13 |
-| Fournisseur, instance | Un fournisseur est un type de service de modèles (« VLLM », « Ollama »…) ; une instance est une adresse précise de ce service, déclarée sous un nom libre. Interface : « Fournisseurs de modèles ». | 03 |
+| Fournisseur, instance | Un fournisseur est un type de service de modèles (« OpenAI-API-Compatible », « Ollama », « VLLM »…) ; une instance est une adresse précise de ce service, déclarée sous un nom libre. Interface : « Fournisseurs de modèles ». | 03 |
 | Gabarit | Façon de découper un type de document : texte suivi, tableur ligne par ligne, présentation diapositive par diapositive… Interface : « Mode d'analyse », « pipeline intégré », « (built in) ». | 06 |
 | Jeton | Unité dans laquelle un modèle compte le texte, à peu près une syllabe. L'interface affiche les jetons lus et écrits sous chaque réponse. Interface : « tokens ». | 04 |
-| LLM-Service | Serveur de modèles de la machine d'essai, installé à part (dépôt séparé) et partagé avec d'autres applications ; il sert désormais, par LiteLLM, `chat`, `embed`, `rerank` et `transcribe` (ancienne pile : `gemma4:e4b` et `bge-m3` par vLLM). Le manuel ne le fait pas installer : tout serveur de modèles existant convient. | 02, 03, annexe A2 |
+| LLM-Service | Serveur de modèles de la machine d'essai, installé à part (dépôt séparé) et partagé avec d'autres applications ; c'est le service de modèles central : une seule adresse, `http://llm-central:8080/v1`, protégée par une clé, sert `chat`, `embed`, `rerank` et `transcribe`. Le manuel ne le fait pas installer : tout serveur de modèles existant convient. | 02, 03, annexe A2 |
 | MCP | Façon standard de proposer des outils (agenda, logiciel métier…) à un modèle d'IA ; un serveur MCP déclaré ajoute ses outils aux agents. | 10 |
 | Mémoire | Lieu où un agent garde ses échanges d'une session à l'autre, pour les retrouver ensuite par le sens. Interface : « Mémoire ». | 10 |
 | Métadonnées | Informations ajoutées à un document (auteur, service, date…) qui permettent de filtrer la recherche. | 05, 08 |
@@ -52,6 +52,7 @@ L'interface de RAGFlow mélange le français et l'anglais, et donne parfois deux
 | Regex (expression régulière) | Motif qui décrit une famille de textes, par exemple `^https://example\.com/docs/` pour « toutes les adresses qui commencent par https://example.com/docs/ ». Interface : « Filtre d'URL (regex) ». | 12 |
 | Reranker | Voir « Modèle de second tri ». Interface : type « Rerank ». | 03, 08 |
 | Serveur de modèles | Programme qui fait tourner les modèles d'IA (Ollama, vLLM, LM Studio…) et répond aux demandes de RAGFlow par une adresse web ; RAGFlow n'en contient pas et doit être branché sur un serveur existant. | 02, 03 |
+| Service de modèles central | Voir « LLM-Service » : serveur de modèles unique de la machine d'essai, partagé par plusieurs applications ; instance « llm-central » dans RAGFlow. | 02, 03 |
 | Seuil de similarité | Score minimal qu'un passage doit atteindre pour être retenu. Interface : « Seuil de similarité ». | 08, 09 |
 | Source de données | Système extérieur (site web, wiki, stockage…) que RAGFlow relit régulièrement pour garder une base à jour. Interface : « Sources de données », « connecteur ». | 12 |
 | Synchronisation | Relecture d'une source de données ; chacune laisse une ligne dans le journal. | 12 |
@@ -60,7 +61,7 @@ L'interface de RAGFlow mélange le français et l'anglais, et donne parfois deux
 | Test de récupération | Outil d'une base qui montre les passages trouvés pour une question, sans faire rédiger de réponse. Interface : « Test de récupération ». | 08 |
 | Top N | Nombre de passages donnés au modèle pour rédiger la réponse ; réglage conseillé : 8. Interface : « Top N ». | 08 |
 | uv | Outil qui installe Python et les bibliothèques d'un projet, puis lance ses scripts : `uv sync` prépare le dossier, `uv run python …` lance un script. | 02 |
-| vLLM | Logiciel libre qui fait tourner des modèles d'IA sur une carte graphique NVIDIA, plus vite qu'Ollama ; il répond comme un serveur compatible OpenAI. C'est le serveur des essais de ce manuel ; fournisseur « VLLM » dans RAGFlow. | 02, 03 |
+| vLLM | Logiciel libre qui fait tourner des modèles d'IA sur une carte graphique NVIDIA, plus vite qu'Ollama ; il répond comme un serveur compatible OpenAI. Il servait les modèles des premiers essais de ce manuel ; fournisseur « VLLM » dans RAGFlow. | 03 |
 | WSL2 | Sous-système Linux de Windows, dans lequel tournent Docker et RAGFlow. | 02 |
 
 ## Bon à savoir

@@ -62,7 +62,7 @@ Ouvrir la liste « Bases de connaissances » (pastille 4) et cocher « Démo Vé
 
 **Étape 4. Activer le résumé et choisir le modèle**
 *Où* : même panneau, plus bas.
-Activer « Résumé IA » (pastille 2), « Activer la recherche connexe » (pastille 3) et « Afficher la carte mentale de la requête » (pastille 4). Ces trois fonctions demandent un modèle : choisir `gemma4:e4b` dans « Modèle » (pastille 1), puis cliquer sur « Enregistrer » (pastille 5). Plus haut, « Rerank candidates » (100) et « Modèle de réordonnancement » (vide) restent tels quels.
+Activer « Résumé IA » (pastille 2), « Activer la recherche connexe » (pastille 3) et « Afficher la carte mentale de la requête » (pastille 4). Ces trois fonctions demandent un modèle : choisir `chat` dans « Modèle » (pastille 1 ; la capture, prise avec l'ancien serveur de modèles, affiche `gemma4:e4b`), puis cliquer sur « Enregistrer » (pastille 5). Plus haut, « Rerank candidates » (100) et « Modèle de réordonnancement » se règlent comme pour un assistant (chapitre 08) ; la capture montre ce dernier vide, avant le branchement du reranker.
 
 ![Réglages du résumé](../img/15-recherche/04-reglages-du-resume.png)
 *Écran : panneau « Paramètres de recherche », bas du panneau.*

@@ -24,7 +24,7 @@ Saisir le nom (pastille 1), puis cliquer sur la liste du gabarit (pastille 3).
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Nom » | nom de la base ; la capture montre la création de « Manuel-Decoupage », faite au chapitre 05 avant l'envoi de ses trois fichiers |
-| 2 | « Modèle d'embedding » | modèle de la recherche par le sens, `bge-m3` (modèle par défaut du chapitre 03) |
+| 2 | « Modèle d'embedding » | modèle de la recherche par le sens, `embed` (modèle par défaut du chapitre 03) (la capture, prise avec l'ancien serveur de modèles, affiche `bge-m3`) |
 | 3 | gabarit | gabarit de la base, « General (built in) » par défaut |
 | 4 | « Enregistrer » | crée la base et l'ouvre |
 
@@ -198,7 +198,7 @@ Ces enrichissements sont produits par le modèle d'IA pendant l'analyse ; chacun
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | « Modèle » | modèle qui fait les extractions, ici `gemma4:e4b` |
+| 1 | « Modèle » | modèle qui fait les extractions, ici `chat` (la capture, prise avec l'ancien serveur de modèles, affiche `gemma4:e4b`) |
 | 2 | « Mots-clés » | interrupteur de l'extraction de mots-clés |
 | 3 | « Mots-clés automatiques » | nombre de mots-clés par passage (0 : aucun) ; ils font remonter le passage pour les questions qui les contiennent |
 | 4 | « Invite système » | consigne donnée au modèle pour cette extraction, modifiable |
