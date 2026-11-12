@@ -37,5 +37,5 @@ Termes employés dans la série de manuels. Quand un terme est propre à une sol
 | SurrealDB | Base de données utilisée par Open Notebook pour les carnets, les sources et les vecteurs. |
 | Top-k | Nombre de passages retrouvés et transmis au modèle. |
 | Transformation (Open Notebook) | Consigne appliquée à une source pour produire une note (résumé, points clés, etc.). |
-| vLLM | Serveur de modèles rapide pour GPU NVIDIA, compatible avec l'API d'OpenAI. Non utilisé sur la machine d'essai, qui n'a pas de GPU NVIDIA. |
+| vLLM | Serveur de modèles rapide pour GPU NVIDIA, compatible avec l'API d'OpenAI. Non utilisé sur la machine d'essai d'Open Notebook, sans GPU NVIDIA ; utilisé pour les premiers essais de RAGFlow (9 au 11 novembre 2026), remplacé ensuite par le service LLM central (LiteLLM devant llama.cpp). |
 | WSL2 | Sous-système Linux de Windows ; Docker Desktop y fait tourner ses conteneurs. |

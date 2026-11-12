@@ -7,11 +7,11 @@ Manuels vérifiés de solutions de RAG local sous Windows 11 + WSL2. Chaque solu
 | Solution | Version décrite | Date des essais | Machine de test | Langue de l'interface | Manuels |
 |---|---|---|---|---|---|
 | Open Notebook | 1.15.1 | 2026-11-08 et 2026-11-09 | Intel Core Ultra 7 255H, 15,3 Go (WSL), sans GPU NVIDIA, socle Ollama sur CPU ; puis Ryzen 5 9600X, RTX 4060 Ti 16 Go, socle vLLM | français (langue du navigateur) | dépôt https://github.com/floSa/Open-Notebook-Test-Bench |
-| RAGFlow | v1.0.0 | 2026-11-09 | Ryzen 5 9600X, 32 Go (WSL), RTX 4060 Ti 16 Go ; socle vLLM 0.29.0 | français (sélecteur de l'en-tête ; page de connexion en anglais) | [manuel utilisateur](ragflow/README.md) |
+| RAGFlow | v1.0.0 | 2026-11-09, 2026-11-11 et 2026-11-12 | Ryzen 5 9600X, 32 Go (WSL), RTX 4060 Ti 16 Go ; socle vLLM 0.29.0, puis service LLM central (LiteLLM, llama.cpp) depuis le 12 novembre | français (sélecteur de l'en-tête ; page de connexion en anglais) | [manuel utilisateur](ragflow/README.md) |
 
 ## Comparatif du banc
 
-Mêmes 38 questions ([corpus/questions.json](../corpus/questions.json) : 34 avec réponse, 4 pièges sans réponse dans le corpus), même corpus fictif de 9 documents. Les lignes « gemma4:e4b » sont comparables entre elles (même modèle sur vLLM, même machine) ; la ligne « qwen3:4b-instruct » vient d'une autre machine, sur CPU. [Vérifié] (fichiers JSON liés)
+Mêmes 38 questions ([corpus/questions.json](../corpus/questions.json) : 34 avec réponse, 4 pièges sans réponse dans le corpus), même corpus fictif de 9 documents. Les lignes « gemma4:e4b » sont comparables entre elles (même modèle sur vLLM, même machine) ; la ligne « qwen3:4b-instruct » vient d'une autre machine, sur CPU ; les lignes « chat » (Qwen3.5-4B par llama.cpp, service LLM central, réflexion activée) sont comparables entre elles, pas avec les précédentes pour la durée. [Vérifié] (fichiers JSON liés)
 
 | Solution | Banc | Modèle | Réglages | Exactes | Refus pièges | Bon document cité | Bonne page | p50 (s) | p95 (s) | Indexation (s) | Pic RAM application (Mo) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -20,6 +20,10 @@ Mêmes 38 questions ([corpus/questions.json](../corpus/questions.json) : 34 avec
 | ragflow | [defaut](../outils/resultats/ragflow/banc-2026-11-09-defaut.json) | gemma4:e4b (vLLM, LLM-Service service-vllm) | gabarit general, top_n 6, poids vecteurs 0.3, contexte 16384 | 33/34 | 4/4 | 34 | 24/24 | 1.28 | 1.88 | 53.0 | 5394 |
 | ragflow | [hybride-vecteurs07-top8](../outils/resultats/ragflow/banc-2026-11-09-hybride-vecteurs07-top8.json) | gemma4:e4b (vLLM, LLM-Service service-vllm) | gabarit general, top_n 8, poids vecteurs 0.7, contexte 16384 | 34/34 | 4/4 | 34 | 24/24 | 1.36 | 1.83 | - | 5041 |
 | ragflow | [agentic](../outils/resultats/ragflow/banc-2026-11-09-agentic.json) | gemma4:e4b (vLLM, LLM-Service service-vllm) | gabarit general, top_n 6, poids vecteurs 0.3, contexte 16384, options {"reasoning": 5} | 30/34 | 4/4 | 29 | 21/21 | 4.52 | 7.22 | - | 5331 |
+| ragflow | [defaut](../outils/resultats/ragflow/banc-2026-11-12-defaut.json) | chat (service LLM central) | gabarit general, top_n 6, poids vecteurs 0.3, contexte 16384 | 33/34 | 4/4 | 34 | 24/24 | 7.8 | 50.03 | 64.0 | 5407 |
+| ragflow | [defaut-reranker](../outils/resultats/ragflow/banc-2026-11-12-defaut-reranker.json) | chat, rerank (service LLM central) | idem, rerank_id rerank@llm-central | 34/34 | 4/4 | 33 | 23/23 | 8.31 | 58.31 | - | 5104 |
+| ragflow | [hybride-vecteurs07-top8](../outils/resultats/ragflow/banc-2026-11-12-hybride-vecteurs07-top8.json) | chat (service LLM central) | gabarit general, top_n 8, poids vecteurs 0.7, contexte 16384 | 34/34 | 4/4 | 34 | 24/24 | 7.76 | 56.92 | - | 5076 |
+| ragflow | [hybride-vecteurs07-top8-reranker](../outils/resultats/ragflow/banc-2026-11-12-hybride-vecteurs07-top8-reranker.json) | chat, rerank (service LLM central) | idem, rerank_id rerank@llm-central | 34/34 | 4/4 | 34 | 24/24 | 8.78 | 55.04 | - | 5072 |
 
 Lecture :
 
@@ -27,6 +31,7 @@ Lecture :
 - « Bonne page » : seul RAGFlow expose la page du passage cité (positions dans le PDF).
 - La différence principale vient du PDF scanné : RAGFlow le lit (OCR DeepDoc, 4 questions sur 4), Open Notebook non.
 - RAGFlow consomme bien plus de RAM (Elasticsearch, MySQL, MinIO et DeepDoc) : 5,3 Gio en pointe contre 0,6 Gio pour Open Notebook sur le même socle GPU.
+- Avec le service LLM central, le reranker (`rerank`) rattrape la question manquée par défaut, mais n'ajoute rien aux réglages vecteurs 0,7 et `top_n` 8 ; les réponses sont environ six fois plus lentes qu'avec `gemma4:e4b`, parce que `chat` réfléchit avant de répondre.
 
 ## Parcours de lecture conseillés
 
