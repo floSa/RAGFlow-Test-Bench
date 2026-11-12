@@ -1,0 +1,25 @@
+== 2026-11-12T02:48:06+01:00 rebranchement de RAGFlow sur le service LLM central (après outils/ragflow/configurer.py)
+-- avant : instances VLLM llm-service-chat et llm-service-embed (vllm-central, vllm-embed arrêtés), instance OpenAI-API-Compatible voix-locale ; défauts gemma4:e4b, bge-m3 (VLLM), Systran/faster-whisper-small (voix-locale)
+-- DELETE /api/v1/providers/VLLM/instances {instances: [llm-service-chat, llm-service-embed]} : code 0 success
+-- DELETE /api/v1/providers/VLLM : code 0 success
+-- GET /api/v1/providers :
+{
+ "code": 0,
+ "message": "success",
+ "data": [
+  {
+   "base_url": null,
+   "has_instance": true,
+   "name": "OpenAI-API-Compatible",
+   "total_models": 0
+  }
+ ]
+}
+-- GET /api/v1/providers/OpenAI-API-Compatible/instances :
+   "instance_name": "llm-central",
+   "instance_name": "voix-locale",
+-- GET /api/v1/models/default :
+    "model_provider": "OpenAI-API-Compatible",	    "model_instance": "llm-central",	    "model_name": "chat",	    "model_type": "chat",
+    "model_provider": "OpenAI-API-Compatible",	    "model_instance": "llm-central",	    "model_name": "embed",	    "model_type": "embedding",
+    "model_provider": "OpenAI-API-Compatible",	    "model_instance": "llm-central",	    "model_name": "rerank",	    "model_type": "rerank",
+    "model_provider": "OpenAI-API-Compatible",	    "model_instance": "llm-central",	    "model_name": "transcribe",	    "model_type": "asr",

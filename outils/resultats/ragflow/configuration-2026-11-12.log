@@ -1,0 +1,11 @@
+== configurer.py 2026-11-12T02:47:25
+inscription : {"code": 103, "message": "email: banc.demo@exemple.fr has already registered"}
+connexion : code=0 jeton=reçu 
+fournisseur OpenAI-API-Compatible : {"code": 0, "message": "success"}
+instance llm-central : {"code": 0, "message": "success"}
+défaut chat : {"code": 0, "message": "success", "data": {"models": []}}
+défaut embedding : {"code": 0, "message": "success", "data": {"models": []}}
+défaut rerank : {"code": 0, "message": "success", "data": {"models": []}}
+défaut asr : {"code": 0, "message": "success", "data": {"models": []}}
+langue de l'interface (French) : {"code": 0, "message": "success"}
+modèles par défaut : {"code": 0, "message": "success", "data": {"models": [{"model_provider": "OpenAI-API-Compatible", "model_instance": "llm-central", "model_name": "chat", "model_id": "86674a33a72545b29b62393e2487ef3d", "model_type": "chat", "enable": true}, {"model_provider": "OpenAI-API-Compatible", "model_instance": "llm-central", "model_name": "embed", "model_id": "1a0a6e77a78c403dbde0800c58b5c45c", "model_type"

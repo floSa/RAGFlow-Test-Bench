@@ -1,0 +1,44 @@
+dataset créé : 167540eb58414bd2821c0cc2a9743037 gabarit=general embedding=1a0a6e77a78c403dbde0800c58b5c45c
+document téléversé : cse-2025-10-14.md
+SDK parse_documents : [('a1ca135614f44f7688dd6da966e92644', 'DONE', 4, 159)] en 2.3 s
+document juste après : run=0 progress=1 chunks=4 jetons=159
+attente des compteurs (client.attendre_analyse) : {'cse-2025-10-14.md': {'fini': True, 'echec': False, 'progress': 1, 'chunks': 4, 'jetons': 159, 'message': ''}} après 0.0 s de plus
+assistant créé : ae3db1e7b0684397acfc65df523b1ffb llm=chat@llm-central@OpenAI-API-Compatible
+question : Quelle est la date de la réunion du CSE et quels sujets ont été abordés ?
+SDK Session.ask : ÉCHEC Exception: Not Found: /api/v1/chats/ae3db1e7b0684397acfc65df523b1ffb/completions
+HTTP POST /api/v1/chat/completions : statut 200 en 14.1 s
+réponse : Based on the provided knowledge base, here is a summary of the CSE meeting:
+
+## Date de la réunion du CSE
+La réunion du Comité Social et Économique (CSE) a eu lieu le **14 octobre 2025** [ID:0]. Le document est une fiche de compte rendu fictif.
+
+## Sujets abordés lors de la réunion
+
+### Points reportés
+- La question des horaires d'été de l'atelier de Cholet a été **reportée à la réunion de décembre** [ID:1]
+
+### Décisions prises
+| Sujet | Détails | Source |
+|-------|---------|--------|
+| Prime d'intéressement 2025 | 1 150 euros par salarié, versée en avril 2026 | [ID:3] |
+| Télétravail | Jusqu'à 2 jours par semaine pour les postes compatibles | [ID:3] |
+| Restaurant d'entreprise | Le nouveau restaurant du site de Nantes ouvrira en janvier 2026 | [ID:3] |
+
+### Participants
+- Hélène Marchais (présidente) [ID:2]
+- Sophie Le Gall (secrétaire du CSE) [ID:2]
+- Sept élus [ID:2]
+
+## Récapitulatif des éléments cités
+| Information | Source(s) |
+|-------------|-----------|
+| Date de la réunion : 14 octobre 2025 | [ID:0][ID:1] |
+| Sujets abordés (horaires, intéressement, télétravail, restaurant) | [ID:1][ID:3] |
+| Participants | [ID:2] |
+
+**Le compte rendu contient 4 points principaux :** un délai de report d'agenda, et trois décisions concernant la rémunération variable, le télétravail et les infrastructures pour l'équipe.
+citations : 4 passage(s)
+  - cse-2025-10-14.md | positions=[] | '# Compte rendu de la réunion du CSE du 14 octobre 2025\nDocument fictif.'
+  - cse-2025-10-14.md | positions=[] | "## Points reportés\nLa question des horaires d'été de l'atelier de Cholet est reportée à la réunion de décembre."
+  - cse-2025-10-14.md | positions=[] | '## Participants\nHélène Marchais (présidente), Sophie Le Gall (secrétaire du CSE), sept élus.'
+nettoyage : assistant et dataset d'essai supprimés ; durée totale 16.8 s

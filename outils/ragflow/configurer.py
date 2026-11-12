@@ -111,8 +111,8 @@ if not compte.get("api_key"):
         compte["api_key"] = cle
         COMPTE.write_text(json.dumps(compte, indent=2))
 
-# Non exécuté depuis la bascule vers le service central : la procédure à la main est dans le README (« Bascule vers le
-# service LLM central »). [À tester] : une instance unique portant les quatre modèles, puis un défaut par type.
+# Exécuté le 12 novembre 2026 (configuration-2026-11-12.log) : une instance unique portant les quatre modèles, puis un
+# défaut par type. Les anciennes instances VLLM se retirent par DELETE /providers/VLLM/instances (bascule-llm-central-*.log).
 r = appel("PUT", "/providers", {"provider_name": FOURNISSEUR_LLM}, jeton)
 log(f"fournisseur {FOURNISSEUR_LLM} : {masque(r)}")
 r = appel("POST", f"/providers/{FOURNISSEUR_LLM}/instances", {
