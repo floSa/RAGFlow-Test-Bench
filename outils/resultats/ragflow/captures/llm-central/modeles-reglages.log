@@ -1,0 +1,107 @@
+== phase jetons
+état de la carte : Masquer les modèles
+ligne du modèle : chat | LLM
+capture docs/ragflow/img/01-installation/12-crayon-modifier-le-modele.png [(1, 'chat'), (2, 'LLM'), (3, 'Modifier le modèle')]
+chat avant : Modifier le modèle | Nom du modèle | Type de modèle | Chat | Tokens maximum | Fonctionnalités du modèle | Appel d'outil | Non | Confirmer | Close ; Tokens maximum = 0
+capture docs/ragflow/img/12-qualite-et-performances/02-tokens-maximum.png [(1, 'Type de modèle'), (2, 'Tokens maximum'), (3, "Appel d'outil"), (4, 'Non'), (5, 'Confirmer')]
+chat : messages ['Modifié']
+état de la carte : Masquer les modèles
+embed avant : Modifier le modèle | Nom du modèle | Type de modèle | Embedding | Tokens maximum | Fonctionnalités du modèle | Appel d'outil | Non | Confirmer | Close ; Tokens maximum = 0
+embed : messages ['Modifié']
+état de la carte : Masquer les modèles
+rerank avant : Modifier le modèle | Nom du modèle | Type de modèle | Rerank | Tokens maximum | Fonctionnalités du modèle | Appel d'outil | Non | Confirmer | Close ; Tokens maximum = 0
+rerank : messages ['Modifié']
+état de la carte : Masquer les modèles
+chat : Tokens maximum relu après rechargement = 16384
+état de la carte : Masquer les modèles
+embed : Tokens maximum relu après rechargement = 8192
+état de la carte : Masquer les modèles
+rerank : Tokens maximum relu après rechargement = 8192
+== phase personnalise
+état de la carte : Masquer les modèles
+capture docs/ragflow/img/01-installation/13-menu-modele-personnalise.png [(1, 'Ajouter un modèle personnalisé'), (2, 'Verify all models')]
+type choisi : Rerank
+capture docs/ragflow/img/01-installation/14-modele-personnalise.png [(1, 'Nom du modèle'), (2, 'Type de modèle'), (3, 'Tokens maximum'), (4, 'Non'), (5, 'Confirmer')]
+modèle d'exemple absent après rechargement : True
+== phase defauts
+défauts avant : BR |  | banc.demo@exemple.fr |  | Fournisseurs de modèles | Sources de données | Canaux de chat | MCP | Équipe | Profil | API | v1.0.0 | Déconnexion | Définir les modèles par défaut | Modèles disponibles | OpenAI-API-Compatible | OpenAI | Anthropic | Gemini | DeepSeek | Moonshot | ZHIPU-AI | xAI | HuggingFace | Cohere | WorldRouter | OpenRouter | MiniMax | VolcEngine | SystemOne | Tongyi-Qianwen | Replicate | SILICONFLOW | Ollama | VLLM | Cheaper Inference | Radeon Cloud | ModelScope | CometAPI | FuturMix | GiteeAI | Fish Audio | GPUStack | GreenPT | Groq | Hostinger Router | HuaweiCloud | Hubris | EmpirioLabs AI | Tencent Hunyuan | Jiekou.AI | Jina | llmman | LM-Studio | LocalAI | LongCat | MinerU | MiniCPM-OCR | Demon Route | Mistral | 302.AI | MonkeyOCR | MonkeyOCRv2 | DeepInfra | MWS |
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/llm_central.py", line 314, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/llm_central.py", line 75, in modeles
+    phases_de(s, "modeles", phases, ("fournisseurs", "instance", "jetons", "personnalise", "defauts", "supprimer", "ouvert"))
+  File "/depot/outils/ragflow/captures/llm_central.py", line 58, in phases_de
+    globals()[prefixe + "_" + ph](s)
+  File "/depot/outils/ragflow/captures/llm_central.py", line 255, in modeles_defauts
+    choisir(s, "Modèle de chat", "chat", "10-choix-modele-de-chat")
+  File "/depot/outils/ragflow/captures/llm_central.py", line 243, in choisir
+    log(f"liste {libelle} :", liste.inner_text().replace("\n", " | ")[:400])
+                              ^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/sync_api/_generated.py", line 12419, in inner_text
+    self._sync(self._impl_obj.inner_text(timeout=to_milliseconds(timeout)))
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 514, in inner_text
+    return await self._frame.inner_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_frame.py", line 748, in inner_text
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.inner_text: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("[role=listbox], [data-radix-popper-content-wrapper]").last
+
+== phase defauts
+défauts avant : BR |  | banc.demo@exemple.fr |  | Fournisseurs de modèles | Sources de données | Canaux de chat | MCP | Équipe | Profil | API | v1.0.0 | Déconnexion | Définir les modèles par défaut | Modèles disponibles | OpenAI-API-Compatible | OpenAI | Anthropic | Gemini | DeepSeek | Moonshot | ZHIPU-AI | xAI | HuggingFace | Cohere | WorldRouter | OpenRouter | MiniMax | VolcEngine | SystemOne | Tongyi-Qianwen | Replicate | SILICONFLOW | Ollama | VLLM | Cheaper Inference | Radeon Cloud | ModelScope | CometAPI | FuturMix | GiteeAI | Fish Audio | GPUStack | GreenPT | Groq | Hostinger Router | HuaweiCloud | Hubris | EmpirioLabs AI | Tencent Hunyuan | Jiekou.AI | Jina | llmman | LM-Studio | LocalAI | LongCat | MinerU | MiniCPM-OCR | Demon Route | Mistral | 302.AI | MonkeyOCR | MonkeyOCRv2 | DeepInfra | MWS |
+liste Modèle de chat : OpenAI-API-Compatible | llm-central | chat
+capture docs/ragflow/img/01-installation/10-choix-modele-de-chat.png [(1, 'liste des modèles de chat'), (2, 'chat')]
+Modèle de chat : messages ['Modifié']
+liste Modèle d'embedding : OpenAI-API-Compatible | llm-central | embed
+Modèle d'embedding : messages ['Modifié']
+liste Modèle Speech2txt : OpenAI-API-Compatible | llm-central | transcribe
+Modèle Speech2txt : messages ['Modifié']
+liste Modèle de rerank : OpenAI-API-Compatible | llm-central | rerank
+Modèle de rerank : messages ['Modifié']
+capture docs/ragflow/img/01-installation/09-modeles-par-defaut.png [(1, 'Modèle de chat'), (2, "Modèle d'embedding"), (3, 'Modèle Img2txt'), (4, 'Modèle Speech2txt'), (5, 'Modèle de rerank'), (6, 'Modèle TTS')]
+== phase supprimer
+Traceback (most recent call last):
+  File "/depot/outils/ragflow/captures/llm_central.py", line 317, in <module>
+    globals()[scenario](s, *args)
+  File "/depot/outils/ragflow/captures/llm_central.py", line 75, in modeles
+    phases_de(s, "modeles", phases, ("fournisseurs", "instance", "jetons", "personnalise", "defauts", "supprimer", "ouvert"))
+  File "/depot/outils/ragflow/captures/llm_central.py", line 58, in phases_de
+    globals()[prefixe + "_" + ph](s)
+  File "/depot/outils/ragflow/captures/llm_central.py", line 273, in modeles_supprimer
+    poubelle.click(); attendre(s, 1500)
+    ^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/sync_api/_generated.py", line 11021, in click
+    self._sync(
+  File "/pw/site/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_locator.py", line 174, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_frame.py", line 598, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/pw/site/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pw/site/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator(":text-is('voix-locale')").first.locator("xpath=ancestor::*[@data-testid='instance-name-row'][1]").get_by_role("button", name="Delete instance").first
+
+== phase supprimer
+fenêtre : Êtes-vous sûr de vouloir supprimer cet élément ? | Non | Supprimer
+capture docs/ragflow/img/01-installation/08-suppression-instance.png [(1, 'confirmation'), (2, 'Supprimer')]
+voix-locale encore présente : 0
+== phase ouvert
+capture docs/ragflow/img/01-installation/03-fournisseur-openai-compatible.png [(1, 'OpenAI-API-Compatible'), (2, 'Comment intégrer OpenAI-API-Compatible'), (3, 'llm-central'), (4, 'Voir les modèles'), (5, 'Add instance')]

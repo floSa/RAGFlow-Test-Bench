@@ -23,7 +23,6 @@ Déconnexion
 Définir les modèles par défaut
 Modèles disponibles
 OpenAI-API-Compatible
-VLLM
 OpenAI
 Anthropic
 Gemini
@@ -42,6 +41,7 @@ Tongyi-Qianwen
 Replicate
 SILICONFLOW
 Ollama
+VLLM
 Cheaper Inference
 Radeon Cloud
 ModelScope
@@ -118,26 +118,21 @@ Définir les modèles par défaut
 Veuillez compléter ces paramètres avant de commencer
 
 *Modèle de chat
-gemma4:e4b
-llm-service-chat
 Modèle d'embedding
-bge-m3
-llm-service-embed
 Modèle Img2txt
 Modèle Speech2txt
-Systran/faster-whisper-small
-voix-locale
 Modèle de rerank
 Modèle TTS
 Decision model
-VLLM
-llm-service-chat
-gemma4:e4b
+OpenAI-API-Compatible
+llm-central
+chat
 
 == adresse ==
 /user-setting/model
 == pastilles ==
 1. liste des modèles de chat
+2. chat
 == éléments visibles ==
 a | 
 a | Accueil
@@ -164,7 +159,6 @@ button | Déconnexion
 button | Définir les modèles par défaut
 input:text | Rechercher
 button | OpenAI-API-Compatible
-button | VLLM
 button | OpenAI
 button | Anthropic
 button | Gemini
@@ -183,6 +177,7 @@ button | Tongyi-Qianwen
 button | Replicate
 button | SILICONFLOW
 button | Ollama
+button | VLLM
 button | Cheaper Inference
 button | Radeon Cloud
 button | ModelScope
@@ -256,13 +251,10 @@ button | XunFei Spark
 button | AI Stupid Level
 label | *Modèle de chat
 button | [icône lucide-circle-question-mark]
-button | gemma4:e4b llm-service-chat
-label | Modèle d'embedding
-button | bge-m3 llm-service-embed
-label | Modèle Img2txt
 button | [icône lucide-chevron-down]
+label | Modèle d'embedding
+label | Modèle Img2txt
 label | Modèle Speech2txt
-button | Systran/faster-whisper-small voix-locale
 label | Modèle de rerank
 label | Modèle TTS
 label | Decision model

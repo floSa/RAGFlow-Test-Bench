@@ -23,123 +23,38 @@ Déconnexion
 Définir les modèles par défaut
 Modèles disponibles
 OpenAI-API-Compatible
-VLLM
-OpenAI
-Anthropic
-Gemini
-DeepSeek
-Moonshot
-ZHIPU-AI
-xAI
-HuggingFace
-Cohere
-WorldRouter
-OpenRouter
-MiniMax
-VolcEngine
-SystemOne
-Tongyi-Qianwen
-Replicate
-SILICONFLOW
-Ollama
-Cheaper Inference
-Radeon Cloud
-ModelScope
-CometAPI
-FuturMix
-GiteeAI
-Fish Audio
-GPUStack
-GreenPT
-Groq
-Hostinger Router
-HuaweiCloud
-Hubris
-EmpirioLabs AI
-Tencent Hunyuan
-Jiekou.AI
-Jina
-llmman
-LM-Studio
-LocalAI
-LongCat
-MinerU
-MiniCPM-OCR
-Demon Route
-Mistral
-302.AI
-MonkeyOCR
-MonkeyOCRv2
-DeepInfra
-MWS
-n1n
-New API
-NovitaAI
-NVIDIA
-Obscurify.ai
-DaoXE
-FunASR
-CloudGPU
-cheapaimodel
-Opper
-OrcaRouter
-PaddleOCR
-PaddleOCR.local
-Perplexity
-PPIO
-Qiniu
-Bedrock
-RAGcon
-BaiduYiyan
-Runcrate
-BaiChuan
-SoMark
-StepFun
-Synap
-Synthorai
-Azure-OpenAI
-TogetherAI
-TokenHub
-TokenPony
-TrustedRouter
-Upstage
-Avian
-Astraflow
-Voyage AI
-Wally
-API-Route
-AnonRouter
-Xiaomi
-Xinference
-XunFei Spark
-AI Stupid Level
-VLLM
-Comment intégrer VLLM
-Manuel-instance
+OpenAI-API-Compatible
+Comment intégrer OpenAI-API-Compatible
+llm-central
 Enregistrer
 Clé API
 URL de base
 Models
 Lister les modèles
-Tous les modèles2
+Tous les modèles9
+LLM3
 Embedding2
-BAAI/bge-m3
+Rerank2
+ASR2
+chat
+LLM
+embed
 Embedding
+rerank
+Rerank
+transcribe
+ASR
 bge-m3
 Embedding
-llm-service-embed
-Enregistrer
-Clé API
-URL de base
-Models
-Lister les modèles
-Tous les modèles2
-Embedding2
-bge-m3
-Embedding
-BAAI/bge-m3
-Embedding
-llm-service-chat
+bge-reranker-v2-m3
+Rerank
+faster-whisper-small
+ASR
+gemma-4-e4b
+LLM
+qwen3.5-4b
+LLM
+voix-locale
 Enregistrer
 Add instance
 Êtes-vous sûr de vouloir supprimer cet élément ?
@@ -177,119 +92,41 @@ button | Déconnexion
 button | Définir les modèles par défaut
 input:text | Rechercher
 button | OpenAI-API-Compatible
-button | VLLM
-button | OpenAI
-button | Anthropic
-button | Gemini
-button | DeepSeek
-button | Moonshot
-button | ZHIPU-AI
-button | xAI
-button | HuggingFace
-button | Cohere
-button | WorldRouter
-button | OpenRouter
-button | MiniMax
-button | VolcEngine
-button | SystemOne
-button | Tongyi-Qianwen
-button | Replicate
-button | SILICONFLOW
-button | Ollama
-button | Cheaper Inference
-button | Radeon Cloud
-button | ModelScope
-button | CometAPI
-button | FuturMix
-button | GiteeAI
-button | Fish Audio
-button | GPUStack
-button | GreenPT
-button | Groq
-button | Hostinger Router
-button | HuaweiCloud
-button | Hubris
-button | EmpirioLabs AI
-button | Tencent Hunyuan
-button | Jiekou.AI
-button | Jina
-button | llmman
-button | LM-Studio
-button | LocalAI
-button | LongCat
-button | MinerU
-button | MiniCPM-OCR
-button | Demon Route
-button | Mistral
-button | 302.AI
-button | MonkeyOCR
-button | MonkeyOCRv2
-button | DeepInfra
-button | MWS
-button | n1n
-button | New API
-button | NovitaAI
-button | NVIDIA
-button | Obscurify.ai
-button | DaoXE
-button | FunASR
-button | CloudGPU
-button | cheapaimodel
-button | Opper
-button | OrcaRouter
-button | PaddleOCR
-button | PaddleOCR.local
-button | Perplexity
-button | PPIO
-button | Qiniu
-button | Bedrock
-button | RAGcon
-button | BaiduYiyan
-button | Runcrate
-button | BaiChuan
-button | SoMark
-button | StepFun
-button | Synap
-button | Synthorai
-button | Azure-OpenAI
-button | TogetherAI
-button | TokenHub
-button | TokenPony
-button | TrustedRouter
-button | Upstage
-button | Avian
-button | Astraflow
-button | Voyage AI
-button | Wally
-button | API-Route
-button | AnonRouter
-button | Xiaomi
-button | Xinference
-button | XunFei Spark
-button | AI Stupid Level
-a | Documentation link
-a | Comment intégrer VLLM
+a | Comment intégrer OpenAI-API-Compatible
 button | Masquer les modèles
 button | Delete instance
 button | Enregistrer
 label | Clé API
-input:password | Veuillez saisir la clé API (pour un modèle déployé localement, ignorez ceci).
-button | [icône lucide-eye]
+input:text | Clear this field to remove the saved credential
 label | URL de base
-input:text | http://host.docker.internal:8000/v1
+input:text | Veuillez saisir votre URL de base
 button | Lister les modèles
 button | More actions
-button | Remove all models
-button | Tous les modèles2
-button | Embedding2
-button | Modifier le modèle
-button | Verify BAAI/bge-m3
-button | Remove BAAI/bge-m3
-button | Verify bge-m3
-button | Remove bge-m3
-input:text | Clear this field to remove the saved credential
 button | Add all models
-button | Add BAAI/bge-m3
+button | Tous les modèles9
+button | LLM3
+button | Embedding2
+button | Rerank2
+button | ASR2
+button | Modifier le modèle
+button | Verify chat
+button | Remove chat
+button | Verify embed
+button | Remove embed
+button | Verify rerank
+button | Remove rerank
+button | Verify transcribe
+button | Remove transcribe
+button | Verify bge-m3
+button | Add bge-m3
+button | Verify bge-reranker-v2-m3
+button | Add bge-reranker-v2-m3
+button | Verify faster-whisper-small
+button | Add faster-whisper-small
+button | Verify gemma-4-e4b
+button | Add gemma-4-e4b
+button | Verify qwen3.5-4b
+button | Add qwen3.5-4b
 button | Voir les modèles
 button | Add instance
 button | [icône lucide-x]

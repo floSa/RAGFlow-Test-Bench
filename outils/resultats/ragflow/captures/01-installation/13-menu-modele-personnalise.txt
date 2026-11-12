@@ -22,22 +22,39 @@ v1.0.0
 Déconnexion
 Définir les modèles par défaut
 Modèles disponibles
-VLLM
-VLLM
-Comment intégrer VLLM
-llm-service-embed
+OpenAI-API-Compatible
+OpenAI-API-Compatible
+Comment intégrer OpenAI-API-Compatible
+llm-central
 Enregistrer
 Clé API
 URL de base
 Models
 Lister les modèles
-Tous les modèles2
+Tous les modèles9
+LLM3
 Embedding2
+Rerank2
+ASR2
+chat
+LLM
+embed
+Embedding
+rerank
+Rerank
+transcribe
+ASR
 bge-m3
 Embedding
-BAAI/bge-m3
-Embedding
-llm-service-chat
+bge-reranker-v2-m3
+Rerank
+faster-whisper-small
+ASR
+gemma-4-e4b
+LLM
+qwen3.5-4b
+LLM
+voix-locale
 Enregistrer
 Add instance
 Ajouter un modèle personnalisé
@@ -73,26 +90,42 @@ switch | [icône lucide-sun]
 button | Déconnexion
 button | Définir les modèles par défaut
 input:text | Rechercher
-button | VLLM
-a | Documentation link
-a | Comment intégrer VLLM
+button | OpenAI-API-Compatible
+a | Comment intégrer OpenAI-API-Compatible
 button | Masquer les modèles
 button | Delete instance
 button | Enregistrer
 label | Clé API
 input:text | Clear this field to remove the saved credential
 label | URL de base
-input:text | http://host.docker.internal:8000/v1
+input:text | Veuillez saisir votre URL de base
 button | Lister les modèles
 button | More actions
 button | Add all models
-button | Tous les modèles2
+button | Tous les modèles9
+button | LLM3
 button | Embedding2
+button | Rerank2
+button | ASR2
 button | Modifier le modèle
+button | Verify chat
+button | Remove chat
+button | Verify embed
+button | Remove embed
+button | Verify rerank
+button | Remove rerank
+button | Verify transcribe
+button | Remove transcribe
 button | Verify bge-m3
-button | Remove bge-m3
-button | Verify BAAI/bge-m3
-button | Add BAAI/bge-m3
+button | Add bge-m3
+button | Verify bge-reranker-v2-m3
+button | Add bge-reranker-v2-m3
+button | Verify faster-whisper-small
+button | Add faster-whisper-small
+button | Verify gemma-4-e4b
+button | Add gemma-4-e4b
+button | Verify qwen3.5-4b
+button | Add qwen3.5-4b
 button | Voir les modèles
 button | Add instance
 menuitem | Ajouter un modèle personnalisé
