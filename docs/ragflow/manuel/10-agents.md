@@ -337,7 +337,8 @@ La page « Serveurs MCP » affiche « Aucun serveur MCP disponible », avec « R
 
 - Les 19 modèles d'agents sont en anglais ; plusieurs supposent un service en ligne (recherche web, bourse, courriel) et ne fonctionnent pas sur une installation fermée à Internet.
 - Les réponses des agents tirés de ces modèles sont en anglais, même à une question en français. Pour des réponses en français, traduire l'« Invite système » et l'« Invite utilisateur » du bloc agent (étape 5).
-- Un agent répond un peu plus lentement qu'un assistant : cinq à six secondes contre deux à trois, car le modèle décide d'abord d'appeler l'outil.
+- Un agent répond plus lentement qu'un assistant, car le modèle décide d'abord d'appeler l'outil : cinq à six secondes avec l'ancien serveur de modèles, 17 à 26 secondes avec le modèle `chat` du service central, qui réfléchit avant de répondre.
+- Avec `chat`, la réponse d'un agent commence par ce raisonnement, en anglais, entre les balises `<think>` et `</think>` ; la réponse utile vient après. Constaté le 12 novembre 2026 sur « Agent démo Vélanor » (réponse juste : Julien Moreau, directeur de production) ; les assistants, eux, n'affichent pas ce raisonnement.
 - Le nom d'une version publiée porte l'heure de Paris, mais les mentions « Créé » et « Sauvegardé automatiquement » l'heure universelle (une heure de moins en hiver).
 - Une adresse de serveur MCP sur le réseau local sera probablement refusée, comme pour les sources de données (chapitre 12).
 
@@ -354,4 +355,4 @@ La page « Serveurs MCP » affiche « Aucun serveur MCP disponible », avec « R
 Les autres problèmes sont traités au chapitre [15. En cas de problème](15-en-cas-de-probleme.md).
 
 ---
-*Version décrite : RAGFlow v1.0.0, essais des 9 et 11 novembre 2026. Détails et preuves : [rapport d'essais](../annexes/A6-rapport-d-essais.md).*
+*Version décrite : RAGFlow v1.0.0, essais des 9, 11 et 12 novembre 2026. Détails et preuves : [rapport d'essais](../annexes/A6-rapport-d-essais.md).*
