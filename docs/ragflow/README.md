@@ -62,7 +62,8 @@ Les quatre premiers chapitres mènent, en une heure environ, de rien à une prem
 
 - Correction d'un passage tiré d'un PDF : « Confirmer » reste sans effet ; contournement au chapitre [06](manuel/06-regler-la-lecture-des-documents.md).
 - Mode « Agentic » moins juste et plus lent que la réponse directe avec le petit modèle des essais (chapitre [07](manuel/07-poser-des-questions-et-lire-les-sources.md)).
-- Aucun modèle de second tri des passages (reranker) dans le socle : non essayé.
+- Aucun modèle de second tri des passages (reranker) fourni avec RAGFlow ; celui du service de modèles de la machine d'essai se branche et a été essayé (chapitres [03](manuel/03-premiers-pas.md) et [08](manuel/08-regler-un-assistant.md)).
+- Réponses en 8 secondes environ, jusqu'à une minute, avec le modèle de réponse actuel, qui réfléchit avant de répondre ; quelques captures montrent encore le nom de l'ancien modèle (`gemma4:e4b`), signalé dans le texte.
 - Module Python `ragflow-sdk` 1.0.0 : deux défauts, contournés dans l'annexe [A3](annexes/A3-automatiser-par-l-api.md).
 
 Ce qui reste ouvert (sujets non traités, estimations, décisions en attente, relectures) est suivi dans le [rapport de fin de mission](../../RAPPORT-ragflow.md#11-ce-qui-reste-ouvert).

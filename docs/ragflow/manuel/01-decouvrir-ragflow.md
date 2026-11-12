@@ -49,6 +49,7 @@ Réponses : **Oui**, **Non**, ou **Partiel** avec la limite en une phrase.
 | Lire les tableaux en gardant lignes et colonnes | Oui |
 | Lire un document scanné | Oui, avec quelques confusions de caractères à corriger à la main |
 | Transcrire un fichier audio | Oui, avec un service de transcription installé à côté |
+| Trier une seconde fois les passages trouvés (reranker) | Partiel : aucun modèle fourni, il faut un serveur qui en sert un ; essayé avec succès sur la machine d'essai |
 | Lire une vidéo | Non |
 | Lire une image seule | Partiel : il faut un modèle capable de lire les images |
 | Lire les pages d'un site interne par son plan (sitemap) | Partiel : refusé par défaut pour une adresse privée |
@@ -79,10 +80,10 @@ RAGFlow lui-même ne contient aucun modèle d'IA : il les appelle sur un service
 
 **Configuration essayée, avec une carte graphique NVIDIA** :
 
-- carte RTX 4060 Ti à 16 Go de mémoire graphique (12 Go suffiraient) ;
+- carte RTX 4060 Ti à 16 Go de mémoire graphique, dont un peu plus de 8 Go utilisés (8 Go devraient suffire) ;
 - 32 Go de mémoire vive, dont environ 16 Go réellement utilisés ;
-- modèle de réponse Gemma 4 E4B et modèle `bge-m3`, servis par vLLM ;
-- attente constatée : un peu plus d'une seconde par question, moins d'une minute pour analyser neuf documents.
+- service de modèles central : modèle de réponse Qwen3.5-4B (`chat`), modèle `bge-m3` pour la recherche par le sens (`embed`), reranker `bge-reranker-v2-m3` (`rerank`) sur la carte graphique, et modèle de transcription sur le processeur ;
+- attente constatée : 8 secondes par question en médiane, jusqu'à une minute pour les plus longues, car ce modèle réfléchit avant de répondre (un peu plus d'une seconde avec le modèle Gemma 4 E4B des premiers essais, qui ne réfléchit pas) ; environ une minute pour analyser neuf documents.
 
 Le nombre de documents d'une base n'est pas limité par le modèle : seuls les six à huit passages les plus proches de la question lui sont transmis. Il est limité par le temps d'analyse (environ une minute par mégaoctet de documents, cinq secondes par page scannée) et par la mémoire de la machine.
 
@@ -90,11 +91,11 @@ Le nombre de documents d'une base n'est pas limité par le modèle : seuls les s
 
 Essais menés sur neuf documents d'une entreprise fictive (dont un contrat scanné, un message vocal et un rapport en anglais), avec 38 questions dont la réponse est connue :
 
-- **justesse** : 33 bonnes réponses sur 34 avec les réglages d'origine, 34 sur 34 avec les réglages conseillés au chapitre 08 ;
+- **justesse** : 33 bonnes réponses sur 34 avec les réglages d'origine, 34 sur 34 avec les réglages conseillés au chapitre 08 ou avec le reranker ;
 - **honnêteté** : les 4 questions sans réponse dans les documents sont toutes refusées, sans invention ;
 - **sources** : le bon document est cité dans les 34 cas, la bonne page dans tous les cas où il y a des pages ;
-- **rapidité** : environ 1,3 seconde par réponse avec une carte graphique ;
-- **analyse** : les neuf documents sont prêts en moins d'une minute.
+- **rapidité** : environ 8 secondes par réponse en médiane avec une carte graphique et le modèle `chat`, qui réfléchit avant de répondre ;
+- **analyse** : les neuf documents sont prêts en une minute environ.
 
 Détail : annexe [A1. Évaluation : qualité et performances](../annexes/A1-evaluation-qualite-et-performances.md).
 
@@ -132,4 +133,4 @@ Ces mots et les autres termes techniques sont repris dans le [glossaire](16-glos
 Les autres problèmes sont traités au chapitre [15. En cas de problème](15-en-cas-de-probleme.md).
 
 ---
-*Version décrite : RAGFlow v1.0.0, essais des 9 et 11 novembre 2026. Détails et preuves : [rapport d'essais](../annexes/A6-rapport-d-essais.md).*
+*Version décrite : RAGFlow v1.0.0, essais des 9, 11 et 12 novembre 2026. Détails et preuves : [rapport d'essais](../annexes/A6-rapport-d-essais.md).*
