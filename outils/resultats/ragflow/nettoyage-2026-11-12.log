@@ -1,0 +1,7 @@
+== 2026-11-12T09:13:21 nettoyage des essais
+assistant supprimé : Banc-hybride-vecteurs07-top8-reranker
+assistant supprimé : Banc-hybride-vecteurs07-top8
+assistant supprimé : Banc-defaut-reranker
+assistant supprimé : Banc-defaut
+base supprimée : Banc-general
+restent : bases ['Démo Vélanor', 'Essai-KC-mind_map-0816'] ; assistants ['Démo Vélanor'] ; agents ['Agent démo Vélanor', 'Essai-KC-mind_map-0816', 'Essai-KC-mind_map-0816']

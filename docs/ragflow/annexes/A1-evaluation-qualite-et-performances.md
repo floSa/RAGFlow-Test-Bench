@@ -285,7 +285,7 @@ La réponse (8 % du montant de la commande) est juste. Le scénario a relevé 1,
 
 ## 9. Taille de contexte et budget de prompt
 
-La taille de contexte déclarée est le nombre maximal de jetons (prompt et réponse) que RAGFlow suppose au modèle. Elle se règle dans l'interface, par modèle : menu du compte › « Fournisseurs de modèles » › « VLLM » › carte de l'instance `llm-service-chat` (chapitre [03](../manuel/03-premiers-pas.md)) ; survoler la ligne `gemma4:e4b` et cliquer sur le crayon « Modifier le modèle » qui apparaît à droite du badge « LLM ».
+La taille de contexte déclarée est le nombre maximal de jetons (prompt et réponse) que RAGFlow suppose au modèle. Elle se règle dans l'interface, par modèle : menu du compte › « Fournisseurs de modèles » › « OpenAI-API-Compatible » › carte de l'instance `llm-central` (chapitre [03](../manuel/03-premiers-pas.md), étapes 18 et 19) ; survoler la ligne `chat` et cliquer sur le crayon « Modifier le modèle » qui apparaît à droite du badge « LLM ».
 
 La fenêtre « Modifier le modèle » (« Type de modèle » « Chat », « Tokens maximum », « Appel d'outil », « Non », « Confirmer », qui prend effet à la question suivante) est montrée et annotée au chapitre [15](../manuel/15-en-cas-de-probleme.md), comme remède à l'erreur de contexte ; « Tokens maximum » vaut 16384 dans ce banc et doit rester inférieur ou égal à la taille réellement servie.
 

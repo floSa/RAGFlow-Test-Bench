@@ -32,7 +32,7 @@ RAGFlow ne contient aucun modèle d'IA : il les appelle sur LLM-Service, service
 | Indexation du corpus (9 documents, 1 Mo, 26 passages) | 52 à 56 s (71 s au premier essai de l'adaptateur) |
 | OCR d'un scan | 4,7 s par page |
 | Question | 7,8 s en médiane et 50 à 58 s au 95e centile avec `chat` (réflexion activée) ; 1,3 s en médiane avec `gemma4:e4b` sur vLLM (historique) ; 1 841 jetons d'entrée et 54 de sortie pour une question type (historique) |
-| Débit de génération de vLLM | 30 à 62 jetons/s selon la charge (journal de `vllm-central`) |
+| Débit de génération de vLLM (historique, 9 novembre) | 30 à 62 jetons/s selon la charge (journal de `vllm-central`) |
 
 [Vérifié] (`outils/resultats/ragflow/ressources-llm-central-2026-11-12.txt`, `essai-2026-11-12-serie-banc.log`, `banc-2026-11-12-*.json`, `outils/resultats/ragflow/ressources-2026-11-09-*.txt`, `banc-2026-11-09-defaut.json`, `essai-2026-11-09-passages.log`, `outils/resultats/ragflow/preuves-2026-11-09/vllm-extrait.log`, `outils/resultats/ragflow/preuves-2026-11-09/textes-captures/02-conversation.txt`)
 
@@ -183,7 +183,7 @@ Le serveur de transcription de la machine d'essai, `rag-speaches` (Speaches 0.8.
 | Erreur du serveur de modèles sur une longue question | « Tokens maximum » déclaré plus grand que le contexte servi [Estimation] | déclarer une taille inférieure ou égale à celle du serveur |
 | Pas de place sur la carte pour un troisième modèle (reranker) avec vLLM (historique) | modèle de réponse et embedding déjà chargés, programmes Windows sur la même carte | service central llama.cpp (modèles GGUF quantifiés), où le trio tient ; voir la section 6 |
 | Le service central ne répond pas | arrêté (aucun démarrage automatique au lancement de la machine) | `~/mes_projets/Projet-IA/LLM-Service/scripts/demarrer.sh`, puis `outils/communs/llm_central_sante.sh --essai` |
-| Mémoire graphique saturée au démarrage de LLM-Service | autre conteneur sur la carte, ou mémoire prise par Windows | voir le `.env` local de LLM-Service (`VLLM_EXTRA_ARGS`) et l'annexe [A4](A4-exploitation.md) |
+| Mémoire graphique saturée au démarrage de LLM-Service (ancienne pile vLLM) | autre conteneur sur la carte, ou mémoire prise par Windows | voir le `.env` local de LLM-Service (`VLLM_EXTRA_ARGS`) et l'annexe [A4](A4-exploitation.md) |
 
 ## Sources
 
