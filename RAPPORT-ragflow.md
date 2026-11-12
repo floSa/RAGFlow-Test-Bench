@@ -28,8 +28,8 @@ Mission : `kit/PROMPT.md` pour la fiche `kit/fiches/02-ragflow.md`, exécutée l
 | Kvrocks | 2.16.0 (imposée) | `sha256:9e632c317c83c80d92f1c9d22ac6aa9f64d149e1f04ff2af5f15a5768a01c4b7` |
 | NATS | 2.14.2 (imposée) | `sha256:bbfbb6c4cdaeb8a2e3ca57d3de30463a66a6c5181f324f3b680bcf858833d377` |
 | SDK Python | `ragflow-sdk` 1.0.0, Python 3.13 (uv) | `pyproject.toml`, `uv.lock` |
-| Modèles (LLM-Service, non modifié) | `gemma4:e4b` (Gemma 4 E4B w4a16) et `bge-m3` sur vLLM 0.29.0 | branche `service-vllm` |
-| Transcription | `Systran/faster-whisper-small` sur `rag-speaches` (socle de la série) | `outils/communs/voix.sh` |
+| Modèles (LLM-Service, géré à part) depuis le 12 novembre 2026 | service LLM central : `chat` (Qwen3.5-4B Q4_K_M), `embed` (bge-m3 Q8_0), `rerank` (bge-reranker-v2-m3 Q8_0) par llama.cpp, `transcribe` (faster-whisper-small) ; instance `llm-central` du fournisseur `OpenAI-API-Compatible` | LiteLLM v1.109.0, llama-swap v272, llama.cpp build 12282 ([relevé](outils/resultats/ragflow/versions-llm-central-2026-11-12.txt)) |
+| Modèles du 9 au 11 novembre (historique) | `gemma4:e4b` (Gemma 4 E4B w4a16) et `bge-m3` sur vLLM 0.29.0 ; transcription `Systran/faster-whisper-small` sur `rag-speaches` | branche `service-vllm` ; `outils/communs/voix.sh` |
 | Captures | `mcr.microsoft.com/playwright/python:v1.64.1-noble` | figée par empreinte dans `outils/communs/captures/lancer.sh` |
 
 Aucun modèle téléchargé (modèles déjà servis par LLM-Service ; modèles DeepDoc embarqués dans l'image). Téléchargements : images de la pile (3,1 Go), image Playwright, image `ollama/ollama` figée tirée par le test GPU du diagnostic (5,6 Go au plus) : moins de 15 Go au total, sous le plafond de 150 Go. Versions relevées : [versions-2026-11-09.json](outils/resultats/ragflow/versions-2026-11-09.json).
@@ -50,9 +50,17 @@ Page d'accueil du manuel : [docs/ragflow/README.md](docs/ragflow/README.md) ; s�
 | 1. Manuel utilisateur | 16 chapitres à lire dans l'ordre : [01. Découvrir RAGFlow](docs/ragflow/manuel/01-decouvrir-ragflow.md), [02. Installer](docs/ragflow/manuel/02-installer-ragflow.md), [03. Premiers pas](docs/ragflow/manuel/03-premiers-pas.md), [04. Première question](docs/ragflow/manuel/04-premiere-question.md), [05. Documents](docs/ragflow/manuel/05-ajouter-et-organiser-ses-documents.md), [06. Lecture des documents](docs/ragflow/manuel/06-regler-la-lecture-des-documents.md), [07. Questions et sources](docs/ragflow/manuel/07-poser-des-questions-et-lire-les-sources.md), [08. Régler un assistant](docs/ragflow/manuel/08-regler-un-assistant.md), [09. Rechercher](docs/ragflow/manuel/09-rechercher.md), [10. Agents](docs/ragflow/manuel/10-agents.md), [11. Synthèses automatiques](docs/ragflow/manuel/11-syntheses-automatiques.md), [12. Sources externes](docs/ragflow/manuel/12-sources-externes.md), [13. Comptes, équipe et clés](docs/ragflow/manuel/13-comptes-equipe-et-cles.md), [14. Cas pratiques](docs/ragflow/manuel/14-cas-pratiques.md), [15. En cas de problème](docs/ragflow/manuel/15-en-cas-de-probleme.md), [16. Glossaire](docs/ragflow/manuel/16-glossaire.md) |
 | 2. Évaluation et compléments | [A1. Qualité et performances](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md), [A2. Matériel et modèles](docs/ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md), [A3. API](docs/ragflow/annexes/A3-automatiser-par-l-api.md), [A4. Exploitation](docs/ragflow/annexes/A4-exploitation.md), [A5. Fonctionnement interne](docs/ragflow/annexes/A5-fonctionnement-interne.md), [A6. Rapport d'essais](docs/ragflow/annexes/A6-rapport-d-essais.md) |
 
-Manuel utilisateur refait le 11 novembre 2026 : chaque action faite à la souris, 196 captures annotées (rectangle rouge, pastille numérotée, tableau N° | Élément | Rôle), carte de l'interface dans [docs/ragflow/annexes/carte-interface.md](docs/ragflow/annexes/carte-interface.md) (4 éléments non couverts, raison donnée). Exemples exécutés : `exemples/ragflow/` et [sorties vérifiées](exemples/ragflow/sorties_verifiees.txt).
+Manuel utilisateur refait le 11 novembre 2026 : chaque action faite à la souris, 195 captures annotées (rectangle rouge, pastille numérotée, tableau N° | Élément | Rôle), carte de l'interface dans [docs/ragflow/annexes/carte-interface.md](docs/ragflow/annexes/carte-interface.md) (4 éléments non couverts, raison donnée). Exemples exécutés : `exemples/ragflow/` et [sorties vérifiées](exemples/ragflow/sorties_verifiees.txt).
 
 ## 4. Résultats du banc
+
+Avec le service LLM central (12 novembre 2026, modèle `chat`) :
+
+1. Réglages par défaut : 33 sur 34, 4 refus sur 4, bon document cité 34 fois ; avec le reranker `rerank` : 34 sur 34 ([banc](outils/resultats/ragflow/banc-2026-11-12-defaut.md), [avec reranker](outils/resultats/ragflow/banc-2026-11-12-defaut-reranker.md)).
+2. Vecteurs 0,7 et `top_n` 8 : 34 sur 34, sans comme avec reranker ([banc](outils/resultats/ragflow/banc-2026-11-12-hybride-vecteurs07-top8.md), [avec reranker](outils/resultats/ragflow/banc-2026-11-12-hybride-vecteurs07-top8-reranker.md)) ; le reranker coûte 0,5 à 1 s par réponse.
+3. Temps de réponse : 7,8 s en médiane, 50 à 58 s au 95e centile (réflexion du modèle) ; indexation en 64 s ; trio sur 8,2 à 8,4 Go de mémoire graphique.
+
+Historique (9 novembre, `gemma4:e4b` sur vLLM) :
 
 1. Réglages par défaut : 33 bonnes réponses sur 34, 4 refus corrects sur 4 pièges, bon document cité 34 fois, bonne page 24 sur 24 ([banc](outils/resultats/ragflow/banc-2026-11-09-defaut.md)).
 2. Poids des vecteurs 0,7 et `top_n` 8 : 34 sur 34 ([banc](outils/resultats/ragflow/banc-2026-11-09-hybride-vecteurs07-top8.md)).
@@ -65,8 +73,8 @@ Manuel utilisateur refait le 11 novembre 2026 : chaque action faite à la souris
 | Vérifié par l'essai | Non vérifié, et pourquoi |
 |---|---|
 | installation, réinstallation et désinstallation complètes chronométrées | mise à jour : aucune version plus récente que v1.0.0 |
-| ports sur `127.0.0.1` seulement | reranking : aucun reranker dans le socle, LLM-Service partagé |
-| compte, clé d'API, modèles déclarés par l'API ; interface en français | second modèle et modèle de moins de 3 milliards de paramètres : LLM-Service sert un seul modèle de réponse, partagé |
+| ports sur `127.0.0.1` seulement | reranker sur une grande base ; échelle des scores bruts de `rerank` et seuil de similarité |
+| compte, clé d'API, modèles déclarés par l'API puis à la souris (service LLM central, reranker compris) ; interface en français | second modèle et modèle de moins de 3 milliards de paramètres ; variantes du banc (agentique, gabarits, contexte) non rejouées avec `chat` |
 | banc complet et 8 variantes (gabarits, réglages, agentique, contexte) | profil A sans GPU : chiffres [Estimation] à partir des mesures CPU du socle |
 | OCR et correction des passages ; carte mentale et graphe compilés | Wiki, Tree, PageIndex, Timeline ; gabarit Picture (aucun modèle `image2text` déclaré) |
 | agent depuis un gabarit, API et SDK ; sitemap (refus, puis autorisé le temps d'un essai) | gabarits d'agents demandant le web ; resynchronisation complète (`rebuild`) |
@@ -88,11 +96,13 @@ La relecture adversariale par un sous-agent neuf et ses corrections sont consign
 
 ## 7. Décisions en attente
 
-1. **Montée de vLLM** dans LLM-Service (0.29.0 en service, 0.32.0 disponible) : non faite, pour ne pas toucher un service partagé et garder la comparaison avec le banc Open Notebook.
+1. ~~Montée de vLLM dans LLM-Service~~ : sans objet depuis le passage au service LLM central (12 novembre 2026).
 2. **Port de l'interface** : 8088 au lieu de 8080 ; libérer 8080 (processus Python de l'utilisateur) ou garder 8088.
-3. **`git push`** : interdit par la fiche ; aucun dépôt distant configuré. À créer et pousser à la main (`https://github.com/floSa/RAGFlow-Test-Bench` selon la convention de la série).
-4. **Reranker** : ajouter un serveur de reranking à LLM-Service pour essayer le reranking ?
-5. **Ports `0.0.0.0` hors mission** : `vllm-central`, `vllm-embed` et `watch-speaches` sont publiés sur toutes les interfaces ; à ramener sur `127.0.0.1` dans leurs propres dépôts.
+3. ~~`git push`~~ : dépôt distant créé ; chaque commit est poussé.
+4. ~~Reranker~~ : branché (`rerank` du service central) et mesuré ; à garder désactivé par défaut sur un petit corpus (annexe A1).
+5. **Ports `0.0.0.0` hors mission** : `watch-speaches` (autre projet) ; `vllm-central` et `vllm-embed` sont arrêtés, le service central écoute sur `127.0.0.1`.
+6. **Conteneur `rag-speaches`** : ancien serveur de voix, encore en marche mais plus branché ; l'arrêter (`docker stop rag-speaches`) ou le garder.
+7. **Captures montrant encore `gemma4:e4b` ou `bge-m3`** (chapitres 04, 06, 09, 10, 11 : une dizaine) : à refaire si l'on veut des captures exactes ; le texte signale l'ancien nom.
 
 ## 8. Disque, RAM et VRAM
 
@@ -102,8 +112,9 @@ La relecture adversariale par un sous-agent neuf et ses corrections sont consign
 | Données `donnees/ragflow/` | 1,3 Go (dont 1 Go de journal de reprise MySQL préalloué) |
 | Sauvegarde gardée | 41 Mo dans `donnees/sauvegardes/` |
 | RAM de l'application, en fin de mission | 3 867 Mio, soit 3,8 Gio (pointe mesurée : 5 394 Mio, 5,3 Gio) |
-| RAM de LLM-Service | `vllm-central` 6,5 Gio, `vllm-embed` 4,1 Gio |
-| VRAM | 15 250 Mio sur 16 380 (LLM-Service) |
+| RAM du service LLM central (12 novembre) | `llm-swap` 6,2 à 6,8 Gio, `llm-speaches` 1,4 Gio, `llm-central` 0,7 Gio ([relevé](outils/resultats/ragflow/ressources-llm-central-2026-11-12.txt)) |
+| VRAM (12 novembre) | 8 235 à 8 440 Mio sur 16 380 avec `chat`, `embed`, `rerank` et le bureau Windows |
+| Historique (9 novembre) | `vllm-central` 6,5 Gio, `vllm-embed` 4,1 Gio de RAM ; 15 250 Mio de VRAM |
 
 [Mesures de fin de mission](outils/resultats/ragflow/ressources-2026-11-09-fin-de-mission.txt).
 
@@ -125,9 +136,9 @@ Kotaemon (fiche 03), pour vérifier les citations dans le PDF. Avant de la lance
 
 | Sujet | État |
 |---|---|
-| Non traité | mise à jour de version (aucune plus récente que v1.0.0) ; reranking ; second modèle et modèle de moins de 3 milliards de paramètres ; synthèses « Wiki » et « PageIndex » en échec avec `gemma4:e4b` (chapitre [11](docs/ragflow/manuel/11-syntheses-automatiques.md)) ; gabarit « Picture » ; modèles d'agents qui demandent Internet |
+| Non traité | mise à jour de version (aucune plus récente que v1.0.0) ; reranker sur une grande base ; second modèle et modèle de moins de 3 milliards de paramètres ; synthèses « Wiki » et « PageIndex » en échec avec `gemma4:e4b` (chapitre [11](docs/ragflow/manuel/11-syntheses-automatiques.md)) ; gabarit « Picture » ; modèles d'agents qui demandent Internet |
 | Estimé, non mesuré | configuration sans carte graphique (annexe [A2](docs/ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md)) |
-| Décisions en attente | montée de vLLM dans LLM-Service ; port 8088 au lieu de 8080 ; reranker ; ports ouverts sur tout le réseau par des services hors mission (section 7) |
+| Décisions en attente | port 8088 au lieu de 8080 ; `watch-speaches` ouvert sur tout le réseau (hors mission) ; `rag-speaches` à arrêter ou garder ; captures restantes avec l'ancien modèle (section 7) |
 | Ménage à faire à la main | images Docker gardées en cache ; sauvegarde de test dans `donnees/sauvegardes/` |
 | Écarts de version | moteur de recherche, mémoire tampon, file d'attente et stockage à la version du fichier officiel (Elasticsearch 8.11.3, Kvrocks 2.16.0, NATS 2.14.2, MinIO d'août 2026) : plus récentes disponibles, non montées sans essai |
 | Relectures | relecture par un lecteur novice de la partie 1 faite le 11 novembre 2026 et corrigée (journal) ; relecture adversariale des annexes à refaire sur le manuel restructuré |
