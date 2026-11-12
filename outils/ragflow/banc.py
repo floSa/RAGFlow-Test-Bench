@@ -8,7 +8,9 @@ Citations : passages de reference.chunks marqués [ID:n] dans la réponse (une e
 les autres passages fournis au modèle sont gardés dans passages_non_cites (non notés).
 
 Usage : uv run python outils/ragflow/banc.py --etiquette defaut [--gabarit general] [--reindexer] [--limite N]
-        [--top-n 6] [--seuil 0.1] [--poids-vecteurs 0.3] [--agentic] [--juge]
+        [--top-n 6] [--seuil 0.1] [--poids-vecteurs 0.3] [--reranker] [--agentic] [--juge]
+--reranker : l'assistant reclasse les passages trouvés avec le modèle « rerank » du service LLM central
+(rerank_id = RERANK ci-dessous) ; sans l'option, rerank_id reste vide (classement par similarité seule).
 Sortie : outils/resultats/ragflow/banc-<date>-<étiquette>.json et .md
 """
 import argparse, json, re, sys, time
@@ -23,6 +25,7 @@ from client import attendre_analyse, client, demander, documents, http  # noqa: 
 APP = ["rag-ragflow-server", "rag-ragflow-es01", "rag-ragflow-mysql", "rag-ragflow-minio", "rag-ragflow-kvrocks",
        "rag-ragflow-nats"]
 MODELES = ["llm-central", "llm-swap", "llm-speaches"]
+RERANK = "rerank@llm-central@OpenAI-API-Compatible"
 
 
 def contexte_declare():
@@ -115,11 +118,14 @@ if __name__ == "__main__":
     p.add_argument("--top-n", type=int)
     p.add_argument("--seuil", type=float)
     p.add_argument("--poids-vecteurs", type=float)
+    p.add_argument("--reranker", action="store_true", help=f"reclassement des passages par {RERANK}")
     p.add_argument("--agentic", action="store_true", help="mode Agentic RAG (champ reasoning=5)")
     p.add_argument("--juge", action="store_true", help="juge LLM (Ollama) ; absent du banc GPU, désactivé par défaut")
     a = p.parse_args()
     reglages = {k: v for k, v in {"top_n": a.top_n, "similarity_threshold": a.seuil,
                                   "vector_similarity_weight": a.poids_vecteurs}.items() if v is not None}
+    if a.reranker:
+        reglages["rerank_id"] = RERANK
     ad = AdaptateurRAGFlow(a.gabarit, a.etiquette, a.reindexer, reglages, {"reasoning": 5} if a.agentic else None)
     res = commun.lancer(ad, a.etiquette, APP, MODELES, indexer=ad.ds is None, juge=a.juge, limite=a.limite, ids=a.ids)
     res["config"] = ad.config()  # réglages de l'assistant, créé après l'indexation

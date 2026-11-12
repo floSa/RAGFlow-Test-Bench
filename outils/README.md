@@ -10,7 +10,7 @@ Chaque affirmation des manuels renvoie à un script de ce dossier et à un résu
 | `communs/llm_central_sante.sh` | vérification en lecture seule du service LLM central (`/v1/models`, `--essai` : chat, embed, rerank, transcribe) ; clé lue dans `.env` |
 | `communs/llm_service.sh` | HISTORIQUE : démarrait LLM-Service en branche `service-ollama` (CPU) ; ne plus lancer |
 | `communs/llm_service_vllm.sh` | HISTORIQUE : démarrait LLM-Service en branche `service-vllm` (GPU) ; ne plus lancer |
-| `communs/voix.sh` | serveur de voix commun `rag-speaches` (transcription et synthèse, compatible OpenAI) |
+| `communs/voix.sh` | HISTORIQUE : serveur de voix `rag-speaches` ; la transcription passe par `transcribe` du service LLM central ; ne plus lancer |
 | `communs/versions.py` | dernière version stable de chaque composant, écarts justifiés |
 | `communs/identite_github.py` | identité du projet sur GitHub (étoiles, licence, activité) |
 | `communs/inventaire_modeles.py` | modèles déjà présents sur la machine, avant tout téléchargement |
@@ -30,7 +30,7 @@ Chaque affirmation des manuels renvoie à un script de ce dossier et à un résu
 |---|---|
 | `ragflow/compose.override.yml` | écarts au compose officiel : ports sur `127.0.0.1`, conteneurs `rag-ragflow-*`, images figées, données dans `donnees/ragflow/`, réseaux `llm-net` et `rag-local` |
 | `ragflow/installer.sh` | installation rejouable : sources au tag `v1.0.0`, réglages et secrets générés, démarrage, attente de l'état sain |
-| `ragflow/configurer.py` | compte local, clé d'API, modèles de LLM-Service et de transcription, interface en français |
+| `ragflow/configurer.py` | compte local, clé d'API, instance `llm-central` du fournisseur `OpenAI-API-Compatible` (chat, embed, rerank, transcribe) et modèles par défaut, interface en français |
 | `ragflow/compose.sh` | appel de `docker compose` avec les fichiers et réglages du banc |
 | `ragflow/demarrer.sh`, `ragflow/arreter.sh`, `ragflow/etat.sh` | démarrage, arrêt (données conservées), état |
 | `ragflow/ressources.sh` | RAM par service, VRAM, taille des images, disque des données |
@@ -38,9 +38,11 @@ Chaque affirmation des manuels renvoie à un script de ce dossier et à un résu
 | `ragflow/client.py` | fonctions partagées et contournements du SDK 1.0.0 |
 | `ragflow/contexte.py` | réglage du contexte déclaré du modèle de chat |
 | `ragflow/essai_contexte.py` | dépassement volontaire du contexte |
-| `ragflow/banc.py` | adaptateur du banc commun |
+| `ragflow/banc.py` | adaptateur du banc commun ; `--reranker` reclasse les passages avec `rerank@llm-central@OpenAI-API-Compatible` |
 | `ragflow/serie_banc.sh` | variantes du banc en série (contexte serré, agentique, hybride, gabarits) |
 | `ragflow/captures/captures.py` | captures d'écran des manuels |
+| `ragflow/captures/llm_central.py` | captures du branchement sur le service LLM central (chapitre 03) et du choix du reranker d'un assistant (chapitre 08) |
+| `ragflow/demo.py`, `ragflow/essai_agent.py`, `ragflow/essai_compilation.py` | jeu de démonstration : base et assistant « Démo Vélanor », « Agent démo Vélanor », carte mentale « Essai-KC-mind_map-0816 » |
 
 ## Résultats
 
