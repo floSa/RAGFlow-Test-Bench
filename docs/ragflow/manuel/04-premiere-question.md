@@ -35,7 +35,7 @@ Saisir un nom (pastille 1), garder le modèle de recherche (pastille 2) et le ga
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Nom » | nom de la base, ici « Manuel-Prise-en-main » |
-| 2 | « Modèle d'embedding » | modèle qui traduit le sens des passages en nombres pour la recherche, ici `embed` (modèle par défaut du chapitre 03) (la capture, prise avec l'ancien serveur de modèles, affiche `bge-m3`) |
+| 2 | « Modèle d'embedding » | modèle qui traduit le sens des passages en nombres pour la recherche, ici `embed`, de l'instance « llm-central » (modèle par défaut du chapitre 03) |
 | 3 | « General (built in) » | gabarit, c'est-à-dire la façon de découper les documents ; « General » convient à la plupart des cas (les autres sont au chapitre 06) |
 | 4 | « Enregistrer » | crée la base et l'ouvre |
 

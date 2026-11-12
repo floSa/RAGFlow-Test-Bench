@@ -9,27 +9,33 @@ Français
 BR
 Base de connaissances
 Créer une base de connaissances
+B
+Banc-general
+9 Fichiers
+
+12/11/2026 07:21:14
+
 E
-Essai-KC-mind_map-1835
+Essai-KC-mind_map-0816
 1 Fichiers
 
-09/11/2026 17:36:12
+12/11/2026 07:18:44
 
 DV
 Démo Vélanor
 9 Fichiers
 
-09/11/2026 17:06:50
+12/11/2026 02:02:31
 
-Total 2
+Total 3
 1
 50 / Page
 Créer une base de connaissances
 
 Nom
 Modèle d'embedding
-bge-m3
-llm-service-embed
+embed
+llm-central
 General
 (built in)
 Enregistrer
@@ -67,7 +73,7 @@ combobox | 50 / Page
 label | Nom
 input:text | Veuillez saisir un nom !
 label | Modèle d'embedding
-button | bge-m3 llm-service-embed
+button | embed llm-central
 button | General (built in)
 button | Enregistrer
 button | Close

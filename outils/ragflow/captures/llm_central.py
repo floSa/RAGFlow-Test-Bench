@@ -283,11 +283,106 @@ def modeles_supprimer(s):
 
 # ---------------------------------------------------------------- chapitre 08 : reranker d'un assistant
 
-def reranker(s):
+def reranker(s, *phases):
+    """Assistant « Démo Vélanor » ouvert en lecture : modèle `chat` (étapes 1 et 2 du chapitre 08) et liste
+    « Modèle de réordonnancement » ouverte (nouvelle étape), refermée par Échap ; rien n'est enregistré."""
+    from manuels_03_06 import ouvrir_assistant, panneau, deplier as deplier_section
     s.connexion(); s.francais()
-    s.aller("/chats", 3000)
-    texte(s, "Démo Vélanor").click(); attendre(s, 3000)
-    releve(s, "assistant")
+    ouvrir_assistant(s, "Démo Vélanor")
+    pan = panneau(s)
+    lab = lambda t: pan.locator("label").filter(has_text=t).first
+    modele = lab("Modèle").locator("xpath=following::button[1]") if not pan.get_by_role("button").filter(
+        has_text=re.compile(r"^\s*chat\b")).count() else pan.get_by_role("button").filter(has_text=re.compile(r"^\s*chat\b")).first
+    log("bouton Modèle :", modele.inner_text())
+    cap(s, M08, "05-parametres-du-chat", [
+        (pan.get_by_role("button", name="Télécharger"), "Télécharger"), (pan.get_by_role("button", name="Edit Nom"), "nom"),
+        (pan.get_by_role("button", name="Edit common.description"), "description"), (modele, "Modèle"),
+        (pan.get_by_role("button", name="Paramètres du modèle"), "Paramètres du modèle"),
+        (lab("Message d'accueil").locator("xpath=following::textarea[1]"), "Message d'accueil")])
+    modele.click(); attendre(s, 1200)
+    pop = popover(s)
+    log("modèles proposés :", pop.inner_text().replace("\n", " | ")[:300])
+    cap(s, M08, "06-choix-du-modele", [(pop.get_by_text("chat", exact=True).first, "chat")])
+    s.pg.keyboard.press("Escape"); attendre(s, 700)
+    pan = panneau(s)
+    deplier_section(s, pan, "Paramètres avancés")
+    deplier_section(s, pan, "Naive")
+    rr = lab("Modèle de réordonnancement")
+    haut(lab("Seuil de similarité")); attendre(s, 600)
+    num = lambda l: l.locator("xpath=following::input[@type='number'][1]")
+    log("valeurs : seuil", num(lab("Seuil de similarité")).input_value(), "; poids mots-clés",
+        num(lab("Poids de similarité par mots-clés")).input_value(), "; rerank candidates",
+        num(lab("Rerank candidates")).input_value(), "; Top N", num(lab("Top N")).input_value())
+    choix = rr.locator("xpath=following::*[self::button or @role='combobox'][1]")
+    log("Modèle de réordonnancement avant :", repr(choix.inner_text()))
+    choix.click(); attendre(s, 1200)
+    pop = popover(s)
+    log("rerankers proposés :", pop.inner_text().replace("\n", " | ")[:300])
+    opt = pop.get_by_text("rerank", exact=True).first
+    cap(s, M08, "17-modele-de-reordonnancement", [(rr, "Modèle de réordonnancement"), (pop, "liste des rerankers"),
+                                                  (opt, "rerank"), (lab("Rerank candidates").locator("xpath=.."), "Rerank candidates")])
+    s.pg.keyboard.press("Escape"); attendre(s, 700)
+    log("rien n'est enregistré : panneau refermé sans « Enregistrer »")
+
+
+def demo_carte(s):
+    from manuels_07_15 import artefacts_page, choisir_vue, DEMO_KC
+    s.connexion(); s.francais()
+    artefacts_page(s, DEMO_KC)
+    choisir_vue(s, "Mind map")
+    # zone de dessin : le plus grand élément visible sous l'en-tête (ni le bandeau, ni une icône)
+    idx = s.pg.evaluate("""() => { let best = null, aire = 0, i = 0, k = -1;
+      for (const e of document.querySelectorAll('canvas, svg, div')) { const r = e.getBoundingClientRect();
+        if (r.top > 110 && r.width < window.innerWidth && r.width * r.height > aire) { aire = r.width * r.height; best = e; } }
+      best.setAttribute('data-carte-mentale', '1'); return [best.tagName, Math.round(aire)]; }""")
+    log("zone de la carte :", idx)
+    cap(s, "07-knowledge-compilation", "36-carte-mentale-demo", [(s.pg.get_by_role("combobox").first, "Mind map"),
+                                                                 (s.pg.locator("[data-carte-mentale]"), "carte mentale")])
+
+
+def demo(s, *phases):
+    """Reprises en lecture seule des écrans qui montrent le modèle d'embedding ou la carte mentale de démonstration :
+    fenêtre « Créer une base de connaissances » remplie puis fermée sans enregistrer (chapitres 04 et 06), liste des
+    gabarits, onglet « Compilation operator », vue « Mind map » de « Essai-KC-mind_map-0816 »."""
+    from manuels_07_15 import artefacts_page, choisir_vue, DEMO_KC
+    s.connexion(); s.francais()
+    for nom, manuel, image in (("Manuel-Prise-en-main", "02-prise-en-main", "05-creation-base"),
+                               ("Manuel-Decoupage", "03-datasets-et-decoupage", "03-fenetre-de-creation")):
+        s.aller("/datasets", 3000)
+        bouton(s, "Créer une base de connaissances").click(); attendre(s, 1500)
+        dlg = s.pg.get_by_role("dialog")
+        champ = dlg.get_by_placeholder("Veuillez saisir un nom !")
+        champ.fill(nom)
+        emb = dlg.get_by_role("button").filter(has_text="embed").first
+        gab = dlg.get_by_role("button").filter(has_text="General").first
+        log(f"{image} : embedding affiché", repr(emb.inner_text()))
+        cap(s, manuel, image, [(champ, "Nom"), (emb, "Modèle d'embedding"), (gab, "General (built in)" if manuel.startswith("02") else "gabarit"),
+                               (dlg.get_by_role("button", name="Enregistrer"), "Enregistrer")])
+        if manuel.startswith("03"):
+            gab.click(); attendre(s, 1200)
+            pop = popover(s)
+            cap(s, manuel, "04-liste-des-gabarits", [
+                (pop.get_by_placeholder("Rechercher").first, "Rechercher"),
+                (pop.get_by_text(DEMO_KC).first, "pipeline personnalisé"),
+                (pop.get_by_text("General", exact=True).first, "General"),
+                (pop.get_by_text("Table", exact=True).first, "Table")])
+            s.pg.keyboard.press("Escape"); attendre(s, 600)
+        s.pg.keyboard.press("Escape"); attendre(s, 800)
+        log("fenêtre fermée sans enregistrer ; base créée :", s.pg.get_by_text(nom, exact=True).count() > 0)
+    m = "07-knowledge-compilation"
+    s.aller("/agents", 2500)
+    s.pg.get_by_role("radio", name="Compilation operator").click(); attendre(s, 2000)
+    cap(s, m, "01-compilation-operator", [
+        (s.pg.get_by_role("radio", name="Compilation operator"), "Compilation operator"),
+        (texte(s, DEMO_KC).locator("xpath=ancestor::div[.//*[text()='Mindmap']][1]"), "opérateur existant"),
+        (s.pg.locator("button:has(svg.lucide-plus)").first, "+")])
+    artefacts_page(s, DEMO_KC)
+    choisir_vue(s, "Mind map")
+    log("vue Mind map :", s.pg.locator("body").inner_text()[:2500].replace("\n", " | "))
+    svgs = s.pg.locator("svg").filter(visible=True)
+    aires = svgs.evaluate_all("l => l.map(e => e.getBoundingClientRect().width * e.getBoundingClientRect().height)")
+    carte = svgs.nth(max(range(len(aires)), key=lambda i: aires[i]))  # le plus grand dessin : la carte, pas une icône
+    cap(s, m, "36-carte-mentale-demo", [(s.pg.get_by_role("combobox").first, "Mind map"), (carte, "carte mentale")])
 
 
 def reperage(s, quoi):

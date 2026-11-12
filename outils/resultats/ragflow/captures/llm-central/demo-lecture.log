@@ -1,0 +1,13 @@
+05-creation-base : embedding affiché 'embed\nllm-central'
+capture docs/ragflow/img/02-prise-en-main/05-creation-base.png [(1, 'Nom'), (2, "Modèle d'embedding"), (3, 'General (built in)'), (4, 'Enregistrer')]
+fenêtre fermée sans enregistrer ; base créée : False
+03-fenetre-de-creation : embedding affiché 'embed\nllm-central'
+capture docs/ragflow/img/03-datasets-et-decoupage/03-fenetre-de-creation.png [(1, 'Nom'), (2, "Modèle d'embedding"), (3, 'gabarit'), (4, 'Enregistrer')]
+capture docs/ragflow/img/03-datasets-et-decoupage/04-liste-des-gabarits.png [(1, 'Rechercher'), (2, 'pipeline personnalisé'), (3, 'General'), (4, 'Table')]
+fenêtre fermée sans enregistrer ; base créée : False
+capture docs/ragflow/img/07-knowledge-compilation/01-compilation-operator.png [(1, 'Compilation operator'), (2, 'opérateur existant'), (3, '+')]
+vue Mind map : Retour | E | Essai-KC-mind_map-0816 dataset | Mind map
+capture docs/ragflow/img/07-knowledge-compilation/36-carte-mentale-demo.png [(1, 'Mind map'), (2, 'carte mentale')]
+capture docs/ragflow/img/07-knowledge-compilation/36-carte-mentale-demo.png [(1, 'Mind map'), (2, 'carte mentale')]
+zone de la carte : ['DIV', 1070080]
+capture docs/ragflow/img/07-knowledge-compilation/36-carte-mentale-demo.png [(1, 'Mind map'), (2, 'carte mentale')]

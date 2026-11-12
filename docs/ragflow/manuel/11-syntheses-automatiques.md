@@ -257,7 +257,7 @@ Les événements sont reliés à leur date (pastille 2).
 **Étape 16. Lire une carte mentale**
 *Où* : base « Essai-KC-mind_map-0816 » › « Artifacts » › vue « Mind map ».
 La capture vient de la base « Essai-KC-mind_map-0816 » du jeu de démonstration, préparée pendant les essais par un programme, avec le même document `cse-2025-10-14.md`. Pour obtenir la même carte à la souris, suivre la même procédure qu'à l'étape 14 avec le Template « Mindmap » : opérateur « Manuel-Operateur-Mindmap », chaîne « Manuel-Pipeline-Mindmap », base « Manuel-KC-Mindmap ».
-Le sujet central est à gauche, les branches vont vers la droite (pastille 2).
+Le sujet central est au milieu, les branches partent de part et d'autre (pastille 2).
 
 ![Vue Mind map](../img/07-knowledge-compilation/36-carte-mentale-demo.png)
 *Écran : onglet « Artifacts », vue « Mind map ».*
@@ -265,9 +265,9 @@ Le sujet central est à gauche, les branches vont vers la droite (pastille 2).
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Mind map » | vue choisie |
-| 2 | carte mentale | « Compte Rendu de la Réunion du CSE du 14 Octobre 2025 » au centre, puis « Participants de la Réunion », « Décisions Prises », « Points Reportés » et leurs détails |
+| 2 | carte mentale | « Compte rendu de la réunion du CSE du 14 octobre 2025 » au centre ; à gauche « Décisions » (« Télétravail », « Prime d'intéressement 2025 », « Restaurant d'entreprise (Nantes) ») ; à droite « Participants » et « Points reportés », avec leurs détails |
 
-*Résultat* : la carte mentale est exacte et complète : présidente, secrétaire et sept élus ; prime d'intéressement de 1 150 euros versée en avril 2026 ; télétravail jusqu'à deux jours par semaine ; restaurant d'entreprise en janvier 2026 ; horaires d'été reportés en décembre.
+*Résultat* : la carte mentale est exacte : présidente Hélène Marchais, secrétaire Sophie Le Gall et les élus (sans leur nombre, sept) ; prime d'intéressement de 1 150 euros versée en avril 2026 ; télétravail jusqu'à deux jours par semaine sur les postes compatibles ; restaurant d'entreprise de Nantes ouvert en janvier 2026 ; horaires d'été de l'atelier de Cholet reportés à la réunion de décembre. La synthèse a pris moins de deux minutes avec le modèle `chat`.
 
 ## Bon à savoir
 

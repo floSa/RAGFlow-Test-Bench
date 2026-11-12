@@ -24,7 +24,7 @@ Saisir le nom (pastille 1), puis cliquer sur la liste du gabarit (pastille 3).
 | N° | Élément | Rôle |
 |---|---|---|
 | 1 | « Nom » | nom de la base ; la capture montre la création de « Manuel-Decoupage », faite au chapitre 05 avant l'envoi de ses trois fichiers |
-| 2 | « Modèle d'embedding » | modèle de la recherche par le sens, `embed` (modèle par défaut du chapitre 03) (la capture, prise avec l'ancien serveur de modèles, affiche `bge-m3`) |
+| 2 | « Modèle d'embedding » | modèle de la recherche par le sens, `embed`, de l'instance « llm-central » (modèle par défaut du chapitre 03) |
 | 3 | gabarit | gabarit de la base, « General (built in) » par défaut |
 | 4 | « Enregistrer » | crée la base et l'ouvre |
 
