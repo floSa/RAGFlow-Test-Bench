@@ -5,11 +5,13 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 
 ## Décisions en attente
 
-1. **Montée de vLLM dans LLM-Service** : 0.29.0 en service, 0.32.0 est la dernière stable (`outils/resultats/ragflow/versions-2026-11-09.json`). Gardé tel quel : LLM-Service est partagé et la comparaison avec le banc GPU Open Notebook en dépend. Option prudente retenue : ne rien changer.
+1. ~~Montée de vLLM dans LLM-Service~~ : sans objet depuis le service LLM central (12 novembre 2026).
 2. **Port de l'interface** : 8088 au lieu de 8080 (8080 occupé sur `127.0.0.1` par un processus Python de l'utilisateur, non touché).
 3. **`git push`** : interdit par la fiche ; aucun dépôt distant. À créer et pousser à la main.
-4. **Reranker** : aucun dans le socle ; en ajouter un à LLM-Service pour essayer le reranking ?
-5. **Ports `0.0.0.0` hors mission** : `vllm-central`, `vllm-embed`, `watch-speaches` ; à traiter dans leurs dépôts.
+4. ~~Reranker~~ : `rerank` du service central branché et mesuré le 12 novembre 2026.
+5. **Ports `0.0.0.0` hors mission** : `watch-speaches` ; à traiter dans son dépôt (`vllm-central` et `vllm-embed` arrêtés).
+6. **`rag-speaches`** : ancien serveur de voix, encore en marche, plus branché dans RAGFlow ; l'arrêter ou le garder.
+7. **Captures avec l'ancien modèle** : une dizaine (chapitres 04, 06, 09, 10, 11) montrent `gemma4:e4b` ou `bge-m3` ; le texte le signale ; à refaire si besoin.
 
 ## Écarts au kit, décidés au lancement
 
@@ -146,3 +148,15 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Arrêt sur décision de l'utilisateur : le service de modèles passe à llama.cpp derrière LiteLLM ; le reranker y sera essayé. Banc avec reranker non joué, option `--reranker` de `banc.py` non gardée.
 - Documenté : A1 section 7 (essais, formule de classement, piège du nom `BAAI/bge-reranker-v2-m3`), A2 section 6 et dépannage, A6 (preuves, deux défauts, un incident, « non vérifié »), chapitre 03 (branchement décrit, essai prévu). Résultats bruts : `outils/resultats/ragflow/reranker-2026-11-11.log`, `reranker-cpu-2026-11-11-tei.log`. `verifier_docs.py` : 0 point avant chaque commit.
 - Prochaine étape : essai du reranker avec le nouveau service de modèles (branchement à la souris, banc avec et sans reranker).
+
+### 2026-11-12 09:20 — Branchement sur le service LLM central, jeu de démonstration, banc avec reranker, documentation
+
+- Fait : `configurer.py` exécuté (instance `llm-central` du fournisseur `OpenAI-API-Compatible` : `chat`, `embed`, `rerank`, `transcribe` ; défauts chat, embedding, rerank, asr) ; instances `VLLM` et fournisseur `VLLM` supprimés par l'API ; `verif_minimale.py` : 4 passages, réponse citée en 14,1 s (`Session.ask` du SDK toujours en 404, repli HTTP). Une base retenant l'identifiant interne de son modèle d'embedding, l'instance du script a été retirée puis déclarée à la souris pour les captures du chapitre 03 (`outils/ragflow/captures/llm_central.py`), avant toute base : 5 alias retirés, « Tokens maximum » 16 384 / 8 192 réglés (0 après « Lister les modèles »), défauts dont « Modèle de rerank », « voix-locale » supprimée.
+- Interruption : la session s'est fermée (redémarrage de la machine) ; service central arrêté. Relancé par `~/mes_projets/Projet-IA/LLM-Service/scripts/demarrer.sh` (profil carte graphique, modèles chargés en 12 s) selon la règle donnée par l'utilisateur, puis `llm_central_sante.sh --essai` passé sur les quatre usages.
+- Jeu de démonstration recréé avec `embed` : « Démo Vélanor » (9 documents, 26 passages, 55 s ; 3 conversations citées justes en 8 à 51 s), « Agent démo Vélanor » (réponses justes en 17 à 26 s, raisonnement visible entre balises `<think>`), carte mentale « Essai-KC-mind_map-0816 » (22 entités, 21 relations, 111 s) ; anciens objets « …-1835 » supprimés, nom remplacé partout.
+- Banc (`banc.py --reranker`, `serie_banc_reranker.sh`, `free -m` avant chacun) : défaut 33/34, 4/4, médiane 7,8 s ; défaut avec reranker 34/34, 8,3 s ; vecteurs 0,7 `top_n` 8 : 34/34, 7,8 s ; avec reranker 34/34, 8,8 s. Appels `/v1/rerank` en 200 dans le journal de `llm-central`. VRAM 8,2 à 8,4 Go sur 16,4 (trio et bureau Windows) ; RAM `llm-swap` 6,2 à 6,8 Gio, `llm-speaches` 1,4, `llm-central` 0,7.
+- Documentation : chapitres 01 à 04, 06, 08 (nouvelle étape 12 « Choisir un reranker »), 09 à 11, 14 à 16 ; annexes A1 à A7, carte de l'interface ; README (Architecture, Versions : LiteLLM v1.109.0, llama-swap v272, llama.cpp build 12282), RAPPORT, index, glossaires, `outils/README.md`. Captures refaites : 01-installation (12), assistant (3, dont la liste « Modèle de réordonnancement »), fenêtres de création de base, liste des gabarits, opérateur et carte mentale, menu du compte de la carte ; 3 images VLLM retirées. Exemples de l'API rejoués (code 0).
+- Incidents : le premier repérage des alias a retiré le modèle de la carte « voix-locale » (supprimée ensuite) ; une capture de la carte enregistrée montrait le début et la fin de la clé : refaite masquée, jamais commitée ; une édition de A5 a tronqué le fichier, restauré depuis git avant tout commit.
+- Nettoyage : objets « Banc-* » supprimés (`nettoyer_essais.py`), objets « Manuel-… » absents (`nettoyer_manuel.py`) ; jeu de démonstration en place. `verifier_docs.py` : 0 point avant chaque commit.
+- Non fait : variantes agentique, gabarits et contexte non rejouées avec `chat` ; captures secondaires montrant encore l'ancien modèle ; effet de « Thinking » à travers LiteLLM.
+
