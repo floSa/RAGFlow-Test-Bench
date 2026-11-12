@@ -37,7 +37,7 @@ Date de mise à jour
 
 BR
 Banc RAGFlow
-11/11/2026 09:28:47	banc.demo@exemple.fr	
+12/11/2026 08:10:37	banc.demo@exemple.fr	
 
 == éléments visibles ==
 a | 
