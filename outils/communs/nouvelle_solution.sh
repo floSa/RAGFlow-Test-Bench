@@ -25,7 +25,7 @@ else
   cp -r "$SRC"/{kit,CLAUDE.md,.claude} "$DEST"/
 fi
 R=(rsync -a --exclude __pycache__ --exclude '*.pyc')
-"${R[@]}" "$SRC"/{corpus,.gitignore,LICENSE} "$DEST"/
+"${R[@]}" "$SRC"/{corpus,.gitignore,LICENSE,.env.example} "$DEST"/
 mkdir -p "$DEST/outils/resultats"
 "${R[@]}" "$SRC/outils/communs" "$DEST/outils/"
 "${R[@]}" "$SRC/outils/resultats/socle" "$SRC/outils/resultats/machine" "$DEST/outils/resultats/"
