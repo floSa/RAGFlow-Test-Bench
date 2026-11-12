@@ -1,0 +1,10 @@
+bouton Modèle : chat
+llm-central
+capture docs/ragflow/img/05-assistants-et-citations/05-parametres-du-chat.png [(1, 'Télécharger'), (2, 'nom'), (3, 'description'), (4, 'Modèle'), (5, 'Paramètres du modèle'), (6, "Message d'accueil")]
+modèles proposés : OpenAI-API-Compatible | llm-central | chat
+capture docs/ragflow/img/05-assistants-et-citations/06-choix-du-modele.png [(1, 'chat')]
+valeurs : seuil 10 ; poids mots-clés 0.3 ; rerank candidates 64 ; Top N 8
+Modèle de réordonnancement avant : ''
+rerankers proposés : OpenAI-API-Compatible | llm-central | rerank
+capture docs/ragflow/img/05-assistants-et-citations/17-modele-de-reordonnancement.png [(1, 'Modèle de réordonnancement'), (2, 'liste des rerankers'), (3, 'rerank'), (4, 'Rerank candidates')]
+rien n'est enregistré : panneau refermé sans « Enregistrer »

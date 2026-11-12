@@ -7,10 +7,13 @@ Mémoire
 Gestion des fichiers
 Français
 BR
-M
-Manuel-Assistant-05
+DV
+Démo Vélanor
 Conversations
-0
+3
+Audit fournisseur
+Objectifs 2026
+Contrat Batterix
 Nouvelle conversation
 Plusieurs modèles
 
@@ -24,27 +27,28 @@ Send message
 File upload
 Paramètres du chat
 Télécharger
-Manuel-Assistant-05
+Démo Vélanor
 
-Saisir une description
+A helpful Assistant
 
 Modèle
-gemma4:e4b
-llm-service-chat
+chat
+llm-central
 Paramètres du modèle
 Message d'accueil
 Bases de connaissances
-Sélectionner une valeur
+DV
+Démo Vélanor
 Paramètres avancés
 AnnulerEnregistrer
-VLLM
-llm-service-chat
-gemma4:e4b
+OpenAI-API-Compatible
+llm-central
+chat
 
 == adresse ==
-/chat/ba12af6c9c1f4fdfbb1d56f7552459ba
+/chat/fe7c6a3d98d4457aa0db9eadb0915956
 == pastilles ==
-1. gemma4:e4b
+1. chat
 == éléments visibles ==
 a | 
 a | Accueil
@@ -64,6 +68,9 @@ button | [icône lucide-panel-left-close]
 button | [icône lucide-plus]
 button | [icône lucide-copy-x]
 input:text | Rechercher
+button | Audit fournisseur
+button | Objectifs 2026
+button | Contrat Batterix
 button | Plusieurs modèles
 button | Drag to resize height
 textarea:textarea | Saisissez votre message ici...
@@ -77,12 +84,12 @@ button | Télécharger
 button | Edit Nom
 button | Edit common.description
 label | Modèle
-button | gemma4:e4b llm-service-chat
+button | chat llm-central
 button | Paramètres du modèle
 label | Message d'accueil
 textarea:textarea | prompt_config.prologue
 label | Bases de connaissances
-button | Sélectionner une valeur
+button | DV Démo Vélanor
 button | Paramètres avancés
 button | Annuler
 button | Enregistrer

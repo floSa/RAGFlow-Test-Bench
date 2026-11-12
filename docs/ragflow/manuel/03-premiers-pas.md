@@ -310,7 +310,7 @@ Cliquer sur le bouton, puis choisir un modèle pour chaque usage (étape suivant
 | 2 | « Modèle d'embedding » | traduit le sens des passages et des questions en nombres pour la recherche (`embed`) ; indispensable aux bases |
 | 3 | « Modèle Img2txt » | décrit les images (vide ici) |
 | 4 | « Modèle Speech2txt » | transcrit l'audio (`transcribe`) |
-| 5 | « Modèle de rerank » | trie une seconde fois les passages trouvés (`rerank`) ; proposé d'office aux nouveaux assistants et à la recherche |
+| 5 | « Modèle de rerank » | trie une seconde fois les passages trouvés (`rerank`) ; un assistant ne s'en sert que si son « Modèle de réordonnancement » est rempli (chapitre 08) |
 | 6 | « Modèle TTS » | lit les réponses à voix haute (vide ici) ; la ligne suivante, « Decision model », reste vide aussi |
 
 *Résultat* : la fenêtre montre les choix actuels.

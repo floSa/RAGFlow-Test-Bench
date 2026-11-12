@@ -8,7 +8,7 @@
 
 Un assistant fait deux choses : il **cherche** les passages proches de la question, puis il les donne au **modèle** qui rédige. Les réglages agissent sur l'une ou l'autre. Les plus importants sont ceux de la recherche : combien de passages transmettre au modèle (« Top N »), et quelle part donner à la recherche par les mots et à la recherche par le sens (« Poids de similarité par mots-clés »). Par défaut, RAGFlow donne 70 % du poids aux mots. Or un document scanné contient souvent des mots mal lus (« Volumeminimalannuel ») que la recherche par les mots ne reconnaît pas ; la recherche par le sens, elle, s'en accommode mieux.
 
-**Réglages conseillés** : donner 70 % du poids à la recherche par le sens, c'est-à-dire régler « Poids de similarité par mots-clés » sur 0,3, et transmettre 8 passages au modèle (« Top N » sur 8). Un assistant créé à la souris a déjà « Top N » à 8 : **seul le poids des mots-clés est à changer** (0,7 à la création). Un assistant créé par un programme part de « Top N » 6, à porter à 8. Pendant les essais, ce réglage a fait passer l'assistant de 33 à 34 bonnes réponses sur 34, sans ralentissement sensible ; la question gagnée croisait un contrat scanné et un tableur.
+**Réglages conseillés** : donner 70 % du poids à la recherche par le sens, c'est-à-dire régler « Poids de similarité par mots-clés » sur 0,3, et transmettre 8 passages au modèle (« Top N » sur 8). Un assistant créé à la souris a déjà « Top N » à 8 : **seul le poids des mots-clés est à changer** (0,7 à la création). Un assistant créé par un programme part de « Top N » 6, à porter à 8. Pendant les essais, ce réglage a fait passer l'assistant de 33 à 34 bonnes réponses sur 34, sans ralentissement sensible, avec l'ancien comme avec le nouveau modèle de réponse ; la question gagnée croisait un contrat scanné et un tableur.
 
 ## Ouvrir le panneau et régler l'identité de l'assistant
 
@@ -32,14 +32,14 @@ Le haut du panneau règle l'apparence de l'assistant : image (pastille 1), nom (
 
 **Étape 2. Choisir le modèle**
 *Où* : panneau « Paramètres du chat » › liste « Modèle ».
-Cliquer sur la liste « Modèle » (capture de l'étape 1, pastille 4). Elle propose les modèles de chat déclarés au chapitre 03, groupés par fournisseur et instance ; dans les essais, un seul : `gemma4:e4b` (pastille 1).
+Cliquer sur la liste « Modèle » (capture de l'étape 1, pastille 4). Elle propose les modèles de chat déclarés au chapitre 03, groupés par fournisseur et instance ; sur la machine d'essai, un seul : `chat` (pastille 1).
 
 ![Choix du modèle](../img/05-assistants-et-citations/06-choix-du-modele.png)
 *Écran : panneau « Paramètres du chat », liste « Modèle » ouverte.*
 
 | N° | Élément | Rôle |
 |---|---|---|
-| 1 | `gemma4:e4b` | modèle de chat de l'instance « llm-service-chat », fournisseur « VLLM » |
+| 1 | `chat` | modèle de chat de l'instance « llm-central », fournisseur « OpenAI-API-Compatible » |
 
 *Résultat* : le modèle choisi rédigera les réponses de cet assistant.
 
@@ -124,7 +124,7 @@ Garder « Afficher la citation » activé (pastille 1) : c'est ce qui affiche le
 | 3 | « Web search provider » | ajoute une recherche sur Internet (étape 8) |
 | 4 | « Métadonnées » | filtre les documents interrogés selon leurs métadonnées (étape 9) |
 | 5 | « Naive » | réglages du mode de réponse directe (étapes 10 à 12) |
-| 6 | « Agentic » | réglages du mode agentique (étape 13) |
+| 6 | « Agentic » | réglages du mode agentique (étape 14) |
 
 *Résultat* : les options avancées sont visibles.
 
@@ -187,12 +187,28 @@ Régler « Poids de similarité par mots-clés » (pastille 2) sur 0,3, ce qui d
 | 2 | « Poids de similarité par mots-clés » | part de la recherche par les mots (« full-text ») ; le reste va à la recherche par le sens (« vector ») ; 0,7 à la création |
 | 3 | « Rerank candidates » | nombre de passages soumis au second tri, s'il existe ; 64 à la création |
 | 4 | « Top N » | nombre de passages donnés au modèle ; plus de passages, plus de contexte, mais plus de texte à lire ; 8 à la création |
-| 5 | « Modèle de réordonnancement » | modèle de second tri des passages ; vide, aucun n'étant installé |
+| 5 | « Modèle de réordonnancement » | modèle de second tri des passages (étape suivante) ; vide sur la capture |
 | 6 | « Recherche inter-langues » | traduit la question dans les langues choisies avant de chercher, pour des documents en plusieurs langues |
 
 *Résultat* : la recherche est réglée comme conseillé. Baisser le seuil fait entrer plus de passages, au risque de passages hors sujet ; le monter rend l'assistant plus prompt à refuser.
 
-**Étape 12. Régler la fin de la partie « Naive »**
+**Étape 12. Choisir un reranker (facultatif)**
+*Où* : « Paramètres avancés » › « Naive » › « Modèle de réordonnancement ».
+Un **reranker** relit chaque passage trouvé à côté de la question et lui donne une note plus fine, avant que les « Top N » meilleurs soient transmis au modèle. Ouvrir la liste sous « Modèle de réordonnancement » (pastille 1) : elle ne propose que les modèles de type « Rerank » déclarés au chapitre 03 (pastille 2). Cliquer sur `rerank` (pastille 3). « Rerank candidates » (pastille 4) fixe le nombre de passages soumis au reranker ; 64 convient. Pour revenir en arrière, la croix à droite du choix le vide. Le choix ne vaut qu'après « Enregistrer » (étape 15). La capture montre la liste ouverte sur l'assistant « Démo Vélanor », refermée sans rien changer.
+
+![Modèle de réordonnancement](../img/05-assistants-et-citations/17-modele-de-reordonnancement.png)
+*Écran : « Paramètres avancés », partie « Naive », liste « Modèle de réordonnancement » ouverte.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Modèle de réordonnancement » | modèle de second tri des passages ; vide, aucun second tri |
+| 2 | liste « OpenAI-API-Compatible », « llm-central » | rerankers disponibles, avec un champ « Rechercher » |
+| 3 | `rerank` | reranker du service de modèles central |
+| 4 | « Rerank candidates » | nombre de passages, parmi les mieux classés par la recherche, que le reranker relit |
+
+*Résultat* : l'assistant reclasse les passages avec le reranker à chaque question. Sur la machine d'essai, avec les réglages d'origine, le reranker a fait passer l'assistant de 33 à 34 bonnes réponses sur 34, comme le réglage conseillé de l'étape 11 ; ajouté à ce réglage, il n'a rien changé et a allongé chaque réponse d'une demi-seconde à une seconde.
+
+**Étape 13. Régler la fin de la partie « Naive »**
 *Où* : « Paramètres avancés » › « Naive », bas de la partie.
 Descendre sous « Recherche inter-langues ».
 
@@ -207,7 +223,7 @@ Descendre sous « Recherche inter-langues ».
 
 *Résultat* : garder ces réglages tels quels pour un usage courant.
 
-**Étape 13. Régler le mode « Agentic »**
+**Étape 14. Régler le mode « Agentic »**
 *Où* : « Paramètres avancés » › « Agentic ».
 Déplier « Agentic » (capture de l'étape 7, pastille 6).
 
@@ -222,7 +238,7 @@ Déplier « Agentic » (capture de l'étape 7, pastille 6).
 
 *Résultat* : ces réglages ne servent que pour les questions posées en mode « Agentic » (chapitre 07).
 
-**Étape 14. Enregistrer**
+**Étape 15. Enregistrer**
 *Où* : panneau « Paramètres du chat », bas du panneau › « Enregistrer ».
 Cliquer sur « Enregistrer » (pastille 2) ; « Annuler » (pastille 1) abandonne les modifications.
 
@@ -240,7 +256,7 @@ Cliquer sur « Enregistrer » (pastille 2) ; « Annuler » (pastille 1) abandonn
 
 Le « Test de récupération » d'une base montre quels passages une question retrouve, avec quels scores, sans faire rédiger de réponse. Il sert à comprendre un refus ou à essayer un réglage avant de le reporter dans l'assistant. Ses réglages ne sont pas enregistrés.
 
-**Étape 15. Lancer un test**
+**Étape 16. Lancer un test**
 *Où* : barre du haut › « Base de connaissances » › base ouverte › menu de gauche › « Test de récupération ».
 Les réglages, à gauche, sont ceux de l'étape 11, plus un filtre par métadonnées ; « Top N » y vaut 10 par défaut. Saisir la question (pastille 1), puis cliquer sur « Test » (pastille 2).
 
@@ -257,7 +273,7 @@ Les réglages, à gauche, sont ceux de l'étape 11, plus un filtre par métadonn
 
 *Résultat* : avec les réglages d'origine, la question du délai de livraison de Batterix retrouve 25 passages ; le premier, le tableau des fournisseurs, obtient 42,50 sur 100.
 
-**Étape 16. Comparer avec les réglages conseillés**
+**Étape 17. Comparer avec les réglages conseillés**
 *Où* : même page › « Poids de similarité par mots-clés ».
 Porter le poids des mots-clés à 0,3 (pastille 1 : full-text 0,30, vector 0,70), puis cliquer de nouveau sur « Test ».
 
@@ -276,7 +292,8 @@ Porter le poids des mots-clés à 0,3 (pastille 1 : full-text 0,30, vector 0,70)
 
 - Valeurs à la création d'un assistant à la souris : seuil 20, poids des mots-clés 0,7, « Top N » 8. Un assistant créé par programme reçoit d'autres valeurs (« Top N » 6, seuil 10).
 - Transmettre 8 passages au lieu de 6 allonge à peine la réponse : moins d'un dixième de seconde avec une carte graphique.
-- RAGFlow ne fournit pas de modèle de second tri (« rerank ») ; « Modèle de réordonnancement » reste vide tant qu'un tel service n'est pas installé à part.
+- RAGFlow ne fournit pas de modèle de second tri (« rerank ») : il en faut un sur le serveur de modèles, déclaré au chapitre 03 ; le service central de la machine d'essai en sert un, `rerank`. Sur une petite base comme celle des essais, les réglages conseillés (étape 11) suffisent et le reranker n'apporte rien ; il vaut d'être essayé sur une grande base, où beaucoup de passages se ressemblent, ou quand les réglages d'origine doivent être gardés.
+- Avec le modèle `chat` du service central, une réponse prend environ 8 secondes en médiane, et jusqu'à une minute pour les questions les plus longues : le modèle réfléchit avant de répondre. Le réglage « Thinking » (étape 5) est prévu pour la couper ; son effet avec ce service n'a pas été essayé.
 - Après un changement de réglage, rejouer quelques questions connues : c'est le moyen le plus sûr de vérifier l'effet. L'annexe [A1. Évaluation : qualité et performances](../annexes/A1-evaluation-qualite-et-performances.md) détaille la méthode et les résultats des essais.
 
 ## En cas de problème
@@ -292,4 +309,4 @@ Porter le poids des mots-clés à 0,3 (pastille 1 : full-text 0,30, vector 0,70)
 Les autres problèmes sont traités au chapitre [15. En cas de problème](15-en-cas-de-probleme.md).
 
 ---
-*Version décrite : RAGFlow v1.0.0, essais des 9 et 11 novembre 2026. Détails et preuves : [rapport d'essais](../annexes/A6-rapport-d-essais.md).*
+*Version décrite : RAGFlow v1.0.0, essais des 9, 11 et 12 novembre 2026. Détails et preuves : [rapport d'essais](../annexes/A6-rapport-d-essais.md).*
