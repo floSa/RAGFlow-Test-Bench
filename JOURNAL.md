@@ -160,3 +160,9 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Nettoyage : objets « Banc-* » supprimés (`nettoyer_essais.py`), objets « Manuel-… » absents (`nettoyer_manuel.py`) ; jeu de démonstration en place. `verifier_docs.py` : 0 point avant chaque commit.
 - Non fait : variantes agentique, gabarits et contexte non rejouées avec `chat` ; captures secondaires montrant encore l'ancien modèle ; effet de « Thinking » à travers LiteLLM.
 
+
+### 2026-11-13 — Uniformisation de la série
+
+- `docs/README.md` remplacé par l'index commun aux cinq dépôts (Open Notebook, RAGFlow, AnythingLLM, Kotaemon, Open WebUI) : modèles utilisés, services déportables (OCR, audio, reranker), comparatif à deux lignes par solution (défaut, meilleur réglage). Chiffres repris des résultats bruts du 12 et du 13 novembre, aucun nouveau banc.
+- README : section « Résultats » au même format que les autres dépôts.
+- `verifier_docs.py` : 0 point.

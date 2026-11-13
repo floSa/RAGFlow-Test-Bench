@@ -262,26 +262,16 @@ Entreprise fictive Vélanor (vélos électriques), 9 documents, 1 Mo, empreintes
 
 ## Résultats
 
-Service LLM central, 12 novembre 2026 (modèle `chat`, Qwen3.5-4B, réflexion activée) :
+Banc de 38 questions (34 avec réponse, 4 pièges), modèles du service central : Qwen3.5-4B avec réflexion, bge-m3, bge-reranker-v2-m3.
 
-| Banc | Reranker | Exactes (34) | Refus pièges (4) | Bon document cité | Médiane | Pic RAM application |
-|---|---|---|---|---|---|---|
-| Défaut | non | 33 | 4 | 34 | 7,8 s | 5,3 Gio |
-| Défaut | `rerank` | 34 | 4 | 33 | 8,3 s | 5,0 Gio |
-| Vecteurs 0,7, `top_n` 8 | non | 34 | 4 | 34 | 7,8 s | 5,0 Gio |
-| Vecteurs 0,7, `top_n` 8 | `rerank` | 34 | 4 | 34 | 8,8 s | 5,0 Gio |
+| Réglage | OCR | Recherche | Passages | Reranker | Exactes /34 | Pièges refusés /4 | Médiane | Pic RAM de l'application |
+|---|---|---|---|---|---|---|---|---|
+| défaut | DeepDoc | hybride, vecteurs 0,3 | 6 | aucun | 33 | 4 | 7,8 s | 5,4 Go |
+| meilleur | DeepDoc | hybride, vecteurs 0,7 | 8 | aucun | 34 | 4 | 7,8 s | 5,1 Go |
 
-Le reranker rattrape la question manquée avec les réglages d'origine, mais n'ajoute rien aux réglages conseillés (vecteurs 0,7, `top_n` 8) et coûte 0,5 à 1 s par réponse. Carte graphique : 8,2 à 8,4 Go occupés sur 16 avec `chat`, `embed` et `rerank`.
+Le reranker bge-reranker-v2-m3 rattrape la question manquée avec le réglage par défaut, mais n'ajoute rien au meilleur réglage.
 
-Historique, 9 novembre 2026 (`gemma4:e4b` sur vLLM, sans réflexion) :
-
-| Banc | Exactes (34) | Refus pièges (4) | Bon document cité | Médiane | Pic RAM application |
-|---|---|---|---|---|---|
-| Défaut | 33 | 4 | 34 | 1,28 s | 5,3 Gio |
-| Vecteurs 0,7, `top_n` 8 | 34 | 4 | 34 | 1,36 s | 4,9 Gio |
-| Mode agentique | 30 | 4 | 29 | 4,52 s | 5,2 Gio |
-
-Détail et variantes : [annexe A1](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md) ; comparaison avec Open Notebook : [docs/README.md](docs/README.md).
+Toutes les variantes : [annexe A1](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md). Méthode et preuves : [annexe A6](docs/ragflow/annexes/A6-rapport-d-essais.md). Bilan : [RAPPORT-ragflow.md](RAPPORT-ragflow.md). Comparaison avec les quatre autres solutions : [index de la série](docs/README.md).
 
 ## Versions
 
