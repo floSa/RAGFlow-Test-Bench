@@ -1,0 +1,1331 @@
+{
+  "date": "2026-11-13T21:40:41",
+  "solution": "ragflow",
+  "etiquette": "docling-deporte-vecteurs07-top8",
+  "config": {
+    "version": "v1.0.0",
+    "gabarit": "general",
+    "modele": "chat (Qwen3.5-4B, service LLM central)",
+    "embedding": "embed (bge-m3, service LLM central)",
+    "contexte_declare": 16384,
+    "extra_question": {},
+    "base": "Banc-general-docling",
+    "analyseur_pdf": "Docling",
+    "top_n": 8,
+    "top_k": 1024,
+    "similarity_threshold": 0.1,
+    "keywords_similarity_weight": 0.30000000000000004,
+    "rerank_id": "",
+    "llm_id": "chat@llm-central@OpenAI-API-Compatible",
+    "vector_similarity_weight": 0.7
+  },
+  "questions": [
+    {
+      "id": "Q01",
+      "type": "tableau",
+      "question": "Quel est le chiffre d'affaires 2025 de Vélanor ?",
+      "attendu": [
+        "48,6"
+      ],
+      "latence_s": 64.22,
+      "erreur": null,
+      "reponse": "Le chiffre d'affaires de Vélanor pour l'année 2025 s'élève à 48,6 M€, ce qui marque une croissance significative de +12,4 % [ID:3]. Cette performance est détaillée dans le rapport financier par la somme des quatre trimestres, où le troisième trimestre a représenté le volume le plus élevé avec 14,2 M€. [ID:7] La part de l'exportation s'est également accrue de 4 points pour atteindre environ 27 % du total. [ID:3]\n\n**Récapitulatif des données clés concernant le chiffre d'affaires :**\n*   **Chiffre d'affaires global 2025 :** 48,6 M€ [ID:3].\n*   **Évolution annuelle :** +12,4 % [ID:3].\n*   **Décomposition trimestrielle (M€) :** T1 : 9,8 | T2 : 13,7 | T3 : 14,2 | T4 : 10,9 [ID:7].\n*   **Résultat net 2025 :** 3,1 M€ (augmentation de 0,6 M€) [ID:3].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Indicateur</th><th>2025</th><th>Évolution</th></tr>\n<tr><td>Chiffre d&#39;affaires</td><td>48,6 M€</td><td>+12,4 %</td></tr>\n<tr><td>Résultat net</td><td>3,1 M€</td><td>+0,6 M€</td></t",
+          "id": 3
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Trimestre</th><th>Chiffre d&#39;affaires (M€)</th><th>Part du total</th></tr>\n<tr><td>T1 2025</td><td>9,8</td><td>20 %</td></tr>\n<tr><td>T2 2025</td><td>13,7</td><td>28 %</td></tr>\n<tr",
+          "id": 7
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q02",
+      "type": "fait simple",
+      "question": "En quelle année Vélanor a-t-elle été fondée ?",
+      "attendu": [
+        "2014"
+      ],
+      "latence_s": 8.37,
+      "erreur": null,
+      "reponse": "Vélanor a été fondée en **2014** à Nantes. [ID:0]\n\nL'entreprise, dirigée par la présidente Hélène Marchais depuis 2019, conçoit et assemble des vélos à assistance électrique avec son siège situé au 12 quai de la Fosse à Nantes. L'année 2025 a été marquée par une croissance soutenue malgré les tensions sur les cellules de batterie, avec plus de 60 000 vélos produits dans l'année.",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 1,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 2,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 3,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q03",
+      "type": "fait simple",
+      "question": "Qui est la présidente de Vélanor ?",
+      "attendu": [
+        "Marchais"
+      ],
+      "latence_s": 5.43,
+      "erreur": null,
+      "reponse": "Hélène Marchais est la présidente de Vélanor SAS. [ID:0]",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 1,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 2,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 3,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q04",
+      "type": "fait simple",
+      "question": "Quelle est l'adresse du siège de Vélanor ?",
+      "attendu": [
+        "quai de la Fosse"
+      ],
+      "latence_s": 28.75,
+      "erreur": null,
+      "reponse": "L'adresse du siège de Vélanor est située au 12 quai de la Fosse à Nantes, comme indiqué dans le rapport annuel 2025 [ID:0]. Le contrat d'approvisionnement signé avec Batterix confirme également cette localisation complète en y ajoutant le code postal 44000 [ID:4].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 1,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 2,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 3,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 4
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 4
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q05",
+      "type": "tableau",
+      "question": "Combien de salariés compte Vélanor au 31 décembre 2025 ?",
+      "attendu": [
+        "412"
+      ],
+      "latence_s": 8.05,
+      "erreur": null,
+      "reponse": "Vélanor comptait **412 salariés** au 31 décembre 2025 [ID:3]. Cette information est détaillée dans le tableau récapitulatif des indicateurs de l'entreprise. \n\nLa répartition par site géographique confirme ce total : Nantes (siège et assemblage) employait 268 salariés, Cholet (fabrication des cadres) comptait 97 employés, Lyon (agence commerciale) avait 31 collaborateurs, et Bruxelles (filiale Benelux) employait 16 personnes. Le chiffre total s'élève donc à 412 [ID:4].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Indicateur</th><th>2025</th><th>Évolution</th></tr>\n<tr><td>Chiffre d&#39;affaires</td><td>48,6 M€</td><td>+12,4 %</td></tr>\n<tr><td>Résultat net</td><td>3,1 M€</td><td>+0,6 M€</td></t",
+          "id": 3
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Site</th><th>Activité</th><th>Salariés au 31/12/2025</th></tr>\n<tr><td>Nantes</td><td>siège et assemblage</td><td>268</td></tr>\n<tr><td>Cholet</td><td>fabrication des cadres</td><td>97",
+          "id": 4
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q06",
+      "type": "tableau",
+      "question": "Quel a été le chiffre d'affaires du troisième trimestre 2025 ?",
+      "attendu": [
+        "14,2"
+      ],
+      "latence_s": 7.65,
+      "erreur": null,
+      "reponse": "Le chiffre d'affaires du troisième trimestre 2025 s'établit à **14,2 millions d'euros** [ID:1]. Ce montant représente la plus part du total de l'année avec un pourcentage de **29 %** du chiffre d'affaires global [ID:1].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Trimestre</th><th>Chiffre d&#39;affaires (M€)</th><th>Part du total</th></tr>\n<tr><td>T1 2025</td><td>9,8</td><td>20 %</td></tr>\n<tr><td>T2 2025</td><td>13,7</td><td>28 %</td></tr>\n<tr",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q07",
+      "type": "tableau",
+      "question": "Combien d'unités du modèle Sèvre Trail ont été produites en 2025 ?",
+      "attendu": [
+        "15 400"
+      ],
+      "latence_s": 6.95,
+      "erreur": null,
+      "reponse": "En 2025, Vélanor SAS a produit **15 400 unités du modèle Sèvre Trail** [ID:0]. Ce modèle est classé comme une configuration de vélo tout-terrain (VTT) et représente l'une des gammes les plus importantes avec plus de 90 % du marché du VTT. Pour contexte, sur l'ensemble des modèles produits en 2025, le Sèvre Trail s'est vendu à un prix public TTC de 3 150 € par vélo [ID:0]. En comparaison, le modèle Loire Urban (ville) a enregistré 24 300 unités produites, et les modèles enfants et cargo ont respectivement produit 13 200 et 8 900 exemplaires chacun [ID:0].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Modèle</th><th>Usage</th><th>Unités produites</th><th>Prix public TTC</th></tr>\n<tr><td>Loire Urban</td><td>ville</td><td>24 300</td><td>1 890 €</td></tr>\n<tr><td>Sèvre Trail</td><td>V",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q08",
+      "type": "tableau",
+      "question": "Quel est le prix public du modèle Erdre Cargo ?",
+      "attendu": [
+        "4 290"
+      ],
+      "latence_s": 5.27,
+      "erreur": null,
+      "reponse": "Le prix public du modèle Erdre Cargo est de 4 290 € TTC, ce qui en fait le vélo le plus cher de la gamme selon le rapport annuel 2025 [ID:0].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Modèle</th><th>Usage</th><th>Unités produites</th><th>Prix public TTC</th></tr>\n<tr><td>Loire Urban</td><td>ville</td><td>24 300</td><td>1 890 €</td></tr>\n<tr><td>Sèvre Trail</td><td>V",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q09",
+      "type": "tableau",
+      "question": "Combien de salariés travaillent sur le site de Cholet ?",
+      "attendu": [
+        "97"
+      ],
+      "latence_s": 6.65,
+      "erreur": null,
+      "reponse": "Selon le rapport annuel 2025, **97 salariés** travaillent sur le site de Cholet [ID:0].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Site</th><th>Activité</th><th>Salariés au 31/12/2025</th></tr>\n<tr><td>Nantes</td><td>siège et assemblage</td><td>268</td></tr>\n<tr><td>Cholet</td><td>fabrication des cadres</td><td>97",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q10",
+      "type": "fait simple",
+      "question": "Quelle est la part d'aluminium recyclé dans les cadres ?",
+      "attendu": [
+        "82"
+      ],
+      "latence_s": 9.8,
+      "erreur": null,
+      "reponse": "La part d'aluminium recyclé dans les cadres est de **82 %**.\n\nSelon le rapport annuel 2025 de Vélanor, les cadres sont fabriqués à partir d'aluminium recyclé à 82 %. [ID:0]\n\nCette information figure également dans le document concernant l'environnement de l'entreprise, qui mentionne que les cadres utilisent un matériau durable avec une majorité d'aluminium recyclé. La consommation électrique des sites a atteint 3,4 GWh en 2025 et Vélanor vise la neutralité carbone de ses sites en 2030 [ID:0].\n\nLe taux de recyclage des batteries usagées collectées atteint 96 %, grâce au partenariat avec la filière de collecte Recylo, mais cela concerne spécifiquement les batteries et non les cadres [ID:0].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 6,
+          "extrait": "L'âge moyen des salariés est de 36 ans. 41 % des postes d'encadrement sont occupés par des femmes.\n## 6. Environnement\nLes cadres sont fabriqués à partir d'aluminium recyclé à 82 %. La consommation él",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 7,
+          "extrait": "L'âge moyen des salariés est de 36 ans. 41 % des postes d'encadrement sont occupés par des femmes.\n## 6. Environnement\nLes cadres sont fabriqués à partir d'aluminium recyclé à 82 %. La consommation él",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 8,
+          "extrait": "L'âge moyen des salariés est de 36 ans. 41 % des postes d'encadrement sont occupés par des femmes.\n## 6. Environnement\nLes cadres sont fabriqués à partir d'aluminium recyclé à 82 %. La consommation él",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q11",
+      "type": "fait simple",
+      "question": "Quel est le taux de recyclage des batteries usagées ?",
+      "attendu": [
+        "96"
+      ],
+      "latence_s": 75.79,
+      "erreur": null,
+      "reponse": "D'après le rapport annuel 2025 de Vélanor, le taux de recyclage des batteries usagées collectées atteint 96 %. [ID:0] Cette information figure dans la section dédiée à l'environnement du document. [ID:0] L'efficacité est rendue possible grâce au partenariat avec la filière de collecte Recylo qui intervient dans ce processus. [ID:0]",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 6,
+          "extrait": "L'âge moyen des salariés est de 36 ans. 41 % des postes d'encadrement sont occupés par des femmes.\n## 6. Environnement\nLes cadres sont fabriqués à partir d'aluminium recyclé à 82 %. La consommation él",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 7,
+          "extrait": "L'âge moyen des salariés est de 36 ans. 41 % des postes d'encadrement sont occupés par des femmes.\n## 6. Environnement\nLes cadres sont fabriqués à partir d'aluminium recyclé à 82 %. La consommation él",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 8,
+          "extrait": "L'âge moyen des salariés est de 36 ans. 41 % des postes d'encadrement sont occupés par des femmes.\n## 6. Environnement\nLes cadres sont fabriqués à partir d'aluminium recyclé à 82 %. La consommation él",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q12",
+      "type": "tableau",
+      "question": "Quel fournisseur livre les moteurs et dans quel pays est-il installé ?",
+      "attendu": [
+        "Motodrive",
+        "Taïwan|Taiwan"
+      ],
+      "latence_s": 7.65,
+      "erreur": null,
+      "reponse": "Le fournisseur qui livre les moteurs est **Motodrive Co.**, et il est installé en **Taïwan**. Cette information provient du rapport annuel 2025 de Vélanor qui identifie Motodrive Co. comme le fournisseur des composants moteur, basé à Taïwan [ID:0]. Le fichier stocks-octobre-2025.xlsx confirme également cette relation entre les composants moteurs et le même fournisseur [ID:1].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Composant</th><th>Fournisseur</th><th>Pays</th></tr>\n<tr><td>Batteries</td><td>Batterix GmbH</td><td>Allemagne (Brême)</td></tr>\n<tr><td>Moteurs</td><td>Motodrive Co.</td><td>Taïwan</t",
+          "id": 0
+        },
+        {
+          "document": "stocks-octobre-2025.xlsx",
+          "page": 2,
+          "extrait": "<table><caption>Fournisseurs</caption>\n<tr><th>Fournisseur</th><th>Composant</th><th>Délai moyen constaté (jours)</th></tr>\n<tr><td>Batterix GmbH</td><td>Batteries</td><td>24</td></tr>\n<tr><td>Motodri",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q13",
+      "type": "tableau",
+      "question": "Quel résultat net Vélanor a-t-elle dégagé en 2025 ?",
+      "attendu": [
+        "3,1"
+      ],
+      "latence_s": 28.53,
+      "erreur": null,
+      "reponse": "Vélanor a dégagé un résultat net de 3,1 M€ en 2025 [ID:3].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Indicateur</th><th>2025</th><th>Évolution</th></tr>\n<tr><td>Chiffre d&#39;affaires</td><td>48,6 M€</td><td>+12,4 %</td></tr>\n<tr><td>Résultat net</td><td>3,1 M€</td><td>+0,6 M€</td></t",
+          "id": 3
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q14",
+      "type": "fait simple",
+      "question": "Quel est le taux de retour sous garantie ?",
+      "attendu": [
+        "1,8"
+      ],
+      "latence_s": 4.44,
+      "erreur": null,
+      "reponse": "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus [ID:0].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 3,
+          "extrait": "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus.\n## 3. Chiffre d'affaires trimestriel",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 4,
+          "extrait": "Le taux de retour sous garantie s'établit à 1,8 % des vélos vendus.\n## 3. Chiffre d'affaires trimestriel",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q15",
+      "type": "scan",
+      "question": "Quel est le prix unitaire des batteries prévu par le contrat avec Batterix ?",
+      "attendu": [
+        "212"
+      ],
+      "latence_s": 7.19,
+      "erreur": null,
+      "reponse": "Le prix unitaire des batteries dans le contrat avec Batterix est de **212 euros HT** (taxe exclusive).\n\nAccording to the source: \"Prix unitaire : 212 euros HT, révisable une fois par an.\" [ID:0]",
+      "citations": [
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q16",
+      "type": "scan",
+      "question": "Quel est le délai de livraison prévu par le contrat Batterix ?",
+      "attendu": [
+        "21"
+      ],
+      "latence_s": 7.81,
+      "erreur": null,
+      "reponse": "Selon le contrat d'approvisionnement avec Batterix (contrat-batterix-scan.pdf), voici les informations sur le délai de livraison :\n\n**Délai de livraison** : Le fournisseur livre sous **21 jours après la commande** [ID:0].\n\nVoici les détails complets du contrat d'approvisionnement :\n\n- **Article 5 - Délais de livraison** : Le Fournisseur livre sous 21 jours après la commande [ID:0]\n- **Article 4 - Prix** : Prix unitaire de 212 euros HT, révisable une fois par an [ID:0]\n- **Article 3 - Volumes** : Volume minimal annuel de 40 000 batteries [ID:0]\n- **Article 7 - Garantie** : 5 ans ou 1 000 cycles de charge, au premier terme atteint [ID:0]\n- **Date du contrat** : Fait à Nantes, le 14 février 2025 [ID:0]\n\nLe fournisseur est spécifiquement Batterix GmbH de Brême, Allemagne [ID:0], et le contrat dure trois ans à compter du 1er mars 2025 [ID:0].",
+      "citations": [
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q17",
+      "type": "scan",
+      "question": "Quel est le plafond des pénalités de retard du contrat Batterix ?",
+      "attendu": [
+        "8"
+      ],
+      "latence_s": 4.13,
+      "erreur": null,
+      "reponse": "Le contrat d'approvisionnement Batterix spécifie que les pénalités de retard sont fixées à 0,5 % du montant de la commande par jour de retard, avec un plafond maximal de 8 % du montant de la commande [ID:0].",
+      "citations": [
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q18",
+      "type": "scan",
+      "question": "Quel volume minimal annuel de batteries le contrat Batterix prévoit-il ?",
+      "attendu": [
+        "40 000"
+      ],
+      "latence_s": 7.34,
+      "erreur": null,
+      "reponse": "Selon le document de contrat d'approvisionnement signé entre Vélanor SAS et Batterix GmbH (Référence BX-2025-117), le volume minimal annuel de batteries prévu est de **40 000 batteries** [ID:0]. Ce montant correspond au Volume minimal annuel spécifié dans l'article 3 du contrat d'approvisionnement.",
+      "citations": [
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q19",
+      "type": "fait simple",
+      "question": "À quelle température les batteries doivent-elles être stockées ?",
+      "attendu": [
+        "10",
+        "25"
+      ],
+      "latence_s": 9.63,
+      "erreur": null,
+      "reponse": "D'après la procédure technique, les batteries doivent être stockées entre **10 °C et 25 °C** [ID:0]. Cette spécification figure dans la procédure PR-SEC-04 relative au chargement et stockage des batteries, rédigée par Karim Benali, responsable HSE. Le stockage se doit d'être effectué dans le local B2, qui est équipé d'un système de détection incendie pour garantir la sécurité.",
+      "citations": [
+        {
+          "document": "procedure-batteries.docx",
+          "page": null,
+          "extrait": "Procédure PR-SEC-04 — Charge et stockage des batteries\nResponsable de la procédure : Karim Benali, responsable HSE. Version 3 du 1er septembre 2025.\n1. Stockage\nLes batteries sont stockées entre 10 °C",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q20",
+      "type": "fait simple",
+      "question": "Qui est responsable de la procédure de charge et de stockage des batteries ?",
+      "attendu": [
+        "Benali"
+      ],
+      "latence_s": 4.61,
+      "erreur": null,
+      "reponse": "La procédure de charge et de stockage des batteries est responsable de la procédure par Karim Benali, qui est le responsable HSE [ID:0].",
+      "citations": [
+        {
+          "document": "procedure-batteries.docx",
+          "page": null,
+          "extrait": "Procédure PR-SEC-04 — Charge et stockage des batteries\nResponsable de la procédure : Karim Benali, responsable HSE. Version 3 du 1er septembre 2025.\n1. Stockage\nLes batteries sont stockées entre 10 °C",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q21",
+      "type": "tableau",
+      "question": "À quelle fréquence le local B2 est-il inspecté ?",
+      "attendu": [
+        "premier lundi"
+      ],
+      "latence_s": 11.51,
+      "erreur": null,
+      "reponse": "Selon la procédure documentée, l'inspection du local B2 est effectuée **au premier lundi de chaque mois** [ID:0]. Le contrôle est attribué à Karim Benali comme responsable.",
+      "citations": [
+        {
+          "document": "procedure-batteries.docx",
+          "page": null,
+          "extrait": "<table><caption>Table Location: 3. Contrôles</caption>\n<tr><th>Contrôle</th><th>Fréquence</th><th>Responsable</th></tr>\n<tr><td>Inspection du local B2</td><td>le premier lundi de chaque mois</td><td>K",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q22",
+      "type": "fait simple",
+      "question": "Quel est le prix du Vilaine Compact ?",
+      "attendu": [
+        "2 490"
+      ],
+      "latence_s": 59.06,
+      "erreur": null,
+      "reponse": "Le prix public TTC du modèle Vilaine Compact est de 2 490 €. [ID:0]\nCe nouveau vélo pliant électrique a été annoncé pour un lancement en avril 2026. [ID:0]\nD'autres documents du rapport annuel confirment également qu'un nouveau modèle compact, le Vilaine Compact, sera lancé à cette période. [ID:1]",
+      "citations": [
+        {
+          "document": "strategie-2026.pptx",
+          "page": null,
+          "extrait": "Nouveau modèle\nVilaine Compact : vélo pliant électrique\nLancement en avril 2026\nPrix public : 2 490 € TTC",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 8,
+          "extrait": "Le contrat d'approvisionnement en batteries avec Batterix a été renouvelé en mars 2025.\n## 8. Risques\nLes principaux risques identifiés sont la pénurie de cellules lithium-ion, la hausse du prix de l'",
+          "id": 1
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 9,
+          "extrait": "Le contrat d'approvisionnement en batteries avec Batterix a été renouvelé en mars 2025.\n## 8. Risques\nLes principaux risques identifiés sont la pénurie de cellules lithium-ion, la hausse du prix de l'",
+          "id": 1
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 10,
+          "extrait": "Le contrat d'approvisionnement en batteries avec Batterix a été renouvelé en mars 2025.\n## 8. Risques\nLes principaux risques identifiés sont la pénurie de cellules lithium-ion, la hausse du prix de l'",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q23",
+      "type": "fait simple",
+      "question": "Quelle est la capacité prévue de l'usine de Saint-Nazaire ?",
+      "attendu": [
+        "25 000"
+      ],
+      "latence_s": 7.3,
+      "erreur": null,
+      "reponse": "Selon les documents disponibles, l'usine de Saint-Nazaire est prévue pour ouvrir en septembre 2026. La capacité produite sera de **25 000 vélos par an**.\n\nLa capacité de production de l'usine de Saint-Nazaire s'établit à 25 000 vélos annuels [ID:0]. Cette nouvelle usine d'assemblage est également associée à 70 embauches prévues pour son lancement en septembre 2026, comme confirmé par le rapport annuel.\n\nAinsi, le chiffre de 25 000 vélos par an représente l'objectif de capacité de production de l'usine Saint-Nazaire dans la stratégie 2026 de Vélanor [ID:0].",
+      "citations": [
+        {
+          "document": "strategie-2026.pptx",
+          "page": null,
+          "extrait": "Usine de Saint-Nazaire\nOuverture en septembre 2026\nCapacité : 25 000 vélos par an\nInvestissement : 14 M€",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q24",
+      "type": "tableau",
+      "question": "Quel stock de batteries BAT-48V-14Ah reste-t-il et est-il sous le seuil d'alerte ?",
+      "attendu": [
+        "1 240|1240",
+        "1 500|1500"
+      ],
+      "latence_s": 8.01,
+      "erreur": null,
+      "reponse": "D'après le document de stock octobre 2025, il reste **1 240 batteries BAT-48V-14Ah** en stock actuel [ID:1]. Le seuil d'alerte pour ce composant est fixé à **1 500 unités**, ce qui signifie que le stock présent est bien **sous le seuil d'alerte**.\n\n| Référence | Désignation | Quantité | Seuil d'alerte | Entrepôt |\n|-----------|-------------|----------|----------------|----------|\n| BAT-48V-14Ah | Batterie 48 V 14 Ah | 1240 | 1500 | Nantes |\n\n**Analyse de la situation :**\n- Le stock actuel (1240) est inférieur au seuil d'alerte (1500) [ID:1]\n- Cela indique un niveau de stock faible qui pourrait nécessiter une commande rapide\n- Le contrat d'approvisionnement avec Batterix prévoit un volume minimal annuel de 40 000 batteries [ID:0]",
+      "citations": [
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        },
+        {
+          "document": "stocks-octobre-2025.xlsx",
+          "page": 1,
+          "extrait": "<table><caption>Stocks</caption>\n<tr><th>Référence</th><th>Désignation</th><th>Quantité</th><th>Seuil d&#39;alerte</th><th>Entrepôt</th></tr>\n<tr><td>BAT-48V-14Ah</td><td>Batterie 48 V 14 Ah</td><td>1",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q25",
+      "type": "fait simple",
+      "question": "Quelle est la durée de garantie du cadre ?",
+      "attendu": [
+        "7 ans"
+      ],
+      "latence_s": 10.07,
+      "erreur": null,
+      "reponse": "Le cadre est garanti pour une durée de **7 ans**, selon la FAQ du service après-vente [ID:0]. Cette garantie s'applique aux cadres en aluminium, qui constituent une composante principale des vélos Vélanor. Par ailleurs, le contrat d'approvisionnement avec Batterix mentionne une garantie de 5 ans ou 1 000 cycles de charge pour les batteries fournies, mais pas spécifiquement pour les cadres [ID:1].\n\nPour résumer :\n- **Cadre** : 7 ans de garantie [ID:0]\n- **Batterie et moteur** : 2 ans de garantie [ID:0]\n\nLa durée de garantie du cadre est donc de 7 ans selon le document officiel disponible sur le site.",
+      "citations": [
+        {
+          "document": "faq-sav.html",
+          "page": null,
+          "extrait": "FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparation ?Une réparation e",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 1
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q26",
+      "type": "fait simple",
+      "question": "Quel est le numéro de téléphone du service après-vente ?",
+      "attendu": [
+        "02 40 00 12 34"
+      ],
+      "latence_s": 4.74,
+      "erreur": null,
+      "reponse": "Selon la documentation de Vélanor, le numéro de téléphone du service après-vente est le **02 40 00 12 34**. Ce numéro est accessible du lundi au vendredi de 9 h à 18 h [ID:0].",
+      "citations": [
+        {
+          "document": "faq-sav.html",
+          "page": null,
+          "extrait": "FAQ du service après-venteDocument fictif.Quelle est la durée de la garantie ?Le cadre est garanti 7 ans. La batterie et le moteur sont garantis 2 ans.Quel est le délai de réparation ?Une réparation e",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q27",
+      "type": "fait simple",
+      "question": "Quel est le montant de la prime d'intéressement 2025 ?",
+      "attendu": [
+        "1 150|1150"
+      ],
+      "latence_s": 4.4,
+      "erreur": null,
+      "reponse": "Selon les documents de décision disponibles dans la base de données, le montant de la prime d'intéressement 2025 est de **1 150 euros par salarié**. Elle est prévue pour être versée en avril 2026 [ID:0].",
+      "citations": [
+        {
+          "document": "cse-2025-10-14.md",
+          "page": null,
+          "extrait": "## Décisions\n- Prime d'intéressement 2025 : 1 150 euros par salarié, versée en avril 2026.\n- Télétravail : jusqu'à 2 jours par semaine pour les postes compatibles.\n- Le nouveau restaurant d'entreprise",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q28",
+      "type": "anglais",
+      "question": "What overall score did Batterix obtain at the supplier audit?",
+      "attendu": [
+        "87"
+      ],
+      "latence_s": 8.82,
+      "erreur": null,
+      "reponse": "Based on the knowledge base, here is the detailed answer:\n\n## Supplier Audit Score for Batterix GmbH\n\nThe overall score Batterix obtained at the supplier audit was **87 out of 100** [ID:0].\n\nThis information comes from the \"Supplier Quality Audit - Batterix GmbH, Bremen\" document. The audit took place on June 18, 2025, and was conducted by Laura Fischer from Vélanor quality team. Based on this audit result, Batterix is approved for another year of supply partnership [ID:0].\n\n### Additional Details from the Audit:\n- **Two minor non-conformities** were found during the audit: incomplete labelling of pallets, and missing ESD wrist straps at one assembly station [ID:0]\n- **The measured cell defect rate is 0.3%** [ID:0]\n- The next audit is scheduled for June 2026 [ID:0]\n\nThis represents a passing score with only minor issues requiring attention, maintaining the supplier's approval status within the contract framework.",
+      "citations": [
+        {
+          "document": "supplier-audit-batterix-en.pdf",
+          "page": 1,
+          "extrait": "## Supplier Quality Audit - Batterix GmbH, Bremen\nFictional document. Audit date: 18 June 2025. Lead auditor: Laura Fischer (Vélanor quality team). Overall score: 87 out of 100. The supplier is approv",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q29",
+      "type": "anglais",
+      "question": "Quel est le taux de cellules défectueuses mesuré chez Batterix lors de l'audit ?",
+      "attendu": [
+        "0.3|0,3"
+      ],
+      "latence_s": 6.81,
+      "erreur": null,
+      "reponse": "Le taux de cellules défectueuses mesuré chez Batterix lors de l'audit est de **0,3 %**. Selon le rapport d'audit qualité fournisseur pour Batterix GmbH (daté du 18 juin 2025), ce chiffre représente le niveau actuel de défauts mesuré sur les cellules [ID:0]. Le document indique également que le fournisseur a obtenu un score général de 87 sur 100 lors de l'audit et est approuvé pour une année supplémentaire, avec deux non-conformités mineures identifiées.",
+      "citations": [
+        {
+          "document": "supplier-audit-batterix-en.pdf",
+          "page": 1,
+          "extrait": "## Supplier Quality Audit - Batterix GmbH, Bremen\nFictional document. Audit date: 18 June 2025. Lead auditor: Laura Fischer (Vélanor quality team). Overall score: 87 out of 100. The supplier is approv",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q30",
+      "type": "multi-documents",
+      "question": "Quel est le délai de livraison contractuel de Batterix et quel délai moyen est réellement constaté ?",
+      "attendu": [
+        "21",
+        "24"
+      ],
+      "latence_s": 20.42,
+      "erreur": null,
+      "reponse": "Le délai de livraison contractuel établi avec Batterix GmbH est de **21 jours** après la commande [ID:1]. En revanche, le délai moyen constaté sur place pour les batteries livrées par ce fournisseur s'élève à **24 jours**, comme le montre l'analyse des données d'approvisionnement [ID:0].",
+      "citations": [
+        {
+          "document": "stocks-octobre-2025.xlsx",
+          "page": 2,
+          "extrait": "<table><caption>Fournisseurs</caption>\n<tr><th>Fournisseur</th><th>Composant</th><th>Délai moyen constaté (jours)</th></tr>\n<tr><td>Batterix GmbH</td><td>Batteries</td><td>24</td></tr>\n<tr><td>Motodri",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 1
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q31",
+      "type": "multi-documents",
+      "question": "Quel score Batterix a-t-il obtenu à l'audit, et quel prix unitaire le contrat fixe-t-il ?",
+      "attendu": [
+        "87",
+        "212"
+      ],
+      "latence_s": 10.24,
+      "erreur": null,
+      "reponse": "Based on the provided knowledge base, here are the answers to your questions:\n\n## Audit Score of Batterix\n\nLors de l'audit qualité fournisseur (Supplier Quality Audit) réalisé le 18 juin 2025, Batterix GmbH a obtenu **un score global de 87 sur 100** [ID:1]. Cet audit avait été conduit par Laura Fischer, du service qualité de Vélanor, et deux non-conformités mineures ont été notées (étiquetage incomplet des palettes et l'absence de bracelets ESD à une station d'assemblage). Bien que le score soit satisfaisant, Batterix a été approuvée pour un autre an de collaboration.\n\n## Unit Price in the Contract\n\nLe **contrat d'approvisionnement n° BX-2025-117** fixe un prix unitaire de **212 euros HT** pour les batteries 48 V 14 Ah (référence BAT-48V-14Ah) [ID:0]. Ce contrat est susceptible de révision une fois par an, et le volume minimal annuel stipulé à ce niveau est de 40 000 batteries.\n\n---\n\n**Résumé des éléments cités :**\n| Information | Source Document |\n|-------------|-----------------|\n| Audit score (87/100) | [ID:1] |\n| Unit price (212 euros HT) | [ID:0] |",
+      "citations": [
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 0
+        },
+        {
+          "document": "supplier-audit-batterix-en.pdf",
+          "page": 1,
+          "extrait": "## Supplier Quality Audit - Batterix GmbH, Bremen\nFictional document. Audit date: 18 June 2025. Lead auditor: Laura Fischer (Vélanor quality team). Overall score: 87 out of 100. The supplier is approv",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q32",
+      "type": "multi-documents",
+      "question": "Quel chiffre d'affaires Vélanor vise-t-elle en 2026 et combien d'embauches sont prévues à Saint-Nazaire ?",
+      "attendu": [
+        "55",
+        "70"
+      ],
+      "latence_s": 7.91,
+      "erreur": null,
+      "reponse": "Vélanor vise un chiffre d'affaires de 55 M€ en 2026 [ID:0]. Pour la nouvelle usine à Saint-Nazaire, 70 embauches sont prévues avec l'ouverture prévue en septembre 2026 [ID:0].",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 8,
+          "extrait": "Le contrat d'approvisionnement en batteries avec Batterix a été renouvelé en mars 2025.\n## 8. Risques\nLes principaux risques identifiés sont la pénurie de cellules lithium-ion, la hausse du prix de l'",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 9,
+          "extrait": "Le contrat d'approvisionnement en batteries avec Batterix a été renouvelé en mars 2025.\n## 8. Risques\nLes principaux risques identifiés sont la pénurie de cellules lithium-ion, la hausse du prix de l'",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 10,
+          "extrait": "Le contrat d'approvisionnement en batteries avec Batterix a été renouvelé en mars 2025.\n## 8. Risques\nLes principaux risques identifiés sont la pénurie de cellules lithium-ion, la hausse du prix de l'",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": true
+      }
+    },
+    {
+      "id": "Q33",
+      "type": "audio",
+      "question": "Quelle ligne d'assemblage sera arrêtée pour maintenance en mars 2026, et jusqu'à quelle date ?",
+      "attendu": [
+        "3",
+        "6 mars"
+      ],
+      "latence_s": 15.47,
+      "erreur": null,
+      "reponse": "Based on the dataset provided, here is the answer to your question about which assembly line will be stopped for maintenance in March 2026 and until what date.\n\n**Information from the Dataset:**\n\n| Source | Information |\n|--------|-------------|\n| ID: 0 | Ligne d'assemblage numéro 3 de Nantes (Assembly Line #3 of Nantes) |\n| ID: 0 | Dates : du 2 au 6 mars (from February 2nd to March 6th) |\n| ID: 0 | Event type : maintenance pour maintenance |\n\n**Answer:**\n\nLa ligne d'assemblage numéro 3 de Nantes sera arrêtée pour maintenance. Le document ne spécifie pas explicitement l'année 2026 pour cette maintenance [ID:0]. Cependant, le calendrier mentionné est du 2 au 6 mars (date) [ID:0].\n\nNote : Aucune information plus précise concernant l'année 2026 spécifiquement n'est trouvée dans les documents fournis.",
+      "citations": [
+        {
+          "document": "message-vocal-production.mp3",
+          "page": null,
+          "extrait": "Message vocale de Julien Moreau, directeur de production chez Vélanor, enregistrait le 3 novembre VVTSEC. La ligne d'assoblage numéro 3 de Nantes sera arrêtée du 2 au 6 mars VVTSI pour maintenance. Pe",
+          "id": 0
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q34",
+      "type": "audio",
+      "question": "Qui est le directeur de production de Vélanor ?",
+      "attendu": [
+        "Moreau"
+      ],
+      "latence_s": 43.23,
+      "erreur": null,
+      "reponse": "Les informations concernant la direction de l'entreprise se répartissent sur plusieurs documents du dataset :\n\n- **Le document vocal de production [ID:1]** : Ce fichier audio mentionne explicitement l'identité du responsable de la ligne d'assemblage. Le texte précise que \"le message vocal est enregistré par Julien Moreau, directeur de production chez Vélanor\".\n- **Le rapport annuel 2025 (ID: 0 et ID: 3)** : Ce document met en avant la présidence de l'entreprise pour éviter toute confusion avec le rôle du directeur de production. La présidente est Hélène Marchais, tandis que la ligne d'assemblage est gérée par le producteur mentionné dans l'enregistrement vocal.\n- **Le rapport de synthèse [ID:1]** : Il détaille les arrêtages de ligne et le transfert de production sur une autre ligne à Nantes lors des arrêts de maintenance VVTSEC/VVTSI.\n\n**Réponse détaillée :**\n\nSelon le document vocal de production, **Julien Moreau** est identifié comme le directeur de production chez Vélanor [ID:1]. Il s'agit d'une mention directe dans un enregistrement audio effectué par son équipe de production. Pour contextualiser sa fonction au sein de l'organisation :\n*   La présidente du conseil d'administration et la dirigeante principale est **Hélène Marchais** (directrice depuis 2019) [ID:0].\n*   En ce qui concerne les opérations courantes, le document vocal indique que sa ligne d'assemblage numéro 3 de Nantes sera arrêtée du 2 au 6 mars pour maintenance [ID:1], et que la production du loire urbain sera transférée sur la ligne pendant cet arrêt.\n*   Une réunion concernant l'Osement est également prévue le 19 février à 10h dans la salle Erdre [ID:1].\n\nAinsi, Julien Moreau occupe spécifiquement le rôle de directeur de production, distinct du rôle exécutif de la présidente Hélène Marchais.",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 1,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 2,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 3,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "message-vocal-production.mp3",
+          "page": null,
+          "extrait": "Message vocale de Julien Moreau, directeur de production chez Vélanor, enregistrait le 3 novembre VVTSEC. La ligne d'assoblage numéro 3 de Nantes sera arrêtée du 2 au 6 mars VVTSI pour maintenance. Pe",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": {
+        "document": true,
+        "page": null
+      }
+    },
+    {
+      "id": "Q35",
+      "type": "piège",
+      "question": "Quel était le chiffre d'affaires de Vélanor en 2022 ?",
+      "attendu": [],
+      "latence_s": 61.21,
+      "erreur": null,
+      "reponse": "Bien que le dataset contient des rapports financiers détaillés pour Vélanor SAS, il ne mentionne pas explicitement les chiffres d'affaires pour l'exercice **2022**. Le contenu disponible se concentre principalement sur les données de 2025 et les projections pour 2026.\n\nVoici la récapitulation des données financières pertinentes trouvées dans le dataset :\n*   Selon le rapport annuel, le chiffre d'affaires a atteint **48,6 M€ en 2025** [ID:3].\n*   Cette année-là, l'entreprise a enregistré une évolution de **+12,4 %** pour ce montant [ID:3].\n*   L'activité est décrite comme ayant été marquée par une \"croissance soutenue\" en 2025 [ID:0].\n*   Vélanor SAS fut fondée en **2014** à Nantes par la présidente Hélène Marchais, qui dirige l'entreprise depuis 2019 [ID:0].\n*   La production a franchi pour la première fois le seuil de **60 000 vélos produits dans l'année** en 2025 [ID:0].\n\nMalgré l'abondance d'informations sur le chiffre d'affaires et la croissance récents, les données spécifiques pour l'année 2022 ne sont pas incluses dans les textes fournis.\nThe answer you are looking for is not found in the dataset!",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 1,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 2,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 3,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Indicateur</th><th>2025</th><th>Évolution</th></tr>\n<tr><td>Chiffre d&#39;affaires</td><td>48,6 M€</td><td>+12,4 %</td></tr>\n<tr><td>Résultat net</td><td>3,1 M€</td><td>+0,6 M€</td></t",
+          "id": 3
+        }
+      ],
+      "exacte": true,
+      "citation": null
+    },
+    {
+      "id": "Q36",
+      "type": "piège",
+      "question": "Qui est le directeur financier de Vélanor ?",
+      "attendu": [],
+      "latence_s": 12.67,
+      "erreur": null,
+      "reponse": "Based on my analysis of the provided knowledge base, there is **no information about Vélanor's financial director** in any of the documents.\n\nHere is what I was able to find regarding Vélanor's management structure:\n\n| Document | Position Identified | Name |\n|----------|---------------------|------|\n| ID: 0 | Président(e) | Hélène Marchais (depuis 2019) [ID:0] |\n| ID: 3 | Directeur de production | Julien Moreau [ID:3] |\n| ID: 4 | Représentant Fournisseur Batterix GmbH | Jonas Weber [ID:4] |\n\nThe available documents contain financial data such as revenue (48.6 M€ in 2025), net profit (3.1 M€), production volume (61,800 bicycles), employee count (412 employees), and battery supply contract details from Batterix GmbH. However, none of the documents mention a CFP (Chef de Finance Publique) or financial director role at Vélanor SAS.\n\n**The answer you are looking for is not found in the dataset!**",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 1,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 2,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 3,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "message-vocal-production.mp3",
+          "page": null,
+          "extrait": "Message vocale de Julien Moreau, directeur de production chez Vélanor, enregistrait le 3 novembre VVTSEC. La ligne d'assoblage numéro 3 de Nantes sera arrêtée du 2 au 6 mars VVTSI pour maintenance. Pe",
+          "id": 3
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 1,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 4
+        },
+        {
+          "document": "contrat-batterix-scan.pdf",
+          "page": 2,
+          "extrait": "## CONTRAT D'APPROVISIONNEMENT N° BX-2025-117\nEntre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes (l'Acheteur)\nEt: Batterix GmbH, Brême, Allemagne (le Fournisseur)\nArticle 1 -Objet\nFourniture de ba",
+          "id": 4
+        }
+      ],
+      "exacte": true,
+      "citation": null
+    },
+    {
+      "id": "Q37",
+      "type": "piège",
+      "question": "Combien de trottinettes électriques Vélanor a-t-elle vendues en 2025 ?",
+      "attendu": [],
+      "latence_s": 9.83,
+      "erreur": null,
+      "reponse": "The answer you are looking for is not found in the dataset!\n\nBased on the provided knowledge base, Vélanor SAS is a company that designs and assembles **electric bicycles** (vélos à assistance électrique),  [ID:0]not electric scooters. The datasets reference bicycle production figures for 2025:\n\n- According to ID:0, Vélanor first surpassed 60,000 produced bicycles in 2025\n- According to ID:5, the company produced 61,800 bicycles (vélos produits) in 2025 with a +9% evolution compared to previous year\n\n [ID:5]All relevant information in the dataset concerns **bicycles** and related electric assistance products, not electric scooters. There is no data regarding electric scooter sales by Vélanor in 2025 within this knowledge base.",
+      "citations": [
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 1,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 2,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": 3,
+          "extrait": "## Vélanor SAS - Rapport annuel 2025\nDocument fictif généré pour des essais. Toute ressemblance serait fortuite. Sommaire : 1. Mot de la présidente - 2. Chiffres clés - 3. Chiffre d'affaires trimestri",
+          "id": 0
+        },
+        {
+          "document": "rapport-annuel-2025.pdf",
+          "page": null,
+          "extrait": "<table>\n<tr><th>Indicateur</th><th>2025</th><th>Évolution</th></tr>\n<tr><td>Chiffre d&#39;affaires</td><td>48,6 M€</td><td>+12,4 %</td></tr>\n<tr><td>Résultat net</td><td>3,1 M€</td><td>+0,6 M€</td></t",
+          "id": 5
+        }
+      ],
+      "exacte": true,
+      "citation": null
+    },
+    {
+      "id": "Q38",
+      "type": "piège",
+      "question": "Quel est le salaire de Karim Benali ?",
+      "attendu": [],
+      "latence_s": 12.59,
+      "erreur": null,
+      "reponse": "Based on the analysis of the provided knowledge base documents, there is no information about Karim Benali's salary.\n\nHere is what I found in the dataset related to Karim Benali:\n\n- **ID 0** - procedure-batteries.docx mentions that Karim Benali is responsible for inspecting local B2 on the first Monday of each month\n- [ID:0] **ID 1** - procedure-batteries.docx states that Karim Benali is the HSE (Health, Safety, and Environment) responsible person for procedure PR-SEC-04 (battery charging and storage),  [ID:1]version 3 from September 1, 2025\n\nHowever, none of the documents in the knowledge base contain any information about Karim Benali's salary or compensation.\n\nThe answer you are looking for is not found in the dataset!",
+      "citations": [
+        {
+          "document": "procedure-batteries.docx",
+          "page": null,
+          "extrait": "<table><caption>Table Location: 3. Contrôles</caption>\n<tr><th>Contrôle</th><th>Fréquence</th><th>Responsable</th></tr>\n<tr><td>Inspection du local B2</td><td>le premier lundi de chaque mois</td><td>K",
+          "id": 0
+        },
+        {
+          "document": "procedure-batteries.docx",
+          "page": null,
+          "extrait": "Procédure PR-SEC-04 — Charge et stockage des batteries\nResponsable de la procédure : Karim Benali, responsable HSE. Version 3 du 1er septembre 2025.\n1. Stockage\nLes batteries sont stockées entre 10 °C",
+          "id": 1
+        }
+      ],
+      "exacte": true,
+      "citation": null
+    }
+  ],
+  "indexation": {
+    "dataset": "a9a24ea5fe0d4b98866197a134eeb0b9",
+    "gabarit": "general",
+    "documents": {
+      "supplier-audit-batterix-en.pdf": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 1,
+        "jetons": 124,
+        "message": ""
+      },
+      "strategie-2026.pptx": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 5,
+        "jetons": 149,
+        "message": ""
+      },
+      "stocks-octobre-2025.xlsx": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 2,
+        "jetons": 177,
+        "message": ""
+      },
+      "rapport-annuel-2025.pdf": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 11,
+        "jetons": 885,
+        "message": ""
+      },
+      "procedure-batteries.docx": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 2,
+        "jetons": 235,
+        "message": ""
+      },
+      "message-vocal-production.mp3": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 1,
+        "jetons": 111,
+        "message": ""
+      },
+      "faq-sav.html": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 1,
+        "jetons": 153,
+        "message": ""
+      },
+      "cse-2025-10-14.md": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 4,
+        "jetons": 159,
+        "message": ""
+      },
+      "contrat-batterix-scan.pdf": {
+        "fini": true,
+        "echec": false,
+        "progress": 1,
+        "chunks": 1,
+        "jetons": 261,
+        "message": ""
+      }
+    },
+    "attente_s": 33.9,
+    "passages": 28,
+    "duree_s": 35.4
+  },
+  "synthese": {
+    "questions": 38,
+    "exactes": 34,
+    "sur": 34,
+    "refus_corrects": 4,
+    "pieges": 4,
+    "citation_bon_document": 34,
+    "citation_bonne_page": 16,
+    "citations_avec_page": 16,
+    "juge_llm_oui": 0,
+    "juge_llm_sur": 0,
+    "erreurs": 0,
+    "latence_p50_s": 8.05,
+    "latence_p95_s": 61.21,
+    "par_type": {
+      "tableau": "10/10",
+      "fait simple": "13/13",
+      "scan": "4/4",
+      "anglais": "2/2",
+      "multi-documents": "3/3",
+      "audio": "2/2",
+      "piège": "4/4"
+    },
+    "pic_ram_mo": {
+      "rag-ragflow-server": 1188,
+      "rag-ragflow-es01": 2809,
+      "rag-ragflow-mysql": 526,
+      "rag-ragflow-minio": 160,
+      "rag-ragflow-kvrocks": 49,
+      "rag-ragflow-nats": 21,
+      "rag-docling-serve": 2529,
+      "llm-central": 714,
+      "llm-swap": 8581,
+      "llm-speaches": 1385
+    },
+    "pic_ram_application_mo": 7282,
+    "vram": "10743 Mo / 16380 Mo (nvidia-smi, mesuré en fin de banc)",
+    "indexation_s": 35.4
+  }
+}

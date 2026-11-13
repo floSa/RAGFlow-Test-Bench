@@ -3,7 +3,7 @@
 > **Objet** : résultats du banc de 38 questions, effet mesuré du gabarit de découpage, des réglages de recherche et du mode « Agentic », citations et refus vus par l'API, lecture des jetons et de la durée d'une réponse, taille de contexte et budget de prompt, préconisations d'usage.
 > **Prérequis** : partie 1 du [manuel](../README.md), en particulier les chapitres [06. Régler la lecture des documents](../manuel/06-regler-la-lecture-des-documents.md), [07. Poser des questions et lire les sources](../manuel/07-poser-des-questions-et-lire-les-sources.md) et [08. Régler un assistant](../manuel/08-regler-un-assistant.md).
 > **Version décrite** : RAGFlow v1.0.0 (image `infiniflow/ragflow:v1.0.0`), Windows 11 + WSL2 (Ubuntu 24.04). Depuis le 12 novembre 2026 : service LLM central (LiteLLM v1.109.0, llama.cpp build 12282 via llama-swap v272 ; `chat` = Qwen3.5-4B Q4_K_M, `embed` = bge-m3 Q8_0, `rerank` = bge-reranker-v2-m3 Q8_0). Historique du 9 au 11 novembre : LLM-Service branche `service-vllm` (vLLM 0.29.0 : `gemma4:e4b` quantifié w4a16, `bge-m3`). Contexte déclaré de 16 384 jetons sauf mention contraire.
-> **Statut des informations** : [Vérifié] observé ou mesuré les 9, 11 et 12 novembre 2026 sur la machine d'essai (profil B : Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré, avec son raisonnement ; [À tester] non documenté et non essayé.
+> **Statut des informations** : [Vérifié] observé ou mesuré les 9, 11, 12 et 13 novembre 2026 sur la machine d'essai (profil B : Ryzen 5 9600X, 32 Go, RTX 4060 Ti 16 Go) ; [Source] documentation officielle ou code source au tag v1.0.0 ; [Estimation] calcul non mesuré, avec son raisonnement ; [À tester] non documenté et non essayé.
 > **Précautions** : corpus fictif de 9 documents (1 Mo), questions de `corpus/questions.json` ; un seul banc à la fois, `free -m` relevé avant chacun ; jugement par mots-clés, sans juge LLM (comme le banc GPU d'Open Notebook) ; captures faites avec l'assistant d'essai « Manuel-Reglages » (réglages conseillés), supprimé ensuite ; la fenêtre « Modifier le modèle » est refermée par « Non », sans rien changer. Le matériel nécessaire et les profils sans et avec carte graphique sont dans l'annexe [A2](A2-choisir-son-materiel-et-ses-modeles.md).
 
 Captures de cette annexe : scénario `qualite` de `outils/ragflow/captures/manuels_10_14.py` ; textes des pages et déroulé dans `outils/resultats/ragflow/captures/12-qualite-et-performances/`. Les mesures faites à la souris sur le découpage, la recherche et le mode « Agentic » viennent des scénarios `decoupage`, `assistants` et `agentique` de `outils/ragflow/captures/manuels_03_06.py` (textes et déroulé dans `outils/resultats/ragflow/captures/03-datasets-et-decoupage/`, `05-assistants-et-citations/` et `06-agentic-rag/`). [Vérifié]
@@ -64,6 +64,31 @@ Lecture :
 Mémoire pendant les bancs : application 5,1 à 5,4 Gio en pointe ; service central `llm-swap` 6,2 à 6,8 Gio, `llm-speaches` 1,4 Gio, `llm-central` 0,7 Gio ; carte graphique occupée à 8,2 à 8,4 Go sur 16,4 (trio `chat`, `embed`, `rerank` chargé, bureau Windows compris). [Vérifié] (mêmes fichiers)
 
 Conseil d'usage : sur une petite base comme celle-ci, garder les réglages vecteurs 0,7 et `top_n` 8 sans reranker ; le reranker remplace utilement ces réglages quand ceux d'origine doivent être gardés, et vaut d'être essayé sur une grande base où beaucoup de passages se ressemblent [Estimation pour la grande base].
+
+### 2.3 Docling déporté au lieu de DeepDoc (13 novembre 2026)
+
+Même réglage que le meilleur banc de la section 2.1 (vecteurs 0,7, `top_n` 8, sans reranker), seule la lecture des PDF change : analyseur PDF « Docling » au lieu de « DeepDOC », servi par un conteneur `docling-serve` 1.38.2 (version processeur) partagé, `rag-docling-serve` sur le réseau `llm-net`. Base distincte « Banc-general-docling ». Commande [Testée] :
+
+```bash
+uv run python outils/ragflow/banc.py --etiquette docling-deporte-vecteurs07-top8 --analyseur-pdf Docling --reindexer --top-n 8 --poids-vecteurs 0.7
+```
+
+| Lecture des PDF | Exactes (34) | Refus pièges (4) | Bon document cité | Bonne page | Médiane | p95 | Indexation | Pic RAM application |
+|---|---|---|---|---|---|---|---|---|
+| DeepDoc, intégré (section 2.1) | 34 | 4 | 34 | 24/24 | 7,8 s | 56,9 s | 64 s ¹ | 5 076 Mo |
+| Docling déporté | 34 | 4 | 34 | 16/16 | 8,1 s | 61,2 s | 35 s | 7 282 Mo, dont 2 529 Mo pour Docling |
+
+¹ Indexation mesurée sur le banc « Défaut » du 12 novembre (même lecteur DeepDoc).
+
+[Vérifié] (`outils/resultats/ragflow/banc-2026-11-13-docling-deporte-vecteurs07-top8.json` et `.log`)
+
+Lecture :
+
+1. Même justesse : 34/34 et 4/4, le contrat scanné est lu par l'OCR de Docling (4 questions sur 4). Premier passage du texte relu : « CONTRAT D'APPROVISIONNEMENT N° BX-2025-117 / Entre : Vélanor SAS, 12 quai de la Fosse, 44000 Nantes ».
+2. L'indexation est presque deux fois plus rapide (35 s contre 64 s) et le serveur RAGFlow reste plus léger (1,2 Gio en pointe contre environ 2 Gio avec DeepDoc), mais le conteneur Docling ajoute 2,5 Gio : l'ensemble est plus lourd si Docling ne sert qu'à RAGFlow, plus léger s'il est déjà partagé avec une autre application.
+3. Moins de citations portent un numéro de page (16 contre 24) : avec Docling, une partie des passages cités n'a pas de position dans le PDF. Les 16 pages données sont justes.
+4. Réglages nécessaires, dans `donnees/ragflow/ragflow.env` puis redémarrage du serveur : `DOCLING_SERVER_URL=http://rag-docling-serve:5001`, et `ALLOW_ANY_HOST=1`. Sans ce second réglage, chaque PDF échoue avec « URL resolves to a non-public address (172.18.0.6), which is not allowed » : RAGFlow refuse par défaut toute adresse du réseau privé (protection contre les requêtes vers le réseau interne). `ALLOW_ANY_HOST=1` lève cette protection pour toute l'instance (agents, connecteurs, sources externes), pas seulement pour Docling. [Vérifié] (journal du serveur, 13 novembre 2026, 21:28) [Source] (`internal/common/http.go`, lignes 532 à 548 ; `internal/common/allow_private_host.go`) Le réglage a été remis à 0 après le banc.
+5. Choix de l'analyseur par l'API : dans RAGFlow 1.0, `parser_config` d'une base est la configuration de son pipeline d'ingestion ; l'analyseur PDF est le champ `parse_method` de la famille `pdf` du nœud `Parser:…` (et non `layout_recognize`, ignoré). [Vérifié] (`outils/ragflow/banc.py`, option `--analyseur-pdf`)
 
 ### 2.2 Historique : `gemma4:e4b` sur vLLM (9 novembre 2026)
 

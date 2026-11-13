@@ -165,7 +165,8 @@ Dans l'onglet « Configuration » de la base, bloc « PDF », la liste « Analys
 |---|---|---|
 | « DeepDOC » | OCR, mise en page et tableaux en local (par défaut) | [Vérifié] seul essayé |
 | « Naïf » | texte brut du PDF seulement, sans analyse de mise en page ; inutilisable sur un scan | [Source] (`web/src/locales/en.ts`, clé `layoutRecognizeTip`) |
-| « Docling », « OpenDataLoader », « TCADP Parser » | analyseurs externes | [À tester] : service non installé sur le banc |
+| « Docling » | analyseur externe : serveur `docling-serve` désigné par `DOCLING_SERVER_URL` | [Vérifié] le 13 novembre 2026 avec un serveur partagé : 34/34, demande aussi `ALLOW_ANY_HOST=1` ([A1](A1-evaluation-qualite-et-performances.md), section 2.3) |
+| « OpenDataLoader », « TCADP Parser » | analyseurs externes | [À tester] : service non installé sur le banc |
 | « MonkeyOCRv2 » | OCR externe MonkeyOCR | [À tester] : service non installé |
 
 - Pour les images, le bloc « Image » propose « DeepDoc » ou « External OCR model » (PaddleOCR, grisé faute de modèle déclaré). [Vérifié] (`outils/resultats/ragflow/captures/03-datasets-et-decoupage/31-parser-image.txt`)

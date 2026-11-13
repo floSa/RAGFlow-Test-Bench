@@ -8,7 +8,10 @@ Citations : passages de reference.chunks marqués [ID:n] dans la réponse (une e
 les autres passages fournis au modèle sont gardés dans passages_non_cites (non notés).
 
 Usage : uv run python outils/ragflow/banc.py --etiquette defaut [--gabarit general] [--reindexer] [--limite N]
-        [--top-n 6] [--seuil 0.1] [--poids-vecteurs 0.3] [--reranker] [--agentic] [--juge]
+        [--top-n 6] [--seuil 0.1] [--poids-vecteurs 0.3] [--reranker] [--agentic] [--juge] [--analyseur-pdf Docling]
+--analyseur-pdf : analyseur PDF de la base (parse_method du nœud Parser, famille pdf ; DeepDOC par défaut). « Docling » demande
+DOCLING_SERVER_URL dans donnees/ragflow/ragflow.env (serveur docling-serve déporté) ; la base s'appelle alors
+« Banc-<gabarit>-docling », distincte de la base DeepDOC.
 --reranker : l'assistant reclasse les passages trouvés avec le modèle « rerank » du service LLM central
 (rerank_id = RERANK ci-dessous) ; sans l'option, rerank_id reste vide (classement par similarité seule).
 Sortie : outils/resultats/ragflow/banc-<date>-<étiquette>.json et .md
@@ -37,13 +40,19 @@ def contexte_declare():
         return f"inconnu ({e})"
 
 
+def analyseur_pdf(ds):
+    """parse_method de la famille « pdf » du nœud Parser de la base (DeepDOC par défaut)."""
+    pc = ds.parser_config.to_json()
+    return next((v.get("pdf", {}).get("parse_method") for k, v in pc.items() if k.startswith("Parser")), None)
+
+
 class AdaptateurRAGFlow:
     nom = "ragflow"
 
-    def __init__(self, gabarit="general", etiquette="defaut", reindexer=False, reglages=None, extra=None):
+    def __init__(self, gabarit="general", etiquette="defaut", reindexer=False, reglages=None, extra=None, analyseur=None):
         self.rag, self.gabarit, self.etiquette = client(), gabarit, etiquette
-        self.reglages, self.extra = reglages or {}, extra or {}
-        nom = f"Banc-{gabarit}"
+        self.reglages, self.extra, self.analyseur = reglages or {}, extra or {}, analyseur
+        self.nom_base = nom = f"Banc-{gabarit}" + (f"-{analyseur.lower()}" if analyseur else "")
         existants = self.rag.list_datasets(name=nom)
         if existants and reindexer:
             self.rag.delete_datasets(ids=[d.id for d in existants])
@@ -52,7 +61,16 @@ class AdaptateurRAGFlow:
         self.chat = None
 
     def indexer(self, fichiers):
-        self.ds = self.rag.create_dataset(name=f"Banc-{self.gabarit}", parser_id=self.gabarit)
+        self.ds = self.rag.create_dataset(name=self.nom_base, parser_id=self.gabarit)
+        if self.analyseur:
+            # RAGFlow 1.0 : parser_config est la configuration du pipeline d'ingestion ; l'analyseur PDF est
+            # parse_method dans la famille « pdf » du nœud « Parser:… ». Seul ce champ change.
+            pc = self.ds.parser_config.to_json()
+            for nœud in [k for k in pc if k.startswith("Parser")]:
+                pc[nœud]["pdf"]["parse_method"] = self.analyseur
+            self.ds.update({"parser_config": pc})
+            self.ds = self.rag.list_datasets(id=self.ds.id)[0]
+            print("analyseur PDF :", analyseur_pdf(self.ds), flush=True)
         docs = self.ds.upload_documents([{"display_name": f.name, "blob": f.read_bytes()} for f in fichiers])
         ids = [d.id for d in docs]
         self.ds.async_parse_documents(ids)
@@ -97,7 +115,9 @@ class AdaptateurRAGFlow:
     def config(self):
         chat = self._assistant() if self.ds else None
         cfg = {"version": "v1.0.0", "gabarit": self.gabarit, "modele": "chat (Qwen3.5-4B, service LLM central)",
-               "embedding": "embed (bge-m3, service LLM central)", "contexte_declare": contexte_declare(), "extra_question": self.extra}
+               "embedding": "embed (bge-m3, service LLM central)", "contexte_declare": contexte_declare(), "extra_question": self.extra,
+               "base": self.nom_base,
+               "analyseur_pdf": analyseur_pdf(self.ds) if self.ds else None}
         if chat:
             # l'objet Chat du SDK garde sa valeur par défaut de vector_similarity_weight (0,3) : le poids réel des
             # vecteurs se déduit de keywords_similarity_weight renvoyé par le serveur (vecteurs = 1 - mots-clés)
@@ -121,13 +141,16 @@ if __name__ == "__main__":
     p.add_argument("--reranker", action="store_true", help=f"reclassement des passages par {RERANK}")
     p.add_argument("--agentic", action="store_true", help="mode Agentic RAG (champ reasoning=5)")
     p.add_argument("--juge", action="store_true", help="juge LLM (Ollama) ; absent du banc GPU, désactivé par défaut")
+    p.add_argument("--analyseur-pdf", help="analyseur PDF de la base, ex. Docling (DeepDOC par défaut)")
     a = p.parse_args()
     reglages = {k: v for k, v in {"top_n": a.top_n, "similarity_threshold": a.seuil,
                                   "vector_similarity_weight": a.poids_vecteurs}.items() if v is not None}
     if a.reranker:
         reglages["rerank_id"] = RERANK
-    ad = AdaptateurRAGFlow(a.gabarit, a.etiquette, a.reindexer, reglages, {"reasoning": 5} if a.agentic else None)
-    res = commun.lancer(ad, a.etiquette, APP, MODELES, indexer=ad.ds is None, juge=a.juge, limite=a.limite, ids=a.ids)
+    ad = AdaptateurRAGFlow(a.gabarit, a.etiquette, a.reindexer, reglages, {"reasoning": 5} if a.agentic else None,
+                           a.analyseur_pdf)
+    app = APP + (["rag-docling-serve"] if a.analyseur_pdf == "Docling" else [])  # Docling déporté compté avec l'application
+    res = commun.lancer(ad, a.etiquette, app, MODELES, indexer=ad.ds is None, juge=a.juge, limite=a.limite, ids=a.ids)
     res["config"] = ad.config()  # réglages de l'assistant, créé après l'indexation
     commun.ecrire(res, commun.RACINE / "outils/resultats/ragflow")
     print(json.dumps(res["synthese"], ensure_ascii=False, indent=1))

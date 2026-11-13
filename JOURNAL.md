@@ -166,3 +166,9 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - `docs/README.md` remplacé par l'index commun aux cinq dépôts (Open Notebook, RAGFlow, AnythingLLM, Kotaemon, Open WebUI) : modèles utilisés, services déportables (OCR, audio, reranker), comparatif à deux lignes par solution (défaut, meilleur réglage). Chiffres repris des résultats bruts du 12 et du 13 novembre, aucun nouveau banc.
 - README : section « Résultats » au même format que les autres dépôts.
 - `verifier_docs.py` : 0 point.
+
+### 2026-11-13 — Banc avec Docling déporté
+
+- Analyseur PDF « Docling » servi par le conteneur partagé `rag-docling-serve` (docling-serve 1.38.2, processeur) : `DOCLING_SERVER_URL` ajouté à `donnees/ragflow/ragflow.env`. Premier essai bloqué par la protection réseau de RAGFlow (« URL resolves to a non-public address ») : `ALLOW_ANY_HOST=1` le temps du banc, remis à 0 ensuite.
+- `outils/ragflow/banc.py` : option `--analyseur-pdf` (champ `parse_method` du nœud Parser, famille pdf ; `layout_recognize` est ignoré en 1.0) ; conteneur Docling compté avec l'application.
+- Banc `docling-deporte-vecteurs07-top8` : 34/34, 4/4, médiane 8,1 s, indexation 35 s, 7,3 Go dont 2,5 Go pour Docling. Annexes A1 (section 2.3) et A5 (section 11) à jour ; index de la série à jour. RAGFlow arrêté.
