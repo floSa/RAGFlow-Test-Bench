@@ -182,3 +182,7 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 ### 2026-11-13 — Index de la série : comparatif complété
 
 - Lignes « meilleur, Docling déporté » de RAGFlow et Kotaemon ajoutées au comparatif ; reranker de RAGFlow expliqué (essayé, sans gain) ; « Conventions » renommé « Étiquettes des annexes ».
+
+### 2026-11-13 — Index de la série : contradictions levées
+
+- Ligne « RAGFlow, meilleur, avec reranker » ajoutée au comparatif ; colonne « Effet du reranker mesuré au banc » ; résumé « En bref » et sens des colonnes ; Docling intégré possible seulement dans Kotaemon et Open Notebook (Open WebUI et RAGFlow : serveur à part uniquement, vérifié dans le code et les images).
