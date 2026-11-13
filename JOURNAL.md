@@ -172,3 +172,9 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - Analyseur PDF « Docling » servi par le conteneur partagé `rag-docling-serve` (docling-serve 1.38.2, processeur) : `DOCLING_SERVER_URL` ajouté à `donnees/ragflow/ragflow.env`. Premier essai bloqué par la protection réseau de RAGFlow (« URL resolves to a non-public address ») : `ALLOW_ANY_HOST=1` le temps du banc, remis à 0 ensuite.
 - `outils/ragflow/banc.py` : option `--analyseur-pdf` (champ `parse_method` du nœud Parser, famille pdf ; `layout_recognize` est ignoré en 1.0) ; conteneur Docling compté avec l'application.
 - Banc `docling-deporte-vecteurs07-top8` : 34/34, 4/4, médiane 8,1 s, indexation 35 s, 7,3 Go dont 2,5 Go pour Docling. Annexes A1 (section 2.3) et A5 (section 11) à jour ; index de la série à jour. RAGFlow arrêté.
+
+### 2026-11-13 — Manuel 06 : Docling déporté, étapes 31 à 33
+
+- `outils/ragflow/docling_deporte.sh brancher|debrancher` : démarre ou réutilise `rag-docling-serve`, écrit `DOCLING_SERVER_URL` et `ALLOW_ANY_HOST` dans `donnees/ragflow/ragflow.env`, recrée le serveur. [Testée] dans les deux sens (serveur partagé d'Open WebUI réutilisé et laissé en place).
+- Captures à la souris (`outils/ragflow/captures/docling_deporte.py`) : « Analyseur PDF » réglé sur « Docling » et enregistré (relu après rechargement), contrat scanné analysé en 7,8 s, passage complet lu. Aucun champ d'adresse de serveur dans l'interface.
+- Base « Manuel-Docling » supprimée (`nettoyer_manuel.py`), `ALLOW_ANY_HOST` remis à 0, RAGFlow arrêté. Index de la série : colonne « Procédure dans le manuel ».

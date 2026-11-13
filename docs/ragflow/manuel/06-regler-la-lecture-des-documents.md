@@ -512,7 +512,73 @@ La liste propose six lecteurs. Garder « DeepDOC » (pastille 1) : c'est le seul
 | 3 | « Docling » | lecteur externe Docling ; « OpenDataLoader » et « TCADP Parser » suivent |
 | 4 | « MonkeyOCRv2 » | lecteur externe MonkeyOCR |
 
-*Résultat* : Échap referme la liste sans rien changer. Les lecteurs externes demandent un service à installer à part ; ils n'ont pas été essayés.
+*Résultat* : Échap referme la liste sans rien changer. Les lecteurs externes demandent un service à installer à part : « Docling » est décrit ci-dessous, les autres n'ont pas été essayés.
+
+## Confier la lecture des PDF à un serveur Docling séparé
+
+Docling est un lecteur de documents qui fait, comme DeepDoc, la lecture des caractères (OCR), de la mise en page et des tableaux. Il tourne dans son propre conteneur (serveur docling-serve), hors de RAGFlow, et peut servir plusieurs applications à la fois, par exemple RAGFlow et Open WebUI. Sur le jeu d'essai, il donne les mêmes réponses que DeepDoc (34 sur 34) et lit le corpus deux fois plus vite.
+
+L'interface n'a **aucun champ** pour l'adresse du serveur : elle se règle dans le terminal (étape 31), puis le choix du lecteur se fait dans la base (étape 32).
+
+**Étape 31. Brancher RAGFlow sur le serveur Docling**
+*Où* : terminal Ubuntu, dossier du dépôt, RAGFlow démarré.
+
+```bash
+outils/ragflow/docling_deporte.sh brancher
+```
+
+Le script démarre le serveur `rag-docling-serve` (image `quay.io/docling-project/docling-serve-cpu:v1.38.2`, 5 Go) s'il ne tourne pas déjà ; un serveur déjà lancé par une autre application est réutilisé. Il écrit ensuite deux réglages dans `donnees/ragflow/ragflow.env`, puis redémarre le serveur RAGFlow :
+
+| Réglage | Rôle |
+|---|---|
+| `DOCLING_SERVER_URL=http://rag-docling-serve:5001` | adresse du serveur Docling |
+| `ALLOW_ANY_HOST=1` | autorise RAGFlow à joindre une adresse du réseau privé. Sans lui, chaque PDF échoue avec « URL resolves to a non-public address … which is not allowed ». Ce réglage vaut pour toute l'instance (agents, connecteurs, sources externes), pas seulement pour Docling |
+
+*Résultat* : le terminal affiche « RAGFlow branché sur http://rag-docling-serve:5001 » après une trentaine de secondes.
+
+**Étape 32. Choisir Docling dans la base**
+*Où* : base ouverte › « Configuration » › bloc « PDF » › « Analyseur PDF ».
+Ouvrir la liste (étape 30), choisir « Docling », puis cliquer sur « Enregistrer » en bas de la page.
+
+![Analyseur PDF réglé sur Docling](../img/04-deepdoc/31-analyseur-docling.png)
+*Écran : « Configuration » de la base « Manuel-Docling », bloc « PDF ».*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | « Analyseur PDF » | lecteur des PDF de cette base : « Docling » au lieu de « DeepDOC » |
+| 2 | « Enregistrer » | enregistre le choix ; il est toujours là après rechargement de la page |
+
+*Résultat* : le choix ne vaut que pour cette base, et seulement pour les PDF ajoutés ou analysés ensuite. Les autres formats (Word, PowerPoint, tableur, image) gardent leur lecteur.
+
+**Étape 33. Ajouter un PDF scanné et lire son passage**
+*Où* : base ouverte › « Fichiers » › « Ajouter un fichier » › « Téléverser un fichier ».
+Choisir `contrat-batterix-scan.pdf`, laisser « Analyser à la création » activé, cliquer sur « Enregistrer », attendre que « Nombre de segments » affiche un chiffre, puis cliquer sur le nom du fichier.
+
+![Scan analysé par Docling](../img/04-deepdoc/32-scan-lu-par-docling.png)
+*Écran : liste « Fichiers » après l'analyse.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | `contrat-batterix-scan.pdf` | le fichier ; un clic ouvre ses passages |
+| 2 | « Nombre de segments » | 1 : le texte des deux pages tient dans un seul passage |
+| 3 | état de l'analyse | analyse terminée ; un clic ouvre son journal |
+
+*Où* : clic sur `contrat-batterix-scan.pdf` › « Résultat du segment ».
+
+![Passage lu par Docling](../img/04-deepdoc/33-passage-docling.png)
+*Écran : « Résultat du segment » du contrat scanné.*
+
+| N° | Élément | Rôle |
+|---|---|---|
+| 1 | texte du scan | « CONTRAT D'APPROVISIONNEMENT N° BX-2025-117 », puis les huit articles : le texte de l'image est lu |
+
+*Résultat* : l'analyse du scan prend environ 8 secondes. Pour revenir à DeepDoc, choisir « DeepDOC » dans la même liste, puis relancer l'analyse des PDF. Pour débrancher le serveur (`ALLOW_ANY_HOST` remis à 0 ; le serveur Docling n'est arrêté que s'il a été lancé par ce script) :
+
+```bash
+outils/ragflow/docling_deporte.sh debrancher
+```
+
+Une base restée sur « Docling » ne peut alors plus lire de PDF.
 
 ## Bon à savoir
 
@@ -526,6 +592,8 @@ La liste propose six lecteurs. Garder « DeepDOC » (pastille 1) : c'est le seul
 
 | Symptôme | Cause | Que faire |
 |---|---|---|
+| Analyse d'un PDF en échec, journal « URL resolves to a non-public address … which is not allowed » | base réglée sur « Docling », `ALLOW_ANY_HOST` à 0 | `outils/ragflow/docling_deporte.sh brancher` (étape 31) |
+| Analyse d'un PDF en échec, journal « Docling requires docling_server_url or DOCLING_SERVER_URL » | base réglée sur « Docling », serveur jamais branché | même commande, ou revenir à « DeepDOC » (étape 32) |
 | « Confirmer » ne ferme pas « Modifier le segment » pour un passage de PDF | défaut de cette version : la correction n'est pas envoyée | « Annuler », puis ajouter un passage corrigé (étape 23) |
 | Chiffres faux dans un passage de scan (« 0oo ») | confusions de la lecture des caractères | ajouter un passage corrigé, avec mot-clé et question |
 | Une question précise ne retrouve pas le bon passage | mots collés par la lecture des caractères | ajouter un passage corrigé ; ou donner plus de poids à la recherche par le sens (chapitre 08) |
