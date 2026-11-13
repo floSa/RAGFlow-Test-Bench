@@ -178,3 +178,7 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 - `outils/ragflow/docling_deporte.sh brancher|debrancher` : démarre ou réutilise `rag-docling-serve`, écrit `DOCLING_SERVER_URL` et `ALLOW_ANY_HOST` dans `donnees/ragflow/ragflow.env`, recrée le serveur. [Testée] dans les deux sens (serveur partagé d'Open WebUI réutilisé et laissé en place).
 - Captures à la souris (`outils/ragflow/captures/docling_deporte.py`) : « Analyseur PDF » réglé sur « Docling » et enregistré (relu après rechargement), contrat scanné analysé en 7,8 s, passage complet lu. Aucun champ d'adresse de serveur dans l'interface.
 - Base « Manuel-Docling » supprimée (`nettoyer_manuel.py`), `ALLOW_ANY_HOST` remis à 0, RAGFlow arrêté. Index de la série : colonne « Procédure dans le manuel ».
+
+### 2026-11-13 — Index de la série : comparatif complété
+
+- Lignes « meilleur, Docling déporté » de RAGFlow et Kotaemon ajoutées au comparatif ; reranker de RAGFlow expliqué (essayé, sans gain) ; « Conventions » renommé « Étiquettes des annexes ».
