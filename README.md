@@ -2,7 +2,7 @@
 
 **Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 chapitres suivis de 6 annexes, avec 195 captures d'écran annotées.**
 
-**Le manuel utilisateur commence ici : [docs/ragflow/README.md](docs/ragflow/README.md).**
+**Le manuel utilisateur commence ici : [documentations/README.md](documentations/README.md).**
 
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 ![RAGFlow](https://img.shields.io/badge/RAGFlow-v1.0.0-1E88E5)
@@ -14,13 +14,13 @@ le corpus d'entreprise fictive de la série avec ses pièges
 (scan, tableaux, audio, document en anglais), un banc de 38 questions dont les
 réponses sont connues, et des manuels écrits à partir de ce qui a réellement
 tourné. Chaque commande a été exécutée, chaque chiffre renvoie à un résultat
-brut dans `outils/resultats/`.
+brut dans `banc-essai/resultats/`.
 
 Deuxième banc de la série, après Open Notebook : mêmes documents, mêmes
 questions, même machine. Les premiers bancs (9 novembre 2026) utilisaient le même
 modèle qu'Open Notebook (`gemma4:e4b` sur vLLM) ; depuis le 12 novembre, les
 modèles viennent du service LLM central (`chat`, `embed`, `rerank`, `transcribe`).
-Le comparatif est dans [docs/README.md](docs/README.md).
+Le comparatif est dans [documentations/index-serie.md](documentations/index-serie.md).
 
 ## Sommaire
 
@@ -41,39 +41,39 @@ Le comparatif est dans [docs/README.md](docs/README.md).
 
 ## Le parcours
 
-Le manuel se lit depuis sa page d'accueil, [docs/ragflow/README.md](docs/ragflow/README.md). Partie 1 : manuel utilisateur, à lire dans l'ordre, pour un lecteur à l'aise avec un terminal.
+Le manuel se lit depuis sa page d'accueil, [documentations/README.md](documentations/README.md). Partie 1 : manuel utilisateur, à lire dans l'ordre, pour un lecteur à l'aise avec un terminal.
 
 | N° | Chapitre | Ce qu'on saura faire |
 |---|---|---|
-| 01 | [Découvrir RAGFlow](docs/ragflow/manuel/01-decouvrir-ragflow.md) | dire à quoi sert RAGFlow, pour qui et avec quelle machine |
-| 02 | [Installer RAGFlow](docs/ragflow/manuel/02-installer-ragflow.md) | installer sans exposition réseau, démarrer, arrêter, désinstaller |
-| 03 | [Premiers pas](docs/ragflow/manuel/03-premiers-pas.md) | se connecter, passer en français, se repérer, brancher les modèles d'un serveur existant, connaître les traitements intégrés |
-| 04 | [Première question en dix minutes](docs/ragflow/manuel/04-premiere-question.md) | obtenir une première réponse citée |
-| 05 | [Ajouter et organiser ses documents](docs/ragflow/manuel/05-ajouter-et-organiser-ses-documents.md) | gérer bases et fichiers, métadonnées, journaux |
-| 06 | [Régler la lecture des documents](docs/ragflow/manuel/06-regler-la-lecture-des-documents.md) | choisir un gabarit, lire un scan, corriger un passage |
-| 07 | [Poser des questions et lire les sources](docs/ragflow/manuel/07-poser-des-questions-et-lire-les-sources.md) | converser, vérifier les sources, « Naive » ou « Agentic », publier |
-| 08 | [Régler un assistant](docs/ragflow/manuel/08-regler-un-assistant.md) | appliquer les réglages qui améliorent les réponses |
-| 09 | [Rechercher dans ses documents](docs/ragflow/manuel/09-rechercher.md) | page de recherche avec résumé et carte mentale |
-| 10 | [Construire un agent](docs/ragflow/manuel/10-agents.md) | agent depuis un modèle, essai, publication, mémoire, MCP |
-| 11 | [Produire des synthèses automatiques](docs/ragflow/manuel/11-syntheses-automatiques.md) | graphe, arbre, frise, carte mentale à la souris |
-| 12 | [Alimenter une base depuis une source externe](docs/ragflow/manuel/12-sources-externes.md) | source « Sitemap », journal de synchronisation, canaux de chat |
-| 13 | [Gérer son compte, son équipe et ses clés](docs/ragflow/manuel/13-comptes-equipe-et-cles.md) | équipe, profil, clés d'accès, console d'administration |
-| 14 | [Cas pratiques](docs/ragflow/manuel/14-cas-pratiques.md) | assistant documentaire d'entreprise, base alimentée chaque jour |
-| 15 | [En cas de problème](docs/ragflow/manuel/15-en-cas-de-probleme.md) | reconnaître une erreur et appliquer le remède |
-| 16 | [Glossaire](docs/ragflow/manuel/16-glossaire.md) | retrouver la définition simple de chaque terme |
+| 01 | [Découvrir RAGFlow](documentations/manuel/01-decouvrir-ragflow.md) | dire à quoi sert RAGFlow, pour qui et avec quelle machine |
+| 02 | [Installer RAGFlow](documentations/manuel/02-installer-ragflow.md) | installer sans exposition réseau, démarrer, arrêter, désinstaller |
+| 03 | [Premiers pas](documentations/manuel/03-premiers-pas.md) | se connecter, passer en français, se repérer, brancher les modèles d'un serveur existant, connaître les traitements intégrés |
+| 04 | [Première question en dix minutes](documentations/manuel/04-premiere-question.md) | obtenir une première réponse citée |
+| 05 | [Ajouter et organiser ses documents](documentations/manuel/05-ajouter-et-organiser-ses-documents.md) | gérer bases et fichiers, métadonnées, journaux |
+| 06 | [Régler la lecture des documents](documentations/manuel/06-regler-la-lecture-des-documents.md) | choisir un gabarit, lire un scan, corriger un passage |
+| 07 | [Poser des questions et lire les sources](documentations/manuel/07-poser-des-questions-et-lire-les-sources.md) | converser, vérifier les sources, « Naive » ou « Agentic », publier |
+| 08 | [Régler un assistant](documentations/manuel/08-regler-un-assistant.md) | appliquer les réglages qui améliorent les réponses |
+| 09 | [Rechercher dans ses documents](documentations/manuel/09-rechercher.md) | page de recherche avec résumé et carte mentale |
+| 10 | [Construire un agent](documentations/manuel/10-agents.md) | agent depuis un modèle, essai, publication, mémoire, MCP |
+| 11 | [Produire des synthèses automatiques](documentations/manuel/11-syntheses-automatiques.md) | graphe, arbre, frise, carte mentale à la souris |
+| 12 | [Alimenter une base depuis une source externe](documentations/manuel/12-sources-externes.md) | source « Sitemap », journal de synchronisation, canaux de chat |
+| 13 | [Gérer son compte, son équipe et ses clés](documentations/manuel/13-comptes-equipe-et-cles.md) | équipe, profil, clés d'accès, console d'administration |
+| 14 | [Cas pratiques](documentations/manuel/14-cas-pratiques.md) | assistant documentaire d'entreprise, base alimentée chaque jour |
+| 15 | [En cas de problème](documentations/manuel/15-en-cas-de-probleme.md) | reconnaître une erreur et appliquer le remède |
+| 16 | [Glossaire](documentations/manuel/16-glossaire.md) | retrouver la définition simple de chaque terme |
 
 Partie 2 : évaluation et compléments.
 
 | Annexe | Contenu |
 |---|---|
-| [A1. Évaluation : qualité et performances](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md) | banc de 38 questions, réglages qui changent le résultat, préconisations |
-| [A2. Choisir son matériel et ses modèles](docs/ragflow/annexes/A2-choisir-son-materiel-et-ses-modeles.md) | configurations sans et avec carte graphique, contexte, temps d'attente |
-| [A3. Automatiser par l'API](docs/ragflow/annexes/A3-automatiser-par-l-api.md) | API HTTP, SDK Python, exemples exécutés, défauts contournés |
-| [A4. Exploitation](docs/ragflow/annexes/A4-exploitation.md) | installation détaillée, sauvegarde, mise à jour, journaux, sécurité, administration |
-| [A5. Fonctionnement interne](docs/ragflow/annexes/A5-fonctionnement-interne.md) | RAG, architecture, services, DeepDoc |
-| [A6. Rapport d'essais](docs/ragflow/annexes/A6-rapport-d-essais.md) | méthode, étiquettes, preuves par chapitre, défauts rencontrés |
-| [Carte de l'interface](docs/ragflow/annexes/carte-interface.md) | chaque page et réglage de l'interface, avec son chapitre |
-| [A7. Bascule vers le service LLM central](docs/ragflow/annexes/A7-bascule-vers-le-service-llm-central.md) | fournisseur, modèles par défaut, réindexation, réflexion de `chat` |
+| [A1. Évaluation : qualité et performances](documentations/annexes/A1-evaluation-qualite-et-performances.md) | banc de 38 questions, réglages qui changent le résultat, préconisations |
+| [A2. Choisir son matériel et ses modèles](documentations/annexes/A2-choisir-son-materiel-et-ses-modeles.md) | configurations sans et avec carte graphique, contexte, temps d'attente |
+| [A3. Automatiser par l'API](documentations/annexes/A3-automatiser-par-l-api.md) | API HTTP, SDK Python, exemples exécutés, défauts contournés |
+| [A4. Exploitation](documentations/annexes/A4-exploitation.md) | installation détaillée, sauvegarde, mise à jour, journaux, sécurité, administration |
+| [A5. Fonctionnement interne](documentations/annexes/A5-fonctionnement-interne.md) | RAG, architecture, services, DeepDoc |
+| [A6. Rapport d'essais](documentations/annexes/A6-rapport-d-essais.md) | méthode, étiquettes, preuves par chapitre, défauts rencontrés |
+| [Carte de l'interface](documentations/annexes/carte-interface.md) | chaque page et réglage de l'interface, avec son chapitre |
+| [A7. Bascule vers le service LLM central](documentations/annexes/A7-bascule-vers-le-service-llm-central.md) | fournisseur, modèles par défaut, réindexation, réflexion de `chat` |
 
 Parcours conseillés : essayer en une heure (chapitres 01 à 04) ; mettre en service pour une équipe (05 à 08, puis 13 et 14) ; améliorer les réponses (06, 08, annexe A1) ; automatiser et exploiter (annexes A3, A4, A5).
 
@@ -91,7 +91,7 @@ Parcours conseillés : essayer en une heure (chapitres 01 à 04) ; mettre en ser
 | Modèles du service central | `llm-swap` (LLM-Service) | `ghcr.io/mostlygeek/llama-swap:v272-cuda-b12282` | llama-swap devant llama.cpp (`llama-server`, build 12282) sur la carte graphique : `chat` = Qwen3.5-4B Q4_K_M, `embed` = bge-m3 Q8_0, `rerank` = bge-reranker-v2-m3 Q8_0 (GGUF) |
 | Transcription du service central | `llm-speaches` (LLM-Service) | `ghcr.io/speaches-ai/speaches:0.8.3-cpu` | `transcribe` = faster-whisper-small, sur le processeur |
 
-Toutes les images sont figées par empreinte `@sha256` (`outils/ragflow/compose.override.yml`).
+Toutes les images sont figées par empreinte `@sha256` (`service/compose.override.yml`).
 
 ```mermaid
 flowchart LR
@@ -116,13 +116,13 @@ Réseaux : `rag-ragflow` (interne à la pile), `llm-net` (LLM-Service, externe :
 
 ## Démarrage
 
-Prérequis : WSL2 (Ubuntu), Docker et Compose, le service LLM central en marche (LLM-Service, géré dans son propre dépôt ; s'il est arrêté : `~/mes_projets/Projet-IA/LLM-Service/scripts/demarrer.sh`, profil carte graphique ; ce dépôt ne l'arrête ni ne le modifie), la clé propre de l'application dans `.env` (copie de `.env.example`, clé créée par `~/mes_projets/Projet-IA/LLM-Service/scripts/cle.sh creer ragflow-test-bench --dans <dépôt>/.env --noms LLM_CENTRAL_URL,LLM_CENTRAL_KEY`, jamais la clé maîtresse de LLM-Service), uv. Vérification : `outils/communs/llm_central_sante.sh --essai`. Les scripts `llm_service*.sh` et `voix.sh` sont historiques (annexe A2). Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
+Prérequis : WSL2 (Ubuntu), Docker et Compose, le service LLM central en marche (LLM-Service, géré dans son propre dépôt ; s'il est arrêté : `~/mes_projets/Projet-IA/LLM-Service/service/scripts/demarrer.sh`, profil carte graphique ; ce dépôt ne l'arrête ni ne le modifie), la clé propre de l'application dans `service/.env` (copie de `service/.env.example`, clé créée par `~/mes_projets/Projet-IA/LLM-Service/service/scripts/cle.sh creer ragflow-test-bench --dans <dépôt>/.env --noms LLM_CENTRAL_URL,LLM_CENTRAL_KEY`, jamais la clé maîtresse de LLM-Service), uv. Vérification : `banc-essai/communs/llm_central_sante.sh --essai`. Les scripts `llm_service*.sh` et `voix.sh` sont historiques (annexe A2). Mesures de la machine : [diagnostic](banc-essai/resultats/machine/diagnostic-2026-11-09.json).
 
 ```bash
-outils/ragflow/installer.sh
-uv sync
-uv run python outils/ragflow/configurer.py
-uv run python outils/ragflow/verif_minimale.py
+service/installer.sh
+uv sync --project banc-essai
+uv run --project banc-essai python service/configurer.py
+uv run --project banc-essai python banc-essai/ragflow/verif_minimale.py
 ```
 
 | Service | URL | Note |
@@ -132,7 +132,7 @@ uv run python outils/ragflow/verif_minimale.py
 | Administration | http://127.0.0.1:9381/api/v1/admin | compte `admin@ragflow.io` |
 | Santé | http://127.0.0.1:9380/api/v1/system/healthz | sans authentification |
 
-Installation complète, mémoire et désinstallation : [chapitre 02](docs/ragflow/manuel/02-installer-ragflow.md) et [annexe A4](docs/ragflow/annexes/A4-exploitation.md).
+Installation complète, mémoire et désinstallation : [chapitre 02](documentations/manuel/02-installer-ragflow.md) et [annexe A4](documentations/annexes/A4-exploitation.md).
 
 ## Configuration
 
@@ -144,9 +144,9 @@ Installation complète, mémoire et désinstallation : [chapitre 02](docs/ragflo
 | Fuseau horaire | `Europe/Paris` | `ragflow.env` |
 | Adresses privées | `ALLOW_ANY_HOST=0` (défaut) | `ragflow.env` |
 
-Écarts au compose officiel (fichier `outils/ragflow/compose.override.yml`) : ports sur `127.0.0.1` ou retirés, conteneurs `rag-ragflow-*`, images figées, volumes liés à `donnees/ragflow/`, réseaux `llm-net` et `rag-local`, réglages hors du `docker/.env` suivi.
+Écarts au compose officiel (fichier `service/compose.override.yml`) : ports sur `127.0.0.1` ou retirés, conteneurs `rag-ragflow-*`, images figées, volumes liés à `donnees/ragflow/`, réseaux `llm-net` et `rag-local`, réglages hors du `docker/.env` suivi.
 
-Service LLM central (LLM-Service, dépôt séparé, géré à part) : un seul point d'entrée LiteLLM, `http://llm-central:8080/v1` depuis les conteneurs du réseau `llm-net` (`http://127.0.0.1:8080/v1` depuis l'hôte), clé obligatoire (`LLM_CENTRAL_KEY` dans `.env`, jamais commitée). Modèles fixes :
+Service LLM central (LLM-Service, dépôt séparé, géré à part) : un seul point d'entrée LiteLLM, `http://llm-central:8080/v1` depuis les conteneurs du réseau `llm-net` (`http://127.0.0.1:8080/v1` depuis l'hôte), clé obligatoire (`LLM_CENTRAL_KEY` dans `service/.env`, jamais commitée). Modèles fixes :
 
 | Nom | Modèle | Usage |
 |---|---|---|
@@ -155,15 +155,15 @@ Service LLM central (LLM-Service, dépôt séparé, géré à part) : un seul po
 | `rerank` | bge-reranker-v2-m3 | reclassement, scores bruts non bornés |
 | `transcribe` | faster-whisper-small | `/v1/audio/transcriptions` |
 
-Dans RAGFlow : fournisseur `OpenAI-API-Compatible` pour les quatre usages (voir la [bascule](docs/ragflow/annexes/A7-bascule-vers-le-service-llm-central.md)). Les résultats mesurés avec l'ancienne pile (`gemma4:e4b` sur vLLM) restent dans `outils/resultats/` comme preuves historiques.
+Dans RAGFlow : fournisseur `OpenAI-API-Compatible` pour les quatre usages (voir la [bascule](documentations/annexes/A7-bascule-vers-le-service-llm-central.md)). Les résultats mesurés avec l'ancienne pile (`gemma4:e4b` sur vLLM) restent dans `banc-essai/resultats/` comme preuves historiques.
 
 ### Bascule vers le service LLM central (dans l'interface de RAGFlow)
 
-Procédure complète et justification : [annexe A7](docs/ragflow/annexes/A7-bascule-vers-le-service-llm-central.md). Résumé :
+Procédure complète et justification : [annexe A7](documentations/annexes/A7-bascule-vers-le-service-llm-central.md). Résumé :
 
 1. Menu du compte › « Fournisseurs de modèles » › ajouter `OpenAI-API-Compatible` : nom d'instance `llm-central`, URL `http://llm-central:8080/v1`, clé = `LLM_CENTRAL_KEY` ; modèles `chat` (type chat, 16 384), `embed` (embedding), `rerank` (rerank), `transcribe` (speech2text).
 2. Modèles par défaut du compte : chat `chat`, embedding `embed`, rerank `rerank`, transcription `transcribe`.
-3. Recréer les bases de connaissances après avoir déclaré l'instance (une base retient l'identifiant interne de son modèle d'embedding) : `bge-m3` est maintenant en Q8_0 GGUF au lieu de bf16 ; le jeu de démonstration se recrée par `outils/ragflow/demo.py`, `essai_agent.py` et `essai_compilation.py`.
+3. Recréer les bases de connaissances après avoir déclaré l'instance (une base retient l'identifiant interne de son modèle d'embedding) : `bge-m3` est maintenant en Q8_0 GGUF au lieu de bf16 ; le jeu de démonstration se recrée par `banc-essai/ragflow/demo.py`, `essai_agent.py` et `essai_compilation.py`.
 4. Réflexion de `chat` : activée par défaut, elle consomme des jetons et de la latence ; RAGFlow n'a pas de champ de paramètres supplémentaires par instance (voir A7).
 
 ## API / Endpoints
@@ -178,32 +178,32 @@ Procédure complète et justification : [annexe A7](docs/ragflow/annexes/A7-basc
 | Modèles | `POST /api/v1/providers/{fournisseur}/instances`, `PATCH /api/v1/models/default` |
 | Administration | `POST /api/v1/admin/login`, `GET /api/v1/admin/users` (port 9381) |
 
-SDK `ragflow-sdk` 1.0.0 (Python 3.13) : deux défauts et leurs contournements dans l'[annexe A3](docs/ragflow/annexes/A3-automatiser-par-l-api.md).
+SDK `ragflow-sdk` 1.0.0 (Python 3.13) : deux défauts et leurs contournements dans l'[annexe A3](documentations/annexes/A3-automatiser-par-l-api.md).
 
 ## Tests
 
 ```bash
-uv run python outils/ragflow/verif_minimale.py
-exemples/ragflow/lancer.sh
-uv run python outils/ragflow/banc.py --etiquette defaut --reindexer
-python3 outils/communs/verifier_docs.py
+uv run --project banc-essai python banc-essai/ragflow/verif_minimale.py
+banc-essai/exemples/lancer.sh
+uv run --project banc-essai python banc-essai/ragflow/banc.py --etiquette defaut --reindexer
+python3 banc-essai/communs/verifier_docs.py
 ```
 
-Sorties obtenues le 12 novembre 2026 avec le service LLM central : vérification minimale, 4 passages et réponse citée en 14,1 s ([journal](outils/resultats/ragflow/installation-2026-11-12-verif.log)) ; six exemples en code 0 ([sorties vérifiées](exemples/ragflow/sorties_verifiees.txt)) ; banc 33/34 par défaut, 34/34 avec `--reranker` ([résultat](outils/resultats/ragflow/banc-2026-11-12-defaut.md), [avec reranker](outils/resultats/ragflow/banc-2026-11-12-defaut-reranker.md)) ; documentation à 0 point ([sortie du vérificateur](outils/resultats/ragflow/verifier-docs-2026-11-09.txt)).
+Sorties obtenues le 12 novembre 2026 avec le service LLM central : vérification minimale, 4 passages et réponse citée en 14,1 s ([journal](banc-essai/resultats/ragflow/installation-2026-11-12-verif.log)) ; six exemples en code 0 ([sorties vérifiées](banc-essai/exemples/sorties_verifiees.txt)) ; banc 33/34 par défaut, 34/34 avec `--reranker` ([résultat](banc-essai/resultats/ragflow/banc-2026-11-12-defaut.md), [avec reranker](banc-essai/resultats/ragflow/banc-2026-11-12-defaut-reranker.md)) ; documentation à 0 point ([sortie du vérificateur](banc-essai/resultats/ragflow/verifier-docs-2026-11-09.txt)).
 
 ## Structure du projet
 
 ```text
 .
-├── README.md, LICENSE, JOURNAL.md, RAPPORT-ragflow.md
-├── pyproject.toml, uv.lock          # SDK ragflow-sdk 1.0.0 (Python 3.13)
-├── corpus/                          # 9 documents fictifs et 38 questions de référence
-├── docs/
+├── README.md, LICENSE, documentations/journal.md, documentations/rapport.md
+├── banc-essai/pyproject.toml, banc-essai/uv.lock          # SDK ragflow-sdk 1.0.0 (Python 3.13)
+├── banc-essai/corpus/                          # 9 documents fictifs et 38 questions de référence
+├── documentations/
 │   ├── README.md                    # index de la série et comparatif du banc
 │   ├── glossaire.md
 │   └── ragflow/                     # manuel : accueil, manuel/ (chapitres 01 à 16), annexes/ (A1 à A7), images
-├── exemples/ragflow/                # six exemples et leurs sorties vérifiées
-├── outils/
+├── banc-essai/exemples/                # six exemples et leurs sorties vérifiées
+├── banc-essai/
 │   ├── communs/                     # diagnostic, LLM-Service, banc, captures, vérification, nettoyage
 │   ├── ragflow/                     # installation, configuration, essais, banc, captures
 │   └── resultats/                   # résultats bruts (machine, socle, open-notebook, ragflow)
@@ -234,17 +234,17 @@ Sorties obtenues le 12 novembre 2026 avec le service LLM central : vérification
 ## Commandes utiles
 
 ```bash
-outils/ragflow/etat.sh
-outils/ragflow/arreter.sh
-outils/ragflow/demarrer.sh
-outils/ragflow/sauvegarder.sh
-outils/ragflow/ressources.sh repos
-outils/communs/nettoyer.sh ragflow
+service/etat.sh
+service/arreter.sh
+service/demarrer.sh
+service/sauvegarder.sh
+banc-essai/ragflow/ressources.sh repos
+banc-essai/communs/nettoyer.sh ragflow
 ```
 
 ## Données du banc
 
-Entreprise fictive Vélanor (vélos électriques), 9 documents, 1 Mo, empreintes dans `corpus/MANIFEST.json` : rapport annuel PDF de 10 pages avec tableaux, contrat PDF scanné, audit en anglais, procédure DOCX, présentation PPTX, classeur XLSX, FAQ HTML, compte rendu Markdown, message vocal MP3. 38 questions de référence (`corpus/questions.json`) : faits simples, tableaux, scan, anglais, multi-documents, audio et 4 pièges sans réponse.
+Entreprise fictive Vélanor (vélos électriques), 9 documents, 1 Mo, empreintes dans `banc-essai/corpus/MANIFEST.json` : rapport annuel PDF de 10 pages avec tableaux, contrat PDF scanné, audit en anglais, procédure DOCX, présentation PPTX, classeur XLSX, FAQ HTML, compte rendu Markdown, message vocal MP3. 38 questions de référence (`banc-essai/corpus/questions.json`) : faits simples, tableaux, scan, anglais, multi-documents, audio et 4 pièges sans réponse.
 
 ## Les pièges que ce banc documente
 
@@ -271,7 +271,7 @@ Banc de 38 questions (34 avec réponse, 4 pièges), modèles du service central 
 
 Le reranker bge-reranker-v2-m3 rattrape la question manquée avec le réglage par défaut, mais n'ajoute rien au meilleur réglage.
 
-Toutes les variantes : [annexe A1](docs/ragflow/annexes/A1-evaluation-qualite-et-performances.md). Méthode et preuves : [annexe A6](docs/ragflow/annexes/A6-rapport-d-essais.md). Bilan : [RAPPORT-ragflow.md](RAPPORT-ragflow.md). Comparaison avec les quatre autres solutions : [index de la série](docs/README.md).
+Toutes les variantes : [annexe A1](documentations/annexes/A1-evaluation-qualite-et-performances.md). Méthode et preuves : [annexe A6](documentations/annexes/A6-rapport-d-essais.md). Bilan : [documentations/rapport.md](documentations/rapport.md). Comparaison avec les quatre autres solutions : [index de la série](documentations/index-serie.md).
 
 ## Versions
 
@@ -289,10 +289,10 @@ Toutes les variantes : [annexe A1](docs/ragflow/annexes/A1-evaluation-qualite-et
 | Speaches (service central) | 0.8.3 (CPU) |
 | Modèles du service central | Qwen3.5-4B Q4_K_M, bge-m3 Q8_0, bge-reranker-v2-m3 Q8_0, faster-whisper-small |
 
-Relevé : `outils/resultats/ragflow/versions-llm-central-2026-11-12.txt` (images figées par empreinte dans LLM-Service).
+Relevé : `banc-essai/resultats/ragflow/versions-llm-central-2026-11-12.txt` (images figées par empreinte dans LLM-Service).
 
 ## Ressources
 
 - RAGFlow : https://github.com/infiniflow/ragflow, documentation https://ragflow.io/docs/
-- Bilan de la mission : [RAPPORT-ragflow.md](RAPPORT-ragflow.md) ; avancement : [JOURNAL.md](JOURNAL.md)
+- Bilan de la mission : [documentations/rapport.md](documentations/rapport.md) ; avancement : [documentations/journal.md](documentations/journal.md)
 - Banc précédent : https://github.com/floSa/Open-Notebook-Test-Bench
