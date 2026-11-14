@@ -1,7 +1,7 @@
 # A7. Bascule vers le service LLM central
 
 > **Objet** : brancher RAGFlow sur le service LLM central (LLM-Service, LiteLLM) à la place de l'ancienne pile `vllm-central` / `vllm-embed` / `rag-speaches`, depuis l'interface web.
-> **Prérequis** : le service tourne (géré à part, jamais démarré par ce dépôt) ; la clé du service est dans `.env` (`LLM_CENTRAL_KEY`) ; RAGFlow joint le réseau `llm-net`.
+> **Prérequis** : le service tourne (géré à part, jamais démarré par ce dépôt) ; la clé propre de l'application (`ragflow-test-bench`, depuis le 14/11/2026) est dans `.env` (`LLM_CENTRAL_KEY`) ; RAGFlow joint le réseau `llm-net`.
 > **Version décrite** : RAGFlow v1.0.0, service LLM central (LiteLLM v1.109.0, llama-swap v272, llama.cpp build 12282, Speaches 0.8.3), essais des 11 et 12 novembre 2026.
 > **Statut des informations** : [Vérifié] requêtes réelles du 11 novembre 2026 depuis `rag-ragflow-server` et l'hôte (journal : `outils/resultats/ragflow/essai-llm-central-2026-11-11.log`) ; [Source] code de RAGFlow v1.0.0 (`sources/ragflow/conf/models/`, `internal/entity/models/`) ; [Vérifié] le 12 novembre 2026 : script de configuration, déclaration à la souris, défauts, recréation du jeu de démonstration (`outils/resultats/ragflow/configuration-2026-11-12.log`, `bascule-llm-central-2026-11-12.log`, `captures/llm-central/`, `demo-2026-11-12.log`) ; [À tester] l'effet de l'option « Thinking » des assistants à travers LiteLLM, le changement du modèle d'embedding d'une base déjà analysée ; [Estimation] aucune.
 > **Précautions** : ne rien démarrer ni arrêter côté LLM-Service ; la clé reste dans `.env`, jamais dans un fichier suivi ; réindexer modifie les bases : sauvegarder avant (annexe [A4](A4-exploitation.md)).
@@ -16,7 +16,7 @@
 |---|---|
 | URL depuis un conteneur du réseau `llm-net` | `http://llm-central:8080/v1` (résolution DNS vérifiée depuis `rag-ragflow-server`) |
 | URL depuis l'hôte | `http://127.0.0.1:8080/v1` |
-| Clé | obligatoire, en-tête `Authorization: Bearer <clé>` ; valeur dans `.env` (non suivi par git) |
+| Clé | obligatoire, en-tête `Authorization: Bearer <clé>` ; valeur dans `.env` (non suivi par git) ; clé propre `ragflow-test-bench` créée par `scripts/cle.sh creer ragflow-test-bench --dans <dépôt>/.env --noms LLM_CENTRAL_URL,LLM_CENTRAL_KEY` (dépôt LLM-Service), jamais la clé maîtresse ; révocation `scripts/cle.sh revoquer ragflow-test-bench`, consommation `scripts/cle.sh consommation` |
 | `chat` | Qwen3.5-4B, vision, réflexion activée par défaut, 16 384 jetons par requête |
 | `embed` | bge-m3 Q8_0 GGUF, 1 024 dimensions |
 | `rerank` | bge-reranker-v2-m3, scores bruts non bornés (observés de -11 à +9) |

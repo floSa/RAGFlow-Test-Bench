@@ -116,7 +116,7 @@ Réseaux : `rag-ragflow` (interne à la pile), `llm-net` (LLM-Service, externe :
 
 ## Démarrage
 
-Prérequis : WSL2 (Ubuntu), Docker et Compose, le service LLM central en marche (LLM-Service, géré dans son propre dépôt ; s'il est arrêté : `~/mes_projets/Projet-IA/LLM-Service/scripts/demarrer.sh`, profil carte graphique ; ce dépôt ne l'arrête ni ne le modifie), une clé du service dans `.env` (copie de `.env.example`), uv. Vérification : `outils/communs/llm_central_sante.sh --essai`. Les scripts `llm_service*.sh` et `voix.sh` sont historiques (annexe A2). Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
+Prérequis : WSL2 (Ubuntu), Docker et Compose, le service LLM central en marche (LLM-Service, géré dans son propre dépôt ; s'il est arrêté : `~/mes_projets/Projet-IA/LLM-Service/scripts/demarrer.sh`, profil carte graphique ; ce dépôt ne l'arrête ni ne le modifie), la clé propre de l'application dans `.env` (copie de `.env.example`, clé créée par `~/mes_projets/Projet-IA/LLM-Service/scripts/cle.sh creer ragflow-test-bench --dans <dépôt>/.env --noms LLM_CENTRAL_URL,LLM_CENTRAL_KEY`, jamais la clé maîtresse de LLM-Service), uv. Vérification : `outils/communs/llm_central_sante.sh --essai`. Les scripts `llm_service*.sh` et `voix.sh` sont historiques (annexe A2). Mesures de la machine : [diagnostic](outils/resultats/machine/diagnostic-2026-11-09.json).
 
 ```bash
 outils/ragflow/installer.sh

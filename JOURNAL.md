@@ -198,3 +198,9 @@ Une entrée par étape : date et heure, phase, ce qui a été fait, résultat, f
 ### 2026-11-13 — Index de la série : tableaux de même largeur, ligne Docling
 
 - Tableaux en HTML à largeurs fixes (200 px puis 5 × 150 px), tous de la même largeur. Lecture des PDF : une ligne « Docling » (conteneur, déporté) et une ligne « OCR intégré, autre que Docling » ; Docling expliqué ; ligne « OCR utilisé au banc » retirée (elle est dans le détail du meilleur réglage).
+
+### 2026-11-14 — Clé propre sur le service LLM central
+
+- Le dépôt n'utilise plus la clé maîtresse de LLM-Service : clé propre `ragflow-test-bench`, créée et écrite dans `.env` par `~/mes_projets/Projet-IA/LLM-Service/scripts/cle.sh creer ragflow-test-bench --dans <dépôt>/.env --noms LLM_CENTRAL_URL,LLM_CENTRAL_KEY` (procédure : `LLM-Service/docs/brancher-une-application.md`) ; `LLM_CENTRAL_URL_HOTE` inchangé. Révocation : `scripts/cle.sh revoquer ragflow-test-bench` ; consommation : `scripts/cle.sh consommation`.
+- Essai : `outils/communs/llm_central_sante.sh --essai` : `chat`, `embed` (1 024 dimensions), `rerank` et `transcribe` répondent ; 4 requêtes comptées sur la clé.
+- `.env.example`, README, annexe A7 et manuels 02 et 03 : plus de consigne pointant vers la clé maîtresse.

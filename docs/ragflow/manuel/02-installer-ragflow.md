@@ -228,7 +228,7 @@ outils/communs/nettoyer.sh ragflow
 | Symptôme | Cause | Que faire |
 |---|---|---|
 | L'étape 4 affiche « service injoignable ou clé refusée » | serveur de modèles arrêté, adresse fausse ou clé absente de `.env` | démarrer le serveur (sur la machine d'essai, le service central se lance par le script `scripts/demarrer.sh` de son propre dossier, puis se vérifie par l'étape 4) ; vérifier l'adresse, le port et la clé |
-| `.env absent` ou `LLM_CENTRAL_KEY vide dans .env` | fichier de clé pas encore préparé | `cp .env.example .env`, puis y mettre la clé du service (étape 4) |
+| `.env absent` ou `LLM_CENTRAL_KEY vide dans .env` | fichier de clé pas encore préparé | `cp .env.example .env`, puis y mettre la clé donnée par le responsable du service (étape 4) |
 | Le moteur de recherche ne démarre pas, l'installation attend sans fin | réglage `vm.max_map_count` inférieur à 262144 (étape 3) | sous Windows, ajouter au fichier `.wslconfig` du dossier personnel Windows la section `[wsl2]` avec la ligne `kernelCommandLine = "sysctl.vm.max_map_count=262144"`, puis lancer `wsl --shutdown` dans PowerShell et rouvrir Ubuntu ; vérifier ensuite avec la commande de l'étape 3. La machine d'essai n'en a pas eu besoin : ce remède n'a pas été essayé |
 | Le script de désinstallation s'arrête aussitôt (code 126) | les scripts ont perdu leur droit d'exécution, par exemple après extraction d'une archive | lancer `chmod +x outils/communs/*.sh outils/ragflow/*.sh`, puis recommencer |
 | Le port 8088 est déjà pris par un autre programme | conflit d'adresse | changer `SVR_WEB_HTTP_PORT` dans `donnees/ragflow/ragflow.env`, puis redémarrer |

@@ -203,7 +203,7 @@ Cliquer sur « Add instance » (capture de l'étape 8, pastille 5).
 
 **Étape 10. Remplir la nouvelle instance**
 *Où* : « Fournisseurs de modèles » › « OpenAI-API-Compatible », carte vide.
-Saisir le nom `llm-central` (pastille 1), coller la clé du service (pastille 2), saisir l'adresse `http://llm-central:8080/v1` (pastille 3), puis cliquer sur « Lister les modèles » (pastille 4). La clé est la valeur qui suit `LLM_CENTRAL_KEY=` dans le fichier `.env` ; elle s'affiche en points, et la capture la masque.
+Saisir le nom `llm-central` (pastille 1), coller la clé donnée par le responsable du service (pastille 2), saisir l'adresse `http://llm-central:8080/v1` (pastille 3), puis cliquer sur « Lister les modèles » (pastille 4). La clé est la valeur qui suit `LLM_CENTRAL_KEY=` dans le fichier `.env` ; elle s'affiche en points, et la capture la masque.
 
 ![Nouvelle instance remplie](../img/01-installation/05-ajout-instance.png)
 *Écran : « Fournisseurs de modèles », nouvelle carte d'instance remplie.*
