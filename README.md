@@ -1,8 +1,8 @@
-# RAGFlow — banc d'essai et manuels vérifiés
+# RAGFlow
 
-**Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine et sans service en ligne : RAGFlow 1.0.0 installé, mesuré sur 38 questions et documenté en un manuel utilisateur de 16 chapitres suivis de 6 annexes, avec 195 captures d'écran annotées.**
+Interroger ses propres documents, scans compris, avec une IA qui cite le passage et la page, sur sa machine, sans service en ligne.
 
-Trois dossiers : `service/` pour lancer RAGFlow, `banc-essai/` pour rejouer les tests, `documentations/` pour lire.
+Ce dépôt contient le service (`service/`, pour lancer RAGFlow sous Docker), le banc d'essai (`banc-essai/`, 38 questions) et la documentation avec le manuel utilisateur (`documentations/`).
 
 ```text
 RAGFlow-Test-Bench/
